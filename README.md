@@ -42,6 +42,7 @@ will be of the following form, JSON encoded:
             forvo: string;
             wanikani: string;
         }
-    }
+    },
+    ...
 ]
 ```
