@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <div className="width-container">
-        yo
+        <p className="app-header">Japanese Vocab Fetcher</p>
       </div>
     </div>
   );
