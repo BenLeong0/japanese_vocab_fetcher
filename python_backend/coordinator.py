@@ -10,6 +10,11 @@ class Modules(Enum):
     SUZUKI = suzuki
     WADOKU = wadoku
 
+    def get_info(self, word_list: List[str]) -> Dict[str, List]:
+        if self.name in ('OJAD', 'SUZUKI', 'WADOKU'):
+            return self.value.get_accent_dict(word_list)
+        raise ModuleError()
+
 
 class ModuleError(Exception):
     pass
@@ -21,7 +26,7 @@ def get_info(word_list: List[str]) -> Dict:
     def call_script(src: Modules):
         if src not in Modules:
             raise ModuleError(f"{src} is not a valid module")
-        results_dict[src] = src.value.get_accent_dict(word_list)
+        results_dict[src] = src.get_info(word_list)
 
 
     threads = [Thread(target=call_script, args=[module]) for module in Modules]
