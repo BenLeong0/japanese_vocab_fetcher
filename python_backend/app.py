@@ -7,7 +7,7 @@ app = Flask("app")
 CORS(app)
 
 
-@app.route('/')
+@app.route('/words')
 def homepage():
     return json.dumps("['yo']")
 
