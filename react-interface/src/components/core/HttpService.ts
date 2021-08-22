@@ -6,7 +6,7 @@ interface QueryParams {
 export default class HttpService {
 
     // API_URL: string = "https://7z39hjjfg1.execute-api.eu-west-2.amazonaws.com";
-    API_URL: string = "http://127.0.0.1:5000";
+    API_URL: string = "http://127.0.0.1:5000/words";
 
 
     async makeGetRequest(slug: string, queryParams?: QueryParams): Promise<any> {
