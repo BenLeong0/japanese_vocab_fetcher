@@ -1,0 +1,21 @@
+.input-page {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-page form {
+    display: flex;
+}
+
+.input-page textarea {
+    width: 600px;
+    height: 400px;
+    resize: vertical;
+}
+
+.input-page button {
+    margin: 10px auto;
+    width: 100px;
+}
