@@ -12,6 +12,7 @@ CORS(app)
 def homepage():
     word_list = utils.get_words_from_request(request)
     resp = get_info(word_list)
+    print(resp)
     return utils.response_successful(resp)
 
 
