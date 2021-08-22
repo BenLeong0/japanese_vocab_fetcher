@@ -8,10 +8,10 @@ def get_words_from_request(request: Request):
     return json.loads(dict(request.args)['words'])
 
 
-def response_successful(payload: Any):
+def create_successful_response(payload: Any):
     resp = json.dumps(payload)
     return Response(resp, status=200)
 
-def response_failed(payload: Any):
+def create_failed_response(payload: Any):
     resp = json.dumps(payload)
     return Response(resp, status=400)

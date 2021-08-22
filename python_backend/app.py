@@ -13,7 +13,7 @@ def homepage():
     word_list = utils.get_words_from_request(request)
     resp = get_info(word_list)
     print(resp)
-    return utils.response_successful(resp)
+    return utils.create_successful_response(resp)
 
 
 if __name__ == "__main__":
