@@ -25,13 +25,10 @@ def get_info(word_list: List[str]) -> Dict:
 
 
     threads = [Thread(target=call_script, args=[module]) for module in Modules]
-    print(threads)
     for thread in threads:
         thread.start()
     for thread in threads:
         thread.join()
-
-    print(results_dict)
 
     return generate_response(
         word_list=word_list,
