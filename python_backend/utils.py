@@ -18,5 +18,5 @@ def create_failed_response(payload: Any):
     return Response(resp, status=400)
 
 
-def remove_punct(self, s: str) -> str:
+def remove_punct(s: str) -> str:
     return re.sub('[\￨･~]', '', s)
