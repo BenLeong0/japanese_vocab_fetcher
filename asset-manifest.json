@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/japanese_vocab_fetcher/static/css/main.9b033959.chunk.css",
+    "main.js": "/japanese_vocab_fetcher/static/js/main.e6ae3abb.chunk.js",
+    "main.js.map": "/japanese_vocab_fetcher/static/js/main.e6ae3abb.chunk.js.map",
+    "runtime-main.js": "/japanese_vocab_fetcher/static/js/runtime-main.7c74dc25.js",
+    "runtime-main.js.map": "/japanese_vocab_fetcher/static/js/runtime-main.7c74dc25.js.map",
+    "static/js/2.9f8aaeb9.chunk.js": "/japanese_vocab_fetcher/static/js/2.9f8aaeb9.chunk.js",
+    "static/js/2.9f8aaeb9.chunk.js.map": "/japanese_vocab_fetcher/static/js/2.9f8aaeb9.chunk.js.map",
+    "static/js/3.833b0802.chunk.js": "/japanese_vocab_fetcher/static/js/3.833b0802.chunk.js",
+    "static/js/3.833b0802.chunk.js.map": "/japanese_vocab_fetcher/static/js/3.833b0802.chunk.js.map",
+    "index.html": "/japanese_vocab_fetcher/index.html",
+    "static/css/main.9b033959.chunk.css.map": "/japanese_vocab_fetcher/static/css/main.9b033959.chunk.css.map",
+    "static/js/2.9f8aaeb9.chunk.js.LICENSE.txt": "/japanese_vocab_fetcher/static/js/2.9f8aaeb9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c74dc25.js",
+    "static/js/2.9f8aaeb9.chunk.js",
+    "static/css/main.9b033959.chunk.css",
+    "static/js/main.e6ae3abb.chunk.js"
+  ]
+}
