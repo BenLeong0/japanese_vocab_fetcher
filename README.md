@@ -34,13 +34,13 @@ will be of the following form, JSON encoded:
             (see jisho api)
         }
         accent: {
-            wadoku: string;
-            ojad: string;
-            suzuki: string;
+            wadoku: string[];
+            ojad: string[];
+            suzuki: string[];
         },
         audio: {
-            forvo: string;
-            wanikani: string;
+            forvo: URL[];
+            wanikani: URL[];
         }
     },
     ...
