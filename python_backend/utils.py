@@ -1,4 +1,5 @@
 import json
+import re
 from typing import Any
 
 from flask.wrappers import Request, Response
@@ -15,3 +16,7 @@ def create_successful_response(payload: Any):
 def create_failed_response(payload: Any):
     resp = json.dumps(payload)
     return Response(resp, status=400)
+
+
+def remove_punct(self, s: str) -> str:
+    return re.sub('[\￨･~]', '', s)
