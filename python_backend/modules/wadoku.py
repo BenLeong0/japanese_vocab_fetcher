@@ -10,6 +10,7 @@ from utils import remove_punct
 
 
 def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
+    # TODO: Different if len(word_list) == 1
     html_sections = get_html_sections(word_list)
     accent_dict = build_accent_dict(html_sections)
     print(accent_dict)
