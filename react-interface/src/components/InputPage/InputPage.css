@@ -1,12 +1,12 @@
 .input-page {
     margin-top: 40px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .input-page form {
     display: flex;
-    flex-direction: column;
 }
 
 .input-page textarea {
