@@ -14,6 +14,10 @@ Potential project extensions:
 - Caching service
 - Database to save searches
 
+TODO:
+- Change slug to kebab case
+  - Update `homepage` in `package.json`
+
 
 ## Data flow
 
