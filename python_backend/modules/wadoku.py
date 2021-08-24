@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Dict, List, Tuple
+from typing import DefaultDict, Dict, List, Set, Tuple
 
 import requests
 
@@ -16,7 +16,8 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
     single = len(word_list) == 1
     html_sections = get_html_sections(word_list, single=single)
     accent_dict = build_accent_dict(html_sections, single=single)
-    return accent_dict
+    # return accent_dict
+    return {key:accent_dict[key] for key in word_list}
 
 
 # Get HTML Sections
@@ -34,11 +35,11 @@ def get_html_sections(word_list: List[str], single: bool = False) -> List[Beauti
 
 
 def extract_sections(soup: BeautifulSoup, single: bool = False) -> List[PageElement]:
-    table_rows = [BeautifulSoup(str(x)) for x in soup.findAll('tr')]
+    table_rows = [BeautifulSoup(str(x), 'html.parser') for x in soup.findAll('tr')]
     if single:
         return table_rows
 
-    sections: list[PageElement] = []
+    sections: List[PageElement] = []
     for row in table_rows:
         if not row.has_attr('class'):
             sections.append(row)
@@ -53,21 +54,21 @@ def extract_sections(soup: BeautifulSoup, single: bool = False) -> List[PageElem
 def build_accent_dict(
     html_sections: List[BeautifulSoup],
     single: bool = False,
-) -> Dict[str, List[str]]:
+) -> DefaultDict[str, List[str]]:
     if single:
         extract_subsections = extract_subsections_single
         extract_kakikata = extract_kakikata_single
         extract_yomikata = extract_yomikata_single
     else:
-        extract_subsections = extract_subsections_multiple
+        extract_subsections = extract_subsections_mult
         extract_kakikata = extract_kakikata_multiple
         extract_yomikata = extract_yomikata_multiple
 
     accent_dict = defaultdict(list)
     for section in html_sections:
-        writing_sections, reading_sections = extract_subsections(html_sections)
-        writing = extract_kakikata(section)
-        accents = extract_yomikata(section)
+        writing_sections, reading_sections = extract_subsections(section)
+        writing = extract_kakikata(writing_sections)
+        accents = extract_yomikata(reading_sections)
         accent_dict[writing] = accents
 
     return accent_dict
@@ -87,16 +88,18 @@ def extract_kakikata_multiple(section: BeautifulSoup) -> str:
     return midashi_section.text.strip()
 
 
-def extract_yomikata_single(section: BeautifulSoup) -> List[str]:
-    return [str(section)]
+def extract_yomikata_single(section: List[BeautifulSoup]) -> List[str]:
+    print([reading.text.strip() for reading in section])
+    return [reading.text.strip() for reading in section]
 
 
 def extract_yomikata_multiple(section: BeautifulSoup) -> List[str]:
-    accent_sections: list[BeautifulSoup] = section.find_all('span', class_='accent')
+    # TODO: Check if NO ACCENT!
+    accent_sections: List[BeautifulSoup] = section.find_all('span', class_='accent')
 
-    accents: set[str] = set()
+    accents: Set[str] = set()
     for accent in accent_sections:
-        spans: list[BeautifulSoup] = [span for span in accent.children if span != '…']
+        spans: List[BeautifulSoup] = [span for span in accent.children if span != '…']
 
         # Initialise with first char
         curr = remove_punct(spans[0].text)
@@ -130,8 +133,13 @@ def extract_yomikata_multiple(section: BeautifulSoup) -> List[str]:
 # Build accent dict single
 
 
-def extract_subsections_single(section: BeautifulSoup) -> Tuple(BeautifulSoup, BeautifulSoup):
-    writing_sections = section.find('span', class_='accent')
+def extract_subsections_single(section: BeautifulSoup) -> Tuple[BeautifulSoup, List[BeautifulSoup]]:
+    """Returns a tuple (writing_section, reading_sections)"""
+    writing_sections = section.find('div', class_='japanese')
+    reading_sections = section.findAll('span', class_='accent')
+    return writing_sections, reading_sections
 
-def extract_subsections_multiple(section: BeautifulSoup) -> Tuple(BeautifulSoup, BeautifulSoup):
+def extract_subsections_mult(section: BeautifulSoup) -> Tuple[BeautifulSoup, List[BeautifulSoup]]:
+    """Returns a tuple (writing_section, reading_sections)"""
     writing_sections = section.find('span', class_='accent')
+    return writing_sections, writing_sections
