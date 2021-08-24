@@ -26,11 +26,11 @@ def get_url(word_list: List[str]) -> str:
     return f"https://www.wadoku.de/search/{search_param}"
 
 
-def get_html_sections(word_list: List[str], single_word: bool = False) -> List[BeautifulSoup]:
+def get_html_sections(word_list: List[str], single: bool = False) -> List[BeautifulSoup]:
     url = get_url(word_list)
     html = requests.post(url, timeout=20).text
     soup = BeautifulSoup(html, 'html.parser')
-    return extract_sections(soup, single=single_word)
+    return extract_sections(soup, single=single)
 
 
 def extract_sections(soup: BeautifulSoup, single: bool = False) -> List[PageElement]:
