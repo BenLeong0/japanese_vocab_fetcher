@@ -13,11 +13,11 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
         return {}
 
-    single = len(word_list) == 1
     html = get_html(word_list)
-    accent_dict = build_accent_dict(html_sections, single=single)
+    word_sections = get_sections(html, word_list)
+    # accent_dict = build_accent_dict(html_sections, single=single)
     # return accent_dict
-    return {key:accent_dict[key] for key in word_list}
+    # return {key:accent_dict[key] for key in word_list}
 
 
 # Get HTML
@@ -31,6 +31,10 @@ def get_html(word_list: List[str]) -> BeautifulSoup:
     url = get_url(word_list)
     html = requests.post(url, timeout=20).text
     return BeautifulSoup(html, 'html.parser')
+
+
+def get_sections(html: BeautifulSoup) -> List[Tuple[str, List[str]]]:
+    sections = []
 
 
 def extract_sections(soup: BeautifulSoup, single: bool = False) -> List[PageElement]:
