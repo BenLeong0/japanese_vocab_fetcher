@@ -52,10 +52,14 @@ def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
 
 def extract_writings(word_sections: List[Tuple[Soup, List[Soup]]]) -> List[Tuple[str, List[Soup]]]:
     result = []
-    for (writing_html, reading_html) in word_sections:
-        text = writing_html.text
-        writings = text.split('；')
-        result += [(writing, reading_html) for writing in writings]
+    for word_section in word_sections:
+        result += extract_writing(word_section)
+    return result
+
+
+def extract_writing(word_section: Tuple[Soup, List[Soup]]) -> List[Tuple[str, List[Soup]]]:
+    writings = word_section[0].text.split('；')
+    return [(remove_punct(writing), word_section[1]) for writing in writings]
 
 
 def extract_sections(soup: Soup, single: bool = False) -> List[PageElement]:
