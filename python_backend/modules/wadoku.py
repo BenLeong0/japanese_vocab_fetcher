@@ -33,8 +33,14 @@ def get_html(word_list: List[str]) -> Soup:
     return Soup(html, 'html.parser')
 
 
-def get_sections(html: Soup) -> List[Tuple[str, List[str]]]:
-    sections = []
+# Extract sections
+
+def get_sections(html: Soup) -> List[Tuple[Soup, Soup]]:
+    rows = [Soup(row) for row in html.findAll('tr')]
+    return [
+        (row.find('div', class_='japanese'), row.find('div', class_='accent'))
+        for row in rows
+    ]
 
 
 def extract_sections(soup: Soup, single: bool = False) -> List[PageElement]:
