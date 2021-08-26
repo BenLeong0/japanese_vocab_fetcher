@@ -1,0 +1,11 @@
+
+~ check if word_list empty, return {} if true
+>> sections = get_html_sections(word_list)
+- get full html
+- extract rows/sections
+- result = []
+- for each section, result.append((writing, readings))
+
+accent_dict = {extract_writing(x):extract_reading(y) for (x,y) in sections}
+utils.filter_words(accent_dict, word_list)
+return accent_dict
