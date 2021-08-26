@@ -2,6 +2,7 @@ from collections import defaultdict
 from typing import DefaultDict, Dict, List, Set, Tuple
 
 import requests
+import urllib
 
 from bs4 import BeautifulSoup as Soup
 from bs4.element import PageElement
@@ -15,6 +16,7 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
 
     html = get_html(word_list)
     word_sections = get_sections(html)
+    extracted_writings = extract_writings(word_sections)
     # accent_dict = build_accent_dict(html_sections, single=single)
     # return accent_dict
     # return {key:accent_dict[key] for key in word_list}
@@ -23,7 +25,8 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
 # Get HTML
 
 def get_url(word_list: List[str]) -> str:
-    search_param = '%20'.join(word_list)
+    encoded_word_list = [urllib.parse.quote(word) for word in word_list]
+    search_param = '%20'.join(encoded_word_list)
     return f"https://www.wadoku.de/search/{search_param}"
 
 
@@ -43,6 +46,14 @@ def get_sections(html: Soup) -> List[Tuple[Soup, Soup]]:
             Soup(row.find('div', class_='accent'))
         ) for row in rows
     ]
+
+
+def extract_writings(word_sections: List[Tuple[Soup, Soup]]) -> List[Tuple[str, Soup]]:
+    result = []
+    for (writing_html, reading_html) in word_sections:
+        text = writing_html.text
+        writings = text.split('；')
+        result += [(writing, reading_html) for writing in writings]
 
 
 def extract_sections(soup: Soup, single: bool = False) -> List[PageElement]:
