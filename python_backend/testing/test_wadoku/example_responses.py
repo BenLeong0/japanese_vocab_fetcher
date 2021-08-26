@@ -13,7 +13,7 @@ class TestingDict(TypedDict):
 
 WADOKU_MEGANE: TestingDict = {
     'input': ['眼鏡'],
-    'resp': get_file_as_string('resp_megane.html'),
+    'html': get_file_as_string('resp_megane.html'),
     'expected_output': {
         '眼鏡': ["め' がね", "がんきょう" ],
         '眼鏡屋': [],
@@ -24,7 +24,7 @@ WADOKU_MEGANE: TestingDict = {
 
 WADOKU_COMEBACK: TestingDict = {
     'input': ['カムバック'],
-    'resp': get_file_as_string('resp_comeback.html'),
+    'html': get_file_as_string('resp_comeback.html'),
     'expected_output': {
         'カムバック': ["かむば' っく", "かむばっく" ],
         'カムバックする': ["かむば' っくする"],
