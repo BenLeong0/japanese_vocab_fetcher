@@ -14,7 +14,7 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
         return {}
 
     html = get_html(word_list)
-    word_sections = get_sections(html, word_list)
+    word_sections = get_sections(html)
     # accent_dict = build_accent_dict(html_sections, single=single)
     # return accent_dict
     # return {key:accent_dict[key] for key in word_list}
@@ -38,8 +38,10 @@ def get_html(word_list: List[str]) -> Soup:
 def get_sections(html: Soup) -> List[Tuple[Soup, Soup]]:
     rows = [Soup(row) for row in html.findAll('tr')]
     return [
-        (Soup(row.find('div', class_='japanese')), Soup(row.find('div', class_='accent')))
-        for row in rows
+        (
+            Soup(row.find('div', class_='japanese')),
+            Soup(row.find('div', class_='accent'))
+        ) for row in rows
     ]
 
 
