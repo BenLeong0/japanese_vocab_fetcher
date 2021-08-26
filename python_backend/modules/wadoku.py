@@ -1,11 +1,10 @@
 from collections import defaultdict
-from typing import DefaultDict, Dict, List, Set, Tuple, final
+from typing import DefaultDict, Dict, List, Tuple
 import urllib
 
 import requests
 
 from bs4 import BeautifulSoup as Soup
-from bs4.element import PageElement
 
 from utils import remove_punct
 
