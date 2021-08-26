@@ -11,7 +11,7 @@ from utils import remove_punct
 
 def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
-        return defaultdict(list)
+        return {}
 
     single = len(word_list) == 1
     html_sections = get_html_sections(word_list, single=single)
