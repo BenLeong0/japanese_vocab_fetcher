@@ -14,6 +14,8 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
         return {}
 
+    accent_dict = defaultdict([])
+
     html = get_html(word_list)
     word_sections = get_sections(html)
     extracted_writings = extract_writings(word_sections)
@@ -38,17 +40,17 @@ def get_html(word_list: List[str]) -> Soup:
 
 # Extract sections
 
-def get_sections(html: Soup) -> List[Tuple[Soup, Soup]]:
+def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
     rows = [Soup(row) for row in html.findAll('tr')]
     return [
         (
             Soup(row.find('div', class_='japanese')),
-            Soup(row.find('div', class_='accent'))
+            [Soup(span) for span in row.findAll('div', class_='accent')]
         ) for row in rows
     ]
 
 
-def extract_writings(word_sections: List[Tuple[Soup, Soup]]) -> List[Tuple[str, Soup]]:
+def extract_writings(word_sections: List[Tuple[Soup, List[Soup]]]) -> List[Tuple[str, List[Soup]]]:
     result = []
     for (writing_html, reading_html) in word_sections:
         text = writing_html.text
