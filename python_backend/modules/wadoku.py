@@ -14,24 +14,23 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
         return {}
 
     single = len(word_list) == 1
-    html_sections = get_html_sections(word_list, single=single)
+    html = get_html(word_list)
     accent_dict = build_accent_dict(html_sections, single=single)
     # return accent_dict
     return {key:accent_dict[key] for key in word_list}
 
 
-# Get HTML Sections
+# Get HTML
 
 def get_url(word_list: List[str]) -> str:
     search_param = '%20'.join(word_list)
     return f"https://www.wadoku.de/search/{search_param}"
 
 
-def get_html_sections(word_list: List[str], single: bool = False) -> List[BeautifulSoup]:
+def get_html(word_list: List[str]) -> BeautifulSoup:
     url = get_url(word_list)
     html = requests.post(url, timeout=20).text
-    soup = BeautifulSoup(html, 'html.parser')
-    return extract_sections(soup, single=single)
+    return BeautifulSoup(html, 'html.parser')
 
 
 def extract_sections(soup: BeautifulSoup, single: bool = False) -> List[PageElement]:
