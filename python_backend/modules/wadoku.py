@@ -41,12 +41,12 @@ def get_html(word_list: List[str]) -> Soup:
 # Extract sections
 
 def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
-    rows = [Soup(row) for row in html.findAll('tr')]
+    rows = [row for row in html.findAll('tr')]
     return [
         (
-            Soup(row.find('div', class_='japanese')),
-            [Soup(span) for span in row.findAll('div', class_='accent')]
-        ) for row in rows
+            Soup(str(row.find('div', class_='japanese')), "html.parser"),
+            [Soup(str(span), "html.parser") for span in row.findAll('span', class_='accent')]
+        ) for row in rows if row.find('div', class_='japanese') is not None
     ]
 
 
