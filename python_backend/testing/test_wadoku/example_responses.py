@@ -7,7 +7,7 @@ def get_file_as_string(filename):
 
 
 class TestingDict(TypedDict):
-    resp: str
+    html: str
     expected_output: List[str]
 
 
@@ -21,7 +21,6 @@ WADOKU_MEGANE: TestingDict = {
     },
 }
 
-
 WADOKU_COMEBACK: TestingDict = {
     'input': ['カムバック'],
     'html': get_file_as_string('resp_comeback.html'),
@@ -31,4 +30,11 @@ WADOKU_COMEBACK: TestingDict = {
     },
 }
 
-print(WADOKU_MEGANE['resp'])
+WADOKU_TABERU_GAKUSEI: TestingDict = {
+    'input': ['食べる', '学生'],
+    'html': get_file_as_string('resp_taberu_gakusei.html'),
+    'expected_output': {
+        '食べる': ["たべ' る" ],
+        '学生': ["がくせい"],
+    },
+}
