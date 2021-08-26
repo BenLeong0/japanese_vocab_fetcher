@@ -16,8 +16,6 @@ WADOKU_MEGANE: TestingDict = {
     'html': get_file_as_string('resp_megane.html'),
     'expected_output': {
         '眼鏡': ["め' がね", "がんきょう" ],
-        '眼鏡屋': [],
-        '眼鏡橋': ["めがね' ばし"]
     },
 }
 
@@ -26,7 +24,6 @@ WADOKU_COMEBACK: TestingDict = {
     'html': get_file_as_string('resp_comeback.html'),
     'expected_output': {
         'カムバック': ["かむば' っく", "かむばっく" ],
-        'カムバックする': ["かむば' っくする"],
     },
 }
 
@@ -36,5 +33,14 @@ WADOKU_TABERU_GAKUSEI: TestingDict = {
     'expected_output': {
         '食べる': ["たべ' る" ],
         '学生': ["がくせい"],
+    },
+}
+
+WADOKU_KO: TestingDict = {
+    'input': ['湖'],
+    'html': get_file_as_string('resp_ko.html'),
+    'expected_output': {
+        '湖': ["みずう' み" ],
+        # '～湖': ["～'*こ'"],
     },
 }
