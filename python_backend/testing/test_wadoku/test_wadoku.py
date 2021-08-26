@@ -80,6 +80,47 @@ def test_get_url(word_list, expected_url):
 def test_get_sections(html, expected_sections):
     assert wadoku.get_sections(Soup(html, "html.parser")) == expected_sections
 
+
+@pytest.mark.parametrize(
+    "word_sections, expected_writings",
+    [
+        [
+            [(
+                Soup('<div class="japanese">\n<a href="/entry/view/7011248"><span class="orth" lang="ja" xml:lang="ja">学生</span></a>\n</div>', "html.parser"),
+                [Soup('<span class="pron accent" data-accent-id="1">\n<span class="b">が</span><span class="t l">く<span class="divider">￨</span>せい</span>\n</span>', "html.parser")]
+            )],
+            [
+                (
+                    '学生',
+                    [Soup('<span class="pron accent" data-accent-id="1">\n<span class="b">が</span><span class="t l">く<span class="divider">￨</span>せい</span>\n</span>', "html.parser")]
+                )
+            ],
+        ],
+        [
+            [(
+                Soup('<div class="japanese">\n<a href="/entry/view/8531384"><span class="orth" lang="ja" xml:lang="ja"><span class="njok">止</span>める<span class="divider">；</span><span class="njk">已</span>める<span class="divider">；</span><span class="njok">廃</span>める</span></a>\n</div>', "html.parser"),
+                [Soup('<span class="pron accent" data-accent-id="1"><span class="b">や~</span><span class="t l">める</span></span>', "html.parser")]
+            )],
+            [
+                (
+                    '止める',
+                    [Soup('<span class="pron accent" data-accent-id="1"><span class="b">や~</span><span class="t l">める</span></span>', "html.parser")]
+                ),
+                (
+                    '已める',
+                    [Soup('<span class="pron accent" data-accent-id="1"><span class="b">や~</span><span class="t l">める</span></span>', "html.parser")]
+                ),
+                (
+                    '廃める',
+                    [Soup('<span class="pron accent" data-accent-id="1"><span class="b">や~</span><span class="t l">める</span></span>', "html.parser")]
+                ),
+            ],
+        ]
+    ]
+)
+def test_extract_writings(word_sections, expected_writings):
+    assert wadoku.extract_writings(word_sections) == expected_writings
+
 # @pytest.mark.parametrize("test_dict", [WADOKU_MEGANE, WADOKU_COMEBACK, WADOKU_TABERU_GAKUSEI])
 # def test_get_accent_dict(monkeypatch, test_dict):
 #     monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(test_dict['html']))
