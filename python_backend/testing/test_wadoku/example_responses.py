@@ -23,7 +23,7 @@ WADOKU_COMEBACK: TestingDict = {
     'input': ['カムバック'],
     'html': get_file_as_string('resp_comeback.html'),
     'expected_output': {
-        'カムバック': ["かむば' っく", "かむばっく" ],
+        'カムバック': ["かむば' っく", "か' むばっく" ],
     },
 }
 
