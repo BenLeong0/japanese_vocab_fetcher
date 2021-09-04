@@ -5,6 +5,7 @@
 - extract rows/sections
 - result = []
 - for each section, result.append((writing, readings))
+- filter
 
 accent_dict = {extract_writing(x):extract_reading(y) for (x,y) in sections}
 utils.filter_words(accent_dict, word_list)
