@@ -130,13 +130,13 @@ KOTOBA = {
         "expected_sections": [
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/8978613"><span class="orth" lang="ja" xml:lang="ja">言葉<span class="divider">；</span><span class="njok">辞</span><span class="divider">；</span><span class="njok">詞</span></span></a></div>', "html.parser"),
-                'writing': ['言葉', '辞', '詞'],
+                'writings': ['言葉', '辞', '詞'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">と<span class="divider">￨</span>ば</span></span>', "html.parser")],
                 'readings': ["ことば'"]
             },
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/6727285"><span class="orth" lang="ja" xml:lang="ja">言葉数</span></a></div>', "html.parser"),
-                'writing': ['言葉数'],
+                'writings': ['言葉数'],
                 'reading_sections': [
                     Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">とば･か</span><span class="b">ず</span></span>', "html.parser"),
                     Soup('<span class="pron accent hidden" data-accent-id="2"><span class="b">こ</span><span class="t l">とば･かず</span></span>', "html.parser"),
@@ -145,7 +145,7 @@ KOTOBA = {
             },
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/10628117"><span class="orth" lang="ja" xml:lang="ja">言葉典<span class="divider">；</span><span class="njok">辞</span>典</span></a></div>', "html.parser"),
-                'writing': ['言葉典', '辞典'],
+                'writings': ['言葉典', '辞典'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">こ</span><span class="t l">とば･てん</span></span>', "html.parser")],
                 'readings': ["ことばてん"]
             },
