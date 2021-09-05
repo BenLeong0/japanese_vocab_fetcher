@@ -11,6 +11,7 @@ from testing.test_wadoku.example_responses import (
     WADOKU_TABERU_GAKUSEI
 )
 
+
 class FakeResponse:
     def __init__(self, text):
         self.text = text
