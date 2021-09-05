@@ -52,7 +52,10 @@ def extract_writings(writing_html: Soup) -> List[str]:
 
 
 def extract_reading(reading_html: Soup) -> str:
-    spans: List[Soup] = [span for span in reading_html.findChild().findAll('span') if span != '…']
+    spans: List[Soup] = [
+        span for span in reading_html.findChild().findAll('span')
+        if span.text not in ['…', '']
+    ]
 
     if not spans:
         return ''
@@ -76,6 +79,7 @@ def extract_reading(reading_html: Soup) -> str:
     # Final drop if 尾高
     if 'r' in spans[-1]['class'] and height == 1:
         curr += "'"
+
 
     return curr
 
