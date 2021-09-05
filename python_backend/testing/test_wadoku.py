@@ -67,3 +67,23 @@ def test_extract_writings(sections):
     """
     for section in sections:
         assert wadoku.extract_writings(section['writing_section']) == section['writings']
+
+
+@pytest.mark.parametrize(
+    "sections",
+    [
+        MEGANE['wadoku']['expected_sections'],
+        COMEBACK['wadoku']['expected_sections'],
+        TABERU_GAKUSEI['wadoku']['expected_sections'],
+        KOTOBA['wadoku']['expected_sections'],
+    ]
+)
+def test_extract_readings(sections):
+    """
+    - GIVEN an html sections
+    - WHEN the writing is extracted
+    - THEN check all the correct writings are extracted
+    """
+    for section in sections:
+        for html_section, reading in zip(section['reading_sections'], section['readings']):
+            assert wadoku.extract_reading(html_section) == reading
