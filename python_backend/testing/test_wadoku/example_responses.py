@@ -1,8 +1,8 @@
 from typing import List, TypedDict
 
 def get_file_as_string(filename):
-    filelocation = "testing/test_wadoku/"
-    with open(filelocation+filename, 'r', encoding='utf8') as myfile:
+    path = "testing/test_wadoku/" + filename
+    with open(path, 'r', encoding='utf8') as myfile:
         return myfile.read()
 
 
