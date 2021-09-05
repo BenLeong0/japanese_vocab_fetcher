@@ -140,6 +140,10 @@ def test_extract_writings(word_sections, expected_writings):
             Soup('<span class="pron accent" data-accent-id="1">…<span class="t r">こ</span><span class="b"></span></span>', "html.parser"),
             "こ'",
         ],
+        [
+            Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">と<span class="divider">￨</span>ば</span></span>', "html.parser"),
+            "ことば'",
+        ],
     ]
 )
 def test_extract_reading(reading_html, expected_reading):
