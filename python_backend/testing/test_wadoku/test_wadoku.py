@@ -1,9 +1,7 @@
 # pylint: disable=line-too-long
 
-from collections import defaultdict
 from bs4 import BeautifulSoup as Soup
 import pytest
-from requests.models import Response
 
 from modules import wadoku
 
