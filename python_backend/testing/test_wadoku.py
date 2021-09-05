@@ -7,7 +7,8 @@ from modules import wadoku
 from testing.dicts import (
     MEGANE,
     COMEBACK,
-    TABERU_GAKUSEI
+    TABERU_GAKUSEI,
+    KOTOBA,
 )
 
 @pytest.mark.parametrize(
@@ -16,6 +17,7 @@ from testing.dicts import (
         [MEGANE['input'], MEGANE['wadoku']['url']],
         [COMEBACK['input'], COMEBACK['wadoku']['url']],
         [TABERU_GAKUSEI['input'], TABERU_GAKUSEI['wadoku']['url']],
+        [KOTOBA['input'], KOTOBA['wadoku']['url']],
     ]
 )
 def test_get_url(word_list, expected_url):
@@ -33,6 +35,7 @@ def test_get_url(word_list, expected_url):
         [MEGANE['wadoku']['html'], MEGANE['wadoku']['expected_sections']],
         [COMEBACK['wadoku']['html'], COMEBACK['wadoku']['expected_sections']],
         [TABERU_GAKUSEI['wadoku']['html'], TABERU_GAKUSEI['wadoku']['expected_sections']],
+        [KOTOBA['wadoku']['html'], KOTOBA['wadoku']['expected_sections']],
     ]
 )
 def test_get_sections(html, expected_sections):
