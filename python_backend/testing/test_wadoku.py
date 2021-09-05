@@ -11,39 +11,51 @@ from testing.dicts import (
     KOTOBA,
 )
 
+
+class FakeResponse:
+    def __init__(self, text):
+        self.text = text
+
+
 @pytest.mark.parametrize(
-    "word_list, expected_url",
+    "test_dict",
     [
-        [MEGANE['input'], MEGANE['wadoku']['url']],
-        [COMEBACK['input'], COMEBACK['wadoku']['url']],
-        [TABERU_GAKUSEI['input'], TABERU_GAKUSEI['wadoku']['url']],
-        [KOTOBA['input'], KOTOBA['wadoku']['url']],
+        MEGANE,
+        COMEBACK,
+        TABERU_GAKUSEI,
+        KOTOBA,
     ]
 )
-def test_get_url(word_list, expected_url):
+def test_get_url(test_dict):
     """
     - GIVEN a list of words
     - WHEN a url is generated
     - THEN check the url is encoded
     """
+    word_list = test_dict['input']
+    expected_url = test_dict['wadoku']['url']
+
     assert wadoku.get_url(word_list) == expected_url
 
 
 @pytest.mark.parametrize(
-    "html, expected_sections",
+    "test_dict",
     [
-        [MEGANE['wadoku']['html'], MEGANE['wadoku']['expected_sections']],
-        [COMEBACK['wadoku']['html'], COMEBACK['wadoku']['expected_sections']],
-        [TABERU_GAKUSEI['wadoku']['html'], TABERU_GAKUSEI['wadoku']['expected_sections']],
-        [KOTOBA['wadoku']['html'], KOTOBA['wadoku']['expected_sections']],
+        MEGANE,
+        COMEBACK,
+        TABERU_GAKUSEI,
+        KOTOBA,
     ]
 )
-def test_get_sections(html, expected_sections):
+def test_get_sections(test_dict):
     """
     - GIVEN an html section
     - WHEN the subsections are extracted
     - THEN check the array of subsections is correct
     """
+    html = test_dict['wadoku']['html']
+    expected_sections = test_dict['wadoku']['expected_sections']
+
     assert wadoku.get_sections(Soup(html, "html.parser")) == [
         (section['writing_section'], section['reading_sections'])
         for section in expected_sections
@@ -51,39 +63,59 @@ def test_get_sections(html, expected_sections):
 
 
 @pytest.mark.parametrize(
-    "sections",
+    "test_dict",
     [
-        MEGANE['wadoku']['expected_sections'],
-        COMEBACK['wadoku']['expected_sections'],
-        TABERU_GAKUSEI['wadoku']['expected_sections'],
-        KOTOBA['wadoku']['expected_sections'],
+        MEGANE,
+        COMEBACK,
+        TABERU_GAKUSEI,
+        KOTOBA,
     ]
 )
-def test_extract_writings(sections):
+def test_extract_writings(test_dict):
     """
     - GIVEN an html sections
     - WHEN the writing is extracted
     - THEN check all the correct writings are extracted
     """
-    for section in sections:
+    for section in test_dict['wadoku']['expected_sections']:
         assert wadoku.extract_writings(section['writing_section']) == section['writings']
 
 
 @pytest.mark.parametrize(
-    "sections",
+    "test_dict",
     [
-        MEGANE['wadoku']['expected_sections'],
-        COMEBACK['wadoku']['expected_sections'],
-        TABERU_GAKUSEI['wadoku']['expected_sections'],
-        KOTOBA['wadoku']['expected_sections'],
+        MEGANE,
+        COMEBACK,
+        TABERU_GAKUSEI,
+        KOTOBA,
     ]
 )
-def test_extract_readings(sections):
+def test_extract_readings(test_dict):
     """
     - GIVEN an html sections
     - WHEN the writing is extracted
     - THEN check all the correct writings are extracted
     """
-    for section in sections:
+    for section in test_dict['wadoku']['expected_sections']:
         for html_section, reading in zip(section['reading_sections'], section['readings']):
             assert wadoku.extract_reading(html_section) == reading
+
+
+@pytest.mark.parametrize("test_dict", [
+    MEGANE,
+    COMEBACK,
+    TABERU_GAKUSEI,
+    KOTOBA,
+])
+def test_get_accent_dict(monkeypatch, test_dict):
+    """
+    - GIVEN a list of words
+    - WHEN the accent dict is generated
+    - THEN check all the wadoku info is correct and complete
+    """
+    word_list = test_dict['input']
+    html = test_dict['wadoku']['html']
+    expected_output = test_dict['wadoku']['expected_output']
+
+    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(html))
+    assert wadoku.get_accent_dict(word_list) == expected_output
