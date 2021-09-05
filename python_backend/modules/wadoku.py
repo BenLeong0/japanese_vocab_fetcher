@@ -1,6 +1,5 @@
 from collections import defaultdict
 from typing import DefaultDict, Dict, List, Tuple
-import urllib
 
 import requests
 
@@ -23,7 +22,7 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
 # Get HTML
 
 def get_url(word_list: List[str]) -> str:
-    encoded_word_list = [urllib.parse.quote(word) for word in word_list]
+    encoded_word_list = [word for word in word_list]
     search_param = '%20'.join(encoded_word_list)
     return f"https://www.wadoku.de/search/{search_param}"
 
