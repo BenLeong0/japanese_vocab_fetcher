@@ -26,6 +26,11 @@ class FakeResponse:
     ]
 )
 def test_get_url(word_list, expected_url):
+    """
+    - GIVEN a list of words
+    - WHEN a url is generated
+    - THEN check the url is encoded
+    """
     assert wadoku.get_url(word_list) == expected_url
 
 
@@ -78,6 +83,11 @@ def test_get_url(word_list, expected_url):
     ]
 )
 def test_get_sections(html, expected_sections):
+    """
+    - GIVEN an html section
+    - WHEN the subsections are extracted
+    - THEN check the array of subsections is correct
+    """
     assert wadoku.get_sections(Soup(html, "html.parser")) == expected_sections
 
 
@@ -95,9 +105,58 @@ def test_get_sections(html, expected_sections):
     ]
 )
 def test_extract_writings(word_sections, expected_writings):
+    """
+    - GIVEN an html sections
+    - WHEN the writing is extracted
+    - THEN check all the correct writings are extracted
+    """
     assert wadoku.extract_writings(word_sections) == expected_writings
+
+
+@pytest.mark.parametrize(
+    "reading_html, expected_reading",
+    [
+        [
+            Soup('<span class="pron accent" data-accent-id="1"><span class="b r">か</span><span class="t r">む･ば</span><span class="b">っく</span></span>', "html.parser"),
+            "かむば' っく",
+        ],
+        [
+            Soup('<span class="pron accent hidden" data-accent-id="2"><span class="t r">か</span><span class="b">む･ばっく</span></span>', "html.parser"),
+            "か' むばっく",
+        ],
+        [
+            Soup('<span class="pron accent" data-accent-id="1"><span class="b">が</span><span class="t l">ん<span class="divider">￨</span>きょう</span></span>', "html.parser"),
+            "がんきょう",
+        ],
+        [
+            Soup('<span class="pron accent" data-accent-id="1"> <span class="b r">め</span><span class="t r">がね･</span><span class="b">ばし</span> </span>', "html.parser"),
+            "めがね' ばし",
+        ],
+        [
+            Soup('<span class="pron accent" data-accent-id="1"><span class="t r">め<span class="divider">￨</span></span><span class="b">がね</span></span>', "html.parser"),
+            "め' がね",
+        ],
+        [
+            Soup('<span class="pron accent" data-accent-id="1">…<span class="t r">こ</span><span class="b"></span></span>', "html.parser"),
+            "こ'",
+        ],
+    ]
+)
+def test_extract_reading(reading_html, expected_reading):
+    """
+    - GIVEN an html sections
+    - WHEN the reading is extracted
+    - THEN check the reading and pitch accent are correct
+    """
+    assert wadoku.extract_reading(reading_html) == expected_reading
+
 
 @pytest.mark.parametrize("test_dict", [WADOKU_MEGANE, WADOKU_COMEBACK, WADOKU_TABERU_GAKUSEI])
 def test_get_accent_dict(monkeypatch, test_dict):
+    """
+    - GIVEN a list of words
+    - WHEN the accent dict is generated
+    - THEN check all the wadoku info is correct and complete
+    """
     monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(test_dict['html']))
     assert wadoku.get_accent_dict(test_dict['input']) == test_dict['expected_output']
