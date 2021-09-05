@@ -19,4 +19,4 @@ def create_failed_response(payload: Any):
 
 
 def remove_punct(input_string: str) -> str:
-    return re.sub('[\n￨･~…]', '', input_string)
+    return re.sub('[\n￨･~]', '', input_string)
