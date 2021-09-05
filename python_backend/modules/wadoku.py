@@ -53,8 +53,8 @@ def extract_writings(writing_html: Soup) -> List[str]:
 
 def extract_reading(reading_html: Soup) -> str:
     spans: List[Soup] = [
-        span for span in reading_html.findChild().findAll('span')
-        if span.text not in ['…', '']
+        span for span in reading_html.findChild().findChildren()
+        if remove_punct(span.text) != ''
     ]
 
     if not spans:
