@@ -3,17 +3,20 @@ import json
 import pytest
 import requests
 
+from testing.dict_typing import TestDict
+from testing.dicts import TEST_DICTS, TEST_DICT_IDS
+
+
 API_URL = "http://127.0.0.1:5000/words"
 
-@pytest.mark.parametrize(
-    "word_list",
-    [
-        ['行く'],
-        ['行く', '眼鏡'],
-        [],
-    ]
-)
-def test_words_endpoint(word_list):
+
+@pytest.fixture(params=TEST_DICTS, ids=TEST_DICT_IDS)
+def test_dict(request):
+    return request.param
+
+
+def test_words_endpoint(test_dict: TestDict):
+    word_list = test_dict['input']
     encoded_word_list = json.dumps(word_list)
     payload = {'words': encoded_word_list}
     result = requests.get(API_URL, params=payload)
