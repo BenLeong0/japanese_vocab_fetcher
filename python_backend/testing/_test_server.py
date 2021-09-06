@@ -6,11 +6,12 @@ import requests
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 
 
+API_URL = "http://127.0.0.1:5000/words"
+
+
 @pytest.fixture(params=TEST_DICTS, ids=TEST_DICT_IDS)
 def test_dict(request):
     return request.param
-
-API_URL = "http://127.0.0.1:5000/words"
 
 
 def test_words_endpoint(test_dict):
