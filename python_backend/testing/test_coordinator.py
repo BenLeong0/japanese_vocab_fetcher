@@ -3,6 +3,7 @@
 import pytest
 
 import coordinator
+from testing.dict_typing import TestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 
 
@@ -16,7 +17,7 @@ class FakeResponse:
         self.text = text
 
 
-def test_get_info(monkeypatch, test_dict):
+def test_get_info(monkeypatch, test_dict: TestDict):
     """
     - GIVEN a list of words
     - WHEN full results are generated
@@ -29,7 +30,7 @@ def test_get_info(monkeypatch, test_dict):
     assert coordinator.get_info(word_list) == expected_result
 
 
-def test_generate_response(monkeypatch, test_dict):
+def test_generate_response(monkeypatch, test_dict: TestDict):
     """
     - GIVEN a list of words
     - WHEN full results are generated

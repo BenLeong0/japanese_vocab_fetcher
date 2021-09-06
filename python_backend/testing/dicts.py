@@ -6,6 +6,7 @@ import re
 from bs4 import BeautifulSoup as Soup
 
 from coordinator import Modules
+from testing.dict_typing import TestDict
 
 def get_file_as_string(filename: str, module: Modules):
     path = f"testing/html_files/{module.name}_{filename}.html"
@@ -13,7 +14,7 @@ def get_file_as_string(filename: str, module: Modules):
         return re.sub(r'>\s*<', '><', myfile.read())
 
 
-MEGANE = {
+MEGANE: TestDict = {
     "id": "MEGANE",
     "input": ["眼鏡"],
     "forvo": {},
@@ -79,7 +80,7 @@ MEGANE = {
 }
 
 
-COMEBACK = {
+COMEBACK: TestDict= {
     "id": "COMEBACK",
     'input': ['カムバック'],
     "forvo": {},
@@ -135,7 +136,7 @@ COMEBACK = {
 }
 
 
-TABERU_GAKUSEI = {
+TABERU_GAKUSEI: TestDict = {
     "id": "TABERU_GAKUSEI",
     'input': ['食べる', '学生'],
     "forvo": {},
@@ -199,7 +200,7 @@ TABERU_GAKUSEI = {
 }
 
 
-KOTOBA = {
+KOTOBA: TestDict = {
     "id": "KOTOBA",
     'input': ['言葉'],
     "forvo": {},
