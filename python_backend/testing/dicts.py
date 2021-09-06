@@ -8,7 +8,7 @@ from testing.dict_typing import TestDict
 
 
 def get_file_as_string(filename: str, module: str):
-    path = f"testing/html_files/{module.name}_{filename}.html"
+    path = f"testing/html_files/{module}_{filename}.html"
     with open(path, "r", encoding="utf8") as myfile:
         return re.sub(r'>\s*<', '><', myfile.read())
 
