@@ -1,7 +1,10 @@
+import re
 from typing import Dict, List, Tuple
 
 from bs4 import BeautifulSoup as Soup
 import requests
+
+from utils import make_single_line
 
 
 def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
@@ -43,10 +46,11 @@ def get_html(word_list: List[str]) -> Soup:
 # Extract sections
 
 def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
-    rows = [row for row in html.findAll('tr')]
+    rows = [row for row in html.findAll('div', class_='phrasing_phrase_wrapper')]
     return [
         (
-            Soup(str(row.find('div', class_='japanese')), "html.parser"),
-            Soup(str(row.findAll('span', class_='accent')[0]), "html.parser")
-        ) for row in rows if row.find('div', class_='japanese') is not None
+            Soup(str(row.find('div', class_='phrasing_subscript')), "html.parser"),
+            Soup(str(row.find('div', class_='phrasing_text')), "html.parser"),
+            Soup(make_single_line(str(row.find('script'))), "html.parser")
+        ) for row in rows if row.find('div', class_='phrasing_subscript') is not None
     ]
