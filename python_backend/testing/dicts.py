@@ -41,6 +41,10 @@ MEGANE: TestDict = {
         },
     },
     "suzuki": {
+        "request": {
+            "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
+            "formdata": build_suzuki_formdata("眼鏡")
+        },
         "expected_output": {
             '眼鏡': [],
         },
@@ -114,6 +118,10 @@ COMEBACK: TestDict= {
         },
     },
     "suzuki": {
+        "request": {
+            "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
+            "formdata": build_suzuki_formdata("カムバック")
+        },
         "expected_output": {
             'カムバック': [],
         },
@@ -178,6 +186,10 @@ TABERU_GAKUSEI: TestDict = {
         },
     },
     "suzuki": {
+        "request": {
+            "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
+            "formdata": build_suzuki_formdata("食べる\n学生")
+        },
         "expected_output": {
             '食べる': [],
             '学生': [],
@@ -253,6 +265,10 @@ KOTOBA: TestDict = {
         },
     },
     "suzuki": {
+        "request": {
+            "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
+            "formdata": build_suzuki_formdata("言葉")
+        },
         "expected_output": {
             '言葉': [],
         },
