@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup as Soup
 from coordinator import Modules
 from testing.dict_typing import TestDict
 
+
 def get_file_as_string(filename: str, module: Modules):
     path = f"testing/html_files/{module.name}_{filename}.html"
     with open(path, "r", encoding="utf8") as myfile:
