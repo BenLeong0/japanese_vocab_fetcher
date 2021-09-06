@@ -29,6 +29,8 @@ def test_get_info(monkeypatch, test_dict: TestDict):
     - WHEN full results are generated
     - THEN check the output is as expected
     """
+    # monkeypatch.setattr("modules.ojad.get_accent_dict", lambda x: test_dict['ojad']['expected_output'])
+    monkeypatch.setattr("modules.suzuki.get_accent_dict", lambda x: test_dict['suzuki']['expected_output'])
     monkeypatch.setattr("modules.wadoku.get_accent_dict", lambda x: test_dict['wadoku']['expected_output'])
     word_list = test_dict['input']
     expected_result = test_dict['expected_result']
@@ -42,6 +44,8 @@ def test_generate_response(monkeypatch, test_dict: TestDict):
     - WHEN full results are generated
     - THEN check the output is as expected
     """
+    # monkeypatch.setattr("modules.ojad.get_accent_dict", lambda x: test_dict['ojad']['expected_output'])
+    monkeypatch.setattr("modules.suzuki.get_accent_dict", lambda x: test_dict['suzuki']['expected_output'])
     monkeypatch.setattr("modules.wadoku.get_accent_dict", lambda x: test_dict['wadoku']['expected_output'])
     word_list = test_dict['input']
     expected_result = test_dict['expected_result']
