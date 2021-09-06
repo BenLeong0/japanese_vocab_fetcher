@@ -3,9 +3,7 @@
 import pytest
 
 import coordinator
-from testing.dicts import TEST_DICTS
-
-test_dict_ids = [test_dict['id'] for test_dict in TEST_DICTS]
+from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 
 
 class FakeResponse:
@@ -16,7 +14,7 @@ class FakeResponse:
 @pytest.mark.parametrize(
     "test_dict",
     TEST_DICTS,
-    ids=test_dict_ids,
+    ids=TEST_DICT_IDS,
 )
 def test_get_info(monkeypatch, test_dict):
     """
@@ -34,7 +32,7 @@ def test_get_info(monkeypatch, test_dict):
 @pytest.mark.parametrize(
     "test_dict",
     TEST_DICTS,
-    ids=test_dict_ids,
+    ids=TEST_DICT_IDS,
 )
 def test_generate_response(monkeypatch, test_dict):
     """

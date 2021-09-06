@@ -4,9 +4,7 @@ from bs4 import BeautifulSoup as Soup
 import pytest
 
 from modules import wadoku
-from testing.dicts import TEST_DICTS
-
-test_dict_ids = [test_dict['id'] for test_dict in TEST_DICTS]
+from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 
 
 class FakeResponse:
@@ -17,7 +15,7 @@ class FakeResponse:
 @pytest.mark.parametrize(
     "test_dict",
     TEST_DICTS,
-    ids=test_dict_ids,
+    ids=TEST_DICT_IDS,
 )
 def test_get_url(test_dict):
     """
@@ -34,7 +32,7 @@ def test_get_url(test_dict):
 @pytest.mark.parametrize(
     "test_dict",
     TEST_DICTS,
-    ids=test_dict_ids,
+    ids=TEST_DICT_IDS,
 )
 def test_get_sections(test_dict):
     """
@@ -54,7 +52,7 @@ def test_get_sections(test_dict):
 @pytest.mark.parametrize(
     "test_dict",
     TEST_DICTS,
-    ids=test_dict_ids,
+    ids=TEST_DICT_IDS,
 )
 def test_extract_writings(test_dict):
     """
@@ -69,7 +67,7 @@ def test_extract_writings(test_dict):
 @pytest.mark.parametrize(
     "test_dict",
     TEST_DICTS,
-    ids=test_dict_ids,
+    ids=TEST_DICT_IDS,
 )
 def test_extract_readings(test_dict):
     """
@@ -85,7 +83,7 @@ def test_extract_readings(test_dict):
 @pytest.mark.parametrize(
     "test_dict",
     TEST_DICTS,
-    ids=test_dict_ids,
+    ids=TEST_DICT_IDS,
 )
 def test_build_accent_dict(test_dict):
     """
@@ -104,7 +102,7 @@ def test_build_accent_dict(test_dict):
 @pytest.mark.parametrize(
     "test_dict",
     TEST_DICTS,
-    ids=test_dict_ids,
+    ids=TEST_DICT_IDS,
 )
 def test_get_accent_dict(monkeypatch, test_dict):
     """
