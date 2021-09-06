@@ -4,12 +4,9 @@ from bs4 import BeautifulSoup as Soup
 import pytest
 
 from modules import wadoku
-from testing.dicts import (
-    MEGANE,
-    COMEBACK,
-    TABERU_GAKUSEI,
-    KOTOBA,
-)
+from testing.dicts import TEST_DICTS
+
+test_dict_ids = [test_dict['id'] for test_dict in TEST_DICTS]
 
 
 class FakeResponse:
@@ -19,12 +16,8 @@ class FakeResponse:
 
 @pytest.mark.parametrize(
     "test_dict",
-    [
-        MEGANE,
-        COMEBACK,
-        TABERU_GAKUSEI,
-        KOTOBA,
-    ]
+    TEST_DICTS,
+    ids=test_dict_ids,
 )
 def test_get_url(test_dict):
     """
@@ -40,12 +33,8 @@ def test_get_url(test_dict):
 
 @pytest.mark.parametrize(
     "test_dict",
-    [
-        MEGANE,
-        COMEBACK,
-        TABERU_GAKUSEI,
-        KOTOBA,
-    ]
+    TEST_DICTS,
+    ids=test_dict_ids,
 )
 def test_get_sections(test_dict):
     """
@@ -64,12 +53,8 @@ def test_get_sections(test_dict):
 
 @pytest.mark.parametrize(
     "test_dict",
-    [
-        MEGANE,
-        COMEBACK,
-        TABERU_GAKUSEI,
-        KOTOBA,
-    ]
+    TEST_DICTS,
+    ids=test_dict_ids,
 )
 def test_extract_writings(test_dict):
     """
@@ -83,12 +68,8 @@ def test_extract_writings(test_dict):
 
 @pytest.mark.parametrize(
     "test_dict",
-    [
-        MEGANE,
-        COMEBACK,
-        TABERU_GAKUSEI,
-        KOTOBA,
-    ]
+    TEST_DICTS,
+    ids=test_dict_ids,
 )
 def test_extract_readings(test_dict):
     """
@@ -103,12 +84,8 @@ def test_extract_readings(test_dict):
 
 @pytest.mark.parametrize(
     "test_dict",
-    [
-        MEGANE,
-        COMEBACK,
-        TABERU_GAKUSEI,
-        KOTOBA,
-    ]
+    TEST_DICTS,
+    ids=test_dict_ids,
 )
 def test_build_accent_dict(test_dict):
     """
@@ -124,12 +101,11 @@ def test_build_accent_dict(test_dict):
     assert wadoku.build_accent_dict(word_sections) == test_dict['wadoku']['full_accent_dict']
 
 
-@pytest.mark.parametrize("test_dict", [
-    MEGANE,
-    COMEBACK,
-    TABERU_GAKUSEI,
-    KOTOBA,
-])
+@pytest.mark.parametrize(
+    "test_dict",
+    TEST_DICTS,
+    ids=test_dict_ids,
+)
 def test_get_accent_dict(monkeypatch, test_dict):
     """
     - GIVEN a list of words

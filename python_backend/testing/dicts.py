@@ -14,6 +14,7 @@ def get_file_as_string(filename: str, module: Modules):
 
 
 MEGANE = {
+    "id": "MEGANE",
     "input": ["眼鏡"],
     "forvo": {},
     "jisho": {},
@@ -79,6 +80,7 @@ MEGANE = {
 
 
 COMEBACK = {
+    "id": "COMEBACK",
     'input': ['カムバック'],
     "forvo": {},
     "jisho": {},
@@ -134,6 +136,7 @@ COMEBACK = {
 
 
 TABERU_GAKUSEI = {
+    "id": "TABERU_GAKUSEI",
     'input': ['食べる', '学生'],
     "forvo": {},
     "jisho": {},
@@ -197,6 +200,7 @@ TABERU_GAKUSEI = {
 
 
 KOTOBA = {
+    "id": "KOTOBA",
     'input': ['言葉'],
     "forvo": {},
     "jisho": {},
@@ -259,3 +263,11 @@ KOTOBA = {
         }
     ],
 }
+
+
+TEST_DICTS = [
+    MEGANE,
+    COMEBACK,
+    TABERU_GAKUSEI,
+    KOTOBA,
+]
