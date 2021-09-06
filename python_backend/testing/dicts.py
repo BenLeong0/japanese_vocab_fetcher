@@ -2,6 +2,7 @@
 
 from collections import defaultdict
 import re
+from typing import Dict
 
 from bs4 import BeautifulSoup as Soup
 
@@ -13,6 +14,20 @@ def get_file_as_string(filename: str, module: Modules):
     path = f"testing/html_files/{module.name}_{filename}.html"
     with open(path, "r", encoding="utf8") as myfile:
         return re.sub(r'>\s*<', '><', myfile.read())
+
+
+def build_suzuki_formdata(text: str) -> Dict[str, str]:
+    return {
+        "data[Phrasing][curve]": "advanced",
+        "data[Phrasing][accent]": "advanced",
+        "data[Phrasing][accent_mark]": "all",
+        "data[Phrasing][estimation]": "crf",
+        "data[Phrasing][analyze]": "true",
+        "data[Phrasing][phrase_component]": "invisible",
+        "data[Phrasing][param]": "invisible",
+        "data[Phrasing][subscript]": "visible",
+        "data[Phrasing][text]": text,
+    }
 
 
 MEGANE: TestDict = {
@@ -32,7 +47,9 @@ MEGANE: TestDict = {
     },
     "wadoku": {
         "html": get_file_as_string("megane", Modules.WADOKU),
-        "url": "https://www.wadoku.de/search/眼鏡",
+        "request": {
+            "url": "https://www.wadoku.de/search/眼鏡",
+        },
         "expected_sections": [
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/6038617"><span class="orth" lang="ja" xml:lang="ja"><span class="fjjk">眼鏡</span></span></a></div>', "html.parser"),
@@ -103,7 +120,9 @@ COMEBACK: TestDict= {
     },
     "wadoku": {
         "html": get_file_as_string("comeback", Modules.WADOKU),
-        "url": "https://www.wadoku.de/search/カムバック",
+        "request": {
+            "url": "https://www.wadoku.de/search/カムバック",
+        },
         "expected_sections": [
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/8009906"><span class="orth" lang="ja" xml:lang="ja">カム･バック</span></a></div>', "html.parser"),
@@ -166,7 +185,9 @@ TABERU_GAKUSEI: TestDict = {
     },
     "wadoku": {
         "html": get_file_as_string("taberu_gakusei", Modules.WADOKU),
-        "url": "https://www.wadoku.de/search/食べる%20学生",
+        "request": {
+            "url": "https://www.wadoku.de/search/食べる%20学生",
+        },
         "expected_sections": [
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/8610599"><span class="orth" lang="ja" xml:lang="ja">食べる</span></a></div>', "html.parser"),
@@ -238,7 +259,9 @@ KOTOBA: TestDict = {
     },
     "wadoku": {
         "html": get_file_as_string("kotoba", Modules.WADOKU),
-        "url": "https://www.wadoku.de/search/言葉",
+        "request": {
+            "url": "https://www.wadoku.de/search/言葉",
+        },
         "expected_sections": [
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/8978613"><span class="orth" lang="ja" xml:lang="ja">言葉<span class="divider">；</span><span class="njok">辞</span><span class="divider">；</span><span class="njok">詞</span></span></a></div>', "html.parser"),
