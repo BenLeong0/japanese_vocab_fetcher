@@ -17,8 +17,16 @@ MEGANE = {
     "input": ["眼鏡"],
     "forvo": {},
     "jisho": {},
-    "ojad": {},
-    "suzuki": {},
+    "ojad": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
+    "suzuki": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
     "wadoku": {
         "html": get_file_as_string("megane", Modules.WADOKU),
         "url": "https://www.wadoku.de/search/眼鏡",
@@ -74,8 +82,16 @@ COMEBACK = {
     'input': ['カムバック'],
     "forvo": {},
     "jisho": {},
-    "ojad": {},
-    "suzuki": {},
+    "ojad": {
+        "expected_output": {
+            'カムバック': [],
+        },
+    },
+    "suzuki": {
+        "expected_output": {
+            'カムバック': [],
+        },
+    },
     "wadoku": {
         "html": get_file_as_string("comeback", Modules.WADOKU),
         "url": "https://www.wadoku.de/search/カムバック",
@@ -121,8 +137,18 @@ TABERU_GAKUSEI = {
     'input': ['食べる', '学生'],
     "forvo": {},
     "jisho": {},
-    "ojad": {},
-    "suzuki": {},
+    "ojad": {
+        "expected_output": {
+            '食べる': [],
+            '学生': [],
+        },
+    },
+    "suzuki": {
+        "expected_output": {
+            '食べる': [],
+            '学生': [],
+        },
+    },
     "wadoku": {
         "html": get_file_as_string("taberu_gakusei", Modules.WADOKU),
         "url": "https://www.wadoku.de/search/食べる%20学生",
@@ -174,8 +200,16 @@ KOTOBA = {
     'input': ['言葉'],
     "forvo": {},
     "jisho": {},
-    "ojad": {},
-    "suzuki": {},
+    "ojad": {
+        "expected_output": {
+            '言葉': [],
+        },
+    },
+    "suzuki": {
+        "expected_output": {
+            '言葉': [],
+        },
+    },
     "wadoku": {
         "html": get_file_as_string("kotoba", Modules.WADOKU),
         "url": "https://www.wadoku.de/search/言葉",
