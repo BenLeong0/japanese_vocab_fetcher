@@ -7,16 +7,16 @@ from modules import wadoku
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 
 
+@pytest.fixture(params=TEST_DICTS, ids=TEST_DICT_IDS)
+def test_dict(request):
+    return request.param
+
+
 class FakeResponse:
     def __init__(self, text):
         self.text = text
 
 
-@pytest.mark.parametrize(
-    "test_dict",
-    TEST_DICTS,
-    ids=TEST_DICT_IDS,
-)
 def test_get_url(test_dict):
     """
     - GIVEN a list of words
@@ -29,11 +29,6 @@ def test_get_url(test_dict):
     assert wadoku.get_url(word_list) == expected_url
 
 
-@pytest.mark.parametrize(
-    "test_dict",
-    TEST_DICTS,
-    ids=TEST_DICT_IDS,
-)
 def test_get_sections(test_dict):
     """
     - GIVEN an html section
@@ -49,11 +44,6 @@ def test_get_sections(test_dict):
     ]
 
 
-@pytest.mark.parametrize(
-    "test_dict",
-    TEST_DICTS,
-    ids=TEST_DICT_IDS,
-)
 def test_extract_writings(test_dict):
     """
     - GIVEN an html sections
@@ -64,11 +54,6 @@ def test_extract_writings(test_dict):
         assert wadoku.extract_writings(section['writing_section']) == section['writings']
 
 
-@pytest.mark.parametrize(
-    "test_dict",
-    TEST_DICTS,
-    ids=TEST_DICT_IDS,
-)
 def test_extract_readings(test_dict):
     """
     - GIVEN an html sections
@@ -80,11 +65,6 @@ def test_extract_readings(test_dict):
             assert wadoku.extract_reading(html_section) == reading
 
 
-@pytest.mark.parametrize(
-    "test_dict",
-    TEST_DICTS,
-    ids=TEST_DICT_IDS,
-)
 def test_build_accent_dict(test_dict):
     """
     - GIVEN html sections
@@ -99,11 +79,6 @@ def test_build_accent_dict(test_dict):
     assert wadoku.build_accent_dict(word_sections) == test_dict['wadoku']['full_accent_dict']
 
 
-@pytest.mark.parametrize(
-    "test_dict",
-    TEST_DICTS,
-    ids=TEST_DICT_IDS,
-)
 def test_get_accent_dict(monkeypatch, test_dict):
     """
     - GIVEN a list of words

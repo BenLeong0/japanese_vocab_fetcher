@@ -6,16 +6,16 @@ import coordinator
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 
 
+@pytest.fixture(params=TEST_DICTS, ids=TEST_DICT_IDS)
+def test_dict(request):
+    return request.param
+
+
 class FakeResponse:
     def __init__(self, text):
         self.text = text
 
 
-@pytest.mark.parametrize(
-    "test_dict",
-    TEST_DICTS,
-    ids=TEST_DICT_IDS,
-)
 def test_get_info(monkeypatch, test_dict):
     """
     - GIVEN a list of words
@@ -29,11 +29,6 @@ def test_get_info(monkeypatch, test_dict):
     assert coordinator.get_info(word_list) == expected_result
 
 
-@pytest.mark.parametrize(
-    "test_dict",
-    TEST_DICTS,
-    ids=TEST_DICT_IDS,
-)
 def test_generate_response(monkeypatch, test_dict):
     """
     - GIVEN a list of words
