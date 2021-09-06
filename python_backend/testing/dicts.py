@@ -130,8 +130,17 @@ COMEBACK: TestDict= {
             "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
             "formdata": build_suzuki_formdata("カムバックは")
         },
+        "expected_sections": [
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>カムバックは</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writings': ['カムバック'],
+                'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">カ</span></span></span><span class="accent_plain mola_1"><span class="inner"><span class="char">ム</span></span></span><span class="accent_top mola_2"><span class="inner"><span class="char">バ</span></span></span><span class="mola_3"><span class="inner"><span class="char">ッ</span></span></span><span class="mola_4"><span class="inner"><span class="char">ク</span></span></span><span class="mola_5"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',6,[0,1,1,0,0,0],1,0,0);});</script>', "html.parser"),
+                'readings': ["カムバ' ック"]
+            },
+        ],
         "expected_output": {
-            'カムバック': [],
+            'カムバック': ["カムバ' ック"],
         },
     },
     "wadoku": {
@@ -199,6 +208,22 @@ TABERU_GAKUSEI: TestDict = {
             "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
             "formdata": build_suzuki_formdata("食べるは\n学生は")
         },
+        "expected_sections": [
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>食べるは</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writings': ['食べる'],
+                'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">た</span></span></span><span class="accent_top mola_1"><span class="inner"><span class="char">べ</span></span></span><span class="mola_2"><span class="inner"><span class="char">る</span></span></span><span class="mola_3"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',4,[0,1,0,0],1,0,0);});</script>', "html.parser"),
+                'readings': ["たべ' る"]
+            },
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>学生は</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writings': ['学生'],
+                'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">が</span></span></span><span class="accent_plain unvoiced mola_1"><span class="inner"><span class="char">く</span></span></span><span class="accent_plain mola_2"><span class="inner"><span class="char">せ</span></span></span><span class="accent_plain mola_3"><span class="inner"><span class="char">い</span></span></span><span class="accent_plain mola_4"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_1_0\',5,[0,1,1,1,1],1,0,0);});</script>', "html.parser"),
+                'readings': ["がくせい"]
+            },
+        ],
         "expected_output": {
             '食べる': [],
             '学生': [],
@@ -279,6 +304,15 @@ KOTOBA: TestDict = {
             "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
             "formdata": build_suzuki_formdata("言葉は")
         },
+        "expected_sections": [
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>言葉は</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writings': ['言葉'],
+                'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">こ</span></span></span><span class="accent_plain mola_1"><span class="inner"><span class="char">と</span></span></span><span class="accent_top mola_2"><span class="inner"><span class="char">ば</span></span></span><span class="mola_3"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',4,[0,1,1,0],1,0,0);});</script>', "html.parser"),
+                'readings': ["ことば'"]
+            },
+        ],
         "expected_output": {
             '言葉': [],
         },
