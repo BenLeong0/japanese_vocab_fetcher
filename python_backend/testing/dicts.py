@@ -1,5 +1,3 @@
-# pylint: disable=line-too-long
-
 from collections import defaultdict
 import re
 from typing import Dict
