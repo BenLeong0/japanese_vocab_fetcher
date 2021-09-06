@@ -70,7 +70,7 @@
             </div>
         </div>
         <div id="phrasing_textarea_wrapper">
-            <textarea name="data[Phrasing][text]" id="PhrasingText">眼鏡は</textarea>        </div>
+            <textarea name="data[Phrasing][text]" id="PhrasingText">カムバックは</textarea>        </div>
         <div class="phrasing_condition_line">
             <label for="PhrasingCurve">Pitch Contour</label>            <select name="data[Phrasing][curve]" id="PhrasingCurve">
 <option value="nakagawa">Mountain-hill Contour</option>
@@ -181,18 +181,18 @@
                                                         <div class="phrasing_phrase_wrapper">
 
                                                         <div class="phrasing_accent_curve">
-                                <canvas id="#phrase_0_0" width="80" height="100"></canvas>
+                                <canvas id="#phrase_0_0" width="120" height="100"></canvas>
                             </div>
 
                             <script type="text/javascript">
-                                $(function () { set_accent_curve_phrase('#phrase_0_0',4,[1,0,0,0],1,0,0);                                });
+                                $(function () { set_accent_curve_phrase('#phrase_0_0',6,[0,1,1,0,0,0],1,0,0);                                });
                             </script>
 
                             <div class="phrasing_text">
-                                <span class="accent_top mola_0"><span class="inner"><span class="char">め</span></span></span><span class="mola_1"><span class="inner"><span class="char">が</span></span></span><span class="mola_2"><span class="inner"><span class="char">ね</span></span></span><span class="mola_3"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span>                            </div>
+                                <span class="mola_0"><span class="inner"><span class="char">カ</span></span></span><span class="accent_plain mola_1"><span class="inner"><span class="char">ム</span></span></span><span class="accent_top mola_2"><span class="inner"><span class="char">バ</span></span></span><span class="mola_3"><span class="inner"><span class="char">ッ</span></span></span><span class="mola_4"><span class="inner"><span class="char">ク</span></span></span><span class="mola_5"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span>                            </div>
 
 			    			    <div class="phrasing_subscript">
-			      <span>眼鏡は</span><span class="inner endspace"><span class="char"></span></span>			    </div>
+			      <span>カムバックは</span><span class="inner endspace"><span class="char"></span></span>			    </div>
 			                                                </div>
                                         </div>
     <div class="phrasing_row_wrapper clearfix">
@@ -365,7 +365,7 @@ function synthesis_button_os_setting() {
         if ('advanced' == 'advanced') {
             acc_hl = JSON.stringify(f.curves);
         }
-        var taset = '["\u3081a\u304c\u306d\u306f.t\u30e1a\u30ac\u30cd\u30ef."]';
+        var taset = '["\u30ab\u30e0\u30d0a\u30c3\u30af\u306f.t\u30ab\u30e0\u30d0a\u30c3\u30af\u30ef."]';
         var speaker = document.getElementById("speaker").value;
         var speech_rate_mode = document.getElementById("speech_rate_mode").value;
         var syn_url = baseuri + "ajax/synthesize";
