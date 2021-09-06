@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 from bs4 import BeautifulSoup as Soup
 import requests
@@ -18,6 +18,7 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
 # Get HTML
 
 def get_formdata(word_list: List[str]) -> Dict[str, str]:
+    words_with_particles = [word + 'は' for word in word_list]
     formdata = {
         "data[Phrasing][curve]": "advanced",
         "data[Phrasing][accent]": "advanced",
@@ -28,7 +29,7 @@ def get_formdata(word_list: List[str]) -> Dict[str, str]:
         "data[Phrasing][param]": "invisible",
         "data[Phrasing][subscript]": "visible",
     }
-    formdata["data[Phrasing][text]"] = "\n".join(word_list)
+    formdata["data[Phrasing][text]"] = "\n".join(words_with_particles)
     return formdata
 
 
