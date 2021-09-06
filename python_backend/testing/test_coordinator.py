@@ -17,6 +17,12 @@ class FakeResponse:
         self.text = text
 
 
+# Ensure no actual requests are being made
+@pytest.fixture(autouse=True)
+def no_requests(monkeypatch):
+    monkeypatch.delattr("requests.sessions.Session.request")
+
+
 def test_get_info(monkeypatch, test_dict: TestDict):
     """
     - GIVEN a list of words
