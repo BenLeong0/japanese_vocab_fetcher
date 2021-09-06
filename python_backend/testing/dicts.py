@@ -71,12 +71,17 @@ MEGANE: TestDict = {
     "expected_result": [
         {
             "word": "眼鏡",
+            "jisho": {},
             "accent": {
                 "ojad": [],
                 "suzuki": [],
                 "wadoku": ["め' がね", "がんきょう" ],
             },
-        }
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
     ],
 }
 
@@ -127,12 +132,17 @@ COMEBACK: TestDict= {
     "expected_result": [
         {
             "word": "カムバック",
+            "jisho": {},
             "accent": {
                 "ojad": [],
                 "suzuki": [],
                 "wadoku": ["かむば' っく", "か' むばっく"],
             },
-        }
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
     ],
 }
 
@@ -183,20 +193,30 @@ TABERU_GAKUSEI: TestDict = {
     "expected_result": [
         {
             "word": "食べる",
+            "jisho": {},
             "accent": {
                 "ojad": [],
                 "suzuki": [],
                 "wadoku": ["たべ' る"],
             },
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
         },
         {
             "word": "学生",
+            "jisho": {},
             "accent": {
                 "ojad": [],
                 "suzuki": [],
                 "wadoku": ["がくせい"],
             },
-        }
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
     ],
 }
 
@@ -257,12 +277,17 @@ KOTOBA: TestDict = {
     "expected_result": [
         {
             "word": "言葉",
+            "jisho": {},
             "accent": {
                 "ojad": [],
                 "suzuki": [],
                 "wadoku": ["ことば'"],
             },
-        }
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
     ],
 }
 
