@@ -1,4 +1,4 @@
-# from bs4 import BeautifulSoup as Soup
+from bs4 import BeautifulSoup as Soup
 import pytest
 
 from modules import suzuki
@@ -27,3 +27,18 @@ def test_get_formdata(test_dict: TestDict):
     expected_formdata = test_dict['suzuki']['request']['formdata']
 
     assert suzuki.get_formdata(word_list) == expected_formdata
+
+
+def test_get_sections(test_dict: TestDict):
+    """
+    - GIVEN an html section
+    - WHEN the subsections are extracted
+    - THEN check the array of subsections is correct
+    """
+    html = test_dict['suzuki']['html']
+    expected_sections = test_dict['suzuki']['expected_sections']
+
+    assert suzuki.get_sections(Soup(html, "html.parser")) == [
+        (section['writing_section'], section['reading_section'], section['accent_section'])
+        for section in expected_sections
+    ]
