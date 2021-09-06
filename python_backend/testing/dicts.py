@@ -57,6 +57,16 @@ MEGANE = {
             "眼鏡": ["め' がね", "がんきょう" ],
         },
     },
+    "expected_result": [
+        {
+            "word": "眼鏡",
+            "accent": {
+                "ojad": [],
+                "suzuki": [],
+                "wadoku": ["め' がね", "がんきょう" ],
+            },
+        }
+    ],
 }
 
 
@@ -94,6 +104,16 @@ COMEBACK = {
             'カムバック': ["かむば' っく", "か' むばっく"],
         },
     },
+    "expected_result": [
+        {
+            "word": "カムバック",
+            "accent": {
+                "ojad": [],
+                "suzuki": [],
+                "wadoku": ["かむば' っく", "か' むばっく"],
+            },
+        }
+    ],
 }
 
 
@@ -129,6 +149,24 @@ TABERU_GAKUSEI = {
             '学生': ["がくせい"],
         },
     },
+    "expected_result": [
+        {
+            "word": "食べる",
+            "accent": {
+                "ojad": [],
+                "suzuki": [],
+                "wadoku": ["たべ' る"],
+            },
+        },
+        {
+            "word": "学生",
+            "accent": {
+                "ojad": [],
+                "suzuki": [],
+                "wadoku": ["がくせい"],
+            },
+        }
+    ],
 }
 
 
@@ -176,4 +214,14 @@ KOTOBA = {
             '言葉': ["ことば'"],
         },
     },
+    "expected_result": [
+        {
+            "word": "言葉",
+            "accent": {
+                "ojad": [],
+                "suzuki": [],
+                "wadoku": ["ことば'"],
+            },
+        }
+    ],
 }
