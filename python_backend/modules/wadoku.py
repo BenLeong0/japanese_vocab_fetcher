@@ -80,7 +80,6 @@ def extract_reading(reading_html: Soup) -> str:
     if 'r' in spans[-1]['class'] and height == 1:
         curr += "'"
 
-
     return curr
 
 
