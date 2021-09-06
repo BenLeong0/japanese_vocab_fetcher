@@ -4,11 +4,10 @@ from typing import Dict
 
 from bs4 import BeautifulSoup as Soup
 
-from coordinator import Modules
 from testing.dict_typing import TestDict
 
 
-def get_file_as_string(filename: str, module: Modules):
+def get_file_as_string(filename: str, module: str):
     path = f"testing/html_files/{module.name}_{filename}.html"
     with open(path, "r", encoding="utf8") as myfile:
         return re.sub(r'>\s*<', '><', myfile.read())
@@ -39,16 +38,26 @@ MEGANE: TestDict = {
         },
     },
     "suzuki": {
+        "html": get_file_as_string("megane", "suzuki"),
         "request": {
             "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
             "formdata": build_suzuki_formdata("眼鏡は")
         },
+        "expected_sections": [
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>眼鏡は</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writings': ['眼鏡'],
+                'reading_section': Soup('<div class="phrasing_text"><span class="accent_top mola_0"><span class="inner"><span class="char">め</span></span></span><span class="mola_1"><span class="inner"><span class="char">が</span></span></span><span class="mola_2"><span class="inner"><span class="char">ね</span></span></span><span class="mola_3"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',4,[1,0,0,0],1,0,0);});</script>', "html.parser"),
+                'readings': ["め' がね"]
+            },
+        ],
         "expected_output": {
             '眼鏡': [],
         },
     },
     "wadoku": {
-        "html": get_file_as_string("megane", Modules.WADOKU),
+        "html": get_file_as_string("megane", "wadoku"),
         "request": {
             "url": "https://www.wadoku.de/search/眼鏡",
         },
@@ -116,6 +125,7 @@ COMEBACK: TestDict= {
         },
     },
     "suzuki": {
+        "html": get_file_as_string("comeback", "suzuki"),
         "request": {
             "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
             "formdata": build_suzuki_formdata("カムバックは")
@@ -125,7 +135,7 @@ COMEBACK: TestDict= {
         },
     },
     "wadoku": {
-        "html": get_file_as_string("comeback", Modules.WADOKU),
+        "html": get_file_as_string("comeback", "wadoku"),
         "request": {
             "url": "https://www.wadoku.de/search/カムバック",
         },
@@ -184,6 +194,7 @@ TABERU_GAKUSEI: TestDict = {
         },
     },
     "suzuki": {
+        "html": get_file_as_string("taberu_gakusei", "suzuki"),
         "request": {
             "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
             "formdata": build_suzuki_formdata("食べるは\n学生は")
@@ -194,7 +205,7 @@ TABERU_GAKUSEI: TestDict = {
         },
     },
     "wadoku": {
-        "html": get_file_as_string("taberu_gakusei", Modules.WADOKU),
+        "html": get_file_as_string("taberu_gakusei", "wadoku"),
         "request": {
             "url": "https://www.wadoku.de/search/食べる%20学生",
         },
@@ -263,6 +274,7 @@ KOTOBA: TestDict = {
         },
     },
     "suzuki": {
+        "html": get_file_as_string("kotoba", "suzuki"),
         "request": {
             "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
             "formdata": build_suzuki_formdata("言葉は")
@@ -272,7 +284,7 @@ KOTOBA: TestDict = {
         },
     },
     "wadoku": {
-        "html": get_file_as_string("kotoba", Modules.WADOKU),
+        "html": get_file_as_string("kotoba", "wadoku"),
         "request": {
             "url": "https://www.wadoku.de/search/言葉",
         },
