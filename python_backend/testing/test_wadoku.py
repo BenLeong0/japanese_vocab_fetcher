@@ -113,19 +113,14 @@ def test_extract_readings(test_dict):
 )
 def test_build_accent_dict(test_dict):
     """
-    - GIVEN an html sections
-    - WHEN the writing is extracted
-    - THEN check all the correct writings are extracted
+    - GIVEN html sections
+    - WHEN the accent dict is constructed
+    - THEN check all the values are as expected
     """
     word_sections = [
         (section['writing_section'], section['reading_sections'])
         for section in test_dict['wadoku']['expected_sections']
     ]
-
-    expected_output = defaultdict(list)
-    for section in test_dict['wadoku']['expected_sections']:
-        for writing in section['writings']:
-            expected_output[writing] += section['readings']
 
     assert wadoku.build_accent_dict(word_sections) == test_dict['wadoku']['full_accent_dict']
 
