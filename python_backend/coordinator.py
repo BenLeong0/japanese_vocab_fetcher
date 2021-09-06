@@ -56,7 +56,6 @@ def generate_response(
     suzuki_dict: Dict[str,str],
     wadoku_dict: Dict[str,str],
 ):
-    print(wadoku_dict)
     resp = [{
         'word': word,
         'accent': {
