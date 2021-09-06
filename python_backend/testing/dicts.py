@@ -1,5 +1,6 @@
 # pylint: disable=line-too-long
 
+from collections import defaultdict
 import re
 
 from bs4 import BeautifulSoup as Soup
@@ -47,6 +48,11 @@ MEGANE = {
                 'readings': ["めがね' ばし"]
             },
         ],
+        "full_accent_dict" : defaultdict(list, {
+            '眼鏡': ["め' がね", "がんきょう"],
+            '眼鏡屋': [],
+            '眼鏡橋': ["めがね' ばし"],
+        }),
         "expected_output": {
             "眼鏡": ["め' がね", "がんきょう" ],
         },
@@ -80,6 +86,10 @@ COMEBACK = {
                 'readings': ["かむば' っくする"]
             },
         ],
+        "full_accent_dict" : defaultdict(list, {
+            'カムバック': ["かむば' っく", "か' むばっく"],
+            'カムバックする': ["かむば' っくする"],
+        }),
         "expected_output": {
             'カムバック': ["かむば' っく", "か' むばっく"],
         },
@@ -110,6 +120,10 @@ TABERU_GAKUSEI = {
                 'readings': ["がくせい"]
             },
         ],
+        "full_accent_dict" : defaultdict(list, {
+            '食べる': ["たべ' る"],
+            '学生': ["がくせい"],
+        }),
         "expected_output": {
             '食べる': ["たべ' る"],
             '学生': ["がくせい"],
@@ -150,6 +164,14 @@ KOTOBA = {
                 'readings': ["ことばてん"]
             },
         ],
+        "full_accent_dict" : defaultdict(list, {
+            '言葉': ["ことば'"],
+            '辞': ["ことば'"],
+            '詞': ["ことば'"],
+            '言葉数': ["ことばか' ず", "ことばかず"],
+            '言葉典': ["ことばてん"],
+            '辞典': ["ことばてん"],
+        }),
         "expected_output": {
             '言葉': ["ことば'"],
         },

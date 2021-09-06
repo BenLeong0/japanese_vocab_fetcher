@@ -1,5 +1,6 @@
 # pylint: disable=line-too-long
 
+from collections import defaultdict
 from bs4 import BeautifulSoup as Soup
 import pytest
 
@@ -99,6 +100,34 @@ def test_extract_readings(test_dict):
     for section in test_dict['wadoku']['expected_sections']:
         for html_section, reading in zip(section['reading_sections'], section['readings']):
             assert wadoku.extract_reading(html_section) == reading
+
+
+@pytest.mark.parametrize(
+    "test_dict",
+    [
+        MEGANE,
+        COMEBACK,
+        TABERU_GAKUSEI,
+        KOTOBA,
+    ]
+)
+def test_build_accent_dict(test_dict):
+    """
+    - GIVEN an html sections
+    - WHEN the writing is extracted
+    - THEN check all the correct writings are extracted
+    """
+    word_sections = [
+        (section['writing_section'], section['reading_sections'])
+        for section in test_dict['wadoku']['expected_sections']
+    ]
+
+    expected_output = defaultdict(list)
+    for section in test_dict['wadoku']['expected_sections']:
+        for writing in section['writings']:
+            expected_output[writing] += section['readings']
+
+    assert wadoku.build_accent_dict(word_sections) == test_dict['wadoku']['full_accent_dict']
 
 
 @pytest.mark.parametrize("test_dict", [
