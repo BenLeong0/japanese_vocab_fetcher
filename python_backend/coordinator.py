@@ -58,10 +58,15 @@ def generate_response(
 ):
     resp = [{
         'word': word,
+        'jisho': {},
         'accent': {
             'ojad': ojad_dict[word],
             'suzuki': suzuki_dict[word],
             'wadoku': wadoku_dict[word],
+        },
+        "audio": {
+            "forvo": [],
+            "wanikani": [],
         },
     } for word in word_list]
     return resp
