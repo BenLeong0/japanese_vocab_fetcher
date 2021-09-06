@@ -2,9 +2,8 @@ from collections import defaultdict
 from typing import DefaultDict, Dict, List, Tuple
 import urllib
 
-import requests
-
 from bs4 import BeautifulSoup as Soup
+import requests
 
 from utils import remove_punct
 
