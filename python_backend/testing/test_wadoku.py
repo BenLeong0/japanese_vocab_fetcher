@@ -1,5 +1,3 @@
-# pylint: disable=line-too-long
-
 from bs4 import BeautifulSoup as Soup
 import pytest
 
