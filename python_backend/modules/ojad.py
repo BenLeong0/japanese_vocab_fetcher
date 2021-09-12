@@ -1,6 +1,6 @@
 import re
 import requests
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 from bs4 import BeautifulSoup as Soup
 
@@ -42,3 +42,17 @@ def get_htmls(word_list: List[str]) -> List[Soup]:
         curr_page_number += 1
         html = get_html(word_list, curr_page_number)
     return pages
+
+
+# Extract sections
+
+def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
+    pass
+
+
+def extract_writings(writing_html: Soup) -> List[str]:
+    pass
+
+
+def extract_reading(reading_html: Soup) -> str:
+    pass
