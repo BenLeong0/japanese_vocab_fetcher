@@ -16,7 +16,9 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
 
     # If first word is invalid, the whole search fails, so try removing first word
     if not word_sections:
-        return get_accent_dict(word_list[1:])
+        sub_accent_dict = get_accent_dict(word_list[1:])
+        sub_accent_dict[word_list[0]] = []
+        return sub_accent_dict
 
     accent_dict = build_accent_dict(word_sections)
 
