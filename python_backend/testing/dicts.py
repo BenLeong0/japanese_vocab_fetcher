@@ -97,7 +97,7 @@ MEGANE: TestDict = {
             "jisho": {},
             "accent": {
                 "ojad": [],
-                "suzuki": [],
+                "suzuki": ["め' がね"],
                 "wadoku": ["め' がね", "がんきょう" ],
             },
             "audio": {
@@ -169,7 +169,7 @@ COMEBACK: TestDict= {
             "jisho": {},
             "accent": {
                 "ojad": [],
-                "suzuki": [],
+                "suzuki": ["カムバ' ック"],
                 "wadoku": ["かむば' っく", "か' むばっく"],
             },
             "audio": {
@@ -212,8 +212,8 @@ TABERU_GAKUSEI: TestDict = {
             },
         ],
         "expected_output": {
-            '食べる': [],
-            '学生': [],
+            '食べる': ["たべ' る"],
+            '学生': ["がくせい"],
         },
     },
     "wadoku": {
@@ -248,7 +248,7 @@ TABERU_GAKUSEI: TestDict = {
             "jisho": {},
             "accent": {
                 "ojad": [],
-                "suzuki": [],
+                "suzuki": ["たべ' る"],
                 "wadoku": ["たべ' る"],
             },
             "audio": {
@@ -261,7 +261,7 @@ TABERU_GAKUSEI: TestDict = {
             "jisho": {},
             "accent": {
                 "ojad": [],
-                "suzuki": [],
+                "suzuki": ["がくせい"],
                 "wadoku": ["がくせい"],
             },
             "audio": {
@@ -296,7 +296,7 @@ KOTOBA: TestDict = {
             },
         ],
         "expected_output": {
-            '言葉': [],
+            '言葉': ["ことば'"],
         },
     },
     "wadoku": {
@@ -343,7 +343,7 @@ KOTOBA: TestDict = {
             "jisho": {},
             "accent": {
                 "ojad": [],
-                "suzuki": [],
+                "suzuki": ["ことば'"],
                 "wadoku": ["ことば'"],
             },
             "audio": {
