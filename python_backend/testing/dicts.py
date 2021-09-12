@@ -48,6 +48,7 @@ MEGANE: FullTestDict = {
     "forvo": {},
     "jisho": {},
     "ojad": {
+        "htmls": get_ojad_html_files("megane"),
         "expected_output": {
             '眼鏡': [],
         },
@@ -130,6 +131,7 @@ COMEBACK: FullTestDict= {
     "forvo": {},
     "jisho": {},
     "ojad": {
+        "htmls": get_ojad_html_files("comeback"),
         "expected_output": {
             'カムバック': [],
         },
@@ -202,6 +204,7 @@ TABERU_GAKUSEI: FullTestDict = {
     "forvo": {},
     "jisho": {},
     "ojad": {
+        "htmls": get_ojad_html_files("taberu_gakusei"),
         "expected_output": {
             '食べる': [],
             '学生': [],
@@ -294,6 +297,7 @@ KOTOBA: FullTestDict = {
     "forvo": {},
     "jisho": {},
     "ojad": {
+        "htmls": get_ojad_html_files("kotoba"),
         "expected_output": {
             '言葉': [],
         },
