@@ -69,7 +69,7 @@ MEGANE: FullTestDict = {
             '眼鏡': ["め' がね"],
         }),
         "expected_output": {
-            '眼鏡': [],
+            '眼鏡': ["め' がね"],
         },
     },
     "suzuki": {
@@ -167,7 +167,7 @@ COMEBACK: FullTestDict= {
             'カムバック': ["かむば' っく", "か' むばっく"],
         }),
         "expected_output": {
-            'カムバック': [],
+            'カムバック': ["かむば' っく", "か' むばっく"],
         },
     },
     "suzuki": {
@@ -260,8 +260,8 @@ TABERU_GAKUSEI: FullTestDict = {
             '学生': ["がくせい"],
         }),
         "expected_output": {
-            '食べる': [],
-            '学生': [],
+            '食べる': ["たべ' る"],
+            '学生': ["がくせい"],
         },
     },
     "suzuki": {
@@ -365,7 +365,7 @@ KOTOBA: FullTestDict = {
             '言葉': ["ことば'"],
         }),
         "expected_output": {
-            '言葉': [],
+            '言葉': ["ことば'"],
         },
     },
     "suzuki": {

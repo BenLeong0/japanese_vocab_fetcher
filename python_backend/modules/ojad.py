@@ -11,7 +11,11 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
         return {}
 
-    return {key:[] for key in word_list}
+    htmls = get_htmls(word_list)
+    word_sections = get_sections(htmls)
+    accent_dict = build_accent_dict(word_sections)
+
+    return {word:accent_dict[word] for word in word_list}
 
 
 # Get HTML
