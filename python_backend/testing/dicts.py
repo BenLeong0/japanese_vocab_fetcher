@@ -58,6 +58,9 @@ MEGANE: FullTestDict = {
                 'readings': [],
             },
         ],
+        "full_accent_dict" : defaultdict(list, {
+            '眼鏡': ["め' がね"],
+        }),
         "expected_output": {
             '眼鏡': [],
         },
@@ -150,6 +153,9 @@ COMEBACK: FullTestDict= {
                 'readings': [],
             },
         ],
+        "full_accent_dict" : defaultdict(list, {
+            'カムバック': ["かむば' っく", "か' むばっく"],
+        }),
         "expected_output": {
             'カムバック': [],
         },
@@ -238,6 +244,10 @@ TABERU_GAKUSEI: FullTestDict = {
                 'readings': [],
             },
         ],
+        "full_accent_dict" : defaultdict(list, {
+            '食べる': ["たべ' る"],
+            '学生': ["がくせい"],
+        }),
         "expected_output": {
             '食べる': [],
             '学生': [],
@@ -340,6 +350,9 @@ KOTOBA: FullTestDict = {
                 'readings': [],
             },
         ],
+        "full_accent_dict" : defaultdict(list, {
+            '言葉': ["ことば'"],
+        }),
         "expected_output": {
             '言葉': [],
         },
