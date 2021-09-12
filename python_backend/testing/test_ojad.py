@@ -35,6 +35,11 @@ def test_empty_input():
 
 @pytest.mark.parametrize("page_number", [1,2,3,10,100])
 def test_get_url(test_dict: FullTestDict, page_number: int):
+    """
+    - GIVEN a list of words and a page number
+    - WHEN the url is generated
+    - THEN test it is as expected
+    """
     word_list = test_dict['input']
     expected_url = test_dict['ojad']['url'] % page_number
 
