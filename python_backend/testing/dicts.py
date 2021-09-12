@@ -11,7 +11,7 @@ from testing.dict_typing import FullTestDict
 # - Multiple pages for ojad
 # - No result for ojad
 # - Extra results for ojad (words not in original word list)
-# - Empty input
+# - OJAD with particles (eg kirei)
 
 
 def get_file_as_string(filename: str, module: str):
