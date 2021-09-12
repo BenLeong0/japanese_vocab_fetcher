@@ -64,18 +64,18 @@ def test_extract_reading(test_dict: TestDict):
         assert suzuki.extract_reading(section['reading_section'], section['accent_section']) == section['reading']
 
 
-# def test_build_accent_dict(test_dict: TestDict):
-#     """
-#     - GIVEN html sections
-#     - WHEN the accent dict is constructed
-#     - THEN check all the values are as expected
-#     """
-#     word_sections = [
-#         (section['writing_section'], section['reading_sections'])
-#         for section in test_dict['suzuki']['expected_sections']
-#     ]
+def test_build_accent_dict(test_dict: TestDict):
+    """
+    - GIVEN html sections
+    - WHEN the accent dict is constructed
+    - THEN check all the values are as expected
+    """
+    word_sections = [
+        (section['writing_section'], section['reading_section'], section['accent_section'])
+        for section in test_dict['suzuki']['expected_sections']
+    ]
 
-#     assert suzuki.build_accent_dict(word_sections) == test_dict['suzuki']['full_accent_dict']
+    assert suzuki.build_accent_dict(word_sections) == test_dict['suzuki']['expected_output']
 
 
 # def test_get_accent_dict(monkeypatch, test_dict: TestDict):

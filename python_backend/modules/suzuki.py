@@ -101,3 +101,14 @@ def extract_reading(reading_html: Soup, accent_html: Soup) -> str:
     chars = extract_characters(reading_html)
     accent_pattern = extract_accent_pattern(accent_html)
     return contruct_reading(chars, accent_pattern)
+
+
+def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> Dict:
+    accent_dict = {}
+
+    for writing_html, reading_html, accent_html in word_sections:
+        writing = extract_writing(writing_html)
+        reading = extract_reading(reading_html, accent_html)
+        accent_dict[writing] = [reading]
+
+    return accent_dict
