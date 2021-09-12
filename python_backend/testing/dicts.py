@@ -10,7 +10,6 @@ from testing.dict_typing import FullTestDict
 # TODO: DICTS TO ADD:
 # - Multiple pages for ojad
 # - No result for ojad
-# - No result for wadoku
 # - Extra results for ojad (words not in original word list)
 # - Empty input
 
