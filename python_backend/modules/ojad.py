@@ -64,8 +64,12 @@ def get_sections(htmls: List[Soup]) -> List[Tuple[Soup, List[Soup]]]:
     ]
 
 
-# def extract_writings(writing_html: Soup) -> List[str]:
-#     pass
+def extract_writings(writing_html: Soup) -> List[str]:
+    midashi: str = writing_html.find('p', class_='midashi_word').text
+    writings = midashi.split('・')
+    # eg 綺麗[な] -> 綺麗
+    filtered_writings = [re.search(r'[^\[]*', writing).group() for writing in writings]
+    return filtered_writings
 
 
 # def extract_reading(reading_html: Soup) -> str:
