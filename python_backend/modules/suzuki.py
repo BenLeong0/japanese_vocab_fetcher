@@ -74,6 +74,8 @@ def extract_accent_pattern(accent_html: Soup) -> List[int]:
 
 
 def contruct_reading(chars: str, accent_pattern: List[int]) -> str:
+    if not chars:
+        return ''
     mini_chars = 'ゃょゅぁぃぅぇぉゎャュョァィゥェォヮ'
     accented_word = ''
     curr_height = accent_pattern[0]
@@ -108,6 +110,6 @@ def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> Dict:
     for writing_html, reading_html, accent_html in word_sections:
         writing = extract_writing(writing_html)
         reading = extract_reading(reading_html, accent_html)
-        accent_dict[writing] = [reading]
+        accent_dict[writing] = [reading] if reading else []
 
     return accent_dict

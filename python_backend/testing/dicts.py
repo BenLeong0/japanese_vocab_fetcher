@@ -9,9 +9,9 @@ from testing.dict_typing import FullTestDict
 
 # TODO: DICTS TO ADD:
 # - Multiple pages for ojad
-# - No result for ojad
 # - No result for wadoku
-# - Extra results for ojad (not in original word list)
+# - Extra results for ojad (words not in original word list)
+# - OJAD with particles (eg kirei)
 
 
 def get_file_as_string(filename: str, module: str):
@@ -440,11 +440,69 @@ KOTOBA: FullTestDict = {
 }
 
 
+BADINPUT: FullTestDict = {
+    "id": "BADINPUT",
+    'input': ['BADINPUT'],
+    "forvo": {},
+    "jisho": {},
+    "ojad": {
+        "htmls": get_ojad_html_files("badinput"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:BADINPUT/page:%s",
+        "expected_sections": [],
+        "full_accent_dict" : defaultdict(list),
+        "expected_output": {
+            'BADINPUT': [],
+        },
+    },
+    "suzuki": {
+        "html": get_file_as_string("badinput", "suzuki"),
+        "formdata": build_suzuki_formdata("BADINPUTは"),
+        "expected_sections": [
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>BADINPUTは</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writing': 'BADINPUT',
+                'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',1,[0],1,0,0);});</script>', "html.parser"),
+                'reading': "",
+            },
+        ],
+        "expected_output": {
+            'BADINPUT': [],
+        },
+    },
+    "wadoku": {
+        "html": get_file_as_string("badinput", "wadoku"),
+        "url": "https://www.wadoku.de/search/BADINPUT",
+        "expected_sections": [],
+        "full_accent_dict" : defaultdict(list),
+        "expected_output": {
+            'BADINPUT': [],
+        },
+    },
+    "expected_result": [
+        {
+            "word": "BADINPUT",
+            "jisho": {},
+            "accent": {
+                "ojad": [],
+                "suzuki": [],
+                "wadoku": [],
+            },
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
+    ],
+}
+
+
 TEST_DICTS = [
     MEGANE,
     COMEBACK,
     TABERU_GAKUSEI,
     KOTOBA,
+    BADINPUT,
 ]
 
 TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
