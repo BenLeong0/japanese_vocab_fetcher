@@ -131,7 +131,7 @@ MEGANE: FullTestDict = {
             "word": "眼鏡",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["め' がね"],
                 "suzuki": ["め' がね"],
                 "wadoku": ["め' がね", "がんきょう" ],
             },
@@ -219,7 +219,7 @@ COMEBACK: FullTestDict= {
             "word": "カムバック",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["かむば' っく", "か' むばっく"],
                 "suzuki": ["カムバ' ック"],
                 "wadoku": ["かむば' っく", "か' むばっく"],
             },
@@ -319,7 +319,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "word": "食べる",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["たべ' る"],
                 "suzuki": ["たべ' る"],
                 "wadoku": ["たべ' る"],
             },
@@ -332,7 +332,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "word": "学生",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["がくせい"],
                 "suzuki": ["がくせい"],
                 "wadoku": ["がくせい"],
             },
@@ -427,7 +427,7 @@ KOTOBA: FullTestDict = {
             "word": "言葉",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["ことば'"],
                 "suzuki": ["ことば'"],
                 "wadoku": ["ことば'"],
             },
