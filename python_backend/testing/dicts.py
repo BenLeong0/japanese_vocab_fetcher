@@ -27,7 +27,8 @@ def get_ojad_html_files(slug: str) -> List[str]:
         file_index = f"{i:02d}"
         path = f"testing/html_files/ojad_{slug}_{file_index}.html"
         if os.path.exists(path):
-            htmls.append(get_file_as_string(path))
+            with open(path, "r", encoding="utf8") as myfile:
+                htmls.append(re.sub(r'>\s*<', '><', myfile.read()))
             i += 1
         else:
             break
