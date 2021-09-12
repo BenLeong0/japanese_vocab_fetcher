@@ -34,7 +34,7 @@ def test_empty_input():
     """
     - GIVEN an empty input
     - WHEN an accent dictionary is generated
-    - THEN check it returns and empty dict
+    - THEN check it returns an empty dict
     """
     assert ojad.get_accent_dict([]) == {}
 
@@ -44,7 +44,7 @@ def test_get_url(test_dict: FullTestDict, page_number: int):
     """
     - GIVEN a list of words and a page number
     - WHEN the url is generated
-    - THEN test it is as expected
+    - THEN test it is returns the expected url
     """
     word_list = test_dict['input']
     expected_url = test_dict['ojad']['url'] % page_number
@@ -56,7 +56,7 @@ def test_has_words_true(test_dict: FullTestDict):
     """
     - GIVEN an html file
     - WHEN it is tested whether it contains words
-    - THEN return true when it does
+    - THEN return true when it should
     """
     htmls = test_dict['ojad']['htmls']
     for html in htmls:
@@ -68,7 +68,7 @@ def test_has_words_false():
     """
     - GIVEN an empty html file
     - WHEN it is tested whether it contains words
-    - THEN return false, as it doesn't
+    - THEN return false when it should
     """
     with open("testing/html_files/ojad_BLANK.html") as file:
         html = Soup(file, 'html.parser')
@@ -80,7 +80,7 @@ def test_get_htmls(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
     - WHEN the respective pages are collected
-    - THEN check they are all collected, and the loop terminates
+    - THEN check they are all collected, and that the loop terminates
     """
     word_list = test_dict['input']
     htmls = test_dict['ojad']['htmls']
