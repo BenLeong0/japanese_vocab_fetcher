@@ -7,6 +7,12 @@ from bs4 import BeautifulSoup as Soup
 
 from testing.dict_typing import FullTestDict
 
+# TODO: DICTS TO ADD:
+# - Multiple pages for ojad
+# - No result for ojad
+# - No result for wadoku
+# - Extra results for ojad (not in original word list)
+
 
 def get_file_as_string(filename: str, module: str):
     path = f"testing/html_files/{module}_{filename}.html"
