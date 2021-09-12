@@ -48,19 +48,6 @@ def test_has_words_false():
     assert ojad.has_words(html) == False
 
 
-
-# def test_get_formdata(test_dict: FullTestDict):
-#     """
-#     - GIVEN a list of words
-#     - WHEN a url is generated
-#     - THEN check the url is encoded
-#     """
-#     word_list = test_dict['input']
-#     expected_formdata = test_dict['ojad']['formdata']
-
-#     assert ojad.get_formdata(word_list) == expected_formdata
-
-
 # def test_get_sections(test_dict: FullTestDict):
 #     """
 #     - GIVEN an html section
