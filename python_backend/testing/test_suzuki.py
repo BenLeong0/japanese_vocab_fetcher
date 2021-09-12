@@ -54,15 +54,14 @@ def test_extract_writing(test_dict: TestDict):
         assert suzuki.extract_writing(section['writing_section']) == section['writing']
 
 
-# def test_extract_readings(test_dict: TestDict):
-#     """
-#     - GIVEN an html sections
-#     - WHEN the writing is extracted
-#     - THEN check all the correct writings are extracted
-#     """
-#     for section in test_dict['suzuki']['expected_sections']:
-#         for html_section, reading in zip(section['reading_sections'], section['readings']):
-#             assert suzuki.extract_reading(html_section) == reading
+def test_extract_reading(test_dict: TestDict):
+    """
+    - GIVEN an html sections
+    - WHEN the writing is extracted
+    - THEN check all the correct writings are extracted
+    """
+    for section in test_dict['suzuki']['expected_sections']:
+        assert suzuki.extract_reading(section['reading_section'], section['accent_section']) == section['reading']
 
 
 # def test_build_accent_dict(test_dict: TestDict):

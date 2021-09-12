@@ -60,3 +60,44 @@ def extract_writing(writing_html: Soup) -> str:
     full_writing = re.sub('\s', '', writing_html.text)
     writing_without_final_ha = full_writing[:-1]
     return writing_without_final_ha
+
+
+def extract_characters(reading_html: Soup) -> str:
+    full_reading = re.sub('\s', '', reading_html.text)
+    reading_without_final_ha = full_reading[:-1]
+    return reading_without_final_ha
+
+
+def extract_accent_pattern(accent_html: Soup) -> List[int]:
+    accent_array_regex = r'\[.*?\]'
+    accent_pattern = eval(re.search(accent_array_regex, str(accent_html)).group())
+    return accent_pattern
+
+
+def contruct_reading(chars: str, accent_pattern: List[int]) -> str:
+    mini_chars = 'ゃょゅぁぃぅぇぉゎャュョァィゥェォヮ'
+    accented_word = ''
+    curr_height = accent_pattern[0]
+    for (i, height) in enumerate(accent_pattern[1:]):
+        accented_word += chars[i]
+        if (
+            curr_height == 0 and
+            height == 1 and
+            i != 0 and
+            (i != 1 or chars[i] not in mini_chars)
+        ):
+            # If valid pitch accent rise, not after first mora
+            accented_word += "* "
+        elif curr_height == 1 and height == 0:
+            accented_word += "' "
+        curr_height = height
+
+    if accented_word[-1] == ' ':
+        accented_word = accented_word[:-1]
+    return accented_word
+
+
+def extract_reading(reading_html: Soup, accent_html: Soup) -> str:
+    chars = extract_characters(reading_html)
+    accent_pattern = extract_accent_pattern(accent_html)
+    return contruct_reading(chars, accent_pattern)
