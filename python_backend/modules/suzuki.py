@@ -54,3 +54,9 @@ def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
             Soup(make_single_line(str(row.find('script'))), "html.parser")
         ) for row in rows if row.find('div', class_='phrasing_subscript') is not None
     ]
+
+
+def extract_writing(writing_html: Soup) -> str:
+    full_writing = re.sub('\s', '', writing_html.text)
+    writing_without_final_ha = full_writing[:-1]
+    return writing_without_final_ha
