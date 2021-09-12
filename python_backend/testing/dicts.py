@@ -474,49 +474,20 @@ BADINPUT: FullTestDict = {
     "wadoku": {
         "html": get_file_as_string("badinput", "wadoku"),
         "url": "https://www.wadoku.de/search/BADINPUT",
-        "expected_sections": [
-            {
-                'writing_section': Soup('<div class="japanese"><a href="/entry/view/8978613"><span class="orth" lang="ja" xml:lang="ja">言葉<span class="divider">；</span><span class="njok">辞</span><span class="divider">；</span><span class="njok">詞</span></span></a></div>', "html.parser"),
-                'writings': ['言葉', '辞', '詞'],
-                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">と<span class="divider">￨</span>ば</span></span>', "html.parser")],
-                'readings': ["ことば'"],
-            },
-            {
-                'writing_section': Soup('<div class="japanese"><a href="/entry/view/6727285"><span class="orth" lang="ja" xml:lang="ja">言葉数</span></a></div>', "html.parser"),
-                'writings': ['言葉数'],
-                'reading_sections': [
-                    Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">とば･か</span><span class="b">ず</span></span>', "html.parser"),
-                    Soup('<span class="pron accent hidden" data-accent-id="2"><span class="b">こ</span><span class="t l">とば･かず</span></span>', "html.parser"),
-                ],
-                'readings': ["ことばか' ず", "ことばかず"],
-            },
-            {
-                'writing_section': Soup('<div class="japanese"><a href="/entry/view/10628117"><span class="orth" lang="ja" xml:lang="ja">言葉典<span class="divider">；</span><span class="njok">辞</span>典</span></a></div>', "html.parser"),
-                'writings': ['言葉典', '辞典'],
-                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">こ</span><span class="t l">とば･てん</span></span>', "html.parser")],
-                'readings': ["ことばてん"],
-            },
-        ],
-        "full_accent_dict" : defaultdict(list, {
-            '言葉': ["ことば'"],
-            '辞': ["ことば'"],
-            '詞': ["ことば'"],
-            '言葉数': ["ことばか' ず", "ことばかず"],
-            '言葉典': ["ことばてん"],
-            '辞典': ["ことばてん"],
-        }),
+        "expected_sections": [],
+        "full_accent_dict" : defaultdict(list),
         "expected_output": {
-            '言葉': ["ことば'"],
+            'BADINPUT': [],
         },
     },
     "expected_result": [
         {
-            "word": "言葉",
+            "word": "BADINPUT",
             "jisho": {},
             "accent": {
-                "ojad": ["ことば'"],
-                "suzuki": ["ことば'"],
-                "wadoku": ["ことば'"],
+                "ojad": [],
+                "suzuki": [],
+                "wadoku": [],
             },
             "audio": {
                 "forvo": [],
@@ -532,6 +503,7 @@ TEST_DICTS = [
     COMEBACK,
     TABERU_GAKUSEI,
     KOTOBA,
+    BADINPUT,
 ]
 
 TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
