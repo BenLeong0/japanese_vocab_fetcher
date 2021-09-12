@@ -21,6 +21,19 @@ def test_empty_input():
     assert ojad.get_accent_dict([]) == {}
 
 
+def test_has_words_true(test_dict: FullTestDict):
+    """
+    - GIVEN an html file
+    - WHEN it is tested whether it contains words
+    - THEN return true when it does
+    """
+    htmls = test_dict['ojad']['htmls']
+    for html in htmls:
+        parsed_html = Soup(html, "html.parser")
+        assert ojad.has_words(parsed_html) == True
+
+
+
 # def test_get_formdata(test_dict: FullTestDict):
 #     """
 #     - GIVEN a list of words
