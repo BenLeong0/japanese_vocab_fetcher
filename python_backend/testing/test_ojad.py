@@ -105,9 +105,9 @@ def test_get_sections(test_dict: FullTestDict):
     ]
 
 
-def test_extract_writing(test_dict: FullTestDict):
+def test_extract_writings(test_dict: FullTestDict):
     """
-    - GIVEN an html sections
+    - GIVEN writing sections
     - WHEN the writing is extracted
     - THEN check all the correct writings are extracted
     """
