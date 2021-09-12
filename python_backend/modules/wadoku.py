@@ -13,6 +13,11 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
 
     html = get_html(word_list)
     word_sections = get_sections(html)
+
+    # If first word is invalid, the whole search fails, so try removing first word
+    if not word_sections:
+        return get_accent_dict(word_list[1:])
+
     accent_dict = build_accent_dict(word_sections)
 
     return {word:accent_dict[word] for word in word_list}
