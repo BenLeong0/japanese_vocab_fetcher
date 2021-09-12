@@ -1,5 +1,9 @@
-from bs4 import BeautifulSoup as Soup
+from functools import partial
 import pytest
+import re
+from typing import List
+
+from bs4 import BeautifulSoup as Soup
 
 from modules import ojad
 from testing.dict_typing import FullTestDict
@@ -15,6 +19,14 @@ def test_dict(request):
 class FakeResponse:
     def __init__(self, text):
         self.text = text
+
+
+def _get_ojad_html_string(url: str, htmls: List[Soup], timeout: int = 20) -> str:
+    page_number = int(re.search(r"page:\d+", url).group()[5:])
+    if page_number > len(htmls):
+        with open("testing/html_files/ojad_BLANK.html") as file:
+            return FakeResponse(str(file))
+    return FakeResponse(htmls[page_number - 1])
 
 
 def test_empty_input():
@@ -46,6 +58,19 @@ def test_has_words_false():
         html = Soup(file, 'html.parser')
 
     assert ojad.has_words(html) == False
+
+
+def test_get_htmls(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the respective pages are collected
+    - THEN check they are all collected, and the loop terminates
+    """
+    word_list = test_dict['input']
+    htmls = test_dict['ojad']['htmls']
+    monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
+
+    assert ojad.get_htmls(word_list) == [Soup(html, "html.parser") for html in htmls]
 
 
 # def test_get_sections(test_dict: FullTestDict):
