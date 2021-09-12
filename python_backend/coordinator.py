@@ -3,7 +3,7 @@ from enum import Enum
 from threading import Thread
 from typing import Dict, List
 
-from modules import ojad, suzuki, wadoku, forvo, jisho
+from modules import forvo, jisho, ojad, suzuki, wadoku
 
 class Modules(Enum):
     OJAD = ojad
