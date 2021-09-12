@@ -35,7 +35,7 @@ class AccentDict(TypedDict):
     expected_output: Dict[書方, List[読方]]
 
 
-class WadokuExpectedSection:
+class WadokuExpectedSection(AccentDict):
     """Dictionary containing an HTML section extracted by the Wadoku module
     and its contained information"""
     writing_section: Soup
@@ -51,7 +51,7 @@ class WadokuAccentDict(AccentDict):
     full_accent_dict: DefaultDict[書方, List[読方]]
 
 
-class SuzukiExpectedSection:
+class SuzukiExpectedSection(AccentDict):
     """Dictionary containing an HTML section extracted by the Suzuki module
     and its contained information"""
     writing_section: Soup
