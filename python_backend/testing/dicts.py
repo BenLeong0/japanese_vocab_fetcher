@@ -13,7 +13,7 @@ def get_file_as_string(filename: str, module: str):
         return re.sub(r'>\s*<', '><', myfile.read())
 
 
-def build_suzuki_formdata(text: str) -> Dict[str, str]:
+def build_suzuki_formdata(word_list_string: str) -> Dict[str, str]:
     return {
         "data[Phrasing][curve]": "advanced",
         "data[Phrasing][accent]": "advanced",
@@ -23,7 +23,7 @@ def build_suzuki_formdata(text: str) -> Dict[str, str]:
         "data[Phrasing][phrase_component]": "invisible",
         "data[Phrasing][param]": "invisible",
         "data[Phrasing][subscript]": "visible",
-        "data[Phrasing][text]": text,
+        "data[Phrasing][text]": word_list_string,
     }
 
 
