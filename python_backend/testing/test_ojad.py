@@ -54,6 +54,11 @@ def test_has_words_true(test_dict: FullTestDict):
 
 
 def test_has_words_false():
+    """
+    - GIVEN an empty html file
+    - WHEN it is tested whether it contains words
+    - THEN return false, as it doesn't
+    """
     with open("testing/html_files/ojad_BLANK.html") as file:
         html = Soup(file, 'html.parser')
 
