@@ -115,14 +115,14 @@ def test_extract_writings(test_dict: FullTestDict):
         assert ojad.extract_writings(section['writing_section']) == section['writings']
 
 
-# def test_extract_reading(test_dict: FullTestDict):
-#     """
-#     - GIVEN an html sections
-#     - WHEN the writing is extracted
-#     - THEN check all the correct writings are extracted
-#     """
-#     for section in test_dict['ojad']['expected_sections']:
-#         assert ojad.extract_reading(section['reading_section'], section['accent_section']) == section['reading']
+def test_extract_reading(test_dict: FullTestDict):
+    """
+    - GIVEN reading sections
+    - WHEN the readings are extracted
+    - THEN check all the correct readings are extracted
+    """
+    for section in test_dict['ojad']['expected_sections']:
+        assert ojad.extract_readings(section['reading_sections']) == section['readings']
 
 
 # def test_build_accent_dict(test_dict: FullTestDict):
