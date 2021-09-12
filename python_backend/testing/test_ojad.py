@@ -17,6 +17,10 @@ class FakeResponse:
         self.text = text
 
 
+def test_empty_input():
+    assert ojad.get_accent_dict([]) == {}
+
+
 # def test_get_formdata(test_dict: FullTestDict):
 #     """
 #     - GIVEN a list of words
