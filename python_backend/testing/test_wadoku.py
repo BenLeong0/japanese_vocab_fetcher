@@ -113,9 +113,9 @@ def test_recursion(monkeypatch):
 
     def html_response(url, timeout):
         if "BADINPUT" in url:
-            f = open("testing/html_files/wadoku_badinput_taberu_gakusei.html")
+            f = open("testing/html_files/wadoku_badinput_taberu_gakusei.html", encoding="utf8")
         else:
-            f = open("testing/html_files/wadoku_taberu_gakusei.html")
+            f = open("testing/html_files/wadoku_taberu_gakusei.html", encoding="utf8")
         mock_response = FakeResponse(re.sub(r'>\s*<', '><', f.read()))
         f.close()
         return mock_response
