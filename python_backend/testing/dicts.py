@@ -61,25 +61,25 @@ MEGANE: TestDict = {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/6038617"><span class="orth" lang="ja" xml:lang="ja"><span class="fjjk">眼鏡</span></span></a></div>', "html.parser"),
                 'writings': ['眼鏡'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="t r">め<span class="divider">￨</span></span><span class="b">がね</span></span>', "html.parser")],
-                'readings': ["め' がね"]
+                'readings': ["め' がね"],
             },
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/6900624"><span class="orth" lang="ja" xml:lang="ja">眼鏡</span></a></div>', "html.parser"),
                 'writings': ['眼鏡'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">が</span><span class="t l">ん<span class="divider">￨</span>きょう</span></span>', "html.parser")],
-                'readings': ["がんきょう"]
+                'readings': ["がんきょう"],
             },
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/2719205"><span class="orth" lang="ja" xml:lang="ja"><span class="fjjk">眼鏡</span>屋</span></a></div>', "html.parser"),
                 'writings': ['眼鏡屋'],
                 'reading_sections': [],
-                'readings': []
+                'readings': [],
             },
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/8239645"><span class="orth" lang="ja" xml:lang="ja"><span class="fjjk">眼鏡</span>橋</span></a></div>', "html.parser"),
                 'writings': ['眼鏡橋'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b r">め</span><span class="t r">がね･</span><span class="b">ばし</span></span>', "html.parser")],
-                'readings': ["めがね' ばし"]
+                'readings': ["めがね' ばし"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
@@ -121,14 +121,14 @@ COMEBACK: TestDict= {
     },
     "suzuki": {
         "html": get_file_as_string("comeback", "suzuki"),
-        "formdata": build_suzuki_formdata("カムバック"),
+        "formdata": build_suzuki_formdata("カムバックは"),
         "expected_sections": [
             {
                 'writing_section': Soup('<div class="phrasing_subscript"><span>カムバックは</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
-                'writings': ['カムバック'],
+                'writing': 'カムバック',
                 'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">カ</span></span></span><span class="accent_plain mola_1"><span class="inner"><span class="char">ム</span></span></span><span class="accent_top mola_2"><span class="inner"><span class="char">バ</span></span></span><span class="mola_3"><span class="inner"><span class="char">ッ</span></span></span><span class="mola_4"><span class="inner"><span class="char">ク</span></span></span><span class="mola_5"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
                 'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',6,[0,1,1,0,0,0],1,0,0);});</script>', "html.parser"),
-                'readings': ["カムバ' ック"]
+                'reading': "カムバ' ック",
             },
         ],
         "expected_output": {
@@ -146,13 +146,13 @@ COMEBACK: TestDict= {
                     Soup('<span class="pron accent" data-accent-id="1"><span class="b r">か</span><span class="t r">む･ば</span><span class="b">っく</span></span>', "html.parser"),
                     Soup('<span class="pron accent hidden" data-accent-id="2"><span class="t r">か</span><span class="b">む･ばっく</span></span>', "html.parser")
                 ],
-                'readings': ["かむば' っく", "か' むばっく"]
+                'readings': ["かむば' っく", "か' むばっく"],
             },
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/1669030"><span class="orth" lang="ja" xml:lang="ja">カムバックする</span></a></div>', "html.parser"),
                 'writings': ['カムバックする'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b r">か</span><span class="t r">むば</span><span class="b">っくする</span></span>', "html.parser")],
-                'readings': ["かむば' っくする"]
+                'readings': ["かむば' っくする"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
@@ -198,17 +198,17 @@ TABERU_GAKUSEI: TestDict = {
         "expected_sections": [
             {
                 'writing_section': Soup('<div class="phrasing_subscript"><span>食べるは</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
-                'writings': ['食べる'],
+                'writing': '食べる',
                 'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">た</span></span></span><span class="accent_top mola_1"><span class="inner"><span class="char">べ</span></span></span><span class="mola_2"><span class="inner"><span class="char">る</span></span></span><span class="mola_3"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
                 'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',4,[0,1,0,0],1,0,0);});</script>', "html.parser"),
-                'readings': ["たべ' る"]
+                'reading': "たべ' る",
             },
             {
                 'writing_section': Soup('<div class="phrasing_subscript"><span>学生は</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
-                'writings': ['学生'],
+                'writing': '学生',
                 'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">が</span></span></span><span class="accent_plain unvoiced mola_1"><span class="inner"><span class="char">く</span></span></span><span class="accent_plain mola_2"><span class="inner"><span class="char">せ</span></span></span><span class="accent_plain mola_3"><span class="inner"><span class="char">い</span></span></span><span class="accent_plain mola_4"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
                 'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_1_0\',5,[0,1,1,1,1],1,0,0);});</script>', "html.parser"),
-                'readings': ["がくせい"]
+                'reading': "がくせい",
             },
         ],
         "expected_output": {
@@ -224,13 +224,13 @@ TABERU_GAKUSEI: TestDict = {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/8610599"><span class="orth" lang="ja" xml:lang="ja">食べる</span></a></div>', "html.parser"),
                 'writings': ['食べる'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b r">た~</span><span class="t r">べ</span><span class="b">る</span></span>', "html.parser")],
-                'readings': ["たべ' る"]
+                'readings': ["たべ' る"],
             },
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/7011248"><span class="orth" lang="ja" xml:lang="ja">学生</span></a></div>', "html.parser"),
                 'writings': ['学生'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">が</span><span class="t l">く<span class="divider">￨</span>せい</span></span>', "html.parser")],
-                'readings': ["がくせい"]
+                'readings': ["がくせい"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
@@ -289,10 +289,10 @@ KOTOBA: TestDict = {
         "expected_sections": [
             {
                 'writing_section': Soup('<div class="phrasing_subscript"><span>言葉は</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
-                'writings': ['言葉'],
+                'writing': '言葉',
                 'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">こ</span></span></span><span class="accent_plain mola_1"><span class="inner"><span class="char">と</span></span></span><span class="accent_top mola_2"><span class="inner"><span class="char">ば</span></span></span><span class="mola_3"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
                 'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',4,[0,1,1,0],1,0,0);});</script>', "html.parser"),
-                'readings': ["ことば'"]
+                'reading': "ことば'",
             },
         ],
         "expected_output": {
@@ -307,7 +307,7 @@ KOTOBA: TestDict = {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/8978613"><span class="orth" lang="ja" xml:lang="ja">言葉<span class="divider">；</span><span class="njok">辞</span><span class="divider">；</span><span class="njok">詞</span></span></a></div>', "html.parser"),
                 'writings': ['言葉', '辞', '詞'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">と<span class="divider">￨</span>ば</span></span>', "html.parser")],
-                'readings': ["ことば'"]
+                'readings': ["ことば'"],
             },
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/6727285"><span class="orth" lang="ja" xml:lang="ja">言葉数</span></a></div>', "html.parser"),
@@ -316,13 +316,13 @@ KOTOBA: TestDict = {
                     Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">とば･か</span><span class="b">ず</span></span>', "html.parser"),
                     Soup('<span class="pron accent hidden" data-accent-id="2"><span class="b">こ</span><span class="t l">とば･かず</span></span>', "html.parser"),
                 ],
-                'readings': ["ことばか' ず", "ことばかず"]
+                'readings': ["ことばか' ず", "ことばかず"],
             },
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/10628117"><span class="orth" lang="ja" xml:lang="ja">言葉典<span class="divider">；</span><span class="njok">辞</span>典</span></a></div>', "html.parser"),
                 'writings': ['言葉典', '辞典'],
                 'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">こ</span><span class="t l">とば･てん</span></span>', "html.parser")],
-                'readings': ["ことばてん"]
+                'readings': ["ことばてん"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
