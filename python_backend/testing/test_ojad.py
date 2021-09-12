@@ -33,6 +33,12 @@ def test_has_words_true(test_dict: FullTestDict):
         assert ojad.has_words(parsed_html) == True
 
 
+def test_has_words_false():
+    with open("testing/html_files/ojad_BLANK.html") as file:
+        html = Soup(file, 'html.parser')
+        assert ojad.has_words(html) == False
+
+
 
 # def test_get_formdata(test_dict: FullTestDict):
 #     """
