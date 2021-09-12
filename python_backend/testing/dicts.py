@@ -49,6 +49,15 @@ MEGANE: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("megane"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:眼鏡",
+        "expected_sections": [
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+        ],
         "expected_output": {
             '眼鏡': [],
         },
@@ -132,6 +141,15 @@ COMEBACK: FullTestDict= {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("comeback"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:カムバック",
+        "expected_sections": [
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+        ],
         "expected_output": {
             'カムバック': [],
         },
@@ -205,6 +223,21 @@ TABERU_GAKUSEI: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("taberu_gakusei"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:食べる%20学生",
+        "expected_sections": [
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+        ],
         "expected_output": {
             '食べる': [],
             '学生': [],
@@ -298,6 +331,15 @@ KOTOBA: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("kotoba"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:言葉",
+        "expected_sections": [
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+        ],
         "expected_output": {
             '言葉': [],
         },
