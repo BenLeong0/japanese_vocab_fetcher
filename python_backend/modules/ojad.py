@@ -104,4 +104,3 @@ def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> DefaultDi
             accent_dict[writing] += readings
 
     return accent_dict
-
