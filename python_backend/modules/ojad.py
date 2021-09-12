@@ -1,11 +1,9 @@
 import re
-from bs4.element import PageElement
 import requests
 from typing import Dict, List, Tuple
 
 from bs4 import BeautifulSoup as Soup
-
-from utils import make_single_line
+from bs4.element import PageElement
 
 
 def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
@@ -66,9 +64,9 @@ def get_sections(htmls: List[Soup]) -> List[Tuple[Soup, List[Soup]]]:
     ]
 
 
-def extract_writings(writing_html: Soup) -> List[str]:
-    pass
+# def extract_writings(writing_html: Soup) -> List[str]:
+#     pass
 
 
-def extract_reading(reading_html: Soup) -> str:
-    pass
+# def extract_reading(reading_html: Soup) -> str:
+#     pass
