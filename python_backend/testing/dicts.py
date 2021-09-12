@@ -56,20 +56,20 @@ MEGANE: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("megane"),
-        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:眼鏡",
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:眼鏡/page:%s",
         "expected_sections": [
             {
-                'writing_section': Soup(''),
-                'writings': [],
-                'reading_sections': [Soup('')],
-                'readings': [],
+                'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'11209\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'11209\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">眼鏡</p></div></td>', "html.parser"),
+                'writings': ["眼鏡"],
+                'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class=" accent_top mola_-3"><span class="inner"><span class="char">め</span></span></span><span class="mola_-2"><span class="inner"><span class="char">が</span></span></span><span class="mola_-1"><span class="inner"><span class="char">ね</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser")],
+                'readings': ["め' がね"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
             '眼鏡': ["め' がね"],
         }),
         "expected_output": {
-            '眼鏡': [],
+            '眼鏡': ["め' がね"],
         },
     },
     "suzuki": {
@@ -131,7 +131,7 @@ MEGANE: FullTestDict = {
             "word": "眼鏡",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["め' がね"],
                 "suzuki": ["め' がね"],
                 "wadoku": ["め' がね", "がんきょう" ],
             },
@@ -151,20 +151,23 @@ COMEBACK: FullTestDict= {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("comeback"),
-        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:カムバック",
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:カムバック/page:%s",
         "expected_sections": [
             {
-                'writing_section': Soup(''),
-                'writings': [],
-                'reading_sections': [Soup('')],
-                'readings': [],
+                'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'4965\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'4965\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">カムバック</p></div></td>', "html.parser"),
+                'writings': ["カムバック"],
+                'reading_sections': [
+                    Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-5"><span class="inner"><span class="char">か</span></span></span><span class=" accent_plain mola_-4"><span class="inner"><span class="char">む</span></span></span><span class=" accent_top mola_-3"><span class="inner"><span class="char">ば</span></span></span><span class="mola_-2"><span class="inner"><span class="char">っ</span></span></span><span class="mola_-1"><span class="inner"><span class="char">く</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser"),
+                    Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class=" accent_top mola_-5"><span class="inner"><span class="char">か</span></span></span><span class="mola_-4"><span class="inner"><span class="char">む</span></span></span><span class="mola_-3"><span class="inner"><span class="char">ば</span></span></span><span class="mola_-2"><span class="inner"><span class="char">っ</span></span></span><span class="mola_-1"><span class="inner"><span class="char">く</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser"),
+                ],
+                'readings': ["かむば' っく", "か' むばっく"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
             'カムバック': ["かむば' っく", "か' むばっく"],
         }),
         "expected_output": {
-            'カムバック': [],
+            'カムバック': ["かむば' っく", "か' むばっく"],
         },
     },
     "suzuki": {
@@ -216,7 +219,7 @@ COMEBACK: FullTestDict= {
             "word": "カムバック",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["かむば' っく", "か' むばっく"],
                 "suzuki": ["カムバ' ック"],
                 "wadoku": ["かむば' っく", "か' むばっく"],
             },
@@ -236,28 +239,29 @@ TABERU_GAKUSEI: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("taberu_gakusei"),
-        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:食べる%20学生",
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:食べる%%20学生/page:%s",
         "expected_sections": [
             {
-                'writing_section': Soup(''),
-                'writings': [],
-                'reading_sections': [Soup('')],
-                'readings': [],
+                'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'1238\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'1238\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">食べる・食べます</p></div></td>', "html.parser"),
+                'writings': ["食べる", "食べます"],
+                'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-3"><span class="inner"><span class="char">た</span></span></span><span class=" accent_top mola_-2"><span class="inner"><span class="char">べ</span></span></span><span class="mola_-1"><span class="inner"><span class="char">る</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"><a class="katsuyo_proc_female_button js_proc_female_button" id="1238_1_1_female" href="#" onclick="pronounce_play(\'1238_1_1_female\');return false;"></a><a class="katsuyo_proc_male_button js_proc_male_button" id="1238_1_1_male" href="#" onclick="pronounce_play(\'1238_1_1_male\');return false;"></a></div></div>', "html.parser")],
+                'readings': ["たべ' る"],
             },
             {
-                'writing_section': Soup(''),
-                'writings': [],
-                'reading_sections': [Soup('')],
-                'readings': [],
+                'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'4733\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'4733\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">学生</p></div></td>', "html.parser"),
+                'writings': ["学生"],
+                'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-4"><span class="inner"><span class="char">が</span></span></span><span class=" accent_plain mola_-3"><span class="inner"><span class="char">く</span></span></span><span class=" accent_plain mola_-2"><span class="inner"><span class="char">せ</span></span></span><span class=" accent_plain mola_-1"><span class="inner"><span class="char">い</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser")],
+                'readings': ["がくせい"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
             '食べる': ["たべ' る"],
+            '食べます': ["たべ' る"],
             '学生': ["がくせい"],
         }),
         "expected_output": {
-            '食べる': [],
-            '学生': [],
+            '食べる': ["たべ' る"],
+            '学生': ["がくせい"],
         },
     },
     "suzuki": {
@@ -315,7 +319,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "word": "食べる",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["たべ' る"],
                 "suzuki": ["たべ' る"],
                 "wadoku": ["たべ' る"],
             },
@@ -328,7 +332,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "word": "学生",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["がくせい"],
                 "suzuki": ["がくせい"],
                 "wadoku": ["がくせい"],
             },
@@ -348,20 +352,20 @@ KOTOBA: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("kotoba"),
-        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:言葉",
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:言葉/page:%s",
         "expected_sections": [
             {
-                'writing_section': Soup(''),
-                'writings': [],
-                'reading_sections': [Soup('')],
-                'readings': [],
+                'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'6204\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'6204\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">言葉</p></div></td>', "html.parser"),
+                'writings': ["言葉"],
+                'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-3"><span class="inner"><span class="char">こ</span></span></span><span class=" accent_plain mola_-2"><span class="inner"><span class="char">と</span></span></span><span class=" accent_top mola_-1"><span class="inner"><span class="char">ば</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser")],
+                'readings': ["ことば'"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
             '言葉': ["ことば'"],
         }),
         "expected_output": {
-            '言葉': [],
+            '言葉': ["ことば'"],
         },
     },
     "suzuki": {
@@ -423,7 +427,7 @@ KOTOBA: FullTestDict = {
             "word": "言葉",
             "jisho": {},
             "accent": {
-                "ojad": [],
+                "ojad": ["ことば'"],
                 "suzuki": ["ことば'"],
                 "wadoku": ["ことば'"],
             },
