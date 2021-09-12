@@ -56,7 +56,7 @@ MEGANE: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("megane"),
-        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:眼鏡",
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:眼鏡/page:%s",
         "expected_sections": [
             {
                 'writing_section': Soup(''),
@@ -151,7 +151,7 @@ COMEBACK: FullTestDict= {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("comeback"),
-        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:カムバック",
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:カムバック/page:%s",
         "expected_sections": [
             {
                 'writing_section': Soup(''),
@@ -236,7 +236,7 @@ TABERU_GAKUSEI: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("taberu_gakusei"),
-        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:食べる%20学生",
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:食べる%%20学生/page:%s",
         "expected_sections": [
             {
                 'writing_section': Soup(''),
@@ -348,7 +348,7 @@ KOTOBA: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("kotoba"),
-        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:言葉",
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:言葉/page:%s",
         "expected_sections": [
             {
                 'writing_section': Soup(''),

@@ -21,6 +21,14 @@ def test_empty_input():
     assert ojad.get_accent_dict([]) == {}
 
 
+@pytest.mark.parametrize("page_number", [1,2,3,10,100])
+def test_get_url(test_dict: FullTestDict, page_number: int):
+    word_list = test_dict['input']
+    expected_url = test_dict['ojad']['url'] % page_number
+
+    assert ojad.get_url(word_list, page_number) == expected_url
+
+
 def test_has_words_true(test_dict: FullTestDict):
     """
     - GIVEN an html file
@@ -36,6 +44,7 @@ def test_has_words_true(test_dict: FullTestDict):
 def test_has_words_false():
     with open("testing/html_files/ojad_BLANK.html") as file:
         html = Soup(file, 'html.parser')
+
     assert ojad.has_words(html) == False
 
 
