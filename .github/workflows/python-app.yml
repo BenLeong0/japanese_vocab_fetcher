@@ -19,9 +19,8 @@ jobs:
         python-version: 3.8.5
     - name: Install dependencies
       run: |
-        cd python_backend
         python -m pip install --upgrade pip
-        pip install -r deployment/requirements.txt
+        pip install -r python_backend/deployment/requirements.txt
     - name: Test with pytest
       run: |
         cd python_backend
