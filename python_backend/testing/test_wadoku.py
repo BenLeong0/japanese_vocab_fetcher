@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup as Soup
 import pytest
 
 from modules import wadoku
-from testing.dict_typing import TestDict
+from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 
 
@@ -17,7 +17,7 @@ class FakeResponse:
         self.text = text
 
 
-def test_get_url(test_dict: TestDict):
+def test_get_url(test_dict: FullTestDict):
     """
     - GIVEN a list of words
     - WHEN a url is generated
@@ -29,7 +29,7 @@ def test_get_url(test_dict: TestDict):
     assert wadoku.get_url(word_list) == expected_url
 
 
-def test_get_sections(test_dict: TestDict):
+def test_get_sections(test_dict: FullTestDict):
     """
     - GIVEN an html section
     - WHEN the subsections are extracted
@@ -44,7 +44,7 @@ def test_get_sections(test_dict: TestDict):
     ]
 
 
-def test_extract_writings(test_dict: TestDict):
+def test_extract_writings(test_dict: FullTestDict):
     """
     - GIVEN an html sections
     - WHEN the writing is extracted
@@ -54,7 +54,7 @@ def test_extract_writings(test_dict: TestDict):
         assert wadoku.extract_writings(section['writing_section']) == section['writings']
 
 
-def test_extract_readings(test_dict: TestDict):
+def test_extract_readings(test_dict: FullTestDict):
     """
     - GIVEN an html sections
     - WHEN the writing is extracted
@@ -65,7 +65,7 @@ def test_extract_readings(test_dict: TestDict):
             assert wadoku.extract_reading(html_section) == reading
 
 
-def test_build_accent_dict(test_dict: TestDict):
+def test_build_accent_dict(test_dict: FullTestDict):
     """
     - GIVEN html sections
     - WHEN the accent dict is constructed
@@ -79,7 +79,7 @@ def test_build_accent_dict(test_dict: TestDict):
     assert wadoku.build_accent_dict(word_sections) == test_dict['wadoku']['full_accent_dict']
 
 
-def test_get_accent_dict(monkeypatch, test_dict: TestDict):
+def test_get_accent_dict(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
     - WHEN the accent dict is generated

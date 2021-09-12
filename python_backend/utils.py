@@ -20,3 +20,6 @@ def create_failed_response(payload: Any):
 
 def remove_punct(input_string: str) -> str:
     return re.sub(r'[\n￨･~]', '', input_string)
+
+def make_single_line(input_string: str) -> str:
+    return re.sub(r'\s{2,}', '', input_string)
