@@ -22,6 +22,7 @@ class FakeResponse:
 
 
 def _get_ojad_html_string(url: str, htmls: List[Soup], timeout: int = 20) -> str:
+    """Given a url return the corresponding (test) html, or a blank page if out of range"""
     page_number = int(re.search(r"page:\d+", url).group()[5:])
     if page_number > len(htmls):
         with open("testing/html_files/ojad_BLANK.html") as file:
