@@ -57,13 +57,13 @@ def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
 
 
 def extract_writing(writing_html: Soup) -> str:
-    full_writing = re.sub('\s', '', writing_html.text)
+    full_writing = re.sub(r'\s', '', writing_html.text)
     writing_without_final_ha = full_writing[:-1]
     return writing_without_final_ha
 
 
 def extract_characters(reading_html: Soup) -> str:
-    full_reading = re.sub('\s', '', reading_html.text)
+    full_reading = re.sub(r'\s', '', reading_html.text)
     reading_without_final_ha = full_reading[:-1]
     return reading_without_final_ha
 
