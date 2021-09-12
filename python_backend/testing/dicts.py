@@ -11,7 +11,8 @@ from testing.dict_typing import FullTestDict
 # - Multiple pages for ojad
 # - No result for ojad
 # - No result for wadoku
-# - Extra results for ojad (not in original word list)
+# - Extra results for ojad (words not in original word list)
+# - Empty input
 
 
 def get_file_as_string(filename: str, module: str):
@@ -387,6 +388,92 @@ KOTOBA: FullTestDict = {
     "wadoku": {
         "html": get_file_as_string("kotoba", "wadoku"),
         "url": "https://www.wadoku.de/search/言葉",
+        "expected_sections": [
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/8978613"><span class="orth" lang="ja" xml:lang="ja">言葉<span class="divider">；</span><span class="njok">辞</span><span class="divider">；</span><span class="njok">詞</span></span></a></div>', "html.parser"),
+                'writings': ['言葉', '辞', '詞'],
+                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">と<span class="divider">￨</span>ば</span></span>', "html.parser")],
+                'readings': ["ことば'"],
+            },
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/6727285"><span class="orth" lang="ja" xml:lang="ja">言葉数</span></a></div>', "html.parser"),
+                'writings': ['言葉数'],
+                'reading_sections': [
+                    Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">とば･か</span><span class="b">ず</span></span>', "html.parser"),
+                    Soup('<span class="pron accent hidden" data-accent-id="2"><span class="b">こ</span><span class="t l">とば･かず</span></span>', "html.parser"),
+                ],
+                'readings': ["ことばか' ず", "ことばかず"],
+            },
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/10628117"><span class="orth" lang="ja" xml:lang="ja">言葉典<span class="divider">；</span><span class="njok">辞</span>典</span></a></div>', "html.parser"),
+                'writings': ['言葉典', '辞典'],
+                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">こ</span><span class="t l">とば･てん</span></span>', "html.parser")],
+                'readings': ["ことばてん"],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '言葉': ["ことば'"],
+            '辞': ["ことば'"],
+            '詞': ["ことば'"],
+            '言葉数': ["ことばか' ず", "ことばかず"],
+            '言葉典': ["ことばてん"],
+            '辞典': ["ことばてん"],
+        }),
+        "expected_output": {
+            '言葉': ["ことば'"],
+        },
+    },
+    "expected_result": [
+        {
+            "word": "言葉",
+            "jisho": {},
+            "accent": {
+                "ojad": ["ことば'"],
+                "suzuki": ["ことば'"],
+                "wadoku": ["ことば'"],
+            },
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
+    ],
+}
+
+
+BADINPUT: FullTestDict = {
+    "id": "BADINPUT",
+    'input': ['BADINPUT'],
+    "forvo": {},
+    "jisho": {},
+    "ojad": {
+        "htmls": get_ojad_html_files("badinput"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:BADINPUT/page:%s",
+        "expected_sections": [],
+        "full_accent_dict" : defaultdict(list),
+        "expected_output": {
+            'BADINPUT': [],
+        },
+    },
+    "suzuki": {
+        "html": get_file_as_string("badinput", "suzuki"),
+        "formdata": build_suzuki_formdata("BADINPUTは"),
+        "expected_sections": [
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>BADINPUTは</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writing': 'BADINPUT',
+                'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',1,[0],1,0,0);});</script>', "html.parser"),
+                'reading': "",
+            },
+        ],
+        "expected_output": {
+            'BADINPUT': [],
+        },
+    },
+    "wadoku": {
+        "html": get_file_as_string("badinput", "wadoku"),
+        "url": "https://www.wadoku.de/search/BADINPUT",
         "expected_sections": [
             {
                 'writing_section': Soup('<div class="japanese"><a href="/entry/view/8978613"><span class="orth" lang="ja" xml:lang="ja">言葉<span class="divider">；</span><span class="njok">辞</span><span class="divider">；</span><span class="njok">詞</span></span></a></div>', "html.parser"),
