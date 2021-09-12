@@ -122,7 +122,8 @@ def test_extract_reading(test_dict: FullTestDict):
     - THEN check all the correct readings are extracted
     """
     for section in test_dict['ojad']['expected_sections']:
-        assert ojad.extract_readings(section['reading_sections']) == section['readings']
+        for html_section, reading in zip(section['reading_sections'], section['readings']):
+            assert ojad.extract_reading(html_section) == reading
 
 
 # def test_build_accent_dict(test_dict: FullTestDict):

@@ -72,5 +72,19 @@ def extract_writings(writing_html: Soup) -> List[str]:
     return filtered_writings
 
 
-# def extract_reading(reading_html: Soup) -> str:
-#     pass
+def extract_reading(reading_html: Soup) -> str:
+    # 拗音 get their own span already!
+    contents: Soup = reading_html.find("span", class_="accented_word")
+    chars: List[str] = [span.text for span in contents]
+    classes: List[List[str]] = [span['class'] for span in contents]
+
+    reading = ''
+    for (char, class_list) in zip(chars, classes):
+        reading += char
+        if 'accent_top' in class_list:
+            reading += "' "
+
+    if reading[-1] == " ":
+        reading = reading[:-1]
+    return reading
+
