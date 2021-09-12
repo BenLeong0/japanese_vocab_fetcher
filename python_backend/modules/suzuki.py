@@ -110,7 +110,6 @@ def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> Dict:
     for writing_html, reading_html, accent_html in word_sections:
         writing = extract_writing(writing_html)
         reading = extract_reading(reading_html, accent_html)
-        if reading:
-            accent_dict[writing] = [reading]
+        accent_dict[writing] = [reading] if reading else []
 
     return accent_dict
