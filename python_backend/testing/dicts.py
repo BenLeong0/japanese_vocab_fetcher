@@ -12,7 +12,7 @@ from testing.dict_typing import FullTestDict
 # - No result for ojad
 # - No result for wadoku
 # - Extra results for ojad (words not in original word list)
-# - Empty input
+# - OJAD with particles (eg kirei)
 
 
 def get_file_as_string(filename: str, module: str):
