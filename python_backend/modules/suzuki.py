@@ -1,3 +1,4 @@
+from ast import literal_eval
 import re
 from typing import Dict, List, Tuple
 
@@ -44,7 +45,7 @@ def get_html(word_list: List[str]) -> Soup:
 # Extract sections
 
 def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
-    rows = [row for row in html.findAll('div', class_='phrasing_phrase_wrapper')]
+    rows = list(html.findAll('div', class_='phrasing_phrase_wrapper'))
     return [
         (
             Soup(str(row.find('div', class_='phrasing_subscript')), "html.parser"),
@@ -68,7 +69,7 @@ def extract_characters(reading_html: Soup) -> str:
 
 def extract_accent_pattern(accent_html: Soup) -> List[int]:
     accent_array_regex = r'\[.*?\]'
-    accent_pattern = eval(re.search(accent_array_regex, str(accent_html)).group())
+    accent_pattern = literal_eval(re.search(accent_array_regex, str(accent_html)).group())
     return accent_pattern
 
 
