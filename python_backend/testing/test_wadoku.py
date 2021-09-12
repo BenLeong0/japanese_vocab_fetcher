@@ -24,7 +24,7 @@ def test_get_url(test_dict: TestDict):
     - THEN check the url is encoded
     """
     word_list = test_dict['input']
-    expected_url = test_dict['wadoku']['request']['url']
+    expected_url = test_dict['wadoku']['url']
 
     assert wadoku.get_url(word_list) == expected_url
 
