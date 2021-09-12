@@ -24,7 +24,7 @@ ignore=CVS
 
 # Add files or directories matching the regex patterns to the ignore-list. The
 # regex matches against paths.
-ignore-paths=*testing
+ignore-paths=python_backend/testing/
 
 # Files or directories matching the regex patterns are skipped. The regex
 # matches against base names, not paths.
@@ -154,7 +154,8 @@ disable=print-statement,
         exception-escape,
         comprehension-escape,
         missing-docstring,
-        import-error
+        import-error,
+        R0801,
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

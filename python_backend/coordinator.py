@@ -15,9 +15,9 @@ class Modules(Enum):
     def get_info(self, word_list: List[str]) -> Dict[str, List]:
         if self.name in ('OJAD', 'SUZUKI', 'WADOKU'):
             return self.value.get_accent_dict(word_list)
-        elif self.name in ('FORVO', ):
+        if self.name in ('FORVO', ):
             return self.value.get_audio_links(word_list)
-        elif self.name in ('JISHO', ):
+        if self.name in ('JISHO', ):
             return self.value.get_vocab_data(word_list)
         raise ModuleError()
 

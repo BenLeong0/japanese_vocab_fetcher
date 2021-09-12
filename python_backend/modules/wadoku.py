@@ -21,8 +21,7 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
 # Get HTML
 
 def get_url(word_list: List[str]) -> str:
-    encoded_word_list = [word for word in word_list]
-    search_param = '%20'.join(encoded_word_list)
+    search_param = '%20'.join(word_list)
     return f"https://www.wadoku.de/search/{search_param}"
 
 
@@ -35,7 +34,7 @@ def get_html(word_list: List[str]) -> Soup:
 # Extract sections
 
 def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
-    rows = [row for row in html.findAll('tr')]
+    rows = list(html.findAll('tr'))
     return [
         (
             Soup(str(row.find('div', class_='japanese')), "html.parser"),
