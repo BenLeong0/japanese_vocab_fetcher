@@ -6,7 +6,7 @@ from flask.wrappers import Request, Response
 
 
 def get_words_from_request(request: Request):
-    return json.loads(dict(request.args)['words'])
+    return json.loads(request.data)['words']
 
 
 def create_successful_response(payload: Any):
