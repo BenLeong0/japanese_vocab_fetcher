@@ -62,7 +62,7 @@ MEGANE: FullTestDict = {
                 'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'11209\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'11209\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">眼鏡</p></div></td>', "html.parser"),
                 'writings': ["眼鏡"],
                 'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class=" accent_top mola_-3"><span class="inner"><span class="char">め</span></span></span><span class="mola_-2"><span class="inner"><span class="char">が</span></span></span><span class="mola_-1"><span class="inner"><span class="char">ね</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser")],
-                'readings': [],
+                'readings': ["め' がね"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
@@ -160,7 +160,7 @@ COMEBACK: FullTestDict= {
                     Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-5"><span class="inner"><span class="char">か</span></span></span><span class=" accent_plain mola_-4"><span class="inner"><span class="char">む</span></span></span><span class=" accent_top mola_-3"><span class="inner"><span class="char">ば</span></span></span><span class="mola_-2"><span class="inner"><span class="char">っ</span></span></span><span class="mola_-1"><span class="inner"><span class="char">く</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser"),
                     Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class=" accent_top mola_-5"><span class="inner"><span class="char">か</span></span></span><span class="mola_-4"><span class="inner"><span class="char">む</span></span></span><span class="mola_-3"><span class="inner"><span class="char">ば</span></span></span><span class="mola_-2"><span class="inner"><span class="char">っ</span></span></span><span class="mola_-1"><span class="inner"><span class="char">く</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser"),
                 ],
-                'readings': [],
+                'readings': ["かむば' っく", "か' むばっく"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
@@ -245,13 +245,13 @@ TABERU_GAKUSEI: FullTestDict = {
                 'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'1238\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'1238\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">食べる・食べます</p></div></td>', "html.parser"),
                 'writings': ["食べる", "食べます"],
                 'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-3"><span class="inner"><span class="char">た</span></span></span><span class=" accent_top mola_-2"><span class="inner"><span class="char">べ</span></span></span><span class="mola_-1"><span class="inner"><span class="char">る</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"><a class="katsuyo_proc_female_button js_proc_female_button" id="1238_1_1_female" href="#" onclick="pronounce_play(\'1238_1_1_female\');return false;"></a><a class="katsuyo_proc_male_button js_proc_male_button" id="1238_1_1_male" href="#" onclick="pronounce_play(\'1238_1_1_male\');return false;"></a></div></div>', "html.parser")],
-                'readings': [],
+                'readings': ["たべ' る"],
             },
             {
                 'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'4733\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'4733\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">学生</p></div></td>', "html.parser"),
                 'writings': ["学生"],
                 'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-4"><span class="inner"><span class="char">が</span></span></span><span class=" accent_plain mola_-3"><span class="inner"><span class="char">く</span></span></span><span class=" accent_plain mola_-2"><span class="inner"><span class="char">せ</span></span></span><span class=" accent_plain mola_-1"><span class="inner"><span class="char">い</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser")],
-                'readings': [],
+                'readings': ["がくせい"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
@@ -357,7 +357,7 @@ KOTOBA: FullTestDict = {
                 'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'6204\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'6204\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">言葉</p></div></td>', "html.parser"),
                 'writings': ["言葉"],
                 'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-3"><span class="inner"><span class="char">こ</span></span></span><span class=" accent_plain mola_-2"><span class="inner"><span class="char">と</span></span></span><span class=" accent_top mola_-1"><span class="inner"><span class="char">ば</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser")],
-                'readings': [],
+                'readings': ["ことば'"],
             },
         ],
         "full_accent_dict" : defaultdict(list, {
