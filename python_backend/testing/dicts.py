@@ -1,16 +1,38 @@
 from collections import defaultdict
+import os
 import re
-from typing import Dict
+from typing import Dict, List
 
 from bs4 import BeautifulSoup as Soup
 
 from testing.dict_typing import FullTestDict
+
+# TODO: DICTS TO ADD:
+# - Multiple pages for ojad
+# - No result for ojad
+# - No result for wadoku
+# - Extra results for ojad (not in original word list)
 
 
 def get_file_as_string(filename: str, module: str):
     path = f"testing/html_files/{module}_{filename}.html"
     with open(path, "r", encoding="utf8") as myfile:
         return re.sub(r'>\s*<', '><', myfile.read())
+
+
+def get_ojad_html_files(slug: str) -> List[str]:
+    htmls: List[str] = []
+    i: int = 0
+    while True:
+        file_index = f"{i:02d}"
+        path = f"testing/html_files/ojad_{slug}_{file_index}.html"
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf8") as myfile:
+                htmls.append(re.sub(r'>\s*<', '><', myfile.read()))
+            i += 1
+        else:
+            break
+    return htmls
 
 
 def build_suzuki_formdata(word_list_string: str) -> Dict[str, str]:
@@ -33,6 +55,19 @@ MEGANE: FullTestDict = {
     "forvo": {},
     "jisho": {},
     "ojad": {
+        "htmls": get_ojad_html_files("megane"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:眼鏡",
+        "expected_sections": [
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '眼鏡': ["め' がね"],
+        }),
         "expected_output": {
             '眼鏡': [],
         },
@@ -115,6 +150,19 @@ COMEBACK: FullTestDict= {
     "forvo": {},
     "jisho": {},
     "ojad": {
+        "htmls": get_ojad_html_files("comeback"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:カムバック",
+        "expected_sections": [
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            'カムバック': ["かむば' っく", "か' むばっく"],
+        }),
         "expected_output": {
             'カムバック': [],
         },
@@ -187,6 +235,26 @@ TABERU_GAKUSEI: FullTestDict = {
     "forvo": {},
     "jisho": {},
     "ojad": {
+        "htmls": get_ojad_html_files("taberu_gakusei"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:食べる%20学生",
+        "expected_sections": [
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '食べる': ["たべ' る"],
+            '学生': ["がくせい"],
+        }),
         "expected_output": {
             '食べる': [],
             '学生': [],
@@ -279,6 +347,19 @@ KOTOBA: FullTestDict = {
     "forvo": {},
     "jisho": {},
     "ojad": {
+        "htmls": get_ojad_html_files("kotoba"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/page:%s/word:言葉",
+        "expected_sections": [
+            {
+                'writing_section': Soup(''),
+                'writings': [],
+                'reading_sections': [Soup('')],
+                'readings': [],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '言葉': ["ことば'"],
+        }),
         "expected_output": {
             '言葉': [],
         },
