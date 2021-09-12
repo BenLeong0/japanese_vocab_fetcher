@@ -1,6 +1,7 @@
 from collections import defaultdict
+import os
 import re
-from typing import Dict
+from typing import Dict, List
 
 from bs4 import BeautifulSoup as Soup
 
@@ -11,6 +12,20 @@ def get_file_as_string(filename: str, module: str):
     path = f"testing/html_files/{module}_{filename}.html"
     with open(path, "r", encoding="utf8") as myfile:
         return re.sub(r'>\s*<', '><', myfile.read())
+
+
+def get_ojad_html_files(slug: str) -> List[str]:
+    htmls: List[str] = []
+    i: int = 0
+    while True:
+        file_index = f"{i:02d}"
+        path = f"testing/html_files/ojad_{slug}_{file_index}.html"
+        if os.path.exists(path):
+            htmls.append(get_file_as_string(path))
+            i += 1
+        else:
+            break
+    return htmls
 
 
 def build_suzuki_formdata(word_list_string: str) -> Dict[str, str]:
