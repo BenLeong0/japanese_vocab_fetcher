@@ -112,14 +112,12 @@ def test_recursion(monkeypatch):
     word_list = ["BADINPUT", "食べる", "学生"]
 
     def html_response(url, timeout):
-        print(url)
-        print("BADINPUT" in url)
         if "BADINPUT" in url:
-            with open("testing/html_files/wadoku_badinput_taberu_gakusei.html") as f:
-                mock_response = FakeResponse(re.sub(r'>\s*<', '><', f.read()))
+            f = open("testing/html_files/wadoku_badinput_taberu_gakusei.html")
         else:
-            with open("testing/html_files/wadoku_taberu_gakusei.html") as f:
-                mock_response = FakeResponse(re.sub(r'>\s*<', '><', f.read()))
+            f = open("testing/html_files/wadoku_taberu_gakusei.html")
+        mock_response = FakeResponse(re.sub(r'>\s*<', '><', f.read()))
+        f.close()
         return mock_response
 
     monkeypatch.setattr("requests.post", html_response)
