@@ -24,4 +24,5 @@ jobs:
         pip install -r deployment/requirements.txt
     - name: Test with pytest
       run: |
+        cd python_backend
         coverage run -m pytest -vv
