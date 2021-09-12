@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup as Soup
 import pytest
+import re
 
 from modules import wadoku
 from testing.dict_typing import FullTestDict
@@ -100,3 +101,30 @@ def test_get_accent_dict(monkeypatch, test_dict: FullTestDict):
 
     monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(html))
     assert wadoku.get_accent_dict(word_list) == expected_output
+
+
+def test_recursion(monkeypatch):
+    """
+    GIVEN a wordlist with an invalid first word
+    WHEN an accent dict is generated
+    THEN the function runs again, excluding the first word
+    """
+    word_list = ["BADINPUT", "食べる", "学生"]
+
+    def html_response(url, timeout):
+        if "BADINPUT" in url:
+           path = "testing/html_files/wadoku_badinput_taberu_gakusei.html"
+        else:
+           path = "testing/html_files/wadoku_taberu_gakusei.html"
+
+        with open(path, encoding="utf8") as f:
+            mock_response = FakeResponse(re.sub(r'>\s*<', '><', f.read()))
+        return mock_response
+
+    monkeypatch.setattr("requests.post", html_response)
+
+    assert wadoku.get_accent_dict(word_list) == {
+        'BADINPUT': [],
+        '食べる': ["たべ' る"],
+        '学生': ["がくせい"],
+    }
