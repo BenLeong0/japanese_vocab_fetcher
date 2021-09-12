@@ -88,19 +88,20 @@ def test_get_htmls(monkeypatch, test_dict: FullTestDict):
     assert ojad.get_htmls(word_list) == [Soup(html, "html.parser") for html in htmls]
 
 
-# def test_get_sections(test_dict: FullTestDict):
-#     """
-#     - GIVEN an html section
-#     - WHEN the subsections are extracted
-#     - THEN check the array of subsections is correct
-#     """
-#     html = test_dict['ojad']['html']
-#     expected_sections = test_dict['ojad']['expected_sections']
+def test_get_sections(test_dict: FullTestDict):
+    """
+    - GIVEN an html section
+    - WHEN the subsections are extracted
+    - THEN check the array of subsections is correct
+    """
+    htmls = test_dict['ojad']['htmls']
+    parsed_htmls = [Soup(html, "html.parser") for html in htmls]
+    expected_sections = test_dict['ojad']['expected_sections']
 
-#     assert ojad.get_sections(Soup(html, "html.parser")) == [
-#         (section['writing_section'], section['reading_section'], section['accent_section'])
-#         for section in expected_sections
-#     ]
+    assert ojad.get_sections(parsed_htmls) == [
+        (section['writing_section'], section['reading_sections'])
+        for section in expected_sections
+    ]
 
 
 # def test_extract_writing(test_dict: FullTestDict):
