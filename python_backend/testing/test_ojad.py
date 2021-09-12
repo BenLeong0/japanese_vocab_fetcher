@@ -108,7 +108,7 @@ def test_get_sections(test_dict: FullTestDict):
 def test_extract_writings(test_dict: FullTestDict):
     """
     - GIVEN writing sections
-    - WHEN the writing is extracted
+    - WHEN the writings are extracted
     - THEN check all the correct writings are extracted
     """
     for section in test_dict['ojad']['expected_sections']:
