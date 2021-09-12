@@ -126,18 +126,18 @@ def test_extract_reading(test_dict: FullTestDict):
             assert ojad.extract_reading(html_section) == reading
 
 
-# def test_build_accent_dict(test_dict: FullTestDict):
-#     """
-#     - GIVEN html sections
-#     - WHEN the accent dict is constructed
-#     - THEN check all the values are as expected
-#     """
-#     word_sections = [
-#         (section['writing_section'], section['reading_section'], section['accent_section'])
-#         for section in test_dict['ojad']['expected_sections']
-#     ]
+def test_build_accent_dict(test_dict: FullTestDict):
+    """
+    - GIVEN html sections
+    - WHEN the accent dict is constructed
+    - THEN check all the values are as expected
+    """
+    word_sections = [
+        (section['writing_section'], section['reading_sections'])
+        for section in test_dict['ojad']['expected_sections']
+    ]
 
-#     assert ojad.build_accent_dict(word_sections) == test_dict['ojad']['expected_output']
+    assert ojad.build_accent_dict(word_sections) == test_dict['ojad']['full_accent_dict']
 
 
 # def test_get_accent_dict(monkeypatch, test_dict: FullTestDict):

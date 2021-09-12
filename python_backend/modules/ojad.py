@@ -1,5 +1,6 @@
+from collections import defaultdict
 import re
-from typing import Dict, List, Tuple
+from typing import DefaultDict, Dict, List, Tuple
 
 from bs4 import BeautifulSoup as Soup
 from bs4.element import PageElement
@@ -87,4 +88,16 @@ def extract_reading(reading_html: Soup) -> str:
     if reading[-1] == " ":
         reading = reading[:-1]
     return reading
+
+
+def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> DefaultDict:
+    accent_dict = defaultdict(list)
+
+    for writing_html, reading_htmls in word_sections:
+        writings = extract_writings(writing_html)
+        readings = [extract_reading(reading_html) for reading_html in reading_htmls]
+        for writing in writings:
+            accent_dict[writing] += readings
+
+    return accent_dict
 

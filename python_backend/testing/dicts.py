@@ -256,6 +256,7 @@ TABERU_GAKUSEI: FullTestDict = {
         ],
         "full_accent_dict" : defaultdict(list, {
             '食べる': ["たべ' る"],
+            '食べます': ["たべ' る"],
             '学生': ["がくせい"],
         }),
         "expected_output": {
