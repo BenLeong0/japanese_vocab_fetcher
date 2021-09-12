@@ -17,17 +17,8 @@ def test_dict(request):
 
 def test_words_endpoint(test_dict: FullTestDict):
     word_list = test_dict['input']
-    encoded_word_list = json.dumps(word_list)
-    payload = {'words': encoded_word_list}
-    result = requests.get(API_URL, params=payload)
+    payload = {'words': word_list}
+    result = requests.get(API_URL, data=json.dumps(payload))
+
     assert result.status_code == 200
-    assert result.text == json.dumps([
-        {
-            'word': word,
-            'accent': {
-                'ojad': [],
-                'suzuki': [],
-                'wadoku': [],
-            },
-        } for word in word_list
-    ])
+    assert result.text == json.dumps(test_dict['expected_result'])
