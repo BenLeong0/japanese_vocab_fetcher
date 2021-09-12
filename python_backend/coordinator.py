@@ -1,5 +1,5 @@
-from enum import Enum
 from collections import defaultdict
+from enum import Enum
 from threading import Thread
 from typing import Dict, List
 
