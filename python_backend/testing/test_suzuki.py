@@ -17,6 +17,15 @@ class FakeResponse:
         self.text = text
 
 
+def test_empty_input():
+    """
+    - GIVEN an empty input
+    - WHEN an accent dictionary is generated
+    - THEN check it returns and empty dict
+    """
+    assert suzuki.get_accent_dict([]) == {}
+
+
 def test_get_formdata(test_dict: FullTestDict):
     """
     - GIVEN a list of words
