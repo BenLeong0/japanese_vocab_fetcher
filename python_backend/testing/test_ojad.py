@@ -30,6 +30,11 @@ def _get_ojad_html_string(url: str, htmls: List[Soup], timeout: int = 20) -> str
 
 
 def test_empty_input():
+    """
+    - GIVEN an empty input
+    - WHEN an accent dictionary is generated
+    - THEN check it returns and empty dict
+    """
     assert ojad.get_accent_dict([]) == {}
 
 
