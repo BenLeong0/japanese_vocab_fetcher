@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup as Soup
 import pytest
 
 from modules import suzuki
-from testing.dict_typing import TestDict
+from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 
 
@@ -17,7 +17,7 @@ class FakeResponse:
         self.text = text
 
 
-def test_get_formdata(test_dict: TestDict):
+def test_get_formdata(test_dict: FullTestDict):
     """
     - GIVEN a list of words
     - WHEN a url is generated
@@ -29,7 +29,7 @@ def test_get_formdata(test_dict: TestDict):
     assert suzuki.get_formdata(word_list) == expected_formdata
 
 
-def test_get_sections(test_dict: TestDict):
+def test_get_sections(test_dict: FullTestDict):
     """
     - GIVEN an html section
     - WHEN the subsections are extracted
@@ -44,7 +44,7 @@ def test_get_sections(test_dict: TestDict):
     ]
 
 
-def test_extract_writing(test_dict: TestDict):
+def test_extract_writing(test_dict: FullTestDict):
     """
     - GIVEN an html sections
     - WHEN the writing is extracted
@@ -54,7 +54,7 @@ def test_extract_writing(test_dict: TestDict):
         assert suzuki.extract_writing(section['writing_section']) == section['writing']
 
 
-def test_extract_reading(test_dict: TestDict):
+def test_extract_reading(test_dict: FullTestDict):
     """
     - GIVEN an html sections
     - WHEN the writing is extracted
@@ -64,7 +64,7 @@ def test_extract_reading(test_dict: TestDict):
         assert suzuki.extract_reading(section['reading_section'], section['accent_section']) == section['reading']
 
 
-def test_build_accent_dict(test_dict: TestDict):
+def test_build_accent_dict(test_dict: FullTestDict):
     """
     - GIVEN html sections
     - WHEN the accent dict is constructed

@@ -4,7 +4,7 @@ from typing import Dict
 
 from bs4 import BeautifulSoup as Soup
 
-from testing.dict_typing import TestDict
+from testing.dict_typing import FullTestDict
 
 
 def get_file_as_string(filename: str, module: str):
@@ -27,7 +27,7 @@ def build_suzuki_formdata(word_list_string: str) -> Dict[str, str]:
     }
 
 
-MEGANE: TestDict = {
+MEGANE: FullTestDict = {
     "id": "MEGANE",
     "input": ["眼鏡"],
     "forvo": {},
@@ -109,7 +109,7 @@ MEGANE: TestDict = {
 }
 
 
-COMEBACK: TestDict= {
+COMEBACK: FullTestDict= {
     "id": "COMEBACK",
     'input': ['カムバック'],
     "forvo": {},
@@ -181,7 +181,7 @@ COMEBACK: TestDict= {
 }
 
 
-TABERU_GAKUSEI: TestDict = {
+TABERU_GAKUSEI: FullTestDict = {
     "id": "TABERU_GAKUSEI",
     'input': ['食べる', '学生'],
     "forvo": {},
@@ -273,7 +273,7 @@ TABERU_GAKUSEI: TestDict = {
 }
 
 
-KOTOBA: TestDict = {
+KOTOBA: FullTestDict = {
     "id": "KOTOBA",
     'input': ['言葉'],
     "forvo": {},

@@ -3,7 +3,7 @@ import json
 import pytest
 import requests
 
-from testing.dict_typing import TestDict
+from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 
 
@@ -15,7 +15,7 @@ def test_dict(request):
     return request.param
 
 
-def test_words_endpoint(test_dict: TestDict):
+def test_words_endpoint(test_dict: FullTestDict):
     word_list = test_dict['input']
     encoded_word_list = json.dumps(word_list)
     payload = {'words': encoded_word_list}

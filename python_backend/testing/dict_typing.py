@@ -97,7 +97,7 @@ class ExpectedResult(TypedDict):
 
 # Complete test dictionary type
 
-class TestDict(TypedDict):
+class FullTestDict(TypedDict):
     """A dictionary containing all the information and expected results for any test"""
     id: str
     input: List[書方]
