@@ -1,9 +1,9 @@
 from functools import partial
-import pytest
 import re
 from typing import List
 
 from bs4 import BeautifulSoup as Soup
+import pytest
 
 from modules import ojad
 from testing.dict_typing import FullTestDict

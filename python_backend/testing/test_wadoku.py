@@ -1,6 +1,7 @@
+import re
+
 from bs4 import BeautifulSoup as Soup
 import pytest
-import re
 
 from modules import wadoku
 from testing.dict_typing import FullTestDict
