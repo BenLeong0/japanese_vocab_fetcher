@@ -1,9 +1,9 @@
 import re
-import requests
 from typing import Dict, List, Tuple
 
 from bs4 import BeautifulSoup as Soup
 from bs4.element import PageElement
+import requests
 
 
 def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
