@@ -34,7 +34,7 @@ def get_html(word_list: List[str]) -> Soup:
 # Extract sections
 
 def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
-    rows = [row for row in html.findAll('tr')]
+    rows = list(html.findAll('tr'))
     return [
         (
             Soup(str(row.find('div', class_='japanese')), "html.parser"),
