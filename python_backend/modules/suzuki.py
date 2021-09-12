@@ -1,3 +1,4 @@
+from ast import literal_eval
 import re
 from typing import Dict, List, Tuple
 
@@ -68,7 +69,7 @@ def extract_characters(reading_html: Soup) -> str:
 
 def extract_accent_pattern(accent_html: Soup) -> List[int]:
     accent_array_regex = r'\[.*?\]'
-    accent_pattern = eval(re.search(accent_array_regex, str(accent_html)).group())
+    accent_pattern = literal_eval(re.search(accent_array_regex, str(accent_html)).group())
     return accent_pattern
 
 
