@@ -24,7 +24,7 @@ def test_get_formdata(test_dict: TestDict):
     - THEN check the url is encoded
     """
     word_list = test_dict['input']
-    expected_formdata = test_dict['suzuki']['request']['formdata']
+    expected_formdata = test_dict['suzuki']['formdata']
 
     assert suzuki.get_formdata(word_list) == expected_formdata
 
@@ -44,14 +44,14 @@ def test_get_sections(test_dict: TestDict):
     ]
 
 
-# def test_extract_writings(test_dict: TestDict):
+# def test_extract_writing(test_dict: TestDict):
 #     """
 #     - GIVEN an html sections
 #     - WHEN the writing is extracted
 #     - THEN check all the correct writings are extracted
 #     """
 #     for section in test_dict['suzuki']['expected_sections']:
-#         assert suzuki.extract_writings(section['writing_section']) == section['writings']
+#         assert suzuki.extract_writing(section['writing_section']) == section['writing']
 
 
 # def test_extract_readings(test_dict: TestDict):
