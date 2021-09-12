@@ -44,14 +44,14 @@ def test_get_sections(test_dict: TestDict):
     ]
 
 
-# def test_extract_writing(test_dict: TestDict):
-#     """
-#     - GIVEN an html sections
-#     - WHEN the writing is extracted
-#     - THEN check all the correct writings are extracted
-#     """
-#     for section in test_dict['suzuki']['expected_sections']:
-#         assert suzuki.extract_writing(section['writing_section']) == section['writing']
+def test_extract_writing(test_dict: TestDict):
+    """
+    - GIVEN an html sections
+    - WHEN the writing is extracted
+    - THEN check all the correct writings are extracted
+    """
+    for section in test_dict['suzuki']['expected_sections']:
+        assert suzuki.extract_writing(section['writing_section']) == section['writing']
 
 
 # def test_extract_readings(test_dict: TestDict):
