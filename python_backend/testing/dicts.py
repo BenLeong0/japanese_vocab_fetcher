@@ -8,7 +8,6 @@ from bs4 import BeautifulSoup as Soup
 from testing.dict_typing import FullTestDict
 
 # TODO: DICTS TO ADD:
-# - Multiple pages for ojad
 # - Extra results for ojad (words not in original word list)
 # - OJAD with particles (eg kirei)
 
