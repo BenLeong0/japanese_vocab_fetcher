@@ -496,7 +496,7 @@ BADINPUT: FullTestDict = {
 
 
 USAGI_IKU_KAGO: FullTestDict = {
-    "id": "usagi_iku_kago",
+    "id": "USAGI_IKU_KAGO",
     'input': ['兎', '行く', '籠'],
     "forvo": {},
     "jisho": {},
@@ -674,7 +674,7 @@ USAGI_IKU_KAGO: FullTestDict = {
 
 
 SHIZUKA: FullTestDict = {
-    "id": "shizuka",
+    "id": "SHIZUKA",
     'input': ['静か'],
     "forvo": {},
     "jisho": {},
