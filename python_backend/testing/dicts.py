@@ -8,7 +8,6 @@ from bs4 import BeautifulSoup as Soup
 from testing.dict_typing import FullTestDict
 
 # TODO: DICTS TO ADD:
-# - Multiple pages for ojad
 # - Extra results for ojad (words not in original word list)
 # - OJAD with particles (eg kirei)
 
@@ -496,12 +495,266 @@ BADINPUT: FullTestDict = {
 }
 
 
+USAGI_IKU_KAGO: FullTestDict = {
+    "id": "usagi_iku_kago",
+    'input': ['兎', '行く', '籠'],
+    "forvo": {},
+    "jisho": {},
+    "ojad": {
+        "htmls": get_ojad_html_files("usagi_iku_kago"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:兎%%20行く%%20籠/page:%s",
+        "expected_sections": [
+            {
+                'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'740\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'740\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">行く・行きます</p></div></td>', "html.parser"),
+                'writings': ["行く", "行きます"],
+                'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-2"><span class="inner"><span class="char">い</span></span></span><span class=" accent_plain mola_-1"><span class="inner"><span class="char">く</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"><a class="katsuyo_proc_female_button js_proc_female_button" id="740_1_1_female" href="#" onclick="pronounce_play(\'740_1_1_female\');return false;"></a><a class="katsuyo_proc_male_button js_proc_male_button" id="740_1_1_male" href="#" onclick="pronounce_play(\'740_1_1_male\');return false;"></a></div></div>', "html.parser")],
+                'readings': ["いく"],
+            },
+            {
+                'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'4771\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'4771\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">籠</p></div></td>', "html.parser"),
+                'writings': ["籠"],
+                'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-2"><span class="inner"><span class="char">か</span></span></span><span class=" accent_plain mola_-1"><span class="inner"><span class="char">ご</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser")],
+                'readings': ["かご"],
+            },
+            {
+                'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'4070\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'4070\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">兎</p></div></td>', "html.parser"),
+                'writings': ["兎"],
+                'reading_sections': [Soup('<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-3"><span class="inner"><span class="char">う</span></span></span><span class=" accent_plain mola_-2"><span class="inner"><span class="char">さ</span></span></span><span class=" accent_plain mola_-1"><span class="inner"><span class="char">ぎ</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"></div></div>', "html.parser")],
+                'readings': ["うさぎ"],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '行く': ["いく"],
+            '行きます': ["いく"],
+            '籠': ["かご"],
+            '兎': ["うさぎ"],
+        }),
+        "expected_output": {
+            '行く': ["いく"],
+            '籠': ["かご"],
+            '兎': ["うさぎ"],
+        },
+    },
+    "suzuki": {
+        "html": get_file_as_string("usagi_iku_kago", "suzuki"),
+        "formdata": build_suzuki_formdata("兎は\n行くは\n籠は"),
+        "expected_sections": [
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>兎は</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writing': '兎',
+                'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">う</span></span></span><span class="accent_plain mola_1"><span class="inner"><span class="char">さ</span></span></span><span class="accent_plain mola_2"><span class="inner"><span class="char">ぎ</span></span></span><span class="accent_plain mola_3"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_0_0\',4,[0,1,1,1],1,0,0);});</script>', "html.parser"),
+                'reading': "うさぎ",
+            },
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>行くは</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writing': '行く',
+                'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">い</span></span></span><span class="accent_plain mola_1"><span class="inner"><span class="char">く</span></span></span><span class="accent_plain mola_2"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_1_0\',3,[0,1,1],1,0,0);});</script>', "html.parser"),
+                'reading': "いく",
+            },
+            {
+                'writing_section': Soup('<div class="phrasing_subscript"><span>籠は</span><span class="inner endspace"><span class="char"></span></span></div>', "html.parser"),
+                'writing': '籠',
+                'reading_section': Soup('<div class="phrasing_text"><span class="mola_0"><span class="inner"><span class="char">か</span></span></span><span class="accent_plain mola_1"><span class="inner"><span class="char">ご</span></span></span><span class="accent_plain mola_2"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>',"html.parser"),
+                'accent_section': Soup('<script type="text/javascript">$(function () { set_accent_curve_phrase(\'#phrase_2_0\',3,[0,1,1],1,0,0);});</script>', "html.parser"),
+                'reading': "かご",
+            },
+        ],
+        "expected_output": {
+            '兎': ["うさぎ"],
+            '行く': ["いく"],
+            '籠': ["かご"],
+        },
+    },
+    "wadoku": {
+        "html": get_file_as_string("usagi_iku_kago", "wadoku"),
+        "url": "https://www.wadoku.de/search/兎%20行く%20籠",
+        "expected_sections": [
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/5431043"><span class="orth" lang="ja" xml:lang="ja"><span class="njk">兎</span></span></a></div>', "html.parser"),
+                'writings': ["兎"],
+                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">う</span><span class="t l">さぎ</span></span>', "html.parser")],
+                'readings': ["うさぎ"],
+            },
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/8480460"><span class="orth" lang="ja" xml:lang="ja">兎</span></a></div>', "html.parser"),
+                'writings': ["兎"],
+                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">う</span><span class="t l"></span></span>', "html.parser")],
+                'readings': ["う"],
+            },
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/5945030"><span class="orth" lang="ja" xml:lang="ja">行く</span></a></div>', "html.parser"),
+                'writings': ["行く"],
+                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">ゆ~</span><span class="t l">く</span></span>', "html.parser")],
+                'readings': ["ゆく"],
+            },
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/8042046"><span class="orth" lang="ja" xml:lang="ja">行く<span class="divider">；</span><span class="njok">往</span>く</span></a></div>', "html.parser"),
+                'writings': ["行く", "往く"],
+                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">い~</span><span class="t l">く</span></span>', "html.parser")],
+                'readings': ["いく"],
+            },
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/3388927"><span class="orth" lang="ja" xml:lang="ja">籠</span></a></div>', "html.parser"),
+                'writings': ["籠"],
+                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b">か</span><span class="t l">ご</span></span>', "html.parser")],
+                'readings': ["かご"],
+            },
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/3895667"><span class="orth" lang="ja" xml:lang="ja"><span class="njk">篭</span><span class="divider">；</span><span class="njok">籠</span></span></a></div>', "html.parser"),
+                'writings': ["篭", "籠"],
+                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="t r">こ</span><span class="b"></span></span>', "html.parser")],
+                'readings': ["こ'"],
+            },
+            {
+                'writing_section': Soup('<div class="japanese"><a href="/entry/view/10104508"><span class="orth" lang="ja" xml:lang="ja">籠<span class="paren">も</span>り<span class="divider">；</span>隠<span class="paren">り</span></span></a></div>', "html.parser"),
+                'writings': ["籠もり", "隠り"],
+                'reading_sections': [Soup('<span class="pron accent" data-accent-id="1"><span class="b r">こ</span><span class="t r">もり</span></span>', "html.parser")],
+                'readings': ["こもり'"],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '兎': ["うさぎ", "う"],
+            '行く': ["ゆく", "いく"],
+            '往く': ["いく"],
+            '籠': ["かご", "こ'"],
+            '篭': ["こ'"],
+            '籠もり': ["こもり'"],
+            '隠り': ["こもり'"],
+        }),
+        "expected_output": {
+            '兎': ["うさぎ", "う"],
+            '行く': ["ゆく", "いく"],
+            '籠': ["かご", "こ'"],
+        },
+    },
+    "expected_result": [
+        {
+            "word": "兎",
+            "jisho": {},
+            "accent": {
+                "ojad": ["うさぎ"],
+                "suzuki": ["うさぎ"],
+                "wadoku": ["うさぎ", "う"],
+            },
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
+        {
+            "word": "行く",
+            "jisho": {},
+            "accent": {
+                "ojad": ["いく"],
+                "suzuki": ["いく"],
+                "wadoku": ["ゆく", "いく"],
+            },
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
+        {
+            "word": "籠",
+            "jisho": {},
+            "accent": {
+                "ojad": ["かご"],
+                "suzuki": ["かご"],
+                "wadoku": ["かご", "こ'"],
+            },
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
+    ],
+}
+
+
 TEST_DICTS = [
     MEGANE,
     COMEBACK,
     TABERU_GAKUSEI,
     KOTOBA,
     BADINPUT,
+    USAGI_IKU_KAGO,
 ]
 
 TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
+
+
+# TEMPLATE: FullTestDict = {
+#     "id": "",
+#     'input': [''],
+#     "forvo": {},
+#     "jisho": {},
+#     "ojad": {
+#         "htmls": get_ojad_html_files(""),
+#         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:/page:%s",
+#         "expected_sections": [
+#             {
+#                 'writing_section': Soup('', "html.parser"),
+#                 'writings': [""],
+#                 'reading_sections': [Soup('', "html.parser")],
+#                 'readings': [""],
+#             },
+#         ],
+#         "full_accent_dict" : defaultdict(list, {
+#             '': [],
+#         }),
+#         "expected_output": {
+#             '': [],
+#         },
+#     },
+#     "suzuki": {
+#         "html": get_file_as_string("", "suzuki"),
+#         "formdata": build_suzuki_formdata(""),
+#         "expected_sections": [
+#             {
+#                 'writing_section': Soup('', "html.parser"),
+#                 'writing': '',
+#                 'reading_section': Soup('',"html.parser"),
+#                 'accent_section': Soup('', "html.parser"),
+#                 'reading': "",
+#             },
+#         ],
+#         "expected_output": {
+#             '': [],
+#         },
+#     },
+#     "wadoku": {
+#         "html": get_file_as_string("", "wadoku"),
+#         "url": "https://www.wadoku.de/search/",
+#         "expected_sections": [
+#             {
+#                 'writing_section': Soup('', "html.parser"),
+#                 'writings': [],
+#                 'reading_sections': [Soup('', "html.parser")],
+#                 'readings': [],
+#             },
+#         ],
+#         "full_accent_dict" : defaultdict(list, {
+#             '': [],
+#         }),
+#         "expected_output": {
+#             '': [],
+#         },
+#     },
+#     "expected_result": [
+#         {
+#             "word": "",
+#             "jisho": {},
+#             "accent": {
+#                 "ojad": [],
+#                 "suzuki": [],
+#                 "wadoku": [],
+#             },
+#             "audio": {
+#                 "forvo": [],
+#                 "wanikani": [],
+#             },
+#         },
+#     ],
+# }
