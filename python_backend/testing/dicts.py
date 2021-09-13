@@ -505,3 +505,78 @@ TEST_DICTS = [
 ]
 
 TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
+
+
+# TEMPLATE: FullTestDict = {
+#     "id": "",
+#     'input': [''],
+#     "forvo": {},
+#     "jisho": {},
+#     "ojad": {
+#         "htmls": get_ojad_html_files(""),
+#         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:/page:%s",
+#         "expected_sections": [
+#             {
+#                 'writing_section': Soup('', "html.parser"),
+#                 'writings': [""],
+#                 'reading_sections': [Soup('', "html.parser")],
+#                 'readings': [""],
+#             },
+#         ],
+#         "full_accent_dict" : defaultdict(list, {
+#             '': []
+#         }),
+#         "expected_output": {
+#             '': [],
+#         },
+#     },
+#     "suzuki": {
+#         "html": get_file_as_string("", "suzuki"),
+#         "formdata": build_suzuki_formdata(""),
+#         "expected_sections": [
+#             {
+#                 'writing_section': Soup('', "html.parser"),
+#                 'writing': '',
+#                 'reading_section': Soup('',"html.parser"),
+#                 'accent_section': Soup('', "html.parser"),
+#                 'reading': "",
+#             },
+#         ],
+#         "expected_output": {
+#             '': [],
+#         },
+#     },
+#     "wadoku": {
+#         "html": get_file_as_string("", "wadoku"),
+#         "url": "https://www.wadoku.de/search/",
+#         "expected_sections": [
+#             {
+#                 'writing_section': Soup('', "html.parser"),
+#                 'writings': [],
+#                 'reading_sections': [Soup('', "html.parser")],
+#                 'readings': [],
+#             },
+#         ],
+#         "full_accent_dict" : defaultdict(list, {
+#             '': []
+#         }),
+#         "expected_output": {
+#             '': [],
+#         },
+#     },
+#     "expected_result": [
+#         {
+#             "word": "",
+#             "jisho": {},
+#             "accent": {
+#                 "ojad": [],
+#                 "suzuki": [],
+#                 "wadoku": [],
+#             },
+#             "audio": {
+#                 "forvo": [],
+#                 "wanikani": [],
+#             },
+#         },
+#     ],
+# }
