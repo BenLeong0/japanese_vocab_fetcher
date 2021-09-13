@@ -503,7 +503,7 @@ USAGI_IKU_KAGO: FullTestDict = {
     "jisho": {},
     "ojad": {
         "htmls": get_ojad_html_files("usagi_iku_kago"),
-        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:兎%20行く%20籠/page:%s",
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:兎%%20行く%%20籠/page:%s",
         "expected_sections": [
             {
                 'writing_section': Soup('<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch(\'word\',\'740\',\'female\');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch(\'word\',\'740\',\'male\');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">行く・行きます</p></div></td>', "html.parser"),
@@ -632,12 +632,38 @@ USAGI_IKU_KAGO: FullTestDict = {
     },
     "expected_result": [
         {
-            "word": "",
+            "word": "兎",
             "jisho": {},
             "accent": {
-                "ojad": [],
-                "suzuki": [],
-                "wadoku": [],
+                "ojad": ["うさぎ"],
+                "suzuki": ["うさぎ"],
+                "wadoku": ["うさぎ", "う"],
+            },
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
+        {
+            "word": "行く",
+            "jisho": {},
+            "accent": {
+                "ojad": ["いく"],
+                "suzuki": ["いく"],
+                "wadoku": ["ゆく", "いく"],
+            },
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
+        {
+            "word": "籠",
+            "jisho": {},
+            "accent": {
+                "ojad": ["かご"],
+                "suzuki": ["かご"],
+                "wadoku": ["かご", "こ'"],
             },
             "audio": {
                 "forvo": [],
