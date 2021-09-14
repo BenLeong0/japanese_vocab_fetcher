@@ -9,15 +9,6 @@ from custom_types import 書方, 読方, URL
 
 # General types
 
-# class 書方(str):
-#     """Kanji writing of a word"""
-
-# class 読方(str):
-#     """Accented reading of a word"""
-
-# class URL(str):
-#     """String representing a URL"""
-
 class HTMLString(str):
     """An HTML file stored as a string"""
 
