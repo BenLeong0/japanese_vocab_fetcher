@@ -77,7 +77,7 @@ def extract_writings(writing_html: Soup) -> List[str]:
     return filtered_writings
 
 
-def extract_reading(reading_html: Soup) -> str:
+def extract_reading(reading_html: Soup, na_adj: bool) -> str:
     # 拗音 get their own span already!
     contents: Soup = reading_html.find("span", class_="accented_word")
     chars: List[str] = [span.text for span in contents]
@@ -89,6 +89,8 @@ def extract_reading(reading_html: Soup) -> str:
         if 'accent_top' in class_list:
             reading += "' "
 
+    if na_adj and reading[-1] == "な":
+        reading = reading[:-1]
     if reading[-1] == " ":
         reading = reading[:-1]
     return reading
@@ -99,7 +101,8 @@ def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> DefaultDi
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)
-        readings = [extract_reading(reading_html) for reading_html in reading_htmls]
+        na_adj = '[な]' in writing_html.text
+        readings = [extract_reading(reading_html, na_adj=na_adj) for reading_html in reading_htmls]
         for writing in writings:
             accent_dict[writing] += readings
 

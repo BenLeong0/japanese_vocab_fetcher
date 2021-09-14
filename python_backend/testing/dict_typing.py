@@ -36,6 +36,7 @@ class AccentDict(TypedDict):
 class OjadExpectedSection(TypedDict):
     """Dictionary containing an HTML section extracted by the OJAD module
     and its contained information"""
+    na_adj: bool
     writing_section: Soup
     writings: List[書方]
     reading_sections: List[Soup]

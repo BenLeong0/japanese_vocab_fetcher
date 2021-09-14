@@ -10,6 +10,7 @@ from testing.dict_typing import FullTestDict
 # TODO: DICTS TO ADD:
 # - Extra results for ojad (words not in original word list)
 # - OJAD with particles (eg kirei)
+# - Word with な but not [な], eg なる
 
 
 def get_file_as_string(filename: str, module: str):
@@ -496,7 +497,7 @@ BADINPUT: FullTestDict = {
 
 
 USAGI_IKU_KAGO: FullTestDict = {
-    "id": "usagi_iku_kago",
+    "id": "USAGI_IKU_KAGO",
     'input': ['兎', '行く', '籠'],
     "forvo": {},
     "jisho": {},
@@ -673,6 +674,114 @@ USAGI_IKU_KAGO: FullTestDict = {
 }
 
 
+SHIZUKA: FullTestDict = {
+    "id": "SHIZUKA",
+    'input': ['静か'],
+    "forvo": {},
+    "jisho": {},
+    "ojad": {
+        "htmls": get_ojad_html_files("shizuka"),
+        "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:静か/page:%s",
+        "expected_sections": [
+            {
+                'na_adj': True,
+                'writing_section': Soup("""<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch('word','3149','female');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch('word','3149','male');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">静か[な]・静かです</p></div></td>""", "html.parser"),
+                'writings': ["静か", "静かです"],
+                'reading_sections': [Soup("""<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class=" accent_top mola_-4"><span class="inner"><span class="char">し</span></span></span><span class="mola_-3"><span class="inner"><span class="char">ず</span></span></span><span class="mola_-2"><span class="inner"><span class="char">か</span></span></span><span class="mola_-1"><span class="inner"><span class="char">な</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"><a class="katsuyo_proc_female_button js_proc_female_button" id="3149_1_1_female" href="#" onclick="pronounce_play('3149_1_1_female');return false;"></a><a class="katsuyo_proc_male_button js_proc_male_button" id="3149_1_1_male" href="#" onclick="pronounce_play('3149_1_1_male');return false;"></a></div></div>""", "html.parser")],
+                'readings': ["し' ずか"],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '静か': ["し' ずか"],
+            '静かです': ["し' ずか"],
+        }),
+        "expected_output": {
+            '静か': ["し' ずか"],
+        },
+    },
+    "suzuki": {
+        "html": get_file_as_string("shizuka", "suzuki"),
+        "formdata": build_suzuki_formdata("静かは"),
+        "expected_sections": [
+            {
+                'writing_section': Soup("""<div class="phrasing_subscript"><span>静かは</span><span class="inner endspace"><span class="char"></span></span></div>""", "html.parser"),
+                'writing': '静か',
+                'reading_section': Soup("""<div class="phrasing_text"><span class="accent_top mola_0"><span class="inner"><span class="char">し</span></span></span><span class="mola_1"><span class="inner"><span class="char">ず</span></span></span><span class="mola_2"><span class="inner"><span class="char">か</span></span></span><span class="mola_3"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>""","html.parser"),
+                'accent_section': Soup("""<script type="text/javascript">$(function () { set_accent_curve_phrase('#phrase_0_0',4,[1,0,0,0],1,0,0);});</script>""", "html.parser"),
+                'reading': "し' ずか",
+            },
+        ],
+        "expected_output": {
+            '静か': ["し' ずか"],
+        },
+    },
+    "wadoku": {
+        "html": get_file_as_string("shizuka", "wadoku"),
+        "url": "https://www.wadoku.de/search/静か",
+        "expected_sections": [
+            {
+                'writing_section': Soup("""<div class="japanese"><a href="/entry/view/928029"><span class="orth" lang="ja" xml:lang="ja">静<span class="paren">か</span></span></a></div>""", "html.parser"),
+                'writings': ['静か'],
+                'reading_sections': [Soup("""<span class="pron accent" data-accent-id="1"><span class="t r">し</span><span class="b">ずか</span></span>""", "html.parser")],
+                'readings': ["し' ずか"],
+            },
+            {
+                'writing_section': Soup("""<div class="japanese"><a href="/entry/view/1134980"><span class="orth" lang="ja" xml:lang="ja">静かに</span></a></div>""", "html.parser"),
+                'writings': ['静かに'],
+                'reading_sections': [],
+                'readings': [],
+            },
+            {
+                'writing_section': Soup("""<div class="japanese"><a href="/entry/view/6264891"><span class="orth" lang="ja" xml:lang="ja">静かな</span></a></div>""", "html.parser"),
+                'writings': ['静かな'],
+                'reading_sections': [],
+                'readings': [],
+            },
+            {
+                'writing_section': Soup("""<div class="japanese"><a href="/entry/view/4992206"><span class="orth" lang="ja" xml:lang="ja">静かの海</span></a></div>""", "html.parser"),
+                'writings': ['静かの海'],
+                'reading_sections': [
+                    Soup("""<span class="pron accent" data-accent-id="1"><span class="t r">し</span><span class="b">ずか･の･うみ</span></span>""", "html.parser"),
+                    Soup("""<span class="pron accent hidden" data-accent-id="2"><span class="t r">し</span><span class="b">ずか･の･</span><span class="t r">う</span><span class="b">み</span></span>""", "html.parser")
+                ],
+                'readings': ["し' ずかのうみ", "し' ずかの* う' み"],
+            },
+            {
+                'writing_section': Soup("""<div class="japanese"><a href="/entry/view/4528218"><span class="orth" lang="ja" xml:lang="ja">静かな声</span></a></div>""", "html.parser"),
+                'writings': ['静かな声'],
+                'reading_sections': [],
+                'readings': [],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '静か': ["し' ずか"],
+            '静かに': [],
+            '静かな': [],
+            '静かの海': ["し' ずかのうみ", "し' ずかの* う' み"],
+            '静かな声': [],
+        }),
+        "expected_output": {
+            '静か': ["し' ずか"],
+        },
+    },
+    "expected_result": [
+        {
+            "word": "静か",
+            "jisho": {},
+            "accent": {
+                "ojad": ["し' ずか"],
+                "suzuki": ["し' ずか"],
+                "wadoku": ["し' ずか"],
+            },
+            "audio": {
+                "forvo": [],
+                "wanikani": [],
+            },
+        },
+    ],
+}
+
+
 TEST_DICTS = [
     MEGANE,
     COMEBACK,
@@ -680,6 +789,7 @@ TEST_DICTS = [
     KOTOBA,
     BADINPUT,
     USAGI_IKU_KAGO,
+    SHIZUKA,
 ]
 
 TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
@@ -695,9 +805,9 @@ TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
 #         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:/page:%s",
 #         "expected_sections": [
 #             {
-#                 'writing_section': Soup('', "html.parser"),
+#                 'writing_section': Soup("""""", "html.parser"),
 #                 'writings': [""],
-#                 'reading_sections': [Soup('', "html.parser")],
+#                 'reading_sections': [Soup("""""", "html.parser")],
 #                 'readings': [""],
 #             },
 #         ],
@@ -713,10 +823,10 @@ TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
 #         "formdata": build_suzuki_formdata(""),
 #         "expected_sections": [
 #             {
-#                 'writing_section': Soup('', "html.parser"),
+#                 'writing_section': Soup("""""", "html.parser"),
 #                 'writing': '',
-#                 'reading_section': Soup('',"html.parser"),
-#                 'accent_section': Soup('', "html.parser"),
+#                 'reading_section': Soup("""""","html.parser"),
+#                 'accent_section': Soup("""""", "html.parser"),
 #                 'reading': "",
 #             },
 #         ],
@@ -729,9 +839,9 @@ TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
 #         "url": "https://www.wadoku.de/search/",
 #         "expected_sections": [
 #             {
-#                 'writing_section': Soup('', "html.parser"),
+#                 'writing_section': Soup("""""", "html.parser"),
 #                 'writings': [],
-#                 'reading_sections': [Soup('', "html.parser")],
+#                 'reading_sections': [Soup("""""", "html.parser")],
 #                 'readings': [],
 #             },
 #         ],
