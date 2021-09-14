@@ -73,7 +73,7 @@ def extract_writings(writing_html: Soup) -> List[str]:
     midashi: str = writing_html.find('p', class_='midashi_word').text
     writings = midashi.split('・')
     # eg 綺麗[な] -> 綺麗
-    filtered_writings = [re.search(r'[^\[]*', writing).group() for writing in writings]
+    filtered_writings = [writing.replace('[な]', '') for writing in writings]
     return filtered_writings
 
 
@@ -96,8 +96,8 @@ def extract_reading(reading_html: Soup, na_adj: bool) -> str:
     return reading
 
 
-def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> DefaultDict:
-    accent_dict = defaultdict(list)
+def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> DefaultDict[str, List[str]]:
+    accent_dict: DefaultDict[str, List[str]] = defaultdict(list)
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)

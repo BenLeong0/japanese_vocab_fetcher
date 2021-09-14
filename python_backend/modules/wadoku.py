@@ -88,7 +88,7 @@ def extract_reading(reading_html: Soup) -> str:
 
 
 def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> DefaultDict:
-    accent_dict = defaultdict(list)
+    accent_dict: DefaultDict[str, List[str]] = defaultdict(list)
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)

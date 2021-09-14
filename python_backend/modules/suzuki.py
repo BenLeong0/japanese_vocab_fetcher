@@ -44,7 +44,7 @@ def get_html(word_list: List[str]) -> Soup:
 
 # Extract sections
 
-def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
+def get_sections(html: Soup) -> List[Tuple[Soup, Soup, Soup]]:
     rows = list(html.findAll('div', class_='phrasing_phrase_wrapper'))
     return [
         (
@@ -69,8 +69,13 @@ def extract_characters(reading_html: Soup) -> str:
 
 def extract_accent_pattern(accent_html: Soup) -> List[int]:
     accent_array_regex = r'\[.*?\]'
-    accent_pattern = literal_eval(re.search(accent_array_regex, str(accent_html)).group())
-    return accent_pattern
+    accent_match = re.search(accent_array_regex, str(accent_html))
+
+    if accent_match is None:
+        raise Exception("Accent not found")
+
+    heights: List[int] = literal_eval(accent_match.group())
+    return heights
 
 
 def contruct_reading(chars: str, accent_pattern: List[int]) -> str:
@@ -104,7 +109,7 @@ def extract_reading(reading_html: Soup, accent_html: Soup) -> str:
     return contruct_reading(chars, accent_pattern)
 
 
-def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> Dict:
+def build_accent_dict(word_sections: List[Tuple[Soup, Soup, Soup]]) -> Dict:
     accent_dict = {}
 
     for writing_html, reading_html, accent_html in word_sections:
