@@ -1,9 +1,10 @@
 from collections import defaultdict
 from enum import Enum
 from threading import Thread
-from typing import Dict, List
+from typing import Any, DefaultDict, Dict, List
 
 from modules import forvo, jisho, ojad, suzuki, wadoku
+from custom_types import 書方, 読方, FullResponse
 
 class Modules(Enum):
     OJAD = ojad
@@ -12,7 +13,7 @@ class Modules(Enum):
     FORVO = forvo
     JISHO = jisho
 
-    def get_info(self, word_list: List[str]) -> Dict[str, List]:
+    def get_info(self, word_list: List[書方]) -> Dict[書方, List]:
         if self.name in ('OJAD', 'SUZUKI', 'WADOKU'):
             return self.value.get_accent_dict(word_list)
         if self.name in ('FORVO', ):
@@ -26,8 +27,8 @@ class ModuleError(Exception):
     pass
 
 
-def get_info(word_list: List[str]) -> Dict:
-    results_dict = defaultdict(dict)
+def get_info(word_list: List[書方]) -> List[FullResponse]:
+    results_dict: DefaultDict[Modules, Dict[書方, Any]] = defaultdict(dict)
 
     def call_script(src: Modules):
         if src not in Modules:
@@ -51,12 +52,12 @@ def get_info(word_list: List[str]) -> Dict:
 
 
 def generate_response(
-    word_list: List[str],
-    ojad_dict: Dict[str,str],
-    suzuki_dict: Dict[str,str],
-    wadoku_dict: Dict[str,str],
-):
-    resp = [{
+    word_list: List[書方],
+    ojad_dict: Dict[書方, List[読方]],
+    suzuki_dict: Dict[書方, List[読方]],
+    wadoku_dict: Dict[書方, List[読方]],
+) -> List[FullResponse]:
+    resp: List[FullResponse] = [{
         'word': word,
         'jisho': {},
         'accent': {
