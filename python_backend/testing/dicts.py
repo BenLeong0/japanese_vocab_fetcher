@@ -10,7 +10,7 @@ from testing.dict_typing import FullTestDict
 # TODO: DICTS TO ADD:
 # - Extra results for ojad (words not in original word list)
 # - OJAD with particles (eg kirei)
-# - Word with な but not [な]
+# - Word with な but not [な], eg なる
 
 
 def get_file_as_string(filename: str, module: str):
