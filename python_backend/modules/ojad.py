@@ -101,7 +101,7 @@ def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> DefaultDi
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)
-        na_adj = re.search(r"\[な\]", writing_html.text)
+        na_adj = '[な]' in writing_html.text
         readings = [extract_reading(reading_html, na_adj=na_adj) for reading_html in reading_htmls]
         for writing in writings:
             accent_dict[writing] += readings
