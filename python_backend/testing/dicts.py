@@ -231,12 +231,12 @@ COMEBACK: FullTestDict= {
     },
     "forvo": {
         "expected_output": {
-            '眼鏡': [],
+            'カムバック': [],
         },
     },
     "wanikani": {
         "expected_output": {
-            '眼鏡': [],
+            'カムバック': [],
         },
     },
     "expected_result": [
@@ -345,12 +345,14 @@ TABERU_GAKUSEI: FullTestDict = {
     },
     "forvo": {
         "expected_output": {
-            '眼鏡': [],
+            '食べる': [],
+            '学生': [],
         },
     },
     "wanikani": {
         "expected_output": {
-            '眼鏡': [],
+            '食べる': [],
+            '学生': [],
         },
     },
     "expected_result": [
@@ -466,12 +468,12 @@ KOTOBA: FullTestDict = {
     },
     "forvo": {
         "expected_output": {
-            '眼鏡': [],
+            '言葉': [],
         },
     },
     "wanikani": {
         "expected_output": {
-            '眼鏡': [],
+            '言葉': [],
         },
     },
     "expected_result": [
@@ -536,12 +538,12 @@ BADINPUT: FullTestDict = {
     },
     "forvo": {
         "expected_output": {
-            '眼鏡': [],
+            'BADINPUT': [],
         },
     },
     "wanikani": {
         "expected_output": {
-            '眼鏡': [],
+            'BADINPUT': [],
         },
     },
     "expected_result": [
@@ -703,12 +705,16 @@ USAGI_IKU_KAGO: FullTestDict = {
     },
     "forvo": {
         "expected_output": {
-            '眼鏡': [],
+            '兎': [],
+            '行く': [],
+            '籠': [],
         },
     },
     "wanikani": {
         "expected_output": {
-            '眼鏡': [],
+            '兎': [],
+            '行く': [],
+            '籠': [],
         },
     },
     "expected_result": [
@@ -850,12 +856,12 @@ SHIZUKA: FullTestDict = {
     },
     "forvo": {
         "expected_output": {
-            '眼鏡': [],
+            '静か': [],
         },
     },
     "wanikani": {
         "expected_output": {
-            '眼鏡': [],
+            '静か': [],
         },
     },
     "expected_result": [
