@@ -49,7 +49,12 @@ def test_generate_response(test_dict: FullTestDict):
     - THEN check the output is as expected
     """
     word_list = test_dict['input']
-    result_dict = defaultdict(dict, {module: test_dict[module]['expected_output'] for module in MODULES})
+    result_dict = defaultdict(dict,
+        {
+            module: test_dict[module]['expected_output']
+            for module in MODULES
+        }
+    )
 
     expected_result = test_dict['expected_result']
 
