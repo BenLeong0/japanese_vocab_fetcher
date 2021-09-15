@@ -11,6 +11,16 @@ def test_dict(request):
     return request.param
 
 
+MODULES = (
+    "jisho",
+    "ojad",
+    "suzuki",
+    "wadoku",
+    "forvo",
+    "wanikani",
+)
+
+
 # Ensure no actual requests are being made
 @pytest.fixture(autouse=True)
 def no_requests(monkeypatch):
@@ -52,14 +62,12 @@ def test_generate_response(test_dict: FullTestDict):
     - THEN check the output is as expected
     """
     word_list = test_dict['input']
-    result_dict = defaultdict(dict, {
-        'jisho': {word: {} for word in word_list},
-        'ojad': test_dict['ojad']['expected_output'],
-        'suzuki': test_dict['suzuki']['expected_output'],
-        'wadoku': test_dict['wadoku']['expected_output'],
-        'forvo': {word: [] for word in word_list},
-        'wanikani': {word: [] for word in word_list},
-    })
+    result_dict = defaultdict(dict,
+        {
+            module: test_dict[module]['expected_output']
+            for module in MODULES
+        }
+    )
 
     expected_result = test_dict['expected_result']
 
