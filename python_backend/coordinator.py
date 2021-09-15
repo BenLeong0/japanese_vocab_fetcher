@@ -7,6 +7,12 @@ from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 
 
 def get_info(word_list: List[Kaki]) -> List[FullResponse]:
+    results_dict = generate_results_dict(word_list)
+    response = generate_response(results_dict, word_list)
+    return response
+
+
+def generate_results_dict(word_list: List[Kaki]) -> DefaultDict[str, Dict[Kaki, Any]]:
     results_dict: DefaultDict[str, Dict[Kaki, Any]] = defaultdict(dict)
 
     def call_script(module_name, module_function, word_list: List[Kaki]) -> None:
@@ -26,11 +32,7 @@ def get_info(word_list: List[Kaki]) -> List[FullResponse]:
     for thread in threads:
         thread.join()
 
-    return generate_response(results_dict, word_list)
-
-
-def generate_results_dict(word_list: List[Kaki]) -> DefaultDict[str, Dict[Kaki, Any]]:
-    return defaultdict(dict)
+    return results_dict
 
 
 def generate_response(
