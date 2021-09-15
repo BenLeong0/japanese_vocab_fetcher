@@ -1,3 +1,4 @@
+from collections import defaultdict
 import pytest
 
 import coordinator
@@ -43,14 +44,14 @@ def test_generate_response(monkeypatch, test_dict: FullTestDict):
     - THEN check the output is as expected
     """
     word_list = test_dict['input']
-    result_dict = {
+    result_dict = defaultdict(dict, {
         'ojad': test_dict['ojad']['expected_output'],
         'suzuki': test_dict['suzuki']['expected_output'],
         'wadoku': test_dict['wadoku']['expected_output'],
         'jisho': {word: {} for word in word_list},
         'forvo': {word: [] for word in word_list},
         'wanikani': {word: [] for word in word_list},
-    }
+    })
 
     expected_result = test_dict['expected_result']
 
