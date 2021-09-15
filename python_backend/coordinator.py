@@ -1,15 +1,9 @@
 from collections import defaultdict
-from enum import Enum
 from threading import Thread
 from typing import Any, DefaultDict, Dict, List
 
 from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
-from custom_types import (
-    Kaki,
-    Yomi,
-    FullResponse
-)
-
+from custom_types import Kaki, FullResponse
 
 
 class ModuleError(Exception):
@@ -40,7 +34,6 @@ def get_info(word_list: List[Kaki]) -> List[FullResponse]:
         results_dict=results_dict,
         word_list=word_list,
     )
-
 
 
 def generate_response(
