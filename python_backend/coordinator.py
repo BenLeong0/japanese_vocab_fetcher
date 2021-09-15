@@ -29,6 +29,10 @@ def get_info(word_list: List[Kaki]) -> List[FullResponse]:
     return generate_response(results_dict, word_list)
 
 
+def generate_results_dict(word_list: List[Kaki]) -> DefaultDict[str, Dict[Kaki, Any]]:
+    return defaultdict(dict)
+
+
 def generate_response(
     results_dict: DefaultDict[str, Dict[Kaki, Any]],
     word_list: List[Kaki],
