@@ -21,9 +21,14 @@ class FakeResponse:
         self.text = text
 
 
-def _get_ojad_html_string(url: str, htmls: List[Soup], timeout: int = 20) -> str:
+def _get_ojad_html_string(url: str, htmls: List[Soup], timeout: int = 20) -> FakeResponse:
     """Given a url return the corresponding (test) html, or a blank page if out of range"""
-    page_number = int(re.search(r"page:\d+", url).group()[5:])
+    page_number_match = re.search(r"page:\d+", url)
+
+    if not page_number_match:
+        raise Exception("Page number not found")
+
+    page_number = int(page_number_match.group()[5:])
     if page_number > len(htmls):
         with open("testing/html_files/ojad_BLANK.html", encoding="utf8") as file:
             return FakeResponse(str(file))
