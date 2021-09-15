@@ -33,9 +33,13 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     - WHEN full results are generated
     - THEN check the output is as expected
     """
+    monkeypatch.setattr("modules.jisho.get_vocab_dict", lambda x: test_dict['jisho']['expected_output'])
     monkeypatch.setattr("modules.ojad.get_accent_dict", lambda x: test_dict['ojad']['expected_output'])
     monkeypatch.setattr("modules.suzuki.get_accent_dict", lambda x: test_dict['suzuki']['expected_output'])
     monkeypatch.setattr("modules.wadoku.get_accent_dict", lambda x: test_dict['wadoku']['expected_output'])
+    monkeypatch.setattr("modules.forvo.get_audio_links", lambda x: test_dict['forvo']['expected_output'])
+    monkeypatch.setattr("modules.wanikani.get_audio_links", lambda x: test_dict['wanikani']['expected_output'])
+
     word_list = test_dict['input']
     expected_result = test_dict['expected_result']
 
@@ -48,9 +52,13 @@ def test_generate_results_dict(monkeypatch, test_dict):
     - WHEN the results dict is generated
     - THEN check the output is as expected
     """
+    monkeypatch.setattr("modules.jisho.get_vocab_dict", lambda x: test_dict['jisho']['expected_output'])
     monkeypatch.setattr("modules.ojad.get_accent_dict", lambda x: test_dict['ojad']['expected_output'])
     monkeypatch.setattr("modules.suzuki.get_accent_dict", lambda x: test_dict['suzuki']['expected_output'])
     monkeypatch.setattr("modules.wadoku.get_accent_dict", lambda x: test_dict['wadoku']['expected_output'])
+    monkeypatch.setattr("modules.forvo.get_audio_links", lambda x: test_dict['forvo']['expected_output'])
+    monkeypatch.setattr("modules.wanikani.get_audio_links", lambda x: test_dict['wanikani']['expected_output'])
+
     word_list = test_dict['input']
 
     expected_result_dict = defaultdict(dict,
