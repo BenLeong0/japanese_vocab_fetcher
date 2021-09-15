@@ -9,7 +9,7 @@ from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 def get_info(word_list: List[Kaki]) -> List[FullResponse]:
     results_dict: DefaultDict[str, Dict[Kaki, Any]] = defaultdict(dict)
 
-    def call_script(module_name, module_function, word_list: List[Kaki]):
+    def call_script(module_name, module_function, word_list: List[Kaki]) -> None:
         results_dict[module_name] = module_function(word_list)
 
     threads: List[Thread] = [
