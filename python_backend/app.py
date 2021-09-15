@@ -1,6 +1,7 @@
+import json
+
 from flask import Flask, request
 from flask_cors import CORS
-import json
 
 from coordinator import get_info
 import utils
