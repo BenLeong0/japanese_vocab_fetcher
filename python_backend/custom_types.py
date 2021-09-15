@@ -1,4 +1,4 @@
-from typing import DefaultDict, Dict, List, Protocol, TypedDict
+from typing import Dict, List, TypedDict
 
 
 class Kaki(str):
