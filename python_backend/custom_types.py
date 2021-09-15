@@ -1,4 +1,4 @@
-from typing import Dict, List, TypedDict
+from typing import DefaultDict, Dict, List, Protocol, TypedDict
 
 
 class kaki(str):
@@ -10,6 +10,11 @@ class yomi(str):
 class URL(str):
     """String representing a URL"""
 
+
+# class JishoResponse(TypedDict):
+#     """Dictionary containing the jisho information of the full response"""
+#     str: str
+JishoResponse = Dict[str, str]
 
 class AccentResponse(TypedDict):
     """Dictionary containing the accent information of the full response"""
@@ -25,6 +30,6 @@ class AudioResponse(TypedDict):
 class FullResponse(TypedDict):
     """Full response to an API request"""
     word: kaki
-    jisho: Dict[str, str]
+    jisho: JishoResponse
     accent: AccentResponse
     audio: AudioResponse
