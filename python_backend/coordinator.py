@@ -1,72 +1,49 @@
 from collections import defaultdict
-from enum import Enum
 from threading import Thread
-from typing import Dict, List
+from typing import Any, DefaultDict, Dict, List
 
-from modules import forvo, jisho, ojad, suzuki, wadoku
-
-class Modules(Enum):
-    OJAD = ojad
-    SUZUKI = suzuki
-    WADOKU = wadoku
-    FORVO = forvo
-    JISHO = jisho
-
-    def get_info(self, word_list: List[str]) -> Dict[str, List]:
-        if self.name in ('OJAD', 'SUZUKI', 'WADOKU'):
-            return self.value.get_accent_dict(word_list)
-        if self.name in ('FORVO', ):
-            return self.value.get_audio_links(word_list)
-        if self.name in ('JISHO', ):
-            return self.value.get_vocab_data(word_list)
-        raise ModuleError()
+from custom_types import Kaki, FullResponse
+from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 
 
-class ModuleError(Exception):
-    pass
+def get_info(word_list: List[Kaki]) -> List[FullResponse]:
+    results_dict: DefaultDict[str, Dict[Kaki, Any]] = defaultdict(dict)
 
+    def call_script(module_name, module_function, word_list: List[Kaki]) -> None:
+        results_dict[module_name] = module_function(word_list)
 
-def get_info(word_list: List[str]) -> Dict:
-    results_dict = defaultdict(dict)
+    threads: List[Thread] = [
+        Thread(target=call_script, args=["jisho", jisho.get_vocab_dict, word_list]),
+        Thread(target=call_script, args=["ojad", ojad.get_accent_dict, word_list]),
+        Thread(target=call_script, args=["suzuki", suzuki.get_accent_dict, word_list]),
+        Thread(target=call_script, args=["wadoku", wadoku.get_accent_dict, word_list]),
+        Thread(target=call_script, args=["forvo", forvo.get_audio_links, word_list]),
+        Thread(target=call_script, args=["wanikani", wanikani.get_audio_links, word_list]),
+    ]
 
-    def call_script(src: Modules):
-        if src not in Modules:
-            raise ModuleError(f"{src} is not a valid module")
-        results_dict[src] = src.get_info(word_list)
-
-
-    threads = [Thread(target=call_script, args=[module]) for module in Modules]
     for thread in threads:
         thread.start()
     for thread in threads:
         thread.join()
 
-    return generate_response(
-        word_list=word_list,
-        ojad_dict=results_dict[Modules.OJAD],
-        suzuki_dict=results_dict[Modules.SUZUKI],
-        wadoku_dict=results_dict[Modules.WADOKU]
-    )
-
+    return generate_response(results_dict, word_list)
 
 
 def generate_response(
-    word_list: List[str],
-    ojad_dict: Dict[str,str],
-    suzuki_dict: Dict[str,str],
-    wadoku_dict: Dict[str,str],
-):
-    resp = [{
+    results_dict: DefaultDict[str, Dict[Kaki, Any]],
+    word_list: List[Kaki],
+) -> List[FullResponse]:
+    resp: List[FullResponse] = [{
         'word': word,
-        'jisho': {},
+        'jisho': results_dict['jisho'][word],
         'accent': {
-            'ojad': ojad_dict[word],
-            'suzuki': suzuki_dict[word],
-            'wadoku': wadoku_dict[word],
+            'ojad': results_dict['ojad'][word],
+            'suzuki': results_dict['suzuki'][word],
+            'wadoku': results_dict['wadoku'][word],
         },
         "audio": {
-            "forvo": [],
-            "wanikani": [],
+            "forvo": results_dict['forvo'][word],
+            "wanikani": results_dict['wanikani'][word],
         },
     } for word in word_list]
     return resp
