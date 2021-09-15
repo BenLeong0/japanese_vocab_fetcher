@@ -1,10 +1,10 @@
 from typing import Dict, List, TypedDict
 
 
-class 書方(str):
+class kaki(str):
     """Kanji writing of a word"""
 
-class 読方(str):
+class yomi(str):
     """Accented reading of a word"""
 
 class URL(str):
@@ -13,9 +13,9 @@ class URL(str):
 
 class AccentResponse(TypedDict):
     """Dictionary containing the accent information of the full response"""
-    ojad: List[読方]
-    suzuki: List[読方]
-    wadoku: List[読方]
+    ojad: List[yomi]
+    suzuki: List[yomi]
+    wadoku: List[yomi]
 
 class AudioResponse(TypedDict):
     """Dictionary containing the audio information of the full response"""
@@ -24,7 +24,7 @@ class AudioResponse(TypedDict):
 
 class FullResponse(TypedDict):
     """Full response to an API request"""
-    word: 書方
+    word: kaki
     jisho: Dict[str, str]
     accent: AccentResponse
     audio: AudioResponse
