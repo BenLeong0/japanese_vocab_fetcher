@@ -40,10 +40,10 @@ def test_generate_response(test_dict: FullTestDict):
     """
     word_list = test_dict['input']
     result_dict = defaultdict(dict, {
+        'jisho': {word: {} for word in word_list},
         'ojad': test_dict['ojad']['expected_output'],
         'suzuki': test_dict['suzuki']['expected_output'],
         'wadoku': test_dict['wadoku']['expected_output'],
-        'jisho': {word: {} for word in word_list},
         'forvo': {word: [] for word in word_list},
         'wanikani': {word: [] for word in word_list},
     })
