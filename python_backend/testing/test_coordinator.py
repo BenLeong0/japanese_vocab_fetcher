@@ -11,11 +11,6 @@ def test_dict(request):
     return request.param
 
 
-class FakeResponse:
-    def __init__(self, text):
-        self.text = text
-
-
 # Ensure no actual requests are being made
 @pytest.fixture(autouse=True)
 def no_requests(monkeypatch):
