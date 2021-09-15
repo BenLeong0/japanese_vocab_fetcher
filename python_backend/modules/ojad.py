@@ -28,8 +28,8 @@ def get_url(word_list: List[str], page_number: int) -> str:
     )
 
 
-def get_rows(html_page: Soup) -> List[Soup]:
-    return html_page.find_all("tr", id=re.compile(r"word_\d+"))
+def get_rows(html_page: Soup) -> List[PageElement]:
+    return list(html_page.find_all("tr", id=re.compile(r"word_\d+")))
 
 
 def has_words(html_page: Soup) -> bool:
