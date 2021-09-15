@@ -28,7 +28,7 @@ def get_url(word_list: List[str], page_number: int) -> str:
     )
 
 
-def get_rows(html_page: Soup) -> List[PageElement]:
+def get_rows(html_page: Soup) -> List[Soup]:
     return html_page.find_all("tr", id=re.compile(r"word_\d+"))
 
 
