@@ -62,4 +62,5 @@ jobs:
         pip install -r python_backend/deployment/requirements_mypy.txt
     - name: Test typing with mypy
       run: |
-        mypy python_backend
+        cd python_backend
+        mypy .
