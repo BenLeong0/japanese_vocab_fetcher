@@ -42,17 +42,21 @@ def test_generate_response(monkeypatch, test_dict: FullTestDict):
     - WHEN full results are generated
     - THEN check the output is as expected
     """
-    monkeypatch.setattr("modules.ojad.get_accent_dict", lambda x: test_dict['ojad']['expected_output'])
-    monkeypatch.setattr("modules.suzuki.get_accent_dict", lambda x: test_dict['suzuki']['expected_output'])
-    monkeypatch.setattr("modules.wadoku.get_accent_dict", lambda x: test_dict['wadoku']['expected_output'])
     word_list = test_dict['input']
+    result_dict = {
+        'ojad': test_dict['ojad']['expected_output'],
+        'suzuki': test_dict['suzuki']['expected_output'],
+        'wadoku': test_dict['wadoku']['expected_output'],
+        'jisho': {word: {} for word in word_list},
+        'forvo': {word: [] for word in word_list},
+        'wanikani': {word: [] for word in word_list},
+    }
+
     expected_result = test_dict['expected_result']
 
     resp = coordinator.generate_response(
+        results_dict=result_dict,
         word_list=word_list,
-        ojad_dict=test_dict['ojad']['expected_output'],
-        suzuki_dict=test_dict['suzuki']['expected_output'],
-        wadoku_dict=test_dict['wadoku']['expected_output'],
     )
 
     assert resp == expected_result
