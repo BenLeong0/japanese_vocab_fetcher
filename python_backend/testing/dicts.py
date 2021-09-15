@@ -51,8 +51,11 @@ def build_suzuki_formdata(word_list_string: str) -> Dict[str, str]:
 MEGANE: FullTestDict = {
     "id": "MEGANE",
     "input": ["眼鏡"],
-    "forvo": {},
-    "jisho": {},
+    "jisho": {
+        "expected_output": {
+            '眼鏡': {},
+        },
+    },
     "ojad": {
         "htmls": get_ojad_html_files("megane"),
         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:眼鏡/page:%s",
@@ -125,6 +128,16 @@ MEGANE: FullTestDict = {
             "眼鏡": ["め' がね", "がんきょう" ],
         },
     },
+    "forvo": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
     "expected_result": [
         {
             "word": "眼鏡",
@@ -146,8 +159,11 @@ MEGANE: FullTestDict = {
 COMEBACK: FullTestDict= {
     "id": "COMEBACK",
     'input': ['カムバック'],
-    "forvo": {},
-    "jisho": {},
+    "jisho": {
+        "expected_output": {
+            'カムバック': {},
+        },
+    },
     "ojad": {
         "htmls": get_ojad_html_files("comeback"),
         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:カムバック/page:%s",
@@ -213,6 +229,16 @@ COMEBACK: FullTestDict= {
             'カムバック': ["かむば' っく", "か' むばっく"],
         },
     },
+    "forvo": {
+        "expected_output": {
+            'カムバック': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            'カムバック': [],
+        },
+    },
     "expected_result": [
         {
             "word": "カムバック",
@@ -234,8 +260,12 @@ COMEBACK: FullTestDict= {
 TABERU_GAKUSEI: FullTestDict = {
     "id": "TABERU_GAKUSEI",
     'input': ['食べる', '学生'],
-    "forvo": {},
-    "jisho": {},
+    "jisho": {
+        "expected_output": {
+            '食べる': {},
+            '学生': {},
+        },
+    },
     "ojad": {
         "htmls": get_ojad_html_files("taberu_gakusei"),
         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:食べる%%20学生/page:%s",
@@ -313,6 +343,18 @@ TABERU_GAKUSEI: FullTestDict = {
             '学生': ["がくせい"],
         },
     },
+    "forvo": {
+        "expected_output": {
+            '食べる': [],
+            '学生': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '食べる': [],
+            '学生': [],
+        },
+    },
     "expected_result": [
         {
             "word": "食べる",
@@ -347,8 +389,11 @@ TABERU_GAKUSEI: FullTestDict = {
 KOTOBA: FullTestDict = {
     "id": "KOTOBA",
     'input': ['言葉'],
-    "forvo": {},
-    "jisho": {},
+    "jisho": {
+        "expected_output": {
+            '言葉': {},
+        },
+    },
     "ojad": {
         "htmls": get_ojad_html_files("kotoba"),
         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:言葉/page:%s",
@@ -421,6 +466,16 @@ KOTOBA: FullTestDict = {
             '言葉': ["ことば'"],
         },
     },
+    "forvo": {
+        "expected_output": {
+            '言葉': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '言葉': [],
+        },
+    },
     "expected_result": [
         {
             "word": "言葉",
@@ -442,8 +497,11 @@ KOTOBA: FullTestDict = {
 BADINPUT: FullTestDict = {
     "id": "BADINPUT",
     'input': ['BADINPUT'],
-    "forvo": {},
-    "jisho": {},
+    "jisho": {
+        "expected_output": {
+            'BADINPUT': {},
+        },
+    },
     "ojad": {
         "htmls": get_ojad_html_files("badinput"),
         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:BADINPUT/page:%s",
@@ -478,6 +536,16 @@ BADINPUT: FullTestDict = {
             'BADINPUT': [],
         },
     },
+    "forvo": {
+        "expected_output": {
+            'BADINPUT': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            'BADINPUT': [],
+        },
+    },
     "expected_result": [
         {
             "word": "BADINPUT",
@@ -499,8 +567,13 @@ BADINPUT: FullTestDict = {
 USAGI_IKU_KAGO: FullTestDict = {
     "id": "USAGI_IKU_KAGO",
     'input': ['兎', '行く', '籠'],
-    "forvo": {},
-    "jisho": {},
+    "jisho": {
+        "expected_output": {
+            '兎': {},
+            '行く': {},
+            '籠': {},
+        },
+    },
     "ojad": {
         "htmls": get_ojad_html_files("usagi_iku_kago"),
         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:兎%%20行く%%20籠/page:%s",
@@ -630,6 +703,20 @@ USAGI_IKU_KAGO: FullTestDict = {
             '籠': ["かご", "こ'"],
         },
     },
+    "forvo": {
+        "expected_output": {
+            '兎': [],
+            '行く': [],
+            '籠': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '兎': [],
+            '行く': [],
+            '籠': [],
+        },
+    },
     "expected_result": [
         {
             "word": "兎",
@@ -677,8 +764,11 @@ USAGI_IKU_KAGO: FullTestDict = {
 SHIZUKA: FullTestDict = {
     "id": "SHIZUKA",
     'input': ['静か'],
-    "forvo": {},
-    "jisho": {},
+    "jisho": {
+        "expected_output": {
+            '静か': {},
+        },
+    },
     "ojad": {
         "htmls": get_ojad_html_files("shizuka"),
         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:静か/page:%s",
@@ -762,6 +852,16 @@ SHIZUKA: FullTestDict = {
         }),
         "expected_output": {
             '静か': ["し' ずか"],
+        },
+    },
+    "forvo": {
+        "expected_output": {
+            '静か': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '静か': [],
         },
     },
     "expected_result": [
