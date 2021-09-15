@@ -37,7 +37,7 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     assert coordinator.get_info(word_list) == expected_result
 
 
-def test_generate_response(monkeypatch, test_dict: FullTestDict):
+def test_generate_response(test_dict: FullTestDict):
     """
     - GIVEN a list of words
     - WHEN full results are generated
