@@ -159,7 +159,6 @@ MEGANE: FullTestDict = {
 COMEBACK: FullTestDict= {
     "id": "COMEBACK",
     'input': ['カムバック'],
-    "forvo": {},
     "jisho": {
         "expected_output": {
             'カムバック': {},
@@ -230,6 +229,16 @@ COMEBACK: FullTestDict= {
             'カムバック': ["かむば' っく", "か' むばっく"],
         },
     },
+    "forvo": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
     "expected_result": [
         {
             "word": "カムバック",
@@ -251,7 +260,6 @@ COMEBACK: FullTestDict= {
 TABERU_GAKUSEI: FullTestDict = {
     "id": "TABERU_GAKUSEI",
     'input': ['食べる', '学生'],
-    "forvo": {},
     "jisho": {
         "expected_output": {
             '食べる': {},
@@ -335,6 +343,16 @@ TABERU_GAKUSEI: FullTestDict = {
             '学生': ["がくせい"],
         },
     },
+    "forvo": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
     "expected_result": [
         {
             "word": "食べる",
@@ -369,7 +387,6 @@ TABERU_GAKUSEI: FullTestDict = {
 KOTOBA: FullTestDict = {
     "id": "KOTOBA",
     'input': ['言葉'],
-    "forvo": {},
     "jisho": {
         "expected_output": {
             '言葉': {},
@@ -447,6 +464,16 @@ KOTOBA: FullTestDict = {
             '言葉': ["ことば'"],
         },
     },
+    "forvo": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
     "expected_result": [
         {
             "word": "言葉",
@@ -468,7 +495,6 @@ KOTOBA: FullTestDict = {
 BADINPUT: FullTestDict = {
     "id": "BADINPUT",
     'input': ['BADINPUT'],
-    "forvo": {},
     "jisho": {
         "expected_output": {
             'BADINPUT': {},
@@ -508,6 +534,16 @@ BADINPUT: FullTestDict = {
             'BADINPUT': [],
         },
     },
+    "forvo": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
     "expected_result": [
         {
             "word": "BADINPUT",
@@ -529,7 +565,6 @@ BADINPUT: FullTestDict = {
 USAGI_IKU_KAGO: FullTestDict = {
     "id": "USAGI_IKU_KAGO",
     'input': ['兎', '行く', '籠'],
-    "forvo": {},
     "jisho": {
         "expected_output": {
             '兎': {},
@@ -666,6 +701,16 @@ USAGI_IKU_KAGO: FullTestDict = {
             '籠': ["かご", "こ'"],
         },
     },
+    "forvo": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
     "expected_result": [
         {
             "word": "兎",
@@ -713,7 +758,6 @@ USAGI_IKU_KAGO: FullTestDict = {
 SHIZUKA: FullTestDict = {
     "id": "SHIZUKA",
     'input': ['静か'],
-    "forvo": {},
     "jisho": {
         "expected_output": {
             '静か': {},
@@ -802,6 +846,16 @@ SHIZUKA: FullTestDict = {
         }),
         "expected_output": {
             '静か': ["し' ずか"],
+        },
+    },
+    "forvo": {
+        "expected_output": {
+            '眼鏡': [],
+        },
+    },
+    "wanikani": {
+        "expected_output": {
+            '眼鏡': [],
         },
     },
     "expected_result": [
