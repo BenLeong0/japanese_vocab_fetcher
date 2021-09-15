@@ -26,10 +26,7 @@ def get_info(word_list: List[Kaki]) -> List[FullResponse]:
     for thread in threads:
         thread.join()
 
-    return generate_response(
-        results_dict=results_dict,
-        word_list=word_list,
-    )
+    return generate_response(results_dict, word_list)
 
 
 def generate_response(
