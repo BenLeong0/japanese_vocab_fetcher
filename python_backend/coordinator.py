@@ -6,10 +6,6 @@ from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 from custom_types import Kaki, FullResponse
 
 
-class ModuleError(Exception):
-    pass
-
-
 def get_info(word_list: List[Kaki]) -> List[FullResponse]:
     results_dict: DefaultDict[str, Dict[Kaki, Any]] = defaultdict(dict)
 
