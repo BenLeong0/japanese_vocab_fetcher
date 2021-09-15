@@ -4,6 +4,7 @@ from modules import (
     ojad,
     suzuki,
     wadoku,
+    wanikani,
 )
 
-__all__ = ["forvo", "jisho", "ojad", "suzuki", "wadoku"]
+__all__ = ["forvo", "jisho", "ojad", "suzuki", "wadoku", "wanikani"]
