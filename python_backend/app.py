@@ -1,5 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
+import json
 
 from coordinator import get_info
 import utils
@@ -12,7 +13,7 @@ CORS(app)
 def homepage():
     word_list = utils.get_words_from_request(request)
     resp = get_info(word_list)
-    print(resp)
+    print(json.dumps(resp, ensure_ascii=False, indent=4))
     return utils.create_successful_response(resp)
 
 
