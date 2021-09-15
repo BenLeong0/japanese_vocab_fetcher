@@ -2,8 +2,8 @@ from collections import defaultdict
 from threading import Thread
 from typing import Any, DefaultDict, Dict, List
 
-from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 from custom_types import Kaki, FullResponse
+from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 
 
 def get_info(word_list: List[Kaki]) -> List[FullResponse]:
