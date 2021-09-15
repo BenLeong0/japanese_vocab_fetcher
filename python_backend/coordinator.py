@@ -5,8 +5,8 @@ from typing import Any, DefaultDict, Dict, List
 
 from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 from custom_types import (
-    kaki,
-    yomi,
+    Kaki,
+    Yomi,
     FullResponse
 )
 
@@ -16,10 +16,10 @@ class ModuleError(Exception):
     pass
 
 
-def get_info(word_list: List[kaki]) -> List[FullResponse]:
-    results_dict: DefaultDict[str, Dict[kaki, Any]] = defaultdict(dict)
+def get_info(word_list: List[Kaki]) -> List[FullResponse]:
+    results_dict: DefaultDict[str, Dict[Kaki, Any]] = defaultdict(dict)
 
-    def call_script(module_name, module_function, word_list: List[kaki]):
+    def call_script(module_name, module_function, word_list: List[Kaki]):
         results_dict[module_name] = module_function(word_list)
 
     threads: List[Thread] = [
@@ -44,8 +44,8 @@ def get_info(word_list: List[kaki]) -> List[FullResponse]:
 
 
 def generate_response(
-    results_dict: DefaultDict[str, Dict[kaki, Any]],
-    word_list: List[kaki],
+    results_dict: DefaultDict[str, Dict[Kaki, Any]],
+    word_list: List[Kaki],
 ) -> List[FullResponse]:
     resp: List[FullResponse] = [{
         'word': word,
