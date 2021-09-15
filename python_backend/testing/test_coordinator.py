@@ -50,9 +50,4 @@ def test_generate_response(test_dict: FullTestDict):
 
     expected_result = test_dict['expected_result']
 
-    resp = coordinator.generate_response(
-        results_dict=result_dict,
-        word_list=word_list,
-    )
-
-    assert resp == expected_result
+    assert coordinator.generate_response(result_dict, word_list) == expected_result
