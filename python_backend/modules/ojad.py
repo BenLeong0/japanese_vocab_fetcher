@@ -57,7 +57,7 @@ def get_htmls(word_list: List[str]) -> List[Soup]:
 # Extract sections
 
 def get_sections(htmls: List[Soup]) -> List[Tuple[Soup, List[Soup]]]:
-    rows = sum(map(get_rows, htmls), [])
+    rows: List[Soup] = sum(map(get_rows, htmls), [])
     return [
         (
             Soup(str(row.find('td', class_='midashi')), "html.parser"),
