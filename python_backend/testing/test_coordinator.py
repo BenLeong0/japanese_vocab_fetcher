@@ -32,6 +32,19 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     assert coordinator.get_info(word_list) == expected_result
 
 
+def test_generate_results_dict(monkeypatch, test_dict):
+    """
+    - GIVEN a list of words
+    - WHEN the results dict is generated
+    - THEN check the output is as expected
+    """
+    monkeypatch.setattr("modules.ojad.get_accent_dict", lambda x: test_dict['ojad']['expected_output'])
+    monkeypatch.setattr("modules.suzuki.get_accent_dict", lambda x: test_dict['suzuki']['expected_output'])
+    monkeypatch.setattr("modules.wadoku.get_accent_dict", lambda x: test_dict['wadoku']['expected_output'])
+    word_list = test_dict['input']
+
+
+
 def test_generate_response(test_dict: FullTestDict):
     """
     - GIVEN a list of words
