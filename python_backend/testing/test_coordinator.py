@@ -53,6 +53,15 @@ def test_generate_results_dict(monkeypatch, test_dict):
     monkeypatch.setattr("modules.wadoku.get_accent_dict", lambda x: test_dict['wadoku']['expected_output'])
     word_list = test_dict['input']
 
+    expected_result_dict = defaultdict(dict,
+        {
+            module: test_dict[module]['expected_output']
+            for module in MODULES
+        }
+    )
+
+    assert coordinator.generate_results_dict(word_list) == expected_result_dict
+
 
 
 def test_generate_response(test_dict: FullTestDict):
