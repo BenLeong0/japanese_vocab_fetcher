@@ -1,11 +1,11 @@
 from typing import Dict, List, TypedDict
 
 
-class Kaki(str):
-    """Kanji writing of a word"""
+Kaki = str
+"""Kanji writing of a word"""
 
-class Yomi(str):
-    """Accented reading of a word"""
+Yomi = str
+"""Accented reading of a word"""
 
 class URL(str):
     """String representing a URL"""

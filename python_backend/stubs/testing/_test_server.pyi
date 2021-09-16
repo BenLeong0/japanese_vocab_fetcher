@@ -1,0 +1,6 @@
+from testing.dict_typing import FullTestDict as FullTestDict
+
+API_URL: str
+
+def test_dict(request): ...
+def test_words_endpoint(test_dict: FullTestDict): ...

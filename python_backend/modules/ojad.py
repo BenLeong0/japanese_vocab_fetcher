@@ -66,7 +66,7 @@ def get_sections(htmls: List[Soup]) -> List[Tuple[Soup, List[Soup]]]:
             Soup(str(row.find('td', class_='midashi')), "html.parser"),
             [
                 Soup(str(proc), "html.parser") for proc in
-                row.find('td', class_='katsuyo_jisho_js').findAll('div', class_="katsuyo_proc")
+                row.find('td', class_='katsuyo_jisho_js').find_all('div', class_="katsuyo_proc")
             ]
         ) for row in rows
     ]
@@ -83,8 +83,9 @@ def extract_writings(writing_html: Soup) -> List[str]:
 def extract_reading(reading_html: Soup, na_adj: bool) -> str:
     # 拗音 get their own span already!
     contents: Soup = reading_html.find("span", class_="accented_word")
-    chars: List[str] = [span.text for span in contents]
-    classes: List[List[str]] = [span['class'] for span in contents]
+    spans = contents.findChildren("span", recursive=False)
+    chars: List[str] = [span.text for span in spans]
+    classes: List[List[str]] = [span['class'] for span in spans]
 
     reading = ''
     for (char, class_list) in zip(chars, classes):

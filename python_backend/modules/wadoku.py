@@ -44,11 +44,11 @@ def get_html(word_list: List[str]) -> Soup:
 # Extract sections
 
 def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
-    rows = list(html.findAll('tr'))
+    rows = list(html.find_all('tr'))
     return [
         (
             Soup(str(row.find('div', class_='japanese')), "html.parser"),
-            [Soup(str(span), "html.parser") for span in row.findAll('span', class_='accent')]
+            [Soup(str(span), "html.parser") for span in row.find_all('span', class_='accent')]
         ) for row in rows if row.find('div', class_='japanese') is not None
     ]
 
@@ -69,22 +69,22 @@ def extract_reading(reading_html: Soup) -> str:
 
     # Initialise with first char
     curr = remove_punct(spans[0].text)
-    height = 1 if 't' in spans[0]['class'] else 0
+    height = 1 if 't' in spans[0].get('class') else 0
 
     # Iterate over alternating heights
     for (i, span) in enumerate(spans[1:], start=1):
-        if 't' in span['class'] and height == 0:
+        if 't' in span.get('class') and height == 0:
             if i != 1:
                 curr += "* "
             height = 1
-        elif 'b' in span['class'] and height == 1:
+        elif 'b' in span.get('class') and height == 1:
             curr += "' "
             height = 0
 
         curr += remove_punct(span.text)
 
     # Final drop if 尾高
-    if 'r' in spans[-1]['class'] and height == 1:
+    if 'r' in spans[-1].get('class') and height == 1:
         curr += "'"
 
     return curr

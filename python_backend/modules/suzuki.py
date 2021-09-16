@@ -48,7 +48,7 @@ def get_html(word_list: List[str]) -> Soup:
 # Extract sections
 
 def get_sections(html: Soup) -> List[Tuple[Soup, Soup, Soup]]:
-    rows = list(html.findAll('div', class_='phrasing_phrase_wrapper'))
+    rows = list(html.find_all('div', class_='phrasing_phrase_wrapper'))
     return [
         (
             Soup(str(row.find('div', class_='phrasing_subscript')), "html.parser"),
