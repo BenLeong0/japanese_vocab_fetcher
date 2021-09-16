@@ -25,7 +25,7 @@ def test_empty_input():
     - WHEN an accent dictionary is generated
     - THEN check it returns and empty dict
     """
-    assert wadoku.get_accent_dict([]) == {}
+    assert wadoku.main([]) == {}
 
 
 def test_get_url(test_dict: FullTestDict):
@@ -101,7 +101,7 @@ def test_get_accent_dict(monkeypatch, test_dict: FullTestDict):
     expected_output = test_dict['wadoku']['expected_output']
 
     monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(html))
-    assert wadoku.get_accent_dict(word_list) == expected_output
+    assert wadoku.main(word_list) == expected_output
 
 
 def test_recursion(monkeypatch):
@@ -124,7 +124,7 @@ def test_recursion(monkeypatch):
 
     monkeypatch.setattr("requests.post", html_response)
 
-    assert wadoku.get_accent_dict(word_list) == {
+    assert wadoku.main(word_list) == {
         'BADINPUT': [],
         '食べる': ["たべ' る"],
         '学生': ["がくせい"],

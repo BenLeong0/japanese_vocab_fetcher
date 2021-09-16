@@ -23,7 +23,7 @@ def test_empty_input():
     - WHEN an accent dictionary is generated
     - THEN check it returns and empty dict
     """
-    assert suzuki.get_accent_dict([]) == {}
+    assert suzuki.main([]) == {}
 
 
 def test_get_formdata(test_dict: FullTestDict):
@@ -98,4 +98,4 @@ def test_get_accent_dict(monkeypatch, test_dict: FullTestDict):
     expected_output = test_dict['suzuki']['expected_output']
 
     monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
-    assert suzuki.get_accent_dict(word_list) == expected_output
+    assert suzuki.main(word_list) == expected_output

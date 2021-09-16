@@ -1,9 +1,25 @@
 from collections import defaultdict
+from enum import Enum
 from threading import Thread
-from typing import Any, DefaultDict, Dict, List
+from typing import Any, DefaultDict, Dict, List, Protocol
 
 from custom_types import Kaki, FullResponse
 from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
+
+
+class Module(Protocol):
+    NAME: str
+    def main(self, word_list: List[Kaki]) -> Dict: ...
+
+
+MODULES: List[Module] = [
+    forvo,
+    jisho,
+    ojad,
+    suzuki,
+    wadoku,
+    wanikani,
+]
 
 
 def get_info(word_list: List[Kaki]) -> List[FullResponse]:
@@ -15,16 +31,13 @@ def get_info(word_list: List[Kaki]) -> List[FullResponse]:
 def generate_results_dict(word_list: List[Kaki]) -> DefaultDict[str, Dict[Kaki, Any]]:
     results_dict: DefaultDict[str, Dict[Kaki, Any]] = defaultdict(dict)
 
-    def call_script(module_name, module_function, word_list: List[Kaki]) -> None:
-        results_dict[module_name] = module_function(word_list)
+    def call_script(module: Module, word_list: List[Kaki]) -> None:
+        """Multithreading script to update results_dict with results from modules"""
+        results_dict[module.NAME] = module.main(word_list)
 
     threads: List[Thread] = [
-        Thread(target=call_script, args=["jisho", jisho.get_vocab_dict, word_list]),
-        Thread(target=call_script, args=["ojad", ojad.get_accent_dict, word_list]),
-        Thread(target=call_script, args=["suzuki", suzuki.get_accent_dict, word_list]),
-        Thread(target=call_script, args=["wadoku", wadoku.get_accent_dict, word_list]),
-        Thread(target=call_script, args=["forvo", forvo.get_audio_links, word_list]),
-        Thread(target=call_script, args=["wanikani", wanikani.get_audio_links, word_list]),
+        Thread(target=call_script, args=[module, word_list])
+        for module in MODULES
     ]
 
     for thread in threads:

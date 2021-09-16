@@ -41,7 +41,7 @@ def test_empty_input():
     - WHEN an accent dictionary is generated
     - THEN check it returns an empty dict
     """
-    assert ojad.get_accent_dict([]) == {}
+    assert ojad.main([]) == {}
 
 
 @pytest.mark.parametrize("page_number", [1,2,3,10,100])
@@ -157,4 +157,4 @@ def test_get_accent_dict(monkeypatch, test_dict: FullTestDict):
     expected_output = test_dict['ojad']['expected_output']
 
     monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
-    assert ojad.get_accent_dict(word_list) == expected_output
+    assert ojad.main(word_list) == expected_output

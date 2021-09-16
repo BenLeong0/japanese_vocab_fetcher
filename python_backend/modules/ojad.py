@@ -7,7 +7,10 @@ from bs4.element import PageElement
 import requests
 
 
-def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
+NAME = "ojad"
+
+
+def main(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
         return {}
 

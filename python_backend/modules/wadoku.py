@@ -7,7 +7,10 @@ import requests
 from utils import remove_punct
 
 
-def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
+NAME = "wadoku"
+
+
+def main(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
         return {}
 
@@ -16,7 +19,7 @@ def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
 
     # If first word is invalid, the whole search fails, so try removing first word
     if not word_sections:
-        sub_accent_dict = get_accent_dict(word_list[1:])
+        sub_accent_dict = main(word_list[1:])
         sub_accent_dict[word_list[0]] = []
         return sub_accent_dict
 
