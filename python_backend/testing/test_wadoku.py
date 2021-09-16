@@ -19,6 +19,49 @@ class FakeResponse:
         self.text = text
 
 
+def test_main(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the accent dict is generated
+    - THEN check all the wadoku info is correct and complete
+    """
+    word_list = test_dict['input']
+    html = test_dict['wadoku']['html']
+    expected_output = test_dict['wadoku']['expected_output']
+
+    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(html))
+    assert wadoku.main(word_list) == expected_output
+
+
+def test_main_recursion(monkeypatch):
+    """
+    GIVEN a wordlist with an invalid first word
+    WHEN an accent dict is generated
+    THEN the function runs again, excluding the first word
+    """
+    word_list = ["BADINPUT", "食べる", "学生"]
+
+    def html_response(url, timeout):
+        if url == "https://www.wadoku.de/search/BADINPUT%20食べる%20学生":
+           path = "testing/html_files/wadoku_badinput_taberu_gakusei.html"
+        elif url == "https://www.wadoku.de/search/食べる%20学生":
+           path = "testing/html_files/wadoku_taberu_gakusei.html"
+        else:
+            raise ValueError("Unexpected URL")
+
+        with open(path, encoding="utf8") as f:
+            mock_response = FakeResponse(re.sub(r'>\s*<', '><', f.read()))
+        return mock_response
+
+    monkeypatch.setattr("requests.post", html_response)
+
+    assert wadoku.main(word_list) == {
+        'BADINPUT': [],
+        '食べる': ["たべ' る"],
+        '学生': ["がくせい"],
+    }
+
+
 def test_empty_input():
     """
     - GIVEN an empty input
@@ -88,44 +131,3 @@ def test_build_accent_dict(test_dict: FullTestDict):
     ]
 
     assert wadoku.build_accent_dict(word_sections) == test_dict['wadoku']['full_accent_dict']
-
-
-def test_get_accent_dict(monkeypatch, test_dict: FullTestDict):
-    """
-    - GIVEN a list of words
-    - WHEN the accent dict is generated
-    - THEN check all the wadoku info is correct and complete
-    """
-    word_list = test_dict['input']
-    html = test_dict['wadoku']['html']
-    expected_output = test_dict['wadoku']['expected_output']
-
-    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(html))
-    assert wadoku.main(word_list) == expected_output
-
-
-def test_recursion(monkeypatch):
-    """
-    GIVEN a wordlist with an invalid first word
-    WHEN an accent dict is generated
-    THEN the function runs again, excluding the first word
-    """
-    word_list = ["BADINPUT", "食べる", "学生"]
-
-    def html_response(url, timeout):
-        if "BADINPUT" in url:
-           path = "testing/html_files/wadoku_badinput_taberu_gakusei.html"
-        else:
-           path = "testing/html_files/wadoku_taberu_gakusei.html"
-
-        with open(path, encoding="utf8") as f:
-            mock_response = FakeResponse(re.sub(r'>\s*<', '><', f.read()))
-        return mock_response
-
-    monkeypatch.setattr("requests.post", html_response)
-
-    assert wadoku.main(word_list) == {
-        'BADINPUT': [],
-        '食べる': ["たべ' る"],
-        '学生': ["がくせい"],
-    }

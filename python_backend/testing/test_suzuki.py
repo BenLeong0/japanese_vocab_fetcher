@@ -17,6 +17,20 @@ class FakeResponse:
         self.text = text
 
 
+def test_main(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the accent dict is generated
+    - THEN check all the suzuki info is correct and complete
+    """
+    word_list = test_dict['input']
+    html = test_dict['suzuki']['html']
+    expected_output = test_dict['suzuki']['expected_output']
+
+    monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
+    assert suzuki.main(word_list) == expected_output
+
+
 def test_empty_input():
     """
     - GIVEN an empty input
@@ -85,17 +99,3 @@ def test_build_accent_dict(test_dict: FullTestDict):
     ]
 
     assert suzuki.build_accent_dict(word_sections) == test_dict['suzuki']['expected_output']
-
-
-def test_get_accent_dict(monkeypatch, test_dict: FullTestDict):
-    """
-    - GIVEN a list of words
-    - WHEN the accent dict is generated
-    - THEN check all the suzuki info is correct and complete
-    """
-    word_list = test_dict['input']
-    html = test_dict['suzuki']['html']
-    expected_output = test_dict['suzuki']['expected_output']
-
-    monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
-    assert suzuki.main(word_list) == expected_output
