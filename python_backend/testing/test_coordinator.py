@@ -33,10 +33,6 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     - WHEN full results are generated
     - THEN check the output is as expected
     """
-    # for module in MODULES:
-    #     print(module, test_dict[module]['expected_output'])
-    #     print(f"modules.{module}.main")
-    #     monkeypatch.setattr(f"modules.{module}.main", lambda x: test_dict[module]['expected_output'])
     monkeypatch.setattr("modules.jisho.main", lambda x: test_dict['jisho']['expected_output'])
     monkeypatch.setattr("modules.ojad.main", lambda x: test_dict['ojad']['expected_output'])
     monkeypatch.setattr("modules.suzuki.main", lambda x: test_dict['suzuki']['expected_output'])
