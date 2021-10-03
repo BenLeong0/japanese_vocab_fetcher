@@ -23,8 +23,8 @@ def get_ojad_html_files(slug: str) -> List[str]:
     htmls: List[str] = []
     file_index: int = 0
     while True:
-        file_index = f"{file_index:02d}"
-        path = f"testing/html_files/ojad_{slug}_{file_index}.html"
+        file_index_str = f"{file_index:02d}"
+        path = f"testing/html_files/ojad_{slug}_{file_index_str}.html"
         if not os.path.exists(path):
             break
         with open(path, "r", encoding="utf8") as myfile:
