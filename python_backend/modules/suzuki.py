@@ -8,7 +8,9 @@ import requests
 from utils import make_single_line
 
 
-def get_accent_dict(word_list: List[str]) -> Dict[str, List[str]]:
+NAME = "suzuki"
+
+def main(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
         return {}
 
