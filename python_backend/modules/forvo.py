@@ -11,7 +11,7 @@ NAME = "forvo"
 if os.path.exists(".env"):
     API_KEY: str = dotenv_values()['FORVO_API_KEY']
 else:
-    API_KEY = "XXXXXXXXXXXXXXXX"
+    API_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
