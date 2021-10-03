@@ -3,7 +3,7 @@ import re
 from typing import List
 
 from bs4 import BeautifulSoup as Soup
-import pytest
+import pytest   # type: ignore
 
 from modules import ojad
 from testing.dict_typing import FullTestDict

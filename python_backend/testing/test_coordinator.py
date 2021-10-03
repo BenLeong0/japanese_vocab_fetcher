@@ -1,6 +1,6 @@
 from collections import defaultdict
 from typing import Any, DefaultDict, Dict
-import pytest
+import pytest   # type: ignore
 
 import coordinator
 from custom_types import Kaki

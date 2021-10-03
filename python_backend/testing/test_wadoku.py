@@ -1,7 +1,7 @@
 import re
 
 from bs4 import BeautifulSoup as Soup
-import pytest
+import pytest   # type: ignore
 
 from modules import wadoku
 from testing.dict_typing import FullTestDict
