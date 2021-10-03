@@ -138,7 +138,7 @@ MEGANE: FullTestDict = {
     "forvo": {
         "expected_sections": [
             {
-                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/\\u773c\\u93e1/id_lang_speak/76/key/{API_KEY}"),
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/眼鏡/id_lang_speak/76/key/{API_KEY}"),
             },
         ],
         "expected_output": {
@@ -245,7 +245,7 @@ COMEBACK: FullTestDict= {
     "forvo": {
         "expected_sections": [
             {
-                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/\\u30ab\\u30e0\\u30d0\\u30c3\\u30af/id_lang_speak/76/key/{API_KEY}"),
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/カムバック/id_lang_speak/76/key/{API_KEY}"),
             },
         ],
         "expected_output": {
@@ -366,10 +366,10 @@ TABERU_GAKUSEI: FullTestDict = {
     "forvo": {
         "expected_sections": [
             {
-                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/\\u98df\\u3079\\u308b/id_lang_speak/76/key/{API_KEY}"),
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/食べる/id_lang_speak/76/key/{API_KEY}"),
             },
             {
-                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/\\u5b66\\u751f/id_lang_speak/76/key/{API_KEY}"),
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/学生/id_lang_speak/76/key/{API_KEY}"),
             },
         ],
         "expected_output": {
@@ -498,7 +498,7 @@ KOTOBA: FullTestDict = {
     "forvo": {
         "expected_sections": [
             {
-                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/\\u8a00\\u8449/id_lang_speak/76/key/{API_KEY}"),
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/言葉/id_lang_speak/76/key/{API_KEY}"),
             },
         ],
         "expected_output": {
@@ -748,13 +748,13 @@ USAGI_IKU_KAGO: FullTestDict = {
     "forvo": {
         "expected_sections": [
             {
-                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/\\u514e/id_lang_speak/76/key/{API_KEY}"),
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/兎/id_lang_speak/76/key/{API_KEY}"),
             },
             {
-                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/\\u884c\\u304f/id_lang_speak/76/key/{API_KEY}"),
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/行く/id_lang_speak/76/key/{API_KEY}"),
             },
             {
-                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/\\u7c60/id_lang_speak/76/key/{API_KEY}"),
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/籠/id_lang_speak/76/key/{API_KEY}"),
             },
         ],
         "expected_output": {
@@ -910,7 +910,7 @@ SHIZUKA: FullTestDict = {
     "forvo": {
         "expected_sections": [
             {
-                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/\\u9759\\u304b/id_lang_speak/76/key/{API_KEY}"),
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/静か/id_lang_speak/76/key/{API_KEY}"),
             },
         ],
         "expected_output": {
