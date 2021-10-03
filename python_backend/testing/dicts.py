@@ -4,8 +4,8 @@ import re
 from typing import Dict, List
 
 from bs4 import BeautifulSoup as Soup
-from python_backend.custom_types import URL, HTMLString
 
+from custom_types import URL, HTMLString
 from testing.dict_typing import FullTestDict
 
 # TODO: DICTS TO ADD:

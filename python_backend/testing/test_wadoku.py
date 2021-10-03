@@ -6,6 +6,7 @@ import pytest
 from modules import wadoku
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
+from utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -34,7 +35,7 @@ def test_get_url(test_dict: FullTestDict):
     - WHEN a url is generated
     - THEN check the url is encoded
     """
-    word_list = test_dict['input']
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
     expected_url = test_dict['wadoku']['url']
 
     assert wadoku.get_url(word_list) == expected_url
@@ -96,7 +97,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - WHEN the accent dict is generated
     - THEN check all the wadoku info is correct and complete
     """
-    word_list = test_dict['input']
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
     html = test_dict['wadoku']['html']
     expected_output = test_dict['wadoku']['expected_output']
 
@@ -110,7 +111,7 @@ def test_recursion(monkeypatch):
     WHEN an accent dict is generated
     THEN the function runs again, excluding the first word
     """
-    word_list = ["BADINPUT", "食べる", "学生"]
+    word_list = convert_list_of_str_to_kaki(["BADINPUT", "食べる", "学生"])
 
     def html_response(url, timeout):
         if "BADINPUT" in url:
