@@ -1,7 +1,9 @@
 from typing import Dict, List
 
+from custom_types import Kaki, URL
+
 
 NAME = "forvo"
 
-def main(word_list: List[str]) -> Dict[str, List[str]]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
     return {key:[] for key in word_list}
