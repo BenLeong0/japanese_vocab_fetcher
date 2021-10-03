@@ -2,7 +2,6 @@ import os
 from typing import Dict, List
 
 from dotenv import dotenv_values
-import requests
 
 from custom_types import Kaki, URL
 
@@ -20,7 +19,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
 
 
 def get_audio_urls(word: Kaki) -> List[URL]:
-    # api_url = get_api_url(word)
+    api_url = get_api_url(word)
     return []
 
 
