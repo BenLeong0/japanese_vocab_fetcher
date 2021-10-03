@@ -4,12 +4,15 @@ from typing import DefaultDict, Dict, List, Tuple
 from bs4 import BeautifulSoup as Soup
 import requests
 
+from custom_types import HTMLString, Kaki, URL, Yomi
 from utils import remove_punct
 
 
 NAME = "wadoku"
 
-def main(word_list: List[str]) -> Dict[str, List[str]]:
+WadokuWordSectionsType = List[Tuple[Soup, List[Soup]]]
+
+def main(word_list: List[Kaki]) -> Dict[Kaki, List[Yomi]]:
     if not word_list:
         return {}
 
@@ -29,21 +32,23 @@ def main(word_list: List[str]) -> Dict[str, List[str]]:
 
 # Get HTML
 
-def get_url(word_list: List[str]) -> str:
+def get_url(word_list: List[Kaki]) -> URL:
     search_param = '%20'.join(word_list)
-    return f"https://www.wadoku.de/search/{search_param}"
+    url = f"https://www.wadoku.de/search/{search_param}"
+    return URL(url)
 
 
-def get_html(word_list: List[str]) -> Soup:
+def get_html(word_list: List[Kaki]) -> Soup:
     url = get_url(word_list)
-    html = requests.post(url, timeout=20).text
+    html = HTMLString(requests.post(url, timeout=20).text)
     return Soup(html, 'html.parser')
 
 
 # Extract sections
 
-def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
-    rows = list(html.findAll('tr'))
+def get_sections(html: Soup) -> WadokuWordSectionsType:
+    """Return list of tuples of form `(writing_section, List[reading_section])`"""
+    rows: List[Soup] = list(html.findAll('tr'))
     return [
         (
             Soup(str(row.find('div', class_='japanese')), "html.parser"),
@@ -52,19 +57,20 @@ def get_sections(html: Soup) -> List[Tuple[Soup, List[Soup]]]:
     ]
 
 
-def extract_writings(writing_html: Soup) -> List[str]:
+def extract_writings(writing_html: Soup) -> List[Kaki]:
     writings = writing_html.text.split('；')
-    return [remove_punct(writing) for writing in writings]
+    no_punct_writings = [remove_punct(writing) for writing in writings]
+    return list(map(Kaki, no_punct_writings))
 
 
-def extract_reading(reading_html: Soup) -> str:
+def extract_reading(reading_html: Soup) -> Yomi:
     spans: List[Soup] = [
         span for span in reading_html.findChild().findChildren()
         if remove_punct(span.text) not in ['', '…']
     ]
 
     if not spans:
-        return ''
+        return Yomi("")
 
     # Initialise with first char
     curr = remove_punct(spans[0].text)
@@ -86,11 +92,11 @@ def extract_reading(reading_html: Soup) -> str:
     if 'r' in spans[-1]['class'] and height == 1:
         curr += "'"
 
-    return curr
+    return Yomi(curr)
 
 
-def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> DefaultDict:
-    accent_dict: DefaultDict[str, List[str]] = defaultdict(list)
+def build_accent_dict(word_sections: WadokuWordSectionsType) -> DefaultDict[Kaki, List[Yomi]]:
+    accent_dict: DefaultDict[Kaki, List[Yomi]] = defaultdict(list)
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)

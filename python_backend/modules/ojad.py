@@ -6,10 +6,15 @@ from bs4 import BeautifulSoup as Soup
 from bs4.element import PageElement
 import requests
 
+from custom_types import HTMLString, Kaki, URL, Yomi
+
 
 NAME = "ojad"
 
-def main(word_list: List[str]) -> Dict[str, List[str]]:
+OJADWordSectionsType = List[Tuple[Soup, List[Soup]]]
+
+
+def main(word_list: List[Kaki]) -> Dict[Kaki, List[Yomi]]:
     if not word_list:
         return {}
 
@@ -22,12 +27,13 @@ def main(word_list: List[str]) -> Dict[str, List[str]]:
 
 # Get HTML
 
-def get_url(word_list: List[str], page_number: int) -> str:
+def get_url(word_list: List[Kaki], page_number: int) -> URL:
     search_parameters = '%20'.join(word_list)
-    return "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:{}/page:{}".format(
+    url = "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:{}/page:{}".format(
         search_parameters,
         page_number,
     )
+    return URL(url)
 
 
 def get_rows(html_page: Soup) -> List[PageElement]:
@@ -38,15 +44,15 @@ def has_words(html_page: Soup) -> bool:
     return len(get_rows(html_page)) > 0
 
 
-def get_html(word_list: List[str], page_number: int) -> Soup:
+def get_html(word_list: List[Kaki], page_number: int) -> Soup:
     url = get_url(word_list, page_number)
-    html_string = requests.post(url, timeout=20).text
+    html_string = HTMLString(requests.post(url, timeout=20).text)
     html = Soup(html_string, 'html.parser')
     return html
 
 
-def get_htmls(word_list: List[str]) -> List[Soup]:
-    pages = []
+def get_htmls(word_list: List[Kaki]) -> List[Soup]:
+    pages: List[Soup] = []
     curr_page_number = 1
     html = get_html(word_list, curr_page_number)
     while has_words(html):
@@ -58,7 +64,8 @@ def get_htmls(word_list: List[str]) -> List[Soup]:
 
 # Extract sections
 
-def get_sections(htmls: List[Soup]) -> List[Tuple[Soup, List[Soup]]]:
+def get_sections(htmls: List[Soup]) -> OJADWordSectionsType:
+    """Return list of tuples of form `(writing_section, reading_section)`"""
     rows: List[Soup] = sum(map(get_rows, htmls), [])
     return [
         (
@@ -71,15 +78,15 @@ def get_sections(htmls: List[Soup]) -> List[Tuple[Soup, List[Soup]]]:
     ]
 
 
-def extract_writings(writing_html: Soup) -> List[str]:
+def extract_writings(writing_html: Soup) -> List[Kaki]:
     midashi: str = writing_html.find('p', class_='midashi_word').text
     writings = midashi.split('・')
     # eg 綺麗[な] -> 綺麗
     filtered_writings = [writing.replace('[な]', '') for writing in writings]
-    return filtered_writings
+    return list(map(Kaki, filtered_writings))
 
 
-def extract_reading(reading_html: Soup, na_adj: bool) -> str:
+def extract_reading(reading_html: Soup, na_adj: bool) -> Yomi:
     # 拗音 get their own span already!
     contents: Soup = reading_html.find("span", class_="accented_word")
     chars: List[str] = [span.text for span in contents]
@@ -95,11 +102,11 @@ def extract_reading(reading_html: Soup, na_adj: bool) -> str:
         reading = reading[:-1]
     if reading[-1] == " ":
         reading = reading[:-1]
-    return reading
+    return Yomi(reading)
 
 
-def build_accent_dict(word_sections: List[Tuple[Soup, List[Soup]]]) -> DefaultDict[str, List[str]]:
-    accent_dict: DefaultDict[str, List[str]] = defaultdict(list)
+def build_accent_dict(word_sections: OJADWordSectionsType) -> DefaultDict[Kaki, List[Yomi]]:
+    accent_dict: DefaultDict[Kaki, List[Yomi]] = defaultdict(list)
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)

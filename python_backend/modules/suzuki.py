@@ -5,12 +5,13 @@ from typing import Dict, List, Tuple
 from bs4 import BeautifulSoup as Soup
 import requests
 
+from custom_types import HTMLString, Kaki, URL, Yomi
 from utils import make_single_line
 
 
 NAME = "suzuki"
 
-def main(word_list: List[str]) -> Dict[str, List[str]]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, List[Yomi]]:
     if not word_list:
         return {}
 
@@ -21,7 +22,7 @@ def main(word_list: List[str]) -> Dict[str, List[str]]:
 
 # Get HTML
 
-def get_formdata(word_list: List[str]) -> Dict[str, str]:
+def get_formdata(word_list: List[Kaki]) -> Dict[str, str]:
     words_with_particles = [word + 'は' for word in word_list]
     formdata = {
         "data[Phrasing][curve]": "advanced",
@@ -37,17 +38,18 @@ def get_formdata(word_list: List[str]) -> Dict[str, str]:
     return formdata
 
 
-def get_html(word_list: List[str]) -> Soup:
-    url = 'http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index'
+def get_html(word_list: List[Kaki]) -> Soup:
+    url = URL('http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index')
     formdata = get_formdata(word_list)
-    html = requests.post(url, formdata, timeout=20).text
+    html = HTMLString(requests.post(url, formdata, timeout=20).text)
     return Soup(html, 'html.parser')
 
 
 # Extract sections
 
 def get_sections(html: Soup) -> List[Tuple[Soup, Soup, Soup]]:
-    rows = list(html.findAll('div', class_='phrasing_phrase_wrapper'))
+    """Return list of tuples of form `(writing_section, reading_section, accent_section)`"""
+    rows: List[Soup] = list(html.findAll('div', class_='phrasing_phrase_wrapper'))
     return [
         (
             Soup(str(row.find('div', class_='phrasing_subscript')), "html.parser"),
@@ -57,10 +59,10 @@ def get_sections(html: Soup) -> List[Tuple[Soup, Soup, Soup]]:
     ]
 
 
-def extract_writing(writing_html: Soup) -> str:
+def extract_writing(writing_html: Soup) -> Kaki:
     full_writing: str = re.sub(r'\s', '', writing_html.text)
     writing_without_final_ha = full_writing[:-1]
-    return writing_without_final_ha
+    return Kaki(writing_without_final_ha)
 
 
 def extract_characters(reading_html: Soup) -> str:
@@ -80,9 +82,9 @@ def extract_accent_pattern(accent_html: Soup) -> List[int]:
     return heights
 
 
-def contruct_reading(chars: str, accent_pattern: List[int]) -> str:
+def contruct_reading(chars: str, accent_pattern: List[int]) -> Yomi:
     if not chars:
-        return ''
+        return Yomi("")
     mini_chars = 'ゃょゅぁぃぅぇぉゎャュョァィゥェォヮ'
     accented_word = ''
     curr_height = accent_pattern[0]
@@ -102,17 +104,17 @@ def contruct_reading(chars: str, accent_pattern: List[int]) -> str:
 
     if accented_word[-1] == ' ':
         accented_word = accented_word[:-1]
-    return accented_word
+    return Yomi(accented_word)
 
 
-def extract_reading(reading_html: Soup, accent_html: Soup) -> str:
+def extract_reading(reading_html: Soup, accent_html: Soup) -> Yomi:
     chars = extract_characters(reading_html)
     accent_pattern = extract_accent_pattern(accent_html)
     return contruct_reading(chars, accent_pattern)
 
 
-def build_accent_dict(word_sections: List[Tuple[Soup, Soup, Soup]]) -> Dict:
-    accent_dict = {}
+def build_accent_dict(word_sections: List[Tuple[Soup, Soup, Soup]]) -> Dict[Kaki, List[Yomi]]:
+    accent_dict: Dict[Kaki, List[Yomi]] = {}
 
     for writing_html, reading_html, accent_html in word_sections:
         writing = extract_writing(writing_html)
