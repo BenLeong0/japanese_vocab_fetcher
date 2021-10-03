@@ -1,10 +1,24 @@
 from collections import defaultdict
 from threading import Thread
-from typing import Any, DefaultDict, Dict, List
+from typing import Any, DefaultDict, Dict, List, Protocol
 
 from custom_types import Kaki, FullResponse
 from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 
+
+class Module(Protocol): # pylint: disable=too-few-public-methods
+    NAME: str
+    def main(self, word_list: List[Kaki]) -> Dict: ...
+
+
+MODULES = (
+    forvo,
+    jisho,
+    ojad,
+    suzuki,
+    wadoku,
+    wanikani
+)
 
 def get_info(word_list: List[Kaki]) -> List[FullResponse]:
     results_dict = generate_results_dict(word_list)
@@ -15,16 +29,12 @@ def get_info(word_list: List[Kaki]) -> List[FullResponse]:
 def generate_results_dict(word_list: List[Kaki]) -> DefaultDict[str, Dict[Kaki, Any]]:
     results_dict: DefaultDict[str, Dict[Kaki, Any]] = defaultdict(dict)
 
-    def call_script(module_name, module_function, word_list: List[Kaki]) -> None:
-        results_dict[module_name] = module_function(word_list)
+    def call_script(module: Module, word_list: List[Kaki]) -> None:
+        results_dict[module.NAME] = module.main(word_list)
 
     threads: List[Thread] = [
-        Thread(target=call_script, args=["jisho", jisho.main, word_list]),
-        Thread(target=call_script, args=["ojad", ojad.main, word_list]),
-        Thread(target=call_script, args=["suzuki", suzuki.main, word_list]),
-        Thread(target=call_script, args=["wadoku", wadoku.main, word_list]),
-        Thread(target=call_script, args=["forvo", forvo.main, word_list]),
-        Thread(target=call_script, args=["wanikani", wanikani.main, word_list]),
+        Thread(target=call_script, args=[module, word_list])
+        for module in MODULES
     ]
 
     for thread in threads:
