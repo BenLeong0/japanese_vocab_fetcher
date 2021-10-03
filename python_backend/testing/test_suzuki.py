@@ -4,6 +4,7 @@ import pytest
 from modules import suzuki
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
+from utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -32,7 +33,7 @@ def test_get_formdata(test_dict: FullTestDict):
     - WHEN a url is generated
     - THEN check the url is encoded
     """
-    word_list = test_dict['input']
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
     expected_formdata = test_dict['suzuki']['formdata']
 
     assert suzuki.get_formdata(word_list) == expected_formdata
@@ -93,7 +94,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - WHEN the accent dict is generated
     - THEN check all the suzuki info is correct and complete
     """
-    word_list = test_dict['input']
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
     html = test_dict['suzuki']['html']
     expected_output = test_dict['suzuki']['expected_output']
 
