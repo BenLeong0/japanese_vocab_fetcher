@@ -4,13 +4,7 @@ from typing import DefaultDict, Dict, List, TypedDict
 
 from bs4 import BeautifulSoup as Soup
 
-from custom_types import Kaki, Yomi, URL
-
-
-# General types
-
-class HTMLString(str):
-    """An HTML file stored as a string"""
+from custom_types import HTMLString, Kaki, Yomi, URL
 
 
 # Jisho
