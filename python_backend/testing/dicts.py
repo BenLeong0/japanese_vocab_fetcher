@@ -21,15 +21,15 @@ def get_file_as_string(filename: str, module: str):
 
 def get_ojad_html_files(slug: str) -> List[str]:
     htmls: List[str] = []
-    i: int = 0
+    file_index: int = 0
     while True:
-        file_index = f"{i:02d}"
+        file_index = f"{file_index:02d}"
         path = f"testing/html_files/ojad_{slug}_{file_index}.html"
         if not os.path.exists(path):
             break
         with open(path, "r", encoding="utf8") as myfile:
             htmls.append(re.sub(r'>\s*<', '><', myfile.read()))
-        i += 1
+        file_index += 1
     return htmls
 
 
