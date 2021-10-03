@@ -51,3 +51,24 @@ def test_get_api_urls(test_dict: FullTestDict):
 
     for word, expected_url in zip(word_list, expected_urls):
         assert forvo.get_api_url(word) == expected_url
+
+
+def test_call_api(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the API is called
+    - THEN check the response is returned correctly
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['forvo']['expected_sections']
+
+    for word, section in zip(word_list, sections):
+        fake_response = section['api_response']
+        monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
+
+        resp = forvo.call_api(word)
+
+        assert "attributes" in resp
+        assert "items" in resp
+        assert resp['attributes']['total'] == section['total_items']
+        assert len(resp['items']) == section['total_items']
