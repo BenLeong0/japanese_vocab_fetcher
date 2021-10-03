@@ -37,6 +37,7 @@ def get_api_url(word: Kaki) -> URL:
         "/action/word-pronunciations"\
         "/format/json"\
         "/word/%s"\
+        "/language/ja"\
         "/id_lang_speak/76"\
         "/key/%s"\
         % (word, API_KEY)
