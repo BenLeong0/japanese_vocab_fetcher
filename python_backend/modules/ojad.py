@@ -72,7 +72,7 @@ def get_sections(htmls: List[Soup]) -> OJADWordSectionsType:
             Soup(str(row.find('td', class_='midashi')), "html.parser"),
             [
                 Soup(str(proc), "html.parser") for proc in
-                row.find('td', class_='katsuyo_jisho_js').findAll('div', class_="katsuyo_proc")
+                row.find('td', class_='katsuyo_jisho_js').find_all('div', class_="katsuyo_proc")
             ]
         ) for row in rows
     ]

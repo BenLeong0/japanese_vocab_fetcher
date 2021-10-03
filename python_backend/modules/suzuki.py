@@ -49,7 +49,7 @@ def get_html(word_list: List[Kaki]) -> Soup:
 
 def get_sections(html: Soup) -> List[Tuple[Soup, Soup, Soup]]:
     """Return list of tuples of form `(writing_section, reading_section, accent_section)`"""
-    rows: List[Soup] = list(html.findAll('div', class_='phrasing_phrase_wrapper'))
+    rows: List[Soup] = list(html.find_all('div', class_='phrasing_phrase_wrapper'))
     return [
         (
             Soup(str(row.find('div', class_='phrasing_subscript')), "html.parser"),
