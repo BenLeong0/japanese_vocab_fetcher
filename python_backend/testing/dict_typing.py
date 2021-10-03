@@ -87,6 +87,7 @@ class ForvoExpectedSection(TypedDict):
     url: URL
     api_response: str
     total_items: int
+    expected_urls: List[URL]
 
 
 class ForvoAudioDict(AudioDict):
