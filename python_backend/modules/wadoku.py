@@ -48,11 +48,11 @@ def get_html(word_list: List[Kaki]) -> Soup:
 
 def get_sections(html: Soup) -> WadokuWordSectionsType:
     """Return list of tuples of form `(writing_section, List[reading_section])`"""
-    rows: List[Soup] = list(html.findAll('tr'))
+    rows: List[Soup] = list(html.find_all('tr'))
     return [
         (
             Soup(str(row.find('div', class_='japanese')), "html.parser"),
-            [Soup(str(span), "html.parser") for span in row.findAll('span', class_='accent')]
+            [Soup(str(span), "html.parser") for span in row.find_all('span', class_='accent')]
         ) for row in rows if row.find('div', class_='japanese') is not None
     ]
 

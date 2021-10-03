@@ -63,7 +63,7 @@ class WadokuExpectedSection(TypedDict):
     and its contained information"""
     writing_section: Soup
     writings: List[str]
-    reading_sections: Soup
+    reading_sections: List[Soup]
     readings: List[str]
 
 

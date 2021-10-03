@@ -3,7 +3,6 @@ import re
 from typing import DefaultDict, Dict, List, Tuple
 
 from bs4 import BeautifulSoup as Soup
-from bs4.element import PageElement
 import requests
 
 from custom_types import HTMLString, Kaki, URL, Yomi
@@ -36,7 +35,7 @@ def get_url(word_list: List[Kaki], page_number: int) -> URL:
     return URL(url)
 
 
-def get_rows(html_page: Soup) -> List[PageElement]:
+def get_rows(html_page: Soup) -> List[Soup]:
     return list(html_page.find_all("tr", id=re.compile(r"word_\d+")))
 
 
@@ -72,7 +71,7 @@ def get_sections(htmls: List[Soup]) -> OJADWordSectionsType:
             Soup(str(row.find('td', class_='midashi')), "html.parser"),
             [
                 Soup(str(proc), "html.parser") for proc in
-                row.find('td', class_='katsuyo_jisho_js').findAll('div', class_="katsuyo_proc")
+                row.find('td', class_='katsuyo_jisho_js').find_all('div', class_="katsuyo_proc")
             ]
         ) for row in rows
     ]

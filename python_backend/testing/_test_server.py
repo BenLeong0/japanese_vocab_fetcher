@@ -5,7 +5,7 @@ ie `coverage run -m pytest testing/_test_server.py -vv`
 
 import json
 
-import pytest
+import pytest   # type: ignore
 import requests
 
 from testing.dict_typing import FullTestDict

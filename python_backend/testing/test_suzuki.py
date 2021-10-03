@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup as Soup
-import pytest
+import pytest   # type: ignore
 
 from modules import suzuki
 from testing.dict_typing import FullTestDict

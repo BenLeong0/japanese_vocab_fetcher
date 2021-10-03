@@ -1,5 +1,5 @@
 from collections import defaultdict
-import pytest
+import pytest   # type: ignore
 from typing import Any, DefaultDict, Dict
 
 import coordinator
