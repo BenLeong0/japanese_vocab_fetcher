@@ -1,6 +1,6 @@
 from collections import defaultdict
-from typing import Any, DefaultDict, Dict
 import pytest
+from typing import Any, DefaultDict, Dict
 
 import coordinator
 from custom_types import Kaki
