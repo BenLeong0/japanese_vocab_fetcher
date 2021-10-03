@@ -10,6 +10,9 @@ class Yomi(str):
 class URL(str):
     """String representing a URL"""
 
+class HTMLString(str):
+    """An HTML file stored as a string"""
+
 
 # class JishoResponse(TypedDict):
 #     """Dictionary containing the jisho information of the full response"""
