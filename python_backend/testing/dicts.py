@@ -25,12 +25,11 @@ def get_ojad_html_files(slug: str) -> List[str]:
     while True:
         file_index = f"{i:02d}"
         path = f"testing/html_files/ojad_{slug}_{file_index}.html"
-        if os.path.exists(path):
-            with open(path, "r", encoding="utf8") as myfile:
-                htmls.append(re.sub(r'>\s*<', '><', myfile.read()))
-            i += 1
-        else:
+        if not os.path.exists(path):
             break
+        with open(path, "r", encoding="utf8") as myfile:
+            htmls.append(re.sub(r'>\s*<', '><', myfile.read()))
+        i += 1
     return htmls
 
 
