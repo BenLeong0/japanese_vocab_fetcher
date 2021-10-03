@@ -33,7 +33,7 @@ def escape_unicode(word: Kaki) -> str:
     return word.encode("unicode-escape").decode()
 
 def decode_unicode(word: str) -> Kaki:
-    return Kaki(word.encode().decode("unicode"))
+    return Kaki(word.encode().decode("unicode-escape"))
 
 
 def convert_list_of_str_to_kaki(input_list: List[str]) -> List[Kaki]:
