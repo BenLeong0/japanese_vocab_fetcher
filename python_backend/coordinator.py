@@ -1,3 +1,5 @@
+# pylint: disable=too-few-public-methods
+
 from collections import defaultdict
 from threading import Thread
 from typing import Any, DefaultDict, Dict, List, Protocol
