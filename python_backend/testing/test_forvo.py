@@ -1,3 +1,4 @@
+import json
 import pytest   # type: ignore
 
 from modules import forvo
@@ -72,3 +73,49 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
         assert "items" in resp
         assert resp['attributes']['total'] == section['total_items']
         assert len(resp['items']) == section['total_items']
+
+
+def test_get_audio_url_list(test_dict: FullTestDict):
+    """
+    - GIVEN a response from the API
+    - WHEN the audio urls are extracted
+    - THEN check the returned list is correct
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['forvo']['expected_sections']
+
+    for word, section in zip(word_list, sections):
+        api_response = json.loads(section['api_response'])
+        assert forvo.extract_audio_url_list(api_response, word) == section['expected_urls']
+
+
+def test_extract_audio_url():
+    """
+    - GIVEN a response from the API
+    - WHEN the response's url is extracted
+    - THEN check the url is correct
+    """
+    test_item = {
+        "pathmp3": "http://www.test.com/audio.mp3"
+    }
+    assert forvo.extract_audio_url(test_item) == "http://www.test.com/audio.mp3"
+
+
+@pytest.mark.parametrize(
+    "item, word, expected_result",
+    [
+        ({"word": "静か"}, "静か", True),
+        ({"word": "\\u9759\\u304b"}, "静か", True),
+        ({"word": ""}, "", True),
+        ({"word": "not 静か"}, "静か", False),
+        ({"word": "静か"}, "not 静か", False),
+        ({"word": ""}, None, False),
+    ]
+)
+def test_correct_word(item, word, expected_result):
+    """
+    - GIVEN a response from the API
+    - WHEN the response's word is checked
+    - THEN check `correct_word` returns the correct boolean
+    """
+    assert forvo.correct_word(item, word) == expected_result
