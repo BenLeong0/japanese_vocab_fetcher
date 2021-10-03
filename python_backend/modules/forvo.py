@@ -20,9 +20,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
 
 
 def get_audio_urls(word: Kaki) -> List[URL]:
-    api_url = get_api_url(word)
-    response = requests.get(api_url)
-    print(response)
+    # api_url = get_api_url(word)
     return []
 
 
