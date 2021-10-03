@@ -26,7 +26,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
     - WHEN the accent dict is generated
-    - THEN check all the wadoku info is correct and complete
+    - THEN check all the ojad info is correct and complete
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     htmls = test_dict['ojad']['htmls']
