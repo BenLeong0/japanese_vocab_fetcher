@@ -5,7 +5,8 @@ from typing import Dict, List
 from dotenv import dotenv_values
 import requests
 
-from custom_types import Kaki, URL, ForvoAPIResponse
+from custom_types import Kaki, URL, ForvoAPIItem, ForvoAPIResponse
+from utils import decode_unicode
 
 
 NAME = "forvo"
@@ -22,6 +23,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
 
 def get_audio_urls(word: Kaki) -> List[URL]:
     response = call_api(word)
+    url_list = extract_audio_url_list(response, word)
     return []
 
 
@@ -42,3 +44,21 @@ def get_api_url(word: Kaki) -> URL:
         "/key/%s"\
         % (word, API_KEY)
     return URL(url)
+
+
+def extract_audio_url_list(response: ForvoAPIResponse, word: Kaki) -> List[URL]:
+    items = response["items"]
+    filtered_items = [item for item in items if correct_word(item, word)]
+    return [extract_audio_url(item) for item in filtered_items]
+
+
+def extract_audio_url(item: ForvoAPIItem) -> URL:
+    url = item["pathmp3"]
+    return URL(url)
+
+
+def correct_word(item: ForvoAPIItem, word: Kaki) -> bool:
+    return (
+        word == item["word"] or
+        word == decode_unicode(item["word"])
+    )
