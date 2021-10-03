@@ -8,6 +8,8 @@ import requests
 from utils import make_single_line
 
 
+NAME = "suzuki"
+
 def main(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
         return {}

@@ -7,6 +7,8 @@ import requests
 from utils import remove_punct
 
 
+NAME = "wadoku"
+
 def main(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
         return {}

@@ -7,6 +7,8 @@ from bs4.element import PageElement
 import requests
 
 
+NAME = "ojad"
+
 def main(word_list: List[str]) -> Dict[str, List[str]]:
     if not word_list:
         return {}
