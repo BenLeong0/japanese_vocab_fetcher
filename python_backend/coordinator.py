@@ -1,5 +1,3 @@
-# pylint: disable=too-few-public-methods
-
 from collections import defaultdict
 from threading import Thread
 from typing import Any, DefaultDict, Dict, List, Protocol
@@ -8,7 +6,7 @@ from custom_types import Kaki, FullResponse
 from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 
 
-class Module(Protocol):
+class Module(Protocol): # pylint: disable=too-few-public-methods
     NAME: str
     def main(self, word_list: List[Kaki]) -> Dict: ...
 
