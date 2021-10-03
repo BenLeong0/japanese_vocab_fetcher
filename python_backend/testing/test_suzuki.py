@@ -18,6 +18,10 @@ class FakeResponse:
         self.text = text
 
 
+#####################
+## TESTS  ###########
+#####################
+
 def test_main(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
