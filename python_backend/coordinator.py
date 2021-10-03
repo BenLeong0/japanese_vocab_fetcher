@@ -19,12 +19,12 @@ def generate_results_dict(word_list: List[Kaki]) -> DefaultDict[str, Dict[Kaki, 
         results_dict[module_name] = module_function(word_list)
 
     threads: List[Thread] = [
-        Thread(target=call_script, args=["jisho", jisho.get_vocab_dict, word_list]),
-        Thread(target=call_script, args=["ojad", ojad.get_accent_dict, word_list]),
-        Thread(target=call_script, args=["suzuki", suzuki.get_accent_dict, word_list]),
-        Thread(target=call_script, args=["wadoku", wadoku.get_accent_dict, word_list]),
-        Thread(target=call_script, args=["forvo", forvo.get_audio_links, word_list]),
-        Thread(target=call_script, args=["wanikani", wanikani.get_audio_links, word_list]),
+        Thread(target=call_script, args=["jisho", jisho.main, word_list]),
+        Thread(target=call_script, args=["ojad", ojad.main, word_list]),
+        Thread(target=call_script, args=["suzuki", suzuki.main, word_list]),
+        Thread(target=call_script, args=["wadoku", wadoku.main, word_list]),
+        Thread(target=call_script, args=["forvo", forvo.main, word_list]),
+        Thread(target=call_script, args=["wanikani", wanikani.main, word_list]),
     ]
 
     for thread in threads:
