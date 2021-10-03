@@ -22,20 +22,6 @@ class FakeResponse:
         self.text = text
 
 
-def test_main(monkeypatch, test_dict: FullTestDict):
-    """
-    - GIVEN a list of words
-    - WHEN the accent dict is generated
-    - THEN check all the wadoku info is correct and complete
-    """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    htmls = test_dict['ojad']['htmls']
-    expected_output = test_dict['ojad']['expected_output']
-
-    monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
-    assert ojad.main(word_list) == expected_output
-
-
 def _get_ojad_html_string(url: str, htmls: List[Soup], timeout: int = 20) -> FakeResponse:
     """Given a url return the corresponding (test) html, or a blank page if out of range"""
     page_number_match = re.search(r"page:\d+", url)
@@ -48,6 +34,24 @@ def _get_ojad_html_string(url: str, htmls: List[Soup], timeout: int = 20) -> Fak
         with open("testing/html_files/ojad_BLANK.html", encoding="utf8") as file:
             return FakeResponse(str(file))
     return FakeResponse(htmls[page_number - 1])
+
+
+#####################
+## TESTS  ###########
+#####################
+
+def test_main(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the accent dict is generated
+    - THEN check all the ojad info is correct and complete
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    htmls = test_dict['ojad']['htmls']
+    expected_output = test_dict['ojad']['expected_output']
+
+    monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
+    assert ojad.main(word_list) == expected_output
 
 
 def test_empty_input():
