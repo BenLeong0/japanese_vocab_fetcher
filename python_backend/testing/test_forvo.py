@@ -6,13 +6,6 @@ from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 import pytest   # type: ignore
 
-try:
-    dotenv_values()['FORVO_API_KEY']
-except KeyError:
-    @pytest.fixture(autouse=True)
-    def fake_api_keys(monkeypatch):
-        monkeypatch.setattr("dotenv.dotenv_values", lambda: {"FORVO_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"})
-
 from modules import forvo
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
