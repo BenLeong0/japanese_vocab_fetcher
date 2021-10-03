@@ -24,7 +24,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
 def get_audio_urls(word: Kaki) -> List[URL]:
     response = call_api(word)
     url_list = extract_audio_url_list(response, word)
-    return []
+    return url_list
 
 
 def call_api(word: Kaki) -> ForvoAPIResponse:
