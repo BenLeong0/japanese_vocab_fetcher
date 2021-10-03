@@ -8,6 +8,7 @@ import pytest
 from modules import ojad
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
+from utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -51,7 +52,7 @@ def test_get_url(test_dict: FullTestDict, page_number: int):
     - WHEN the url is generated
     - THEN test it is returns the expected url
     """
-    word_list = test_dict['input']
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
     expected_url = test_dict['ojad']['url'] % page_number
 
     assert ojad.get_url(word_list, page_number) == expected_url
@@ -87,7 +88,7 @@ def test_get_htmls(monkeypatch, test_dict: FullTestDict):
     - WHEN the respective pages are collected
     - THEN check they are all collected, and that the loop terminates
     """
-    word_list = test_dict['input']
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
     htmls = test_dict['ojad']['htmls']
     monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
 
@@ -152,7 +153,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - WHEN the accent dict is generated
     - THEN check all the wadoku info is correct and complete
     """
-    word_list = test_dict['input']
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
     htmls = test_dict['ojad']['htmls']
     expected_output = test_dict['ojad']['expected_output']
 
