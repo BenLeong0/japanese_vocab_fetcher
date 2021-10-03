@@ -1,9 +1,11 @@
+import json
 import os
 from typing import Dict, List
 
 from dotenv import dotenv_values
+import requests
 
-from custom_types import Kaki, URL
+from custom_types import Kaki, URL, ForvoAPIResponse
 
 
 NAME = "forvo"
@@ -19,8 +21,14 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
 
 
 def get_audio_urls(word: Kaki) -> List[URL]:
-    api_url = get_api_url(word)
+    response = call_api(word)
     return []
+
+
+def call_api(word: Kaki) -> ForvoAPIResponse:
+    api_url = get_api_url(word)
+    response: ForvoAPIResponse = json.loads(requests.get(api_url).text)
+    return response
 
 
 def get_api_url(word: Kaki) -> URL:
