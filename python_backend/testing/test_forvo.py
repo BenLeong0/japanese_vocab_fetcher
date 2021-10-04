@@ -1,6 +1,7 @@
 import json
-import pytest   # type: ignore
 import re
+
+import pytest   # type: ignore
 
 from custom_types import Kaki, URL
 from modules import forvo
