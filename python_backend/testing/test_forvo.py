@@ -44,7 +44,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     }
 
     def get_word_from_forvo_url(url: URL) -> Kaki:
-        match = re.search(r"/word/(.+?)/language", url)
+        match = re.search(r"word/(.+?)/", url)
         assert match is not None
         return Kaki(match.group(1))
 
