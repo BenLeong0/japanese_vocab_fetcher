@@ -4,6 +4,7 @@ import re
 from typing import Dict, List
 
 from bs4 import BeautifulSoup as Soup
+from dotenv import dotenv_values
 
 from custom_types import URL, HTMLString
 from testing.dict_typing import FullTestDict
@@ -12,6 +13,12 @@ from testing.dict_typing import FullTestDict
 # - Extra results for ojad (words not in original word list)
 # - OJAD with particles (eg kirei)
 # - Word with な but not [な], eg なる
+
+if os.path.exists(".env"):
+    API_KEY: str = dotenv_values()['FORVO_API_KEY']
+else:
+    API_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+print(API_KEY)
 
 
 def get_file_as_string(filename: str, module: str):
@@ -129,6 +136,11 @@ MEGANE: FullTestDict = {
         },
     },
     "forvo": {
+        "expected_sections": [
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/眼鏡/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+        ],
         "expected_output": {
             '眼鏡': [],
         },
@@ -231,6 +243,11 @@ COMEBACK: FullTestDict= {
         },
     },
     "forvo": {
+        "expected_sections": [
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/カムバック/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+        ],
         "expected_output": {
             'カムバック': [],
         },
@@ -347,6 +364,14 @@ TABERU_GAKUSEI: FullTestDict = {
         },
     },
     "forvo": {
+        "expected_sections": [
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/食べる/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/学生/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+        ],
         "expected_output": {
             '食べる': [],
             '学生': [],
@@ -471,6 +496,11 @@ KOTOBA: FullTestDict = {
         },
     },
     "forvo": {
+        "expected_sections": [
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/言葉/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+        ],
         "expected_output": {
             '言葉': [],
         },
@@ -541,6 +571,11 @@ BADINPUT: FullTestDict = {
         },
     },
     "forvo": {
+        "expected_sections": [
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/BADINPUT/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+        ],
         "expected_output": {
             'BADINPUT': [],
         },
@@ -711,6 +746,17 @@ USAGI_IKU_KAGO: FullTestDict = {
         },
     },
     "forvo": {
+        "expected_sections": [
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/兎/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/行く/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/籠/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+        ],
         "expected_output": {
             '兎': [],
             '行く': [],
@@ -862,6 +908,11 @@ SHIZUKA: FullTestDict = {
         },
     },
     "forvo": {
+        "expected_sections": [
+            {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/静か/language/ja/id_lang_speak/76/key/{API_KEY}"),
+            },
+        ],
         "expected_output": {
             '静か': [],
         },
@@ -905,7 +956,16 @@ TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
 # TEMPLATE: FullTestDict = {
 #     "id": "",
 #     'input': [''],
-#     "forvo": {},
+#     "forvo": {
+#         "expected_sections": [
+#             {
+#                 "url": "https://apifree.forvo.com/action/word-pronunciations/format/json/word//language/ja/id_lang_speak/76/key/{API_KEY}",
+#             },
+#         ],
+#         "expected_output": {
+#             '': [],
+#         },
+#     },
 #     "jisho": {},
 #     "ojad": {
 #         "htmls": get_ojad_html_files(""),
