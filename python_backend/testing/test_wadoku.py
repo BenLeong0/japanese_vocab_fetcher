@@ -48,11 +48,11 @@ def test_main_recursion(monkeypatch):
     """
     word_list = convert_list_of_str_to_kaki(["BADINPUT", "食べる", "学生"])
 
-    def html_response(url, timeout):
+    def html_response(url, timeout):    #pylint: disable=unused-argument
         if "BADINPUT" in url:
-           path = "testing/html_files/wadoku_badinput_taberu_gakusei.html"
+            path = "testing/html_files/wadoku_badinput_taberu_gakusei.html"
         else:
-           path = "testing/html_files/wadoku_taberu_gakusei.html"
+            path = "testing/html_files/wadoku_taberu_gakusei.html"
 
         with open(path, encoding="utf8") as f:
             mock_response = FakeResponse(re.sub(r'>\s*<', '><', f.read()))

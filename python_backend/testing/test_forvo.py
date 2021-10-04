@@ -77,11 +77,13 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     sections = test_dict['forvo']['expected_sections']
 
+    api_response = None
+    monkeypatch.setattr("requests.get", lambda url: FakeResponse(api_response))
+
     for word in word_list:
         section = sections[word]
 
-        fake_response = section['api_response']
-        monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
+        api_response = section['api_response']  # Updates requests.get returned value
 
         resp = forvo.call_api(word)
 

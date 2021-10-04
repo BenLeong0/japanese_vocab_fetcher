@@ -24,7 +24,7 @@ class FakeResponse:
         self.text = text
 
 
-def _get_ojad_html_string(url: str, htmls: List[Soup], timeout: int = 20) -> FakeResponse:
+def _get_ojad_html_string(url: str, htmls: List[Soup], timeout: int = 20) -> FakeResponse:  #pylint: disable=unused-argument
     """Given a url return the corresponding (test) html, or a blank page if out of range"""
     page_number_match = re.search(r"page:\d+", url)
 
