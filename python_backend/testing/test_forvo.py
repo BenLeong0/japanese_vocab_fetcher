@@ -2,7 +2,7 @@ import json
 import pytest   # type: ignore
 import re
 
-from custom_types import URL, ForvoAPIResponse
+from custom_types import Kaki, URL
 from modules import forvo
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
@@ -43,12 +43,12 @@ def test_main(monkeypatch, test_dict: FullTestDict):
         in zip(word_list, test_dict["forvo"]["expected_sections"])
     }
 
-    def get_word_from_forvo_url(url: URL) -> str:
+    def get_word_from_forvo_url(url: URL) -> Kaki:
         match = re.search(r"/word/(.+?)/language", url)
         assert match is not None
-        return match.group(1)
+        return Kaki(match.group(1))
 
-    def get_api_response(url: URL) -> ForvoAPIResponse:
+    def get_api_response(url: URL) -> str:
         word = get_word_from_forvo_url(url)
         return api_responses[word]
 
