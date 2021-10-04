@@ -1,6 +1,8 @@
 import json
 import pytest   # type: ignore
+import re
 
+from custom_types import Kaki, URL
 from modules import forvo
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
@@ -33,12 +35,21 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - WHEN the accent dict is generated
     - THEN check all the forvo info is correct and complete
     """
-#     word_list = convert_list_of_str_to_kaki(test_dict['input'])
-#     html = test_dict['forvo']['html']
-#     expected_output = test_dict['forvo']['expected_output']
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['forvo']['expected_sections']
+    expected_output = test_dict['forvo']['expected_output']
 
-#     monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
-#     assert forvo.main(word_list) == expected_output
+    def get_word_from_forvo_url(url: URL) -> Kaki:
+        match = re.search(r"word/(.+?)/", url)
+        assert match is not None
+        return Kaki(match.group(1))
+
+    def get_api_response(url: URL) -> str:
+        word = get_word_from_forvo_url(url)
+        return sections[word]["api_response"]
+
+    monkeypatch.setattr("requests.get", lambda url: FakeResponse(get_api_response(url)))
+    assert forvo.main(word_list) == expected_output
 
 
 def test_get_api_urls(test_dict: FullTestDict):
@@ -48,10 +59,10 @@ def test_get_api_urls(test_dict: FullTestDict):
     - THEN check the urls are encoded and correct
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    expected_urls = [section['url'] for section in test_dict['forvo']['expected_sections']]
+    sections = test_dict['forvo']['expected_sections']
 
-    for word, expected_url in zip(word_list, expected_urls):
-        assert forvo.get_api_url(word) == expected_url
+    for word in word_list:
+        assert forvo.get_api_url(word) == sections[word]["url"]
 
 
 def test_call_api(monkeypatch, test_dict: FullTestDict):
@@ -63,7 +74,9 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     sections = test_dict['forvo']['expected_sections']
 
-    for word, section in zip(word_list, sections):
+    for word in word_list:
+        section = sections[word]
+
         fake_response = section['api_response']
         monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
 
@@ -85,8 +98,8 @@ def test_get_audio_url_list(test_dict: FullTestDict):
     sections = test_dict['forvo']['expected_sections']
     expected_output = test_dict['forvo']["expected_output"]
 
-    for word, section in zip(word_list, sections):
-        api_response = json.loads(section['api_response'])
+    for word in word_list:
+        api_response = json.loads(sections[word]['api_response'])
         assert forvo.extract_audio_url_list(api_response, word) == expected_output[word]
 
 
