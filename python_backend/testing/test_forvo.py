@@ -1,6 +1,8 @@
 import json
 import pytest   # type: ignore
+import re
 
+from custom_types import URL, ForvoAPIResponse
 from modules import forvo
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
@@ -33,12 +35,25 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - WHEN the accent dict is generated
     - THEN check all the forvo info is correct and complete
     """
-#     word_list = convert_list_of_str_to_kaki(test_dict['input'])
-#     html = test_dict['forvo']['html']
-#     expected_output = test_dict['forvo']['expected_output']
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    expected_output = test_dict['forvo']['expected_output']
 
-#     monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
-#     assert forvo.main(word_list) == expected_output
+    api_responses = {
+        word: section["api_response"] for (word,section)
+        in zip(word_list, test_dict["forvo"]["expected_sections"])
+    }
+
+    def get_word_from_forvo_url(url: URL) -> str:
+        match = re.search(r"/word/(.+?)/language", url)
+        assert match is not None
+        return match.group(1)
+
+    def get_api_response(url: URL) -> ForvoAPIResponse:
+        word = get_word_from_forvo_url(url)
+        return api_responses[word]
+
+    monkeypatch.setattr("requests.get", lambda url: FakeResponse(get_api_response(url)))
+    assert forvo.main(word_list) == expected_output
 
 
 def test_get_api_urls(test_dict: FullTestDict):
