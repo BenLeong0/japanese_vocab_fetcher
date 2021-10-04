@@ -1,5 +1,6 @@
 import json
 import os
+from threading import Thread
 from typing import Dict, List
 
 from dotenv import dotenv_values
@@ -18,7 +19,22 @@ else:
 
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
-    return {word:get_audio_urls(word) for word in word_list}
+    audio_urls_dict: Dict[Kaki, List[URL]] = {}
+
+    def call_script(word: Kaki) -> None:
+        audio_urls_dict[word] = get_audio_urls(word)
+
+    threads: List[Thread] = [
+        Thread(target=call_script, args=[word])
+        for word in word_list
+    ]
+
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    return audio_urls_dict
 
 
 def get_audio_urls(word: Kaki) -> List[URL]:
