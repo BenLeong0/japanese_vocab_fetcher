@@ -1,3 +1,4 @@
+import json
 import pytest   # type: ignore
 
 from modules import forvo
@@ -51,3 +52,71 @@ def test_get_api_urls(test_dict: FullTestDict):
 
     for word, expected_url in zip(word_list, expected_urls):
         assert forvo.get_api_url(word) == expected_url
+
+
+def test_call_api(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the API is called
+    - THEN check the response is returned correctly
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['forvo']['expected_sections']
+
+    for word, section in zip(word_list, sections):
+        fake_response = section['api_response']
+        monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
+
+        resp = forvo.call_api(word)
+
+        assert "attributes" in resp
+        assert "items" in resp
+        assert resp['attributes']['total'] == section['total_items']
+        assert len(resp['items']) == section['total_items']
+
+
+def test_get_audio_url_list(test_dict: FullTestDict):
+    """
+    - GIVEN a response from the API
+    - WHEN the audio urls are extracted
+    - THEN check the returned list is correct
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['forvo']['expected_sections']
+    expected_output = test_dict['forvo']["expected_output"]
+
+    for word, section in zip(word_list, sections):
+        api_response = json.loads(section['api_response'])
+        assert forvo.extract_audio_url_list(api_response, word) == expected_output[word]
+
+
+def test_extract_audio_url():
+    """
+    - GIVEN a response from the API
+    - WHEN the response's url is extracted
+    - THEN check the url is correct
+    """
+    test_item = {
+        "pathmp3": "http://www.test.com/audio.mp3"
+    }
+    assert forvo.extract_audio_url(test_item) == "http://www.test.com/audio.mp3"
+
+
+@pytest.mark.parametrize(
+    "item, word, expected_result",
+    [
+        ({"word": "静か"}, "静か", True),
+        ({"word": "\\u9759\\u304b"}, "静か", True),
+        ({"word": ""}, "", True),
+        ({"word": "not 静か"}, "静か", False),
+        ({"word": "静か"}, "not 静か", False),
+        ({"word": ""}, None, False),
+    ]
+)
+def test_correct_word(item, word, expected_result):
+    """
+    - GIVEN a response from the API
+    - WHEN the response's word is checked
+    - THEN check `correct_word` returns the correct boolean
+    """
+    assert forvo.correct_word(item, word) == expected_result
