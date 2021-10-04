@@ -1,3 +1,5 @@
+# pylint: disable=redefined-outer-name
+
 from functools import partial
 import re
 from typing import List

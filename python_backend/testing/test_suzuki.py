@@ -1,3 +1,5 @@
+# pylint: disable=redefined-outer-name
+
 from bs4 import BeautifulSoup as Soup
 import pytest   # type: ignore
 

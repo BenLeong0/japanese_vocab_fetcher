@@ -1,3 +1,5 @@
+# pylint: disable=redefined-outer-name
+
 import re
 
 from bs4 import BeautifulSoup as Soup

@@ -3,6 +3,8 @@ Tests that can be manually run against a live server
 ie `coverage run -m pytest testing/_test_server.py -vv`
 """
 
+# pylint: disable=redefined-outer-name
+
 import json
 
 import pytest   # type: ignore
