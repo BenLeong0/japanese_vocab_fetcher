@@ -83,10 +83,11 @@ def test_get_audio_url_list(test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     sections = test_dict['forvo']['expected_sections']
+    expected_output = test_dict['forvo']["expected_output"]
 
     for word, section in zip(word_list, sections):
         api_response = json.loads(section['api_response'])
-        assert forvo.extract_audio_url_list(api_response, word) == section['expected_urls']
+        assert forvo.extract_audio_url_list(api_response, word) == expected_output[word]
 
 
 def test_extract_audio_url():
