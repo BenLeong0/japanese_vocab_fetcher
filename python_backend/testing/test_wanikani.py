@@ -1,3 +1,4 @@
+import json
 import pytest   # type: ignore
 import re
 
@@ -19,14 +20,16 @@ class FakeResponse:
         self.text = text
 
 
+API_KEY_REGEX = r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+
+
 #####################
 ## TESTS  ###########
 #####################
 
 def test_api_key_import():
     """Check the API_KEY is successfully imported"""
-    api_key_format_re = r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
-    assert re.match(api_key_format_re, wanikani.API_KEY) is not None
+    assert re.match(API_KEY_REGEX, wanikani.API_KEY) is not None
 
 
 # def test_main(monkeypatch, test_dict: FullTestDict):
@@ -63,3 +66,23 @@ def test_gen_url(test_dict: FullTestDict):
     expected_url = test_dict['wanikani']['url']
 
     assert wanikani.get_url(word_list) == expected_url
+
+
+def test_call_api(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN an API URL
+    - WHEN the API is called
+    - THEN check the response is handled correctly
+    """
+    url = test_dict['wanikani']['url']
+    api_response = test_dict['wanikani']['api_response']
+
+    def check_get_request(url, headers):
+        auth_regex = r"Bearer " + API_KEY_REGEX
+        assert "Authorization" in headers
+        assert re.match(auth_regex, headers["Authorization"])
+        return FakeResponse(json.dumps(api_response))
+
+    monkeypatch.setattr("requests.get", check_get_request)
+
+    assert wanikani.call_api(url) == api_response
