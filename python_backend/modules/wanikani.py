@@ -9,4 +9,7 @@ NAME = "wanikani"
 API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
+    if not word_list:
+        return {}
+
     return {key:[] for key in word_list}
