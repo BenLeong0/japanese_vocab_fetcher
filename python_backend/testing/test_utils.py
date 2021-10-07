@@ -101,3 +101,15 @@ def test_make_single_line(input_string, expected_result):
 )
 def test_escape_unicode(input_string, expected_result):
     assert utils.escape_unicode(input_string) == expected_result
+
+
+@pytest.mark.parametrize(
+    "input_string, expected_result",
+    [
+        ["hello", "hello"],
+        ["\\u98df\\u3079\\u308b", "食べる"],
+        ["\\u5b66\\u751f", "学生"],
+    ]
+)
+def test_decode_unicode(input_string, expected_result):
+    assert utils.decode_unicode(input_string) == expected_result
