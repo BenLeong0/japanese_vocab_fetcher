@@ -56,6 +56,26 @@ def test_empty_input():
     assert wanikani.main([]) == {}
 
 
+def test_get_api_response(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the API response is returned
+    - THEN check the result is as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    api_response = test_dict['wanikani']['api_response']
+
+    def check_get_request(url, headers):
+        auth_regex = r"Bearer " + API_KEY_REGEX
+        assert "Authorization" in headers
+        assert re.match(auth_regex, headers["Authorization"])
+        return FakeResponse(json.dumps(api_response))
+
+    monkeypatch.setattr("requests.get", check_get_request)
+
+    assert wanikani.get_api_response(word_list) == api_response
+
+
 def test_gen_url(test_dict: FullTestDict):
     """
     - GIVEN a list of words
