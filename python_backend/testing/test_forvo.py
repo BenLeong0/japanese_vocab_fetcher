@@ -52,6 +52,15 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     assert forvo.main(word_list) == expected_output
 
 
+def test_empty_input():
+    """
+    - GIVEN an empty input
+    - WHEN an audio dictionary is generated
+    - THEN check it returns and empty dict
+    """
+    assert forvo.main([]) == {}
+
+
 def test_get_api_urls(test_dict: FullTestDict):
     """
     - GIVEN a list of words
@@ -65,11 +74,30 @@ def test_get_api_urls(test_dict: FullTestDict):
         assert forvo.get_api_url(word) == sections[word]["url"]
 
 
+def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the audio url lists are generated for each word
+    - THEN check the lists are as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['forvo']['expected_sections']
+    expected_output = test_dict['forvo']["expected_output"]
+
+    for word in word_list:
+        section = sections[word]
+
+        fake_response = section['api_response']
+        monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
+
+        assert forvo.get_audio_urls(word) == expected_output[word]
+
+
 def test_call_api(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
-    - WHEN the API is called
-    - THEN check the response is returned correctly
+    - WHEN the API is called for each word
+    - THEN check each response is returned correctly
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     sections = test_dict['forvo']['expected_sections']
@@ -88,11 +116,11 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
         assert len(resp['items']) == section['total_items']
 
 
-def test_get_audio_url_list(test_dict: FullTestDict):
+def test_extract_audio_url_list(test_dict: FullTestDict):
     """
-    - GIVEN a response from the API
+    - GIVEN a series of responses from the API
     - WHEN the audio urls are extracted
-    - THEN check the returned list is correct
+    - THEN check the returned lists are correct
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     sections = test_dict['forvo']['expected_sections']
