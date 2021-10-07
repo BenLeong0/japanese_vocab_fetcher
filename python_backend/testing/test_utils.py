@@ -47,7 +47,7 @@ def test_create_successful_response(payload, expected_data):
     response = utils.create_successful_response(payload)
 
     assert response.data.decode("unicode-escape") == expected_data
-    assert response.status == "200 OK"
+    assert response.status_code == 200
 
 
 @pytest.mark.parametrize(
@@ -75,7 +75,7 @@ def test_create_failed_response(payload, expected_data):
     response = utils.create_failed_response(payload)
 
     assert response.data.decode("unicode-escape") == expected_data
-    assert response.status == "400 BAD REQUEST"
+    assert response.status_code == 400
 
 
 @pytest.mark.parametrize(
