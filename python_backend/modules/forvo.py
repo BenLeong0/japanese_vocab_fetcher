@@ -11,11 +11,7 @@ from utils import decode_unicode
 
 
 NAME = "forvo"
-
-if os.path.exists(".env"):
-    API_KEY: str = dotenv_values()['FORVO_API_KEY']
-else:
-    API_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+API_KEY: str = dotenv_values()['FORVO_API_KEY']
 
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
