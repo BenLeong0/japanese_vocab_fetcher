@@ -126,3 +126,15 @@ def test_decode_unicode(input_string, expected_result):
 )
 def test_convert_list_of_str_to_kaki(string_list, expected_output):
     assert utils.convert_list_of_str_to_kaki(string_list) == expected_output
+
+
+@pytest.mark.parametrize(
+    "string_list, expected_output",
+    [
+        [[], []],
+        [["たべる"], [Yomi("たべる")]],
+        [["たべる", "がくせい"], [Yomi("たべる"), Yomi("がくせい")]],
+    ]
+)
+def test_convert_list_of_str_to_yomi(string_list, expected_output):
+    assert utils.convert_list_of_str_to_yomi(string_list) == expected_output
