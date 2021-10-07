@@ -138,3 +138,15 @@ def test_convert_list_of_str_to_kaki(string_list, expected_output):
 )
 def test_convert_list_of_str_to_yomi(string_list, expected_output):
     assert utils.convert_list_of_str_to_yomi(string_list) == expected_output
+
+
+@pytest.mark.parametrize(
+    "string_list, expected_output",
+    [
+        [[], []],
+        [["www.test.com"], [URL("www.test.com")]],
+        [["www.test.com", "www.test.co.uk"], [URL("www.test.com"), URL("www.test.co.uk")]],
+    ]
+)
+def test_convert_list_of_str_to_url(string_list, expected_output):
+    assert utils.convert_list_of_str_to_url(string_list) == expected_output
