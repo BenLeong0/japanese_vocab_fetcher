@@ -1,11 +1,11 @@
 from collections import defaultdict
+import re
 from typing import DefaultDict, Dict, List, Tuple
 
 from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types import HTMLString, Kaki, URL, Yomi
-from utils import remove_punct
 
 
 NAME = "wadoku"
@@ -61,6 +61,10 @@ def extract_writings(writing_html: Soup) -> List[Kaki]:
     writings = writing_html.text.split('；')
     no_punct_writings = [remove_punct(writing) for writing in writings]
     return list(map(Kaki, no_punct_writings))
+
+
+def remove_punct(input_string: str) -> str:
+    return re.sub(r'[\n￨･~]', '', input_string)
 
 
 def extract_reading(reading_html: Soup) -> Yomi:
