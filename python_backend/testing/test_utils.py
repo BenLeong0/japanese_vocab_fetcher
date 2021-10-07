@@ -162,3 +162,25 @@ def test_convert_list_of_str_to_url(string_list, expected_output):
 )
 def test_convert_list_of_str_to_htmlstring(string_list, expected_output):
     assert utils.convert_list_of_str_to_htmlstring(string_list) == expected_output
+
+
+@pytest.mark.parametrize(
+    "input_dict, expected_output",
+    [
+        [[], []],
+        [
+            {"食べる": {}},
+            {Kaki("食べる"): {}}
+        ],
+        [
+            {"食べる": "たべる"},
+            {Kaki("食べる"): "たべる"}
+        ],
+        [
+            {"食べる": {}, "学生": {}},
+            {Kaki("食べる"): {}, Kaki("学生"): {}}
+        ],
+    ]
+)
+def test_convert_dict_str_keys_to_kaki(input_dict, expected_output):
+    assert utils.convert_dict_str_keys_to_kaki(input_dict) == expected_output
