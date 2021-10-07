@@ -82,30 +82,36 @@ class WanikaniPronunciationAudio(TypedDict):
 
 class WanikaniAPISubject(TypedDict):
     """Dictionary containing information about one subject"""
-    id: int
-    object: str
-    auxiliary_meanings: List[WanikaniAuxilliaryMeaning]
-    characters: str
     created_at: str
-    document_url: str
-    hidden_at: Optional[str]
-    lesson_position: int
     level: int
-    meaning_mnenomic: str
-    meanings: List[WanikaniMeaning]
     slug: str
+    hidden_at: Optional[str]
+    document_url: str
+    characters: str
+    meanings: List[WanikaniMeaning]
+    auxiliary_meanings: List[WanikaniAuxilliaryMeaning]
+    meaning_mnemonic: str
+    lesson_position: int
     spaced_repetition_system_id: int
 
 
 class WanikaniAPIVocabularySubject(WanikaniAPISubject):
     """Dictionary containing information about one vocabulary subject"""
-    component_subject_ids: List[int]
-    context_sentences: List[WanikaniContextSentence]
-    meaning_mnemonic: str
-    parts_of_speech: List[str]
-    pronunciation_audios: List[WanikaniPronunciationAudio]
     readings: List[WanikaniReading]
+    parts_of_speech: List[str]
+    component_subject_ids: List[int]
     reading_mnemonic: str
+    context_sentences: List[WanikaniContextSentence]
+    pronunciation_audios: List[WanikaniPronunciationAudio]
+
+
+class WanikaniAPIResource(TypedDict):
+    """Wanikani API resource object"""
+    id: int
+    object: str
+    url: str
+    data_updated_at: Optional[str]
+    data: WanikaniAPIVocabularySubject
 
 
 
@@ -115,8 +121,8 @@ class WanikaniAPIResponse(TypedDict):
     url: str
     pages: Dict
     total_count: int
-    data_updated_at: str
-    data: List[WanikaniAPISubject]
+    data_updated_at: Optional[str]
+    data: List[WanikaniAPIResource]
 
 
 # class JishoResponse(TypedDict):

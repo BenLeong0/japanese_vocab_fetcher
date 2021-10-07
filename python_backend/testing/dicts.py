@@ -8,7 +8,7 @@ from dotenv import dotenv_values
 
 from custom_types import URL, HTMLString
 from testing.dict_typing import FullTestDict
-from testing.html_files import wanikani_api_responses
+from testing import wanikani_api_responses
 
 # TODO: DICTS TO ADD:
 # - Extra results for ojad (words not in original word list)
