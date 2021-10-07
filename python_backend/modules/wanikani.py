@@ -24,5 +24,5 @@ def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:
 
 def get_url(word_list: List[Kaki]) -> URL:
     slugs = ','.join(word_list)
-    url = f"https://api.wanikani.com/v2/subjects/?slugs={slugs}"
+    url = f"https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs={slugs}"
     return URL(url)
