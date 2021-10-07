@@ -44,6 +44,7 @@ jobs:
       run: |
         cd python_backend
         echo FORVO_API_KEY = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX >> .env
+        echo WANIKANI_API_KEY = XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX >> .env
         coverage run -m pytest -vv
 
 
