@@ -12,13 +12,13 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
     if not word_list:
         return {}
 
-    api_response = get_api_response(word_list)
+    api_response = get_api_response(word_list)  # pylint: disable=unused-variable
 
     return {key:[] for key in word_list}
 
 
 def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:
-    url = get_url(word_list)
+    url = get_url(word_list)    # pylint: disable=unused-variable
     return {}
 
 
