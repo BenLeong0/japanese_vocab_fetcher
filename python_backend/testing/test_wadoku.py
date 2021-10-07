@@ -111,6 +111,27 @@ def test_extract_writings(test_dict: FullTestDict):
         assert wadoku.extract_writings(section['writing_section']) == section['writings']
 
 
+@pytest.mark.parametrize(
+    "input_string, expected_output",
+    [
+        ["no punct", "no punct"],
+        ["remove･dot", "removedot"],
+        ["remove\nnewline", "removenewline"],
+        ["remove￨pipe", "removepipe"],
+        ["remove~tilda", "removetilda"],
+        ["remove~~tildas", "removetildas"],
+        ["remove\n￨･~all", "removeall"],
+    ]
+)
+def test_remove_punct(input_string, expected_output):
+    """
+    - GIVEN a string, potentially with invalid punctuation
+    - WHEN the punctation is removed
+    - THEN check all the unwanted punctuation has be successfully removed
+    """
+    assert wadoku.remove_punct(input_string) == expected_output
+
+
 def test_extract_readings(test_dict: FullTestDict):
     """
     - GIVEN an html sections
