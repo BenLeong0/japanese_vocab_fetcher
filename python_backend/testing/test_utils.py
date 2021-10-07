@@ -167,7 +167,7 @@ def test_convert_list_of_str_to_htmlstring(string_list, expected_output):
 @pytest.mark.parametrize(
     "input_dict, expected_output",
     [
-        [[], []],
+        [{}, {}],
         [
             {"食べる": {}},
             {Kaki("食べる"): {}}
