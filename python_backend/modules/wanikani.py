@@ -19,6 +19,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
 
 def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:
     url = get_url(word_list)
+    return {}
 
 
 def get_url(word_list: List[Kaki]) -> URL:
