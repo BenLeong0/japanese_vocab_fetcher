@@ -1,6 +1,8 @@
+import json
 from typing import Dict, List
 
 from dotenv import dotenv_values
+import requests
 
 from custom_types import Kaki, URL, WanikaniAPIResponse
 
@@ -18,11 +20,18 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
 
 
 def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:
-    url = get_url(word_list)    # pylint: disable=unused-variable
-    return {}
+    url = get_url(word_list)
+    response = call_api(url)
+    return response
 
 
 def get_url(word_list: List[Kaki]) -> URL:
     slugs = ','.join(word_list)
     url = f"https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs={slugs}"
     return URL(url)
+
+
+def call_api(url: URL) -> WanikaniAPIResponse:
+    headers = {"Authorization": f"Bearer {API_KEY}"}
+    response: WanikaniAPIResponse = json.loads(requests.get(url, headers=headers).text)
+    return response
