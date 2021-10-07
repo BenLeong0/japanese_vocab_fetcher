@@ -52,6 +52,15 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     assert forvo.main(word_list) == expected_output
 
 
+def test_empty_input():
+    """
+    - GIVEN an empty input
+    - WHEN an audio dictionary is generated
+    - THEN check it returns and empty dict
+    """
+    assert forvo.main([]) == {}
+
+
 def test_get_api_urls(test_dict: FullTestDict):
     """
     - GIVEN a list of words
