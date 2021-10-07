@@ -2,7 +2,7 @@ from typing import Dict, List
 
 from dotenv import dotenv_values
 
-from custom_types import Kaki, URL
+from custom_types import Kaki, URL, WanikaniAPIResponse
 
 
 NAME = "wanikani"
@@ -17,7 +17,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
     return {key:[] for key in word_list}
 
 
-def get_api_response(word_list: List[Kaki]) -> Dict:
+def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:
     url = get_url(word_list)
 
 

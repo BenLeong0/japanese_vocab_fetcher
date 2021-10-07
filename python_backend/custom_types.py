@@ -37,6 +37,10 @@ class ForvoAPIResponse(TypedDict):
     items: List[ForvoAPIItem]
 
 
+class WanikaniAPIResponse(TypedDict):
+    """Expected format returned from the Wanikani API"""
+
+
 # class JishoResponse(TypedDict):
 #     """Dictionary containing the jisho information of the full response"""
 #     str: str
