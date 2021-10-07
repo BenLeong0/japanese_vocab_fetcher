@@ -1,6 +1,7 @@
 import json
 import pytest   # type: ignore
 
+from custom_types import HTMLString, Kaki, URL, Yomi
 import utils
 
 
@@ -113,3 +114,15 @@ def test_escape_unicode(input_string, expected_result):
 )
 def test_decode_unicode(input_string, expected_result):
     assert utils.decode_unicode(input_string) == expected_result
+
+
+@pytest.mark.parametrize(
+    "string_list, expected_output",
+    [
+        [[], []],
+        [["食べる"], [Kaki("食べる")]],
+        [["食べる", "学生"], [Kaki("食べる"), Kaki("学生")]],
+    ]
+)
+def test_convert_list_of_str_to_kaki(string_list, expected_output):
+    assert utils.convert_list_of_str_to_kaki(string_list) == expected_output
