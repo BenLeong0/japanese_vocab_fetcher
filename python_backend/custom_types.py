@@ -42,20 +42,20 @@ class ForvoAPIResponse(TypedDict):
 #     str: str
 JishoResponse = Dict[str, str]
 
-class AccentResponse(TypedDict):
+class ResponseItemAccents(TypedDict):
     """Dictionary containing the accent information of the full response"""
     ojad: List[Yomi]
     suzuki: List[Yomi]
     wadoku: List[Yomi]
 
-class AudioResponse(TypedDict):
+class ResponseItemAudio(TypedDict):
     """Dictionary containing the audio information of the full response"""
     forvo: List[URL]
     wanikani: List[URL]
 
-class FullResponse(TypedDict):
-    """Full response to an API request"""
+class FullResponseItem(TypedDict):
+    """Result dict for a word in an API request"""
     word: Kaki
     jisho: JishoResponse
-    accent: AccentResponse
-    audio: AudioResponse
+    accent: ResponseItemAccents
+    audio: ResponseItemAudio

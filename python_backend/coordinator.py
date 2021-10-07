@@ -2,7 +2,7 @@ from collections import defaultdict
 from threading import Thread
 from typing import Any, DefaultDict, Dict, List, Protocol
 
-from custom_types import Kaki, FullResponse
+from custom_types import Kaki, FullResponseItem
 from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 
 
@@ -20,7 +20,7 @@ MODULES = (
     wanikani
 )
 
-def get_info(word_list: List[Kaki]) -> List[FullResponse]:
+def get_info(word_list: List[Kaki]) -> List[FullResponseItem]:
     results_dict = generate_results_dict(word_list)
     response = generate_response(results_dict, word_list)
     return response
@@ -48,8 +48,8 @@ def generate_results_dict(word_list: List[Kaki]) -> DefaultDict[str, Dict[Kaki, 
 def generate_response(
     results_dict: DefaultDict[str, Dict[Kaki, Any]],
     word_list: List[Kaki],
-) -> List[FullResponse]:
-    resp: List[FullResponse] = [{
+) -> List[FullResponseItem]:
+    resp: List[FullResponseItem] = [{
         'word': word,
         'jisho': results_dict['jisho'][word],
         'accent': {
