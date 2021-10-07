@@ -124,6 +124,11 @@ def test_extract_writings(test_dict: FullTestDict):
     ]
 )
 def test_remove_punct(input_string, expected_output):
+    """
+    - GIVEN a string, potentially with invalid punctuation
+    - WHEN the punctation is removed
+    - THEN check all the unwanted punctuation has be successfully removed
+    """
     assert wadoku.remove_punct(input_string) == expected_output
 
 
