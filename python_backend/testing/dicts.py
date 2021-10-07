@@ -8,6 +8,7 @@ from dotenv import dotenv_values
 
 from custom_types import URL, HTMLString
 from testing.dict_typing import FullTestDict
+from testing.html_files import wanikani_api_responses
 
 # TODO: DICTS TO ADD:
 # - Extra results for ojad (words not in original word list)
@@ -155,6 +156,7 @@ MEGANE: FullTestDict = {
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=眼鏡"),
+        "api_response": wanikani_api_responses.MEGANE,
         "expected_output": {
             '眼鏡': [],
         },
@@ -273,6 +275,7 @@ COMEBACK: FullTestDict= {
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=カムバック"),
+        "api_response": wanikani_api_responses.COMEBACK,
         "expected_output": {
             'カムバック': [],
         },
@@ -427,6 +430,7 @@ TABERU_GAKUSEI: FullTestDict = {
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=食べる,学生"),
+        "api_response": wanikani_api_responses.TABERU_GAKUSEI,
         "expected_output": {
             '食べる': [],
             '学生': [],
@@ -588,6 +592,7 @@ KOTOBA: FullTestDict = {
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=言葉"),
+        "api_response": wanikani_api_responses.KOTOBA,
         "expected_output": {
             '言葉': [],
         },
@@ -674,6 +679,7 @@ BADINPUT: FullTestDict = {
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=BADINPUT"),
+        "api_response": wanikani_api_responses.BADINPUT,
         "expected_output": {
             'BADINPUT': [],
         },
@@ -879,6 +885,7 @@ USAGI_IKU_KAGO: FullTestDict = {
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=兎,行く,籠"),
+        "api_response": wanikani_api_responses.USAGI_IKU_KAGO,
         "expected_output": {
             '兎': [],
             '行く': [],
@@ -1057,6 +1064,7 @@ SHIZUKA: FullTestDict = {
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=静か"),
+        "api_response": wanikani_api_responses.SHIZUKA,
         "expected_output": {
             '静か': [],
         },
