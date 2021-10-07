@@ -75,3 +75,17 @@ def test_create_failed_response(payload, expected_data):
 
     assert response.data.decode("unicode-escape") == expected_data
     assert response.status == "400 BAD REQUEST"
+
+
+@pytest.mark.parametrize(
+    "input_string, expected_result",
+    [
+        ["hello", "hello"],
+        ["dont remove single spaces", "dont remove single spaces"],
+        ["remove  double  spaces", "removedoublespaces"],
+        ["remove\n\ndouble\n\nnewline", "removedoublenewline"],
+        ["remove\n newline\n and\n space", "removenewlineandspace"],
+    ]
+)
+def test_make_single_line(input_string, expected_result):
+    assert utils.make_single_line(input_string) == expected_result
