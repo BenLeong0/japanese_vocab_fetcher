@@ -150,3 +150,15 @@ def test_convert_list_of_str_to_yomi(string_list, expected_output):
 )
 def test_convert_list_of_str_to_url(string_list, expected_output):
     assert utils.convert_list_of_str_to_url(string_list) == expected_output
+
+
+@pytest.mark.parametrize(
+    "string_list, expected_output",
+    [
+        [[], []],
+        [["<div>hi</div>"], [HTMLString("<div>hi</div>")]],
+        [["<div>hi</div>", "<span>a span</span>"], [HTMLString("<div>hi</div>"), HTMLString("<span>a span</span>")]],
+    ]
+)
+def test_convert_list_of_str_to_htmlstring(string_list, expected_output):
+    assert utils.convert_list_of_str_to_htmlstring(string_list) == expected_output
