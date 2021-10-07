@@ -116,7 +116,7 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
         assert len(resp['items']) == section['total_items']
 
 
-def test_get_audio_url_list(test_dict: FullTestDict):
+def test_extract_audio_url_list(test_dict: FullTestDict):
     """
     - GIVEN a response from the API
     - WHEN the audio urls are extracted
