@@ -96,8 +96,8 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
 def test_call_api(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
-    - WHEN the API is called
-    - THEN check the response is returned correctly
+    - WHEN the API is called for each word
+    - THEN check each response is returned correctly
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     sections = test_dict['forvo']['expected_sections']
@@ -118,9 +118,9 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
 
 def test_extract_audio_url_list(test_dict: FullTestDict):
     """
-    - GIVEN a response from the API
+    - GIVEN a series of responses from the API
     - WHEN the audio urls are extracted
-    - THEN check the returned list is correct
+    - THEN check the returned lists are correct
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     sections = test_dict['forvo']['expected_sections']
