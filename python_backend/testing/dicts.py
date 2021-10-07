@@ -154,6 +154,7 @@ MEGANE: FullTestDict = {
         },
     },
     "wanikani": {
+        "url": URL("https://api.wanikani.com/v2/subjects/?slugs=眼鏡"),
         "expected_output": {
             '眼鏡': [],
         },
@@ -271,6 +272,7 @@ COMEBACK: FullTestDict= {
         },
     },
     "wanikani": {
+        "url": URL("https://api.wanikani.com/v2/subjects/?slugs=カムバック"),
         "expected_output": {
             'カムバック': [],
         },
@@ -424,6 +426,7 @@ TABERU_GAKUSEI: FullTestDict = {
         },
     },
     "wanikani": {
+        "url": URL("https://api.wanikani.com/v2/subjects/?slugs=食べる,学生"),
         "expected_output": {
             '食べる': [],
             '学生': [],
@@ -584,6 +587,7 @@ KOTOBA: FullTestDict = {
         },
     },
     "wanikani": {
+        "url": URL("https://api.wanikani.com/v2/subjects/?slugs=言葉"),
         "expected_output": {
             '言葉': [],
         },
@@ -669,6 +673,7 @@ BADINPUT: FullTestDict = {
         },
     },
     "wanikani": {
+        "url": URL("https://api.wanikani.com/v2/subjects/?slugs=BADINPUT"),
         "expected_output": {
             'BADINPUT': [],
         },
@@ -873,6 +878,7 @@ USAGI_IKU_KAGO: FullTestDict = {
         },
     },
     "wanikani": {
+        "url": URL("https://api.wanikani.com/v2/subjects/?slugs=兎,行く,籠"),
         "expected_output": {
             '兎': [],
             '行く': [],
@@ -1050,6 +1056,7 @@ SHIZUKA: FullTestDict = {
         },
     },
     "wanikani": {
+        "url": URL("https://api.wanikani.com/v2/subjects/?slugs=静か"),
         "expected_output": {
             '静か': [],
         },

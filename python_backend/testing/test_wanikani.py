@@ -3,7 +3,9 @@ import re
 
 # from custom_types import Kaki, URL
 from modules import wanikani
+from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
+from utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -49,3 +51,15 @@ def test_empty_input():
     - THEN check it returns and empty dict
     """
     assert wanikani.main([]) == {}
+
+
+def test_gen_url(test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the API URL is generated
+    - THEN check the URL is as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    expected_url = test_dict['wanikani']['url']
+
+    assert wanikani.get_url(word_list) == expected_url
