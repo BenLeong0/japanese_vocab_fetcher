@@ -16,8 +16,9 @@ def test_dict(request):
 
 
 class FakeResponse:
-    def __init__(self, text):
+    def __init__(self, text, status_code=200):
         self.text = text
+        self.status_code = status_code
 
 
 API_KEY_REGEX = r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
@@ -97,12 +98,15 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     url = test_dict['wanikani']['url']
     api_response = test_dict['wanikani']['api_response']
 
-    def check_get_request(url, headers):
+    def validate_get_request(url, headers):
         auth_regex = r"Bearer " + API_KEY_REGEX
         assert "Authorization" in headers
         assert re.match(auth_regex, headers["Authorization"])
+
+    def mock_get_request(url, headers):
+        validate_get_request(url, headers)
         return FakeResponse(json.dumps(api_response))
 
-    monkeypatch.setattr("requests.get", check_get_request)
+    monkeypatch.setattr("requests.get", mock_get_request)
 
     assert wanikani.call_api(url) == api_response
