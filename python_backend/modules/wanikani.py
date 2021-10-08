@@ -30,9 +30,9 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
 
     try:
         api_response = get_api_response(word_list)  # pylint: disable=unused-variable
-    except WanikaniAPIError as e:
+    except WanikaniAPIError as api_error:
         # TODO: Refactor entire program to handle and return errors
-        print("An error occurred:", e.error_msg)
+        print("An error occurred:", api_error.error_msg)
         return {key:[] for key in word_list}
 
     return {key:[] for key in word_list}

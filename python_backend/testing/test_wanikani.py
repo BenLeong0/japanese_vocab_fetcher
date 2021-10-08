@@ -124,7 +124,7 @@ def test_call_api_unsuccessful(monkeypatch):
     try:
         wanikani.call_api("www.testurl.com")
         assert False
-    except wanikani.WanikaniAPIError as e:
-        assert e.error_msg == "call_api failed"
-        assert e.status_code == 400
-        assert e.url == "www.testurl.com"
+    except wanikani.WanikaniAPIError as api_error:
+        assert api_error.error_msg == "call_api failed"
+        assert api_error.status_code == 400
+        assert api_error.url == "www.testurl.com"
