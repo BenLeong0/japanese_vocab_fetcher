@@ -10,11 +10,29 @@ from custom_types import Kaki, URL, WanikaniAPIResponse
 NAME = "wanikani"
 API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
 
+
+class WanikaniAPIError(Exception):
+    def __init__(
+        self,
+        error_msg,
+        status_code,
+        url=URL(""),
+    ):
+        super().__init__(error_msg)
+        self.error_msg = error_msg
+        self.status_code = status_code
+        self.url = url
+
+
 def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
     if not word_list:
         return {}
 
-    api_response = get_api_response(word_list)  # pylint: disable=unused-variable
+    try:
+        api_response = get_api_response(word_list)  # pylint: disable=unused-variable
+    except WanikaniAPIError as e:
+        print("An error occurred:", e.error_msg)
+        return {key:[] for key in word_list}
 
     return {key:[] for key in word_list}
 
@@ -33,5 +51,12 @@ def get_url(word_list: List[Kaki]) -> URL:
 
 def call_api(url: URL) -> WanikaniAPIResponse:
     headers = {"Authorization": f"Bearer {API_KEY}"}
-    response: WanikaniAPIResponse = json.loads(requests.get(url, headers=headers).text)
-    return response
+    response = requests.get(url, headers=headers)
+    status_code = response.status_code
+
+    if status_code != 200:
+        error_msg = json.loads(response.text)["error"]
+        raise WanikaniAPIError(error_msg, status_code, url)
+
+    response_data: WanikaniAPIResponse = json.loads(response.text)
+    return response_data

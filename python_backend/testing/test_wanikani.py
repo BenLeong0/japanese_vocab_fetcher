@@ -110,3 +110,21 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr("requests.get", mock_get_request)
 
     assert wanikani.call_api(url) == api_response
+
+
+def test_call_api_unsuccessful(monkeypatch):
+    """
+    - GIVEN an API call
+    - WHEN an unsuccessful response is returned
+    - THEN check the response is handled as expected
+    """
+    unsuccessful_response = FakeResponse('{"error": "call_api failed"}', 400)
+    monkeypatch.setattr("requests.get", lambda url, headers: unsuccessful_response)
+
+    try:
+        wanikani.call_api("www.testurl.com")
+        assert False
+    except wanikani.WanikaniAPIError as e:
+        assert e.error_msg == "call_api failed"
+        assert e.status_code == 400
+        assert e.url == "www.testurl.com"
