@@ -136,10 +136,16 @@ class ResponseItemAccents(TypedDict):
     suzuki: List[Yomi]
     wadoku: List[Yomi]
 
+
+class ResponseItemWanikani(TypedDict):
+    """Dictionary containing the audio and sentence information from the Wanikani API response"""
+    audio: List[URL]
+    sentences: List[WanikaniContextSentence]
+
 class ResponseItemAudio(TypedDict):
     """Dictionary containing the audio information of the full response"""
     forvo: List[URL]
-    wanikani: List[URL]
+    wanikani: List[ResponseItemWanikani]
 
 class FullResponseItem(TypedDict):
     """Result dict for a word in an API request"""
