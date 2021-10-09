@@ -55,12 +55,6 @@ def build_suzuki_formdata(word_list_string: str) -> Dict[str, str]:
     }
 
 
-wanikani_result_factory = lambda: {
-    "audio": [],
-    "sentences": []
-}
-
-
 MEGANE: FullTestDict = {
     "id": "MEGANE",
     "input": ["眼鏡"],
