@@ -1,5 +1,3 @@
-# pylint: disable=non-ascii-name
-
 from typing import DefaultDict, Dict, List, TypedDict
 
 from bs4 import BeautifulSoup as Soup
