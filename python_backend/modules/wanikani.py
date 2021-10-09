@@ -56,7 +56,7 @@ def call_api(url: URL) -> WanikaniAPIResponse:
     status_code = response.status_code
 
     if status_code != 200:
-        error_msg = json.loads(response.text)["error"]
+        error_msg: str = json.loads(response.text)["error"]
         raise WanikaniAPIError(error_msg, status_code, url)
 
     response_data: WanikaniAPIResponse = json.loads(response.text)
