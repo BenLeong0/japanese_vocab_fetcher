@@ -68,7 +68,11 @@ def call_api(url: URL) -> WanikaniAPIResponse:
 
 
 def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, ResponseItemWanikani]:
-    result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(list)
+    default_result = {
+        "audio": [],
+        "sentences": []
+    }
+    result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(dict, default_result)
 
     for resource in response["data"]:
         writing = Kaki(decode_unicode(resource["data"]["characters"]))
@@ -85,9 +89,7 @@ def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, Respon
             sentence["en"] = decode_unicode(sentence["en"])
             sentence["ja"] = decode_unicode(sentence["ja"])
 
-        result_dict[writing] = {
-            "audio": pronunciation_audios,
-            "sentences": context_sentences
-        }
+        result_dict[writing]["audio"] += pronunciation_audios
+        result_dict[writing]["sentences"] += context_sentences
 
     return result_dict
