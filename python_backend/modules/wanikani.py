@@ -1,10 +1,12 @@
+from collections import defaultdict
 import json
-from typing import Dict, List
+from typing import DefaultDict, Dict, List
 
 from dotenv import dotenv_values
 import requests
 
-from custom_types import Kaki, URL, WanikaniAPIResponse
+from custom_types import Kaki, URL, ResponseItemWanikani, WanikaniAPIResponse
+from utils import decode_unicode
 
 
 NAME = "wanikani"
@@ -33,9 +35,11 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
     except WanikaniAPIError as api_error:
         # TODO: Refactor entire program to handle and return errors
         print("An error occurred:", api_error.error_msg)
-        return {key:[] for key in word_list}
+        return {word:[] for word in word_list}
 
-    return {key:[] for key in word_list}
+    result_dict = build_result_dict(api_response)
+
+    return {word: result_dict[word] for word in word_list}
 
 
 def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:
@@ -61,3 +65,25 @@ def call_api(url: URL) -> WanikaniAPIResponse:
 
     response_data: WanikaniAPIResponse = json.loads(response.text)
     return response_data
+
+
+def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, ResponseItemWanikani]:
+    result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(list)
+
+    for resource in response["data"]:
+        if resource["object"] != "vocabulary":
+            continue
+
+        writing = Kaki(decode_unicode(resource["data"]["characters"]))
+        pronunciation_audios = list(filter(
+            lambda audio_data: audio_data["content_type"] == "audio/mpeg",
+            resource["data"]["pronunciation_audios"]
+        ))
+        context_sentences = resource["data"]["context_sentences"]
+
+        result_dict[writing] = {
+            "audio": pronunciation_audios,
+            "sentences": context_sentences
+        }
+
+    return result_dict
