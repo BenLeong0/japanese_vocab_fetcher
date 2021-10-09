@@ -1,12 +1,13 @@
 import json
-import pytest   # type: ignore
 import re
+
+import pytest   # type: ignore
 
 # from custom_types import Kaki, URL
 from modules import wanikani
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
-from utils import convert_list_of_str_to_kaki
+from utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -128,3 +129,15 @@ def test_call_api_unsuccessful(monkeypatch):
         assert api_error.error_msg == "call_api failed"
         assert api_error.status_code == 400
         assert api_error.url == "www.testurl.com"
+
+
+def test_build_result_dict(test_dict: FullTestDict):
+    """
+    - GIVEN an API response
+    - WHEN the result dict is built
+    - THEN check the result is as expected
+    """
+    api_response = test_dict["wanikani"]["api_response"]
+    expected_result = convert_dict_str_keys_to_kaki(test_dict["wanikani"]["result_dict"])
+
+    assert wanikani.build_result_dict(api_response) == expected_result
