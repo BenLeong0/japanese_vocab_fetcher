@@ -6,7 +6,6 @@ from dotenv import dotenv_values
 import requests
 
 from custom_types import Kaki, URL, ResponseItemWanikani, WanikaniAPIResponse
-from utils import decode_unicode
 
 
 NAME = "wanikani"
@@ -68,14 +67,14 @@ def call_api(url: URL) -> WanikaniAPIResponse:
 
 
 def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, ResponseItemWanikani]:
-    default_result = {
+    default_result = lambda: {
         "audio": [],
         "sentences": []
     }
-    result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(dict, default_result)
+    result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(default_result)
 
     for resource in response["data"]:
-        writing = Kaki(decode_unicode(resource["data"]["characters"]))
+        writing = Kaki(resource["data"]["characters"])
 
         pronunciation_audios = [
             audio for audio in resource["data"]["pronunciation_audios"]
@@ -85,9 +84,7 @@ def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, Respon
             audio["url"] = URL(audio["url"])
 
         context_sentences = resource["data"]["context_sentences"]
-        for sentence in context_sentences:
-            sentence["en"] = decode_unicode(sentence["en"])
-            sentence["ja"] = decode_unicode(sentence["ja"])
+        print(context_sentences)
 
         result_dict[writing]["audio"] += pronunciation_audios
         result_dict[writing]["sentences"] += context_sentences
