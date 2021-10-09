@@ -71,15 +71,18 @@ def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, Respon
     result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(list)
 
     for resource in response["data"]:
-        if resource["object"] != "vocabulary":
-            continue
-
         writing = Kaki(decode_unicode(resource["data"]["characters"]))
-        pronunciation_audios = list(filter(
-            lambda audio_data: audio_data["content_type"] == "audio/mpeg",
-            resource["data"]["pronunciation_audios"]
-        ))
+
+        pronunciation_audios = [
+            audio for audio in resource["data"]["pronunciation_audios"]
+            if audio["content_type"] == "audio/mpeg"
+        ]
+        for audio in pronunciation_audios:
+            audio["url"] = URL(audio["url"])
+
         context_sentences = resource["data"]["context_sentences"]
+        for sentence in context_sentences:
+            sentence["ja"] = decode_unicode(sentence["ja"])
 
         result_dict[writing] = {
             "audio": pronunciation_audios,
