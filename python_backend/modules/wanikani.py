@@ -14,9 +14,9 @@ API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
 class WanikaniAPIError(Exception):
     def __init__(
         self,
-        error_msg,
-        status_code,
-        url=URL(""),
+        error_msg: str,
+        status_code: str,
+        url: URL = URL(""),
     ):
         super().__init__(error_msg)
         self.error_msg = error_msg
