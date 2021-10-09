@@ -82,6 +82,7 @@ def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, Respon
 
         context_sentences = resource["data"]["context_sentences"]
         for sentence in context_sentences:
+            sentence["en"] = decode_unicode(sentence["en"])
             sentence["ja"] = decode_unicode(sentence["ja"])
 
         result_dict[writing] = {
