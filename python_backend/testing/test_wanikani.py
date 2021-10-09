@@ -34,19 +34,19 @@ def test_api_key_import():
     assert re.match(API_KEY_REGEX, wanikani.API_KEY) is not None
 
 
-# def test_main(monkeypatch, test_dict: FullTestDict):
-#     """
-#     - GIVEN a list of words
-#     - WHEN the accent dict is generated
-#     - THEN check all the wanikani info is correct and complete
-#     """
-#     word_list = convert_list_of_str_to_kaki(test_dict['input'])
-#     sections = test_dict['wanikani']['expected_sections']
-#     expected_output = test_dict['wanikani']['expected_output']
-#     api_response = test_dict['wanikani']['api_response']
+def test_main(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the accent dict is generated
+    - THEN check all the wanikani info is correct and complete
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    expected_output = test_dict['wanikani']['expected_output']
+    api_response = test_dict['wanikani']['api_response']
 
-#     monkeypatch.setattr("requests.get", lambda url: FakeResponse(lambda url: api_response))
-#     assert wanikani.main(word_list) == expected_output
+    monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(json.dumps(api_response)))
+
+    assert wanikani.main(word_list) == expected_output
 
 
 def test_empty_input():
