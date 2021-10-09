@@ -140,4 +140,4 @@ def test_build_result_dict(test_dict: FullTestDict):
     api_response = test_dict["wanikani"]["api_response"]
     expected_result = convert_dict_str_keys_to_kaki(test_dict["wanikani"]["result_dict"])
 
-    assert wanikani.build_result_dict(api_response) == expected_result
+    assert dict(wanikani.build_result_dict(api_response)) == expected_result
