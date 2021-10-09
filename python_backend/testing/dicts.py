@@ -249,31 +249,31 @@ MEGANE: FullTestDict = {
                 ],
                 "wanikani": {
                     "audio": [
-                            {
-                                "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
-                                "metadata": {
-                                    "gender": "male",
-                                    "source_id": 7771,
-                                    "pronunciation": "\u3081\u304c\u306d",
-                                    "voice_actor_id": 2,
-                                    "voice_actor_name": "Kenichi",
-                                    "voice_description": "Tokyo accent"
-                                },
-                                "content_type": "audio/mpeg"
+                        {
+                            "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 7771,
+                                "pronunciation": "\u3081\u304c\u306d",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
                             },
-                            {
-                                "url": URL("https://files.wanikani.com/hoiygkrxyq7a43jujw1skqzla3mx"),
-                                "metadata": {
-                                    "gender": "female",
-                                    "source_id": 24645,
-                                    "pronunciation": "\u3081\u304c\u306d",
-                                    "voice_actor_id": 1,
-                                    "voice_actor_name": "Kyoko",
-                                    "voice_description": "Tokyo accent"
-                                },
-                                "content_type": "audio/mpeg"
+                            "content_type": "audio/mpeg"
+                        },
+                        {
+                            "url": URL("https://files.wanikani.com/hoiygkrxyq7a43jujw1skqzla3mx"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 24645,
+                                "pronunciation": "\u3081\u304c\u306d",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
                             },
-                        ],
+                            "content_type": "audio/mpeg"
+                        },
+                    ],
                     "sentences": [
                         {
                             "en": "You should wipe your glasses.",
