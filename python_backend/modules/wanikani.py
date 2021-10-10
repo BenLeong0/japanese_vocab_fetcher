@@ -2,7 +2,7 @@ from typing import Dict, List
 
 from dotenv import dotenv_values
 
-from custom_types import Kaki, URL
+from custom_types import Kaki, URL, WanikaniAPIResponse
 
 
 NAME = "wanikani"
@@ -12,4 +12,17 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
     if not word_list:
         return {}
 
+    api_response = get_api_response(word_list)  # pylint: disable=unused-variable
+
     return {key:[] for key in word_list}
+
+
+def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:
+    url = get_url(word_list)    # pylint: disable=unused-variable
+    return {}
+
+
+def get_url(word_list: List[Kaki]) -> URL:
+    slugs = ','.join(word_list)
+    url = f"https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs={slugs}"
+    return URL(url)
