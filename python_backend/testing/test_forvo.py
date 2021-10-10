@@ -26,7 +26,8 @@ class FakeResponse:
 
 def test_api_key_import():
     """Check the API_KEY is successfully imported"""
-    assert len(forvo.API_KEY) == 32
+    api_key_format_re = r"^[0-9a-f]{32}$"
+    assert re.match(api_key_format_re, forvo.API_KEY) is not None
 
 
 def test_main(monkeypatch, test_dict: FullTestDict):

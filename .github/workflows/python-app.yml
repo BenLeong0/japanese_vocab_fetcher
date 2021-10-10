@@ -43,7 +43,8 @@ jobs:
     - name: Test with pytest
       run: |
         cd python_backend
-        echo FORVO_API_KEY = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX >> .env
+        echo FORVO_API_KEY = 00000000000000000000000000000000 >> .env
+        echo WANIKANI_API_KEY = 00000000-0000-0000-0000-000000000000 >> .env
         coverage run -m pytest -vv
 
 

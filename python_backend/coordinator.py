@@ -17,7 +17,7 @@ MODULES = (
     ojad,
     suzuki,
     wadoku,
-    wanikani
+    wanikani,
 )
 
 def get_info(word_list: List[Kaki]) -> List[FullResponseItem]:
