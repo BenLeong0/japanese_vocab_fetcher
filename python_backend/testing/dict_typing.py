@@ -104,23 +104,15 @@ class WanikaniTestDict(TypedDict):
 
 # Expected final result
 
-class ExpectedResultAccents(TypedDict):
-    """File of the final result containing the fetched accented readings"""
-    ojad: List[str]
-    suzuki: List[str]
-    wadoku: List[str]
-
-class ExpectedResultAudio(TypedDict):
-    """Field of the final result containing URLs to audio files"""
-    forvo: List[URL]
-    wanikani: ResponseItemWanikani
-
 class ExpectedResult(TypedDict):
     """Expected output for the main get_info() function"""
     word: str
     jisho: ExpectedJishoOutput
-    accent: ExpectedResultAccents
-    audio: ExpectedResultAudio
+    ojad: List[str]
+    suzuki: List[str]
+    wadoku: List[str]
+    forvo: List[URL]
+    wanikani: ResponseItemWanikani
 
 
 # Complete test dictionary type
