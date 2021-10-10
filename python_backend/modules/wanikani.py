@@ -1,14 +1,22 @@
+from collections import defaultdict
 import json
-from typing import Dict, List
+from typing import DefaultDict, Dict, List
 
 from dotenv import dotenv_values
 import requests
 
-from custom_types import Kaki, URL, WanikaniAPIResponse
+from custom_types import Kaki, URL, ResponseItemWanikani, WanikaniAPIResponse
 
 
 NAME = "wanikani"
 API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
+
+
+def default_result_factory() -> ResponseItemWanikani:
+    return {
+        "audio": [],
+        "sentences": []
+    }
 
 
 class WanikaniAPIError(Exception):
@@ -24,7 +32,7 @@ class WanikaniAPIError(Exception):
         self.url = url
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWanikani]:
     if not word_list:
         return {}
 
@@ -33,9 +41,11 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
     except WanikaniAPIError as api_error:
         # TODO: Refactor entire program to handle and return errors
         print("An error occurred:", api_error.error_msg)
-        return {key:[] for key in word_list}
+        return {word: default_result_factory() for word in word_list}
 
-    return {key:[] for key in word_list}
+    result_dict = build_result_dict(api_response)
+
+    return {word: result_dict[word] for word in word_list}
 
 
 def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:
@@ -61,3 +71,25 @@ def call_api(url: URL) -> WanikaniAPIResponse:
 
     response_data: WanikaniAPIResponse = json.loads(response.text)
     return response_data
+
+
+def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, ResponseItemWanikani]:
+    result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(default_result_factory)
+
+    for resource in response["data"]:
+        writing = Kaki(resource["data"]["characters"])
+
+        pronunciation_audios = [
+            audio for audio in resource["data"]["pronunciation_audios"]
+            if audio["content_type"] == "audio/mpeg"
+        ]
+        for audio in pronunciation_audios:
+            audio["url"] = URL(audio["url"])
+
+        context_sentences = resource["data"]["context_sentences"]
+        print(context_sentences)
+
+        result_dict[writing]["audio"] += pronunciation_audios
+        result_dict[writing]["sentences"] += context_sentences
+
+    return result_dict
