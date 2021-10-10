@@ -15,7 +15,7 @@ class WanikaniAPIError(Exception):
     def __init__(
         self,
         error_msg: str,
-        status_code: str,
+        status_code: int,
         url: URL = URL(""),
     ):
         super().__init__(error_msg)
