@@ -2,7 +2,9 @@ from typing import DefaultDict, Dict, List, TypedDict
 
 from bs4 import BeautifulSoup as Soup
 
-from custom_types import HTMLString, URL, ResponseItemWanikani, WanikaniAPIResponse
+from custom_types.alternative_string_types import HTMLString, URL
+from custom_types.response_types import ResponseItemWanikani
+from custom_types.wanikani_api_types import WanikaniAPIResponse
 
 
 # Jisho

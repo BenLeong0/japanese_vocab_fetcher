@@ -1,4 +1,4 @@
-from custom_types import WanikaniAPIResponse
+from custom_types.wanikani_api_types import WanikaniAPIResponse
 
 
 MEGANE: WanikaniAPIResponse = {

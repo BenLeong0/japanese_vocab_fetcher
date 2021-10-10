@@ -5,7 +5,7 @@ from typing import Dict, List, Tuple
 from bs4 import BeautifulSoup as Soup
 import requests
 
-from custom_types import HTMLString, Kaki, URL, Yomi
+from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
 from utils import make_single_line
 
 

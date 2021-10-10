@@ -1,6 +1,6 @@
 from typing import Dict, List
 
-from custom_types import Kaki
+from custom_types.alternative_string_types import Kaki
 
 
 NAME = "jisho"

@@ -4,7 +4,7 @@ from typing import Any, DefaultDict, Dict
 import pytest   # type: ignore
 
 import coordinator
-from custom_types import Kaki
+from custom_types.alternative_string_types import Kaki
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
 from utils import convert_list_of_str_to_kaki, convert_dict_str_keys_to_kaki

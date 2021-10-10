@@ -2,7 +2,8 @@ from collections import defaultdict
 from threading import Thread
 from typing import Any, DefaultDict, Dict, List, Protocol
 
-from custom_types import Kaki, FullResponseItem
+from custom_types.alternative_string_types import Kaki
+from custom_types.response_types import FullResponseItem
 from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
 
 
