@@ -51,7 +51,7 @@ def generate_response(
     word_list: List[Kaki],
 ) -> List[FullResponseItem]:
     resp: List[FullResponseItem] = [{
-        **{'word': word},
+        **{'word': word},   # type: ignore
         **{module.NAME: results_dict[module.NAME][word] for module in MODULES}
     } for word in word_list]
     return resp
