@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 
 from flask.wrappers import Request, Response
 
-from custom_types import HTMLString, Kaki, URL, Yomi
+from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
 
 
 def get_words_from_request(request: Request):

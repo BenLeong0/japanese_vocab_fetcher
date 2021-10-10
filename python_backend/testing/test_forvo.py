@@ -1,8 +1,9 @@
 import json
-import pytest   # type: ignore
 import re
 
-from custom_types import Kaki, URL
+import pytest   # type: ignore
+
+from custom_types.alternative_string_types import Kaki, URL
 from modules import forvo
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS

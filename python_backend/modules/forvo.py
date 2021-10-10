@@ -5,7 +5,8 @@ from typing import Dict, List
 from dotenv import dotenv_values
 import requests
 
-from custom_types import Kaki, URL, ForvoAPIItem, ForvoAPIResponse
+from custom_types.alternative_string_types import Kaki, URL
+from custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
 from utils import decode_unicode
 
 

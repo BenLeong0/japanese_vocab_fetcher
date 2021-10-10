@@ -3,7 +3,7 @@ import re
 
 import pytest   # type: ignore
 
-# from custom_types import Kaki, URL
+# from custom_types.alternative_string_types import Kaki, URL
 from modules import wanikani
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS

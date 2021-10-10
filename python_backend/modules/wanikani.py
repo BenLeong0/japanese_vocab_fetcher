@@ -5,8 +5,9 @@ from typing import DefaultDict, Dict, List
 from dotenv import dotenv_values
 import requests
 
-from custom_types import Kaki, URL, ResponseItemWanikani, WanikaniAPIResponse
-
+from custom_types.alternative_string_types import Kaki, URL
+from custom_types.response_types import ResponseItemWanikani
+from custom_types.wanikani_api_types import WanikaniAPIResponse
 
 NAME = "wanikani"
 API_KEY: str = dotenv_values()['WANIKANI_API_KEY']

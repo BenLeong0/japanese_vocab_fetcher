@@ -6,9 +6,9 @@ from typing import Dict, List
 from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
-from custom_types import URL, HTMLString
-from testing.dict_typing import FullTestDict
+from custom_types.alternative_string_types import URL, HTMLString
 from testing import wanikani_api_responses
+from testing.dict_typing import FullTestDict
 
 # TODO: DICTS TO ADD:
 # - Extra results for ojad (words not in original word list)
