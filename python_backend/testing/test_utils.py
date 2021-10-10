@@ -1,4 +1,5 @@
 import json
+
 import pytest   # type: ignore
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
