@@ -159,6 +159,7 @@ MEGANE: FullTestDict = {
         "api_response": wanikani_api_responses.MEGANE,
         "result_dict": {
             '眼鏡': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
@@ -195,6 +196,7 @@ MEGANE: FullTestDict = {
         },
         "expected_output": {
             '眼鏡': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
@@ -245,6 +247,7 @@ MEGANE: FullTestDict = {
                 URL("https://apifree.forvo.com/audio/3c1n2o3f3n313i2o372i1h2e3o3q2e3a292p3o1j3m2h382k3k2o27291g341f312j2f1f2g3q1b3o3o313n2m283p1l2h3m253939371h1n3q272g2a3a383c3n2i3g2b1g1k2m371f363f281o3i3638253n322e31381g1i211t1t_1o1h3j323637373d2a1h37333l2121371l3a2i1o2f2h1t1t"),
             ],
             "wanikani": {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
@@ -377,6 +380,7 @@ COMEBACK: FullTestDict= {
         "result_dict": {},
         "expected_output": {
             'カムバック': {
+                "success": True,
                 "audio": [],
                 "sentences": []
             },
@@ -393,6 +397,7 @@ COMEBACK: FullTestDict= {
                 URL("https://apifree.forvo.com/audio/1h2d3b292b341f3i2f3m2p3e34253e2h282o3c1i1j3b1o263i2c363q3k2p351p2a1n3j2g1h1p2d291b3b3b3j2233371i333o1f2h1h291m282f381h3p1p3n3b2o3g2n273h372e263m36323m282n382p3k2a271b223d211t1t_2m3b21293b1b322a2q3m3b3b241h1p2j282d2j281n211t1t"),
             ],
             "wanikani": {
+                "success": True,
                 "audio": [],
                 "sentences": []
             },
@@ -534,6 +539,7 @@ TABERU_GAKUSEI: FullTestDict = {
         "api_response": wanikani_api_responses.TABERU_GAKUSEI,
         "result_dict": {
             '食べる': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/8e5vf9sc17iajyx2d3838oi6chnh"),
@@ -576,6 +582,7 @@ TABERU_GAKUSEI: FullTestDict = {
                 ]
             },
             '学生': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/g2cqz8n0yfcy4n0d45sheojq064j"),
@@ -620,6 +627,7 @@ TABERU_GAKUSEI: FullTestDict = {
         },
         "expected_output": {
             '食べる': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/8e5vf9sc17iajyx2d3838oi6chnh"),
@@ -662,6 +670,7 @@ TABERU_GAKUSEI: FullTestDict = {
                 ]
             },
             '学生': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/g2cqz8n0yfcy4n0d45sheojq064j"),
@@ -725,6 +734,7 @@ TABERU_GAKUSEI: FullTestDict = {
                 URL("https://apifree.forvo.com/audio/1b3n2b2e2m2n383p1h3c2838281h371n3d3h1k3l3c322p2l2o2d3d333l3m1f2i373l1b25383q2g2l3c3k2g1j272l3g3a1j3l2n2q3b1m2h3i292c3j2o26313g2i_3f2f2f312f2o3m23262i2h2e2q2e2n2c272m221m1j2h1t1t"),
             ],
             "wanikani": {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/8e5vf9sc17iajyx2d3838oi6chnh"),
@@ -786,6 +796,7 @@ TABERU_GAKUSEI: FullTestDict = {
                 URL("https://apifree.forvo.com/audio/2o1f3g3c1k2i2b2o363f2p1j2d2g2e2e2n3m1j1b2p2d1k1o3q251i3l3i3q3d2g34353i1j3b292q2a1h272l25273h3f36331p1n371h2p343o363f1j2d3d2m322q_2b321o2e3m2p2q37263p1g1n1o273c3j313q2d3p242h1t1t"),
             ],
             "wanikani": {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/g2cqz8n0yfcy4n0d45sheojq064j"),
@@ -938,6 +949,7 @@ KOTOBA: FullTestDict = {
         "api_response": wanikani_api_responses.KOTOBA,
         "result_dict": {
             '言葉': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/n7d4o8yizz9oni6whnw5m5ormof7"),
@@ -982,6 +994,7 @@ KOTOBA: FullTestDict = {
         },
         "expected_output": {
             '言葉': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/n7d4o8yizz9oni6whnw5m5ormof7"),
@@ -1042,6 +1055,7 @@ KOTOBA: FullTestDict = {
                 URL("https://apifree.forvo.com/audio/34363h1n3e271i251i3o3n3q3m2o25383b1i293o2o2o2h2a2d343b2l353127341b3n261k3g2d1n3p1p371p3l3h2i3b221f252q2a223e2e2n2j33323n372a3b28331j1m2h343f3i233a36311f2p1b261n222o3q2h2p211t1t_3h2q392h2g3j1h3j2p3h292b3i212j1o25221k1l1n211t1t"),
             ],
             "wanikani": {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/n7d4o8yizz9oni6whnw5m5ormof7"),
@@ -1148,6 +1162,7 @@ BADINPUT: FullTestDict = {
         "result_dict": {},
         "expected_output": {
             'BADINPUT': {
+                "success": True,
                 "audio": [],
                 "sentences": []
             },
@@ -1162,6 +1177,7 @@ BADINPUT: FullTestDict = {
             "wadoku": [],
             "forvo": [],
             "wanikani": {
+                "success": True,
                 "audio": [],
                 "sentences": []
             },
@@ -1356,6 +1372,7 @@ USAGI_IKU_KAGO: FullTestDict = {
         "api_response": wanikani_api_responses.USAGI_IKU_KAGO,
         "result_dict": {
             '行く': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/i6eq7alp4yn38qsxvlh51ur9sl41"),
@@ -1400,10 +1417,12 @@ USAGI_IKU_KAGO: FullTestDict = {
         },
         "expected_output": {
             '兎': {
+                "success": True,
                 "audio": [],
                 "sentences": []
             },
             '行く': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/i6eq7alp4yn38qsxvlh51ur9sl41"),
@@ -1446,6 +1465,7 @@ USAGI_IKU_KAGO: FullTestDict = {
                 ]
             },
             '籠': {
+                "success": True,
                 "audio": [],
                 "sentences": []
             },
@@ -1464,6 +1484,7 @@ USAGI_IKU_KAGO: FullTestDict = {
                 URL("https://apifree.forvo.com/audio/332m3j3e3l2l333o292b2n2q1o2g1h3n3l3p1l3631223q3c2e313q251j3g2c3f353c251n3d2b3k3i311g1f31242a1g292j2q1i381g1k2f2a3j3k3c3d2k2e3k2k373j3734222o2c371g2a35381n3l3h2n2l2o281n332h1t1t_3h3g2f1b3m313b3e3j2i2n2d3m312i353e1i39342m371t1t"),
             ],
             "wanikani": {
+                "success": True,
                 "audio": [],
                 "sentences": []
             },
@@ -1483,6 +1504,7 @@ USAGI_IKU_KAGO: FullTestDict = {
                 URL("https://apifree.forvo.com/audio/3h242h2e3c3a1j3g2c2g243832332n2n272h1m3k3l3l3i3938321g3q3i2o2j3h321i333g1l2o311h2h353q33242o1f352g2n383l3422353b3a3p2i271j332l3m2l3i1j253q252e3g3j3q1k3h3g3m2l243l36233f3m371t1t_1j213138243c3c27353k3a2m2e3m213l3p252b3e36371t1t"),
             ],
             "wanikani": {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/i6eq7alp4yn38qsxvlh51ur9sl41"),
@@ -1537,6 +1559,7 @@ USAGI_IKU_KAGO: FullTestDict = {
                 URL("https://apifree.forvo.com/audio/2c3838233d1o2h2b1p393434271g3q1f3c223g262g1k272k34351j3a1h2934383g1g3c2e3835391k3q36273g2i242j1l2c2b3234253121343g1f253i1n3i262n2p1f2g3d1n2b27392h2321393i1i1m382931371m2b371t1t_2j1j1h2h233g342o1g1n2e29242f2n1f2k331l3839371t1t"),
             ],
             "wanikani": {
+                "success": True,
                 "audio": [],
                 "sentences": []
             },
@@ -1661,6 +1684,7 @@ SHIZUKA: FullTestDict = {
         "api_response": wanikani_api_responses.SHIZUKA,
         "result_dict": {
             '静か': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/awv61bmcmf9w4m7p057jqubhu3f1"),
@@ -1705,6 +1729,7 @@ SHIZUKA: FullTestDict = {
         },
         "expected_output": {
             '静か': {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/awv61bmcmf9w4m7p057jqubhu3f1"),
@@ -1763,6 +1788,7 @@ SHIZUKA: FullTestDict = {
                 URL("https://apifree.forvo.com/audio/362534211m1j372l1m242g243o31241n293l1p2f2a2l3l1g363428233j2a1f1l3a23352p3i2b3335263d241g36333c1k261g382l1o2e38371n1m1n23292n1g3n2p2f1f1n2d2232391l1j273j3e1i343e3j3d3i3j293n1t1t_1k233b2l332g3n2c2g2q331o2q282p3m213p3m2m3g371t1t"),
             ],
             "wanikani": {
+                "success": True,
                 "audio": [
                     {
                         "url": URL("https://files.wanikani.com/awv61bmcmf9w4m7p057jqubhu3f1"),

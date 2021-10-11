@@ -22,15 +22,9 @@ JishoResponse = Dict[str, str]
 
 # Wanikani
 
-class ResponseItemWanikaniAudio(TypedDict):
-    """Dictionary containing the audio information from the Wanikani API response"""
-    url: URL
-    metadata: WanikaniPronunciationAudioMetadata
-    content_type: str
-
-
 class ResponseItemWanikani(TypedDict):
     """Dictionary containing the audio and sentence information from the Wanikani API response"""
+    success: bool
     audio: List[WanikaniPronunciationAudio]
     sentences: List[WanikaniContextSentence]
 
