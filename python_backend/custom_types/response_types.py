@@ -29,6 +29,13 @@ class ResponseItemWanikani(TypedDict):
     sentences: List[WanikaniContextSentence]
 
 
+# Forvo
+
+class ResponseItemForvo(TypedDict):
+    """Dictionary containing the audio information from the Wanikani API response"""
+    success: bool
+    audio: List[URL]
+
 # Full response
 
 class FullResponseItem(TypedDict):
@@ -38,5 +45,5 @@ class FullResponseItem(TypedDict):
     ojad: List[Yomi]
     suzuki: List[Yomi]
     wadoku: List[Yomi]
-    forvo: List[URL]
+    forvo: ResponseItemForvo
     wanikani: ResponseItemWanikani

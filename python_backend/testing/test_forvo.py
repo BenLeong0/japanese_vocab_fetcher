@@ -17,8 +17,9 @@ def test_dict(request):
 
 
 class FakeResponse:
-    def __init__(self, text):
+    def __init__(self, text, status_code=200):
         self.text = text
+        self.status_code = status_code
 
 
 #####################
@@ -130,7 +131,7 @@ def test_extract_audio_url_list(test_dict: FullTestDict):
 
     for word in word_list:
         api_response = json.loads(sections[word]['api_response'])
-        assert forvo.extract_audio_url_list(api_response, word) == expected_output[word]
+        assert forvo.extract_audio_url_list(api_response, word) == expected_output[word]['audio']
 
 
 def test_extract_audio_url():
