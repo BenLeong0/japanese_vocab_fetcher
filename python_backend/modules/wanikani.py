@@ -13,7 +13,7 @@ NAME = "wanikani"
 API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
 
 
-def default_result_factory(successful=True) -> ResponseItemWanikani:
+def default_result_factory(successful: bool = True) -> ResponseItemWanikani:
     return {
         "success": successful,
         "audio": [],
