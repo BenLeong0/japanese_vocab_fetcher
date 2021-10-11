@@ -12,11 +12,15 @@ from custom_types.wanikani_api_types import (
 )
 
 
+# Jisho
+
 # class JishoResponse(TypedDict):
 #     """Dictionary containing the jisho information of the full response"""
 #     str: str
 JishoResponse = Dict[str, str]
 
+
+# Wanikani
 
 class ResponseItemWanikaniAudio(TypedDict):
     """Dictionary containing the audio information from the Wanikani API response"""
@@ -30,6 +34,8 @@ class ResponseItemWanikani(TypedDict):
     audio: List[WanikaniPronunciationAudio]
     sentences: List[WanikaniContextSentence]
 
+
+# Full response
 
 class FullResponseItem(TypedDict):
     """Result dict for a word in an API request"""
