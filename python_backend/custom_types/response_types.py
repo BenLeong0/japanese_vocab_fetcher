@@ -22,19 +22,22 @@ JishoResponse = Dict[str, str]
 
 # Wanikani
 
-class ResponseItemWanikani(TypedDict):
+class ResponseItemWanikani(TypedDict, total=False):
     """Dictionary containing the audio and sentence information from the Wanikani API response"""
     success: bool
     audio: List[WanikaniPronunciationAudio]
     sentences: List[WanikaniContextSentence]
+    error: str
 
 
 # Forvo
 
-class ResponseItemForvo(TypedDict):
+class ResponseItemForvo(TypedDict, total=False):
     """Dictionary containing the audio information from the Wanikani API response"""
     success: bool
     audio: List[URL]
+    error: str
+
 
 # Full response
 

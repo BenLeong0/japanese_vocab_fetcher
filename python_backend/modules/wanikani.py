@@ -33,9 +33,14 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWanikani]:
     try:
         api_response = get_api_response(word_list)  # pylint: disable=unused-variable
     except WanikaniAPIError as api_error:
-        # TODO: Refactor entire program to handle and return errors
         print("An error occurred:", api_error.error_msg)
-        return {word: default_result_factory(successful=False) for word in word_list}
+        return {
+            word: {
+                **default_result_factory(successful=False), # type: ignore
+                **{"error": str(api_error)},
+            }
+            for word in word_list
+        }
 
     result_dict = build_result_dict(api_response)
 

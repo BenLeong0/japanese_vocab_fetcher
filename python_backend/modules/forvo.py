@@ -44,7 +44,7 @@ def get_audio_urls(word: Kaki) -> ResponseItemForvo:
         response = call_api(word)
     except ForvoAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {"success": False, "audio": []}
+        return {"success": False, "audio": [], "error": str(api_error)}
 
     url_list = extract_audio_url_list(response, word)
     return {"success": True, "audio": url_list}
