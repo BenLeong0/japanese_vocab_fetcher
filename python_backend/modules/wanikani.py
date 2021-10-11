@@ -6,6 +6,7 @@ from dotenv import dotenv_values
 import requests
 
 from custom_types.alternative_string_types import Kaki, URL
+from custom_types.exception_types import APIError
 from custom_types.response_types import ResponseItemWanikani
 from custom_types.wanikani_api_types import WanikaniAPIResponse
 
@@ -21,17 +22,8 @@ def default_result_factory(successful: bool = True) -> ResponseItemWanikani:
     }
 
 
-class WanikaniAPIError(Exception):
-    def __init__(
-        self,
-        error_msg: str,
-        status_code: int,
-        url: URL = URL(""),
-    ):
-        super().__init__(error_msg)
-        self.error_msg = error_msg
-        self.status_code = status_code
-        self.url = url
+class WanikaniAPIError(APIError):
+    pass
 
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWanikani]:

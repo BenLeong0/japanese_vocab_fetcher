@@ -1,11 +1,12 @@
 import json
 from threading import Thread
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 from dotenv import dotenv_values
 import requests
 
 from custom_types.alternative_string_types import Kaki, URL
+from custom_types.exception_types import APIError
 from custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
 from custom_types.response_types import ResponseItemForvo
 from utils import decode_unicode
@@ -15,25 +16,8 @@ NAME = "forvo"
 API_KEY: str = dotenv_values()['FORVO_API_KEY']
 
 
-class ForvoAPIError(Exception):
-    def __init__(
-        self,
-        error_msg: str,
-        status_code: int,
-        url: URL = URL(""),
-    ):
-        super().__init__(error_msg)
-        self.error_msg = error_msg
-        self.status_code = status_code
-        self.url = url
-
-
-    def __str__(self):
-        return json.dumps({
-            "status_code": self.status_code,
-            "error": self.error_msg,
-            "url": self.url,
-        })
+class ForvoAPIError(APIError):
+    pass
 
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemForvo]:
