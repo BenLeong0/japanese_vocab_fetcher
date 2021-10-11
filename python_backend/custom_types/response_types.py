@@ -8,7 +8,6 @@ from custom_types.alternative_string_types import (
 from custom_types.wanikani_api_types import (
     WanikaniContextSentence,
     WanikaniPronunciationAudio,
-    WanikaniPronunciationAudioMetadata,
 )
 
 
