@@ -3,12 +3,12 @@ import pytest   # type: ignore
 
 from modules import suzuki
 from testing.dict_typing import FullTestDict
-from testing.dicts import TEST_DICTS, TEST_DICT_IDS
+from testing.dicts import TEST_DICTS
 from utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
-@pytest.fixture(params=TEST_DICTS, ids=TEST_DICT_IDS)
+@pytest.fixture(params=TEST_DICTS, ids=lambda d:d['id'])
 def test_dict(request):
     return request.param
 
