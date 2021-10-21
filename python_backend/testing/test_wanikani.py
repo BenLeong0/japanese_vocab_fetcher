@@ -102,7 +102,7 @@ def test_get_api_response(monkeypatch, test_dict: FullTestDict):
     assert wanikani.get_api_response(word_list) == api_response
 
 
-def test_gen_url(test_dict: FullTestDict):
+def test_get_url(test_dict: FullTestDict):
     """
     - GIVEN a list of words
     - WHEN the API URL is generated
@@ -135,6 +135,24 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr("requests.get", mock_get_request)
 
     assert wanikani.call_api(url) == api_response
+
+
+def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN an unsuccessful HTTP request is made
+    - THEN check an exception is thrown
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "could not connect"})
+    monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(response, status_code=400))
+
+    try:
+        wanikani.call_api(word_list)
+        assert False
+    except wanikani.WanikaniAPIError as api_error:
+        assert api_error.error_msg == "could not connect"
+        assert api_error.status_code == 400
 
 
 def test_call_api_unsuccessful(monkeypatch):

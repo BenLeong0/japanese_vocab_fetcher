@@ -143,6 +143,24 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
         assert len(resp['items']) == section['total_items']
 
 
+def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN an unsuccessful HTTP request is made
+    - THEN check an exception is thrown
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "could not connect"})
+    monkeypatch.setattr("requests.get", lambda url: FakeResponse(response, status_code=400))
+
+    try:
+        forvo.call_api(word_list)
+        assert False
+    except forvo.ForvoAPIError as api_error:
+        assert api_error.error_msg == "could not connect"
+        assert api_error.status_code == 400
+
+
 def test_extract_audio_url_list(test_dict: FullTestDict):
     """
     - GIVEN a series of responses from the API

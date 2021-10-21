@@ -126,6 +126,38 @@ def test_has_words_false():
     assert ojad.has_words(html) == False
 
 
+def test_get_html(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the HTML page is fetched
+    - THEN check it is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    htmls = test_dict['ojad']['htmls']
+    monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
+
+    for page_number, html in enumerate(htmls):
+        assert ojad.get_html(word_list, page_number=page_number+1) == Soup(html, 'html.parser')
+
+
+def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN an unsuccessful HTTP request is made
+    - THEN check an exception is thrown
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "could not connect"})
+    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(response, status_code=400))
+
+    try:
+        ojad.get_html(word_list, 1)
+        assert False
+    except ojad.OJADAPIError as api_error:
+        assert api_error.error_msg == "could not connect"
+        assert api_error.status_code == 400
+
+
 def test_get_htmls(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words

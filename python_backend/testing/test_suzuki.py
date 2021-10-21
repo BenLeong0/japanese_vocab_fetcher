@@ -83,6 +83,38 @@ def test_get_formdata(test_dict: FullTestDict):
     assert suzuki.get_formdata(word_list) == expected_formdata
 
 
+def test_get_html(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the HTML page is fetched
+    - THEN check it is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    html = test_dict['suzuki']['html']
+
+    monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
+
+    assert suzuki.get_html(word_list) == Soup(html, 'html.parser')
+
+
+def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN an unsuccessful HTTP request is made
+    - THEN check an exception is thrown
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "could not connect"})
+    monkeypatch.setattr("requests.post", lambda x, formdata, timeout: FakeResponse(response, status_code=400))
+
+    try:
+        suzuki.get_html(word_list)
+        assert False
+    except suzuki.SuzukiAPIError as api_error:
+        assert api_error.error_msg == "could not connect"
+        assert api_error.status_code == 400
+
+
 def test_get_sections(test_dict: FullTestDict):
     """
     - GIVEN an html section
