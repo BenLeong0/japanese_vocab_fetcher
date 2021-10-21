@@ -1,5 +1,5 @@
 import json
-from typing import Dict, TypedDict
+from typing import Literal, TypedDict
 
 from custom_types.alternative_string_types import URL
 
@@ -35,7 +35,12 @@ class APIError(Exception):
         return json.dumps(self.to_dict())
 
 
-def api_error_response_factory(api_error: APIError) -> Dict:
+class FailedResponseItem(TypedDict):
+    success: Literal[False]
+    error: APIErrorDict
+
+
+def api_error_response_factory(api_error: APIError) -> FailedResponseItem:
     return {
         "success": False,
         "error": api_error.to_dict(),

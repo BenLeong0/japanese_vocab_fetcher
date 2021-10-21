@@ -1,17 +1,18 @@
 from collections import defaultdict
 import json
 import re
-from typing import DefaultDict, Dict, List, Tuple
+from typing import DefaultDict, Dict, List, Tuple, Union
 
 from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-from custom_types.exception_types import APIError, api_error_response_factory
+from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
 from custom_types.response_types import ResponseItemWadoku
 
 
 NAME = "wadoku"
+WadokuModuleReturnTypes = Union[ResponseItemWadoku, FailedResponseItem]
 
 
 def response_factory(accent_list: List[Yomi] = None) -> ResponseItemWadoku:
@@ -31,7 +32,7 @@ class WadokuAPIError(APIError):
 
 WadokuWordSectionsType = List[Tuple[Soup, List[Soup]]]
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWadoku]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, WadokuModuleReturnTypes]:
     if not word_list:
         return {}
 

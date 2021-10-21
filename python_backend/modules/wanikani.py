@@ -1,13 +1,13 @@
 from collections import defaultdict
 import json
-from typing import DefaultDict, Dict, List
+from typing import DefaultDict, Dict, List, Union
 
 from dotenv import dotenv_values
 import requests
 
 from custom_types.alternative_string_types import Kaki, URL
 from custom_types.exception_types import APIError, api_error_response_factory
-from custom_types.response_types import ResponseItemWanikani
+from custom_types.response_types import FailedResponseItem, ResponseItemWanikani
 from custom_types.wanikani_api_types import (
     WanikaniAPIResponse,
     WanikaniContextSentence,
@@ -16,6 +16,7 @@ from custom_types.wanikani_api_types import (
 
 NAME = "wanikani"
 API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
+WanikaniModuleReturnTypes = Union[ResponseItemWanikani, FailedResponseItem]
 
 
 def response_factory(
@@ -40,7 +41,7 @@ class WanikaniAPIError(APIError):
     pass
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWanikani]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, WanikaniModuleReturnTypes]:
     if not word_list:
         return {}
 

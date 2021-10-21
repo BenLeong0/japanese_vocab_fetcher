@@ -1,11 +1,11 @@
-from typing import List, Literal, TypedDict, Union
+from typing import List, TypedDict, Union
 
 from custom_types.alternative_string_types import (
     Kaki,
     URL,
     Yomi,
 )
-from custom_types.exception_types import APIErrorDict
+from custom_types.exception_types import FailedResponseItem
 from custom_types.wanikani_api_types import (
     WanikaniContextSentence,
     WanikaniPronunciationAudio,
@@ -15,11 +15,6 @@ from custom_types.wanikani_api_types import (
 class ResponseItem(TypedDict):
     """Dictionary containing the information from one of the modules"""
     success: bool
-
-
-class FailedResponseItem(TypedDict):
-    success: Literal[False]
-    error: APIErrorDict
 
 
 # Jisho

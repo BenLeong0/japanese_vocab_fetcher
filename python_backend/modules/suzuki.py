@@ -1,18 +1,19 @@
 from ast import literal_eval
 import json
 import re
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Union
 
 from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-from custom_types.exception_types import APIError, api_error_response_factory
+from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
 from custom_types.response_types import ResponseItemSuzuki
 from utils import make_single_line
 
 
 NAME = "suzuki"
+SuzukiModuleReturnTypes = Union[ResponseItemSuzuki, FailedResponseItem]
 
 
 def response_factory(accent_list: List[Yomi] = None) -> ResponseItemSuzuki:
@@ -30,7 +31,7 @@ class SuzukiAPIError(APIError):
     pass
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemSuzuki]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, SuzukiModuleReturnTypes]:
     if not word_list:
         return {}
 
