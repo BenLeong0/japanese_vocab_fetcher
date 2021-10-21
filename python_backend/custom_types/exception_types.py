@@ -1,6 +1,14 @@
 import json
+from typing import TypedDict
 
 from custom_types.alternative_string_types import URL
+
+
+class APIErrorDict(TypedDict):
+    error_msg: str
+    status_code: int
+    url: URL
+
 
 class APIError(Exception):
     def __init__(
@@ -15,10 +23,10 @@ class APIError(Exception):
         self.url = url
 
 
-    def to_dict(self):
+    def to_dict(self) -> APIErrorDict:
         return {
             "status_code": self.status_code,
-            "error": self.error_msg,
+            "error_msg": self.error_msg,
             "url": self.url,
         }
 
