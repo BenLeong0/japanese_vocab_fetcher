@@ -24,6 +24,16 @@ class ResponseItem(TypedDict):
 JishoResponse = Dict[str, str]
 
 
+# Wadoku
+
+class WadokuMainData(TypedDict):
+    accent: List[Yomi]
+
+class ResponseItemWadoku(ResponseItem):
+    """Dictionary containing the accent information from Wadoku"""
+    main_data: WadokuMainData
+
+
 # Forvo
 
 class ForvoMainData(TypedDict):
@@ -53,6 +63,6 @@ class FullResponseItem(TypedDict):
     jisho: JishoResponse
     ojad: List[Yomi]
     suzuki: List[Yomi]
-    wadoku: List[Yomi]
+    wadoku: ResponseItemWadoku
     forvo: ResponseItemForvo
     wanikani: ResponseItemWanikani

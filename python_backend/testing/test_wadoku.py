@@ -3,6 +3,7 @@ import re
 from bs4 import BeautifulSoup as Soup
 import pytest   # type: ignore
 
+from custom_types.alternative_string_types import Yomi
 from modules import wadoku
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
@@ -59,9 +60,24 @@ def test_main_recursion(monkeypatch):
     monkeypatch.setattr("requests.post", html_response)
 
     assert wadoku.main(word_list) == {
-        'BADINPUT': [],
-        '食べる': ["たべ' る"],
-        '学生': ["がくせい"],
+        'BADINPUT': {
+            "success": True,
+            "main_data": {
+                "accent": [],
+            },
+        },
+        '食べる':  {
+            "success": True,
+            "main_data": {
+                "accent": [Yomi("たべ' る")],
+            },
+        },
+        '学生':  {
+            "success": True,
+            "main_data": {
+                "accent": [Yomi("がくせい")],
+            },
+        },
     }
 
 
