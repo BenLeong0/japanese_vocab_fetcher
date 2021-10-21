@@ -6,13 +6,24 @@ from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from custom_types.response_types import ResponseItemWadoku
 
 
 NAME = "wadoku"
 
+
+def result_factory(accent_list: List[Yomi] = [], success: bool = True) -> ResponseItemWadoku:
+    return {
+        "success": success,
+        "main_data": {
+            "accent": accent_list,
+        },
+    }
+
+
 WadokuWordSectionsType = List[Tuple[Soup, List[Soup]]]
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, List[Yomi]]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWadoku]:
     if not word_list:
         return {}
 
@@ -22,12 +33,12 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[Yomi]]:
     # If first word is invalid, the whole search fails, so try removing first word
     if not word_sections:
         sub_accent_dict = main(word_list[1:])
-        sub_accent_dict[word_list[0]] = []
+        sub_accent_dict[word_list[0]] = result_factory()
         return sub_accent_dict
 
     accent_dict = build_accent_dict(word_sections)
 
-    return {word:accent_dict[word] for word in word_list}
+    return {word:result_factory(accent_list=accent_dict[word]) for word in word_list}
 
 
 # Get HTML

@@ -1,4 +1,4 @@
-from typing import Dict, List, TypedDict
+from typing import Dict, List, TypedDict, Union
 
 from custom_types.alternative_string_types import (
     Kaki,
@@ -22,6 +22,16 @@ class ResponseItem(TypedDict):
 #     """Dictionary containing the jisho information of the full response"""
 #     str: str
 JishoResponse = Dict[str, str]
+
+
+# Wadoku
+
+class WadokuMainData(TypedDict):
+    accent: List[Union[Yomi, str]]
+
+class ResponseItemWadoku(ResponseItem):
+    """Dictionary containing the accent information from Wadoku"""
+    main_data: WadokuMainData
 
 
 # Forvo
@@ -53,6 +63,6 @@ class FullResponseItem(TypedDict):
     jisho: JishoResponse
     ojad: List[Yomi]
     suzuki: List[Yomi]
-    wadoku: List[Yomi]
+    wadoku: ResponseItemWadoku
     forvo: ResponseItemForvo
     wanikani: ResponseItemWanikani
