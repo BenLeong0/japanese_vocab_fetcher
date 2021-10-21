@@ -1,4 +1,4 @@
-from typing import List, TypedDict, Union
+from typing import List, TypedDict
 
 from custom_types.alternative_string_types import (
     Kaki,
@@ -83,9 +83,9 @@ class ResponseItemWanikani(ResponseItem):
 class FullResponseItem(TypedDict):
     """Result dict for a word in an API request"""
     word: Kaki
-    jisho: Union[ResponseItemJisho, FailedResponseItem]
-    ojad: Union[ResponseItemOJAD, FailedResponseItem]
-    suzuki: Union[ResponseItemSuzuki, FailedResponseItem]
-    wadoku: Union[ResponseItemWadoku, FailedResponseItem]
-    forvo: Union[ResponseItemForvo, FailedResponseItem]
-    wanikani: Union[ResponseItemWanikani, FailedResponseItem]
+    jisho: ResponseItemJisho | FailedResponseItem
+    ojad: ResponseItemOJAD | FailedResponseItem
+    suzuki: ResponseItemSuzuki | FailedResponseItem
+    wadoku: ResponseItemWadoku | FailedResponseItem
+    forvo: ResponseItemForvo | FailedResponseItem
+    wanikani: ResponseItemWanikani | FailedResponseItem
