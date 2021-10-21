@@ -13,7 +13,7 @@ from utils import make_single_line
 NAME = "suzuki"
 
 
-def result_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemSuzuki:
+def response_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemSuzuki:
     if accent_list is None:
         accent_list = []
     return {
@@ -32,7 +32,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemSuzuki]:
     word_sections = get_sections(html)
     accent_dict = build_accent_dict(word_sections)
 
-    return {word:result_factory(accent_list=accent_dict[word]) for word in word_list}
+    return {word:response_factory(accent_list=accent_dict[word]) for word in word_list}
 
 
 # Get HTML

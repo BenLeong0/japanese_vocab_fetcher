@@ -12,7 +12,7 @@ from custom_types.response_types import ResponseItemOJAD
 NAME = "ojad"
 
 
-def result_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemOJAD:
+def response_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemOJAD:
     if accent_list is None:
         accent_list = []
     return {
@@ -34,7 +34,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemOJAD]:
     word_sections = get_sections(htmls)
     accent_dict = build_accent_dict(word_sections)
 
-    return {word:result_factory(accent_dict[word]) for word in word_list}
+    return {word:response_factory(accent_dict[word]) for word in word_list}
 
 
 # Get HTML

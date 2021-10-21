@@ -12,7 +12,7 @@ from custom_types.response_types import ResponseItemWadoku
 NAME = "wadoku"
 
 
-def result_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemWadoku:
+def response_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemWadoku:
     if accent_list is None:
         accent_list = []
     return {
@@ -35,12 +35,12 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWadoku]:
     # If first word is invalid, the whole search fails, so try removing first word
     if not word_sections:
         sub_accent_dict = main(word_list[1:])
-        sub_accent_dict[word_list[0]] = result_factory()
+        sub_accent_dict[word_list[0]] = response_factory()
         return sub_accent_dict
 
     accent_dict = build_accent_dict(word_sections)
 
-    return {word:result_factory(accent_list=accent_dict[word]) for word in word_list}
+    return {word:response_factory(accent_list=accent_dict[word]) for word in word_list}
 
 
 # Get HTML

@@ -7,7 +7,7 @@ from custom_types.response_types import ResponseItemJisho
 NAME = "jisho"
 
 
-def result_factory(success: bool = True) -> ResponseItemJisho:
+def response_factory(success: bool = True) -> ResponseItemJisho:
     return {
         "success": success,
         "main_data": {
@@ -15,4 +15,4 @@ def result_factory(success: bool = True) -> ResponseItemJisho:
     }
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemJisho]:
-    return {key:result_factory() for key in word_list}
+    return {key:response_factory() for key in word_list}
