@@ -60,7 +60,11 @@ MEGANE: FullTestDict = {
     "input": ["眼鏡"],
     "jisho": {
         "expected_output": {
-            '眼鏡': {},
+            '眼鏡': {
+                "success": True,
+                "main_data": {
+                },
+            },
         },
     },
     "ojad": {
@@ -259,7 +263,11 @@ MEGANE: FullTestDict = {
     "expected_result": [
         {
             "word": "眼鏡",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -337,7 +345,11 @@ COMEBACK: FullTestDict= {
     'input': ['カムバック'],
     "jisho": {
         "expected_output": {
-            'カムバック': {},
+            'カムバック': {
+                "success": True,
+                "main_data": {
+                },
+            },
         },
     },
     "ojad": {
@@ -457,7 +469,11 @@ COMEBACK: FullTestDict= {
     "expected_result": [
         {
             "word": "カムバック",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -501,8 +517,16 @@ TABERU_GAKUSEI: FullTestDict = {
     'input': ['食べる', '学生'],
     "jisho": {
         "expected_output": {
-            '食べる': {},
-            '学生': {},
+            '食べる': {
+                "success": True,
+                "main_data": {
+                },
+            },
+            '学生': {
+                "success": True,
+                "main_data": {
+                },
+            },
         },
     },
     "ojad": {
@@ -855,7 +879,11 @@ TABERU_GAKUSEI: FullTestDict = {
     "expected_result": [
         {
             "word": "食べる",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -939,7 +967,11 @@ TABERU_GAKUSEI: FullTestDict = {
         },
         {
             "word": "学生",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -1030,7 +1062,11 @@ KOTOBA: FullTestDict = {
     'input': ['言葉'],
     "jisho": {
         "expected_output": {
-            '言葉': {},
+            '言葉': {
+                "success": True,
+                "main_data": {
+                },
+            },
         },
     },
     "ojad": {
@@ -1247,7 +1283,11 @@ KOTOBA: FullTestDict = {
     "expected_result": [
         {
             "word": "言葉",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -1335,7 +1375,11 @@ BADINPUT: FullTestDict = {
     'input': ['BADINPUT'],
     "jisho": {
         "expected_output": {
-            'BADINPUT': {},
+            'BADINPUT': {
+                "success": True,
+                "main_data": {
+                },
+            },
         },
     },
     "ojad": {
@@ -1421,7 +1465,11 @@ BADINPUT: FullTestDict = {
     "expected_result": [
         {
             "word": "BADINPUT",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -1463,9 +1511,21 @@ USAGI_IKU_KAGO: FullTestDict = {
     'input': ['兎', '行く', '籠'],
     "jisho": {
         "expected_output": {
-            '兎': {},
-            '行く': {},
-            '籠': {},
+            '兎': {
+                "success": True,
+                "main_data": {
+                },
+            },
+            '行く': {
+                "success": True,
+                "main_data": {
+                },
+            },
+            '籠': {
+                "success": True,
+                "main_data": {
+                },
+            },
         },
     },
     "ojad": {
@@ -1814,7 +1874,11 @@ USAGI_IKU_KAGO: FullTestDict = {
     "expected_result": [
         {
             "word": "兎",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -1853,7 +1917,11 @@ USAGI_IKU_KAGO: FullTestDict = {
         },
         {
             "word": "行く",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -1933,7 +2001,11 @@ USAGI_IKU_KAGO: FullTestDict = {
         },
         {
             "word": "籠",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -1979,7 +2051,11 @@ SHIZUKA: FullTestDict = {
     'input': ['静か'],
     "jisho": {
         "expected_output": {
-            '静か': {},
+            '静か': {
+                "success": True,
+                "main_data": {
+                },
+            },
         },
     },
     "ojad": {
@@ -2206,7 +2282,11 @@ SHIZUKA: FullTestDict = {
     "expected_result": [
         {
             "word": "静か",
-            "jisho": {},
+            "jisho": {
+                "success": True,
+                "main_data": {
+                },
+            },
             "ojad": {
                 "success": True,
                 "main_data": {
@@ -2313,7 +2393,11 @@ TEST_DICTS = [
 #             '': [],
 #         },
 #     },
-#     "jisho": {},
+#     "jisho": {
+#                 "success": True,
+#                 "main_data": {
+#                 },
+#             },
 #     "ojad": {
 #         "htmls": get_ojad_html_files(""),
 #         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:/page:%s",
