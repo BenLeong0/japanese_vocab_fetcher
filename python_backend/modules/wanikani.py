@@ -16,8 +16,10 @@ API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
 def empty_result_factory(success: bool = True) -> ResponseItemWanikani:
     return {
         "success": success,
-        "audio": [],
-        "sentences": []
+        "main_data": {
+            "audio": [],
+            "sentences": [],
+        },
     }
 
 
@@ -90,7 +92,7 @@ def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, Respon
 
         context_sentences = resource["data"]["context_sentences"]
 
-        result_dict[writing]["audio"] += pronunciation_audios
-        result_dict[writing]["sentences"] += context_sentences
+        result_dict[writing]['main_data']["audio"] += pronunciation_audios
+        result_dict[writing]['main_data']["sentences"] += context_sentences
 
     return result_dict

@@ -160,75 +160,79 @@ MEGANE: FullTestDict = {
         "result_dict": {
             '眼鏡': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 7771,
-                            "pronunciation": "\u3081\u304c\u306d",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 7771,
+                                "pronunciation": "\u3081\u304c\u306d",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/hoiygkrxyq7a43jujw1skqzla3mx"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 24645,
-                            "pronunciation": "\u3081\u304c\u306d",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/hoiygkrxyq7a43jujw1skqzla3mx"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 24645,
+                                "pronunciation": "\u3081\u304c\u306d",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "You should wipe your glasses.",
-                        "ja": "眼鏡を拭いた方がいいですよ。"
-                    },
-                ],
+                    ],
+                    "sentences": [
+                        {
+                            "en": "You should wipe your glasses.",
+                            "ja": "眼鏡を拭いた方がいいですよ。"
+                        },
+                    ],
+                },
             },
         },
         "expected_output": {
             '眼鏡': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 7771,
-                            "pronunciation": "\u3081\u304c\u306d",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 7771,
+                                "pronunciation": "\u3081\u304c\u306d",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/hoiygkrxyq7a43jujw1skqzla3mx"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 24645,
-                            "pronunciation": "\u3081\u304c\u306d",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/hoiygkrxyq7a43jujw1skqzla3mx"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 24645,
+                                "pronunciation": "\u3081\u304c\u306d",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "You should wipe your glasses.",
-                        "ja": "眼鏡を拭いた方がいいですよ。"
-                    },
-                ],
+                    ],
+                    "sentences": [
+                        {
+                            "en": "You should wipe your glasses.",
+                            "ja": "眼鏡を拭いた方がいいですよ。"
+                        },
+                    ],
+                },
             },
         },
     },
@@ -248,38 +252,40 @@ MEGANE: FullTestDict = {
             ],
             "wanikani": {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 7771,
-                            "pronunciation": "\u3081\u304c\u306d",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/11v648aiw4875mqspzrpn98ly07e"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 7771,
+                                "pronunciation": "\u3081\u304c\u306d",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/hoiygkrxyq7a43jujw1skqzla3mx"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 24645,
-                            "pronunciation": "\u3081\u304c\u306d",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/hoiygkrxyq7a43jujw1skqzla3mx"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 24645,
+                                "pronunciation": "\u3081\u304c\u306d",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "You should wipe your glasses.",
-                        "ja": "眼鏡を拭いた方がいいですよ。"
-                    },
-                ],
+                    ],
+                    "sentences": [
+                        {
+                            "en": "You should wipe your glasses.",
+                            "ja": "眼鏡を拭いた方がいいですよ。"
+                        },
+                    ],
+                },
             },
         },
     ],
@@ -381,8 +387,10 @@ COMEBACK: FullTestDict= {
         "expected_output": {
             'カムバック': {
                 "success": True,
-                "audio": [],
-                "sentences": []
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
             },
         },
     },
@@ -398,8 +406,10 @@ COMEBACK: FullTestDict= {
             ],
             "wanikani": {
                 "success": True,
-                "audio": [],
-                "sentences": []
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
             },
         },
     ],
@@ -540,177 +550,185 @@ TABERU_GAKUSEI: FullTestDict = {
         "result_dict": {
             '食べる': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/8e5vf9sc17iajyx2d3838oi6chnh"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 27468,
-                            "pronunciation": "\u305f\u3079\u308b",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/8e5vf9sc17iajyx2d3838oi6chnh"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 27468,
+                                "pronunciation": "\u305f\u3079\u308b",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/ng81br3v7kwq5ybljgadillfzqay"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 10592,
-                            "pronunciation": "\u305f\u3079\u308b",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/ng81br3v7kwq5ybljgadillfzqay"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 10592,
+                                "pronunciation": "\u305f\u3079\u308b",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
+                        }
+                    ],
+                    "sentences": [
+                        {
+                            "en": "I eat natto every morning.",
+                            "ja": "毎あさ、なっとうを食べます。"
                         },
-                        "content_type": "audio/mpeg"
-                    }
-                ],
-                "sentences": [
-                    {
-                        "en": "I eat natto every morning.",
-                        "ja": "毎あさ、なっとうを食べます。"
-                    },
-                    {
-                        "en": "I never have enough time to eat healthy foods.",
-                        "ja": "いつも、けんこうにいいものを食べるじかんがないんです。"
-                    },
-                    {
-                        "en": "I like to eat while I’m sleeping. It’s just like sleepwalking, but it’s called sleep-eating.",
-                        "ja": "私は、寝ながら食べるのが好きだ。夢遊病のような感じで、それは夢遊食事病と呼ばれる。"
-                    },
-                ]
+                        {
+                            "en": "I never have enough time to eat healthy foods.",
+                            "ja": "いつも、けんこうにいいものを食べるじかんがないんです。"
+                        },
+                        {
+                            "en": "I like to eat while I’m sleeping. It’s just like sleepwalking, but it’s called sleep-eating.",
+                            "ja": "私は、寝ながら食べるのが好きだ。夢遊病のような感じで、それは夢遊食事病と呼ばれる。"
+                        },
+                    ],
+                },
             },
             '学生': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/g2cqz8n0yfcy4n0d45sheojq064j"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 9511,
-                            "pronunciation": "\u304c\u304f\u305b\u3044",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/g2cqz8n0yfcy4n0d45sheojq064j"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 9511,
+                                "pronunciation": "\u304c\u304f\u305b\u3044",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/l6jqstgdee1l55fnt9906go7fmv1"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 26386,
-                            "pronunciation": "\u304c\u304f\u305b\u3044",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/l6jqstgdee1l55fnt9906go7fmv1"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 26386,
+                                "pronunciation": "\u304c\u304f\u305b\u3044",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "Which parts will students study at home today?",
-                        "ja": "学生は今日、うちでどこをべんきょうしますか。"
-                    },
-                    {
-                        "en": "Do you have student discount?",
-                        "ja": "学生わり引ってありますか？"
-                    },
-                    {
-                        "en": "\"We are all students of life,\" my dad said while farting.",
-                        "ja": "「我々はみな人生の学生だ。」と言いながら、父はおならをした。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "Which parts will students study at home today?",
+                            "ja": "学生は今日、うちでどこをべんきょうしますか。"
+                        },
+                        {
+                            "en": "Do you have student discount?",
+                            "ja": "学生わり引ってありますか？"
+                        },
+                        {
+                            "en": "\"We are all students of life,\" my dad said while farting.",
+                            "ja": "「我々はみな人生の学生だ。」と言いながら、父はおならをした。"
+                        },
+                    ],
+                },
             },
         },
         "expected_output": {
             '食べる': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/8e5vf9sc17iajyx2d3838oi6chnh"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 27468,
-                            "pronunciation": "\u305f\u3079\u308b",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/8e5vf9sc17iajyx2d3838oi6chnh"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 27468,
+                                "pronunciation": "\u305f\u3079\u308b",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/ng81br3v7kwq5ybljgadillfzqay"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 10592,
-                            "pronunciation": "\u305f\u3079\u308b",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/ng81br3v7kwq5ybljgadillfzqay"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 10592,
+                                "pronunciation": "\u305f\u3079\u308b",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
+                        }
+                    ],
+                    "sentences": [
+                        {
+                            "en": "I eat natto every morning.",
+                            "ja": "毎あさ、なっとうを食べます。"
                         },
-                        "content_type": "audio/mpeg"
-                    }
-                ],
-                "sentences": [
-                    {
-                        "en": "I eat natto every morning.",
-                        "ja": "毎あさ、なっとうを食べます。"
-                    },
-                    {
-                        "en": "I never have enough time to eat healthy foods.",
-                        "ja": "いつも、けんこうにいいものを食べるじかんがないんです。"
-                    },
-                    {
-                        "en": "I like to eat while I’m sleeping. It’s just like sleepwalking, but it’s called sleep-eating.",
-                        "ja": "私は、寝ながら食べるのが好きだ。夢遊病のような感じで、それは夢遊食事病と呼ばれる。"
-                    },
-                ]
+                        {
+                            "en": "I never have enough time to eat healthy foods.",
+                            "ja": "いつも、けんこうにいいものを食べるじかんがないんです。"
+                        },
+                        {
+                            "en": "I like to eat while I’m sleeping. It’s just like sleepwalking, but it’s called sleep-eating.",
+                            "ja": "私は、寝ながら食べるのが好きだ。夢遊病のような感じで、それは夢遊食事病と呼ばれる。"
+                        },
+                    ],
+                },
             },
             '学生': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/g2cqz8n0yfcy4n0d45sheojq064j"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 9511,
-                            "pronunciation": "\u304c\u304f\u305b\u3044",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/g2cqz8n0yfcy4n0d45sheojq064j"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 9511,
+                                "pronunciation": "\u304c\u304f\u305b\u3044",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/l6jqstgdee1l55fnt9906go7fmv1"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 26386,
-                            "pronunciation": "\u304c\u304f\u305b\u3044",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/l6jqstgdee1l55fnt9906go7fmv1"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 26386,
+                                "pronunciation": "\u304c\u304f\u305b\u3044",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "Which parts will students study at home today?",
-                        "ja": "学生は今日、うちでどこをべんきょうしますか。"
-                    },
-                    {
-                        "en": "Do you have student discount?",
-                        "ja": "学生わり引ってありますか？"
-                    },
-                    {
-                        "en": "\"We are all students of life,\" my dad said while farting.",
-                        "ja": "「我々はみな人生の学生だ。」と言いながら、父はおならをした。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "Which parts will students study at home today?",
+                            "ja": "学生は今日、うちでどこをべんきょうしますか。"
+                        },
+                        {
+                            "en": "Do you have student discount?",
+                            "ja": "学生わり引ってありますか？"
+                        },
+                        {
+                            "en": "\"We are all students of life,\" my dad said while farting.",
+                            "ja": "「我々はみな人生の学生だ。」と言いながら、父はおならをした。"
+                        },
+                    ],
+                },
             },
         },
     },
@@ -735,46 +753,48 @@ TABERU_GAKUSEI: FullTestDict = {
             ],
             "wanikani": {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/8e5vf9sc17iajyx2d3838oi6chnh"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 27468,
-                            "pronunciation": "\u305f\u3079\u308b",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/8e5vf9sc17iajyx2d3838oi6chnh"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 27468,
+                                "pronunciation": "\u305f\u3079\u308b",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/ng81br3v7kwq5ybljgadillfzqay"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 10592,
-                            "pronunciation": "\u305f\u3079\u308b",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/ng81br3v7kwq5ybljgadillfzqay"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 10592,
+                                "pronunciation": "\u305f\u3079\u308b",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
+                        }
+                    ],
+                    "sentences": [
+                        {
+                            "en": "I eat natto every morning.",
+                            "ja": "毎あさ、なっとうを食べます。"
                         },
-                        "content_type": "audio/mpeg"
-                    }
-                ],
-                "sentences": [
-                    {
-                        "en": "I eat natto every morning.",
-                        "ja": "毎あさ、なっとうを食べます。"
-                    },
-                    {
-                        "en": "I never have enough time to eat healthy foods.",
-                        "ja": "いつも、けんこうにいいものを食べるじかんがないんです。"
-                    },
-                    {
-                        "en": "I like to eat while I’m sleeping. It’s just like sleepwalking, but it’s called sleep-eating.",
-                        "ja": "私は、寝ながら食べるのが好きだ。夢遊病のような感じで、それは夢遊食事病と呼ばれる。"
-                    },
-                ]
+                        {
+                            "en": "I never have enough time to eat healthy foods.",
+                            "ja": "いつも、けんこうにいいものを食べるじかんがないんです。"
+                        },
+                        {
+                            "en": "I like to eat while I’m sleeping. It’s just like sleepwalking, but it’s called sleep-eating.",
+                            "ja": "私は、寝ながら食べるのが好きだ。夢遊病のような感じで、それは夢遊食事病と呼ばれる。"
+                        },
+                    ],
+                },
             },
         },
         {
@@ -797,46 +817,48 @@ TABERU_GAKUSEI: FullTestDict = {
             ],
             "wanikani": {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/g2cqz8n0yfcy4n0d45sheojq064j"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 9511,
-                            "pronunciation": "\u304c\u304f\u305b\u3044",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/g2cqz8n0yfcy4n0d45sheojq064j"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 9511,
+                                "pronunciation": "\u304c\u304f\u305b\u3044",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/l6jqstgdee1l55fnt9906go7fmv1"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 26386,
-                            "pronunciation": "\u304c\u304f\u305b\u3044",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/l6jqstgdee1l55fnt9906go7fmv1"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 26386,
+                                "pronunciation": "\u304c\u304f\u305b\u3044",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "Which parts will students study at home today?",
-                        "ja": "学生は今日、うちでどこをべんきょうしますか。"
-                    },
-                    {
-                        "en": "Do you have student discount?",
-                        "ja": "学生わり引ってありますか？"
-                    },
-                    {
-                        "en": "\"We are all students of life,\" my dad said while farting.",
-                        "ja": "「我々はみな人生の学生だ。」と言いながら、父はおならをした。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "Which parts will students study at home today?",
+                            "ja": "学生は今日、うちでどこをべんきょうしますか。"
+                        },
+                        {
+                            "en": "Do you have student discount?",
+                            "ja": "学生わり引ってありますか？"
+                        },
+                        {
+                            "en": "\"We are all students of life,\" my dad said while farting.",
+                            "ja": "「我々はみな人生の学生だ。」と言いながら、父はおならをした。"
+                        },
+                    ],
+                },
             },
         },
     ],
@@ -950,91 +972,95 @@ KOTOBA: FullTestDict = {
         "result_dict": {
             '言葉': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/n7d4o8yizz9oni6whnw5m5ormof7"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 3170,
-                            "pronunciation": "\u3053\u3068\u3070",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/n7d4o8yizz9oni6whnw5m5ormof7"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 3170,
+                                "pronunciation": "\u3053\u3068\u3070",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/07386jhwg98fqg3z9prvdf7n7xr6"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 22011,
-                            "pronunciation": "\u3053\u3068\u3070",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/07386jhwg98fqg3z9prvdf7n7xr6"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 22011,
+                                "pronunciation": "\u3053\u3068\u3070",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "I'd like to hire elves if I could, but It's difficult because of the language barrier.",
-                        "ja": "エルフをやといたいのは山々なんですが、言葉のかべがあるのでむずかしいんですよ。"
-                    },
-                    {
-                        "en": "It's hard to put into words, but Koichi is a very special person to me.",
-                        "ja": "うまく言葉にできないけど、コウイチはわたしにとってすごく特別な人なの。"
-                    },
-                    {
-                        "en": "I was at a loss for words.",
-                        "ja": "私は言葉に詰まった。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "I'd like to hire elves if I could, but It's difficult because of the language barrier.",
+                            "ja": "エルフをやといたいのは山々なんですが、言葉のかべがあるのでむずかしいんですよ。"
+                        },
+                        {
+                            "en": "It's hard to put into words, but Koichi is a very special person to me.",
+                            "ja": "うまく言葉にできないけど、コウイチはわたしにとってすごく特別な人なの。"
+                        },
+                        {
+                            "en": "I was at a loss for words.",
+                            "ja": "私は言葉に詰まった。"
+                        },
+                    ],
+                },
             },
         },
         "expected_output": {
             '言葉': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/n7d4o8yizz9oni6whnw5m5ormof7"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 3170,
-                            "pronunciation": "\u3053\u3068\u3070",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/n7d4o8yizz9oni6whnw5m5ormof7"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 3170,
+                                "pronunciation": "\u3053\u3068\u3070",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/07386jhwg98fqg3z9prvdf7n7xr6"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 22011,
-                            "pronunciation": "\u3053\u3068\u3070",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/07386jhwg98fqg3z9prvdf7n7xr6"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 22011,
+                                "pronunciation": "\u3053\u3068\u3070",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "I'd like to hire elves if I could, but It's difficult because of the language barrier.",
-                        "ja": "エルフをやといたいのは山々なんですが、言葉のかべがあるのでむずかしいんですよ。"
-                    },
-                    {
-                        "en": "It's hard to put into words, but Koichi is a very special person to me.",
-                        "ja": "うまく言葉にできないけど、コウイチはわたしにとってすごく特別な人なの。"
-                    },
-                    {
-                        "en": "I was at a loss for words.",
-                        "ja": "私は言葉に詰まった。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "I'd like to hire elves if I could, but It's difficult because of the language barrier.",
+                            "ja": "エルフをやといたいのは山々なんですが、言葉のかべがあるのでむずかしいんですよ。"
+                        },
+                        {
+                            "en": "It's hard to put into words, but Koichi is a very special person to me.",
+                            "ja": "うまく言葉にできないけど、コウイチはわたしにとってすごく特別な人なの。"
+                        },
+                        {
+                            "en": "I was at a loss for words.",
+                            "ja": "私は言葉に詰まった。"
+                        },
+                    ],
+                },
             },
         },
     },
@@ -1056,46 +1082,48 @@ KOTOBA: FullTestDict = {
             ],
             "wanikani": {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/n7d4o8yizz9oni6whnw5m5ormof7"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 3170,
-                            "pronunciation": "\u3053\u3068\u3070",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/n7d4o8yizz9oni6whnw5m5ormof7"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 3170,
+                                "pronunciation": "\u3053\u3068\u3070",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/07386jhwg98fqg3z9prvdf7n7xr6"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 22011,
-                            "pronunciation": "\u3053\u3068\u3070",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/07386jhwg98fqg3z9prvdf7n7xr6"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 22011,
+                                "pronunciation": "\u3053\u3068\u3070",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "I'd like to hire elves if I could, but It's difficult because of the language barrier.",
-                        "ja": "エルフをやといたいのは山々なんですが、言葉のかべがあるのでむずかしいんですよ。"
-                    },
-                    {
-                        "en": "It's hard to put into words, but Koichi is a very special person to me.",
-                        "ja": "うまく言葉にできないけど、コウイチはわたしにとってすごく特別な人なの。"
-                    },
-                    {
-                        "en": "I was at a loss for words.",
-                        "ja": "私は言葉に詰まった。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "I'd like to hire elves if I could, but It's difficult because of the language barrier.",
+                            "ja": "エルフをやといたいのは山々なんですが、言葉のかべがあるのでむずかしいんですよ。"
+                        },
+                        {
+                            "en": "It's hard to put into words, but Koichi is a very special person to me.",
+                            "ja": "うまく言葉にできないけど、コウイチはわたしにとってすごく特別な人なの。"
+                        },
+                        {
+                            "en": "I was at a loss for words.",
+                            "ja": "私は言葉に詰まった。"
+                        },
+                    ],
+                },
             },
         },
     ],
@@ -1163,8 +1191,10 @@ BADINPUT: FullTestDict = {
         "expected_output": {
             'BADINPUT': {
                 "success": True,
-                "audio": [],
-                "sentences": []
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
             },
         },
     },
@@ -1178,8 +1208,10 @@ BADINPUT: FullTestDict = {
             "forvo": [],
             "wanikani": {
                 "success": True,
-                "audio": [],
-                "sentences": []
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
             },
         },
     ],
@@ -1373,101 +1405,109 @@ USAGI_IKU_KAGO: FullTestDict = {
         "result_dict": {
             '行く': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/i6eq7alp4yn38qsxvlh51ur9sl41"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 9469,
-                            "pronunciation": "\u3044\u304f",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/i6eq7alp4yn38qsxvlh51ur9sl41"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 9469,
+                                "pronunciation": "\u3044\u304f",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/9wwn90yd3wpl8s9fn3vzf643fm62"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 26344,
-                            "pronunciation": "\u3044\u304f",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/9wwn90yd3wpl8s9fn3vzf643fm62"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 26344,
+                                "pronunciation": "\u3044\u304f",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "I'm about to go shopping. ",
-                        "ja": "今から、かいものに行きます。"
-                    },
-                    {
-                        "en": "Something came up, so I'm not able to make it.",
-                        "ja": "ようじができて、行けなくなってしまいました。"
-                    },
-                    {
-                        "en": "I wouldn\u2019t want to go to Mars because they don\u2019t have Taco Bell there.",
-                        "ja": "タコベルが無いので火星には行きたくない。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "I'm about to go shopping. ",
+                            "ja": "今から、かいものに行きます。"
+                        },
+                        {
+                            "en": "Something came up, so I'm not able to make it.",
+                            "ja": "ようじができて、行けなくなってしまいました。"
+                        },
+                        {
+                            "en": "I wouldn\u2019t want to go to Mars because they don\u2019t have Taco Bell there.",
+                            "ja": "タコベルが無いので火星には行きたくない。"
+                        },
+                    ],
+                },
             },
         },
         "expected_output": {
             '兎': {
                 "success": True,
-                "audio": [],
-                "sentences": []
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
             },
             '行く': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/i6eq7alp4yn38qsxvlh51ur9sl41"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 9469,
-                            "pronunciation": "\u3044\u304f",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/i6eq7alp4yn38qsxvlh51ur9sl41"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 9469,
+                                "pronunciation": "\u3044\u304f",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/9wwn90yd3wpl8s9fn3vzf643fm62"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 26344,
-                            "pronunciation": "\u3044\u304f",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/9wwn90yd3wpl8s9fn3vzf643fm62"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 26344,
+                                "pronunciation": "\u3044\u304f",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "I'm about to go shopping. ",
-                        "ja": "今から、かいものに行きます。"
-                    },
-                    {
-                        "en": "Something came up, so I'm not able to make it.",
-                        "ja": "ようじができて、行けなくなってしまいました。"
-                    },
-                    {
-                        "en": "I wouldn\u2019t want to go to Mars because they don\u2019t have Taco Bell there.",
-                        "ja": "タコベルが無いので火星には行きたくない。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "I'm about to go shopping. ",
+                            "ja": "今から、かいものに行きます。"
+                        },
+                        {
+                            "en": "Something came up, so I'm not able to make it.",
+                            "ja": "ようじができて、行けなくなってしまいました。"
+                        },
+                        {
+                            "en": "I wouldn\u2019t want to go to Mars because they don\u2019t have Taco Bell there.",
+                            "ja": "タコベルが無いので火星には行きたくない。"
+                        },
+                    ],
+                },
             },
             '籠': {
                 "success": True,
-                "audio": [],
-                "sentences": []
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
             },
         },
     },
@@ -1485,8 +1525,10 @@ USAGI_IKU_KAGO: FullTestDict = {
             ],
             "wanikani": {
                 "success": True,
-                "audio": [],
-                "sentences": []
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
             },
         },
         {
@@ -1505,46 +1547,48 @@ USAGI_IKU_KAGO: FullTestDict = {
             ],
             "wanikani": {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/i6eq7alp4yn38qsxvlh51ur9sl41"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 9469,
-                            "pronunciation": "\u3044\u304f",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/i6eq7alp4yn38qsxvlh51ur9sl41"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 9469,
+                                "pronunciation": "\u3044\u304f",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/9wwn90yd3wpl8s9fn3vzf643fm62"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 26344,
-                            "pronunciation": "\u3044\u304f",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/9wwn90yd3wpl8s9fn3vzf643fm62"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 26344,
+                                "pronunciation": "\u3044\u304f",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "I'm about to go shopping. ",
-                        "ja": "今から、かいものに行きます。"
-                    },
-                    {
-                        "en": "Something came up, so I'm not able to make it.",
-                        "ja": "ようじができて、行けなくなってしまいました。"
-                    },
-                    {
-                        "en": "I wouldn\u2019t want to go to Mars because they don\u2019t have Taco Bell there.",
-                        "ja": "タコベルが無いので火星には行きたくない。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "I'm about to go shopping. ",
+                            "ja": "今から、かいものに行きます。"
+                        },
+                        {
+                            "en": "Something came up, so I'm not able to make it.",
+                            "ja": "ようじができて、行けなくなってしまいました。"
+                        },
+                        {
+                            "en": "I wouldn\u2019t want to go to Mars because they don\u2019t have Taco Bell there.",
+                            "ja": "タコベルが無いので火星には行きたくない。"
+                        },
+                    ],
+                },
             },
         },
         {
@@ -1560,8 +1604,10 @@ USAGI_IKU_KAGO: FullTestDict = {
             ],
             "wanikani": {
                 "success": True,
-                "audio": [],
-                "sentences": []
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
             },
         },
     ],
@@ -1685,91 +1731,95 @@ SHIZUKA: FullTestDict = {
         "result_dict": {
             '静か': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/awv61bmcmf9w4m7p057jqubhu3f1"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 4367,
-                            "pronunciation": "\u3057\u305a\u304b",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/awv61bmcmf9w4m7p057jqubhu3f1"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 4367,
+                                "pronunciation": "\u3057\u305a\u304b",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/pkutc4gv3nxpmuo1dba6iv6p5luh"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 22694,
-                            "pronunciation": "\u3057\u305a\u304b",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/pkutc4gv3nxpmuo1dba6iv6p5luh"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 22694,
+                                "pronunciation": "\u3057\u305a\u304b",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "We'd prefer a house on a quiet street.",
-                        "ja": "静かな通りにある家の方がいいです。"
-                    },
-                    {
-                        "en": "I know you have diarrhea, but could you keep it down a bit more, please?",
-                        "ja": "下りなのは分かりますが、もう少し静かにしていただけますか？"
-                    },
-                    {
-                        "en": "When Koichi and Viet got in, the taxi quietly started to move.",
-                        "ja": "コウイチとビエトが乗り込むと、そのタクシーは静かに動き出した。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "We'd prefer a house on a quiet street.",
+                            "ja": "静かな通りにある家の方がいいです。"
+                        },
+                        {
+                            "en": "I know you have diarrhea, but could you keep it down a bit more, please?",
+                            "ja": "下りなのは分かりますが、もう少し静かにしていただけますか？"
+                        },
+                        {
+                            "en": "When Koichi and Viet got in, the taxi quietly started to move.",
+                            "ja": "コウイチとビエトが乗り込むと、そのタクシーは静かに動き出した。"
+                        },
+                    ],
+                },
             },
         },
         "expected_output": {
             '静か': {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/awv61bmcmf9w4m7p057jqubhu3f1"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 4367,
-                            "pronunciation": "\u3057\u305a\u304b",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/awv61bmcmf9w4m7p057jqubhu3f1"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 4367,
+                                "pronunciation": "\u3057\u305a\u304b",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/pkutc4gv3nxpmuo1dba6iv6p5luh"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 22694,
-                            "pronunciation": "\u3057\u305a\u304b",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/pkutc4gv3nxpmuo1dba6iv6p5luh"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 22694,
+                                "pronunciation": "\u3057\u305a\u304b",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "We'd prefer a house on a quiet street.",
-                        "ja": "静かな通りにある家の方がいいです。"
-                    },
-                    {
-                        "en": "I know you have diarrhea, but could you keep it down a bit more, please?",
-                        "ja": "下りなのは分かりますが、もう少し静かにしていただけますか？"
-                    },
-                    {
-                        "en": "When Koichi and Viet got in, the taxi quietly started to move.",
-                        "ja": "コウイチとビエトが乗り込むと、そのタクシーは静かに動き出した。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "We'd prefer a house on a quiet street.",
+                            "ja": "静かな通りにある家の方がいいです。"
+                        },
+                        {
+                            "en": "I know you have diarrhea, but could you keep it down a bit more, please?",
+                            "ja": "下りなのは分かりますが、もう少し静かにしていただけますか？"
+                        },
+                        {
+                            "en": "When Koichi and Viet got in, the taxi quietly started to move.",
+                            "ja": "コウイチとビエトが乗り込むと、そのタクシーは静かに動き出した。"
+                        },
+                    ],
+                },
             },
         },
     },
@@ -1789,46 +1839,48 @@ SHIZUKA: FullTestDict = {
             ],
             "wanikani": {
                 "success": True,
-                "audio": [
-                    {
-                        "url": URL("https://files.wanikani.com/awv61bmcmf9w4m7p057jqubhu3f1"),
-                        "metadata": {
-                            "gender": "male",
-                            "source_id": 4367,
-                            "pronunciation": "\u3057\u305a\u304b",
-                            "voice_actor_id": 2,
-                            "voice_actor_name": "Kenichi",
-                            "voice_description": "Tokyo accent"
+                "main_data": {
+                    "audio": [
+                        {
+                            "url": URL("https://files.wanikani.com/awv61bmcmf9w4m7p057jqubhu3f1"),
+                            "metadata": {
+                                "gender": "male",
+                                "source_id": 4367,
+                                "pronunciation": "\u3057\u305a\u304b",
+                                "voice_actor_id": 2,
+                                "voice_actor_name": "Kenichi",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                    {
-                        "url": URL("https://files.wanikani.com/pkutc4gv3nxpmuo1dba6iv6p5luh"),
-                        "metadata": {
-                            "gender": "female",
-                            "source_id": 22694,
-                            "pronunciation": "\u3057\u305a\u304b",
-                            "voice_actor_id": 1,
-                            "voice_actor_name": "Kyoko",
-                            "voice_description": "Tokyo accent"
+                        {
+                            "url": URL("https://files.wanikani.com/pkutc4gv3nxpmuo1dba6iv6p5luh"),
+                            "metadata": {
+                                "gender": "female",
+                                "source_id": 22694,
+                                "pronunciation": "\u3057\u305a\u304b",
+                                "voice_actor_id": 1,
+                                "voice_actor_name": "Kyoko",
+                                "voice_description": "Tokyo accent"
+                            },
+                            "content_type": "audio/mpeg"
                         },
-                        "content_type": "audio/mpeg"
-                    },
-                ],
-                "sentences": [
-                    {
-                        "en": "We'd prefer a house on a quiet street.",
-                        "ja": "静かな通りにある家の方がいいです。"
-                    },
-                    {
-                        "en": "I know you have diarrhea, but could you keep it down a bit more, please?",
-                        "ja": "下りなのは分かりますが、もう少し静かにしていただけますか？"
-                    },
-                    {
-                        "en": "When Koichi and Viet got in, the taxi quietly started to move.",
-                        "ja": "コウイチとビエトが乗り込むと、そのタクシーは静かに動き出した。"
-                    },
-                ]
+                    ],
+                    "sentences": [
+                        {
+                            "en": "We'd prefer a house on a quiet street.",
+                            "ja": "静かな通りにある家の方がいいです。"
+                        },
+                        {
+                            "en": "I know you have diarrhea, but could you keep it down a bit more, please?",
+                            "ja": "下りなのは分かりますが、もう少し静かにしていただけますか？"
+                        },
+                        {
+                            "en": "When Koichi and Viet got in, the taxi quietly started to move.",
+                            "ja": "コウイチとビエトが乗り込むと、そのタクシーは静かに動き出した。"
+                        },
+                    ],
+                },
             },
         },
     ],
