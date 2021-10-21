@@ -103,4 +103,9 @@ def test_build_accent_dict(test_dict: FullTestDict):
         for section in test_dict['suzuki']['expected_sections']
     ]
 
-    assert suzuki.build_accent_dict(word_sections) == test_dict['suzuki']['expected_output']
+    expected_accent_dict = {
+        word:test_dict['suzuki']['expected_output'][word]['main_data']['accent']
+        for word in test_dict['suzuki']['expected_output']
+    }
+
+    assert suzuki.build_accent_dict(word_sections) == expected_accent_dict

@@ -34,6 +34,16 @@ class ResponseItemOJAD(ResponseItem):
     main_data: OJADMainData
 
 
+# Suzuki
+
+class SuzukiMainData(TypedDict):
+    accent: List[Yomi]
+
+class ResponseItemSuzuki(ResponseItem):
+    """Dictionary containing the accent information from Suzuki"""
+    main_data: SuzukiMainData
+
+
 # Wadoku
 
 class WadokuMainData(TypedDict):
@@ -72,7 +82,7 @@ class FullResponseItem(TypedDict):
     word: Kaki
     jisho: JishoResponse
     ojad: ResponseItemOJAD
-    suzuki: List[Yomi]
+    suzuki: ResponseItemSuzuki
     wadoku: ResponseItemWadoku
     forvo: ResponseItemForvo
     wanikani: ResponseItemWanikani
