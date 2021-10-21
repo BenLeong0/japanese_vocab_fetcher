@@ -8,7 +8,6 @@ from custom_types.alternative_string_types import Kaki, URL
 from custom_types.exception_types import APIError, FailedResponseItem, api_error_response_factory
 from custom_types.jisho_api_types import JishoAPIResponse
 from custom_types.response_types import ResponseItemJisho, JishoMainData
-from utils import escape_unicode
 
 
 NAME = "jisho"
