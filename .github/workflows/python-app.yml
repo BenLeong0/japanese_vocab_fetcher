@@ -16,8 +16,8 @@ jobs:
     - name: Get python version
       run: |
         python_version=$(cat python_backend/deployment/.python-version)
-        echo "python_version=${python_version}"
         echo "python_version=${python_version}" >> $GITHUB_ENV
+        echo ${{ env.python_version }}
     - name: Set up Python ${python_version}
       uses: actions/setup-python@v2
       with:
