@@ -92,7 +92,7 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
         fake_response = section['api_response']
         monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
 
-        assert forvo.get_audio_urls(word) == expected_output[word]
+        assert forvo.get_audio_urls(word) == expected_output[word]["main_data"]["audio"]
 
 
 def test_call_api(monkeypatch, test_dict: FullTestDict):
@@ -130,7 +130,7 @@ def test_extract_audio_url_list(test_dict: FullTestDict):
 
     for word in word_list:
         api_response = json.loads(sections[word]['api_response'])
-        assert forvo.extract_audio_url_list(api_response, word) == expected_output[word]
+        assert forvo.extract_audio_url_list(api_response, word) == expected_output[word]["main_data"]["audio"]
 
 
 def test_extract_audio_url():

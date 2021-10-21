@@ -24,6 +24,16 @@ class ResponseItem(TypedDict):
 JishoResponse = Dict[str, str]
 
 
+# Forvo
+
+class ForvoMainData(TypedDict):
+    audio: List[URL]
+
+class ResponseItemForvo(ResponseItem):
+    """Dictionary containing the audio information from Forvo"""
+    main_data: ForvoMainData
+
+
 # Wanikani
 
 class WanikaniMainData(TypedDict):
@@ -44,5 +54,5 @@ class FullResponseItem(TypedDict):
     ojad: List[Yomi]
     suzuki: List[Yomi]
     wadoku: List[Yomi]
-    forvo: List[URL]
+    forvo: ResponseItemForvo
     wanikani: ResponseItemWanikani
