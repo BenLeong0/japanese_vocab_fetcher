@@ -3,15 +3,20 @@ from typing import Literal, TypedDict
 from custom_types.alternative_string_types import Kaki, URL, Yomi
 
 
-class JishoAPIItemJapanese(TypedDict):
+class JishoAPIItemJapanese(TypedDict, total=False):
     word: Kaki
     reading: Yomi
+
+
+class JishoAPIItemLink(TypedDict):
+    test: str
+    url: URL
 
 
 class JishoAPIItemSense(TypedDict):
     english_definitions: list[str]
     parts_of_speech: list[str]
-    links: list[URL]
+    links: list[JishoAPIItemLink]
     tags: list[str]
     restrictions: list[Yomi]
     see_also: list[str]

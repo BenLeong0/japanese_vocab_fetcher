@@ -1,5 +1,8 @@
+import json
 from threading import Thread
 from typing import Dict, List, Union
+
+import requests
 
 from custom_types.alternative_string_types import Kaki, URL
 from custom_types.exception_types import APIError, FailedResponseItem, api_error_response_factory
@@ -59,7 +62,16 @@ def get_api_url(word: Kaki) -> URL:
 
 
 def call_api(word: Kaki) -> JishoAPIResponse:
-    ...
+    url = get_api_url(word)
+    response = requests.get(url)
+    status_code = response.status_code
+
+    if status_code != 200:
+        error_msg: str = json.loads(response.text)["error"]
+        raise JishoAPIError(error_msg, status_code, url)
+
+    response_data: JishoAPIResponse = json.loads(response.text)
+    return response_data
 
 
 def extract_jisho_data(response: JishoAPIResponse, word: Kaki) -> JishoMainData:

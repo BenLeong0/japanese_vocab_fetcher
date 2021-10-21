@@ -94,3 +94,39 @@ def test_get_api_url(test_dict: FullTestDict):
 
     for word in word_list:
         assert jisho.get_api_url(word) == sections[word]["url"]
+
+
+def test_call_api(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN an API URL
+    - WHEN the API is called
+    - THEN check the response is handled correctly
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+
+    for word in word_list:
+        url = test_dict['jisho']['expected_sections'][word]['url']
+        api_response = test_dict['jisho']['expected_sections'][word]['api_response']
+
+        monkeypatch.setattr("requests.get", lambda url: FakeResponse(json.dumps(api_response)))
+
+        assert jisho.call_api(url) == api_response
+
+
+def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN an unsuccessful HTTP request is made
+    - THEN check an exception is thrown
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "could not connect"})
+    monkeypatch.setattr("requests.get", lambda url: FakeResponse(response, status_code=400))
+
+    for word in word_list:
+        try:
+            jisho.call_api(word)
+            assert False
+        except jisho.JishoAPIError as api_error:
+            assert api_error.error_msg == "could not connect"
+            assert api_error.status_code == 400

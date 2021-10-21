@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
 from custom_types.alternative_string_types import HTMLString, URL, Yomi
-from testing import wanikani_api_responses
+from testing import jisho_api_responses, wanikani_api_responses
 from testing.dict_typing import FullTestDict
 
 # TODO: DICTS TO ADD:
@@ -62,6 +62,7 @@ MEGANE: FullTestDict = {
         "expected_sections": {
             '眼鏡': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=眼鏡"),
+                "api_response": jisho_api_responses.MEGANE["眼鏡"],
             },
         },
         "expected_output": {
@@ -352,6 +353,7 @@ COMEBACK: FullTestDict= {
         "expected_sections": {
             'カムバック': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=カムバック"),
+                "api_response": jisho_api_responses.COMEBACK["カムバック"],
             },
         },
         "expected_output": {
@@ -529,9 +531,11 @@ TABERU_GAKUSEI: FullTestDict = {
         "expected_sections": {
             '食べる': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=食べる"),
+                "api_response": jisho_api_responses.TABERU_GAKUSEI["食べる"],
             },
             '学生': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=学生"),
+                "api_response": jisho_api_responses.TABERU_GAKUSEI["学生"],
             },
         },
         "expected_output": {
@@ -1082,6 +1086,7 @@ KOTOBA: FullTestDict = {
         "expected_sections": {
             '言葉': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=言葉"),
+                "api_response": jisho_api_responses.KOTOBA["言葉"],
             },
         },
         "expected_output": {
@@ -1400,6 +1405,7 @@ BADINPUT: FullTestDict = {
         "expected_sections": {
             'BADINPUT': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=BADINPUT"),
+                "api_response": jisho_api_responses.BADINPUT["BADINPUT"],
             },
         },
         "expected_output": {
@@ -1541,12 +1547,15 @@ USAGI_IKU_KAGO: FullTestDict = {
         "expected_sections": {
             '兎': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=兎"),
+                "api_response": jisho_api_responses.USAGI_IKU_KAGO["兎"],
             },
             '行く': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=行く"),
+                "api_response": jisho_api_responses.USAGI_IKU_KAGO["行く"],
             },
             '籠': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=籠"),
+                "api_response": jisho_api_responses.USAGI_IKU_KAGO["籠"],
             },
         },
         "expected_output": {
@@ -2092,6 +2101,7 @@ SHIZUKA: FullTestDict = {
         "expected_sections": {
             '静か': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=静か"),
+                "api_response": jisho_api_responses.SHIZUKA["静か"],
             },
         },
         "expected_output": {
