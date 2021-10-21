@@ -1,6 +1,6 @@
 import json
 from threading import Thread
-from typing import Dict, List, Tuple, Union
+from typing import Dict, List, Union
 
 from dotenv import dotenv_values
 import requests
