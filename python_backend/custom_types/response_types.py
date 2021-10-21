@@ -18,10 +18,12 @@ class ResponseItem(TypedDict):
 
 # Jisho
 
-# class JishoResponse(TypedDict):
-#     """Dictionary containing the jisho information of the full response"""
-#     str: str
-JishoResponse = Dict[str, str]
+class JishoMainData(TypedDict):
+    ...
+
+class ResponseItemJisho(ResponseItem):
+    """Dictionary containing the information from Jisho"""
+    main_data: JishoMainData
 
 
 # OJAD
@@ -80,7 +82,7 @@ class ResponseItemWanikani(ResponseItem):
 class FullResponseItem(TypedDict):
     """Result dict for a word in an API request"""
     word: Kaki
-    jisho: JishoResponse
+    jisho: ResponseItemJisho
     ojad: ResponseItemOJAD
     suzuki: ResponseItemSuzuki
     wadoku: ResponseItemWadoku
