@@ -2,7 +2,7 @@ from custom_types.alternative_string_types import Kaki
 from custom_types.jisho_api_types import JishoAPIResponse
 
 
-MEGANE: dict[Kaki, JishoAPIResponse] = {
+MEGANE: dict[str, JishoAPIResponse] = {
     "眼鏡": {
         "meta": {
             "status": 200
@@ -596,7 +596,7 @@ MEGANE: dict[Kaki, JishoAPIResponse] = {
 }
 
 
-COMEBACK: dict[Kaki, JishoAPIResponse] = {
+COMEBACK: dict[str, JishoAPIResponse] = {
     "カムバック": {
         "meta": {
             "status": 200
@@ -769,7 +769,7 @@ COMEBACK: dict[Kaki, JishoAPIResponse] = {
 }
 
 
-TABERU_GAKUSEI: dict[Kaki, JishoAPIResponse] = {
+TABERU_GAKUSEI: dict[str, JishoAPIResponse] = {
     "食べる": {
         "meta": {
             "status": 200
@@ -1314,7 +1314,7 @@ TABERU_GAKUSEI: dict[Kaki, JishoAPIResponse] = {
 }
 
 
-KOTOBA: dict[Kaki, JishoAPIResponse] = {
+KOTOBA: dict[str, JishoAPIResponse] = {
     "言葉": {
         "meta": {
             "status": 200
@@ -1877,7 +1877,7 @@ KOTOBA: dict[Kaki, JishoAPIResponse] = {
 }
 
 
-BADINPUT: dict[Kaki, JishoAPIResponse] = {
+BADINPUT: dict[str, JishoAPIResponse] = {
     "BADINPUT": {
         "meta": {
             "status":200
@@ -1887,7 +1887,7 @@ BADINPUT: dict[Kaki, JishoAPIResponse] = {
 }
 
 
-USAGI_IKU_KAGO: dict[Kaki, JishoAPIResponse] = {
+USAGI_IKU_KAGO: dict[str, JishoAPIResponse] = {
     "兎": {
         "meta": {
             "status": 200
@@ -3981,7 +3981,7 @@ USAGI_IKU_KAGO: dict[Kaki, JishoAPIResponse] = {
 }
 
 
-SHIZUKA: dict[Kaki, JishoAPIResponse] = {
+SHIZUKA: dict[str, JishoAPIResponse] = {
     "静か": {
         "meta": {
             "status": 200

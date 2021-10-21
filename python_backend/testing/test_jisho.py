@@ -105,12 +105,10 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
 
     for word in word_list:
-        url = test_dict['jisho']['expected_sections'][word]['url']
         api_response = test_dict['jisho']['expected_sections'][word]['api_response']
-
         monkeypatch.setattr("requests.get", lambda url: FakeResponse(json.dumps(api_response)))
 
-        assert jisho.call_api(url) == api_response
+        assert jisho.call_api(word) == api_response
 
 
 def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
