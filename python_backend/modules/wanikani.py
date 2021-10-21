@@ -6,7 +6,7 @@ from dotenv import dotenv_values
 import requests
 
 from custom_types.alternative_string_types import Kaki, URL
-from custom_types.exception_types import APIError
+from custom_types.exception_types import APIError, api_error_response_factory
 from custom_types.response_types import ResponseItemWanikani
 from custom_types.wanikani_api_types import (
     WanikaniAPIResponse,
@@ -21,7 +21,6 @@ API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
 def response_factory(
     audio_list: List[WanikaniPronunciationAudio] = None,
     sentence_list: List[WanikaniContextSentence] = None,
-    success: bool = True
 ) -> ResponseItemWanikani:
     if audio_list is None:
         audio_list = []
@@ -29,7 +28,7 @@ def response_factory(
         sentence_list = []
 
     return {
-        "success": success,
+        "success": True,
         "main_data": {
             "audio": audio_list,
             "sentences": sentence_list,
@@ -49,7 +48,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWanikani]:
         api_response = get_api_response(word_list)  # pylint: disable=unused-variable
     except WanikaniAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word: response_factory(success=False) for word in word_list}
+        return {word: api_error_response_factory(api_error) for word in word_list}
 
     result_dict = build_result_dict(api_response)
 
