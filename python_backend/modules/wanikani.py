@@ -1,12 +1,13 @@
 from collections import defaultdict
 import json
-from typing import DefaultDict, Dict, List
+from typing import DefaultDict, Dict, List, Union
 
 from dotenv import dotenv_values
 import requests
 
 from custom_types.alternative_string_types import Kaki, URL
-from custom_types.response_types import ResponseItemWanikani
+from custom_types.exception_types import APIError, api_error_response_factory
+from custom_types.response_types import FailedResponseItem, ResponseItemWanikani
 from custom_types.wanikani_api_types import (
     WanikaniAPIResponse,
     WanikaniContextSentence,
@@ -15,12 +16,12 @@ from custom_types.wanikani_api_types import (
 
 NAME = "wanikani"
 API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
+WanikaniModuleReturnTypes = Union[ResponseItemWanikani, FailedResponseItem]
 
 
 def response_factory(
     audio_list: List[WanikaniPronunciationAudio] = None,
     sentence_list: List[WanikaniContextSentence] = None,
-    success: bool = True
 ) -> ResponseItemWanikani:
     if audio_list is None:
         audio_list = []
@@ -28,7 +29,7 @@ def response_factory(
         sentence_list = []
 
     return {
-        "success": success,
+        "success": True,
         "main_data": {
             "audio": audio_list,
             "sentences": sentence_list,
@@ -36,33 +37,23 @@ def response_factory(
     }
 
 
-class WanikaniAPIError(Exception):
-    def __init__(
-        self,
-        error_msg: str,
-        status_code: int,
-        url: URL = URL(""),
-    ):
-        super().__init__(error_msg)
-        self.error_msg = error_msg
-        self.status_code = status_code
-        self.url = url
+class WanikaniAPIError(APIError):
+    pass
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWanikani]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, WanikaniModuleReturnTypes]:
     if not word_list:
         return {}
 
     try:
         api_response = get_api_response(word_list)  # pylint: disable=unused-variable
     except WanikaniAPIError as api_error:
-        # TODO: Refactor entire program to handle and return errors
         print("An error occurred:", api_error.error_msg)
-        return {word: response_factory(success=False) for word in word_list}
+        return {word : api_error_response_factory(api_error) for word in word_list}
 
     result_dict = build_result_dict(api_response)
 
-    return {word: result_dict[word] for word in word_list}
+    return {word : result_dict[word] for word in word_list}
 
 
 def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:

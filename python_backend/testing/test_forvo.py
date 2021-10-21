@@ -17,8 +17,9 @@ def test_dict(request):
 
 
 class FakeResponse:
-    def __init__(self, text):
+    def __init__(self, text, status_code=200):
         self.text = text
+        self.status_code = status_code
 
 
 #####################
@@ -51,6 +52,30 @@ def test_main(monkeypatch, test_dict: FullTestDict):
         return sections[word]["api_response"]
 
     monkeypatch.setattr("requests.get", lambda url: FakeResponse(get_api_response(url)))
+    assert forvo.main(word_list) == expected_output
+
+
+def test_main_api_error(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the API returns an unsuccessful status code
+    - THEN check the failed dict is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "api_error"})
+    expected_output = {
+        word: {
+            "success": False,
+            "error": {
+                "error_msg": "api_error",
+                "status_code": 400,
+                "url": test_dict["forvo"]["expected_sections"][word]["url"]
+            },
+        }
+        for word in word_list
+    }
+
+    monkeypatch.setattr("requests.get", lambda x: FakeResponse(response, status_code=400))
     assert forvo.main(word_list) == expected_output
 
 
@@ -92,7 +117,7 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
         fake_response = section['api_response']
         monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
 
-        assert forvo.get_audio_urls(word) == expected_output[word]["main_data"]["audio"]
+        assert forvo.get_audio_urls(word) == expected_output[word]
 
 
 def test_call_api(monkeypatch, test_dict: FullTestDict):
@@ -116,6 +141,25 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
         assert "items" in resp
         assert resp['attributes']['total'] == section['total_items']
         assert len(resp['items']) == section['total_items']
+
+
+def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN an unsuccessful HTTP request is made
+    - THEN check an exception is thrown
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "could not connect"})
+    monkeypatch.setattr("requests.get", lambda url: FakeResponse(response, status_code=400))
+
+    for word in word_list:
+        try:
+            forvo.call_api(word)
+            assert False
+        except forvo.ForvoAPIError as api_error:
+            assert api_error.error_msg == "could not connect"
+            assert api_error.status_code == 400
 
 
 def test_extract_audio_url_list(test_dict: FullTestDict):

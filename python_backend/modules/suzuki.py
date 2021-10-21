@@ -1,38 +1,50 @@
 from ast import literal_eval
+import json
 import re
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Union
 
 from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
 from custom_types.response_types import ResponseItemSuzuki
 from utils import make_single_line
 
 
 NAME = "suzuki"
+SuzukiModuleReturnTypes = Union[ResponseItemSuzuki, FailedResponseItem]
 
 
-def response_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemSuzuki:
+def response_factory(accent_list: List[Yomi] = None) -> ResponseItemSuzuki:
     if accent_list is None:
         accent_list = []
     return {
-        "success": success,
+        "success": True,
         "main_data": {
             "accent": accent_list,
         },
     }
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemSuzuki]:
+class SuzukiAPIError(APIError):
+    pass
+
+
+def main(word_list: List[Kaki]) -> Dict[Kaki, SuzukiModuleReturnTypes]:
     if not word_list:
         return {}
 
-    html = get_html(word_list)
+    try:
+        html = get_html(word_list)
+    except SuzukiAPIError as api_error:
+        print("An error occurred:", api_error.error_msg)
+        return {word : api_error_response_factory(api_error) for word in word_list}
+
     word_sections = get_sections(html)
     accent_dict = build_accent_dict(word_sections)
 
-    return {word:response_factory(accent_list=accent_dict[word]) for word in word_list}
+    return {word : response_factory(accent_list=accent_dict[word]) for word in word_list}
 
 
 # Get HTML
@@ -56,7 +68,14 @@ def get_formdata(word_list: List[Kaki]) -> Dict[str, str]:
 def get_html(word_list: List[Kaki]) -> Soup:
     url = URL('http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index')
     formdata = get_formdata(word_list)
-    html = HTMLString(requests.post(url, formdata, timeout=20).text)
+    response = requests.post(url, formdata, timeout=20)
+    status_code = response.status_code
+
+    if status_code != 200:
+        error_msg: str = json.loads(response.text)["error"]
+        raise SuzukiAPIError(error_msg, status_code, url)
+
+    html = HTMLString(response.text)
     return Soup(html, 'html.parser')
 
 

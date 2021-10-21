@@ -1,3 +1,4 @@
+import json
 from bs4 import BeautifulSoup as Soup
 import pytest   # type: ignore
 
@@ -14,8 +15,9 @@ def test_dict(request):
 
 
 class FakeResponse:
-    def __init__(self, text):
+    def __init__(self, text, status_code=200):
         self.text = text
+        self.status_code = status_code
 
 
 #####################
@@ -33,6 +35,30 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     expected_output = test_dict['suzuki']['expected_output']
 
     monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
+    assert suzuki.main(word_list) == expected_output
+
+
+def test_main_api_error(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the API returns an unsuccessful status code
+    - THEN check the failed dict is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "api_error"})
+    expected_output = {
+        word: {
+            "success": False,
+            "error": {
+                "error_msg": "api_error",
+                "status_code": 400,
+                "url": 'http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index',
+            },
+        }
+        for word in word_list
+    }
+
+    monkeypatch.setattr("requests.post", lambda x, formdata, timeout: FakeResponse(response, status_code=400))
     assert suzuki.main(word_list) == expected_output
 
 
@@ -55,6 +81,38 @@ def test_get_formdata(test_dict: FullTestDict):
     expected_formdata = test_dict['suzuki']['formdata']
 
     assert suzuki.get_formdata(word_list) == expected_formdata
+
+
+def test_get_html(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the HTML page is fetched
+    - THEN check it is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    html = test_dict['suzuki']['html']
+
+    monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
+
+    assert suzuki.get_html(word_list) == Soup(html, 'html.parser')
+
+
+def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN an unsuccessful HTTP request is made
+    - THEN check an exception is thrown
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "could not connect"})
+    monkeypatch.setattr("requests.post", lambda x, formdata, timeout: FakeResponse(response, status_code=400))
+
+    try:
+        suzuki.get_html(word_list)
+        assert False
+    except suzuki.SuzukiAPIError as api_error:
+        assert api_error.error_msg == "could not connect"
+        assert api_error.status_code == 400
 
 
 def test_get_sections(test_dict: FullTestDict):

@@ -1,35 +1,47 @@
 from collections import defaultdict
+import json
 import re
-from typing import DefaultDict, Dict, List, Tuple
+from typing import DefaultDict, Dict, List, Tuple, Union
 
 from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
 from custom_types.response_types import ResponseItemWadoku
 
 
 NAME = "wadoku"
+WadokuModuleReturnTypes = Union[ResponseItemWadoku, FailedResponseItem]
 
 
-def response_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemWadoku:
+def response_factory(accent_list: List[Yomi] = None) -> ResponseItemWadoku:
     if accent_list is None:
         accent_list = []
     return {
-        "success": success,
+        "success": True,
         "main_data": {
             "accent": accent_list,
         },
     }
 
 
+class WadokuAPIError(APIError):
+    pass
+
+
 WadokuWordSectionsType = List[Tuple[Soup, List[Soup]]]
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWadoku]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, WadokuModuleReturnTypes]:
     if not word_list:
         return {}
 
-    html = get_html(word_list)
+    try:
+        html = get_html(word_list)
+    except WadokuAPIError as api_error:
+        print("An error occurred:", api_error.error_msg)
+        return {word : api_error_response_factory(api_error) for word in word_list}
+
     word_sections = get_sections(html)
 
     # If first word is invalid, the whole search fails, so try removing first word
@@ -40,7 +52,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWadoku]:
 
     accent_dict = build_accent_dict(word_sections)
 
-    return {word:response_factory(accent_list=accent_dict[word]) for word in word_list}
+    return {word : response_factory(accent_list=accent_dict[word]) for word in word_list}
 
 
 # Get HTML
@@ -53,7 +65,14 @@ def get_url(word_list: List[Kaki]) -> URL:
 
 def get_html(word_list: List[Kaki]) -> Soup:
     url = get_url(word_list)
-    html = HTMLString(requests.post(url, timeout=20).text)
+    response = requests.post(url, timeout=20)
+    status_code = response.status_code
+
+    if status_code != 200:
+        error_msg: str = json.loads(response.text)["error"]
+        raise WadokuAPIError(error_msg, status_code, url)
+
+    html = HTMLString(response.text)
     return Soup(html, 'html.parser')
 
 

@@ -1,15 +1,18 @@
 from collections import defaultdict
+import json
 import re
-from typing import DefaultDict, Dict, List, Tuple
+from typing import DefaultDict, Dict, List, Tuple, Union
 
 from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
 from custom_types.response_types import ResponseItemOJAD
 
 
 NAME = "ojad"
+OJADModuleReturnTypes = Union[ResponseItemOJAD, FailedResponseItem]
 
 
 def response_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemOJAD:
@@ -23,18 +26,27 @@ def response_factory(accent_list: List[Yomi] = None, success: bool = True) -> Re
     }
 
 
+class OJADAPIError(APIError):
+    pass
+
+
 OJADWordSectionsType = List[Tuple[Soup, List[Soup]]]
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemOJAD]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, OJADModuleReturnTypes]:
     if not word_list:
         return {}
 
-    htmls = get_htmls(word_list)
+    try:
+        htmls = get_htmls(word_list)
+    except OJADAPIError as api_error:
+        print("An error occurred:", api_error.error_msg)
+        return {word : api_error_response_factory(api_error) for word in word_list}
+
     word_sections = get_sections(htmls)
     accent_dict = build_accent_dict(word_sections)
 
-    return {word:response_factory(accent_dict[word]) for word in word_list}
+    return {word : response_factory(accent_dict[word]) for word in word_list}
 
 
 # Get HTML
@@ -58,7 +70,14 @@ def has_words(html_page: Soup) -> bool:
 
 def get_html(word_list: List[Kaki], page_number: int) -> Soup:
     url = get_url(word_list, page_number)
-    html_string = HTMLString(requests.post(url, timeout=20).text)
+    response = requests.post(url, timeout=20)
+    status_code = response.status_code
+
+    if status_code != 200:
+        error_msg: str = json.loads(response.text)["error"]
+        raise OJADAPIError(error_msg, status_code, url)
+
+    html_string = HTMLString(response.text)
     html = Soup(html_string, 'html.parser')
     return html
 
