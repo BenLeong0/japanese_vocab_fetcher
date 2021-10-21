@@ -3,6 +3,7 @@ import re
 from bs4 import BeautifulSoup as Soup
 import pytest   # type: ignore
 
+from custom_types.alternative_string_types import Yomi
 from modules import wadoku
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS, TEST_DICT_IDS
@@ -68,13 +69,13 @@ def test_main_recursion(monkeypatch):
         '食べる':  {
             "success": True,
             "main_data": {
-                "accent": ["たべ' る"],
+                "accent": [Yomi("たべ' る")],
             },
         },
         '学生':  {
             "success": True,
             "main_data": {
-                "accent": ["がくせい"],
+                "accent": [Yomi("がくせい")],
             },
         },
     }

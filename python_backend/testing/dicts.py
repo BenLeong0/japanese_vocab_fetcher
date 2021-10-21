@@ -6,7 +6,7 @@ from typing import Dict, List
 from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
-from custom_types.alternative_string_types import URL, HTMLString
+from custom_types.alternative_string_types import HTMLString, URL, Yomi
 from testing import wanikani_api_responses
 from testing.dict_typing import FullTestDict
 
@@ -136,7 +136,7 @@ MEGANE: FullTestDict = {
             "眼鏡": {
                 "success": True,
                 "main_data": {
-                    "accent": ["め' がね", "がんきょう" ],
+                    "accent": [Yomi("め' がね"), Yomi("がんきょう") ],
                 },
             },
         },
@@ -255,7 +255,7 @@ MEGANE: FullTestDict = {
             "wadoku": {
                 "success": True,
                 "main_data": {
-                    "accent": ["め' がね", "がんきょう" ],
+                    "accent": [Yomi("め' がね"), Yomi("がんきょう")],
                 },
             },
             "forvo": {
@@ -386,7 +386,7 @@ COMEBACK: FullTestDict= {
             'カムバック': {
                 "success": True,
                 "main_data": {
-                    "accent": ["かむば' っく", "か' むばっく"],
+                    "accent": [Yomi("かむば' っく"), Yomi("か' むばっく")],
                 },
             },
         },
@@ -433,7 +433,7 @@ COMEBACK: FullTestDict= {
             "wadoku": {
                 "success": True,
                 "main_data": {
-                    "accent": ["かむば' っく", "か' むばっく"],
+                    "accent": [Yomi("かむば' っく"), Yomi("か' むばっく")],
                 },
             },
             "forvo": {
@@ -543,13 +543,13 @@ TABERU_GAKUSEI: FullTestDict = {
             '食べる': {
                 "success": True,
                 "main_data": {
-                    "accent": ["たべ' る"],
+                    "accent": [Yomi("たべ' る")],
                 },
             },
             '学生': {
                 "success": True,
                 "main_data": {
-                    "accent": ["がくせい"],
+                    "accent": [Yomi("がくせい")],
                 },
             },
         },
@@ -801,7 +801,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "wadoku": {
                 "success": True,
                 "main_data": {
-                    "accent": ["たべ' る"],
+                    "accent": [Yomi("たべ' る")],
                 },
             },
             "forvo": {
@@ -875,7 +875,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "wadoku": {
                 "success": True,
                 "main_data": {
-                    "accent": ["がくせい"],
+                    "accent": [Yomi("がくせい")],
                 },
             },
             "forvo": {
@@ -1026,7 +1026,7 @@ KOTOBA: FullTestDict = {
             '言葉': {
                 "success": True,
                 "main_data": {
-                    "accent": ["ことば'"],
+                    "accent": [Yomi("ことば'")],
                 },
             },
         },
@@ -1163,7 +1163,7 @@ KOTOBA: FullTestDict = {
             "wadoku": {
                 "success": True,
                 "main_data": {
-                    "accent": ["ことば'"],
+                    "accent": [Yomi("ことば'")],
                 },
             },
             "forvo": {
@@ -1478,19 +1478,19 @@ USAGI_IKU_KAGO: FullTestDict = {
             '兎': {
                 "success": True,
                 "main_data": {
-                    "accent": ["うさぎ", "う"],
+                    "accent": [Yomi("うさぎ"), Yomi("う")],
                 },
             },
             '行く': {
                 "success": True,
                 "main_data": {
-                    "accent": ["ゆく", "いく"],
+                    "accent": [Yomi("ゆく"), Yomi("いく")],
                 },
             },
             '籠': {
                 "success": True,
                 "main_data": {
-                    "accent": ["かご", "こ'"],
+                    "accent": [Yomi("かご"), Yomi("こ'")],
                 },
             },
         },
@@ -1670,7 +1670,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             "wadoku": {
                 "success": True,
                 "main_data": {
-                    "accent": ["うさぎ", "う"],
+                    "accent": [Yomi("うさぎ"), Yomi("う")],
                 },
             },
             "forvo": {
@@ -1699,7 +1699,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             "wadoku": {
                 "success": True,
                 "main_data": {
-                    "accent": ["ゆく", "いく"],
+                    "accent": [Yomi("ゆく"), Yomi("いく")],
                 },
             },
             "forvo": {
@@ -1769,7 +1769,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             "wadoku": {
                 "success": True,
                 "main_data": {
-                    "accent": ["かご", "こ'"],
+                    "accent": [Yomi("かご"), Yomi("こ'")],
                 },
             },
             "forvo": {
@@ -1887,7 +1887,7 @@ SHIZUKA: FullTestDict = {
             '静か': {
                 "success": True,
                 "main_data": {
-                    "accent": ["し' ずか"],
+                    "accent": [Yomi("し' ずか")],
                 },
             },
         },
@@ -2022,7 +2022,7 @@ SHIZUKA: FullTestDict = {
             "wadoku": {
                 "success": True,
                 "main_data": {
-                    "accent": ["し' ずか"],
+                    "accent": [Yomi("し' ずか")],
                 },
             },
             "forvo": {

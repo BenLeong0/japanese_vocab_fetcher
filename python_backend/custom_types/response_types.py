@@ -27,7 +27,7 @@ JishoResponse = Dict[str, str]
 # Wadoku
 
 class WadokuMainData(TypedDict):
-    accent: List[Union[Yomi, str]]
+    accent: List[Yomi]
 
 class ResponseItemWadoku(ResponseItem):
     """Dictionary containing the accent information from Wadoku"""
