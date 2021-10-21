@@ -59,9 +59,24 @@ def test_main_recursion(monkeypatch):
     monkeypatch.setattr("requests.post", html_response)
 
     assert wadoku.main(word_list) == {
-        'BADINPUT': [],
-        '食べる': ["たべ' る"],
-        '学生': ["がくせい"],
+        'BADINPUT': {
+            "success": True,
+            "main_data": {
+                "accent": [],
+            },
+        },
+        '食べる':  {
+            "success": True,
+            "main_data": {
+                "accent": ["たべ' る"],
+            },
+        },
+        '学生':  {
+            "success": True,
+            "main_data": {
+                "accent": ["がくせい"],
+            },
+        },
     }
 
 
