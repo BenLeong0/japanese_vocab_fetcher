@@ -7,18 +7,31 @@ import requests
 
 from custom_types.alternative_string_types import Kaki, URL
 from custom_types.response_types import ResponseItemWanikani
-from custom_types.wanikani_api_types import WanikaniAPIResponse
+from custom_types.wanikani_api_types import (
+    WanikaniAPIResponse,
+    WanikaniContextSentence,
+    WanikaniPronunciationAudio,
+)
 
 NAME = "wanikani"
 API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
 
 
-def empty_result_factory(success: bool = True) -> ResponseItemWanikani:
+def result_factory(
+    audio_list: List[WanikaniPronunciationAudio] = None,
+    sentence_list: List[WanikaniContextSentence] = None,
+    success: bool = True
+) -> ResponseItemWanikani:
+    if audio_list is None:
+        audio_list = []
+    if sentence_list is None:
+        sentence_list = []
+
     return {
         "success": success,
         "main_data": {
-            "audio": [],
-            "sentences": [],
+            "audio": audio_list,
+            "sentences": sentence_list,
         },
     }
 
@@ -45,7 +58,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWanikani]:
     except WanikaniAPIError as api_error:
         # TODO: Refactor entire program to handle and return errors
         print("An error occurred:", api_error.error_msg)
-        return {word: empty_result_factory(success=False) for word in word_list}
+        return {word: result_factory(success=False) for word in word_list}
 
     result_dict = build_result_dict(api_response)
 
@@ -78,7 +91,7 @@ def call_api(url: URL) -> WanikaniAPIResponse:
 
 
 def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, ResponseItemWanikani]:
-    result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(empty_result_factory)
+    result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(result_factory)
 
     for resource in response["data"]:
         writing = Kaki(resource["data"]["characters"])

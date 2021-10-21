@@ -15,11 +15,13 @@ NAME = "forvo"
 API_KEY: str = dotenv_values()['FORVO_API_KEY']
 
 
-def empty_result_factory(success: bool = True) -> ResponseItemForvo:
+def result_factory(audio_list: List[URL] = None, success: bool = True) -> ResponseItemForvo:
+    if audio_list is None:
+        audio_list = []
     return {
         "success": success,
         "main_data": {
-            "audio": [],
+            "audio": audio_list,
         },
     }
 
@@ -28,9 +30,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemForvo]:
     audio_urls_dict: Dict[Kaki, ResponseItemForvo] = {}
 
     def call_script(word: Kaki) -> None:
-        result_dict = empty_result_factory()
-        result_dict['main_data']['audio'] = get_audio_urls(word)
-        audio_urls_dict[word] = result_dict
+        audio_urls_dict[word] = result_factory(audio_list=get_audio_urls(word))
 
     threads: List[Thread] = [
         Thread(target=call_script, args=[word])
