@@ -17,8 +17,9 @@ def test_dict(request):
 
 
 class FakeResponse:
-    def __init__(self, text):
+    def __init__(self, text, status_code=200):
         self.text = text
+        self.status_code = status_code
 
 
 #####################
@@ -92,7 +93,7 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
         fake_response = section['api_response']
         monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
 
-        assert forvo.get_audio_urls(word) == expected_output[word]["main_data"]["audio"]
+        assert forvo.get_audio_urls(word) == expected_output[word]
 
 
 def test_call_api(monkeypatch, test_dict: FullTestDict):
