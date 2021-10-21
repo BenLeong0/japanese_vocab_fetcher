@@ -143,12 +143,12 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
     - WHEN an unsuccessful HTTP request is made
     - THEN check an exception is thrown
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    url = test_dict['wanikani']['url']
     response = json.dumps({"error": "could not connect"})
     monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(response, status_code=400))
 
     try:
-        wanikani.call_api(word_list)
+        wanikani.call_api(url)
         assert False
     except wanikani.WanikaniAPIError as api_error:
         assert api_error.error_msg == "could not connect"
