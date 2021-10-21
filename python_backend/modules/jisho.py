@@ -1,10 +1,11 @@
 from threading import Thread
 from typing import Dict, List, Union
 
-from custom_types.alternative_string_types import Kaki
+from custom_types.alternative_string_types import Kaki, URL
 from custom_types.exception_types import APIError, FailedResponseItem, api_error_response_factory
 from custom_types.jisho_api_types import JishoAPIResponse
 from custom_types.response_types import ResponseItemJisho, JishoMainData
+from utils import escape_unicode
 
 
 NAME = "jisho"
@@ -50,6 +51,11 @@ def get_jisho_data(word: Kaki) -> JishoModuleReturnTypes:
 
     data = extract_jisho_data(response, word)
     return response_factory(data)
+
+
+def get_api_url(word: Kaki) -> URL:
+    url = f"https://jisho.org/api/v1/search/words?keyword={word}"
+    return URL(url)
 
 
 def call_api(word: Kaki) -> JishoAPIResponse:

@@ -59,6 +59,11 @@ MEGANE: FullTestDict = {
     "id": "MEGANE",
     "input": ["眼鏡"],
     "jisho": {
+        "expected_sections": {
+            '眼鏡': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=眼鏡"),
+            },
+        },
         "expected_output": {
             '眼鏡': {
                 "success": True,
@@ -344,6 +349,11 @@ COMEBACK: FullTestDict= {
     "id": "COMEBACK",
     'input': ['カムバック'],
     "jisho": {
+        "expected_sections": {
+            'カムバック': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=カムバック"),
+            },
+        },
         "expected_output": {
             'カムバック': {
                 "success": True,
@@ -516,6 +526,14 @@ TABERU_GAKUSEI: FullTestDict = {
     "id": "TABERU_GAKUSEI",
     'input': ['食べる', '学生'],
     "jisho": {
+        "expected_sections": {
+            '食べる': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=食べる"),
+            },
+            '学生': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=学生"),
+            },
+        },
         "expected_output": {
             '食べる': {
                 "success": True,
@@ -1061,6 +1079,11 @@ KOTOBA: FullTestDict = {
     "id": "KOTOBA",
     'input': ['言葉'],
     "jisho": {
+        "expected_sections": {
+            '言葉': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=言葉"),
+            },
+        },
         "expected_output": {
             '言葉': {
                 "success": True,
@@ -1374,6 +1397,11 @@ BADINPUT: FullTestDict = {
     "id": "BADINPUT",
     'input': ['BADINPUT'],
     "jisho": {
+        "expected_sections": {
+            'BADINPUT': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=BADINPUT"),
+            },
+        },
         "expected_output": {
             'BADINPUT': {
                 "success": True,
@@ -1510,6 +1538,17 @@ USAGI_IKU_KAGO: FullTestDict = {
     "id": "USAGI_IKU_KAGO",
     'input': ['兎', '行く', '籠'],
     "jisho": {
+        "expected_sections": {
+            '兎': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=兎"),
+            },
+            '行く': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=行く"),
+            },
+            '籠': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=籠"),
+            },
+        },
         "expected_output": {
             '兎': {
                 "success": True,
@@ -2050,6 +2089,11 @@ SHIZUKA: FullTestDict = {
     "id": "SHIZUKA",
     'input': ['静か'],
     "jisho": {
+        "expected_sections": {
+            '静か': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=静か"),
+            },
+        },
         "expected_output": {
             '静か': {
                 "success": True,
