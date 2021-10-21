@@ -15,9 +15,13 @@ class APIError(Exception):
         self.url = url
 
 
-    def __str__(self):
-        return json.dumps({
+    def to_dict(self):
+        return {
             "status_code": self.status_code,
             "error": self.error_msg,
             "url": self.url,
-        })
+        }
+
+
+    def __str__(self):
+        return json.dumps(self.to_dict())
