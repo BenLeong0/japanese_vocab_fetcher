@@ -17,4 +17,4 @@ def response_factory(success: bool = True) -> ResponseItemJisho:
     }
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, JishoModuleReturnTypes]:
-    return {key:response_factory() for key in word_list}
+    return {key : response_factory() for key in word_list}

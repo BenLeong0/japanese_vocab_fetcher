@@ -49,11 +49,11 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, WanikaniModuleReturnTypes]:
         api_response = get_api_response(word_list)  # pylint: disable=unused-variable
     except WanikaniAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word: api_error_response_factory(api_error) for word in word_list}
+        return {word : api_error_response_factory(api_error) for word in word_list}
 
     result_dict = build_result_dict(api_response)
 
-    return {word: result_dict[word] for word in word_list}
+    return {word : result_dict[word] for word in word_list}
 
 
 def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:

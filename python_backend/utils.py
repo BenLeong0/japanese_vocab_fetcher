@@ -45,4 +45,4 @@ def convert_list_of_str_to_htmlstring(input_list: List[str]) -> List[HTMLString]
     return list(map(HTMLString, input_list))
 
 def convert_dict_str_keys_to_kaki(input_dict: Dict[str, Any]) -> Dict[Kaki, Any]:
-    return {Kaki(key): value for key, value in input_dict.items()}
+    return {Kaki(key) : value for key, value in input_dict.items()}

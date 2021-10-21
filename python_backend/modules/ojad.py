@@ -41,12 +41,12 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, OJADModuleReturnTypes]:
         htmls = get_htmls(word_list)
     except OJADAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word: api_error_response_factory(api_error) for word in word_list}
+        return {word : api_error_response_factory(api_error) for word in word_list}
 
     word_sections = get_sections(htmls)
     accent_dict = build_accent_dict(word_sections)
 
-    return {word:response_factory(accent_dict[word]) for word in word_list}
+    return {word : response_factory(accent_dict[word]) for word in word_list}
 
 
 # Get HTML
