@@ -12,7 +12,9 @@ from custom_types.response_types import ResponseItemWadoku
 NAME = "wadoku"
 
 
-def result_factory(accent_list: List[Yomi] = [], success: bool = True) -> ResponseItemWadoku:
+def result_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemWadoku:
+    if accent_list is None:
+        accent_list = []
     return {
         "success": success,
         "main_data": {
