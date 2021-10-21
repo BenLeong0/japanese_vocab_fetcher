@@ -79,7 +79,12 @@ MEGANE: FullTestDict = {
             '眼鏡': ["め' がね"],
         }),
         "expected_output": {
-            '眼鏡': ["め' がね"],
+            '眼鏡': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("め' がね")],
+                },
+            },
         },
     },
     "suzuki": {
@@ -250,7 +255,12 @@ MEGANE: FullTestDict = {
         {
             "word": "眼鏡",
             "jisho": {},
-            "ojad": ["め' がね"],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("め' がね")],
+                },
+            },
             "suzuki": ["め' がね"],
             "wadoku": {
                 "success": True,
@@ -339,7 +349,12 @@ COMEBACK: FullTestDict= {
             'カムバック': ["かむば' っく", "か' むばっく"],
         }),
         "expected_output": {
-            'カムバック': ["かむば' っく", "か' むばっく"],
+            'カムバック': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("かむば' っく"), Yomi("か' むばっく")],
+                },
+            },
         },
     },
     "suzuki": {
@@ -428,7 +443,12 @@ COMEBACK: FullTestDict= {
         {
             "word": "カムバック",
             "jisho": {},
-            "ojad": ["かむば' っく", "か' むばっく"],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("かむば' っく"), Yomi("か' むばっく")],
+                },
+            },
             "suzuki": ["カムバ' ック"],
             "wadoku": {
                 "success": True,
@@ -490,8 +510,18 @@ TABERU_GAKUSEI: FullTestDict = {
             '学生': ["がくせい"],
         }),
         "expected_output": {
-            '食べる': ["たべ' る"],
-            '学生': ["がくせい"],
+            '食べる': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("たべ' る")],
+                },
+            },
+            '学生': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("がくせい")],
+                },
+            },
         },
     },
     "suzuki": {
@@ -796,7 +826,12 @@ TABERU_GAKUSEI: FullTestDict = {
         {
             "word": "食べる",
             "jisho": {},
-            "ojad": ["たべ' る"],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("たべ' る")],
+                },
+            },
             "suzuki": ["たべ' る"],
             "wadoku": {
                 "success": True,
@@ -870,7 +905,12 @@ TABERU_GAKUSEI: FullTestDict = {
         {
             "word": "学生",
             "jisho": {},
-            "ojad": ["がくせい"],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("がくせい")],
+                },
+            },
             "suzuki": ["がくせい"],
             "wadoku": {
                 "success": True,
@@ -969,7 +1009,12 @@ KOTOBA: FullTestDict = {
             '言葉': ["ことば'"],
         }),
         "expected_output": {
-            '言葉': ["ことば'"],
+            '言葉': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("ことば'")],
+                },
+            },
         },
     },
     "suzuki": {
@@ -1158,7 +1203,12 @@ KOTOBA: FullTestDict = {
         {
             "word": "言葉",
             "jisho": {},
-            "ojad": ["ことば'"],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("ことば'")],
+                },
+            },
             "suzuki": ["ことば'"],
             "wadoku": {
                 "success": True,
@@ -1244,7 +1294,12 @@ BADINPUT: FullTestDict = {
         "expected_sections": [],
         "full_accent_dict" : defaultdict(list),
         "expected_output": {
-            'BADINPUT': [],
+            'BADINPUT': {
+                "success": True,
+                "main_data": {
+                    "accent": [],
+                },
+            },
         },
     },
     "suzuki": {
@@ -1312,7 +1367,12 @@ BADINPUT: FullTestDict = {
         {
             "word": "BADINPUT",
             "jisho": {},
-            "ojad": [],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [],
+                },
+            },
             "suzuki": [],
             "wadoku": {
                 "success": True,
@@ -1381,9 +1441,24 @@ USAGI_IKU_KAGO: FullTestDict = {
             '兎': ["うさぎ"],
         }),
         "expected_output": {
-            '行く': ["いく"],
-            '籠': ["かご"],
-            '兎': ["うさぎ"],
+            '行く': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("いく")],
+                },
+            },
+            '籠': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("かご")],
+                },
+            },
+            '兎': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("うさぎ")],
+                },
+            },
         },
     },
     "suzuki": {
@@ -1665,7 +1740,12 @@ USAGI_IKU_KAGO: FullTestDict = {
         {
             "word": "兎",
             "jisho": {},
-            "ojad": ["うさぎ"],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("うさぎ")],
+                },
+            },
             "suzuki": ["うさぎ"],
             "wadoku": {
                 "success": True,
@@ -1694,7 +1774,12 @@ USAGI_IKU_KAGO: FullTestDict = {
         {
             "word": "行く",
             "jisho": {},
-            "ojad": ["いく"],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("いく")],
+                },
+            },
             "suzuki": ["いく"],
             "wadoku": {
                 "success": True,
@@ -1764,7 +1849,12 @@ USAGI_IKU_KAGO: FullTestDict = {
         {
             "word": "籠",
             "jisho": {},
-            "ojad": ["かご"],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("かご")],
+                },
+            },
             "suzuki": ["かご"],
             "wadoku": {
                 "success": True,
@@ -1819,7 +1909,12 @@ SHIZUKA: FullTestDict = {
             '静かです': ["し' ずか"],
         }),
         "expected_output": {
-            '静か': ["し' ずか"],
+            '静か': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("し' ずか")],
+                },
+            },
         },
     },
     "suzuki": {
@@ -2017,7 +2112,12 @@ SHIZUKA: FullTestDict = {
         {
             "word": "静か",
             "jisho": {},
-            "ojad": ["し' ずか"],
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("し' ずか")],
+                },
+            },
             "suzuki": ["し' ずか"],
             "wadoku": {
                 "success": True,

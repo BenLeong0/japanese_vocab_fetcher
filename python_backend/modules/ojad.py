@@ -6,14 +6,27 @@ from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from custom_types.response_types import ResponseItemOJAD
 
 
 NAME = "ojad"
 
+
+def result_factory(accent_list: List[Yomi] = None, success: bool = True) -> ResponseItemOJAD:
+    if accent_list is None:
+        accent_list = []
+    return {
+        "success": success,
+        "main_data": {
+            "accent": accent_list,
+        },
+    }
+
+
 OJADWordSectionsType = List[Tuple[Soup, List[Soup]]]
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, List[Yomi]]:
+def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemOJAD]:
     if not word_list:
         return {}
 
@@ -21,7 +34,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, List[Yomi]]:
     word_sections = get_sections(htmls)
     accent_dict = build_accent_dict(word_sections)
 
-    return {word:accent_dict[word] for word in word_list}
+    return {word:result_factory(accent_dict[word]) for word in word_list}
 
 
 # Get HTML
