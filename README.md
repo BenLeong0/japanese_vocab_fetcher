@@ -32,46 +32,46 @@ will be of the following form, JSON encoded:
 
 ```
 [
-	{
-		"word": "食べる",
-		"jisho": {
-			"success": true,
-			"main_data": {
-				...
-			},
-		}
-		"ojad": {
-			"success": true,
-			"main_data": {
-				"accent": ["たべ' る"],
-			},
-		},
-		"suzuki": {
-			"success": true,
-			"main_data": {
-				"accent": ["たべ' る"],
-			},
-		},
-		"wadoku": {
-			"success": true,
-			"main_data": {
-				"accent": ["たべ' る"],
-			},
-		},
-		"forvo": {
-			"success": true,
-			"main_data": {
-				"audio": [{...}, ...],
-			},
-		},
-		wanikani" {
-			"success": true,
-			"main_data": {
-				"audio": [{...}, ...],
-				"sentences": [{"en": ..., "jp": ...,}, ...],
-			},
-		}
-	},
-	...
+  {
+    "word": "食べる",
+    "jisho": {
+      "success": true,
+      "main_data": {
+        ...
+      },
+    }
+    "ojad": {
+      "success": true,
+      "main_data": {
+        "accent": ["たべ' る"],
+      },
+    },
+    "suzuki": {
+      "success": true,
+      "main_data": {
+        "accent": ["たべ' る"],
+      },
+    },
+    "wadoku": {
+      "success": true,
+      "main_data": {
+        "accent": ["たべ' る"],
+      },
+    },
+    "forvo": {
+      "success": true,
+      "main_data": {
+        "audio": [{...}, ...],
+      },
+    },
+    wanikani" {
+      "success": true,
+      "main_data": {
+        "audio": [{...}, ...],
+        "sentences": [{"en": ..., "jp": ...,}, ...],
+      },
+    }
+  },
+  ...
 ]
 ```
