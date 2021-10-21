@@ -1897,8 +1897,6 @@ TEST_DICTS = [
     SHIZUKA,
 ]
 
-TEST_DICT_IDS = [test_dict['id'] for test_dict in TEST_DICTS]
-
 
 # TEMPLATE: FullTestDict = {
 #     "id": "",
