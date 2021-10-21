@@ -7,6 +7,7 @@ import requests
 
 from custom_types.alternative_string_types import Kaki, URL
 from custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
+from custom_types.response_types import ResponseItemForvo
 from utils import decode_unicode
 
 
@@ -14,11 +15,22 @@ NAME = "forvo"
 API_KEY: str = dotenv_values()['FORVO_API_KEY']
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, List[URL]]:
-    audio_urls_dict: Dict[Kaki, List[URL]] = {}
+def result_factory(audio_list: List[URL] = None, success: bool = True) -> ResponseItemForvo:
+    if audio_list is None:
+        audio_list = []
+    return {
+        "success": success,
+        "main_data": {
+            "audio": audio_list,
+        },
+    }
+
+
+def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemForvo]:
+    audio_urls_dict: Dict[Kaki, ResponseItemForvo] = {}
 
     def call_script(word: Kaki) -> None:
-        audio_urls_dict[word] = get_audio_urls(word)
+        audio_urls_dict[word] = result_factory(audio_list=get_audio_urls(word))
 
     threads: List[Thread] = [
         Thread(target=call_script, args=[word])
