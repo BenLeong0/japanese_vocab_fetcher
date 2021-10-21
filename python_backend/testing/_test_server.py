@@ -9,13 +9,13 @@ import pytest   # type: ignore
 import requests
 
 from testing.dict_typing import FullTestDict
-from testing.dicts import TEST_DICTS, TEST_DICT_IDS
+from testing.dicts import TEST_DICTS
 
 
 API_URL = "http://127.0.0.1:5000/words"
 
 
-@pytest.fixture(params=TEST_DICTS, ids=TEST_DICT_IDS)
+@pytest.fixture(params=TEST_DICTS, ids=lambda d:d['id'])
 def test_dict(request):
     return request.param
 
