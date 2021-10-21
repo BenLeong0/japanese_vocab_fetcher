@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from custom_types.exception_types import APIError
 from custom_types.response_types import ResponseItemWadoku
 
 
@@ -23,6 +24,10 @@ def response_factory(accent_list: List[Yomi] = None, success: bool = True) -> Re
     }
 
 
+class WadokuAPIError(APIError):
+    pass
+
+
 WadokuWordSectionsType = List[Tuple[Soup, List[Soup]]]
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWadoku]:
@@ -30,7 +35,12 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemWadoku]:
         return {}
 
     html = get_html(word_list)
-    word_sections = get_sections(html)
+
+    try:
+        word_sections = get_sections(html)
+    except WadokuAPIError as api_error:
+        print("An error occurred:", api_error.error_msg)
+        return {word: response_factory(success=False) for word in word_list}
 
     # If first word is invalid, the whole search fails, so try removing first word
     if not word_sections:

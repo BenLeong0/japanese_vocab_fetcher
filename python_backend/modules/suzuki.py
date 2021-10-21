@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from custom_types.exception_types import APIError
 from custom_types.response_types import ResponseItemSuzuki
 from utils import make_single_line
 
@@ -22,6 +23,10 @@ def response_factory(accent_list: List[Yomi] = None, success: bool = True) -> Re
             "accent": accent_list,
         },
     }
+
+
+class SuzukiAPIError(APIError):
+    pass
 
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemSuzuki]:

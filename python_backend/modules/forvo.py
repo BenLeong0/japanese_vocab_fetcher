@@ -6,6 +6,7 @@ from dotenv import dotenv_values
 import requests
 
 from custom_types.alternative_string_types import Kaki, URL
+from custom_types.exception_types import APIError
 from custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
 from custom_types.response_types import ResponseItemForvo
 from utils import decode_unicode
@@ -24,6 +25,10 @@ def response_factory(audio_list: List[URL] = None, success: bool = True) -> Resp
             "audio": audio_list,
         },
     }
+
+
+class ForvoAPIError(APIError):
+    pass
 
 
 def main(word_list: List[Kaki]) -> Dict[Kaki, ResponseItemForvo]:
