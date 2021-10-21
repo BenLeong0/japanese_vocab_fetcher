@@ -1,4 +1,4 @@
-from typing import Dict, List, TypedDict
+from typing import List, TypedDict
 
 from custom_types.alternative_string_types import (
     Kaki,
