@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get python version
       run: |
-        python_version=$(cat python_backend/deployment/.python-version)
+        python_version=$(cat python_backend\deployment\.python-version)
         echo "python_version=${python_version}" >> $GITHUB_ENV
     - name: Set up Python $
       uses: actions/setup-python@v2
@@ -38,7 +38,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get python version
       run: |
-        python_version=$(cat python_backend/deployment/.python-version)
+        python_version=$(cat python_backend\deployment\.python-version)
         echo "python_version=${python_version}" >> $GITHUB_ENV
     - name: Set up Python $
       uses: actions/setup-python@v2
@@ -64,7 +64,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get python version
       run: |
-        python_version=$(cat python_backend/deployment/.python-version)
+        python_version=$(cat python_backend\deployment\.python-version)
         echo "python_version=${python_version}" >> $GITHUB_ENV
     - name: Set up Python $
       uses: actions/setup-python@v2
