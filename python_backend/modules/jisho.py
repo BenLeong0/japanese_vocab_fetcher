@@ -71,6 +71,13 @@ def call_api(word: Kaki) -> JishoAPIResponse:
         raise JishoAPIError(error_msg, status_code, url)
 
     response_data: JishoAPIResponse = json.loads(response.text)
+    meta_data = response_data["meta"]
+    meta_data_status_code = meta_data["status"]
+
+    if meta_data_status_code != 200:
+        internal_error_msg: str = "An error occurred. Meta data: " + json.dumps(meta_data)
+        raise JishoAPIError(internal_error_msg, meta_data_status_code, url)
+
     return response_data
 
 
@@ -88,16 +95,6 @@ def filter_items(items: list[JishoAPIItem], word: Kaki) -> list[JishoAPIItem]:
 
 
 def extract_jisho_data(response: JishoAPIResponse, word: Kaki) -> JishoMainData:
-    if response["meta"]["status"] != 200:
-        print("An error occurred")
-        return api_error_response_factory(JishoAPIError(
-            response["meta"]["status"],
-            json.dumps(response["meta"]),
-        ))
-
-    items = response["data"]
-
+    items: list[JishoAPIItem] = response["data"]
     filtered_items = filter_items(items, word)
     return {"results": filtered_items}
-
-
