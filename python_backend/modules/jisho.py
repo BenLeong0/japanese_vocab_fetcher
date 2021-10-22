@@ -98,7 +98,7 @@ def segregate_items(
         for japanese in item["japanese"]:
             if (
                 ("word" in japanese and word == japanese["word"]) or
-                ("reading" in japanese and word == japanese["reading"])
+                ("word" not in japanese and "reading" in japanese and word == japanese["reading"])
             ):
                 return True
         return False
