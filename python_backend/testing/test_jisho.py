@@ -154,6 +154,25 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
             assert api_error.status_code == 400
 
 
+def test_call_api_meta_data_error(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN a failed response is received
+    - THEN check an exception is thrown
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"meta": {"status": 400, "error_msg": "api_error"}})
+    monkeypatch.setattr("requests.get", lambda url: FakeResponse(response, status_code=200))
+
+    for word in word_list:
+        try:
+            jisho.call_api(word)
+            assert False
+        except jisho.JishoAPIError as api_error:
+            assert api_error.error_msg == "An error occurred. Meta data: " + json.dumps({"status": 400, "error_msg": "api_error"})
+            assert api_error.status_code == 400
+
+
 def test_filter_items(test_dict: FullTestDict):
     """
     - GIVEN a list of items from a Jisho API response
