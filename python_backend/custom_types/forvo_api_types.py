@@ -1,4 +1,4 @@
-from typing import Dict, List, Literal, TypedDict
+from typing import Literal, TypedDict
 
 
 class ForvoAPIItem(TypedDict):
@@ -20,5 +20,5 @@ class ForvoAPIItem(TypedDict):
 
 
 class ForvoAPIResponse(TypedDict):
-    attributes: Dict[Literal["total"], int]
-    items: List[ForvoAPIItem]
+    attributes: dict[Literal["total"], int]
+    items: list[ForvoAPIItem]

@@ -1,7 +1,6 @@
 from collections import defaultdict
 import os
 import re
-from typing import Dict, List
 
 from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
@@ -28,8 +27,8 @@ def get_file_as_string(filename: str, module: str):
         return re.sub(r'>\s*<', '><', myfile.read())
 
 
-def get_ojad_html_files(slug: str) -> List[HTMLString]:
-    htmls: List[str] = []
+def get_ojad_html_files(slug: str) -> list[HTMLString]:
+    htmls: list[str] = []
     file_index: int = 0
     while True:
         path = f"testing/html_files/ojad_{slug}_{file_index:02d}.html"
@@ -41,7 +40,7 @@ def get_ojad_html_files(slug: str) -> List[HTMLString]:
     return list(map(HTMLString, htmls))
 
 
-def build_suzuki_formdata(word_list_string: str) -> Dict[str, str]:
+def build_suzuki_formdata(word_list_string: str) -> dict[str, str]:
     return {
         "data[Phrasing][curve]": "advanced",
         "data[Phrasing][accent]": "advanced",
