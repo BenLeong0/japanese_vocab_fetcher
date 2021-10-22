@@ -2480,6 +2480,224 @@ SHIZUKA: FullTestDict = {
 }
 
 
+NARU: FullTestDict = {
+    "id": "NARU",
+    'input': ['なる'],
+    "jisho": {
+        "expected_sections": {
+            'なる': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=なる"),
+                "api_response": jisho_api_responses.NARU["なる"],
+                "filtered_items": jisho_api_responses.NARU_FILTERED_ITEMS["なる"],
+                "extra_items": jisho_api_responses.NARU_EXTRA_ITEMS["なる"],
+            },
+        },
+        "expected_output": {
+            'なる': {
+                "success": True,
+                "main_data": {
+                    "results": jisho_api_responses.NARU_FILTERED_ITEMS["なる"],
+                    "extra": jisho_api_responses.NARU_EXTRA_ITEMS["なる"],
+                },
+            },
+        },
+    },
+    "ojad": {
+        "htmls": get_ojad_html_files("naru"),
+        "url": URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:なる/page:%s"),
+        "expected_sections": [
+            {
+                'na_adj': False,
+                'writing_section': Soup("""<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch('word','499','female');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch('word','499','male');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">鳴る・鳴ります</p></div></td>""", "html.parser"),
+                'writings': ["鳴る", "鳴ります"],
+                'reading_sections': [Soup("""<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class="mola_-2"><span class="inner"><span class="char">な</span></span></span><span class=" accent_plain mola_-1"><span class="inner"><span class="char">る</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"><a class="katsuyo_proc_female_button js_proc_female_button" id="499_1_1_female" href="#" onclick="pronounce_play('499_1_1_female');return false;"></a><a class="katsuyo_proc_male_button js_proc_male_button" id="499_1_1_male" href="#" onclick="pronounce_play('499_1_1_male');return false;"></a></div></div>""", "html.parser")],
+                'readings': ["なる"],
+            },
+            {
+                'na_adj': False,
+                'writing_section': Soup("""<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch('word','497','female');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch('word','497','male');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">なる・なります</p></div></td>""", "html.parser"),
+                'writings': ["なる", "なります"],
+                'reading_sections': [Soup("""<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class=" accent_top mola_-2"><span class="inner"><span class="char">な</span></span></span><span class="mola_-1"><span class="inner"><span class="char">る</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"><a class="katsuyo_proc_female_button js_proc_female_button" id="497_1_1_female" href="#" onclick="pronounce_play('497_1_1_female');return false;"></a><a class="katsuyo_proc_male_button js_proc_male_button" id="497_1_1_male" href="#" onclick="pronounce_play('497_1_1_male');return false;"></a></div></div>""", "html.parser")],
+                'readings': ["な' る"],
+            },
+            {
+                'na_adj': False,
+                'writing_section': Soup("""<td class="midashi"><div class="proc_batch_button_word"><a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch('word','498','female');return false;"></a><a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch('word','498','male');return false;"></a></div><div class="midashi_wrapper"><p class="midashi_word">生る・生ります</p></div></td>""", "html.parser"),
+                'writings': ["生る", "生ります"],
+                'reading_sections': [Soup("""<div class="katsuyo_proc"><p><span class="katsuyo_accent"><span class="accented_word"><span class=" accent_top mola_-2"><span class="inner"><span class="char">な</span></span></span><span class="mola_-1"><span class="inner"><span class="char">る</span></span></span></span></span></p><div class="katsuyo_proc_button clearfix"><a class="katsuyo_proc_female_button js_proc_female_button" id="498_1_1_female" href="#" onclick="pronounce_play('498_1_1_female');return false;"></a><a class="katsuyo_proc_male_button js_proc_male_button" id="498_1_1_male" href="#" onclick="pronounce_play('498_1_1_male');return false;"></a></div></div>""", "html.parser")],
+                'readings': ["な' る"],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '鳴る': ["なる"],
+            '鳴ります': ["なる"],
+            'なる': ["な' る"],
+            'なります': ["な' る"],
+            '生る': ["な' る"],
+            '生ります': ["な' る"],
+        }),
+        "expected_output": {
+            'なる': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("な' る")],
+                },
+            },
+        },
+    },
+    "suzuki": {
+        "html": get_file_as_string("naru", "suzuki"),
+        "formdata": build_suzuki_formdata("なるは"),
+        "expected_sections": [
+            {
+                'writing_section': Soup("""<div class="phrasing_subscript"><span>なるは</span><span class="inner endspace"><span class="char"></span></span></div>""", "html.parser"),
+                'writing': 'なる',
+                'reading_section': Soup("""<div class="phrasing_text"><span class="accent_top mola_0"><span class="inner"><span class="char">な</span></span></span><span class="mola_1"><span class="inner"><span class="char">る</span></span></span><span class="mola_2"><span class="inner"><span class="char">は</span></span></span><span class="inner endspace"><span class="char"></span></span></div>""","html.parser"),
+                'accent_section': Soup("""<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_0_0",3,[1, 0, 0],1,0,0);});</script>""", "html.parser"),
+                'reading': "な' る",
+            },
+        ],
+        "expected_output": {
+            'なる': {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("な' る")],
+                },
+            },
+        },
+    },
+    "wadoku": {
+        "html": get_file_as_string("naru", "wadoku"),
+        "url": URL("https://www.wadoku.de/search/なる"),
+        "expected_sections": [
+            {
+                'writing_section': Soup("""<div class="japanese"><a href="/entry/view/346531"><span class="orth" lang="ja" xml:lang="ja">鳴る</span></a></div>""", "html.parser"),
+                'writings': ['鳴る'],
+                'reading_sections': [Soup("""<span class="pron accent" data-accent-id="1"><span class="b">な~</span><span class="t l">る</span></span>""", "html.parser")],
+                'readings': ["なる"],
+            },
+            {
+                'writing_section': Soup("""<div class="japanese"><a href="/entry/view/5295051"><span class="orth" lang="ja" xml:lang="ja">成る<span class="divider">；</span><span class="njok">為</span>る</span></a></div>""", "html.parser"),
+                'writings': ['成る', '為る'],
+                'reading_sections': [Soup("""<span class="pron accent" data-accent-id="1"><span class="t r">な~</span><span class="b">る</span></span>""", "html.parser")],
+                'readings': ["な' る"],
+            },
+            {
+                'writing_section': Soup("""<div class="japanese"><a href="/entry/view/7948044"><span class="orth" lang="ja" xml:lang="ja"><span class="njok">生</span>る</span></a></div>""", "html.parser"),
+                'writings': ['生る'],
+                'reading_sections': [Soup("""<span class="pron accent" data-accent-id="1"><span class="t r">な~</span><span class="b">る</span></span>""", "html.parser")],
+                'readings': ["な' る"],
+            },
+            {
+                'writing_section': Soup("""<div class="japanese"><a href="/entry/view/10063467"><span class="orth" lang="ja" xml:lang="ja">ナル</span></a></div>""", "html.parser"),
+                'writings': ['ナル'],
+                'reading_sections': [Soup("""<span class="pron accent" data-accent-id="1"><span class="t r">な</span><span class="b">る</span></span>""", "html.parser")],
+                'readings': ["な' る"],
+            },
+        ],
+        "full_accent_dict" : defaultdict(list, {
+            '鳴る': ["なる"],
+            '成る': ["な' る"],
+            '為る': ["な' る"],
+            '生る': ["な' る"],
+            'ナル': ["な' る"],
+        }),
+        "expected_output": {
+            'なる': {
+                "success": True,
+                "main_data": {
+                    "accent": [],
+                },
+            },
+        },
+    },
+    "forvo": {
+        "expected_sections": {
+            'なる': {
+                "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/なる/language/ja/id_lang_speak/76/key/{API_KEY}"),
+                "api_response": '{"attributes": {"total": 4}, "items": [{"id": 1896193, "word": "\\u306a\\u308b", "original": "\\u306a\\u308b", "addtime": "2012-12-07 03:13:14", "hits": 1740, "username": "akitomo", "sex": "m", "country": "Japan", "code": "ja", "langname": "Japanese", "pathmp3": "https://apifree.forvo.com/audio/1l3d2l283h3m2g1p213l3p3f352k291g1p3g373j2l3a1i331l392m1h232c3f3f2l1j34373b263a2q2a2p2i3j353m22382q2q1h3q243d3j3l2l3o1j1g3p1o3l3e2m373k2l381g3k1f2k3l2j2n3a2m332j2m2b3a312j211t1t_1j2g2q342g1m3d2a2a282q21282i1k3h361j1m1i293n1t1t", "pathogg": "https://apifree.forvo.com/audio/1i2i2m2p3o3g3f2e1o3o3o3i2c2e392a3o3b2k37342e1b3i243c1f2g2l3o1i211m3f211m223p3a352h2f321m2c393d3c3j2h3d392m27331j3l3h2f1j3q3m361m1m1m1f3j2a25343d291h2b2i2k2k1j282p3d3i3q2p211t1t_1l382c3l3n3e2g3237392i3a3d2a261b25242j2l2k371t1t", "rate": 0, "num_votes": 0, "num_positive_votes": 0}, {"id": 3772185, "word": "\\u306a\\u308b", "original": "\\u306a\\u308b", "addtime": "2015-07-31 08:04:19", "hits": 1704, "username": "skent", "sex": "m", "country": "Japan", "code": "ja", "langname": "Japanese", "pathmp3": "https://apifree.forvo.com/audio/33222p382c2432363a313e2o3739383f3i2g3p1f1o1j1i1n1n3k271p1h1i312b2d2f1l333n1j3d231p393j2836333f343e212c2j232a351o243j223b3g22392b292c392l2i3121343j36352n2h3l1j1f3m3b311j2e371t1t_2j3332281b353a2h3d1m3b3d253f2j3m1g27352i3g371t1t", "pathogg": "https://apifree.forvo.com/audio/2a2f3p3j3p1k3e3k382d3i1i2k3g2i292e323p2i3f2q1o3p3h1o1k2i371g222f2i3i321p3i2q2m2b3n2f331h342d2b3h342m29253i2e1g1p393j2h3h212b253q1n2a2a27272j34362b3q2p3a2q1l1n3e2m221l3n3a3n1t1t_3j3p251k24243f3d282o313o2h362b2e1j263i1n2o2h1t1t", "rate": 0, "num_votes": 0, "num_positive_votes": 0}, {"id": 3784428, "word": "\\u306a\\u308b", "original": "\\u306a\\u308b", "addtime": "2015-08-07 00:08:30", "hits": 3037, "username": "strawberrybrown", "sex": "f", "country": "Japan", "code": "ja", "langname": "Japanese", "pathmp3": "https://apifree.forvo.com/audio/2i3d263j1m3d3f36243l212a3p2g2c3l2c1l2l2o2c3k383m3m3f1o1o2p1l1g33283f252j2d2n2h3d2e2539322k1g3a3d3o2i383j1f1p2o2f323j371g1g1o342k2m3c2l393l2a323e1m361o2f3l1g392m2i3b1g3f3h371t1t_3d2o383g2f3p1m39333q2j1k3f2q332f351k2j2a3p371t1t", "pathogg": "https://apifree.forvo.com/audio/3f353n3g2b3227273o221j2m3e313o1p241j2o2j2e2a1f3h1k273g383l3h1l1h2k3c3f223n3b283h3l3q262c1o243c353i2n3a3d342n3j21341b2h37382b2c2c34383i351g1b2o371h2m2k1f1h3k34273n2m3g29263n1t1t_1g2a312q223l2a1j3q2e2l1p3g3236271o1j322j2q2h1t1t", "rate": 1, "num_votes": 1, "num_positive_votes": 1}, {"id": 5260109, "word": "\\u306a\\u308b", "original": "\\u306a\\u308b", "addtime": "2017-10-10 14:24:18", "hits": 190, "username": "poyotan", "sex": "f", "country": "Japan", "code": "ja", "langname": "Japanese", "pathmp3": "https://apifree.forvo.com/audio/343l2h2g3j1l1b3e2q35233f2b3j2p322n1l2m272h292q2k3b2c1o3p3a272n2m352n1g2q3p21342i392e253p2p3q3m2i1p1o1l333n2h2h3m3e3321291o3b243q1l1o252g2e1h3b282d292229341n2h3j3o2k312l2o371t1t_2o3a392g1p1l1k2o3a3d2c3e1m3l1m3q2d3b3n33293n1t1t", "pathogg": "https://apifree.forvo.com/audio/1h253b1o313a262a3i281m352a212k1n1k2h281k2h3m212l2q3f3f2b212a3a27233h1i253q1n3b211g1f1i2h3o2p3g25271k213h2d372q293n1k2j2e25383f3k1g1b313k2h2d1m2c1k3f3c2a393n29253j3i1m323o211t1t_3e2q1i1j35333n381j1o2l1p2q1f383e2b3c2b3m2p3n1t1t", "rate": 0, "num_votes": 0, "num_positive_votes": 0}]}',
+                "total_items": 4,
+            },
+        },
+        "expected_output": {
+            'なる': {
+                "success": True,
+                "main_data": {
+                    "audio": [
+                        URL("https://apifree.forvo.com/audio/1l3d2l283h3m2g1p213l3p3f352k291g1p3g373j2l3a1i331l392m1h232c3f3f2l1j34373b263a2q2a2p2i3j353m22382q2q1h3q243d3j3l2l3o1j1g3p1o3l3e2m373k2l381g3k1f2k3l2j2n3a2m332j2m2b3a312j211t1t_1j2g2q342g1m3d2a2a282q21282i1k3h361j1m1i293n1t1t"),
+                        URL("https://apifree.forvo.com/audio/33222p382c2432363a313e2o3739383f3i2g3p1f1o1j1i1n1n3k271p1h1i312b2d2f1l333n1j3d231p393j2836333f343e212c2j232a351o243j223b3g22392b292c392l2i3121343j36352n2h3l1j1f3m3b311j2e371t1t_2j3332281b353a2h3d1m3b3d253f2j3m1g27352i3g371t1t"),
+                        URL("https://apifree.forvo.com/audio/2i3d263j1m3d3f36243l212a3p2g2c3l2c1l2l2o2c3k383m3m3f1o1o2p1l1g33283f252j2d2n2h3d2e2539322k1g3a3d3o2i383j1f1p2o2f323j371g1g1o342k2m3c2l393l2a323e1m361o2f3l1g392m2i3b1g3f3h371t1t_3d2o383g2f3p1m39333q2j1k3f2q332f351k2j2a3p371t1t"),
+                        URL("https://apifree.forvo.com/audio/343l2h2g3j1l1b3e2q35233f2b3j2p322n1l2m272h292q2k3b2c1o3p3a272n2m352n1g2q3p21342i392e253p2p3q3m2i1p1o1l333n2h2h3m3e3321291o3b243q1l1o252g2e1h3b282d292229341n2h3j3o2k312l2o371t1t_2o3a392g1p1l1k2o3a3d2c3e1m3l1m3q2d3b3n33293n1t1t"),
+                    ],
+                },
+            },
+        },
+    },
+    "wanikani": {
+        "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=なる"),
+        "api_response": wanikani_api_responses.NARU,
+        "result_dict": {},
+        "expected_output": {
+            'なる': {
+                "success": True,
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
+            },
+        },
+    },
+    "expected_result": [
+        {
+            "word": "なる",
+            "jisho": {
+                "success": True,
+                "main_data": {
+                    "results": jisho_api_responses.NARU_FILTERED_ITEMS["なる"],
+                    "extra": jisho_api_responses.NARU_EXTRA_ITEMS["なる"],
+                },
+            },
+            "ojad": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("な' る")],
+                },
+            },
+            "suzuki": {
+                "success": True,
+                "main_data": {
+                    "accent": [Yomi("な' る")],
+                },
+            },
+            "wadoku": {
+                "success": True,
+                "main_data": {
+                    "accent": [],
+                },
+            },
+            "forvo": {
+                "success": True,
+                "main_data": {
+                    "audio": [
+                        URL("https://apifree.forvo.com/audio/1l3d2l283h3m2g1p213l3p3f352k291g1p3g373j2l3a1i331l392m1h232c3f3f2l1j34373b263a2q2a2p2i3j353m22382q2q1h3q243d3j3l2l3o1j1g3p1o3l3e2m373k2l381g3k1f2k3l2j2n3a2m332j2m2b3a312j211t1t_1j2g2q342g1m3d2a2a282q21282i1k3h361j1m1i293n1t1t"),
+                        URL("https://apifree.forvo.com/audio/33222p382c2432363a313e2o3739383f3i2g3p1f1o1j1i1n1n3k271p1h1i312b2d2f1l333n1j3d231p393j2836333f343e212c2j232a351o243j223b3g22392b292c392l2i3121343j36352n2h3l1j1f3m3b311j2e371t1t_2j3332281b353a2h3d1m3b3d253f2j3m1g27352i3g371t1t"),
+                        URL("https://apifree.forvo.com/audio/2i3d263j1m3d3f36243l212a3p2g2c3l2c1l2l2o2c3k383m3m3f1o1o2p1l1g33283f252j2d2n2h3d2e2539322k1g3a3d3o2i383j1f1p2o2f323j371g1g1o342k2m3c2l393l2a323e1m361o2f3l1g392m2i3b1g3f3h371t1t_3d2o383g2f3p1m39333q2j1k3f2q332f351k2j2a3p371t1t"),
+                        URL("https://apifree.forvo.com/audio/343l2h2g3j1l1b3e2q35233f2b3j2p322n1l2m272h292q2k3b2c1o3p3a272n2m352n1g2q3p21342i392e253p2p3q3m2i1p1o1l333n2h2h3m3e3321291o3b243q1l1o252g2e1h3b282d292229341n2h3j3o2k312l2o371t1t_2o3a392g1p1l1k2o3a3d2c3e1m3l1m3q2d3b3n33293n1t1t"),
+                    ],
+                },
+            },
+            "wanikani": {
+                "success": True,
+                "main_data": {
+                    "audio": [],
+                    "sentences": [],
+                },
+            },
+        },
+    ],
+}
+
+
 TEST_DICTS = [
     MEGANE,
     COMEBACK,
@@ -2488,6 +2706,7 @@ TEST_DICTS = [
     BADINPUT,
     USAGI_IKU_KAGO,
     SHIZUKA,
+    NARU,
 ]
 
 

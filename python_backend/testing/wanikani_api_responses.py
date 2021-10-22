@@ -790,3 +790,17 @@ SHIZUKA: WanikaniAPIResponse = {
         }
     ]
 }
+
+
+NARU: WanikaniAPIResponse = {
+    'object': 'collection',
+    'url': 'https://api.wanikani.com/v2/subjects?slugs=%E3%81%AA%E3%82%8B&types=vocabulary',
+    'pages': {
+        'per_page': 1000,
+        'next_url': None,
+        'previous_url': None
+    },
+    'total_count': 0,
+    'data_updated_at': None,
+    'data': []
+}

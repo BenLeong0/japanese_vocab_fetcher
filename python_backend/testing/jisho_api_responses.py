@@ -6338,3 +6338,1062 @@ SHIZUKA_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
         },
     ],
 }
+
+
+NARU: dict[str, JishoAPIResponse] = {
+    "なる": {
+        "meta": {
+            "status": 200
+        },
+        "data": [
+            {
+                "slug": "成る",
+                "is_common": True,
+                "tags": [
+                    "wanikani11"
+                ],
+                "jlpt": [
+                    "jlpt-n3",
+                    "jlpt-n5"
+                ],
+                "japanese": [
+                    {
+                        "word": "成る",
+                        "reading": "なる"
+                    },
+                    {
+                        "word": "為る",
+                        "reading": "なる"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "to become",
+                            "to get",
+                            "to grow",
+                            "to turn",
+                            "to reach",
+                            "to attain"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "to result in",
+                            "to turn out",
+                            "to end up",
+                            "to prove (to be)"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "to consist of",
+                            "to be composed of",
+                            "to be made up of"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [
+                            "as ...からなる or ...よりなる"
+                        ]
+                    },
+                    {
+                        "english_definitions": [
+                            "to be completed",
+                            "to be realized",
+                            "to succeed",
+                            "to be attained",
+                            "to be accomplished"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "to change (into)",
+                            "to turn (into)",
+                            "to transform"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "to come (to do)",
+                            "to begin (to do)",
+                            "to grow (to do)"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "to come to",
+                            "to amount to",
+                            "to add up to",
+                            "to make"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "to play (the part of)",
+                            "to act as"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "to be used for",
+                            "to be useful for",
+                            "to serve as"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "to be promoted"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Shogi"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "to do ..."
+                        ],
+                        "parts_of_speech": [
+                            "Auxiliary verb",
+                            "Godan verb with ru ending"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Honorific or respectful (sonkeigo) language",
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [
+                            "as お + masu stem + になる or ご + noun+ になる"
+                        ]
+                    },
+                    {
+                        "english_definitions": [
+                            "Naru"
+                        ],
+                        "parts_of_speech": [
+                            "Place"
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": True,
+                    "dbpedia": False
+                }
+            },
+            {
+                "slug": "鳴る",
+                "is_common": True,
+                "tags": [
+                    "wanikani12"
+                ],
+                "jlpt": [
+                    "jlpt-n4"
+                ],
+                "japanese": [
+                    {
+                        "word": "鳴る",
+                        "reading": "なる"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "to sound",
+                            "to ring",
+                            "to resound",
+                            "to echo",
+                            "to roar",
+                            "to rumble"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": False
+                }
+            },
+            {
+                "slug": "生る",
+                "is_common": True,
+                "tags": [],
+                "jlpt": [
+                    "jlpt-n2"
+                ],
+                "japanese": [
+                    {
+                        "word": "生る",
+                        "reading": "なる"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "to bear fruit"
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb with ru ending",
+                            "Intransitive verb"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": False
+                }
+            },
+            {
+                "slug": "なる",
+                "is_common": False,
+                "tags": [],
+                "jlpt": [],
+                "japanese": [
+                    {
+                        "reading": "なる"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "that is in"
+                        ],
+                        "parts_of_speech": [
+                            "Suffix",
+                            "Noun or verb acting prenominally"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Archaism"
+                        ],
+                        "restrictions": [],
+                        "see_also": [
+                            "也 なり"
+                        ],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "who is called",
+                            "that is called"
+                        ],
+                        "parts_of_speech": [
+                            "Suffix",
+                            "Noun or verb acting prenominally"
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "that is"
+                        ],
+                        "parts_of_speech": [
+                            "Suffix",
+                            "Noun or verb acting prenominally"
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "I see"
+                        ],
+                        "parts_of_speech": [],
+                        "links": [],
+                        "tags": [
+                            "Slang",
+                            "Abbreviation"
+                        ],
+                        "restrictions": [],
+                        "see_also": [
+                            "なるほど"
+                        ],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": False
+                }
+            },
+            {
+                "slug": "ナル",
+                "is_common": False,
+                "tags": [],
+                "jlpt": [],
+                "japanese": [
+                    {
+                        "reading": "ナル"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "narcissistic"
+                        ],
+                        "parts_of_speech": [
+                            "Noun",
+                            "Na-adjective (keiyodoshi)"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Abbreviation",
+                            "Slang"
+                        ],
+                        "restrictions": [],
+                        "see_also": [
+                            "ナルシシスト"
+                        ],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": False
+                }
+            },
+            {
+                "slug": "成程",
+                "is_common": True,
+                "tags": [
+                    "wanikani30"
+                ],
+                "jlpt": [
+                    "jlpt-n4"
+                ],
+                "japanese": [
+                    {
+                        "word": "なる程",
+                        "reading": "なるほど"
+                    },
+                    {
+                        "word": "成る程",
+                        "reading": "なるほど"
+                    },
+                    {
+                        "word": "成程",
+                        "reading": "なるほど"
+                    },
+                    {
+                        "word": "成るほど",
+                        "reading": "なるほど"
+                    },
+                    {
+                        "reading": "ナルホド"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "I see",
+                            "that's right",
+                            "indeed"
+                        ],
+                        "parts_of_speech": [
+                            "Expressions (phrases, clauses, etc.)",
+                            "Adverb (fukushi)"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": False
+                }
+            },
+            {
+                "slug": "成るべく",
+                "is_common": True,
+                "tags": [],
+                "jlpt": [
+                    "jlpt-n4",
+                    "jlpt-n1"
+                ],
+                "japanese": [
+                    {
+                        "word": "成るべく",
+                        "reading": "なるべく"
+                    },
+                    {
+                        "word": "成る可く",
+                        "reading": "なるべく"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "as (much) as possible",
+                            "as (much) as one can",
+                            "wherever practicable",
+                            "if possible"
+                        ],
+                        "parts_of_speech": [
+                            "Adverb (fukushi)"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": False
+                }
+            },
+            {
+                "slug": "鳴門",
+                "is_common": True,
+                "tags": [],
+                "jlpt": [],
+                "japanese": [
+                    {
+                        "word": "鳴門",
+                        "reading": "なると"
+                    },
+                    {
+                        "word": "鳴戸",
+                        "reading": "なると"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "strait with a roaring tidal ebb and flow",
+                            "whirlpool",
+                            "maelstrom"
+                        ],
+                        "parts_of_speech": [
+                            "Noun"
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [
+                            "from 鳴門海峡"
+                        ]
+                    },
+                    {
+                        "english_definitions": [
+                            "kamaboko with a spiral whirlpool-like pattern"
+                        ],
+                        "parts_of_speech": [
+                            "Noun"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Abbreviation"
+                        ],
+                        "restrictions": [],
+                        "see_also": [
+                            "鳴門巻き"
+                        ],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "cooking technique where ingredients are cut in a spiral pattern"
+                        ],
+                        "parts_of_speech": [
+                            "Noun"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Food, cooking"
+                        ],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "Naruto (city in Tokushima)"
+                        ],
+                        "parts_of_speech": [
+                            "Noun"
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [
+                            "鳴門"
+                        ],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "Naruto Strait"
+                        ],
+                        "parts_of_speech": [
+                            "Noun"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Abbreviation"
+                        ],
+                        "restrictions": [
+                            "鳴門"
+                        ],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [
+                            "from 鳴門海峡"
+                        ]
+                    },
+                    {
+                        "english_definitions": [
+                            "Naruto wakame"
+                        ],
+                        "parts_of_speech": [
+                            "Noun"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Abbreviation"
+                        ],
+                        "restrictions": [
+                            "鳴門"
+                        ],
+                        "see_also": [
+                            "鳴門若布 なるとわかめ"
+                        ],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    },
+                    {
+                        "english_definitions": [
+                            "Naruto (toshiyori)"
+                        ],
+                        "parts_of_speech": [
+                            "Wikipedia definition"
+                        ],
+                        "links": [
+                            {
+                                "text": "Read “Naruto (toshiyori)” on English Wikipedia",
+                                "url": "http://en.wikipedia.org/wiki/Naruto_(toshiyori)?oldid=331576324"
+                            },
+                            {
+                                "text": "Read “鳴戸” on Japanese Wikipedia",
+                                "url": "http://ja.wikipedia.org/wiki/鳴戸?oldid=40203711"
+                            }
+                        ],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                        "sentences": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": "http://dbpedia.org/resource/Naruto_(toshiyori)"
+                }
+            },
+            {
+                "slug": "成る丈",
+                "is_common": False,
+                "tags": [],
+                "jlpt": [
+                    "jlpt-n1"
+                ],
+                "japanese": [
+                    {
+                        "word": "成る丈",
+                        "reading": "なるたけ"
+                    },
+                    {
+                        "word": "成るたけ",
+                        "reading": "なるたけ"
+                    },
+                    {
+                        "word": "成る丈",
+                        "reading": "なるだけ"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "as (much) as possible",
+                            "as (much) as one can",
+                            "wherever practicable",
+                            "if possible"
+                        ],
+                        "parts_of_speech": [
+                            "Adverb (fukushi)"
+                        ],
+                        "links": [],
+                        "tags": [
+                            "Usually written using kana alone"
+                        ],
+                        "restrictions": [],
+                        "see_also": [
+                            "なるべく"
+                        ],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": False
+                }
+            },
+            {
+                "slug": "鳴子",
+                "is_common": False,
+                "tags": [],
+                "jlpt": [],
+                "japanese": [
+                    {
+                        "word": "鳴子",
+                        "reading": "なるこ"
+                    }
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "clapper"
+                        ],
+                        "parts_of_speech": [
+                            "Noun"
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": []
+                    }
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": False
+                }
+            }
+        ]
+    }
+}
+
+
+NARU_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
+    "なる": [
+        {
+            "slug": "なる",
+            "is_common": False,
+            "tags": [],
+            "jlpt": [],
+            "japanese": [
+                {
+                    "reading": "なる"
+                }
+            ],
+            "senses": [
+                {
+                    "english_definitions": [
+                        "that is in"
+                    ],
+                    "parts_of_speech": [
+                        "Suffix",
+                        "Noun or verb acting prenominally"
+                    ],
+                    "links": [],
+                    "tags": [
+                        "Archaism"
+                    ],
+                    "restrictions": [],
+                    "see_also": [
+                        "也 なり"
+                    ],
+                    "antonyms": [],
+                    "source": [],
+                    "info": []
+                },
+                {
+                    "english_definitions": [
+                        "who is called",
+                        "that is called"
+                    ],
+                    "parts_of_speech": [
+                        "Suffix",
+                        "Noun or verb acting prenominally"
+                    ],
+                    "links": [],
+                    "tags": [],
+                    "restrictions": [],
+                    "see_also": [],
+                    "antonyms": [],
+                    "source": [],
+                    "info": []
+                },
+                {
+                    "english_definitions": [
+                        "that is"
+                    ],
+                    "parts_of_speech": [
+                        "Suffix",
+                        "Noun or verb acting prenominally"
+                    ],
+                    "links": [],
+                    "tags": [],
+                    "restrictions": [],
+                    "see_also": [],
+                    "antonyms": [],
+                    "source": [],
+                    "info": []
+                },
+                {
+                    "english_definitions": [
+                        "I see"
+                    ],
+                    "parts_of_speech": [],
+                    "links": [],
+                    "tags": [
+                        "Slang",
+                        "Abbreviation"
+                    ],
+                    "restrictions": [],
+                    "see_also": [
+                        "なるほど"
+                    ],
+                    "antonyms": [],
+                    "source": [],
+                    "info": []
+                }
+            ],
+            "attribution": {
+                "jmdict": True,
+                "jmnedict": False,
+                "dbpedia": False
+            }
+        },
+    ]
+}
+
+
+NARU_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
+    "なる": [
+        {
+            "slug": "成る",
+            "japanese": [
+                {
+                    "word": "成る",
+                    "reading": "なる"
+                },
+                {
+                    "word": "為る",
+                    "reading": "なる"
+                }
+            ]
+        },
+        {
+            "slug": "鳴る",
+            "japanese": [
+                {
+                    "word": "鳴る",
+                    "reading": "なる"
+                }
+            ]
+        },
+        {
+            "slug": "生る",
+            "japanese": [
+                {
+                    "word": "生る",
+                    "reading": "なる"
+                }
+            ]
+        },
+        {
+            "slug": "ナル",
+            "japanese": [
+                {
+                    "reading": "ナル"
+                }
+            ]
+        },
+        {
+            "slug": "成程",
+            "japanese": [
+                {
+                    "word": "なる程",
+                    "reading": "なるほど"
+                },
+                {
+                    "word": "成る程",
+                    "reading": "なるほど"
+                },
+                {
+                    "word": "成程",
+                    "reading": "なるほど"
+                },
+                {
+                    "word": "成るほど",
+                    "reading": "なるほど"
+                },
+                {
+                    "reading": "ナルホド"
+                }
+            ]
+        },
+        {
+            "slug": "成るべく",
+            "japanese": [
+                {
+                    "word": "成るべく",
+                    "reading": "なるべく"
+                },
+                {
+                    "word": "成る可く",
+                    "reading": "なるべく"
+                }
+            ]
+        },
+        {
+            "slug": "鳴門",
+            "japanese": [
+                {
+                    "word": "鳴門",
+                    "reading": "なると"
+                },
+                {
+                    "word": "鳴戸",
+                    "reading": "なると"
+                }
+            ]
+        },
+        {
+            "slug": "成る丈",
+            "japanese": [
+                {
+                    "word": "成る丈",
+                    "reading": "なるたけ"
+                },
+                {
+                    "word": "成るたけ",
+                    "reading": "なるたけ"
+                },
+                {
+                    "word": "成る丈",
+                    "reading": "なるだけ"
+                }
+            ]
+        },
+        {
+            "slug": "鳴子",
+            "japanese": [
+                {
+                    "word": "鳴子",
+                    "reading": "なるこ"
+                }
+            ]
+        }
+    ]
+}
