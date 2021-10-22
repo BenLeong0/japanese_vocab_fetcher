@@ -37,8 +37,42 @@ will be of the following form, JSON encoded:
     "jisho": {
       "success": true,
       "main_data": {
-        ...
-      },
+        "results": [
+          {
+            "slug": "食べる",
+            "is_common": true,
+            "tags": ["wanikani6"],
+            "jlpt": ["jlpt-n5"],
+            "japanese": [{"word": "食べる", "reading": "たべる"}, ...],
+            "senses": [
+              {
+                "english_definitions": [ ... ],
+                "parts_of_speech": [ ... ],
+                "links": [ ... ],
+                "tags": [ ... ],
+                "restrictions": [ ... ],
+                "see_also": [ ... ],
+                "antonyms": [ ... ],
+                "source": [ ... ],
+                "info": [ ... ]
+              },
+              ...
+            ],
+            "attribution": {
+              "jmdict": True,
+              "jmnedict": False,
+              "dbpedia": False
+            },
+          },
+          ...
+        ],
+        "extra": [
+          {
+            "slug": "食べるラー油",
+            "japanese": [{"word": "食べるラー油", "reading": "たべるラーゆ"}, ...]
+          },
+          ...
+        ]
     }
     "ojad": {
       "success": true,

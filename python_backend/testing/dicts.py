@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
 from custom_types.alternative_string_types import HTMLString, URL, Yomi
-from testing import wanikani_api_responses
+from testing import jisho_api_responses, wanikani_api_responses
 from testing.dict_typing import FullTestDict
 
 # TODO: DICTS TO ADD:
@@ -59,10 +59,20 @@ MEGANE: FullTestDict = {
     "id": "MEGANE",
     "input": ["眼鏡"],
     "jisho": {
+        "expected_sections": {
+            '眼鏡': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=眼鏡"),
+                "api_response": jisho_api_responses.MEGANE["眼鏡"],
+                "filtered_items": jisho_api_responses.MEGANE_FILTERED_ITEMS["眼鏡"],
+                "extra_items": jisho_api_responses.MEGANE_EXTRA_ITEMS["眼鏡"],
+            },
+        },
         "expected_output": {
             '眼鏡': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.MEGANE_FILTERED_ITEMS["眼鏡"],
+                    "extra": jisho_api_responses.MEGANE_EXTRA_ITEMS["眼鏡"],
                 },
             },
         },
@@ -266,6 +276,8 @@ MEGANE: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.MEGANE_FILTERED_ITEMS["眼鏡"],
+                    "extra": jisho_api_responses.MEGANE_EXTRA_ITEMS["眼鏡"],
                 },
             },
             "ojad": {
@@ -344,10 +356,20 @@ COMEBACK: FullTestDict= {
     "id": "COMEBACK",
     'input': ['カムバック'],
     "jisho": {
+        "expected_sections": {
+            'カムバック': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=カムバック"),
+                "api_response": jisho_api_responses.COMEBACK["カムバック"],
+                "filtered_items": jisho_api_responses.COMEBACK_FILTERED_ITEMS["カムバック"],
+                "extra_items": jisho_api_responses.COMEBACK_EXTRA_ITEMS["カムバック"],
+            },
+        },
         "expected_output": {
             'カムバック': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.COMEBACK_FILTERED_ITEMS["カムバック"],
+                    "extra": jisho_api_responses.COMEBACK_EXTRA_ITEMS["カムバック"],
                 },
             },
         },
@@ -472,6 +494,8 @@ COMEBACK: FullTestDict= {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.COMEBACK_FILTERED_ITEMS["カムバック"],
+                    "extra": jisho_api_responses.COMEBACK_EXTRA_ITEMS["カムバック"],
                 },
             },
             "ojad": {
@@ -516,15 +540,33 @@ TABERU_GAKUSEI: FullTestDict = {
     "id": "TABERU_GAKUSEI",
     'input': ['食べる', '学生'],
     "jisho": {
+        "expected_sections": {
+            '食べる': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=食べる"),
+                "api_response": jisho_api_responses.TABERU_GAKUSEI["食べる"],
+                "filtered_items": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["食べる"],
+                "extra_items": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["食べる"],
+            },
+            '学生': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=学生"),
+                "api_response": jisho_api_responses.TABERU_GAKUSEI["学生"],
+                "filtered_items": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["学生"],
+                "extra_items": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["学生"],
+            },
+        },
         "expected_output": {
             '食べる': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["食べる"],
+                    "extra": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["食べる"],
                 },
             },
             '学生': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["学生"],
+                    "extra": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["学生"],
                 },
             },
         },
@@ -882,6 +924,8 @@ TABERU_GAKUSEI: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["食べる"],
+                    "extra": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["食べる"],
                 },
             },
             "ojad": {
@@ -970,6 +1014,8 @@ TABERU_GAKUSEI: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["学生"],
+                    "extra": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["学生"],
                 },
             },
             "ojad": {
@@ -1061,10 +1107,20 @@ KOTOBA: FullTestDict = {
     "id": "KOTOBA",
     'input': ['言葉'],
     "jisho": {
+        "expected_sections": {
+            '言葉': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=言葉"),
+                "api_response": jisho_api_responses.KOTOBA["言葉"],
+                "filtered_items": jisho_api_responses.KOTOBA_FILTERED_ITEMS["言葉"],
+                "extra_items": jisho_api_responses.KOTOBA_EXTRA_ITEMS["言葉"],
+            },
+        },
         "expected_output": {
             '言葉': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.KOTOBA_FILTERED_ITEMS["言葉"],
+                    "extra": jisho_api_responses.KOTOBA_EXTRA_ITEMS["言葉"],
                 },
             },
         },
@@ -1286,6 +1342,8 @@ KOTOBA: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.KOTOBA_FILTERED_ITEMS["言葉"],
+                    "extra": jisho_api_responses.KOTOBA_EXTRA_ITEMS["言葉"],
                 },
             },
             "ojad": {
@@ -1374,10 +1432,20 @@ BADINPUT: FullTestDict = {
     "id": "BADINPUT",
     'input': ['BADINPUT'],
     "jisho": {
+        "expected_sections": {
+            'BADINPUT': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=BADINPUT"),
+                "api_response": jisho_api_responses.BADINPUT["BADINPUT"],
+                "filtered_items": jisho_api_responses.BADINPUT_FILTERED_ITEMS["BADINPUT"],
+                "extra_items": jisho_api_responses.BADINPUT_EXTRA_ITEMS["BADINPUT"],
+            },
+        },
         "expected_output": {
             'BADINPUT': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.BADINPUT_FILTERED_ITEMS["BADINPUT"],
+                    "extra": jisho_api_responses.BADINPUT_EXTRA_ITEMS["BADINPUT"],
                 },
             },
         },
@@ -1468,6 +1536,8 @@ BADINPUT: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.BADINPUT_FILTERED_ITEMS["BADINPUT"],
+                    "extra": jisho_api_responses.BADINPUT_EXTRA_ITEMS["BADINPUT"],
                 },
             },
             "ojad": {
@@ -1510,20 +1580,46 @@ USAGI_IKU_KAGO: FullTestDict = {
     "id": "USAGI_IKU_KAGO",
     'input': ['兎', '行く', '籠'],
     "jisho": {
+        "expected_sections": {
+            '兎': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=兎"),
+                "api_response": jisho_api_responses.USAGI_IKU_KAGO["兎"],
+                "filtered_items": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["兎"],
+                "extra_items": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["兎"],
+            },
+            '行く': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=行く"),
+                "api_response": jisho_api_responses.USAGI_IKU_KAGO["行く"],
+                "filtered_items": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["行く"],
+                "extra_items": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["行く"],
+            },
+            '籠': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=籠"),
+                "api_response": jisho_api_responses.USAGI_IKU_KAGO["籠"],
+                "filtered_items": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["籠"],
+                "extra_items": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["籠"],
+            },
+        },
         "expected_output": {
             '兎': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["兎"],
+                    "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["兎"],
                 },
             },
             '行く': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["行く"],
+                    "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["行く"],
                 },
             },
             '籠': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["籠"],
+                    "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["籠"],
                 },
             },
         },
@@ -1877,6 +1973,8 @@ USAGI_IKU_KAGO: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["兎"],
+                    "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["兎"],
                 },
             },
             "ojad": {
@@ -1920,6 +2018,8 @@ USAGI_IKU_KAGO: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["行く"],
+                    "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["行く"],
                 },
             },
             "ojad": {
@@ -2004,6 +2104,8 @@ USAGI_IKU_KAGO: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["籠"],
+                    "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["籠"],
                 },
             },
             "ojad": {
@@ -2050,10 +2152,20 @@ SHIZUKA: FullTestDict = {
     "id": "SHIZUKA",
     'input': ['静か'],
     "jisho": {
+        "expected_sections": {
+            '静か': {
+                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=静か"),
+                "api_response": jisho_api_responses.SHIZUKA["静か"],
+                "filtered_items": jisho_api_responses.SHIZUKA_FILTERED_ITEMS["静か"],
+                "extra_items": jisho_api_responses.SHIZUKA_EXTRA_ITEMS["静か"],
+            },
+        },
         "expected_output": {
             '静か': {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.SHIZUKA_FILTERED_ITEMS["静か"],
+                    "extra": jisho_api_responses.SHIZUKA_EXTRA_ITEMS["静か"],
                 },
             },
         },
@@ -2285,6 +2397,8 @@ SHIZUKA: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.SHIZUKA_FILTERED_ITEMS["静か"],
+                    "extra": jisho_api_responses.SHIZUKA_EXTRA_ITEMS["静か"],
                 },
             },
             "ojad": {
