@@ -1,4 +1,4 @@
-from typing import Dict, List, Literal, Optional, TypedDict
+from typing import Literal, Optional, TypedDict
 
 
 class WanikaniMeaning(TypedDict):
@@ -52,8 +52,8 @@ class WanikaniAPISubject(TypedDict):
     hidden_at: Optional[str]
     document_url: str
     characters: str
-    meanings: List[WanikaniMeaning]
-    auxiliary_meanings: List[WanikaniAuxilliaryMeaning]
+    meanings: list[WanikaniMeaning]
+    auxiliary_meanings: list[WanikaniAuxilliaryMeaning]
     meaning_mnemonic: str
     lesson_position: int
     spaced_repetition_system_id: int
@@ -61,12 +61,12 @@ class WanikaniAPISubject(TypedDict):
 
 class WanikaniAPIVocabularySubject(WanikaniAPISubject):
     """Dictionary containing information about one vocabulary subject"""
-    readings: List[WanikaniReading]
-    parts_of_speech: List[str]
-    component_subject_ids: List[int]
+    readings: list[WanikaniReading]
+    parts_of_speech: list[str]
+    component_subject_ids: list[int]
     reading_mnemonic: str
-    context_sentences: List[WanikaniContextSentence]
-    pronunciation_audios: List[WanikaniPronunciationAudio]
+    context_sentences: list[WanikaniContextSentence]
+    pronunciation_audios: list[WanikaniPronunciationAudio]
 
 
 class WanikaniAPIResource(TypedDict):
@@ -82,7 +82,7 @@ class WanikaniAPIResponse(TypedDict):
     """Expected format returned from the Wanikani API"""
     object: str
     url: str
-    pages: Dict
+    pages: dict
     total_count: int
     data_updated_at: Optional[str]
-    data: List[WanikaniAPIResource]
+    data: list[WanikaniAPIResource]

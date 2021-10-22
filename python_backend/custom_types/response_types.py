@@ -1,4 +1,4 @@
-from typing import List, TypedDict
+from typing import TypedDict
 
 from custom_types.alternative_string_types import (
     Kaki,
@@ -36,7 +36,7 @@ class ResponseItemJisho(ResponseItem):
 # OJAD
 
 class OJADMainData(TypedDict):
-    accent: List[Yomi]
+    accent: list[Yomi]
 
 class ResponseItemOJAD(ResponseItem):
     """Dictionary containing the accent information from OJAD"""
@@ -46,7 +46,7 @@ class ResponseItemOJAD(ResponseItem):
 # Suzuki
 
 class SuzukiMainData(TypedDict):
-    accent: List[Yomi]
+    accent: list[Yomi]
 
 class ResponseItemSuzuki(ResponseItem):
     """Dictionary containing the accent information from Suzuki"""
@@ -56,7 +56,7 @@ class ResponseItemSuzuki(ResponseItem):
 # Wadoku
 
 class WadokuMainData(TypedDict):
-    accent: List[Yomi]
+    accent: list[Yomi]
 
 class ResponseItemWadoku(ResponseItem):
     """Dictionary containing the accent information from Wadoku"""
@@ -66,7 +66,7 @@ class ResponseItemWadoku(ResponseItem):
 # Forvo
 
 class ForvoMainData(TypedDict):
-    audio: List[URL]
+    audio: list[URL]
 
 class ResponseItemForvo(ResponseItem):
     """Dictionary containing the audio information from Forvo"""
@@ -76,8 +76,8 @@ class ResponseItemForvo(ResponseItem):
 # Wanikani
 
 class WanikaniMainData(TypedDict):
-    audio: List[WanikaniPronunciationAudio]
-    sentences: List[WanikaniContextSentence]
+    audio: list[WanikaniPronunciationAudio]
+    sentences: list[WanikaniContextSentence]
 
 class ResponseItemWanikani(ResponseItem):
     """Dictionary containing the audio and sentence information from Wanikani"""

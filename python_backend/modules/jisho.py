@@ -1,6 +1,6 @@
 import json
 from threading import Thread
-from typing import Dict, List, Union
+from typing import Union
 
 import requests
 
@@ -25,13 +25,13 @@ class JishoAPIError(APIError):
     pass
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, JishoModuleReturnTypes]:
-    results_dict: Dict[Kaki, JishoModuleReturnTypes] = {}
+def main(word_list: list[Kaki]) -> dict[Kaki, JishoModuleReturnTypes]:
+    results_dict: dict[Kaki, JishoModuleReturnTypes] = {}
 
     def call_script(word: Kaki) -> None:
         results_dict[word] = get_jisho_data(word)
 
-    threads: List[Thread] = [
+    threads: list[Thread] = [
         Thread(target=call_script, args=[word])
         for word in word_list
     ]

@@ -1,6 +1,6 @@
 import json
 import re
-from typing import Any, Dict, List
+from typing import Any
 
 from flask.wrappers import Request, Response
 
@@ -32,17 +32,17 @@ def decode_unicode(word: str) -> Kaki:
     return Kaki(word.encode().decode("unicode-escape"))
 
 
-def convert_list_of_str_to_kaki(input_list: List[str]) -> List[Kaki]:
+def convert_list_of_str_to_kaki(input_list: list[str]) -> list[Kaki]:
     return list(map(Kaki, input_list))
 
-def convert_list_of_str_to_yomi(input_list: List[str]) -> List[Yomi]:
+def convert_list_of_str_to_yomi(input_list: list[str]) -> list[Yomi]:
     return list(map(Yomi, input_list))
 
-def convert_list_of_str_to_url(input_list: List[str]) -> List[URL]:
+def convert_list_of_str_to_url(input_list: list[str]) -> list[URL]:
     return list(map(URL, input_list))
 
-def convert_list_of_str_to_htmlstring(input_list: List[str]) -> List[HTMLString]:
+def convert_list_of_str_to_htmlstring(input_list: list[str]) -> list[HTMLString]:
     return list(map(HTMLString, input_list))
 
-def convert_dict_str_keys_to_kaki(input_dict: Dict[str, Any]) -> Dict[Kaki, Any]:
+def convert_dict_str_keys_to_kaki(input_dict: dict[str, Any]) -> dict[Kaki, Any]:
     return {Kaki(key) : value for key, value in input_dict.items()}

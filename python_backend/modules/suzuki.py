@@ -1,7 +1,7 @@
 from ast import literal_eval
 import json
 import re
-from typing import Dict, List, Tuple, Union
+from typing import Union
 
 from bs4 import BeautifulSoup as Soup
 import requests
@@ -16,7 +16,7 @@ NAME = "suzuki"
 SuzukiModuleReturnTypes = Union[ResponseItemSuzuki, FailedResponseItem]
 
 
-def response_factory(accent_list: List[Yomi] = None) -> ResponseItemSuzuki:
+def response_factory(accent_list: list[Yomi] = None) -> ResponseItemSuzuki:
     if accent_list is None:
         accent_list = []
     return {
@@ -31,7 +31,7 @@ class SuzukiAPIError(APIError):
     pass
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, SuzukiModuleReturnTypes]:
+def main(word_list: list[Kaki]) -> dict[Kaki, SuzukiModuleReturnTypes]:
     if not word_list:
         return {}
 
@@ -49,7 +49,7 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, SuzukiModuleReturnTypes]:
 
 # Get HTML
 
-def get_formdata(word_list: List[Kaki]) -> Dict[str, str]:
+def get_formdata(word_list: list[Kaki]) -> dict[str, str]:
     words_with_particles = [word + 'は' for word in word_list]
     formdata = {
         "data[Phrasing][curve]": "advanced",
@@ -65,7 +65,7 @@ def get_formdata(word_list: List[Kaki]) -> Dict[str, str]:
     return formdata
 
 
-def get_html(word_list: List[Kaki]) -> Soup:
+def get_html(word_list: list[Kaki]) -> Soup:
     url = URL('http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index')
     formdata = get_formdata(word_list)
     response = requests.post(url, formdata, timeout=20)
@@ -81,9 +81,9 @@ def get_html(word_list: List[Kaki]) -> Soup:
 
 # Extract sections
 
-def get_sections(html: Soup) -> List[Tuple[Soup, Soup, Soup]]:
+def get_sections(html: Soup) -> list[tuple[Soup, Soup, Soup]]:
     """Return list of tuples of form `(writing_section, reading_section, accent_section)`"""
-    rows: List[Soup] = list(html.find_all('div', class_='phrasing_phrase_wrapper'))
+    rows: list[Soup] = list(html.find_all('div', class_='phrasing_phrase_wrapper'))
     return [
         (
             Soup(str(row.find('div', class_='phrasing_subscript')), "html.parser"),
@@ -105,18 +105,18 @@ def extract_characters(reading_html: Soup) -> str:
     return reading_without_final_ha
 
 
-def extract_accent_pattern(accent_html: Soup) -> List[int]:
+def extract_accent_pattern(accent_html: Soup) -> list[int]:
     accent_array_regex = r'\[.*?\]'
     accent_match = re.search(accent_array_regex, str(accent_html))
 
     if accent_match is None:
         raise Exception("Accent not found")
 
-    heights: List[int] = literal_eval(accent_match.group())
+    heights: list[int] = literal_eval(accent_match.group())
     return heights
 
 
-def contruct_reading(chars: str, accent_pattern: List[int]) -> Yomi:
+def contruct_reading(chars: str, accent_pattern: list[int]) -> Yomi:
     if not chars:
         return Yomi("")
     mini_chars = 'ゃょゅぁぃぅぇぉゎャュョァィゥェォヮ'
@@ -147,8 +147,8 @@ def extract_reading(reading_html: Soup, accent_html: Soup) -> Yomi:
     return contruct_reading(chars, accent_pattern)
 
 
-def build_accent_dict(word_sections: List[Tuple[Soup, Soup, Soup]]) -> Dict[Kaki, List[Yomi]]:
-    accent_dict: Dict[Kaki, List[Yomi]] = {}
+def build_accent_dict(word_sections: list[tuple[Soup, Soup, Soup]]) -> dict[Kaki, list[Yomi]]:
+    accent_dict: dict[Kaki, list[Yomi]] = {}
 
     for writing_html, reading_html, accent_html in word_sections:
         writing = extract_writing(writing_html)

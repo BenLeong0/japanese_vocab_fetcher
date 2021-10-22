@@ -1,6 +1,6 @@
 import json
 from threading import Thread
-from typing import Dict, List, Union
+from typing import Union
 
 from dotenv import dotenv_values
 import requests
@@ -17,7 +17,7 @@ API_KEY: str = dotenv_values()['FORVO_API_KEY']
 ForvoModuleReturnTypes = Union[ResponseItemForvo, FailedResponseItem]
 
 
-def response_factory(audio_list: List[URL] = None) -> ResponseItemForvo:
+def response_factory(audio_list: list[URL] = None) -> ResponseItemForvo:
     if audio_list is None:
         audio_list = []
     return {
@@ -32,13 +32,13 @@ class ForvoAPIError(APIError):
     pass
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, ForvoModuleReturnTypes]:
-    audio_urls_dict: Dict[Kaki, ForvoModuleReturnTypes] = {}
+def main(word_list: list[Kaki]) -> dict[Kaki, ForvoModuleReturnTypes]:
+    audio_urls_dict: dict[Kaki, ForvoModuleReturnTypes] = {}
 
     def call_script(word: Kaki) -> None:
         audio_urls_dict[word] = get_audio_urls(word)
 
-    threads: List[Thread] = [
+    threads: list[Thread] = [
         Thread(target=call_script, args=[word])
         for word in word_list
     ]
@@ -88,7 +88,7 @@ def get_api_url(word: Kaki) -> URL:
     return URL(url)
 
 
-def extract_audio_url_list(response: ForvoAPIResponse, word: Kaki) -> List[URL]:
+def extract_audio_url_list(response: ForvoAPIResponse, word: Kaki) -> list[URL]:
     items = response["items"]
     filtered_items = [item for item in items if correct_word(item, word)]
     return [extract_audio_url(item) for item in filtered_items]

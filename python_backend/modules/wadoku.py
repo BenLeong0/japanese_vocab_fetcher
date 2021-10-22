@@ -1,7 +1,7 @@
 from collections import defaultdict
 import json
 import re
-from typing import DefaultDict, Dict, List, Tuple, Union
+from typing import DefaultDict, Union
 
 from bs4 import BeautifulSoup as Soup
 import requests
@@ -15,7 +15,7 @@ NAME = "wadoku"
 WadokuModuleReturnTypes = Union[ResponseItemWadoku, FailedResponseItem]
 
 
-def response_factory(accent_list: List[Yomi] = None) -> ResponseItemWadoku:
+def response_factory(accent_list: list[Yomi] = None) -> ResponseItemWadoku:
     if accent_list is None:
         accent_list = []
     return {
@@ -30,9 +30,9 @@ class WadokuAPIError(APIError):
     pass
 
 
-WadokuWordSectionsType = List[Tuple[Soup, List[Soup]]]
+WadokuWordSectionsType = list[tuple[Soup, list[Soup]]]
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, WadokuModuleReturnTypes]:
+def main(word_list: list[Kaki]) -> dict[Kaki, WadokuModuleReturnTypes]:
     if not word_list:
         return {}
 
@@ -57,13 +57,13 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, WadokuModuleReturnTypes]:
 
 # Get HTML
 
-def get_url(word_list: List[Kaki]) -> URL:
+def get_url(word_list: list[Kaki]) -> URL:
     search_param = '%20'.join(word_list)
     url = f"https://www.wadoku.de/search/{search_param}"
     return URL(url)
 
 
-def get_html(word_list: List[Kaki]) -> Soup:
+def get_html(word_list: list[Kaki]) -> Soup:
     url = get_url(word_list)
     response = requests.post(url, timeout=20)
     status_code = response.status_code
@@ -79,8 +79,8 @@ def get_html(word_list: List[Kaki]) -> Soup:
 # Extract sections
 
 def get_sections(html: Soup) -> WadokuWordSectionsType:
-    """Return list of tuples of form `(writing_section, List[reading_section])`"""
-    rows: List[Soup] = list(html.find_all('tr'))
+    """Return list of tuples of form `(writing_section, list[reading_section])`"""
+    rows: list[Soup] = list(html.find_all('tr'))
     return [
         (
             Soup(str(row.find('div', class_='japanese')), "html.parser"),
@@ -89,7 +89,7 @@ def get_sections(html: Soup) -> WadokuWordSectionsType:
     ]
 
 
-def extract_writings(writing_html: Soup) -> List[Kaki]:
+def extract_writings(writing_html: Soup) -> list[Kaki]:
     writings = writing_html.text.split('；')
     no_punct_writings = [remove_punct(writing) for writing in writings]
     return list(map(Kaki, no_punct_writings))
@@ -100,7 +100,7 @@ def remove_punct(input_string: str) -> str:
 
 
 def extract_reading(reading_html: Soup) -> Yomi:
-    spans: List[Soup] = [
+    spans: list[Soup] = [
         span for span in reading_html.findChild().findChildren()
         if remove_punct(span.text) not in ['', '…']
     ]
@@ -131,8 +131,8 @@ def extract_reading(reading_html: Soup) -> Yomi:
     return Yomi(curr)
 
 
-def build_accent_dict(word_sections: WadokuWordSectionsType) -> DefaultDict[Kaki, List[Yomi]]:
-    accent_dict: DefaultDict[Kaki, List[Yomi]] = defaultdict(list)
+def build_accent_dict(word_sections: WadokuWordSectionsType) -> DefaultDict[Kaki, list[Yomi]]:
+    accent_dict: DefaultDict[Kaki, list[Yomi]] = defaultdict(list)
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)

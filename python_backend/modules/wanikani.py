@@ -1,6 +1,6 @@
 from collections import defaultdict
 import json
-from typing import DefaultDict, Dict, List, Union
+from typing import DefaultDict, Union
 
 from dotenv import dotenv_values
 import requests
@@ -20,8 +20,8 @@ WanikaniModuleReturnTypes = Union[ResponseItemWanikani, FailedResponseItem]
 
 
 def response_factory(
-    audio_list: List[WanikaniPronunciationAudio] = None,
-    sentence_list: List[WanikaniContextSentence] = None,
+    audio_list: list[WanikaniPronunciationAudio] = None,
+    sentence_list: list[WanikaniContextSentence] = None,
 ) -> ResponseItemWanikani:
     if audio_list is None:
         audio_list = []
@@ -41,7 +41,7 @@ class WanikaniAPIError(APIError):
     pass
 
 
-def main(word_list: List[Kaki]) -> Dict[Kaki, WanikaniModuleReturnTypes]:
+def main(word_list: list[Kaki]) -> dict[Kaki, WanikaniModuleReturnTypes]:
     if not word_list:
         return {}
 
@@ -56,13 +56,13 @@ def main(word_list: List[Kaki]) -> Dict[Kaki, WanikaniModuleReturnTypes]:
     return {word : result_dict[word] for word in word_list}
 
 
-def get_api_response(word_list: List[Kaki]) -> WanikaniAPIResponse:
+def get_api_response(word_list: list[Kaki]) -> WanikaniAPIResponse:
     url = get_url(word_list)
     response = call_api(url)
     return response
 
 
-def get_url(word_list: List[Kaki]) -> URL:
+def get_url(word_list: list[Kaki]) -> URL:
     slugs = ','.join(word_list)
     url = f"https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs={slugs}"
     return URL(url)
