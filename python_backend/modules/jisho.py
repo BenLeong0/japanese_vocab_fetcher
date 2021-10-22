@@ -8,7 +8,7 @@ import requests
 from custom_types.alternative_string_types import Kaki, URL
 from custom_types.exception_types import APIError, FailedResponseItem, api_error_response_factory
 from custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
-from custom_types.response_types import ResponseItemJisho, JishoMainData
+from custom_types.response_types import ResponseItemJisho, JishoExtraItem, JishoMainData
 
 
 NAME = "jisho"
@@ -81,8 +81,21 @@ def call_api(word: Kaki) -> JishoAPIResponse:
     return response_data
 
 
-def filter_items(items: list[JishoAPIItem], word: Kaki) -> list[JishoAPIItem]:
-    def item_is_valid(item: JishoAPIItem, word: Kaki) -> bool:
+def convert_to_extra_item(item: JishoAPIItem) -> JishoExtraItem:
+    return {
+        "slug": item["slug"],
+        "japanese": item["japanese"]
+    }
+
+
+def segregate_items(
+    items: list[JishoAPIItem],
+    word: Kaki
+) -> tuple[list[JishoAPIItem], list[JishoExtraItem]]:
+    matching_items: list[JishoAPIItem] = []
+    extra_items: list[JishoExtraItem] = []
+
+    def item_is_matching(item: JishoAPIItem, word: Kaki) -> bool:
         for japanese in item["japanese"]:
             if (
                 ("word" in japanese and word == japanese["word"]) or
@@ -91,10 +104,17 @@ def filter_items(items: list[JishoAPIItem], word: Kaki) -> list[JishoAPIItem]:
                 return True
         return False
 
-    return list(filter(partial(item_is_valid, word=word), items))
+    for item in items:
+        if item_is_matching(item, word):
+            matching_items.append(item)
+        else:
+            converted_item = convert_to_extra_item(item)
+            extra_items.append(converted_item)
+
+    return matching_items, extra_items
 
 
 def extract_jisho_data(response: JishoAPIResponse, word: Kaki) -> JishoMainData:
     items: list[JishoAPIItem] = response["data"]
-    filtered_items = filter_items(items, word)
-    return {"results": filtered_items}
+    matching_items, extra_items = segregate_items(items, word)
+    return {"results": matching_items, "extra": extra_items}

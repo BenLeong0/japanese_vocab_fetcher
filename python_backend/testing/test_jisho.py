@@ -173,7 +173,7 @@ def test_call_api_meta_data_error(monkeypatch, test_dict: FullTestDict):
             assert api_error.status_code == 400
 
 
-def test_filter_items(test_dict: FullTestDict):
+def test_segregate_items(test_dict: FullTestDict):
     """
     - GIVEN a list of items from a Jisho API response
     - WHEN they is checked whether they correspond to the correct word
@@ -185,8 +185,9 @@ def test_filter_items(test_dict: FullTestDict):
         api_response = test_dict['jisho']['expected_sections'][word]['api_response']
         items = api_response['data']
         expected_filtered_items = test_dict['jisho']['expected_sections'][word]['filtered_items']
+        expected_extra_items = test_dict['jisho']['expected_sections'][word]['extra_items']
 
-        assert jisho.filter_items(items, word) == expected_filtered_items
+        assert jisho.segregate_items(items, word) == (expected_filtered_items, expected_extra_items)
 
 
 def test_extract_jisho_data(test_dict: FullTestDict):
@@ -200,7 +201,8 @@ def test_extract_jisho_data(test_dict: FullTestDict):
     for word in word_list:
         api_response = test_dict['jisho']['expected_sections'][word]['api_response']
         expected_output = {
-            "results": test_dict['jisho']['expected_sections'][word]['filtered_items']
+            "results": test_dict['jisho']['expected_sections'][word]['filtered_items'],
+            "extra": test_dict['jisho']['expected_sections'][word]['extra_items'],
         }
 
         assert jisho.extract_jisho_data(api_response, word) == expected_output
