@@ -27,27 +27,27 @@ class FakeResponse:
 #####################
 
 
-# def test_main(monkeypatch, test_dict: FullTestDict):
-#     """
-#     - GIVEN a list of words
-#     - WHEN the accent dict is generated
-#     - THEN check all the jisho info is correct and complete
-#     """
-#     word_list = convert_list_of_str_to_kaki(test_dict['input'])
-#     sections = test_dict['jisho']['expected_sections']
-#     expected_output = test_dict['jisho']['expected_output']
+def test_main(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the accent dict is generated
+    - THEN check all the jisho info is correct and complete
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['jisho']['expected_sections']
+    expected_output = test_dict['jisho']['expected_output']
 
-#     def get_word_from_jisho_url(url: URL) -> Kaki:
-#         match = re.search(r"word/(.+?)/", url)
-#         assert match is not None
-#         return Kaki(match.group(1))
+    def get_word_from_jisho_url(url: URL) -> Kaki:
+        match = re.search(r"words\?keyword=(.+)", url)
+        assert match is not None
+        return Kaki(match.group(1))
 
-#     def get_api_response(url: URL) -> str:
-#         word = get_word_from_jisho_url(url)
-#         return sections[word]["api_response"]
+    def get_api_response(url: URL) -> str:
+        word = get_word_from_jisho_url(url)
+        return json.dumps(sections[word]["api_response"])
 
-#     monkeypatch.setattr("requests.get", lambda url: FakeResponse(get_api_response(url)))
-#     assert jisho.main(word_list) == expected_output
+    monkeypatch.setattr("requests.get", lambda url: FakeResponse(get_api_response(url)))
+    assert jisho.main(word_list) == expected_output
 
 
 # def test_main_api_error(monkeypatch, test_dict: FullTestDict):
