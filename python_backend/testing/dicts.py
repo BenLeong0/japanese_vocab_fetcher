@@ -9,11 +9,6 @@ from custom_types.alternative_string_types import HTMLString, URL, Yomi
 from testing import jisho_api_responses, wanikani_api_responses
 from testing.dict_typing import FullTestDict
 
-# TODO: DICTS TO ADD:
-# - Extra results for ojad (words not in original word list)
-# - OJAD with particles (eg kirei)
-# - Word with な but not [な], eg なる
-
 if os.path.exists(".env"):
     API_KEY: str = dotenv_values()['FORVO_API_KEY']
 else:
