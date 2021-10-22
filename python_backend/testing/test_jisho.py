@@ -128,3 +128,19 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
         except jisho.JishoAPIError as api_error:
             assert api_error.error_msg == "could not connect"
             assert api_error.status_code == 400
+
+
+def test_filter_items(test_dict: FullTestDict):
+    """
+    - GIVEN a list of items from a Jisho API response
+    - WHEN they is checked whether they correspond to the correct word
+    - THEN check the returned list is as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+
+    for word in word_list:
+        api_response = test_dict['jisho']['expected_sections'][word]['api_response']
+        items = api_response['data']
+        expected_filtered_items = test_dict['jisho']['expected_sections'][word]['filtered_items']
+
+        assert jisho.filter_items(items, word) == expected_filtered_items

@@ -6,6 +6,7 @@ from custom_types.alternative_string_types import (
     Yomi,
 )
 from custom_types.exception_types import FailedResponseItem
+from custom_types.jisho_api_types import JishoAPIItem
 from custom_types.wanikani_api_types import (
     WanikaniContextSentence,
     WanikaniPronunciationAudio,
@@ -20,7 +21,7 @@ class ResponseItem(TypedDict):
 # Jisho
 
 class JishoMainData(TypedDict):
-    ...
+    results: list[JishoAPIItem]
 
 class ResponseItemJisho(ResponseItem):
     """Dictionary containing the information from Jisho"""

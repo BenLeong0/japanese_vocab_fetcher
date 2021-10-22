@@ -1,3 +1,4 @@
+from functools import partial
 import json
 from threading import Thread
 from typing import Dict, List, Union
@@ -6,7 +7,7 @@ import requests
 
 from custom_types.alternative_string_types import Kaki, URL
 from custom_types.exception_types import APIError, FailedResponseItem, api_error_response_factory
-from custom_types.jisho_api_types import JishoAPIResponse
+from custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
 from custom_types.response_types import ResponseItemJisho, JishoMainData
 
 
@@ -73,5 +74,30 @@ def call_api(word: Kaki) -> JishoAPIResponse:
     return response_data
 
 
+def filter_items(items: list[JishoAPIItem], word: Kaki) -> list[JishoAPIItem]:
+    def item_is_valid(item: JishoAPIItem, word: Kaki) -> bool:
+        for japanese in item["japanese"]:
+            if (
+                ("word" in japanese and word == japanese["word"]) or
+                ("reading" in japanese and word == japanese["reading"])
+            ):
+                return True
+        return False
+
+    return list(filter(partial(item_is_valid, word=word), items))
+
+
 def extract_jisho_data(response: JishoAPIResponse, word: Kaki) -> JishoMainData:
-    ...
+    if response["meta"]["status"] != 200:
+        print("An error occurred")
+        return api_error_response_factory(JishoAPIError(
+            response["meta"]["status"],
+            json.dumps(response["meta"]),
+        ))
+
+    items = response["data"]
+
+    filtered_items = filter_items(items)
+    return {"results": filtered_items}
+
+
