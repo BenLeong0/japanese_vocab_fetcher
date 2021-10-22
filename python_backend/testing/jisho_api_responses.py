@@ -1,4 +1,4 @@
-from custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
+from custom_types.jisho_api_types import JishoAPIItem, JishoAPIItemJapanese, JishoAPIResponse
 
 
 MEGANE: dict[str, JishoAPIResponse] = {
@@ -715,6 +715,145 @@ MEGANE_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
+MEGANE_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+    "眼鏡": [
+        {
+            "slug": "眼鏡橋",
+            "japanese": [
+                {
+                    "word": "眼鏡橋",
+                    "reading": "めがねばし"
+                }
+            ],
+        },
+        {
+            "slug": "眼鏡を掛ける",
+            "japanese": [
+                {
+                    "word": "メガネを掛ける",
+                    "reading": "メガネをかける"
+                },
+                {
+                    "word": "眼鏡をかける",
+                    "reading": "めがねをかける"
+                },
+                {
+                    "word": "眼鏡を掛ける",
+                    "reading": "めがねをかける"
+                },
+                {
+                    "word": "めがねを掛ける",
+                    "reading": "めがねをかける"
+                }
+            ]
+        },
+        {
+            "slug": "眼鏡にかなう",
+            "japanese": [
+                {
+                    "word": "眼鏡にかなう",
+                    "reading": "めがねにかなう"
+                },
+                {
+                    "word": "眼鏡に適う",
+                    "reading": "めがねにかなう"
+                },
+                {
+                    "word": "眼鏡に叶う",
+                    "reading": "めがねにかなう"
+                }
+            ]
+        },
+        {
+            "slug": "眼鏡猿",
+            "japanese": [
+                {
+                    "word": "眼鏡猿",
+                    "reading": "めがねざる"
+                },
+                {
+                    "reading": "メガネザル"
+                }
+            ]
+        },
+        {
+            "slug": "眼鏡黐之魚",
+            "japanese": [
+                {
+                    "word": "眼鏡黐之魚",
+                    "reading": "めがねもちのうお"
+                },
+                {
+                    "reading": "メガネモチノウオ"
+                }
+            ]
+        },
+        {
+            "slug": "眼鏡熊",
+            "japanese": [
+                {
+                    "word": "眼鏡熊",
+                    "reading": "めがねぐま"
+                },
+                {
+                    "reading": "メガネグマ"
+                }
+            ]
+        },
+        {
+            "slug": "眼鏡屋",
+            "japanese": [
+                {
+                    "word": "眼鏡屋",
+                    "reading": "めがねや"
+                }
+            ]
+        },
+        {
+            "slug": "眼鏡っ娘",
+            "japanese": [
+                {
+                    "word": "眼鏡っ娘",
+                    "reading": "めがねっこ"
+                },
+                {
+                    "word": "眼鏡っ子",
+                    "reading": "めがねっこ"
+                },
+                {
+                    "word": "めがねっ娘",
+                    "reading": "めがねっこ"
+                },
+                {
+                    "word": "眼鏡娘",
+                    "reading": "めがねっこ"
+                },
+                {
+                    "word": "メガネっ娘",
+                    "reading": "メガネっこ"
+                },
+                {
+                    "word": "メガネっ子",
+                    "reading": "メガネっこ"
+                }
+            ]
+        },
+        {
+            "slug": "眼鏡海豚",
+            "japanese": [
+                {
+                    "word": "眼鏡海豚",
+                    "reading": "めがねいるか"
+                },
+                {
+                    "reading": "メガネイルカ"
+                }
+            ]
+        },
+    ]
+}
+
+
 COMEBACK: dict[str, JishoAPIResponse] = {
     "カムバック": {
         "meta": {
@@ -925,6 +1064,36 @@ COMEBACK_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
                 "jmnedict": False,
                 "dbpedia": False
             }
+        },
+    ],
+}
+
+
+COMEBACK_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+    "カムバック": [
+        {
+            "slug": "51869cf2d5dda7b2c6074156",
+            "japanese": [
+                {
+                    "word": "カムバック賞 (NFL)"
+                }
+            ]
+        },
+        {
+            "slug": "5186a020d5dda7b2c608c40c",
+            "japanese": [
+                {
+                    "word": "カムバック賞 (日本プロ野球)"
+                }
+            ]
+        },
+        {
+            "slug": "51869dc2d5dda7b2c607a433",
+            "japanese": [
+                {
+                    "word": "カムバック賞 (MLB)"
+                }
+            ]
         },
     ],
 }
@@ -1659,6 +1828,107 @@ TABERU_GAKUSEI_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
+TABERU_GAKUSEI_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+    "食べる": [
+        {
+            "slug": "食べるラー油",
+            "japanese": [
+                {
+                    "word": "食べるラー油",
+                    "reading": "たべるラーゆ"
+                },
+                {
+                    "word": "食べる辣油",
+                    "reading": "たべるラーゆ"
+                }
+            ]
+        },
+    ],
+    "学生": [
+        {
+            "slug": "学生時代",
+            "japanese": [
+                {
+                    "word": "学生時代",
+                    "reading": "がくせいじだい"
+                }
+            ]
+        },
+        {
+            "slug": "学生運動",
+            "japanese": [
+                {
+                    "word": "学生運動",
+                    "reading": "がくせいうんどう"
+                }
+            ]
+        },
+        {
+            "slug": "学生生活",
+            "japanese": [
+                {
+                    "word": "学生生活",
+                    "reading": "がくせいせいかつ"
+                }
+            ]
+        },
+        {
+            "slug": "学生会",
+            "japanese": [
+                {
+                    "word": "学生会",
+                    "reading": "がくせいかい"
+                }
+            ]
+        },
+        {
+            "slug": "学生服",
+            "japanese": [
+                {
+                    "word": "学生服",
+                    "reading": "がくせいふく"
+                }
+            ]
+        },
+        {
+            "slug": "学生証",
+            "japanese": [
+                {
+                    "word": "学生証",
+                    "reading": "がくせいしょう"
+                }
+            ]
+        },
+        {
+            "slug": "学生会館",
+            "japanese": [
+                {
+                    "word": "学生会館",
+                    "reading": "がくせいかいかん"
+                }
+            ]
+        },
+        {
+            "slug": "学生割引",
+            "japanese": [
+                {
+                    "word": "学生割引",
+                    "reading": "がくせいわりびき"
+                },
+                {
+                    "word": "学生割引き",
+                    "reading": "がくせいわりびき"
+                },
+                {
+                    "word": "学生割り引き",
+                    "reading": "がくせいわりびき"
+                }
+            ]
+        },
+    ],
+}
+
+
 KOTOBA: dict[str, JishoAPIResponse] = {
     "言葉": {
         "meta": {
@@ -2375,6 +2645,129 @@ KOTOBA_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
+KOTOBA_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+    "言葉": [
+        {
+            "slug": "辞典",
+            "japanese": [
+                {
+                    "word": "辞典",
+                    "reading": "じてん"
+                },
+                {
+                    "word": "辭典",
+                    "reading": "じてん"
+                },
+                {
+                    "word": "辞典",
+                    "reading": "ことばてん"
+                },
+                {
+                    "word": "辭典",
+                    "reading": "ことばてん"
+                },
+                {
+                    "word": "ことば典",
+                    "reading": "ことばてん"
+                },
+                {
+                    "word": "言葉典",
+                    "reading": "ことばてん"
+                }
+            ]
+        },
+        {
+            "slug": "言葉遣い",
+            "japanese": [
+                {
+                    "word": "言葉遣い",
+                    "reading": "ことばづかい"
+                },
+                {
+                    "word": "言葉使い",
+                    "reading": "ことばづかい"
+                },
+                {
+                    "word": "言葉づかい",
+                    "reading": "ことばづかい"
+                }
+            ]
+        },
+        {
+            "slug": "言葉のあや",
+            "japanese": [
+                {
+                    "word": "言葉のあや",
+                    "reading": "ことばのあや"
+                },
+                {
+                    "word": "言葉の綾",
+                    "reading": "ことばのあや"
+                }
+            ]
+        },
+        {
+            "slug": "言葉数",
+            "japanese": [
+                {
+                    "word": "言葉数",
+                    "reading": "ことばかず"
+                }
+            ]
+        },
+        {
+            "slug": "言葉通り",
+            "japanese": [
+                {
+                    "word": "言葉通り",
+                    "reading": "ことばどおり"
+                },
+                {
+                    "word": "言葉どおり",
+                    "reading": "ことばどおり"
+                }
+            ]
+        },
+        {
+            "slug": "言葉に表せない",
+            "japanese": [
+                {
+                    "word": "言葉に表せない",
+                    "reading": "ことばにあらわせない"
+                }
+            ]
+        },
+        {
+            "slug": "言葉に詰まる",
+            "japanese": [
+                {
+                    "word": "言葉に詰まる",
+                    "reading": "ことばにつまる"
+                }
+            ]
+        },
+        {
+            "slug": "言葉に窮する",
+            "japanese": [
+                {
+                    "word": "言葉に窮する",
+                    "reading": "ことばにきゅうする"
+                }
+            ]
+        },
+        {
+            "slug": "言葉を交わす",
+            "japanese": [
+                {
+                    "word": "言葉を交わす",
+                    "reading": "ことばをかわす"
+                }
+            ]
+        },
+    ],
+}
+
+
 BADINPUT: dict[str, JishoAPIResponse] = {
     "BADINPUT": {
         "meta": {
@@ -2386,6 +2779,11 @@ BADINPUT: dict[str, JishoAPIResponse] = {
 
 
 BADINPUT_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
+    "BADINPUT": [],
+}
+
+
+BADINPUT_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
     "BADINPUT": [],
 }
 
@@ -4946,6 +5344,350 @@ USAGI_IKU_KAGO_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
+USAGI_IKU_KAGO_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+    "兎": [
+        {
+            "slug": "兎に角",
+            "japanese": [
+                {
+                    "word": "兎に角",
+                    "reading": "とにかく"
+                }
+            ]
+        },
+        {
+            "slug": "兎も角",
+            "japanese": [
+                {
+                    "word": "兎も角",
+                    "reading": "ともかく"
+                }
+            ]
+        },
+        {
+            "slug": "兎角",
+            "japanese": [
+                {
+                    "word": "兎角",
+                    "reading": "とかく"
+                },
+                {
+                    "word": "左右",
+                    "reading": "とかく"
+                }
+            ]
+        },
+        {
+            "slug": "兎もあれ",
+            "japanese": [
+                {
+                    "word": "兎もあれ",
+                    "reading": "ともあれ"
+                },
+                {
+                    "word": "とも有れ",
+                    "reading": "ともあれ"
+                },
+                {
+                    "word": "兎も有れ",
+                    "reading": "ともあれ"
+                }
+            ]
+        },
+        {
+            "slug": "兎や角",
+            "japanese": [
+                {
+                    "word": "兎や角",
+                    "reading": "とやかく"
+                }
+            ]
+        },
+        {
+            "slug": "うさぎ小屋",
+            "japanese": [
+                {
+                    "word": "うさぎ小屋",
+                    "reading": "うさぎごや"
+                },
+                {
+                    "word": "兎小屋",
+                    "reading": "うさぎごや"
+                }
+            ]
+        },
+        {
+            "slug": "兎にも角にも",
+            "japanese": [
+                {
+                    "word": "兎にも角にも",
+                    "reading": "とにもかくにも"
+                }
+            ]
+        },
+        {
+            "slug": "とやかく言う",
+            "japanese": [
+                {
+                    "word": "とやかく言う",
+                    "reading": "とやかくいう"
+                },
+                {
+                    "word": "兎や角言う",
+                    "reading": "とやかくいう"
+                }
+            ]
+        },
+        {
+            "slug": "兎座",
+            "japanese": [
+                {
+                    "word": "兎座",
+                    "reading": "うさぎざ"
+                },
+                {
+                    "word": "うさぎ座",
+                    "reading": "うさぎざ"
+                }
+            ]
+        },
+    ],
+    "行く": [
+        {
+            "slug": "行方",
+            "japanese": [
+                {
+                    "word": "行方",
+                    "reading": "ゆくえ"
+                },
+                {
+                    "word": "行くえ",
+                    "reading": "ゆくえ"
+                },
+                {
+                    "word": "行衛",
+                    "reading": "ゆくえ"
+                }
+            ]
+        },
+        {
+            "slug": "行く手",
+            "japanese": [
+                {
+                    "word": "行く手",
+                    "reading": "ゆくて"
+                }
+            ]
+        },
+        {
+            "slug": "行末",
+            "japanese": [
+                {
+                    "word": "行く末",
+                    "reading": "ゆくすえ"
+                },
+                {
+                    "word": "行末",
+                    "reading": "ゆくすえ"
+                }
+            ]
+        },
+        {
+            "slug": "行く先",
+            "japanese": [
+                {
+                    "word": "行く先",
+                    "reading": "ゆくさき"
+                },
+                {
+                    "word": "行く先",
+                    "reading": "いくさき"
+                }
+            ]
+        },
+        {
+            "slug": "行くあて",
+            "japanese": [
+                {
+                    "word": "行くあて",
+                    "reading": "いくあて"
+                },
+                {
+                    "word": "行く当て",
+                    "reading": "いくあて"
+                }
+            ]
+        },
+        {
+            "slug": "行く春",
+            "japanese": [
+                {
+                    "word": "行く春",
+                    "reading": "ゆくはる"
+                }
+            ]
+        },
+        {
+            "slug": "行く行く",
+            "japanese": [
+                {
+                    "word": "行く行く",
+                    "reading": "ゆくゆく"
+                }
+            ]
+        },
+        {
+            "slug": "行く先先",
+            "japanese": [
+                {
+                    "word": "行く先々",
+                    "reading": "ゆくさきざき"
+                },
+                {
+                    "word": "行く先々",
+                    "reading": "いくさきざき"
+                },
+                {
+                    "word": "行く先先",
+                    "reading": "ゆくさきざき"
+                },
+                {
+                    "word": "行く先先",
+                    "reading": "いくさきざき"
+                }
+            ]
+        },
+        {
+            "slug": "行く年",
+            "japanese": [
+                {
+                    "word": "行く年",
+                    "reading": "ゆくとし"
+                },
+                {
+                    "word": "行く年",
+                    "reading": "いくとし"
+                }
+            ]
+        },
+    ],
+    "籠": [
+        {
+            "slug": "込む",
+            "japanese": [
+                {
+                    "word": "込む",
+                    "reading": "こむ"
+                }
+            ]
+        },
+        {
+            "slug": "込める",
+            "japanese": [
+                {
+                    "word": "込める",
+                    "reading": "こめる"
+                },
+                {
+                    "word": "籠める",
+                    "reading": "こめる"
+                },
+                {
+                    "word": "篭める",
+                    "reading": "こめる"
+                },
+                {
+                    "word": "罩める",
+                    "reading": "こめる"
+                }
+            ]
+        },
+        {
+            "slug": "籠もる",
+            "japanese": [
+                {
+                    "word": "篭る",
+                    "reading": "こもる"
+                },
+                {
+                    "word": "籠もる",
+                    "reading": "こもる"
+                },
+                {
+                    "word": "篭もる",
+                    "reading": "こもる"
+                },
+                {
+                    "word": "籠る",
+                    "reading": "こもる"
+                },
+                {
+                    "word": "隠る",
+                    "reading": "こもる"
+                }
+            ]
+        },
+        {
+            "slug": "籠手",
+            "japanese": [
+                {
+                    "word": "籠手",
+                    "reading": "こて"
+                },
+                {
+                    "word": "篭手",
+                    "reading": "こて"
+                },
+                {
+                    "word": "小手",
+                    "reading": "こて"
+                }
+            ]
+        },
+        {
+            "slug": "籠目",
+            "japanese": [
+                {
+                    "word": "籠目",
+                    "reading": "かごめ"
+                }
+            ]
+        },
+        {
+            "slug": "籠屋",
+            "japanese": [
+                {
+                    "word": "籠屋",
+                    "reading": "かごや"
+                }
+            ]
+        },
+        {
+            "slug": "籠の垂れ",
+            "japanese": [
+                {
+                    "word": "籠の垂れ",
+                    "reading": "かごのたれ"
+                }
+            ]
+        },
+        {
+            "slug": "籠もった声",
+            "japanese": [
+                {
+                    "word": "こもった声",
+                    "reading": "こもったこえ"
+                },
+                {
+                    "word": "籠もった声",
+                    "reading": "こもったこえ"
+                }
+            ]
+        },
+    ],
+}
+
+
 SHIZUKA: dict[str, JishoAPIResponse] = {
     "静か": {
         "meta": {
@@ -5511,6 +6253,87 @@ SHIZUKA_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
                 "jmnedict": False,
                 "dbpedia": False
             }
+        },
+    ],
+}
+
+
+SHIZUKA_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+    "静か": [
+        {
+            "slug": "静かに",
+            "japanese": [
+                {
+                    "word": "静かに",
+                    "reading": "しずかに"
+                }
+            ]
+        },
+        {
+            "slug": "静かの海",
+            "japanese": [
+                {
+                    "word": "静かの海",
+                    "reading": "しずかのうみ"
+                }
+            ]
+        },
+        {
+            "slug": "静かに流れる川は深い",
+            "japanese": [
+                {
+                    "word": "静かに流れる川は深い",
+                    "reading": "しずかにながれるかわはふかい"
+                }
+            ]
+        },
+        {
+            "slug": "51869194d5dda7b2c601eed0",
+            "japanese": [
+                {
+                    "word": "静かなるドン"
+                }
+            ]
+        },
+        {
+            "slug": "518698ead5dda7b2c60558f8",
+            "japanese": [
+                {
+                    "word": "静かな海と楽しい航海 (ベートーヴェン)"
+                }
+            ]
+        },
+        {
+            "slug": "51869907d5dda7b2c60566de",
+            "japanese": [
+                {
+                    "word": "静かな海と楽しい航海"
+                }
+            ]
+        },
+        {
+            "slug": "51869460d5dda7b2c6033553",
+            "japanese": [
+                {
+                    "word": "静かなる決闘"
+                }
+            ]
+        },
+        {
+            "slug": "51869908d5dda7b2c60566e2",
+            "japanese": [
+                {
+                    "word": "静かな海と楽しい航海 (メンデルスゾーン)"
+                }
+            ]
+        },
+        {
+            "slug": "51869d05d5dda7b2c6074a12",
+            "japanese": [
+                {
+                    "word": "静かなアメリカ人"
+                }
+            ]
         },
     ],
 }
