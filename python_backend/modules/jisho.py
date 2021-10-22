@@ -99,5 +99,3 @@ def extract_jisho_data(response: JishoAPIResponse, word: Kaki) -> JishoMainData:
 
     filtered_items = filter_items(items, word)
     return {"results": filtered_items}
-
-
