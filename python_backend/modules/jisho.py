@@ -71,10 +71,12 @@ def call_api(word: Kaki) -> JishoAPIResponse:
         raise JishoAPIError(error_msg, status_code, url)
 
     response_data: JishoAPIResponse = json.loads(response.text)
+    meta_data = response_data["meta"]
+    meta_data_status_code = meta_data["status"]
 
-    if response["meta"]["status"] != 200:
-        error_msg: str = "An error occurred. Response: " + json.dumps(response["meta"])
-        raise JishoAPIError(error_msg, response["meta"]["status"], url)
+    if meta_data_status_code != 200:
+        internal_error_msg: str = "An error occurred. Meta data: " + json.dumps(meta_data)
+        raise JishoAPIError(internal_error_msg, meta_data_status_code, url)
 
     return response_data
 
