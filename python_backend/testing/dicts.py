@@ -274,6 +274,7 @@ MEGANE: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.MEGANE_FILTERED_ITEMS["眼鏡"],
                 },
             },
             "ojad": {
@@ -488,6 +489,7 @@ COMEBACK: FullTestDict= {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.COMEBACK_FILTERED_ITEMS["カムバック"],
                 },
             },
             "ojad": {
@@ -912,6 +914,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["食べる"],
                 },
             },
             "ojad": {
@@ -1000,6 +1003,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["学生"],
                 },
             },
             "ojad": {
@@ -1324,6 +1328,7 @@ KOTOBA: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.KOTOBA_FILTERED_ITEMS["言葉"],
                 },
             },
             "ojad": {
@@ -1514,6 +1519,7 @@ BADINPUT: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.BADINPUT_FILTERED_ITEMS["BADINPUT"],
                 },
             },
             "ojad": {
@@ -1943,6 +1949,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["兎"],
                 },
             },
             "ojad": {
@@ -1986,6 +1993,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["行く"],
                 },
             },
             "ojad": {
@@ -2070,6 +2078,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["籠"],
                 },
             },
             "ojad": {
@@ -2359,6 +2368,7 @@ SHIZUKA: FullTestDict = {
             "jisho": {
                 "success": True,
                 "main_data": {
+                    "results": jisho_api_responses.SHIZUKA_FILTERED_ITEMS["静か"],
                 },
             },
             "ojad": {
