@@ -1,4 +1,3 @@
-from functools import partial
 import json
 from threading import Thread
 from typing import Dict, List, Union
