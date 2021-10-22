@@ -144,3 +144,20 @@ def test_filter_items(test_dict: FullTestDict):
         expected_filtered_items = test_dict['jisho']['expected_sections'][word]['filtered_items']
 
         assert jisho.filter_items(items, word) == expected_filtered_items
+
+
+def test_extract_jisho_data(test_dict: FullTestDict):
+    """
+    - GIVEN an API response
+    - WHEN the data is extracted
+    - THEN check the returned result is as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+
+    for word in word_list:
+        api_response = test_dict['jisho']['expected_sections'][word]['api_response']
+        expected_output = {
+            "results": test_dict['jisho']['expected_sections'][word]['filtered_items']
+        }
+
+        assert jisho.extract_jisho_data(api_response, word) == expected_output

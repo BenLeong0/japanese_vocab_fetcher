@@ -97,7 +97,7 @@ def extract_jisho_data(response: JishoAPIResponse, word: Kaki) -> JishoMainData:
 
     items = response["data"]
 
-    filtered_items = filter_items(items)
+    filtered_items = filter_items(items, word)
     return {"results": filtered_items}
 
 
