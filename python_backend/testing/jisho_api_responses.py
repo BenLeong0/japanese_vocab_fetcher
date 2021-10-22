@@ -1,4 +1,5 @@
-from custom_types.jisho_api_types import JishoAPIItem, JishoAPIItemJapanese, JishoAPIResponse
+from custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
+from custom_types.response_types import JishoExtraItem
 
 
 MEGANE: dict[str, JishoAPIResponse] = {
@@ -715,7 +716,7 @@ MEGANE_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
-MEGANE_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+MEGANE_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "眼鏡": [
         {
             "slug": "眼鏡橋",
@@ -1069,7 +1070,7 @@ COMEBACK_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
-COMEBACK_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+COMEBACK_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "カムバック": [
         {
             "slug": "51869cf2d5dda7b2c6074156",
@@ -1828,7 +1829,7 @@ TABERU_GAKUSEI_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
-TABERU_GAKUSEI_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+TABERU_GAKUSEI_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "食べる": [
         {
             "slug": "食べるラー油",
@@ -2645,7 +2646,7 @@ KOTOBA_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
-KOTOBA_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+KOTOBA_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "言葉": [
         {
             "slug": "辞典",
@@ -2783,7 +2784,7 @@ BADINPUT_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
-BADINPUT_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+BADINPUT_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "BADINPUT": [],
 }
 
@@ -5344,7 +5345,7 @@ USAGI_IKU_KAGO_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
-USAGI_IKU_KAGO_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+USAGI_IKU_KAGO_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "兎": [
         {
             "slug": "兎に角",
@@ -6258,7 +6259,7 @@ SHIZUKA_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
 }
 
 
-SHIZUKA_EXTRA_ITEMS: dict[str, list[JishoAPIItemJapanese]] = {
+SHIZUKA_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "静か": [
         {
             "slug": "静かに",
