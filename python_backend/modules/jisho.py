@@ -29,18 +29,18 @@ class JishoAPIError(APIError):
 def main(word_list: List[Kaki]) -> Dict[Kaki, JishoModuleReturnTypes]:
     results_dict: Dict[Kaki, JishoModuleReturnTypes] = {}
 
-    # def call_script(word: Kaki) -> None:
-    #     results_dict[word] = get_jisho_data(word)
+    def call_script(word: Kaki) -> None:
+        results_dict[word] = get_jisho_data(word)
 
-    # threads: List[Thread] = [
-    #     Thread(target=call_script, args=[word])
-    #     for word in word_list
-    # ]
+    threads: List[Thread] = [
+        Thread(target=call_script, args=[word])
+        for word in word_list
+    ]
 
-    # for thread in threads:
-    #     thread.start()
-    # for thread in threads:
-    #     thread.join()
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
 
     return results_dict
 
