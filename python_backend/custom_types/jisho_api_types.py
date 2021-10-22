@@ -1,4 +1,4 @@
-from typing import Literal, TypedDict
+from typing import TypedDict
 
 
 class JishoAPIItemJapanese(TypedDict, total=False):
@@ -40,6 +40,10 @@ class JishoAPIItem(TypedDict, total=False):
     attribution: dict
 
 
+class JishoAPIMeta(TypedDict):
+    status: int
+
+
 class JishoAPIResponse(TypedDict):
-    meta: dict[Literal["status"], int]
+    meta: JishoAPIMeta
     data: list[JishoAPIItem]
