@@ -162,7 +162,7 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
             assert api_error.status_code == 400
 
 
-def test_extract_audio_url_list(test_dict: FullTestDict):
+def test_extract_audio_list(test_dict: FullTestDict):
     """
     - GIVEN a series of responses from the API
     - WHEN the audio urls are extracted
@@ -174,19 +174,23 @@ def test_extract_audio_url_list(test_dict: FullTestDict):
 
     for word in word_list:
         api_response = json.loads(sections[word]['api_response'])
-        assert forvo.extract_audio_url_list(api_response, word) == expected_output[word]["main_data"]["audio"]
+        assert forvo.extract_audio_list(api_response, word) == expected_output[word]["main_data"]["audio"]
 
 
-def test_extract_audio_url():
+def test_extract_data():
     """
     - GIVEN a response from the API
     - WHEN the response's url is extracted
     - THEN check the url is correct
     """
     test_item = {
-        "pathmp3": "http://www.test.com/audio.mp3"
+        "pathmp3": "http://www.test.com/audio.mp3",
+        "username": "test_username",
     }
-    assert forvo.extract_audio_url(test_item) == "http://www.test.com/audio.mp3"
+    assert forvo.extract_data(test_item) == {
+        "url": "http://www.test.com/audio.mp3",
+        "username": "test_username",
+    }
 
 
 @pytest.mark.parametrize(

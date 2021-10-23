@@ -65,8 +65,12 @@ class ResponseItemWadoku(ResponseItem):
 
 # Forvo
 
+class ForvoAudio(TypedDict):
+    url: URL
+    username: str
+
 class ForvoMainData(TypedDict):
-    audio: list[URL]
+    audio: list[ForvoAudio]
 
 class ResponseItemForvo(ResponseItem):
     """Dictionary containing the audio information from Forvo"""
