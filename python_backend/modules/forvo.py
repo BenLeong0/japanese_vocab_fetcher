@@ -8,7 +8,7 @@ import requests
 from custom_types.alternative_string_types import Kaki, URL
 from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
 from custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
-from custom_types.response_types import ResponseItemForvo
+from custom_types.response_types import ForvoAudio, ResponseItemForvo
 from utils import decode_unicode
 
 
@@ -17,7 +17,7 @@ API_KEY: str = dotenv_values()['FORVO_API_KEY']
 ForvoModuleReturnTypes = Union[ResponseItemForvo, FailedResponseItem]
 
 
-def response_factory(audio_list: list[URL] = None) -> ResponseItemForvo:
+def response_factory(audio_list: list[ForvoAudio] = None) -> ResponseItemForvo:
     if audio_list is None:
         audio_list = []
     return {
@@ -58,7 +58,7 @@ def get_audio_urls(word: Kaki) -> ForvoModuleReturnTypes:
         print("An error occurred:", api_error.error_msg)
         return api_error_response_factory(api_error)
 
-    url_list = extract_audio_url_list(response, word)
+    url_list = extract_audio_list(response, word)
     return response_factory(url_list)
 
 
@@ -88,15 +88,19 @@ def get_api_url(word: Kaki) -> URL:
     return URL(url)
 
 
-def extract_audio_url_list(response: ForvoAPIResponse, word: Kaki) -> list[URL]:
+def extract_audio_list(response: ForvoAPIResponse, word: Kaki) -> list[ForvoAudio]:
     items = response["items"]
     filtered_items = [item for item in items if correct_word(item, word)]
-    return [extract_audio_url(item) for item in filtered_items]
+    return [extract_data(item) for item in filtered_items]
 
 
-def extract_audio_url(item: ForvoAPIItem) -> URL:
+def extract_data(item: ForvoAPIItem) -> ForvoAudio:
     url = item["pathmp3"]
-    return URL(url)
+    username = item["username"]
+    return {
+        "url": URL(url),
+        "username": username,
+    }
 
 
 def correct_word(item: ForvoAPIItem, word: Kaki) -> bool:
