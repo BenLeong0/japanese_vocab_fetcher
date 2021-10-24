@@ -15,4 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build Docker
-        run: echo "Nice!"
+        run: |
+          ECHO "$GITHUB_REF"
+          VERSION="$GITHUB_REF"
