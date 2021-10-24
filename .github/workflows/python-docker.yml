@@ -18,4 +18,5 @@ jobs:
         run: |
           VERSION="${GITHUB_REF/refs\/tags\//}"
           echo $VERSION
+          ls
           ./.github-build.sh $VERSION
