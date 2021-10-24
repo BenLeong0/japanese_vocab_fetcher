@@ -12,15 +12,11 @@ VERSION="$1"
 
 cd python_backend
 
-ls
-
-echo '$VERSION'
-
-# echo 'run docker build urbanjungle/springer:$BUILD_ENV-$VERSION-$PROVIDER_MODULE'
-# docker build --build-arg rmq_host=$RMQ_HOST --build-arg mode=$SERVICE_MODE --rm -t urbanjungle/springer:$BUILD_ENV-$VERSION-$PROVIDER_MODULE .
-# echo 'DOCKER BUILD COMPLETE'
-# docker push urbanjungle/springer:$BUILD_ENV-$VERSION-$PROVIDER_MODULE
-# echo 'DOCKER PUSH COMPLETE'
-# echo 'DOCKER BUILDING AND PUSHING FINISHED'
+echo 'run docker build urbanjungle/springer:$BUILD_ENV-$VERSION-$PROVIDER_MODULE'
+docker build -t benleong0/japanese_vocab_fetcher:$VERSION .
+echo 'DOCKER BUILD COMPLETE'
+docker push benleong0/japanese_vocab_fetcher:$VERSION
+echo 'DOCKER PUSH COMPLETE'
+echo 'DOCKER BUILDING AND PUSHING FINISHED'
 
 echo "FINISHED"
