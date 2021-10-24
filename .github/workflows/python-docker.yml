@@ -16,5 +16,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Docker
         run: |
-          echo "$GITHUB_REF"
+          echo ${GITHUB_REF/refs\/tags\//}
           VERSION="$GITHUB_REF"
