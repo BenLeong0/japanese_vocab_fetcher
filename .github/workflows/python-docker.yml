@@ -18,3 +18,4 @@ jobs:
         run: |
           echo ${GITHUB_REF/refs\/tags\//}
           VERSION="$GITHUB_REF"
+          echo $VERSION
