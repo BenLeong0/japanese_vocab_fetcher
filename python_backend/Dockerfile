@@ -21,8 +21,8 @@ ENV WANIKANI_API_KEY=wanikani_api_key
 
 # Create .env file
 RUN touch ./.env
-RUN echo FORVO_API_KEY=${FORVO_API_KEY} >> ./.env
-RUN echo WANIKANI_API_KEY=${WANIKANI_API_KEY} >> ./.env
+RUN echo FORVO_API_KEY=$FORVO_API_KEY >> ./.env
+RUN echo WANIKANI_API_KEY=$WANIKANI_API_KEY >> ./.env
 
 # Copy the content of the local src directory to the working directory
 COPY ./ .
