@@ -4,7 +4,9 @@
 name: Build to Docker
 
 on:
-  release
+  push:
+    tags:
+      '*'
 
 jobs:
   build:
