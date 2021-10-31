@@ -4,9 +4,7 @@
 name: Testing
 
 on:
-  push:
-    tags:
-      - '*'
+  [push]
 
 jobs:
   lint:
