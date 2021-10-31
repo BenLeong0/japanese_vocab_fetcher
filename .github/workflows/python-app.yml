@@ -5,7 +5,7 @@ name: Testing
 
 on:
   push:
-    types:
+    jobs:
       - lint
 
 jobs:
