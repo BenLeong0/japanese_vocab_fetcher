@@ -15,12 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build Docker
-        env:
-          DOCKER_USERNAME = ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD = ${{ secrets.DOCKER_PASSWORD }}
-          FORVO_API_KEY = ${{ secrets.FORVO_API_KEY }}
-          WANIKANI_API_KEY = ${{ secrets.WANIKANI_API_KEY }}
         run: |
           VERSION="${GITHUB_REF/refs\/tags\//}"
-          docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
-          ./.github-build.sh $VERSION $FORVO_API_KEY $WANIKANI_API_KEY
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          ./.github-build.sh $VERSION ${{ secrets.FORVO_API_KEY }} ${{ secrets.WANIKANI_API_KEY }}
