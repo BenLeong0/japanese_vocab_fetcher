@@ -5,8 +5,8 @@ name: Testing
 
 on:
   push:
-    tags-ignore:
-      - '0.*'
+    tags:
+      - '*'
 
 jobs:
   lint:
