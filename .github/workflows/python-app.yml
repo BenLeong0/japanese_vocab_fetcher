@@ -5,8 +5,8 @@ name: Testing
 
 on:
   push:
-    jobs:
-      - lint
+    tags:
+      - ''
 
 jobs:
   lint:
