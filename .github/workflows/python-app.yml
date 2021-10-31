@@ -6,7 +6,7 @@ name: Testing
 on:
   push:
     tags-ignore:
-      - '*'
+      - '0.*'
 
 jobs:
   lint:
