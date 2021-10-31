@@ -15,9 +15,9 @@ RUN pip install -r requirements.txt
 
 # Get API keys
 ARG forvo_api_key
-ENV FORVO_API_KEY=forvo_api_key
+ENV FORVO_API_KEY=$forvo_api_key
 ARG wanikani_api_key
-ENV WANIKANI_API_KEY=wanikani_api_key
+ENV WANIKANI_API_KEY=$wanikani_api_key
 
 # Create .env file
 RUN touch ./.env
