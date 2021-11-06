@@ -14,6 +14,7 @@ jobs:
     uses: benleong0/japanese_vocab_fetcher/.github/workflows/tests.yml@eefb52d6b7d2f0e24e71c34c1a32e06c8733c822
 
   build:
+    name: Build
     needs: [tests]
     runs-on: ubuntu-latest
     steps:
