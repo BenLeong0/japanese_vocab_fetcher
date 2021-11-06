@@ -7,6 +7,10 @@ on:
   push:
     branches:
       '*'
+  workflow_run:
+    workflows: ["Build to Docker"]
+    types:
+      - created
 
 jobs:
   lint:

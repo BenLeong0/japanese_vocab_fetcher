@@ -9,80 +9,80 @@ on:
       '*'
 
 jobs:
-  lint:
+  # lint:
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Get python version
-      run: |
-        python_version=$(cat python_backend/deployment/.python-version)
-        echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
-    - name: Set up Python ${{ env.PYTHON_VERSION }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint==2.10.2
-    - name: Check formatting with pylint
-      run: |
-        pylint --rcfile=python_backend/.pylintrc ./python_backend/
-
-
-  test:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Get python version
-      run: |
-        python_version=$(cat python_backend/deployment/.python-version)
-        echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
-    - name: Set up Python ${{ env.PYTHON_VERSION }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r python_backend/deployment/requirements.txt
-    - name: Test with pytest
-      run: |
-        cd python_backend
-        echo FORVO_API_KEY = 00000000000000000000000000000000 >> .env
-        echo WANIKANI_API_KEY = 00000000-0000-0000-0000-000000000000 >> .env
-        coverage run -m pytest -vv
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Get python version
+  #     run: |
+  #       python_version=$(cat python_backend/deployment/.python-version)
+  #       echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
+  #   - name: Set up Python ${{ env.PYTHON_VERSION }}
+  #     uses: actions/setup-python@v2
+  #     with:
+  #       python-version: ${{ env.PYTHON_VERSION }}
+  #   - name: Install dependencies
+  #     run: |
+  #       python -m pip install --upgrade pip
+  #       pip install pylint==2.10.2
+  #   - name: Check formatting with pylint
+  #     run: |
+  #       pylint --rcfile=python_backend/.pylintrc ./python_backend/
 
 
-  type-tests:
+  # test:
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Get python version
-      run: |
-        python_version=$(cat python_backend/deployment/.python-version)
-        echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
-    - name: Set up Python ${{ env.PYTHON_VERSION }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r python_backend/deployment/requirements_mypy.txt
-    - name: Test typing with mypy
-      run: |
-        cd python_backend
-        mypy .
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Get python version
+  #     run: |
+  #       python_version=$(cat python_backend/deployment/.python-version)
+  #       echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
+  #   - name: Set up Python ${{ env.PYTHON_VERSION }}
+  #     uses: actions/setup-python@v2
+  #     with:
+  #       python-version: ${{ env.PYTHON_VERSION }}
+  #   - name: Install dependencies
+  #     run: |
+  #       python -m pip install --upgrade pip
+  #       pip install -r python_backend/deployment/requirements.txt
+  #   - name: Test with pytest
+  #     run: |
+  #       cd python_backend
+  #       echo FORVO_API_KEY = 00000000000000000000000000000000 >> .env
+  #       echo WANIKANI_API_KEY = 00000000-0000-0000-0000-000000000000 >> .env
+  #       coverage run -m pytest -vv
+
+
+  # type-tests:
+
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Get python version
+  #     run: |
+  #       python_version=$(cat python_backend/deployment/.python-version)
+  #       echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
+  #   - name: Set up Python ${{ env.PYTHON_VERSION }}
+  #     uses: actions/setup-python@v2
+  #     with:
+  #       python-version: ${{ env.PYTHON_VERSION }}
+  #   - name: Install dependencies
+  #     run: |
+  #       python -m pip install --upgrade pip
+  #       pip install -r python_backend/deployment/requirements_mypy.txt
+  #   - name: Test typing with mypy
+  #     run: |
+  #       cd python_backend
+  #       mypy .
 
   build:
-    needs: [lint, test, type-tests]
+    # needs: [lint, test, type-tests]
     runs-on: ubuntu-latest
 
     steps:
