@@ -10,7 +10,7 @@ on:
 
 jobs:
   tests:
-    uses: benleong0/japanese_vocab_fetcher/.github/workflows/python-app.yml@Dockerise
+    uses: ./.github/workflows/python-app.yml@Dockerise
 
   build:
     # needs: [lint, test, type-tests]
