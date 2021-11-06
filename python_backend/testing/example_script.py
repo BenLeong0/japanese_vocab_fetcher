@@ -2,7 +2,7 @@ import json
 import requests
 
 
-API_URL = "http://localhost:5000/words"
+API_URL = "http://3.8.95.26:5000/words"
 payload = {'words': ["食べる", "学生"]}
 result = requests.get(API_URL, data=json.dumps(payload))
 pretty_result = json.dumps(json.loads(result.text), indent=4)

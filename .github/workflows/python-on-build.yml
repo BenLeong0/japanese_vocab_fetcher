@@ -1,0 +1,26 @@
+# This workflow will install Python dependencies, run tests for function, linting and typing with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Build to Docker
+
+on:
+  push:
+    tags:
+      '*'
+
+jobs:
+  tests:
+    name: Tests
+    uses: benleong0/japanese_vocab_fetcher/.github/workflows/python-tests.yml@856e26fa809ace0d1c940b24608e7294411a0b0b
+
+  build:
+    name: Build
+    needs: [tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Docker
+        run: |
+          VERSION="${GITHUB_REF/refs\/tags\//}"
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          ./.github-build.sh $VERSION ${{ secrets.FORVO_API_KEY }} ${{ secrets.WANIKANI_API_KEY }}

@@ -1,5 +1,3 @@
-import json
-
 from flask import Flask, request
 from flask_cors import CORS     # type: ignore
 
@@ -14,9 +12,8 @@ CORS(app)
 def homepage():
     word_list = utils.get_words_from_request(request)
     resp = get_info(word_list)
-    print(json.dumps(resp, ensure_ascii=False, indent=4))
     return utils.create_successful_response(resp)
 
 
 if __name__ == "__main__":
-    print('Yo')
+    app.run(host='0.0.0.0', port=5000)
