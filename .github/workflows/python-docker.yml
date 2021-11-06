@@ -10,16 +10,12 @@ on:
 
 jobs:
   tests:
-    name: Run tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/python-app.yml@Dockerise
+    name: Tests
+    uses: benleong0/japanese_vocab_fetcher/.github/workflows/tests.yml@eefb52d6b7d2f0e24e71c34c1a32e06c8733c822
 
   build:
-    # needs: [lint, test, type-tests]
     needs: [tests]
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Build Docker
