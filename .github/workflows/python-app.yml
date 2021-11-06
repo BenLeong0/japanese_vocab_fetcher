@@ -11,4 +11,4 @@ on:
 jobs:
   tests:
     name: Run tests
-    uses: benleong0/japanese_vocab_fetcher/.github/workflows/tests.yml@Dockerise
+    uses: benleong0/japanese_vocab_fetcher/.github/workflows/tests.yml@eefb52d6b7d2f0e24e71c34c1a32e06c8733c822
