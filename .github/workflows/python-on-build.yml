@@ -11,7 +11,7 @@ on:
 jobs:
   tests:
     name: Tests
-    uses: benleong0/japanese_vocab_fetcher/.github/workflows/python-tests.yml@856e26fa809ace0d1c940b24608e7294411a0b0b
+    uses: benleong0/japanese_vocab_fetcher/.github/workflows/python-tests.yml@main
 
   build:
     name: Build
