@@ -11,14 +11,10 @@ const InputPage: React.FC<InputPageProps> = () => {
     const httpService = new HttpService();
     const [text, setText] = useState<string>('');
 
-    const getWords = (): string[] => {
-        return text.split('\n').filter(word => word.trim().length > 0);
-    }
-
     const sendWords = async (event: React.FormEvent<HTMLButtonElement>) => {
         event.preventDefault()
 
-        const words: string[] = getWords();
+        const words: string[] = getWords(text);
         const wordsString: string = JSON.stringify(words);
 
         const queryParams = {
@@ -29,13 +25,17 @@ const InputPage: React.FC<InputPageProps> = () => {
 
     return (
         <div className="input-page">
-            <textarea
+            <input
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             />
             <button className="button-primary" type="submit" onClick={sendWords}>Submit</button>
         </div>
     );
+}
+
+export const getWords = (s: string): string[] => {
+    return s.split(/\s+/).filter(char => char !== "");
 }
 
 export default InputPage;
