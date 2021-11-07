@@ -9,10 +9,9 @@
     display: flex;
 }
 
-.input-page textarea {
+.input-page input {
     width: 600px;
-    height: 400px;
-    resize: vertical;
+    word-break: break-word;
 }
 
 .input-page button {

@@ -1,26 +1,27 @@
-interface QueryParams {
-    [key: string]: string;
-}
+import QueryParams from "../../types/QueryParams";
+import UtilsService from "./UtilsService";
 
 
 export default class HttpService {
 
     // API_URL: string = "https://7z39hjjfg1.execute-api.eu-west-2.amazonaws.com";
-    API_URL: string = "http://127.0.0.1:5000/words";
+    API_URL: string = "http://3.8.95.26:5000";
+    utilsService: UtilsService
+
+
+    constructor() {
+        this.utilsService = new UtilsService();
+    }
 
 
     async makeGetRequest(slug: string, queryParams?: QueryParams): Promise<any> {
-        let url = this.API_URL + slug;
+        let url: string = this.API_URL + slug;
         let requestOptions = {
             method: "GET"
         };
 
         if (typeof queryParams !== "undefined") {
-            let reducer = (accumulator: string, currValue: string[]) => (
-                accumulator + '&' + currValue[0] + '=' + currValue[1]
-            );
-            let queryString =  Object.entries(queryParams).reduce(reducer, '');
-            url += '?' + queryString;
+            url = this.utilsService.addQueryParamsToUrl(url, queryParams)
         };
 
         let data: any = await fetch(url, requestOptions);
