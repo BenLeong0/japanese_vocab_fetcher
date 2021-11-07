@@ -12,5 +12,6 @@ jobs:
     - run: |
         cd react-interface
         ls
+        echo ls
         yarn install
         yarn test
