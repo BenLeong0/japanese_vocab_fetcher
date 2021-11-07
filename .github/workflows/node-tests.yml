@@ -13,5 +13,5 @@ jobs:
       working-directory: ./react-interface
       run: yarn install
     - name: Test with jest
-      working-director: ./react-interface
+      working-directory: ./react-interface
       run: yarn test
