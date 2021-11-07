@@ -33,7 +33,7 @@ const InputPage: React.FC<InputPageProps> = () => {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             />
-            <button type="submit" onClick={sendWords}>Submit</button>
+            <button className="button-primary" type="submit" onClick={sendWords}>Submit</button>
         </div>
     );
 }
