@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import QueryParams from '../../types/QueryParams';
 import HttpService from '../core/HttpService';
 
 import './InputPage.css';
@@ -17,10 +18,10 @@ const InputPage: React.FC<InputPageProps> = () => {
         const words: string[] = getWords(text);
         const wordsString: string = JSON.stringify(words);
 
-        const queryParams = {
+        const queryParams: QueryParams = {
             words: wordsString,
         };
-        httpService.makeGetRequest('', queryParams);
+        httpService.makeGetRequest("/words", queryParams);
     }
 
     return (
