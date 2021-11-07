@@ -20,16 +20,11 @@
   margin: 0;
 }
 
-/* From getskeleton.com */
-.button,
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
+/* Adapted from getskeleton.com */
+button {
   display: inline-block;
   height: 24px;
   padding: 0 10px;
-  color: #555;
   text-align: center;
   font-size: 9px;
   font-weight: 600;
@@ -38,31 +33,14 @@ input[type="button"] {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  background-color: transparent;
   border-radius: 4px;
-  border: 1px solid #bbb;
+  border: 1px solid #aedb1e;
   cursor: pointer;
   box-sizing: border-box;
-}
-.button.button-primary,
-button.button-primary,
-input[type="submit"].button-primary,
-input[type="reset"].button-primary,
-input[type="button"].button-primary {
   color: #fff;
   background-color: #aedb1e;
-  border-color: #aedb1e;
 }
-.button.button-primary:hover,
-button.button-primary:hover,
-input[type="submit"].button-primary:hover,
-input[type="reset"].button-primary:hover,
-input[type="button"].button-primary:hover,
-.button.button-primary:focus,
-button.button-primary:focus,
-input[type="submit"].button-primary:focus,
-input[type="reset"].button-primary:focus,
-input[type="button"].button-primary:focus {
+button:hover, button:focus {
   color: #fff;
   background-color: #99bf1f;
   border-color: #99bf1f;
