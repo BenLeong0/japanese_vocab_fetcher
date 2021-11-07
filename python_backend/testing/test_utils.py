@@ -8,7 +8,7 @@ import utils
 
 class FakeRequest:
     def __init__(self, words):
-        self.data = json.dumps({"words": words})
+        self.args = {"words": json.dumps(words)}
 
 
 @pytest.mark.parametrize(
