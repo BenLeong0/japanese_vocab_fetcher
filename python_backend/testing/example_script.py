@@ -7,7 +7,7 @@ payload = {'words': json.dumps(["食べる", "学生"])}
 result = requests.get(API_URL, params=payload)
 pretty_result = json.dumps(json.loads(result.text), indent=4)
 print(pretty_result)
-#
+
 example_response = [
     {
         "word": "\u98df\u3079\u308b",
