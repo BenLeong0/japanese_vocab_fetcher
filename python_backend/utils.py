@@ -7,8 +7,7 @@ from flask.wrappers import Request, Response
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
 
 
-def get_words_from_request(request: Request):
-    print(request.args.get('words'))
+def get_words_from_request(request: Request) -> list[Kaki]:
     return json.loads(request.args.get('words'))
 
 
