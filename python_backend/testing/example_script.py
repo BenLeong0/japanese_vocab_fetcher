@@ -3,8 +3,8 @@ import requests
 
 
 API_URL = "http://3.8.95.26:5000/words"
-payload = {'words': ["食べる", "学生"]}
-result = requests.get(API_URL, data=json.dumps(payload))
+payload = {'words': json.dumps(["食べる", "学生"])}
+result = requests.get(API_URL, params=payload)
 pretty_result = json.dumps(json.loads(result.text), indent=4)
 print(pretty_result)
 

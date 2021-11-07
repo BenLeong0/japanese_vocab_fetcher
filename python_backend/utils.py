@@ -8,7 +8,8 @@ from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
 
 
 def get_words_from_request(request: Request):
-    return json.loads(request.data)['words']
+    print(request.args.get('words'))
+    return json.loads(request.args.get('words'))
 
 
 def create_successful_response(payload: Any):
