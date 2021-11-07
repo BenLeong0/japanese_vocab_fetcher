@@ -11,6 +11,7 @@ jobs:
         node-version: '14'
     - run: |
         echo $(ls)
+        echo "${ls}"
         cd react-interface
         ls
         echo $(ls)
