@@ -14,5 +14,5 @@ describe("addQueryParamsToUrl works", () => {
         [{word: "hi", colour: "red", hi: "5"}, "www.text.com/example?word=hi&colour=red&hi=5"],
     ]).it("with the params '%s'", (params: QueryParams, expected: string) => {
         expect(utilsService.addQueryParamsToUrl(url, params)).toBe(expected)
-    })
+    });
 });
