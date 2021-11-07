@@ -10,7 +10,7 @@ jobs:
       with:
         node-version: '14'
     - run: |
-        cd react_interface
+        cd react-interface
         ls
         yarn install
         yarn test
