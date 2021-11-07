@@ -22,7 +22,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install pylint==2.10.2
     - name: Check formatting with pylint
-      run: pylint --rcfile=./.pylintrc python_backend
+      run: |
+        touch __init__.py
+        pylint --rcfile=./.pylintrc python_backend
 
 
   test:
