@@ -10,7 +10,7 @@ on:
 
 jobs:
   tests:
-    name: Python Tests
-    uses: benleong0/japanese_vocab_fetcher/.github/workflows/python-tests.yml@main
-    name: NodeJS Tests
-    uses: benleong0/japanese_vocab_fetcher/.github/workflows/node-tests.yml@562d92b49cc374a90da9a273b3475922f1a156b9
+    - name: Python Tests
+      uses: benleong0/japanese_vocab_fetcher/.github/workflows/python-tests.yml@main
+    - name: NodeJS Tests
+      uses: benleong0/japanese_vocab_fetcher/.github/workflows/node-tests.yml@562d92b49cc374a90da9a273b3475922f1a156b9
