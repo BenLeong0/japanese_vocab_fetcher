@@ -1,9 +1,6 @@
 name: Push Changes
 
-on:
-  push:
-    branches:
-      '*'
+on: [push]
 
 jobs:
   python-tests:
