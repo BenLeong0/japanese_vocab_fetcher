@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Alte DIN 1451 Mittelschrift gepraegt";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Alte DIN 1451 Mittelschrift gepraegt"),
+    url("./fonts/din1451alt G.woff") format("woff");
+}
+
 .width-container {
   max-width: 1100px;
   background-color: white;
@@ -8,7 +16,6 @@
 .app-header {
   font-size: 40px;
   text-align: center;
-  font-weight: bold;
   padding-top: 20px;
   margin: 0;
 }
