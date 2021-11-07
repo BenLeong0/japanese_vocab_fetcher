@@ -10,10 +10,8 @@ jobs:
       with:
         node-version: '14'
     - name: Install dependencies
-      run: |
-        cd react-interface
-        yarn install
+      working-directory: ./react-interface
+      run: yarn install
     - name: Test with jest
-      run: |
-        cd react-interface
-        yarn test
+      working-director: ./react-interface
+      run: yarn test
