@@ -45,3 +45,11 @@ button:hover {
   background-color: var(--green-dark);
   border-color: var(--green-dark);
 }
+
+
+/* Larger than desktop */
+@media (max-width: 1250px) {
+  .width-container {
+    margin: 0 6%;
+  }
+}
