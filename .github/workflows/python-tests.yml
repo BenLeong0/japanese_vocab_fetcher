@@ -23,7 +23,7 @@ jobs:
         pip install pylint==2.10.2
     - name: Check formatting with pylint
       run: |
-        pylint --rcfile=.pylintrc .
+        pylint --rcfile=./.pylintrc .
 
 
   test:
