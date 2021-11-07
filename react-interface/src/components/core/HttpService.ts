@@ -5,7 +5,7 @@ import UtilsService from "./UtilsService";
 export default class HttpService {
 
     // API_URL: string = "https://7z39hjjfg1.execute-api.eu-west-2.amazonaws.com";
-    API_URL: string = "http://127.0.0.1:5000/words";
+    API_URL: string = "http://3.8.95.26:5000";
     utilsService: UtilsService
 
 
@@ -15,7 +15,7 @@ export default class HttpService {
 
 
     async makeGetRequest(slug: string, queryParams?: QueryParams): Promise<any> {
-        let url = process.env.API_URL + slug;
+        let url: string = this.API_URL + slug;
         let requestOptions = {
             method: "GET"
         };
