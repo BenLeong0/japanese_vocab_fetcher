@@ -34,14 +34,14 @@ button {
   text-decoration: none;
   white-space: nowrap;
   border-radius: 4px;
-  border: 1px solid #aedb1e;
+  border: 1px solid var(--green-light);
   cursor: pointer;
   box-sizing: border-box;
-  color: #fff;
-  background-color: #aedb1e;
+  color: var(--white);
+  background-color: var(--green-light);
 }
 button:hover, button:focus {
   color: #fff;
-  background-color: #99bf1f;
-  border-color: #99bf1f;
+  background-color: var(--green-dark);
+  border-color: var(--green-dark);
 }
