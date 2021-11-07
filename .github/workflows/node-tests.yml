@@ -10,8 +10,9 @@ jobs:
       with:
         node-version: '14'
     - run: |
+        echo $(ls)
         cd react-interface
         ls
-        echo ls
+        echo $(ls)
         yarn install
         yarn test
