@@ -23,12 +23,12 @@
 /* Adapted from getskeleton.com */
 button {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   padding: 0 10px;
   text-align: center;
-  font-size: 9px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 30px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -40,7 +40,7 @@ button {
   color: var(--white);
   background-color: var(--green-light);
 }
-button:hover, button:focus {
+button:hover {
   color: #fff;
   background-color: var(--green-dark);
   border-color: var(--green-dark);
