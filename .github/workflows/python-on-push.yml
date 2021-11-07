@@ -9,4 +9,4 @@ jobs:
 
   node-tests:
     name: NodeJS Tests
-    uses: benleong0/japanese_vocab_fetcher/.github/workflows/node-tests.yml@frontend/display_words_on_input
+    uses: benleong0/japanese_vocab_fetcher/.github/workflows/node-tests.yml@2a79e07202bcc9b94edc13be7ab3450464f57db2
