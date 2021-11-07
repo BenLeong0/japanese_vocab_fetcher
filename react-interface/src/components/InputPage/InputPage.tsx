@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import TextareaAutosize from 'react-textarea-autosize';
+
 import QueryParams from '../../types/QueryParams';
 import HttpService from '../core/HttpService';
 
@@ -26,10 +28,17 @@ const InputPage: React.FC<InputPageProps> = () => {
 
     return (
         <div className="input-page">
-            <input
+            <TextareaAutosize
+                name="main-input"
+                className="main-input"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             />
+            <div className="words-display">
+                {getWords(text).map((word) =>
+                    <div className="word-display">{word}</div>
+                )}
+            </div>
             <button className="button-primary" type="submit" onClick={sendWords}>Submit</button>
         </div>
     );
