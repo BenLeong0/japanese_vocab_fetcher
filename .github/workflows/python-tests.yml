@@ -1,5 +1,9 @@
 on: [workflow_call]
 
+defaults:
+  run:
+    working-directory: ./python_backend
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -7,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get python version
       run: |
-        python_version=$(cat python_backend/deployment/.python-version)
+        python_version=$(cat deployment/.python-version)
         echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
     - name: Set up Python ${{ env.PYTHON_VERSION }}
       uses: actions/setup-python@v2
@@ -19,7 +23,7 @@ jobs:
         pip install pylint==2.10.2
     - name: Check formatting with pylint
       run: |
-        pylint --rcfile=python_backend/.pylintrc ./python_backend/
+        pylint --rcfile=.pylintrc .
 
 
   test:
@@ -28,7 +32,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get python version
       run: |
-        python_version=$(cat python_backend/deployment/.python-version)
+        python_version=$(cat deployment/.python-version)
         echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
     - name: Set up Python ${{ env.PYTHON_VERSION }}
       uses: actions/setup-python@v2
@@ -37,10 +41,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r python_backend/deployment/requirements.txt
+        pip install -r deployment/requirements.txt
     - name: Test with pytest
       run: |
-        cd python_backend
         echo FORVO_API_KEY = 00000000000000000000000000000000 >> .env
         echo WANIKANI_API_KEY = 00000000-0000-0000-0000-000000000000 >> .env
         coverage run -m pytest -vv
@@ -52,7 +55,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get python version
       run: |
-        python_version=$(cat python_backend/deployment/.python-version)
+        python_version=$(cat deployment/.python-version)
         echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
     - name: Set up Python ${{ env.PYTHON_VERSION }}
       uses: actions/setup-python@v2
@@ -61,8 +64,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r python_backend/deployment/requirements_mypy.txt
+        pip install -r deployment/requirements_mypy.txt
     - name: Test typing with mypy
-      run: |
-        cd python_backend
-        mypy .
+      run: mypy .

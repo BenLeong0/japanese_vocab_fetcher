@@ -9,13 +9,17 @@ on:
       '*'
 
 jobs:
-  tests:
-    name: Tests
+  python-tests:
+    name: Python Tests
     uses: benleong0/japanese_vocab_fetcher/.github/workflows/python-tests.yml@main
+
+  node-tests:
+    name: NodeJS Tests
+    uses: benleong0/japanese_vocab_fetcher/.github/workflows/node-tests.yml@main
 
   build:
     name: Build
-    needs: [tests]
+    needs: [python-tests, node-tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

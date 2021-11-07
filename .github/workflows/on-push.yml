@@ -1,0 +1,12 @@
+name: Push Changes
+
+on: [push]
+
+jobs:
+  python-tests:
+    name: Python Tests
+    uses: benleong0/japanese_vocab_fetcher/.github/workflows/python-tests.yml@main
+
+  node-tests:
+    name: NodeJS Tests
+    uses: benleong0/japanese_vocab_fetcher/.github/workflows/node-tests.yml@main
