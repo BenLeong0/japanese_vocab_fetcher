@@ -6,14 +6,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Test using Node.js
+      working-directory: ./react-interface
       uses: actions/setup-node@v1
       with:
         node-version: '14'
     - run: |
-        echo $(ls)
-        echo "${ls}"
-        cd react-interface
-        ls
-        echo $(ls)
         yarn install
         yarn test
