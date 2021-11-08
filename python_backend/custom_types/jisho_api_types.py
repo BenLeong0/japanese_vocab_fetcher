@@ -37,7 +37,7 @@ class JishoAPIItem(TypedDict, total=False):
     jlpt: list[str]
     japanese: list[JishoAPIItemJapanese]
     senses: list[JishoAPIItemSense]
-    attribution: dict
+    attribution: JishoAPIItemAttribution
 
 
 class JishoAPIMeta(TypedDict):
