@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
+import FullResponseItem from '../../types/FullResponseItem';
 
 import QueryParams from '../../types/QueryParams';
 import HttpService from '../core/HttpService';
 
 import './InputPage.css';
 
-export interface InputPageProps {
 
+export interface InputPageProps {
+    setWordList: (s: FullResponseItem[]) => void;
 }
 
-const InputPage: React.FC<InputPageProps> = () => {
+const InputPage: React.FC<InputPageProps> = ({ setWordList }) => {
     const httpService = new HttpService();
     const [text, setText] = useState<string>('');
 
@@ -23,7 +25,9 @@ const InputPage: React.FC<InputPageProps> = () => {
         const queryParams: QueryParams = {
             words: wordsString,
         };
-        httpService.makeGetRequest("/words", queryParams);
+        const resp = await httpService.makeGetRequest("/words", queryParams);
+        console.log(resp);
+        setWordList(resp);
     }
 
     return (
