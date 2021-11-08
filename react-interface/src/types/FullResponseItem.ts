@@ -1,4 +1,3 @@
-// import FailedResponseItem from "./FailedResponseItem";
 import ResponseItemJisho from "./ResponseItemJisho";
 import ResponseItemOJAD from "./ResponseItemOJAD";
 import ResponseItemSuzuki from "./ResponseItemSuzuki";
