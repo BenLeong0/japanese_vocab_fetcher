@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 
 class JishoAPIItemJapanese(TypedDict, total=False):
@@ -27,7 +27,7 @@ class JishoAPIItemSense(TypedDict, total=False):
 class JishoAPIItemAttribution(TypedDict):
     jmdict: bool
     jmnedict: bool
-    dbpedia: str
+    dbpedia: str | Literal[False]
 
 
 class JishoAPIItem(TypedDict, total=False):
