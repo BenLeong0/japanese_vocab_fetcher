@@ -32,6 +32,7 @@ will be of the following form, JSON encoded:
     "word": "食べる",
     "jisho": {
       "success": true,
+      "error": null,
       "main_data": {
         "results": [
           {
@@ -72,30 +73,35 @@ will be of the following form, JSON encoded:
     }
     "ojad": {
       "success": true,
+      "error": null,
       "main_data": {
         "accent": ["たべ' る"],
       },
     },
     "suzuki": {
       "success": true,
+      "error": null,
       "main_data": {
         "accent": ["たべ' る"],
       },
     },
     "wadoku": {
       "success": true,
+      "error": null,
       "main_data": {
         "accent": ["たべ' る"],
       },
     },
     "forvo": {
       "success": true,
+      "error": null,
       "main_data": {
         "audio": [{...}, ...],
       },
     },
-    wanikani" {
+    "wanikani" {
       "success": true,
+      "error": null,
       "main_data": {
         "audio": [{...}, ...],
         "sentences": [{"en": ..., "jp": ...,}, ...],
@@ -103,5 +109,27 @@ will be of the following form, JSON encoded:
     }
   },
   ...
+]
+```
+
+In the case of an error in a module, `success` will be set to `false`, and `error` will be an object containing information about the error. `main_data` will maintain its structure, but will be empty. For example:
+```
+[
+  {
+    "word": "badinput",
+    "jisho": {
+      "success": false,
+      "error": {
+        "status_code": 500,
+        "error_msg": "Internal server error",
+        "url": "https://jisho.org/api/v1/search/words?keyword=badinput",
+      }
+      "main_data": {
+        "results": [],
+      },
+    },
+    ...
+  },
+  ...  
 ]
 ```
