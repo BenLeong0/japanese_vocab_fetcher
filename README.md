@@ -126,10 +126,11 @@ In the case of an error in a module, `success` will be set to `false`, and `erro
       }
       "main_data": {
         "results": [],
+        "extra": [],
       },
     },
     ...
   },
-  ...  
+  ...
 ]
 ```

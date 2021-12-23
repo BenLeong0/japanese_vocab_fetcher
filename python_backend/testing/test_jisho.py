@@ -66,6 +66,10 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
                 "status_code": 400,
                 "url": test_dict["jisho"]["expected_sections"][word]["url"]
             },
+            "main_data": {
+                "results": [],
+                "extra": [],
+            },
         }
         for word in word_list
     }
@@ -89,6 +93,10 @@ def test_main_meta_data_error(monkeypatch, test_dict: FullTestDict):
                 "error_msg": "An error occurred. Meta data: " + json.dumps({"status": 400, "error_msg": "api_error"}),
                 "status_code": 400,
                 "url": test_dict["jisho"]["expected_sections"][word]["url"]
+            },
+            "main_data": {
+                "results": [],
+                "extra": [],
             },
         }
         for word in word_list

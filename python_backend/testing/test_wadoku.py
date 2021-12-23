@@ -57,6 +57,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
                 "status_code": 400,
                 "url": test_dict["wadoku"]["url"]
             },
+            "main_data": {
+                "accent": [],
+            },
         }
         for word in word_list
     }
@@ -88,18 +91,21 @@ def test_main_recursion(monkeypatch):
     assert wadoku.main(word_list) == {
         'BADINPUT': {
             "success": True,
+            "error": None,
             "main_data": {
                 "accent": [],
             },
         },
         '食べる':  {
             "success": True,
+            "error": None,
             "main_data": {
                 "accent": [Yomi("たべ' る")],
             },
         },
         '学生':  {
             "success": True,
+            "error": None,
             "main_data": {
                 "accent": [Yomi("がくせい")],
             },

@@ -7,32 +7,40 @@ from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
+from custom_types.exception_types import APIError
 from custom_types.response_types import ResponseItemWadoku
 
 
 NAME = "wadoku"
-WadokuModuleReturnTypes = Union[ResponseItemWadoku, FailedResponseItem]
-
-
-def response_factory(accent_list: list[Yomi] = None) -> ResponseItemWadoku:
-    if accent_list is None:
-        accent_list = []
-    return {
-        "success": True,
-        "main_data": {
-            "accent": accent_list,
-        },
-    }
 
 
 class WadokuAPIError(APIError):
     pass
 
 
+def response_factory(accent_list: list[Yomi] = []) -> ResponseItemWadoku:
+    return {
+        "success": True,
+        "error": None,
+        "main_data": {
+            "accent": accent_list,
+        },
+    }
+
+
+def error_response_factory(error: WadokuAPIError) -> ResponseItemWadoku:
+    return {
+        "success": False,
+        "error": error.to_dict(),
+        "main_data": {
+            "accent": [],
+        },
+    }
+
+
 WadokuWordSectionsType = list[tuple[Soup, list[Soup]]]
 
-def main(word_list: list[Kaki]) -> dict[Kaki, WadokuModuleReturnTypes]:
+def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemWadoku]:
     if not word_list:
         return {}
 
@@ -40,7 +48,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, WadokuModuleReturnTypes]:
         html = get_html(word_list)
     except WadokuAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word : api_error_response_factory(api_error) for word in word_list}
+        return {word : error_response_factory(api_error) for word in word_list}
 
     word_sections = get_sections(html)
 

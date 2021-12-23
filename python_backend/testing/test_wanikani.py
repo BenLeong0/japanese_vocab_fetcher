@@ -1,3 +1,4 @@
+import copy
 import json
 import re
 
@@ -46,7 +47,10 @@ def test_main(monkeypatch, test_dict: FullTestDict):
 
     monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(json.dumps(api_response)))
 
-    assert wanikani.main(word_list) == expected_output
+    output = wanikani.main(word_list)
+    print(api_response)
+
+    assert output == expected_output
 
 
 def test_main_api_error(monkeypatch, test_dict: FullTestDict):
@@ -64,6 +68,10 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
                 "error_msg": "api_error",
                 "status_code": 400,
                 "url": test_dict["wanikani"]["url"]
+            },
+            "main_data": {
+                "audio": [],
+                "sentences": [],
             },
         }
         for word in word_list
