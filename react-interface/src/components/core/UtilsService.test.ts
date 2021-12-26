@@ -16,3 +16,18 @@ describe("addQueryParamsToUrl works", () => {
         expect(utilsService.addQueryParamsToUrl(url, params)).toBe(expected)
     });
 });
+
+describe('extract words from input', () => {
+    each([
+        ["", []],
+        ["test", ["test"]],
+        ["test word", ["test", "word"]],
+        ["test word   ", ["test", "word"]],
+        ["test   word", ["test", "word"]],
+        ["test\nword", ["test", "word"]],
+        ["test \n word", ["test", "word"]],
+        ["a     test \n word", ["a", "test", "word"]],
+    ]).it("with the input '%s'", (s: string, expected: string[]) => {
+        expect(utilsService.extractWordsFromInput(s)).toEqual(expected)
+    });
+});
