@@ -26,7 +26,7 @@ export interface JishoAPIItemSense {
 export interface JishoAPIItemAttribution {
     jmdict: boolean;
     jmnedict: boolean;
-    dbpedia: string | boolean;
+    dbpedia: string | false;
 }
 
 export interface JishoAPIItem {
