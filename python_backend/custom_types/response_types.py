@@ -1,11 +1,11 @@
-from typing import TypedDict
+from typing import Optional, TypedDict
 
 from custom_types.alternative_string_types import (
     Kaki,
     URL,
     Yomi,
 )
-from custom_types.exception_types import FailedResponseItem
+from custom_types.exception_types import APIErrorDict
 from custom_types.jisho_api_types import JishoAPIItem, JishoAPIItemJapanese
 from custom_types.wanikani_api_types import (
     WanikaniContextSentence,
@@ -16,6 +16,7 @@ from custom_types.wanikani_api_types import (
 class ResponseItem(TypedDict):
     """Dictionary containing the information from one of the modules"""
     success: bool
+    error: Optional[APIErrorDict]
 
 
 # Jisho
@@ -93,9 +94,9 @@ class ResponseItemWanikani(ResponseItem):
 class FullResponseItem(TypedDict):
     """Result dict for a word in an API request"""
     word: Kaki
-    jisho: ResponseItemJisho | FailedResponseItem
-    ojad: ResponseItemOJAD | FailedResponseItem
-    suzuki: ResponseItemSuzuki | FailedResponseItem
-    wadoku: ResponseItemWadoku | FailedResponseItem
-    forvo: ResponseItemForvo | FailedResponseItem
-    wanikani: ResponseItemWanikani | FailedResponseItem
+    jisho: ResponseItemJisho
+    ojad: ResponseItemOJAD
+    suzuki: ResponseItemSuzuki
+    wadoku: ResponseItemWadoku
+    forvo: ResponseItemForvo
+    wanikani: ResponseItemWanikani

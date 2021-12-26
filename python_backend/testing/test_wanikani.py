@@ -65,11 +65,16 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
                 "status_code": 400,
                 "url": test_dict["wanikani"]["url"]
             },
+            "main_data": {
+                "audio": [],
+                "sentences": [],
+            },
         }
         for word in word_list
     }
 
     monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(response, status_code=400))
+
     assert wanikani.main(word_list) == expected_output
 
 
@@ -93,6 +98,7 @@ def test_get_api_response(monkeypatch, test_dict: FullTestDict):
 
     def check_get_request(url, headers):
         auth_regex = r"Bearer " + API_KEY_REGEX
+        assert "api.wanikani.com" in url
         assert "Authorization" in headers
         assert re.match(auth_regex, headers["Authorization"])
         return FakeResponse(json.dumps(api_response))
@@ -125,6 +131,7 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
 
     def validate_get_request(url, headers):
         auth_regex = r"Bearer " + API_KEY_REGEX
+        assert "api.wanikani.com" in url
         assert "Authorization" in headers
         assert re.match(auth_regex, headers["Authorization"])
 
@@ -149,10 +156,11 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
 
     try:
         wanikani.call_api(url)
-        assert False
+        assert False            # Test fails if call_api() doesn't raise an error
     except wanikani.WanikaniAPIError as api_error:
         assert api_error.error_msg == "could not connect"
         assert api_error.status_code == 400
+        assert api_error.url == url
 
 
 def test_call_api_unsuccessful(monkeypatch):
@@ -166,7 +174,7 @@ def test_call_api_unsuccessful(monkeypatch):
 
     try:
         wanikani.call_api("www.testurl.com")
-        assert False
+        assert False            # Test fails if call_api() doesn't raise an error
     except wanikani.WanikaniAPIError as api_error:
         assert api_error.error_msg == "call_api failed"
         assert api_error.status_code == 400

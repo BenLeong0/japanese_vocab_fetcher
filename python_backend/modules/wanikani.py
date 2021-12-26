@@ -1,13 +1,13 @@
 from collections import defaultdict
 import json
-from typing import DefaultDict, Union
+from typing import DefaultDict, Optional
 
 from dotenv import dotenv_values
 import requests
 
 from custom_types.alternative_string_types import Kaki, URL
-from custom_types.exception_types import APIError, api_error_response_factory
-from custom_types.response_types import FailedResponseItem, ResponseItemWanikani
+from custom_types.exception_types import APIError
+from custom_types.response_types import ResponseItemWanikani
 from custom_types.wanikani_api_types import (
     WanikaniAPIResponse,
     WanikaniContextSentence,
@@ -16,32 +16,38 @@ from custom_types.wanikani_api_types import (
 
 NAME = "wanikani"
 API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
-WanikaniModuleReturnTypes = Union[ResponseItemWanikani, FailedResponseItem]
-
-
-def response_factory(
-    audio_list: list[WanikaniPronunciationAudio] = None,
-    sentence_list: list[WanikaniContextSentence] = None,
-) -> ResponseItemWanikani:
-    if audio_list is None:
-        audio_list = []
-    if sentence_list is None:
-        sentence_list = []
-
-    return {
-        "success": True,
-        "main_data": {
-            "audio": audio_list,
-            "sentences": sentence_list,
-        },
-    }
 
 
 class WanikaniAPIError(APIError):
     pass
 
 
-def main(word_list: list[Kaki]) -> dict[Kaki, WanikaniModuleReturnTypes]:
+def response_factory(
+    audio_list: Optional[list[WanikaniPronunciationAudio]] = None,
+    sentence_list: Optional[list[WanikaniContextSentence]] = None,
+) -> ResponseItemWanikani:
+    return {
+        "success": True,
+        "error": None,
+        "main_data": {
+            "audio": [] if audio_list is None else audio_list,
+            "sentences": [] if sentence_list is None else sentence_list,
+        },
+    }
+
+
+def error_response_factory(error: WanikaniAPIError) -> ResponseItemWanikani:
+    return {
+        "success": False,
+        "error": error.to_dict(),
+        "main_data": {
+            "audio": [],
+            "sentences": [],
+        },
+    }
+
+
+def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemWanikani]:
     if not word_list:
         return {}
 
@@ -49,7 +55,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, WanikaniModuleReturnTypes]:
         api_response = get_api_response(word_list)  # pylint: disable=unused-variable
     except WanikaniAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word : api_error_response_factory(api_error) for word in word_list}
+        return {word : error_response_factory(api_error) for word in word_list}
 
     result_dict = build_result_dict(api_response)
 
