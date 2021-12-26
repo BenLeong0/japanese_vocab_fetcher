@@ -1,39 +1,47 @@
 from collections import defaultdict
 import json
 import re
-from typing import DefaultDict, Union
+from typing import DefaultDict, Optional
 
 from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
+from custom_types.exception_types import APIError
 from custom_types.response_types import ResponseItemOJAD
 
 
 NAME = "ojad"
-OJADModuleReturnTypes = Union[ResponseItemOJAD, FailedResponseItem]
-
-
-def response_factory(accent_list: list[Yomi] = None, success: bool = True) -> ResponseItemOJAD:
-    if accent_list is None:
-        accent_list = []
-    return {
-        "success": success,
-        "main_data": {
-            "accent": accent_list,
-        },
-    }
 
 
 class OJADAPIError(APIError):
     pass
 
 
+def response_factory(accent_list: Optional[list[Yomi]] = None) -> ResponseItemOJAD:
+    return {
+        "success": True,
+        "error": None,
+        "main_data": {
+            "accent": [] if accent_list is None else accent_list,
+        },
+    }
+
+
+def error_response_factory(error: OJADAPIError) -> ResponseItemOJAD:
+    return {
+        "success": False,
+        "error": error.to_dict(),
+        "main_data": {
+            "accent": [],
+        },
+    }
+
+
 OJADWordSectionsType = list[tuple[Soup, list[Soup]]]
 
 
-def main(word_list: list[Kaki]) -> dict[Kaki, OJADModuleReturnTypes]:
+def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemOJAD]:
     if not word_list:
         return {}
 
@@ -41,7 +49,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, OJADModuleReturnTypes]:
         htmls = get_htmls(word_list)
     except OJADAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word : api_error_response_factory(api_error) for word in word_list}
+        return {word : error_response_factory(api_error) for word in word_list}
 
     word_sections = get_sections(htmls)
     accent_dict = build_accent_dict(word_sections)

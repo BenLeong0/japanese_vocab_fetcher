@@ -71,6 +71,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
                 "status_code": 400,
                 "url": test_dict['ojad']['url'] % 1
             },
+            "main_data": {
+                "accent": [],
+            },
         }
         for word in word_list
     }

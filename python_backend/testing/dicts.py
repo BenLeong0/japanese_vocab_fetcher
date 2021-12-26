@@ -64,6 +64,7 @@ MEGANE: FullTestDict = {
         "expected_output": {
             '眼鏡': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.MEGANE_FILTERED_ITEMS["眼鏡"],
                     "extra": jisho_api_responses.MEGANE_EXTRA_ITEMS["眼鏡"],
@@ -89,6 +90,7 @@ MEGANE: FullTestDict = {
         "expected_output": {
             '眼鏡': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("め' がね")],
                 },
@@ -110,6 +112,7 @@ MEGANE: FullTestDict = {
         "expected_output": {
             '眼鏡': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("め' がね")],
                 },
@@ -153,6 +156,7 @@ MEGANE: FullTestDict = {
         "expected_output": {
             "眼鏡": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("め' がね"), Yomi("がんきょう") ],
                 },
@@ -170,6 +174,7 @@ MEGANE: FullTestDict = {
         "expected_output": {
             '眼鏡': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -203,6 +208,7 @@ MEGANE: FullTestDict = {
         "result_dict": {
             '眼鏡': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -242,6 +248,7 @@ MEGANE: FullTestDict = {
         "expected_output": {
             '眼鏡': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -284,6 +291,7 @@ MEGANE: FullTestDict = {
             "word": "眼鏡",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.MEGANE_FILTERED_ITEMS["眼鏡"],
                     "extra": jisho_api_responses.MEGANE_EXTRA_ITEMS["眼鏡"],
@@ -291,24 +299,28 @@ MEGANE: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("め' がね")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("め' がね")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("め' がね"), Yomi("がんきょう")],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -336,6 +348,7 @@ MEGANE: FullTestDict = {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -391,6 +404,7 @@ COMEBACK: FullTestDict= {
         "expected_output": {
             'カムバック': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.COMEBACK_FILTERED_ITEMS["カムバック"],
                     "extra": jisho_api_responses.COMEBACK_EXTRA_ITEMS["カムバック"],
@@ -419,6 +433,7 @@ COMEBACK: FullTestDict= {
         "expected_output": {
             'カムバック': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かむば' っく"), Yomi("か' むばっく")],
                 },
@@ -440,6 +455,7 @@ COMEBACK: FullTestDict= {
         "expected_output": {
             'カムバック': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("カムバ' ック")],
                 },
@@ -473,6 +489,7 @@ COMEBACK: FullTestDict= {
         "expected_output": {
             'カムバック': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かむば' っく"), Yomi("か' むばっく")],
                 },
@@ -490,6 +507,7 @@ COMEBACK: FullTestDict= {
         "expected_output": {
             'カムバック': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -508,6 +526,7 @@ COMEBACK: FullTestDict= {
         "expected_output": {
             'カムバック': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -520,6 +539,7 @@ COMEBACK: FullTestDict= {
             "word": "カムバック",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.COMEBACK_FILTERED_ITEMS["カムバック"],
                     "extra": jisho_api_responses.COMEBACK_EXTRA_ITEMS["カムバック"],
@@ -527,24 +547,28 @@ COMEBACK: FullTestDict= {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かむば' っく"), Yomi("か' むばっく")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("カムバ' ック")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かむば' っく"), Yomi("か' むばっく")],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -556,6 +580,7 @@ COMEBACK: FullTestDict= {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -587,6 +612,7 @@ TABERU_GAKUSEI: FullTestDict = {
         "expected_output": {
             '食べる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["食べる"],
                     "extra": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["食べる"],
@@ -594,6 +620,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
             '学生': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["学生"],
                     "extra": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["学生"],
@@ -628,12 +655,14 @@ TABERU_GAKUSEI: FullTestDict = {
         "expected_output": {
             '食べる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("たべ' る")],
                 },
             },
             '学生': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("がくせい")],
                 },
@@ -662,12 +691,14 @@ TABERU_GAKUSEI: FullTestDict = {
         "expected_output": {
             '食べる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("たべ' る")],
                 },
             },
             '学生': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("がくせい")],
                 },
@@ -698,12 +729,14 @@ TABERU_GAKUSEI: FullTestDict = {
         "expected_output": {
             '食べる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("たべ' る")],
                 },
             },
             '学生': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("がくせい")],
                 },
@@ -726,6 +759,7 @@ TABERU_GAKUSEI: FullTestDict = {
         "expected_output": {
             '食べる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -773,6 +807,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
             '学生': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -826,6 +861,7 @@ TABERU_GAKUSEI: FullTestDict = {
         "result_dict": {
             '食べる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -871,6 +907,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
             '学生': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -918,6 +955,7 @@ TABERU_GAKUSEI: FullTestDict = {
         "expected_output": {
             '食べる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -963,6 +1001,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
             '学生': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1013,6 +1052,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "word": "食べる",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["食べる"],
                     "extra": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["食べる"],
@@ -1020,24 +1060,28 @@ TABERU_GAKUSEI: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("たべ' る")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("たべ' る")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("たべ' る")],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1085,6 +1129,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1133,6 +1178,7 @@ TABERU_GAKUSEI: FullTestDict = {
             "word": "学生",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS["学生"],
                     "extra": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["学生"],
@@ -1140,24 +1186,28 @@ TABERU_GAKUSEI: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("がくせい")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("がくせい")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("がくせい")],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1205,6 +1255,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1268,6 +1319,7 @@ KOTOBA: FullTestDict = {
         "expected_output": {
             '言葉': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.KOTOBA_FILTERED_ITEMS["言葉"],
                     "extra": jisho_api_responses.KOTOBA_EXTRA_ITEMS["言葉"],
@@ -1293,6 +1345,7 @@ KOTOBA: FullTestDict = {
         "expected_output": {
             '言葉': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("ことば'")],
                 },
@@ -1314,6 +1367,7 @@ KOTOBA: FullTestDict = {
         "expected_output": {
             '言葉': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("ことば'")],
                 },
@@ -1357,6 +1411,7 @@ KOTOBA: FullTestDict = {
         "expected_output": {
             '言葉': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("ことば'")],
                 },
@@ -1374,6 +1429,7 @@ KOTOBA: FullTestDict = {
         "expected_output": {
             '言葉': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1415,6 +1471,7 @@ KOTOBA: FullTestDict = {
         "result_dict": {
             '言葉': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1462,6 +1519,7 @@ KOTOBA: FullTestDict = {
         "expected_output": {
             '言葉': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1512,6 +1570,7 @@ KOTOBA: FullTestDict = {
             "word": "言葉",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.KOTOBA_FILTERED_ITEMS["言葉"],
                     "extra": jisho_api_responses.KOTOBA_EXTRA_ITEMS["言葉"],
@@ -1519,24 +1578,28 @@ KOTOBA: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("ことば'")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("ことば'")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("ことば'")],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1572,6 +1635,7 @@ KOTOBA: FullTestDict = {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -1635,6 +1699,7 @@ BADINPUT: FullTestDict = {
         "expected_output": {
             'BADINPUT': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.BADINPUT_FILTERED_ITEMS["BADINPUT"],
                     "extra": jisho_api_responses.BADINPUT_EXTRA_ITEMS["BADINPUT"],
@@ -1650,6 +1715,7 @@ BADINPUT: FullTestDict = {
         "expected_output": {
             'BADINPUT': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [],
                 },
@@ -1671,6 +1737,7 @@ BADINPUT: FullTestDict = {
         "expected_output": {
             'BADINPUT': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [],
                 },
@@ -1685,6 +1752,7 @@ BADINPUT: FullTestDict = {
         "expected_output": {
             'BADINPUT': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [],
                 },
@@ -1702,6 +1770,7 @@ BADINPUT: FullTestDict = {
         "expected_output": {
             'BADINPUT': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                 },
@@ -1715,6 +1784,7 @@ BADINPUT: FullTestDict = {
         "expected_output": {
             'BADINPUT': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -1727,6 +1797,7 @@ BADINPUT: FullTestDict = {
             "word": "BADINPUT",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.BADINPUT_FILTERED_ITEMS["BADINPUT"],
                     "extra": jisho_api_responses.BADINPUT_EXTRA_ITEMS["BADINPUT"],
@@ -1734,30 +1805,35 @@ BADINPUT: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                 },
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -1795,6 +1871,7 @@ USAGI_IKU_KAGO: FullTestDict = {
         "expected_output": {
             '兎': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["兎"],
                     "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["兎"],
@@ -1802,6 +1879,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             '行く': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["行く"],
                     "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["行く"],
@@ -1809,6 +1887,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             '籠': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["籠"],
                     "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["籠"],
@@ -1851,18 +1930,21 @@ USAGI_IKU_KAGO: FullTestDict = {
         "expected_output": {
             '行く': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("いく")],
                 },
             },
             '籠': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かご")],
                 },
             },
             '兎': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("うさぎ")],
                 },
@@ -1898,18 +1980,21 @@ USAGI_IKU_KAGO: FullTestDict = {
         "expected_output": {
             '兎': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("うさぎ")],
                 },
             },
             '行く': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("いく")],
                 },
             },
             '籠': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かご")],
                 },
@@ -1975,18 +2060,21 @@ USAGI_IKU_KAGO: FullTestDict = {
         "expected_output": {
             '兎': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("うさぎ"), Yomi("う")],
                 },
             },
             '行く': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("ゆく"), Yomi("いく")],
                 },
             },
             '籠': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かご"), Yomi("こ'")],
                 },
@@ -2014,6 +2102,7 @@ USAGI_IKU_KAGO: FullTestDict = {
         "expected_output": {
             '兎':{
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio":  [
                         {
@@ -2033,6 +2122,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             '行く': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2064,6 +2154,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             '籠': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2089,6 +2180,7 @@ USAGI_IKU_KAGO: FullTestDict = {
         "result_dict": {
             '行く': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2136,6 +2228,7 @@ USAGI_IKU_KAGO: FullTestDict = {
         "expected_output": {
             '兎': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -2143,6 +2236,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             '行く': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2188,6 +2282,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             '籠': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -2200,6 +2295,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             "word": "兎",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["兎"],
                     "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["兎"],
@@ -2207,24 +2303,28 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("うさぎ")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("うさぎ")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("うさぎ"), Yomi("う")],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2244,6 +2344,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -2254,6 +2355,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             "word": "行く",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["行く"],
                     "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["行く"],
@@ -2261,24 +2363,28 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("いく")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("いく")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("ゆく"), Yomi("いく")],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2310,6 +2416,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2358,6 +2465,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             "word": "籠",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS["籠"],
                     "extra": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["籠"],
@@ -2365,24 +2473,28 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かご")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かご")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("かご"), Yomi("こ'")],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2402,6 +2514,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -2427,6 +2540,7 @@ SHIZUKA: FullTestDict = {
         "expected_output": {
             '静か': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.SHIZUKA_FILTERED_ITEMS["静か"],
                     "extra": jisho_api_responses.SHIZUKA_EXTRA_ITEMS["静か"],
@@ -2453,6 +2567,7 @@ SHIZUKA: FullTestDict = {
         "expected_output": {
             '静か': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("し' ずか")],
                 },
@@ -2474,6 +2589,7 @@ SHIZUKA: FullTestDict = {
         "expected_output": {
             '静か': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("し' ずか")],
                 },
@@ -2528,6 +2644,7 @@ SHIZUKA: FullTestDict = {
         "expected_output": {
             '静か': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("し' ずか")],
                 },
@@ -2545,6 +2662,7 @@ SHIZUKA: FullTestDict = {
         "expected_output": {
             '静か': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2578,6 +2696,7 @@ SHIZUKA: FullTestDict = {
         "result_dict": {
             '静か': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2625,6 +2744,7 @@ SHIZUKA: FullTestDict = {
         "expected_output": {
             '静か': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2675,6 +2795,7 @@ SHIZUKA: FullTestDict = {
             "word": "静か",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.SHIZUKA_FILTERED_ITEMS["静か"],
                     "extra": jisho_api_responses.SHIZUKA_EXTRA_ITEMS["静か"],
@@ -2682,24 +2803,28 @@ SHIZUKA: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("し' ずか")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("し' ずか")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("し' ずか")],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2727,6 +2852,7 @@ SHIZUKA: FullTestDict = {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2790,6 +2916,7 @@ NARU: FullTestDict = {
         "expected_output": {
             'なる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.NARU_FILTERED_ITEMS["なる"],
                     "extra": jisho_api_responses.NARU_EXTRA_ITEMS["なる"],
@@ -2834,6 +2961,7 @@ NARU: FullTestDict = {
         "expected_output": {
             'なる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("な' る")],
                 },
@@ -2855,6 +2983,7 @@ NARU: FullTestDict = {
         "expected_output": {
             'なる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("な' る")],
                 },
@@ -2900,6 +3029,7 @@ NARU: FullTestDict = {
         "expected_output": {
             'なる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [],
                 },
@@ -2917,6 +3047,7 @@ NARU: FullTestDict = {
         "expected_output": {
             'なる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -2947,6 +3078,7 @@ NARU: FullTestDict = {
         "expected_output": {
             'なる': {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -2959,6 +3091,7 @@ NARU: FullTestDict = {
             "word": "なる",
             "jisho": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "results": jisho_api_responses.NARU_FILTERED_ITEMS["なる"],
                     "extra": jisho_api_responses.NARU_EXTRA_ITEMS["なる"],
@@ -2966,24 +3099,28 @@ NARU: FullTestDict = {
             },
             "ojad": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("な' る")],
                 },
             },
             "suzuki": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [Yomi("な' る")],
                 },
             },
             "wadoku": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "accent": [],
                 },
             },
             "forvo": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [
                         {
@@ -3007,6 +3144,7 @@ NARU: FullTestDict = {
             },
             "wanikani": {
                 "success": True,
+                "error": None,
                 "main_data": {
                     "audio": [],
                     "sentences": [],
@@ -3046,6 +3184,7 @@ TEST_DICTS = [
 #     },
 #     "jisho": {
 #                 "success": True,
+#                 "error": None,
 #                 "main_data": {
 #                 },
 #             },
@@ -3109,11 +3248,13 @@ TEST_DICTS = [
 #             "ojad": [],
 #             "suzuki": {
 #                 "success": True,
+#                 "error": None,
 #                 "main_data": {
 #                     "accent": [Yomi(],
 #             "wadoku": [],
 #             "forvo": {
 #                 "success": True,
+#                 "error": None,
 #                 "main_data": {
 #                     "audio": [],
 #                 },

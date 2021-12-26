@@ -54,6 +54,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
                 "status_code": 400,
                 "url": 'http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index',
             },
+            "main_data": {
+                "accent": [],
+            },
         }
         for word in word_list
     }
