@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import InputPage from './components/InputPage/InputPage';
-import ResultsPage from './components/ResultsPage/ResultsPage';
+import ResultsList from './components/ResultsList/ResultsList';
 
 import FullResponseItem from './types/FullResponseItem';
 
@@ -15,7 +15,7 @@ function App() {
             <div className="width-container">
                 <p className="app-header">Japanese Vocab Fetcher</p>
                 <InputPage setWordList={setWordList} />
-                <ResultsPage wordList={wordList} />
+                <ResultsList wordList={wordList} />
             </div>
         </div>
     );

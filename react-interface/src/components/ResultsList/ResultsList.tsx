@@ -1,24 +1,25 @@
 import React from 'react';
+import ResultBlock from './ResultBlock'
 
 import FullResponseItem from '../../types/FullResponseItem';
 
-import ResultBlock from './ResultBlock/ResultBlock'
+import './ResultsList.css'
 
 
-interface ResultsPageProps {
+interface ResultsListProps {
     wordList: FullResponseItem[];
 }
 
-const ResultsPage: React.FC<ResultsPageProps> = ({ wordList }) => {
+const ResultsList: React.FC<ResultsListProps> = ({ wordList }) => {
     return (
-        <>
+        <div className="results-list">
             {
                 wordList.map(wordData =>
                     <ResultBlock data={wordData} />
                 )
             }
-        </>
+        </div>
      );
 }
 
-export default ResultsPage;
+export default ResultsList;
