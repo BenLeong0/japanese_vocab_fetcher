@@ -53,14 +53,14 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
             value={text}
             onChange={(e: any) => setText(e.target.value)}
         />
-    )
+    );
     const wordsDisplay = (
         <div className="words-display vertical-separation-small">
             {utilsService.extractWordsFromInput(text).map((word) =>
                 <div className="word-display">{word}</div>
             )}
         </div>
-    )
+    );
     const submitButton = (
         <button
             className="button-primary vertical-separation-medium"
@@ -69,7 +69,7 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
         >
             Submit
         </button>
-    )
+    );
 
     const loadingSpinner = <div className="loader vertical-separation-large"></div>;
 
