@@ -1,3 +1,5 @@
+import APIErrorDict from "./ResponseError";
+
 export interface JishoAPIItemJapanese {
     word: string;
     reading: string;
@@ -52,6 +54,7 @@ export interface JishoMainData {
 }
 
 export default interface ResponseItemJisho {
-    main_data: JishoMainData;
     success: boolean;
+    error: APIErrorDict | null;
+    main_data: JishoMainData;
 }

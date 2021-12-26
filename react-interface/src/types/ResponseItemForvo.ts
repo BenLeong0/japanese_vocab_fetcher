@@ -1,3 +1,5 @@
+import APIErrorDict from "./ResponseError";
+
 export interface ForvoAudio {
     url: string;
     username: string;
@@ -8,6 +10,7 @@ export interface ForvoMainData {
 }
 
 export default interface ResponseItemForvo {
-    main_data: ForvoMainData;
     success: boolean;
+    error: APIErrorDict | null;
+    main_data: ForvoMainData;
 }

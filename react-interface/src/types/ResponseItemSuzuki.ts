@@ -1,8 +1,11 @@
+import APIErrorDict from "./ResponseError";
+
 export interface SuzukiMainData {
     accent: string[];
 }
 
 export default interface ResponseItemSuzuki {
-    main_data: SuzukiMainData;
     success: boolean;
+    error: APIErrorDict | null;
+    main_data: SuzukiMainData;
 }
