@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import InputPage from './components/InputPage/InputPage';
 import ResultsPage from './components/ResultsPage/ResultsPage';
