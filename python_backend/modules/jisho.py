@@ -1,4 +1,3 @@
-import copy
 import json
 from threading import Thread
 
@@ -18,22 +17,22 @@ class JishoAPIError(APIError):
 
 
 def response_factory(data: JishoMainData) -> ResponseItemJisho:
-    return copy.deepcopy({
+    return {
         "success": True,
         "error": None,
         "main_data": data,
-    })
+    }
 
 
 def error_response_factory(error: JishoAPIError) -> ResponseItemJisho:
-    return copy.deepcopy({
+    return {
         "success": False,
         "error": error.to_dict(),
         "main_data": {
             "results": [],
             "extra": [],
         },
-    })
+    }
 
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemJisho]:

@@ -1,7 +1,7 @@
 from ast import literal_eval
-import copy
 import json
 import re
+from typing import Optional
 
 from bs4 import BeautifulSoup as Soup
 import requests
@@ -19,24 +19,24 @@ class SuzukiAPIError(APIError):
     pass
 
 
-def response_factory(accent_list: list[Yomi] = []) -> ResponseItemSuzuki:
-    return copy.deepcopy({
+def response_factory(accent_list: Optional[list[Yomi]] = None) -> ResponseItemSuzuki:
+    return {
         "success": True,
         "error": None,
         "main_data": {
-            "accent": accent_list,
+            "accent": [] if accent_list is None else accent_list,
         },
-    })
+    }
 
 
 def error_response_factory(error: SuzukiAPIError) -> ResponseItemSuzuki:
-    return copy.deepcopy({
+    return {
         "success": False,
         "error": error.to_dict(),
         "main_data": {
             "accent": [],
         },
-    })
+    }
 
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemSuzuki]:
