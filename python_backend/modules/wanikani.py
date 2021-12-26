@@ -38,14 +38,14 @@ def response_factory(
 
 
 def error_response_factory(error: WanikaniAPIError) -> ResponseItemWanikani:
-    return {
+    return copy.deepcopy({
         "success": False,
         "error": error.to_dict(),
         "main_data": {
             "audio": [],
             "sentences": [],
         },
-    }
+    })
 
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemWanikani]:

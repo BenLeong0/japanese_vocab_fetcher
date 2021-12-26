@@ -1,6 +1,6 @@
+import copy
 import json
 from threading import Thread
-from typing import Union
 
 from dotenv import dotenv_values
 import requests
@@ -21,23 +21,23 @@ class ForvoAPIError(APIError):
 
 
 def response_factory(audio_list: list[ForvoAudio] = []) -> ResponseItemForvo:
-    return {
+    return copy.deepcopy({
         "success": True,
         "error": None,
         "main_data": {
             "audio": audio_list,
         },
-    }
+    })
 
 
 def error_response_factory(error: ForvoAPIError) -> ResponseItemForvo:
-    return {
+    return copy.deepcopy({
         "success": False,
         "error": error.to_dict(),
         "main_data": {
             "audio": [],
         },
-    }
+    })
 
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemForvo]:

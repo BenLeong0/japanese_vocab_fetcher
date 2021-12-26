@@ -1,7 +1,8 @@
 from collections import defaultdict
+import copy
 import json
 import re
-from typing import DefaultDict, Union
+from typing import DefaultDict
 
 from bs4 import BeautifulSoup as Soup
 import requests
@@ -19,23 +20,23 @@ class WadokuAPIError(APIError):
 
 
 def response_factory(accent_list: list[Yomi] = []) -> ResponseItemWadoku:
-    return {
+    return copy.deepcopy({
         "success": True,
         "error": None,
         "main_data": {
             "accent": accent_list,
         },
-    }
+    })
 
 
 def error_response_factory(error: WadokuAPIError) -> ResponseItemWadoku:
-    return {
+    return copy.deepcopy({
         "success": False,
         "error": error.to_dict(),
         "main_data": {
             "accent": [],
         },
-    }
+    })
 
 
 WadokuWordSectionsType = list[tuple[Soup, list[Soup]]]
