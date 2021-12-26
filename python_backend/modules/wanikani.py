@@ -1,6 +1,7 @@
 from collections import defaultdict
+import copy
 import json
-from typing import DefaultDict, Union
+from typing import DefaultDict
 
 from dotenv import dotenv_values
 import requests
@@ -26,14 +27,14 @@ def response_factory(
     audio_list: list[WanikaniPronunciationAudio] = [],
     sentence_list: list[WanikaniContextSentence] = [],
 ) -> ResponseItemWanikani:
-    return {
+    return copy.deepcopy({
         "success": True,
         "error": None,
         "main_data": {
             "audio": audio_list,
             "sentences": sentence_list,
         },
-    }
+    })
 
 
 def error_response_factory(error: WanikaniAPIError) -> ResponseItemWanikani:
