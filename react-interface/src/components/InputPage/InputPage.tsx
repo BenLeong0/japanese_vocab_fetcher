@@ -30,8 +30,4 @@ const InputPage: React.FC<InputPageProps> = ({ setWordList }) => {
     );
 }
 
-export const getWords = (s: string): string[] => {
-    return s.split(/\s+/).filter(char => char !== "");
-}
-
 export default InputPage;
