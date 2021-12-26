@@ -1,8 +1,11 @@
+import APIErrorDict from "./ResponseError";
+
 export interface WadokuMainData {
     accent: string[];
 }
 
 export default interface ResponseItemWadoku {
-    main_data: WadokuMainData;
     success: boolean;
+    error: APIErrorDict | null;
+    main_data: WadokuMainData;
 }

@@ -1,32 +1,42 @@
 import json
 from threading import Thread
-from typing import Union
 
 import requests
 
 from custom_types.alternative_string_types import Kaki, URL
-from custom_types.exception_types import APIError, FailedResponseItem, api_error_response_factory
+from custom_types.exception_types import APIError
 from custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
 from custom_types.response_types import ResponseItemJisho, JishoExtraItem, JishoMainData
 
 
 NAME = "jisho"
-JishoModuleReturnTypes = Union[ResponseItemJisho, FailedResponseItem]
-
-
-def response_factory(data: JishoMainData) -> ResponseItemJisho:
-    return {
-        "success": True,
-        "main_data": data,
-    }
 
 
 class JishoAPIError(APIError):
     pass
 
 
-def main(word_list: list[Kaki]) -> dict[Kaki, JishoModuleReturnTypes]:
-    results_dict: dict[Kaki, JishoModuleReturnTypes] = {}
+def response_factory(data: JishoMainData) -> ResponseItemJisho:
+    return {
+        "success": True,
+        "error": None,
+        "main_data": data,
+    }
+
+
+def error_response_factory(error: JishoAPIError) -> ResponseItemJisho:
+    return {
+        "success": False,
+        "error": error.to_dict(),
+        "main_data": {
+            "results": [],
+            "extra": [],
+        },
+    }
+
+
+def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemJisho]:
+    results_dict: dict[Kaki, ResponseItemJisho] = {}
 
     def call_script(word: Kaki) -> None:
         results_dict[word] = get_jisho_data(word)
@@ -44,12 +54,12 @@ def main(word_list: list[Kaki]) -> dict[Kaki, JishoModuleReturnTypes]:
     return results_dict
 
 
-def get_jisho_data(word: Kaki) -> JishoModuleReturnTypes:
+def get_jisho_data(word: Kaki) -> ResponseItemJisho:
     try:
         response = call_api(word)
     except JishoAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return api_error_response_factory(api_error)
+        return error_response_factory(api_error)
 
     data = extract_jisho_data(response, word)
     return response_factory(data)

@@ -1,37 +1,45 @@
 from ast import literal_eval
 import json
 import re
-from typing import Union
+from typing import Optional
 
 from bs4 import BeautifulSoup as Soup
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
+from custom_types.exception_types import APIError
 from custom_types.response_types import ResponseItemSuzuki
 from utils import make_single_line
 
 
 NAME = "suzuki"
-SuzukiModuleReturnTypes = Union[ResponseItemSuzuki, FailedResponseItem]
-
-
-def response_factory(accent_list: list[Yomi] = None) -> ResponseItemSuzuki:
-    if accent_list is None:
-        accent_list = []
-    return {
-        "success": True,
-        "main_data": {
-            "accent": accent_list,
-        },
-    }
 
 
 class SuzukiAPIError(APIError):
     pass
 
 
-def main(word_list: list[Kaki]) -> dict[Kaki, SuzukiModuleReturnTypes]:
+def response_factory(accent_list: Optional[list[Yomi]] = None) -> ResponseItemSuzuki:
+    return {
+        "success": True,
+        "error": None,
+        "main_data": {
+            "accent": [] if accent_list is None else accent_list,
+        },
+    }
+
+
+def error_response_factory(error: SuzukiAPIError) -> ResponseItemSuzuki:
+    return {
+        "success": False,
+        "error": error.to_dict(),
+        "main_data": {
+            "accent": [],
+        },
+    }
+
+
+def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemSuzuki]:
     if not word_list:
         return {}
 
@@ -39,7 +47,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, SuzukiModuleReturnTypes]:
         html = get_html(word_list)
     except SuzukiAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word : api_error_response_factory(api_error) for word in word_list}
+        return {word : error_response_factory(api_error) for word in word_list}
 
     word_sections = get_sections(html)
     accent_dict = build_accent_dict(word_sections)

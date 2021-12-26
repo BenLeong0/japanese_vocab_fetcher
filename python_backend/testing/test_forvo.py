@@ -71,6 +71,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
                 "status_code": 400,
                 "url": test_dict["forvo"]["expected_sections"][word]["url"]
             },
+            "main_data": {
+                "audio": [],
+            },
         }
         for word in word_list
     }

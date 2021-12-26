@@ -1,3 +1,5 @@
+import APIErrorDict from "./ResponseError";
+
 export interface WanikaniContextSentence {
     en: string;
     jp: string;
@@ -24,6 +26,7 @@ export interface WanikaniMainData {
 }
 
 export default interface ResponseItemWanikani {
-    main_data: WanikaniMainData;
     success: boolean;
+    error: APIErrorDict | null;
+    main_data: WanikaniMainData;
 }

@@ -1,12 +1,12 @@
 import json
 from threading import Thread
-from typing import Union
+from typing import Optional
 
 from dotenv import dotenv_values
 import requests
 
 from custom_types.alternative_string_types import Kaki, URL
-from custom_types.exception_types import APIError, api_error_response_factory, FailedResponseItem
+from custom_types.exception_types import APIError
 from custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
 from custom_types.response_types import ForvoAudio, ResponseItemForvo
 from utils import decode_unicode
@@ -14,26 +14,34 @@ from utils import decode_unicode
 
 NAME = "forvo"
 API_KEY: str = dotenv_values()['FORVO_API_KEY']
-ForvoModuleReturnTypes = Union[ResponseItemForvo, FailedResponseItem]
-
-
-def response_factory(audio_list: list[ForvoAudio] = None) -> ResponseItemForvo:
-    if audio_list is None:
-        audio_list = []
-    return {
-        "success": True,
-        "main_data": {
-            "audio": audio_list,
-        },
-    }
 
 
 class ForvoAPIError(APIError):
     pass
 
 
-def main(word_list: list[Kaki]) -> dict[Kaki, ForvoModuleReturnTypes]:
-    audio_urls_dict: dict[Kaki, ForvoModuleReturnTypes] = {}
+def response_factory(audio_list: Optional[list[ForvoAudio]] = None) -> ResponseItemForvo:
+    return {
+        "success": True,
+        "error": None,
+        "main_data": {
+            "audio": [] if audio_list is None else audio_list,
+        },
+    }
+
+
+def error_response_factory(error: ForvoAPIError) -> ResponseItemForvo:
+    return {
+        "success": False,
+        "error": error.to_dict(),
+        "main_data": {
+            "audio": [],
+        },
+    }
+
+
+def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemForvo]:
+    audio_urls_dict: dict[Kaki, ResponseItemForvo] = {}
 
     def call_script(word: Kaki) -> None:
         audio_urls_dict[word] = get_audio_urls(word)
@@ -51,12 +59,12 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ForvoModuleReturnTypes]:
     return audio_urls_dict
 
 
-def get_audio_urls(word: Kaki) -> ForvoModuleReturnTypes:
+def get_audio_urls(word: Kaki) -> ResponseItemForvo:
     try:
         response = call_api(word)
     except ForvoAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return api_error_response_factory(api_error)
+        return error_response_factory(api_error)
 
     url_list = extract_audio_list(response, word)
     return response_factory(url_list)

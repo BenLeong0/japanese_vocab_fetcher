@@ -1,8 +1,11 @@
+import APIErrorDict from "./ResponseError";
+
 export interface OJADMainData {
     accent: string[];
 }
 
 export default interface ResponseItemOJAD {
-    main_data: OJADMainData;
     success: boolean;
+    error: APIErrorDict | null;
+    main_data: OJADMainData;
 }
