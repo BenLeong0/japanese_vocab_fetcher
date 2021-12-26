@@ -15,9 +15,11 @@ export interface InputPageProps {
 const InputPage: React.FC<InputPageProps> = ({ setWordList }) => {
     const httpService = new HttpService();
     const [text, setText] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const sendWords = async (event: React.FormEvent<HTMLButtonElement>) => {
-        event.preventDefault()
+        event.preventDefault();
+        setIsLoading(true);
 
         const words: string[] = getWords(text);
         const wordsString: string = JSON.stringify(words);
@@ -26,24 +28,29 @@ const InputPage: React.FC<InputPageProps> = ({ setWordList }) => {
             words: wordsString,
         };
         const resp = await httpService.makeGetRequest("/words", queryParams);
+        setIsLoading(false);
         console.log(resp);
         setWordList(resp);
     }
 
     return (
         <div className="input-page">
-            <TextareaAutosize
-                name="main-input"
-                className="main-input"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-            <div className="words-display">
-                {getWords(text).map((word) =>
-                    <div className="word-display">{word}</div>
-                )}
-            </div>
-            <button className="button-primary" type="submit" onClick={sendWords}>Submit</button>
+            { !isLoading ? (
+                <>
+                <TextareaAutosize
+                    name="main-input"
+                    className="main-input"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                />
+                <div className="words-display">
+                    {getWords(text).map((word) =>
+                        <div className="word-display">{word}</div>
+                    )}
+                </div>
+                <button className="button-primary" type="submit" onClick={sendWords}>Submit</button></>
+            ) : <div></div>
+            }
         </div>
     );
 }
