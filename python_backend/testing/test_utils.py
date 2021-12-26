@@ -11,6 +11,10 @@ class FakeRequest:
         self.args = {"words": json.dumps(words)}
 
 
+#####################
+## TESTS  ###########
+#####################
+
 @pytest.mark.parametrize(
     "fake_request, expected_result",
     [
