@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ErrorIcon from "../../assets/icons/icon_error.svg";
+import './ErrorMessage.css'
 
 
 interface ErrorMessageProps {
