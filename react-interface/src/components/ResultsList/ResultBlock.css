@@ -3,3 +3,16 @@
     max-width: 1120px;
     border: 1px solid lightgray;
 }
+
+.result-left-col {
+    width: 320px;
+}
+
+
+.result-right-col {
+    width: 800px;
+}
+.result-col-separator {
+    border-left: 2px solid #000;
+    height: 100%;
+}
