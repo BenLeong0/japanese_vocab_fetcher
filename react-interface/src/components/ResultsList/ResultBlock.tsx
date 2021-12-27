@@ -5,6 +5,7 @@ import ResultTitle from './ResultTitle/ResultTitle';
 
 import './ResultBlock.css';
 import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
+import ResultReadings from './ResultReadings/ResultReadings';
 
 
 interface ResultProps {
@@ -26,7 +27,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
             { isExpanded &&
                 <div className="flex-row">
                     <div className="result-left-col flex-col">
-                        left
+                        <ResultReadings data={data} />
                     </div>
                     <div className="result-col-separator">&nbsp;</div>
                     <div className="result-right-col flex-col">
