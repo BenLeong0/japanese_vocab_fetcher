@@ -2,7 +2,7 @@ import APIErrorDict from "./ResponseError";
 
 export interface WanikaniContextSentence {
     en: string;
-    jp: string;
+    ja: string;
 }
 
 export interface WanikaniPronunciationAudioMetadata {
