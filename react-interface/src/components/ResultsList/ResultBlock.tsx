@@ -22,15 +22,17 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                 isExpanded={isExpanded}
                 toggleIsExpanded={toggleIsExpanded}
             >{ data.word }</ResultTitle>
-            { isExpanded && <div className="flex-row">
-                <div className="result-left-col flex-col">
-                    left
+            { isExpanded &&
+                <div className="flex-row">
+                    <div className="result-left-col flex-col">
+                        left
+                    </div>
+                    <div className="result-col-separator">&nbsp;</div>
+                    <div className="result-right-col flex-col">
+                        right
+                    </div>
                 </div>
-                <div className="result-col-separator">&nbsp;</div>
-                <div className="result-right-col flex-col">
-                    right
-                </div>
-            </div> }
+            }
         </div>
     );
 }
