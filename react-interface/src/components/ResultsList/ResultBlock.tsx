@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import FullResponseItem from '../../types/FullResponseItem';
 import ResultTitle from './ResultTitle/ResultTitle';
 
-import './ResultBlock.css'
+import './ResultBlock.css';
+import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
 
 
 interface ResultProps {
@@ -33,6 +34,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                     </div>
                 </div>
             }
+            <ResultToggleBar isExpanded={isExpanded} toggleIsExpanded={toggleIsExpanded}/>
         </div>
     );
 }
