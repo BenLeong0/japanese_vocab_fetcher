@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import FullResponseItem from '../../types/FullResponseItem';
 import ResultTitle from './ResultTitle/ResultTitle';
@@ -11,11 +11,17 @@ interface ResultProps {
 }
 
 const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
+    const [isExpanded, setIsExpanded] = useState<boolean>(true);
+    const toggleIsExpanded = () => setIsExpanded(!isExpanded);
+
     // const wanikaniData = data.wanikani;
 
     return (
         <div className="result-block flex-col">
-            <ResultTitle>{ data.word }</ResultTitle>
+            <ResultTitle
+                isExpanded={isExpanded}
+                toggleIsExpanded={toggleIsExpanded}
+            >{ data.word }</ResultTitle>
             <div className="flex-row">
                 <div className="result-left-col flex-col">
                     left

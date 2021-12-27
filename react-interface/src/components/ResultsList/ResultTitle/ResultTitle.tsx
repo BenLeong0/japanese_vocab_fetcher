@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './ResultTitle.css'
 
 
 interface ResultTitleProps {
     children: string;
+    isExpanded: boolean;
+    toggleIsExpanded: () => void;
 }
 
-const ResultTitle: React.FunctionComponent<ResultTitleProps> = ({ children }) => {
-    const [isExpanded, setIsExpanded] = useState<boolean>(true);
-    const toggleState = () => setIsExpanded(!isExpanded)
+const ResultTitle: React.FC<ResultTitleProps> = ({ children, isExpanded, toggleIsExpanded }) => {
 
     return (
         <div className="result-title">
             { children }
             <div
                 className="title-collapser"
-                onClick={toggleState}
+                onClick={toggleIsExpanded}
             >{ isExpanded ? "collapse" : "expand" }</div>
         </div>
     );
