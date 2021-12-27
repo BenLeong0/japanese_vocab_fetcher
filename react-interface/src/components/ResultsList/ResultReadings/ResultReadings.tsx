@@ -19,7 +19,7 @@ const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
 
     return (
         <div className="result-readings">
-            <div className="readings-title">
+            <div className="left-col-title">
                 Readings
             </div>
             {sitesAndReadings.map(({title, readings}) =>
