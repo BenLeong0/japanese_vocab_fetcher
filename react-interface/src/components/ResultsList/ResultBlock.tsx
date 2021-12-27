@@ -22,7 +22,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                 isExpanded={isExpanded}
                 toggleIsExpanded={toggleIsExpanded}
             >{ data.word }</ResultTitle>
-            <div className="flex-row">
+            { isExpanded && <div className="flex-row">
                 <div className="result-left-col flex-col">
                     left
                 </div>
@@ -30,7 +30,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                 <div className="result-right-col flex-col">
                     right
                 </div>
-            </div>
+            </div> }
         </div>
     );
 }
