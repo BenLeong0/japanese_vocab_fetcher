@@ -2,6 +2,8 @@ import React from 'react';
 
 import FullResponseItem from '../../../types/FullResponseItem';
 
+import './ResultTags.css'
+
 
 interface ResultTagProps {
     data: FullResponseItem;
@@ -10,11 +12,11 @@ interface ResultTagProps {
 const ResultTags: React.FC<ResultTagProps> = ({ data }) => {
     const tags = extractTags(data);
 
-    return ( <>
+    return ( <div className="result-tags-container flex-row">
         { tags.map(tag =>
             <div className="result-tag">{ tag }</div>
         )}
-    </> );
+    </div> );
 }
 
 
