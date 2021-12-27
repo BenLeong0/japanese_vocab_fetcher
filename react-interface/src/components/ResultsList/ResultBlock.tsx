@@ -29,7 +29,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                     <div className="result-left-col flex-col">
                         <ResultReadings data={data} />
                     </div>
-                    <div className="result-col-separator">&nbsp;</div>
+                    <div className="result-col-separator" />
                     <div className="result-right-col flex-col">
                         right
                     </div>
