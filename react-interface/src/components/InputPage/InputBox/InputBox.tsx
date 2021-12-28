@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 import FullResponseItem from '../../../types/FullResponseItem';
@@ -21,9 +21,8 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
     const [text, setText] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const sendWords = async (event: React.FormEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-
+    const sendWords = useRef(() => {})
+    sendWords.current = async () => {
         setIsLoading(true);
         setErrorOccurred(false);
 
@@ -46,6 +45,17 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
         }
     }
 
+    const handleUserKeyPress = useCallback(e => {
+        if (e.key === "Enter" && e.ctrlKey) {sendWords.current()}
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener("keydown", handleUserKeyPress);
+        return () => {
+            window.removeEventListener("keydown", handleUserKeyPress);
+        };
+    }, [handleUserKeyPress]);
+
     const textArea = (
         <TextareaAutosize
             name="main-input"
@@ -65,7 +75,7 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
         <button
             className="button-primary vertical-separation-medium"
             type="submit"
-            onClick={sendWords}
+            onClick={(_) => sendWords.current()}
         >
             Submit
         </button>
