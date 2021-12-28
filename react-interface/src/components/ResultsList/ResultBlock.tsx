@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import ResultTitle from './ResultTitle/ResultTitle';
+import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
 
 import FullResponseItem from '../../types/FullResponseItem';
-import ResultTitle from './ResultTitle/ResultTitle';
 
 import './ResultBlock.css';
-import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
 
 
 interface ResultProps {
