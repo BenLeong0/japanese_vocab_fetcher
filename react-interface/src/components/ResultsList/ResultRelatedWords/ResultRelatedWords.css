@@ -1,0 +1,14 @@
+.related-words-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 4px;
+}
+
+.related-word {
+    cursor: pointer;
+    background-color: skyblue;
+    line-height: 20px;
+    padding: 2px 12px;
+    margin: 2px 4px;
+    border-radius: 20px;
+}
