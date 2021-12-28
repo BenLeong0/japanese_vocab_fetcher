@@ -3,7 +3,7 @@ import ResultBlock from './ResultBlock'
 
 import FullResponseItem from '../../types/FullResponseItem';
 
-import testWordList from './testWordList';
+// import testWordList from './testWordList';
 import './ResultsList.css'
 
 
@@ -18,7 +18,7 @@ const ResultsList: React.FC<ResultsListProps> = ({ wordList }) => {
         <div className="results-list">
             {
                 wordList.map(wordData =>
-                    <ResultBlock data={wordData} />
+                    <ResultBlock key={wordData.word} data={wordData} />
                 )
             }
         </div>

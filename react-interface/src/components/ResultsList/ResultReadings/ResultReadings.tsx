@@ -23,7 +23,7 @@ const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
                 Readings
             </div>
             {sitesAndReadings.map(({title, readings}) =>
-                <ResultsReadingsRow title={title} readings={readings} />
+                <ResultsReadingsRow key={title} title={title} readings={readings} />
             )}
         </div>
      );

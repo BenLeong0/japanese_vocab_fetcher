@@ -14,7 +14,7 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
         <div className="result-audio-module">
             <div className="audio-module-title">{ moduleTitle }</div>
             {audioData.map(audio =>
-                <ResultAudioRow audioData={audio}/>
+                <ResultAudioRow key={audio.speaker} audioData={audio}/>
             )}
         </div>
     );
