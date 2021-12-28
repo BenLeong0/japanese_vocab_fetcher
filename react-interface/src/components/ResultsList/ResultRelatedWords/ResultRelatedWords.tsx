@@ -13,7 +13,7 @@ interface ResultRelatedWordsProps {
 const ResultRelatedWords: React.FC<ResultRelatedWordsProps> = ({ data }) => {
     return (
         <div className="result-related-words vertical-separation-small">
-            <div className="left-col-title vertical-separation-small">
+            <div className="left-col-title">
                 Related words
             </div>
             <div className="related-words-container flex-row">
