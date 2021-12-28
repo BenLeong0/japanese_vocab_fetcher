@@ -3,7 +3,7 @@ import ResultBlock from './ResultBlock'
 
 import FullResponseItem from '../../types/FullResponseItem';
 
-import testWordList from './testWordList';
+// import testWordList from './testWordList';
 import './ResultsList.css'
 
 
@@ -12,12 +12,10 @@ interface ResultsListProps {
 }
 
 const ResultsList: React.FC<ResultsListProps> = ({ wordList }) => {
-    // TODO: Revert to not using testWordList
-
     return (
         <div className="results-list">
             {
-                testWordList.map(wordData =>
+                wordList.map(wordData =>
                     <ResultBlock data={wordData} />
                 )
             }
