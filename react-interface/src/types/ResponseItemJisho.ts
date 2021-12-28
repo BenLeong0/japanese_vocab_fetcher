@@ -1,8 +1,8 @@
 import APIErrorDict from "./ResponseError";
 
 export interface JishoAPIItemJapanese {
-    word: string;
-    reading: string;
+    word?: string;
+    reading?: string;
 }
 
 export interface JishoAPIItemLink {
@@ -20,7 +20,7 @@ export interface JishoAPIItemSense {
     antonyms: string[];
     source: string[];
     info: string[];
-    sentences: string[];
+    sentences?: string[];
 }
 
 export interface JishoAPIItemAttribution {
