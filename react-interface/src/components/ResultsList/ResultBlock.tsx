@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import ResultTitle from './ResultTitle/ResultTitle';
 
 import FullResponseItem from '../../types/FullResponseItem';
-import ResultTitle from './ResultTitle/ResultTitle';
 
 import './ResultBlock.css';
 
