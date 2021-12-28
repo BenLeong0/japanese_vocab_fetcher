@@ -11,7 +11,7 @@ const ResultsReadingsRow: React.FC<ResultsReadingsRowProps> = ({ title, readings
         <div className="readings-row">
             <div className="readings-row-left">{ title }:</div>
             <div className="readings-row-right">
-                { readings.map(reading => <div className="reading">{ reading }</div>) }
+                { readings.map((reading, index) => <div key={index} className="reading">{ reading }</div>) }
             </div>
         </div>
      );
