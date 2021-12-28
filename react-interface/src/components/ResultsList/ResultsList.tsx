@@ -12,8 +12,6 @@ interface ResultsListProps {
 }
 
 const ResultsList: React.FC<ResultsListProps> = ({ wordList }) => {
-    // TODO: Revert to not using testWordList
-
     return (
         <div className="results-list">
             {
