@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import FullResponseItem from '../../types/FullResponseItem';
 import ResultTitle from './ResultTitle/ResultTitle';
 
-import './ResultBlock.css'
+import './ResultBlock.css';
 
 
 interface ResultProps {
