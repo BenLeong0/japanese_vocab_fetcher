@@ -15,7 +15,7 @@ const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData }) => {
     const [audio] = useState(new Audio(audioData.url));
     const [playing, setPlaying] = useState(false);
 
-    const toggle = () => setPlaying(!playing);
+    const togglePlaying = () => setPlaying(!playing);
 
     useEffect(() => {
         audio.currentTime = 0;
@@ -37,7 +37,7 @@ const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData }) => {
                 src={ playing ? IconStopButton : IconPlayButton }
                 alt="audio player icon"
                 className="audio-player"
-                onClick={toggle}
+                onClick={togglePlaying}
             />
             <div className="result-audio-speaker">{ audioData.speaker }</div>
             <div className="result-audio-subtitle">{ audioData.subtitle }</div>
