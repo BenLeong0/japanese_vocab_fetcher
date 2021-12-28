@@ -17,7 +17,7 @@ const ResultsList: React.FC<ResultsListProps> = ({ wordList }) => {
     return (
         <div className="results-list">
             {
-                testWordList.map(wordData =>
+                wordList.map(wordData =>
                     <ResultBlock data={wordData} />
                 )
             }
