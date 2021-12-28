@@ -18,6 +18,7 @@ const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData }) => {
     const toggle = () => setPlaying(!playing);
 
     useEffect(() => {
+        audio.currentTime = 0;
         playing ? audio.play() : audio.pause();
       },
       [playing]
