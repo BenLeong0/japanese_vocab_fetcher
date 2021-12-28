@@ -1,12 +1,13 @@
 .result-tags-container {
     flex-wrap: wrap;
     justify-content: center;
+    padding: 4px;
 }
 
 .result-tag {
     background-color: aquamarine;
     line-height: 20px;
-    padding: 4px 12px;
-    margin: 8px;
+    padding: 2px 12px;
+    margin: 2px 4px;
     border-radius: 20px;
 }
