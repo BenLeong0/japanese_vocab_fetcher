@@ -1,11 +1,3 @@
-.readings-title {
-    text-align: center;
-    font-size: 24px;
-    line-height: 36px;
-    font-weight: bold;
-    background-color: lightgray;
-}
-
 .readings-row {
     display: flex;
     flex-direction: row;
