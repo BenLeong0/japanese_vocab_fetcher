@@ -32,7 +32,7 @@ const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData }) => {
     }, []);
 
     return (
-        <div className="result-audio">
+        <div className="result-audio-row flex-row">
             <img
                 src={ playing ? IconStopButton : IconPlayButton }
                 alt="audio player icon"
@@ -40,7 +40,7 @@ const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData }) => {
                 onClick={togglePlaying}
             />
             <div className="result-audio-speaker">{ audioData.speaker }</div>
-            <div className="result-audio-subtitle">{ audioData.subtitle }</div>
+            <div className="result-audio-subtitle">{ audioData.subtitle || "" }</div>
         </div>
      );
 }
