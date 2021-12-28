@@ -37,3 +37,15 @@
     color: #c3cfd9;
     font-style: italic;
 }
+
+.audio-expand-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 0 16px;
+    cursor: pointer;
+    background-color: #dfe6ed;
+}
+
+.audio-expand-toggle img {
+    padding: 2px;
+}
