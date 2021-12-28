@@ -1,4 +1,4 @@
-import React, { useCallback,useState, useEffect, useRef } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
 
@@ -67,8 +67,8 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
     );
     const wordsDisplay = (
         <div className="words-display vertical-separation-small">
-            {utilsService.extractWordsFromInput(text).map((word) =>
-                <div className="word-display">{word}</div>
+            {utilsService.extractWordsFromInput(text).map((word, index) =>
+                <div key={index} className="word-display">{word}</div>
             )}
         </div>
     );
