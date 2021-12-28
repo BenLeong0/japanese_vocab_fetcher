@@ -17,7 +17,7 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
     const toggleIsExpanded = () => setIsExpanded(!isExpanded);
 
     return (
-        <div className="result-audio-module">
+        <div className="result-audio-module vertical-separation-small">
             <div className="audio-module-title">{ moduleTitle }</div>
             {audioData.map((audio, rowIndex) =>
                 <ResultAudioRow key={audio.speaker} rowIndex={rowIndex} audioData={audio} isExpanded={isExpanded}/>
