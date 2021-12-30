@@ -1,0 +1,25 @@
+.result-block {
+    width: 100%;
+    max-width: 1120px;
+    border: 1px solid lightgray;
+}
+
+.result-left-col {
+    width: 320px;
+}
+
+
+.result-right-col {
+    width: 800px;
+}
+.result-col-separator {
+    border-left: 2px solid #000;
+}
+
+.left-col-title {
+    text-align: center;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: bold;
+    background-color: #dfe6ed;
+}

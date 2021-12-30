@@ -1,0 +1,18 @@
+.result-title {
+    position: relative;
+    font-size: 72px;
+    font-weight: bold;
+    margin: 6px 16px;
+}
+
+.title-collapser {
+    position: absolute;
+    right: 8px;
+    bottom: 4px;
+
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: italic;
+    color: #2c88d9;
+}
