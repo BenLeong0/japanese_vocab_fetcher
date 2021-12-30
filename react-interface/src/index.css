@@ -1,19 +1,19 @@
 body {
-  margin: 0;
-  font-family:"Alte DIN 1451 Mittelschrift gepraegt", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #82ed5b;
+    margin: 0;
+    font-family: "Alte DIN 1451 Mittelschrift gepraegt", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #82ed5b;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
 :root {
-  --green-light: #aedb1e;
-  --green-dark: #99bf1f;
-  --white: #fff;
-  --off-black: #555;
+    --green-light: #aedb1e;
+    --green-dark: #99bf1f;
+    --white: #fff;
+    --off-black: #555;
 }
