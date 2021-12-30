@@ -104,7 +104,7 @@ will be of the following form, JSON encoded:
       "error": null,
       "main_data": {
         "audio": [{...}, ...],
-        "sentences": [{"en": ..., "jp": ...,}, ...],
+        "sentences": [{"en": ..., "ja": ...,}, ...],
       },
     }
   },
