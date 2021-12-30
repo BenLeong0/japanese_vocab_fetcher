@@ -39,7 +39,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                     </div>
                     <div className="result-col-separator" />
                     <div className="result-right-col flex-col">
-                        <ResultDefinitions data={data}/ >
+                        <ResultDefinitions data={data} />
                         <ResultSentences data={data} />
                     </div>
                 </div>
