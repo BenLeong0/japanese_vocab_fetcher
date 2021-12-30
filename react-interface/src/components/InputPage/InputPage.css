@@ -1,32 +1,17 @@
 .input-page {
-    margin-top: 40px;
+    padding-top: 40px;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.main-input {
-    width: 80%;
-    max-width: 600px;
-    resize: vertical;
+.error-message {
+    font-size: 24px;
+    line-height: 24px;
 }
 
-.input-page button {
-    margin: 10px auto;
-    width: 100px;
-}
-
-.words-display {
-    display: flex;
-    width: 600px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.word-display {
-    color: white;
-    background-color: var(--green-light);
-    padding: 1px 7px;
-    border-radius: 10px;
-    margin: 8px 3px;
+.error-message img {
+    color: red;
+    height: 18px;
+    margin: 0 8px;
 }

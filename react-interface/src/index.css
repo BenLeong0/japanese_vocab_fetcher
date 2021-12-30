@@ -17,3 +17,15 @@ code {
     --white: #fff;
     --off-black: #555;
 }
+
+.vertical-separation-small {
+    margin: 0 0 10px;
+}
+
+.vertical-separation-medium {
+    margin: 0 0 20px;
+}
+
+.vertical-separation-large {
+    margin: 0 0 40px;
+}

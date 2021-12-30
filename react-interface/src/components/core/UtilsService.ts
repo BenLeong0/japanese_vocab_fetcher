@@ -10,4 +10,8 @@ export default class UtilsService {
         return url + "?" + queryString;
     }
 
+    extractWordsFromInput = (s: string): string[] => {
+        return s.split(/\s+/).filter(char => char !== "");
+    }
+
 }

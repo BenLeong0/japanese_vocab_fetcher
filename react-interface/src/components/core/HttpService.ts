@@ -25,6 +25,9 @@ export default class HttpService {
         };
 
         let data: any = await fetch(url, requestOptions);
+        if (data.status === 404) {
+            throw new Error("An error occurred: " + data.statusText);
+        }
         let resp: any = await data.json();
         return resp;
     }
