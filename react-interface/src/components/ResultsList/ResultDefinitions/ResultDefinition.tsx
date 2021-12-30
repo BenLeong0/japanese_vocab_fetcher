@@ -28,7 +28,7 @@ const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) =
                 )}
                 {
                     showOtherForms() &&
-                    <div className="result-definition-other-forms">
+                    <div className="result-definition-other-forms flex-col">
                         <div className="result-other-forms-title">Other forms</div>
                         <div className="result-other-forms-words">
                             { definitionData.japanese.slice(1).map(buildTitleText).join("、") }
