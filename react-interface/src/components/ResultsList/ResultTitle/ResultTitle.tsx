@@ -13,7 +13,7 @@ const ResultTitle: React.FC<ResultTitleProps> = ({ children, isExpanded, toggleI
 
     return (
         <div className="result-title">
-            { children }
+            <div className="result-title-text">{ children }</div>
             <div
                 className="title-collapser"
                 onClick={toggleIsExpanded}

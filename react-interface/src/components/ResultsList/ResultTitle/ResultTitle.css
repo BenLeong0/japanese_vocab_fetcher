@@ -1,6 +1,10 @@
 .result-title {
     position: relative;
-    font-size: 72px;
+}
+
+.result-title-text {
+    font-size: 90px;
+    line-height: 108px;
     font-weight: bold;
     margin: 6px 16px;
 }
