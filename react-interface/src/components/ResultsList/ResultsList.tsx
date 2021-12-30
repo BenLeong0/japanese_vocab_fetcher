@@ -3,6 +3,7 @@ import ResultBlock from './ResultBlock';
 
 import FullResponseItem from '../../types/FullResponseItem';
 
+// import testWordList from './testWordList';
 import './ResultsList.css';
 
 
