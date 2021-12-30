@@ -15,6 +15,8 @@ const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) =
         return main + subtext;
     }
 
+    const showOtherForms = () => definitionData.japanese.length > 1;
+
     return (
         <div className="result-definition flex-col">
             <div className="result-definition-title">
@@ -25,7 +27,7 @@ const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) =
                     <ResultDefinitionSense key={index} ordinality={index+1} sense={sense} />
                 )}
                 {
-                    definitionData.japanese.length > 1 &&
+                    showOtherForms() &&
                     <div className="result-definition-other-forms">
                         <div className="result-other-forms-title">Other forms</div>
                         <div className="result-other-forms-words">
