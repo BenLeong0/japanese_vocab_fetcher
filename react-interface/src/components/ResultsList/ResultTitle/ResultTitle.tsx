@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ResultTitle.css'
+import './ResultTitle.css';
 
 
 interface ResultTitleProps {
@@ -17,7 +17,9 @@ const ResultTitle: React.FC<ResultTitleProps> = ({ children, isExpanded, toggleI
             <div
                 className="title-collapser"
                 onClick={toggleIsExpanded}
-            >{ isExpanded ? "collapse" : "expand" }</div>
+            >
+                { isExpanded ? "collapse" : "expand" }
+            </div>
         </div>
     );
 }
