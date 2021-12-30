@@ -1,0 +1,32 @@
+.readings-row {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid lightgray;
+}
+
+.readings-row-left {
+    width: 95px;
+    border-right: 1px solid lightgray;
+    padding: 4px 8px;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.readings-row-right {
+    display: flex;
+    flex-wrap: wrap;
+    width: 224px;
+}
+
+.reading {
+    font-size: 16px;
+    height: 22px;
+    line-height: 22px;
+
+    padding: 0 2px;
+    margin: 4px;
+    background-color: orange;
+    border: 2px solid darkorange;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ResultReadings from './ResultReadings/ResultReadings';
 import ResultTitle from './ResultTitle/ResultTitle';
 import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
 
@@ -26,7 +27,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
             { isExpanded &&
                 <div className="flex-row">
                     <div className="result-left-col flex-col">
-                        left
+                        <ResultReadings data={data} />
                     </div>
                     <div className="result-col-separator" />
                     <div className="result-right-col flex-col">
