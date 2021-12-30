@@ -8,7 +8,7 @@ interface ResultDefinitionSenseProps {
     sense: JishoAPIItemSense;
 }
 
-const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinality, sense}) => {
+const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinality, sense }) => {
     return (
         <div className="result-definition-sense flex-col">
             <div className="sense-part-of-speech">{
@@ -16,7 +16,7 @@ const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinalit
                 (sense.tags.length > 0 ? " (" + sense.tags.join(", ") + ")" : "")
             }</div>
             <div className="sense-english-definition">
-                { ordinality }. {sense.english_definitions.join("; ")}
+                { ordinality }. { sense.english_definitions.join("; ") }
             </div>
         </div>
     );
