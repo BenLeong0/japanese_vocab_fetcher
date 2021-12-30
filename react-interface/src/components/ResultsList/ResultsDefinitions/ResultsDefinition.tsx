@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import { JishoAPIItem } from '../../../types/ResponseItemJisho';
 import ResultsDefinitionSense from './ResultsDefinitionSense';
 
