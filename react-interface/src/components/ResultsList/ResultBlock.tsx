@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ResultAudio from './ResultAudio/ResultAudio';
 import ResultReadings from './ResultReadings/ResultReadings';
 import ResultRelatedWords from './ResultRelatedWords/ResultRelatedWords';
 import ResultTags from './ResultTags/ResultTags';
@@ -8,7 +9,6 @@ import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
 import FullResponseItem from '../../types/FullResponseItem';
 
 import './ResultBlock.css';
-import ResultAudio from './ResultAudio/ResultAudio';
 
 
 interface ResultProps {
