@@ -15,7 +15,8 @@ const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) =
         return main + subtext;
     }
 
-    const showOtherForms = (): boolean => (definitionData.japanese.length > 1);
+    const otherForms = definitionData.japanese.slice(1);
+    const showOtherForms = (): boolean => (otherForms.length > 0);
 
     return (
         <div className="result-definition flex-col">
@@ -31,7 +32,7 @@ const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) =
                     <div className="result-definition-other-forms flex-col">
                         <div className="result-other-forms-title">Other forms</div>
                         <div className="result-other-forms-words">
-                            { definitionData.japanese.slice(1).map(buildTitleText).join("、") }
+                            { otherForms.map(buildTitleText).join("、") }
                         </div>
                     </div>
                 }
