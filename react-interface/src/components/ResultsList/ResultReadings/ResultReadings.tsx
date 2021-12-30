@@ -3,7 +3,7 @@ import React from 'react';
 import FullResponseItem from '../../../types/FullResponseItem';
 
 import './ResultReadings.css'
-import ResultsReadingsRow from './ResultReadingsRow';
+import ResultReadingsRow from './ResultReadingsRow';
 
 
 interface ResultReadingsProps {
@@ -23,7 +23,7 @@ const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
                 Readings
             </div>
             {sitesAndReadings.map(({title, readings}) =>
-                <ResultsReadingsRow key={title} title={title} readings={readings} />
+                <ResultReadingsRow key={title} title={title} readings={readings} />
             )}
         </div>
      );
