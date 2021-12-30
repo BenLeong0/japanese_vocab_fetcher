@@ -3,12 +3,12 @@
 }
 
 .result-sentences-container {
-    margin: 2px 16px;
+    margin: 2px 16px 12px;
 }
 
 .result-sentence {
     margin: 4px 16px;
-    border: 1px dashed white;
+    border: 2px dashed white;
     padding: 4px 8px;
 
     font-style: 20px;
