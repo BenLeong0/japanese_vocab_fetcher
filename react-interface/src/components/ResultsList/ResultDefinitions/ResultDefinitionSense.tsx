@@ -10,14 +10,14 @@ interface ResultDefinitionSenseProps {
 
 const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinality, sense }) => {
 
-    const dfn = ordinality + '. ' + sense.english_definitions.join("; ");
+    const dfn: string = ordinality + '. ' + sense.english_definitions.join("; ");
 
-    const getWordType = () => {
+    const getWordType = (): string => {
         let wordType = sense.parts_of_speech.join(", ");
         if (sense.tags.length > 0) {
             wordType += " (" + sense.tags.join(", ") + ")";
         }
-        return wordType
+        return wordType;
     }
 
     return (
