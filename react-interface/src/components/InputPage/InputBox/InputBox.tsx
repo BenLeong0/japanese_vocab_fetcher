@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
+import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
 
 import FullResponseItem from '../../../types/FullResponseItem';
 import QueryParams from '../../../types/QueryParams';
@@ -81,10 +82,8 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
         </button>
     );
 
-    const loadingSpinner = <div className="loader vertical-separation-large"></div>;
-
     return (
-        isLoading ? loadingSpinner : <>{textArea}{wordsDisplay}{submitButton}</>
+        isLoading ? <LoadingSpinner /> : <>{textArea}{wordsDisplay}{submitButton}</>
     );
 }
 
