@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ResultTitle.css'
+import './ResultTitle.css';
 
 
 interface ResultTitleProps {
