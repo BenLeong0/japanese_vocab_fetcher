@@ -23,3 +23,11 @@
     font-weight: bold;
     background-color: var(--grey);
 }
+
+.right-col-title {
+    padding: 8px 16px;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: bold;
+    background-color: var(--grey);
+}
