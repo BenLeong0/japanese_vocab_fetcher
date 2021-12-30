@@ -13,7 +13,7 @@ const ResultSentence: React.FC<ResultSentenceProps> = ({ sentence, source }) => 
         <div className="result-sentence flex-col">
             <div className="result-sentence-top flex-row">
                 <div className="result-sentence-ja">{ sentence.ja }</div>
-                <div className="result-sentence-source">- { source }</div>
+                <div className="result-sentence-source">{ `- ${source}` }</div>
             </div>
             <div className="result-sentence-en">{ sentence.en }</div>
         </div>
