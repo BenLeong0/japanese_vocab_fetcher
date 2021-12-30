@@ -8,7 +8,7 @@ interface ResultDefinitionSenseProps {
     sense: JishoAPIItemSense;
 }
 
-const ResultsDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinality, sense}) => {
+const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinality, sense}) => {
     return (
         <div className="result-definition-sense flex-col">
             <div className="sense-part-of-speech">{
@@ -22,4 +22,4 @@ const ResultsDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinali
     );
 }
 
-export default ResultsDefinitionSense;
+export default ResultDefinitionSense;

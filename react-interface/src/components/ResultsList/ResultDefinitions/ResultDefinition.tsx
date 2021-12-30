@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { JishoAPIItem } from '../../../types/ResponseItemJisho';
-import ResultsDefinitionSense from './ResultsDefinitionSense';
+import ResultDefinitionSense from './ResultDefinitionSense';
 
 
-interface ResultsDefinitionProps {
+interface ResultDefinitionProps {
     definitionData: JishoAPIItem;
 }
 
-const ResultsDefinition: React.FC<ResultsDefinitionProps> = ({ definitionData }) => {
+const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) => {
     return (
         <div className="result-definition flex-col">
             <div className="result-definition-title">
@@ -21,7 +21,7 @@ const ResultsDefinition: React.FC<ResultsDefinitionProps> = ({ definitionData })
             </div>
             <div className="result-definition-senses-container flex-col">
                 { definitionData.senses.map((sense, index) =>
-                    <ResultsDefinitionSense key={index} ordinality={index+1} sense={sense} />
+                    <ResultDefinitionSense key={index} ordinality={index+1} sense={sense} />
                 )}
                 {
                     definitionData.japanese.length > 1 &&
@@ -42,4 +42,4 @@ const ResultsDefinition: React.FC<ResultsDefinitionProps> = ({ definitionData })
     );
 }
 
-export default ResultsDefinition;
+export default ResultDefinition;
