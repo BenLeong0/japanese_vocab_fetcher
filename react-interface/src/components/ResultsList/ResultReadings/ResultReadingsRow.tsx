@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-interface ResultsReadingsRowProps {
+interface ResultReadingsRowProps {
     title: string;
     readings: string[];
 }
 
-const ResultsReadingsRow: React.FC<ResultsReadingsRowProps> = ({ title, readings }) => {
+const ResultReadingsRow: React.FC<ResultReadingsRowProps> = ({ title, readings }) => {
     return (
         <div className="readings-row">
             <div className="readings-row-left">{ title }:</div>
@@ -17,4 +17,4 @@ const ResultsReadingsRow: React.FC<ResultsReadingsRowProps> = ({ title, readings
      );
 }
 
-export default ResultsReadingsRow;
+export default ResultReadingsRow;
