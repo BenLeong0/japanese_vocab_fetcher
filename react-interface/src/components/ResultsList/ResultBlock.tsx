@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ResultAudio from './ResultAudio/ResultAudio';
+import ResultsDefinitions from './ResultsDefinitions/ResultsDefinitions';
 import ResultReadings from './ResultReadings/ResultReadings';
 import ResultRelatedWords from './ResultRelatedWords/ResultRelatedWords';
 import ResultTags from './ResultTags/ResultTags';
@@ -37,7 +38,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                     </div>
                     <div className="result-col-separator" />
                     <div className="result-right-col flex-col">
-                        right
+                        <ResultsDefinitions data={data}/>
                     </div>
                 </div>
             }
