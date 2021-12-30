@@ -1,9 +1,9 @@
 import React from 'react';
-
-import FullResponseItem from '../../../types/FullResponseItem';
 import ResultDefinition from './ResultDefinition';
 
-import './ResultDefinitions.css'
+import FullResponseItem from '../../../types/FullResponseItem';
+
+import './ResultDefinitions.css';
 
 
 interface ResultDefinitionsProps {
