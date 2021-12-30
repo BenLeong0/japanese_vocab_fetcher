@@ -1,5 +1,5 @@
 .result-audio {
-    background-color: #f7f9fa;
+    background-color: var(--grey-light);
 }
 
 .audio-module-title {
@@ -20,7 +20,7 @@
     height: 24px;
     width: 24px;
     padding: 4px;
-    background-color: #dfe6ed;
+    background-color: var(--grey);
 }
 
 .result-audio-speaker {
@@ -43,7 +43,7 @@
     justify-content: center;
     margin: 0 16px;
     cursor: pointer;
-    background-color: #dfe6ed;
+    background-color: var(--grey);
 }
 
 .audio-expand-toggle img {
