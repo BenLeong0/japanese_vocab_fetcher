@@ -1,6 +1,38 @@
 .result-definition-title {
     padding: 4px 16px;
     background-color: var(--grey-light);
-    font-size: 60px;
+    font-size: 58px;
     line-height: 72px;
+}
+
+.result-definition-senses-container {
+    margin: 16px 32px;
+}
+
+.result-definition-sense {
+    margin-top: 8px;
+}
+
+.sense-part-of-speech {
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--grey-dark);
+}
+
+.sense-english-definition {
+    font-size: 28px;
+    line-height: 36px;
+}
+
+.result-other-forms-title {
+    margin-top: 8px;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--grey-dark);
+}
+
+.result-other-forms-words {
+    margin-top: 4px;
+    font-size: 24px;
+    line-height: 30px;
 }
