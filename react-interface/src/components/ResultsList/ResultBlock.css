@@ -8,10 +8,14 @@
     width: 320px;
 }
 
-
 .result-right-col {
     width: 800px;
 }
+
+.result-left-col, .result-right-col{
+    background-color: var(--grey-light);
+}
+
 .result-col-separator {
     border-left: 2px solid var(--grey-dark);
 }
