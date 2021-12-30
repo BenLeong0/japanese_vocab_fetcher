@@ -1,9 +1,9 @@
 import React from 'react';
-import ResultBlock from './ResultBlock'
+import ResultBlock from './ResultBlock';
 
 import FullResponseItem from '../../types/FullResponseItem';
 
-import './ResultsList.css'
+import './ResultsList.css';
 
 
 interface ResultsListProps {
