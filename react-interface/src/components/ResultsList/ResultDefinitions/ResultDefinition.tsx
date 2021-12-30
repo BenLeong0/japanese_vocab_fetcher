@@ -15,7 +15,7 @@ const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) =
         return main + subtext;
     }
 
-    const showOtherForms = () => definitionData.japanese.length > 1;
+    const showOtherForms = (): boolean => (definitionData.japanese.length > 1);
 
     return (
         <div className="result-definition flex-col">
