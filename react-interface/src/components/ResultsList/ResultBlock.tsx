@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ResultTitle from './ResultTitle/ResultTitle';
+import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
 
 import FullResponseItem from '../../types/FullResponseItem';
 
@@ -33,6 +34,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                     </div>
                 </div>
             }
+            <ResultToggleBar isExpanded={isExpanded} toggleIsExpanded={toggleIsExpanded}/>
         </div>
     );
 }
