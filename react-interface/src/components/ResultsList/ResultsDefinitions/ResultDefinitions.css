@@ -1,0 +1,6 @@
+.result-definition-title {
+    padding: 4px 16px;
+    background-color: var(--grey-light);
+    font-size: 60px;
+    line-height: 72px;
+}
