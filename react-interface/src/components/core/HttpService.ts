@@ -19,7 +19,8 @@ export default class HttpService {
         let requestOptions = {
             method: "GET",
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Referer': 'https://benleong0.github.io/japanese_vocab_fetcher/',
             },
         };
 
