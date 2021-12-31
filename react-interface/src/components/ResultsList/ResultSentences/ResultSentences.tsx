@@ -11,15 +11,21 @@ interface ResultSentencesProps {
 }
 
 const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
+    const allSentences = [
+        ...data.wanikani.main_data.sentences.map(s => ({sentence: s, source: "Wanikani"})),
+    ];
+
     return (
+        allSentences.length > 0 ?
         <div className="result-sentences flex-col">
             <div className="right-col-title">Context Sentences</div>
             <div className="result-sentences-container flex-col">
-                {data.wanikani.main_data.sentences.map(sentence =>
-                    <ResultSentence key={sentence.ja} sentence={sentence} source="Wanikani" />
+                {allSentences.map(({ sentence, source }) =>
+                    <ResultSentence key={sentence.ja} sentence={sentence} source={source} />
                 )}
             </div>
-        </div>
+        </div> :
+        <></>
     );
 }
 
