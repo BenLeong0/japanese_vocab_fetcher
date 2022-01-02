@@ -6,7 +6,8 @@
 }
 
 .result-definition-senses-container {
-    margin: 16px 32px;
+    padding: 16px 32px;
+    background-color: white;
 }
 
 .result-definition-sense {
