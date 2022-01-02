@@ -4,9 +4,12 @@
     border: 1px solid lightgray;
 }
 
+.result-left-col, .result-right-col {
+    background-color: var(--grey-light);
+}
+
 .result-left-col {
     width: 320px;
-    background-color: var(--grey-light);
 }
 
 .result-right-col {
