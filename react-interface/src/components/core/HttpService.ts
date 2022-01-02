@@ -16,12 +16,16 @@ export default class HttpService {
 
     async makeGetRequest(slug: string, queryParams?: QueryParams): Promise<any> {
         let url: string = this.API_URL + slug;
+        let cache: RequestCache = "force-cache"
+        let mode: RequestMode = "cors"
         let requestOptions = {
-            method: "GET",
+            cache: cache,
             headers: {
               'Content-Type': 'application/json',
-              'Referer': 'https://benleong0.github.io/japanese_vocab_fetcher/',
             },
+            method: "GET",
+            mode: mode,
+            referrer: 'about:client',
         };
 
         if (typeof queryParams !== "undefined") {
