@@ -6,14 +6,11 @@
 
 .result-left-col {
     width: 320px;
+    background-color: var(--grey-light);
 }
 
 .result-right-col {
     width: 800px;
-}
-
-.result-left-col, .result-right-col{
-    background-color: var(--grey-light);
 }
 
 .result-col-separator {
