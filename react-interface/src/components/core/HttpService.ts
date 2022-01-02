@@ -4,7 +4,7 @@ import UtilsService from "./UtilsService";
 
 export default class HttpService {
 
-    API_URL: string = "http://3.8.95.26:5000";
+    API_URL: string = "https://3.8.95.26:5000";
     utilsService: UtilsService
 
 
