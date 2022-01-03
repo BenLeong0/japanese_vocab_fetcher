@@ -25,7 +25,7 @@ RUN echo "FORVO_API_KEY=$FORVO_API_KEY" >> ./.env
 RUN echo "WANIKANI_API_KEY=$WANIKANI_API_KEY" >> ./.env
 
 # Generate certificates for HTTPS
-RUN openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365 -batch
+# RUN openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365 -batch
 
 # Copy the content of the local src directory to the working directory
 COPY ./ .
