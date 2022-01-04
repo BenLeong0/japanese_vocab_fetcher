@@ -29,7 +29,15 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
         subtitle: null
     }]
 
+    const displayAudio = (): boolean => {
+        return (
+            wanikaniData.length > 0 &&
+            forvoData.length > 0
+        );
+    }
+
     return (
+        displayAudio() ?
         <div className="result-audio">
             <div className="left-col-title">
                 Audio
@@ -37,7 +45,8 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
             <ResultAudioModule moduleTitle="Wanikani" audioData={wanikaniData} />
             <ResultAudioModule moduleTitle="Forvo" audioData={forvoData} />
             <ResultAudioModule moduleTitle="JapanesePod101" audioData={japanesePodData} />
-        </div>
+        </div> :
+        <></>
      );
 }
 
