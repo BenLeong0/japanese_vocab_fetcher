@@ -13,11 +13,17 @@ interface ResultTagProps {
 const ResultTags: React.FC<ResultTagProps> = ({ data }) => {
     const tags = extractTags(data);
 
-    return ( <div className="result-tags-container flex-row">
-        { tags.map(tag =>
-            <ResultTag key={tag} tag={tag} />
-        )}
-    </div> );
+    const displayTags = tags.length > 0;
+
+    return (
+        displayTags ?
+        <div className="result-tags-container flex-row">
+            { tags.map(tag =>
+                <ResultTag key={tag} tag={tag} />
+            )}
+        </div> :
+        <></>
+    );
 }
 
 
