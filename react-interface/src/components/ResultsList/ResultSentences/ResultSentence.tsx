@@ -3,7 +3,7 @@ import React from 'react';
 import Sentence from '../../../types/Sentence';
 
 
-interface ResultSentenceProps {
+export interface ResultSentenceProps {
     sentence: Sentence;
     source: string;
 }

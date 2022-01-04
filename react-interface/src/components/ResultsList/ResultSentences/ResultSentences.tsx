@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultSentence from './ResultSentence';
+import ResultSentence, { ResultSentenceProps } from './ResultSentence';
 
 import FullResponseItem from '../../../types/FullResponseItem';
 
@@ -11,9 +11,11 @@ interface ResultSentencesProps {
 }
 
 const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
-    const allSentences = [
-        ...data.wanikani.main_data.sentences.map(s => ({sentence: s, source: "Wanikani"})),
-    ];
+    const wanikaniSentences: ResultSentenceProps[] = data.wanikani.main_data.sentences.map(s => ({sentence: s, source: "Wanikani"}));
+
+    const allSentences = interweaveSentences([
+        wanikaniSentences,
+    ])
 
     return (
         allSentences.length > 0 ?
@@ -27,6 +29,19 @@ const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
         </div> :
         <></>
     );
+}
+
+const interweaveSentences = (sentenceLists: ResultSentenceProps[][]): ResultSentenceProps[] => {
+    const maxLength = Math.max(...sentenceLists.map(list => list.length));
+    let finalList: ResultSentenceProps[] = [];
+    for (let i = 0; i < maxLength; i++) {
+            for (let sentenceList of sentenceLists) {
+                    if (i < sentenceList.length) {
+                            finalList.push(sentenceList[i]);
+                    }
+            }
+    }
+    return finalList;
 }
 
 export default ResultSentences;
