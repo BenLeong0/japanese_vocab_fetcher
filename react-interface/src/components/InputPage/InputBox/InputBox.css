@@ -1,0 +1,24 @@
+.main-input {
+    width: 80%;
+    max-width: 600px;
+    resize: vertical;
+}
+
+.input-page button {
+    width: 100px;
+}
+
+.words-display {
+    display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.word-display {
+    color: white;
+    background-color: var(--green-light);
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin: 8px 3px;
+}

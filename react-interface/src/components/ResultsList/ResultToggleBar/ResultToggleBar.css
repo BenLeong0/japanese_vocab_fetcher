@@ -1,0 +1,14 @@
+.result-toggle-bar {
+    display: flex;
+    justify-content: center;
+    height: 32px;
+    width: 100%;
+    background-color: #c3cfd9;
+    cursor: pointer;
+}
+
+.result-toggle-bar img {
+    height: 24px;
+    width: 24px;
+    padding: 4px;
+}

@@ -1,0 +1,10 @@
+.error-message {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.error-message img {
+    color: red;
+    height: 18px;
+    margin: 0 8px;
+}

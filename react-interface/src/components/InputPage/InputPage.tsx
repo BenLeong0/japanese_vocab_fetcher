@@ -1,51 +1,25 @@
 import React, { useState } from 'react';
-import TextareaAutosize from 'react-textarea-autosize';
+import ErrorMessage from '../../shared/ErrorMessage/ErrorMessage';
+import InputBox from './InputBox/InputBox';
 
-import QueryParams from '../../types/QueryParams';
-import HttpService from '../core/HttpService';
+import FullResponseItem from '../../types/FullResponseItem';
 
 import './InputPage.css';
 
-export interface InputPageProps {
 
+export interface InputPageProps {
+    setWordList: (s: FullResponseItem[]) => void;
 }
 
-const InputPage: React.FC<InputPageProps> = () => {
-    const httpService = new HttpService();
-    const [text, setText] = useState<string>('');
-
-    const sendWords = async (event: React.FormEvent<HTMLButtonElement>) => {
-        event.preventDefault()
-
-        const words: string[] = getWords(text);
-        const wordsString: string = JSON.stringify(words);
-
-        const queryParams: QueryParams = {
-            words: wordsString,
-        };
-        httpService.makeGetRequest("/words", queryParams);
-    }
+const InputPage: React.FC<InputPageProps> = ({ setWordList }) => {
+    const [errorOccurred, setErrorOccurred] = useState<boolean>(false);
 
     return (
         <div className="input-page">
-            <TextareaAutosize
-                name="main-input"
-                className="main-input"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-            <div className="words-display">
-                {getWords(text).map((word) =>
-                    <div className="word-display">{word}</div>
-                )}
-            </div>
-            <button className="button-primary" type="submit" onClick={sendWords}>Submit</button>
+            <InputBox setWordList={setWordList} setErrorOccurred={setErrorOccurred}/>
+            { errorOccurred ? <ErrorMessage>An error occurred. Please try again</ErrorMessage> : <></> }
         </div>
     );
-}
-
-export const getWords = (s: string): string[] => {
-    return s.split(/\s+/).filter(char => char !== "");
 }
 
 export default InputPage;

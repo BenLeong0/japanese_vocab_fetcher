@@ -4,8 +4,8 @@ import UtilsService from "./UtilsService";
 
 export default class HttpService {
 
-    // API_URL: string = "https://7z39hjjfg1.execute-api.eu-west-2.amazonaws.com";
-    API_URL: string = "http://3.8.95.26:5000";
+    // API_URL: string = "http://3.8.95.26:5000";
+    API_URL: string = "https://7z39hjjfg1.execute-api.eu-west-2.amazonaws.com/dev";
     utilsService: UtilsService
 
 
@@ -17,7 +17,10 @@ export default class HttpService {
     async makeGetRequest(slug: string, queryParams?: QueryParams): Promise<any> {
         let url: string = this.API_URL + slug;
         let requestOptions = {
-            method: "GET"
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            method: "GET",
         };
 
         if (typeof queryParams !== "undefined") {
@@ -25,6 +28,9 @@ export default class HttpService {
         };
 
         let data: any = await fetch(url, requestOptions);
+        if (data.status === 404) {
+            throw new Error("An error occurred: " + data.statusText);
+        }
         let resp: any = await data.json();
         return resp;
     }

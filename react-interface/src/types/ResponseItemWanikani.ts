@@ -1,9 +1,5 @@
 import APIErrorDict from "./ResponseError";
-
-export interface WanikaniContextSentence {
-    en: string;
-    jp: string;
-}
+import Sentence from "./Sentence";
 
 export interface WanikaniPronunciationAudioMetadata {
     gender: string;
@@ -22,7 +18,7 @@ export interface WanikaniPronunciationAudio {
 
 export interface WanikaniMainData {
     audio: WanikaniPronunciationAudio[];
-    sentences: WanikaniContextSentence[];
+    sentences: Sentence[];
 }
 
 export default interface ResponseItemWanikani {
