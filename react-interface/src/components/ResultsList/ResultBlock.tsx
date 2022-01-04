@@ -3,6 +3,7 @@ import ResultAudio from './ResultAudio/ResultAudio';
 import ResultDefinitions from './ResultDefinitions/ResultDefinitions';
 import ResultReadings from './ResultReadings/ResultReadings';
 import ResultRelatedWords from './ResultRelatedWords/ResultRelatedWords';
+import ResultSentences from './ResultSentences/ResultSentences';
 import ResultTags from './ResultTags/ResultTags';
 import ResultTitle from './ResultTitle/ResultTitle';
 import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
@@ -38,7 +39,8 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                     </div>
                     <div className="result-col-separator" />
                     <div className="result-right-col flex-col">
-                        <ResultDefinitions data={data}/>
+                        <ResultDefinitions data={data} />
+                        <ResultSentences data={data} />
                     </div>
                 </div>
             }

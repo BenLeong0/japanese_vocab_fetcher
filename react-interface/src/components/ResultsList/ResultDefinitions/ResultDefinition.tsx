@@ -11,7 +11,7 @@ interface ResultDefinitionProps {
 const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) => {
     const buildTitleText = (word: JishoAPIItemJapanese): string => {
         const main = word.word || word.reading || "";
-        const subtext = word.word && word.reading && `【${word.reading}】`;
+        const subtext = (word.word && word.reading) ? `【${word.reading}】` : "";
         return main + subtext;
     }
 

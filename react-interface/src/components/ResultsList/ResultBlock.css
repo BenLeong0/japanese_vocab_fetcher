@@ -4,22 +4,34 @@
     border: 1px solid lightgray;
 }
 
+.result-left-col, .result-right-col {
+    background-color: var(--grey-light);
+}
+
 .result-left-col {
     width: 320px;
 }
 
-
 .result-right-col {
     width: 800px;
 }
+
 .result-col-separator {
     border-left: 2px solid var(--grey-dark);
+}
+
+.left-col-title, .right-col-title {
+    line-height: 36px;
+    font-weight: bold;
+    background-color: var(--grey);
 }
 
 .left-col-title {
     text-align: center;
     font-size: 24px;
-    line-height: 36px;
-    font-weight: bold;
-    background-color: var(--grey);
+}
+
+.right-col-title {
+    padding: 8px 16px;
+    font-size: 28px;
 }
