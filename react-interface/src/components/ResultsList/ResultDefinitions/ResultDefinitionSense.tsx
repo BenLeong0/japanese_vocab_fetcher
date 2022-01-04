@@ -13,7 +13,7 @@ const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinalit
     const dfn: string = ordinality + '. ' + sense.english_definitions.join("; ");
 
     const getWordType = (): string => {
-        let wordType = sense.parts_of_speech.join(", ");
+        let wordType = sense.parts_of_speech.join("・");
         if (sense.tags.length > 0) {
             wordType += " (" + sense.tags.join(", ") + ")";
         }
