@@ -29,9 +29,19 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
         subtitle: null
     }]
 
+    const allAudio = [
+        {module: "Wanikani", audioData: wanikaniData},
+        {module: "Forvo", audioData: forvoData},
+        {module: "JapanesePod101", audioData: japanesePodData},
+    ]
+
+    // const displayAudio = (): boolean => {
+    //     return allAudio.some(x => x.audioData.length > 0);
+    // }
+
     const displayAudio = (): boolean => {
         return (
-            wanikaniData.length > 0 &&
+            wanikaniData.length > 0 ||
             forvoData.length > 0
         );
     }
@@ -42,9 +52,13 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
             <div className="left-col-title">
                 Audio
             </div>
-            <ResultAudioModule moduleTitle="Wanikani" audioData={wanikaniData} />
-            <ResultAudioModule moduleTitle="Forvo" audioData={forvoData} />
-            <ResultAudioModule moduleTitle="JapanesePod101" audioData={japanesePodData} />
+            {allAudio.map(moduleData =>
+                <ResultAudioModule
+                    key={moduleData.module}
+                    moduleTitle={moduleData.module}
+                    audioData={moduleData.audioData}
+                />
+            )}
         </div> :
         <></>
      );
