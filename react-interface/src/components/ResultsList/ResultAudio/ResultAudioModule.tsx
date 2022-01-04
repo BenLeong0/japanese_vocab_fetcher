@@ -22,7 +22,10 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
             {audioData.map((audio, rowIndex) =>
                 <ResultAudioRow key={audio.speaker} rowIndex={rowIndex} audioData={audio} isExpanded={isExpanded}/>
             )}
-            {audioData.length > 2 &&
+            {audioData.length === 3 &&
+                <ResultAudioRow key={audioData[2].speaker} rowIndex={2} audioData={audioData[2]} isExpanded={!isExpanded}/>
+            }
+            {audioData.length > 3 &&
                 <div className="audio-expand-toggle" onClick={toggleIsExpanded}>
                     <img
                         src={isExpanded ? IconMinus : IconPlus}
