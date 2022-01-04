@@ -1,12 +1,12 @@
 .readings-row {
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid var(--grey);
 }
 
 .readings-row-left {
     width: 95px;
-    border-right: 1px solid lightgray;
+    border-right: 1px solid var(--grey);
     padding: 4px 8px;
     font-size: 22px;
     line-height: 28px;
