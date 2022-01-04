@@ -35,6 +35,7 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
         {module: "JapanesePod101", audioData: japanesePodData},
     ]
 
+    // TODO: Instate when JP101 is implemented
     // const displayAudio = (): boolean => {
     //     return allAudio.some(x => x.audioData.length > 0);
     // }
