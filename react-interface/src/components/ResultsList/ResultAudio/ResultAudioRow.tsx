@@ -8,12 +8,11 @@ import IconStopButton from '../../../assets/icons/icon_stop_button.svg'
 
 
 interface ResultAudioRowProps {
-    rowIndex: number;
     audioData: ResultAudioRowData;
-    isExpanded: boolean;
+    displayRow: boolean;
 }
 
-const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ rowIndex, audioData, isExpanded }) => {
+const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData, displayRow }) => {
     const [audio] = useState(new Audio(audioData.url));
     const [playing, setPlaying] = useState(false);
 
@@ -34,7 +33,7 @@ const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ rowIndex, audioData, is
     }, []);
 
     return (
-        (isExpanded || rowIndex < 2) ?
+        displayRow ?
         <div className="result-audio-row flex-row">
             <img
                 src={ playing ? IconStopButton : IconPlayButton }
