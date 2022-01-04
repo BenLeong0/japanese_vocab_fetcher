@@ -17,7 +17,12 @@ const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
         { title: "Suzuki", readings: data.suzuki.main_data.accent },
     ];
 
+    const displayReadings = (): boolean => {
+        return sitesAndReadings.some(site => site.readings.length > 0);
+    }
+
     return (
+        displayReadings() ?
         <div className="result-readings">
             <div className="left-col-title">
                 Readings
@@ -25,7 +30,8 @@ const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
             {sitesAndReadings.map(({ title, readings }) =>
                 <ResultReadingsRow key={title} title={title} readings={readings} />
             )}
-        </div>
+        </div> :
+        <></>
      );
 }
 
