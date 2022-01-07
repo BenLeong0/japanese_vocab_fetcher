@@ -16,13 +16,22 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const toggleIsExpanded = () => setIsExpanded(!isExpanded);
 
+    const displayRow = (rowIndex: number): boolean => {
+        return (
+            rowIndex < 2 ||
+            (rowIndex === 2 && audioData.length === 3) ||
+            isExpanded === true
+        );
+    }
+
     return (
+        audioData.length > 0 ?
         <div className="result-audio-module vertical-separation-small">
             <div className="audio-module-title">{ moduleTitle }</div>
-            {audioData.map((audio, rowIndex) =>
-                <ResultAudioRow key={audio.speaker} rowIndex={rowIndex} audioData={audio} isExpanded={isExpanded}/>
+            {audioData.filter((_, rowIndex) => displayRow(rowIndex)).map(audio =>
+                <ResultAudioRow key={audio.speaker} audioData={audio}/>
             )}
-            {audioData.length > 2 &&
+            {audioData.length > 3 &&
                 <div className="audio-expand-toggle" onClick={toggleIsExpanded}>
                     <img
                         src={isExpanded ? IconMinus : IconPlus}
@@ -30,7 +39,8 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
                     />
                 </div>
             }
-        </div>
+        </div> :
+        <></>
     );
 }
 

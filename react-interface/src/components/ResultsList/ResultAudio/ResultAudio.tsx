@@ -34,8 +34,8 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
             <div className="left-col-title">
                 Audio
             </div>
-            {wanikaniData.length > 0 && <ResultAudioModule moduleTitle="Wanikani" audioData={wanikaniData} />}
-            {forvoData.length > 0 && <ResultAudioModule moduleTitle="Forvo" audioData={forvoData} />}
+            <ResultAudioModule moduleTitle="Wanikani" audioData={wanikaniData} />
+            <ResultAudioModule moduleTitle="Forvo" audioData={forvoData} />
             <ResultAudioModule moduleTitle="JapanesePod101" audioData={japanesePodData} />
         </div>
      );
