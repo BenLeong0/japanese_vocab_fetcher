@@ -9,10 +9,9 @@ import IconStopButton from '../../../assets/icons/icon_stop_button.svg'
 
 interface ResultAudioRowProps {
     audioData: ResultAudioRowData;
-    displayRow: boolean;
 }
 
-const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData, displayRow }) => {
+const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData }) => {
     const [audio] = useState(new Audio(audioData.url));
     const [playing, setPlaying] = useState(false);
 
@@ -33,7 +32,6 @@ const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData, displayRow }
     }, []);
 
     return (
-        displayRow ?
         <div className="result-audio-row flex-row">
             <img
                 src={ playing ? IconStopButton : IconPlayButton }
@@ -43,8 +41,7 @@ const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData, displayRow }
             />
             <div className="result-audio-speaker">{ audioData.speaker }</div>
             <div className="result-audio-subtitle">{ audioData.subtitle || "" }</div>
-        </div> :
-        <></>
+        </div>
      );
 }
 

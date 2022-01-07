@@ -28,8 +28,8 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
         audioData.length > 0 ?
         <div className="result-audio-module vertical-separation-small">
             <div className="audio-module-title">{ moduleTitle }</div>
-            {audioData.map((audio, rowIndex) =>
-                <ResultAudioRow key={audio.speaker} displayRow={displayRow(rowIndex)} audioData={audio}/>
+            {audioData.filter((_, rowIndex) => displayRow(rowIndex)).map(audio =>
+                <ResultAudioRow key={audio.speaker} audioData={audio}/>
             )}
             {audioData.length > 3 &&
                 <div className="audio-expand-toggle" onClick={toggleIsExpanded}>
