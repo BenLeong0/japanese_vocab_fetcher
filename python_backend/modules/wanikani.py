@@ -7,7 +7,7 @@ import requests
 
 from custom_types.alternative_string_types import Kaki, URL
 from custom_types.exception_types import APIError
-from custom_types.response_types import ResponseItemWanikani
+from custom_types.response_types import ContextSentence, ResponseItemWanikani
 from custom_types.wanikani_api_types import (
     WanikaniAPIResponse,
     WanikaniContextSentence,
@@ -100,7 +100,7 @@ def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, Respon
         for audio in pronunciation_audios:
             audio["url"] = URL(audio["url"])
 
-        context_sentences = resource["data"]["context_sentences"]
+        context_sentences: list[ContextSentence] = resource["data"]["context_sentences"]
 
         result_dict[writing]['main_data']["audio"] += pronunciation_audios
         result_dict[writing]['main_data']["sentences"] += context_sentences
