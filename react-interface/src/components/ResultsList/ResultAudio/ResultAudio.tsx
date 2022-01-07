@@ -53,12 +53,8 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
             <div className="left-col-title">
                 Audio
             </div>
-            {allAudio.filter(({ audioData }) => audioData.length > 0).map(moduleData =>
-                <ResultAudioModule
-                    key={moduleData.module}
-                    moduleTitle={moduleData.module}
-                    audioData={moduleData.audioData}
-                />
+            {allAudio.filter(({ audioData }) => audioData.length > 0).map(({ module, audioData }) =>
+                <ResultAudioModule key={module} moduleTitle={module} audioData={audioData} />
             )}
         </div> :
         <></>
