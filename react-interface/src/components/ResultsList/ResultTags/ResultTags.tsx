@@ -18,9 +18,9 @@ const ResultTags: React.FC<ResultTagProps> = ({ data }) => {
     return (
         displayTags ?
         <div className="result-tags-container flex-row">
-            { tags.map(tag =>
+            {tags.map(tag =>
                 <ResultTag key={tag} tag={tag} />
-            ) }
+            )}
         </div> :
         <></>
     );
