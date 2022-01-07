@@ -17,23 +17,23 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
         url: audio.url,
         speaker: audio.metadata.voice_actor_name,
         subtitle: audio.metadata.voice_description,
-    }))
+    }));
     const forvoData: ResultAudioRowData[] = data.forvo.main_data.audio.map(audio => ({
         url: audio.url,
         speaker: audio.username,
         subtitle: null,
-    }))
+    }));
     const japanesePodData: ResultAudioRowData[] = [{
         url: "https://audiostock-public-files.s3.ap-northeast-1.amazonaws.com/sample-files/demo_34d52dc1ec6ba4736f37c24458a2a7812e9b56f6.mp3",
         speaker: "Coming soon!",
         subtitle: null
-    }]
+    }];
 
     const allAudio = [
         {module: "Wanikani", audioData: wanikaniData},
         {module: "Forvo", audioData: forvoData},
         {module: "JapanesePod101", audioData: japanesePodData},
-    ]
+    ];
 
     // TODO: Instate when JP101 is implemented
     // const displayAudio = (): boolean => {
