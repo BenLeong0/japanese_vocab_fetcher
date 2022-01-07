@@ -15,7 +15,7 @@ const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
 
     const allSentences = interweaveSentences([
         wanikaniSentences,
-    ])
+    ]);
 
     return (
         allSentences.length > 0 ?
