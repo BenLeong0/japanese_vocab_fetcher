@@ -35,11 +35,11 @@ const interweaveSentences = (sentenceLists: ResultSentenceProps[][]): ResultSent
     const maxLength = Math.max(...sentenceLists.map(list => list.length));
     let finalList: ResultSentenceProps[] = [];
     for (let i = 0; i < maxLength; i++) {
-            for (let sentenceList of sentenceLists) {
-                    if (i < sentenceList.length) {
-                            finalList.push(sentenceList[i]);
-                    }
+        for (let sentenceList of sentenceLists) {
+            if (i < sentenceList.length) {
+                finalList.push(sentenceList[i]);
             }
+        }
     }
     return finalList;
 }
