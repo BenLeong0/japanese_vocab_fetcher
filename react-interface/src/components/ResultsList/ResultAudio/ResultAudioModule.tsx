@@ -25,7 +25,6 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
     }
 
     return (
-        audioData.length > 0 ?
         <div className="result-audio-module vertical-separation-small">
             <div className="audio-module-title">{ moduleTitle }</div>
             {audioData.map((audio, rowIndex) =>
@@ -39,8 +38,7 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
                     />
                 </div>
             }
-        </div> :
-        <></>
+        </div>
     );
 }
 
