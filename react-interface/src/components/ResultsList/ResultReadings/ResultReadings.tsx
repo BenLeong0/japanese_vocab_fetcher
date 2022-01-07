@@ -27,7 +27,7 @@ const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
             <div className="left-col-title">
                 Readings
             </div>
-            {sitesAndReadings.map(({ title, readings }) =>
+            {sitesAndReadings.filter(({ readings }) => readings.length > 0).map(({ title, readings }) =>
                 <ResultReadingsRow key={title} title={title} readings={readings} />
             )}
         </div> :
