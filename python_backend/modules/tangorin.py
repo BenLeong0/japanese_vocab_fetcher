@@ -8,6 +8,21 @@ from custom_types.response_types import ContextSentence, ResponseItemTangorin
 NAME = "tangorin"
 
 
+# TODO:
+# Multithread each word (see forvo)
+# Fetch html
+# Extract only results-dl div (to clean)
+# Extract div's with class "sentences" (max 8?)
+# Use regex to empty r"<rt class="roma">.*</rt>" components
+# Extract text from s-jp div
+# Extract text from s-en div
+# Combine into ContextSentence dict
+# Combine into list[ContextSentence]
+# Build into ResponseItemTangorin
+# Combine into dict[Kaki, ResponseItemTangorin]]
+# Return
+
+
 class TangorinAPIError(APIError):
     pass
 
@@ -34,16 +49,3 @@ def error_response_factory(error: TangorinAPIError) -> ResponseItemTangorin:
 
 def main(_word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
     return {}
-
-# Multithread each word (see forvo)
-# Fetch html
-# Extract only results-dl div (to clean)
-# Extract div's with class "sentences" (max 8?)
-# Use regex to empty r"<rt class="roma">.*</rt>" components
-# Extract text from s-jp div
-# Extract text from s-en div
-# Combine into ContextSentence dict
-# Combine into list[ContextSentence]
-# Build into ResponseItemTangorin
-# Combine into dict[Kaki, ResponseItemTangorin]]
-# Return
