@@ -88,6 +88,23 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     assert tangorin.main(word_list) == expected_output
 
 
+def test_get_sentences(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the sentences are fetched for each individual word
+    - THEN check the sentences are correct
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict["tangorin"]["expected_sections"]
+    full_expected_output = test_dict["tangorin"]["expected_output"]
+
+    for word in word_list:
+        html = sections[word]['html']
+        monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
+        expected_output = full_expected_output[word]
+        assert tangorin.get_sentences(word) == expected_output
+
+
 def test_get_url(test_dict: FullTestDict):
     """
     - GIVEN a list of words
