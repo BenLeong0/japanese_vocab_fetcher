@@ -84,9 +84,10 @@ def test_get_url(test_dict: FullTestDict):
     - THEN check the url is encoded
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    expected_url = test_dict['tangorin']['url']
+    sections = test_dict['tangorin']['expected_sections']
 
-    assert tangorin.get_url(word_list) == expected_url
+    for word in word_list:
+        assert tangorin.get_url(word) == sections[word]["url"]
 
 
 def test_get_html(monkeypatch, test_dict: FullTestDict):

@@ -203,6 +203,11 @@ MEGANE: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_sections": {
+            '眼鏡': {
+                "url": URL("https://tangorin.com/sentences?search=眼鏡",)
+            },
+        },
         "expected_output": {
             '眼鏡': {
                 "success": True,
@@ -539,6 +544,11 @@ COMEBACK: FullTestDict= {
         },
     },
     "tangorin": {
+        "expected_sections": {
+            'カムバック': {
+                "url": URL("https://tangorin.com/sentences?search=カムバック",)
+            },
+        },
         "expected_output": {
             'カムバック': {
                 "success": True,
@@ -894,6 +904,14 @@ TABERU_GAKUSEI: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_sections": {
+            '食べる': {
+                "url": URL("https://tangorin.com/sentences?search=食べる",)
+            },
+            '学生': {
+                "url": URL("https://tangorin.com/sentences?search=学生",)
+            },
+        },
         "expected_output": {
             '食べる': {
                 "success": True,
@@ -1538,6 +1556,11 @@ KOTOBA: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_sections": {
+            '言葉': {
+                "url": URL("https://tangorin.com/sentences?search=言葉",)
+            },
+        },
         "expected_output": {
             '言葉': {
                 "success": True,
@@ -1869,6 +1892,11 @@ BADINPUT: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_sections": {
+            'BADINPUT': {
+                "url": URL("https://tangorin.com/sentences?search=BADINPUT",)
+            },
+        },
         "expected_output": {
             'BADINPUT': {
                 "success": True,
@@ -2285,6 +2313,17 @@ USAGI_IKU_KAGO: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_sections": {
+            '兎': {
+                "url": URL("https://tangorin.com/sentences?search=兎",)
+            },
+            '行く': {
+                "url": URL("https://tangorin.com/sentences?search=行く",)
+            },
+            '籠': {
+                "url": URL("https://tangorin.com/sentences?search=籠",)
+            },
+        },
         "expected_output": {
             '兎': {
                 "success": True,
@@ -2850,6 +2889,11 @@ SHIZUKA: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_sections": {
+            '静か': {
+                "url": URL("https://tangorin.com/sentences?search=静か",)
+            },
+        },
         "expected_output": {
             '静か': {
                 "success": True,
@@ -3250,6 +3294,11 @@ NARU: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_sections": {
+            'なる': {
+                "url": URL("https://tangorin.com/sentences?search=なる",)
+            },
+        },
         "expected_output": {
             'なる': {
                 "success": True,
