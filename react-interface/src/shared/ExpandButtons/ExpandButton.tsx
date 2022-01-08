@@ -1,9 +1,9 @@
 import React from 'react';
 
-import IconPlus from '../../assets/icons/icon_plus.svg'
-import IconMinus from '../../assets/icons/icon_minus.svg'
+import IconPlus from '../../assets/icons/icon_plus.svg';
+import IconMinus from '../../assets/icons/icon_minus.svg';
 
-import './ExpandButton.css'
+import './ExpandButton.css';
 
 
 interface ExpandButtonProps {
