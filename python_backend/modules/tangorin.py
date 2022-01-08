@@ -95,7 +95,6 @@ def get_html(word: Kaki) -> Soup:
 
 # Extract sections
 
-
 def clean_html(html: Soup) -> None:
     """Remove furigana, and insert whitespace"""
     print("cleaning")
