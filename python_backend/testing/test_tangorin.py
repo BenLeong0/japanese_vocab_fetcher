@@ -97,11 +97,12 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
     - THEN check it is returned as expected
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    html = test_dict['tangorin']['html']
+    sections = test_dict['tangorin']['expected_sections']
 
-    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
-
-    assert tangorin.get_html(word_list) == Soup(html, 'html.parser')
+    for word in word_list:
+        html = sections[word]['html']
+        monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
+        assert tangorin.get_html(word_list) == Soup(html, 'html.parser')
 
 
 def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
