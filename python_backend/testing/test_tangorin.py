@@ -147,6 +147,8 @@ def test_extract_sentences(test_dict: FullTestDict):
         html = sections[word]['html']
         expected_sentences = sections[word]["expected_sentences"]
         assert tangorin.extract_sentences(Soup(html, "html.parser")) == [
-            (sentence['japanese_sentence'], sentence['english_sentence'])
-            for sentence in expected_sentences
+            {
+                "ja": sentence['japanese_sentence'],
+                "en": sentence['english_sentence']
+            } for sentence in expected_sentences
         ]

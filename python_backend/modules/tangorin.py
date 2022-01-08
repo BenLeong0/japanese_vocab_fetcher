@@ -98,6 +98,7 @@ def get_html(word: Kaki) -> Soup:
 
 def clean_html(html: Soup) -> None:
     """Remove furigana, and insert whitespace"""
+    print("cleaning")
     for furigana in html.find_all("rt"):
         furigana.decompose()
 
@@ -111,6 +112,7 @@ def clean_html(html: Soup) -> None:
 
 def extract_sentences(html: Soup) -> list[ContextSentence]:
     """Returns list of ContextSentences"""
+    clean_html(html)
     rows: list[Soup] = list(html.find_all("div", class_="sentences"))
     return [
         {
