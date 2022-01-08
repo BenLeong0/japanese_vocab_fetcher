@@ -1,10 +1,4 @@
-# from collections import defaultdict
-# import json
-# import re
 from typing import Optional
-
-# from bs4 import BeautifulSoup as Soup
-# import requests
 
 from custom_types.alternative_string_types import Kaki
 from custom_types.exception_types import APIError
