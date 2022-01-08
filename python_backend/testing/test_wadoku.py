@@ -41,33 +41,6 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     assert wadoku.main(word_list) == expected_output
 
 
-def test_main_api_error(monkeypatch, test_dict: FullTestDict):
-    """
-    - GIVEN a list of words
-    - WHEN the API returns an unsuccessful status code
-    - THEN check the failed dict is returned as expected
-    """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    response = json.dumps({"error": "api_error"})
-    expected_output = {
-        word: {
-            "success": False,
-            "error": {
-                "error_msg": "api_error",
-                "status_code": 400,
-                "url": test_dict["wadoku"]["url"]
-            },
-            "main_data": {
-                "accent": [],
-            },
-        }
-        for word in word_list
-    }
-
-    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(response, status_code=400))
-    assert wadoku.main(word_list) == expected_output
-
-
 def test_main_recursion(monkeypatch):
     """
     GIVEN a wordlist with an invalid first word
@@ -120,6 +93,33 @@ def test_empty_input():
     - THEN check it returns and empty dict
     """
     assert wadoku.main([]) == {}
+
+
+def test_main_api_error(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the API returns an unsuccessful status code
+    - THEN check the failed dict is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "api_error"})
+    expected_output = {
+        word: {
+            "success": False,
+            "error": {
+                "error_msg": "api_error",
+                "status_code": 400,
+                "url": test_dict["wadoku"]["url"]
+            },
+            "main_data": {
+                "accent": [],
+            },
+        }
+        for word in word_list
+    }
+
+    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(response, status_code=400))
+    assert wadoku.main(word_list) == expected_output
 
 
 def test_get_url(test_dict: FullTestDict):
