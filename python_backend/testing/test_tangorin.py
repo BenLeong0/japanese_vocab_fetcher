@@ -198,7 +198,7 @@ def test_clean_html(html: Soup, expected_html: Soup):
     - THEN check it is properly cleaned
     """
     tangorin.clean_html(html)
-    assert html == expected_html
+    assert str(html) == str(expected_html)
 
 
 def test_extract_sentences(test_dict: FullTestDict):
