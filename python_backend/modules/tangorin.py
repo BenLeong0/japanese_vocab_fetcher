@@ -67,7 +67,6 @@ def get_sentences(word: Kaki) -> ResponseItemTangorin:
         print("An error occurred:", api_error.error_msg)
         return error_response_factory(api_error)
 
-    clean_html(html)
     sentences = extract_sentences(html)
     response_factory(sentences)
     return response_factory(None)
