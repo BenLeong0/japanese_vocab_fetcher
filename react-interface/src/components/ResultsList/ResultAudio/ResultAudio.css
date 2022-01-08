@@ -34,14 +34,6 @@
     font-style: italic;
 }
 
-.audio-expand-toggle {
-    display: flex;
-    justify-content: center;
-    margin: 0 16px;
-    cursor: pointer;
-    background-color: var(--grey);
-}
-
-.audio-expand-toggle img {
-    padding: 2px;
+.expand-button-container {
+    margin: 0 12px;
 }
