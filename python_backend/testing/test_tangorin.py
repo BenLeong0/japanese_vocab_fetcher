@@ -132,3 +132,21 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     except tangorin.TangorinAPIError as api_error:
         assert api_error.error_msg == "could not connect"
         assert api_error.status_code == 400
+
+
+def test_extract_sentences(test_dict: FullTestDict):
+    """
+    - GIVEN an html section
+    - WHEN the subsections are extracted
+    - THEN check the array of subsections is correct for each word
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['tangorin']['expected_sections']
+
+    for word in word_list:
+        html = sections[word]['html']
+        expected_sentences = sections[word]["expected_sentences"]
+        assert tangorin.extract_sentences(Soup(html, "html.parser")) == [
+            (sentence['japanese_sentence'], sentence['english_sentence'])
+            for sentence in expected_sentences
+        ]
