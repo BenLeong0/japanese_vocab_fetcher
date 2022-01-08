@@ -106,9 +106,7 @@ class ForvoTestDict(TypedDict):
 
 class TangorinExpectedSentences(TypedDict):
     """Dictionary holding expected data for each sentence row"""
-    japanese_section: Soup
     japanese_sentence: str
-    english_section: Soup
     english_sentence: str
 
 
