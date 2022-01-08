@@ -100,7 +100,7 @@ def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, Respon
         for audio in pronunciation_audios:
             audio["url"] = URL(audio["url"])
 
-        context_sentences = resource["data"]["context_sentences"]
+        context_sentences: list[WanikaniContextSentence] = resource["data"]["context_sentences"]
 
         result_dict[writing]['main_data']["audio"] += pronunciation_audios
         result_dict[writing]['main_data']["sentences"] += context_sentences

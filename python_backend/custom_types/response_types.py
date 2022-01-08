@@ -7,16 +7,19 @@ from custom_types.alternative_string_types import (
 )
 from custom_types.exception_types import APIErrorDict
 from custom_types.jisho_api_types import JishoAPIItem, JishoAPIItemJapanese
-from custom_types.wanikani_api_types import (
-    WanikaniContextSentence,
-    WanikaniPronunciationAudio,
-)
+from custom_types.wanikani_api_types import WanikaniPronunciationAudio
 
 
 class ResponseItem(TypedDict):
     """Dictionary containing the information from one of the modules"""
     success: bool
     error: Optional[APIErrorDict]
+
+
+class ContextSentence(TypedDict):
+    """Dictionary containing information about a context sentence for a vocab subject"""
+    en: str
+    ja: str
 
 
 # Jisho
@@ -82,11 +85,21 @@ class ResponseItemForvo(ResponseItem):
 
 class WanikaniMainData(TypedDict):
     audio: list[WanikaniPronunciationAudio]
-    sentences: list[WanikaniContextSentence]
+    sentences: list[ContextSentence]
 
 class ResponseItemWanikani(ResponseItem):
     """Dictionary containing the audio and sentence information from Wanikani"""
     main_data: WanikaniMainData
+
+
+# Tangorin
+
+class TangorinMainData(TypedDict):
+    sentences: list[ContextSentence]
+
+class ResponseItemTangorin(ResponseItem):
+    """Dictionary containing the accent information from Tangorin"""
+    main_data: TangorinMainData
 
 
 # Full response
