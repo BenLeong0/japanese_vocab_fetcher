@@ -113,7 +113,7 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
     for word in word_list:
         html = sections[word]['html']
         monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
-        assert tangorin.get_html(word_list) == Soup(html, 'html.parser')
+        assert tangorin.get_html(word) == Soup(html, 'html.parser')
 
 
 def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
