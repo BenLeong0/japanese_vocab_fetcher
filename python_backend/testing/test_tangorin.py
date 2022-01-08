@@ -151,6 +151,56 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
         assert api_error.status_code == 400
 
 
+@pytest.mark.parametrize(
+    "html, expected_html",
+    [
+        pytest.param(
+            Soup("<div>test</div>", "html.parser"),
+            Soup("<div>test</div>", "html.parser"),
+            id="empty div",
+        ),
+        pytest.param(
+            Soup("<div>test<mark></mark></div>", "html.parser"),
+            Soup("<div>test<mark></mark></div>", "html.parser"),
+            id="single mark tag",
+        ),
+        pytest.param(
+            Soup("<div>test<mark></mark><mark></mark></div>", "html.parser"),
+            Soup("<div>test<mark></mark> <mark></mark></div>", "html.parser"),
+            id="double mark tag",
+        ),
+        pytest.param(
+            Soup("<div>test<rt>furi</rt></div>", "html.parser"),
+            Soup("<div>test</div>", "html.parser"),
+            id="remove furigana",
+        ),
+        pytest.param(
+            Soup("<div>test<rt>furi</rt>text<rt>morefuri</rt></div>", "html.parser"),
+            Soup("<div>testtext</div>", "html.parser"),
+            id="remove multiple furigana",
+        ),
+        pytest.param(
+            Soup("<div>test<mark></mark><mark></mark><rt>furi</rt></div>", "html.parser"),
+            Soup("<div>test<mark></mark> <mark></mark></div>", "html.parser"),
+            id="double mark tag and remove furigana",
+        ),
+        pytest.param(
+            Soup("<div>test<mark></mark><rt>furi</rt><mark></mark><rt>furi</rt></div>", "html.parser"),
+            Soup("<div>test<mark></mark> <mark></mark></div>", "html.parser"),
+            id="furigana inside double mark tag",
+        ),
+    ],
+)
+def test_clean_html(html: Soup, expected_html: Soup):
+    """
+    - GIVEN an html section
+    - WHEN clean_html() is run on it
+    - THEN check it is properly cleaned
+    """
+    tangorin.clean_html(html)
+    assert html == expected_html
+
+
 def test_extract_sentences(test_dict: FullTestDict):
     """
     - GIVEN an html section
