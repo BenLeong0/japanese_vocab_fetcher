@@ -1,0 +1,12 @@
+.expand-button {
+    margin: 0 4px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--grey);
+}
+
+.expand-button img {
+    padding: 2px;
+}
