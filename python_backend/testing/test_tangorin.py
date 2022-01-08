@@ -88,6 +88,23 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     assert tangorin.main(word_list) == expected_output
 
 
+def test_get_sentences(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the sentences are fetched for each individual word
+    - THEN check the sentences are correct
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict["tangorin"]["expected_sections"]
+    full_expected_output = test_dict["tangorin"]["expected_output"]
+
+    for word in word_list:
+        html = sections[word]['html']
+        monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
+        expected_output = full_expected_output[word]
+        assert tangorin.get_sentences(word) == expected_output
+
+
 def test_get_url(test_dict: FullTestDict):
     """
     - GIVEN a list of words
@@ -132,3 +149,69 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     except tangorin.TangorinAPIError as api_error:
         assert api_error.error_msg == "could not connect"
         assert api_error.status_code == 400
+
+
+@pytest.mark.parametrize(
+    "html, expected_html",
+    [
+        pytest.param(
+            Soup("<div>test</div>", "html.parser"),
+            Soup("<div>test</div>", "html.parser"),
+            id="empty div",
+        ),
+        pytest.param(
+            Soup("<div>test<mark></mark></div>", "html.parser"),
+            Soup("<div>test<mark></mark></div>", "html.parser"),
+            id="single mark tag",
+        ),
+        pytest.param(
+            Soup("<div>test<mark></mark><mark></mark></div>", "html.parser"),
+            Soup("<div>test<mark></mark> <mark></mark></div>", "html.parser"),
+            id="double mark tag",
+        ),
+        pytest.param(
+            Soup("<div>test<rt>furi</rt></div>", "html.parser"),
+            Soup("<div>test</div>", "html.parser"),
+            id="remove furigana",
+        ),
+        pytest.param(
+            Soup("<div>test<rt>furi</rt>text<rt>morefuri</rt></div>", "html.parser"),
+            Soup("<div>testtext</div>", "html.parser"),
+            id="remove multiple furigana",
+        ),
+        pytest.param(
+            Soup("<div>test<mark></mark><mark></mark><rt>furi</rt></div>", "html.parser"),
+            Soup("<div>test<mark></mark> <mark></mark></div>", "html.parser"),
+            id="double mark tag and remove furigana",
+        ),
+        pytest.param(
+            Soup("<div>test<mark></mark><rt>furi</rt><mark></mark><rt>furi</rt></div>", "html.parser"),
+            Soup("<div>test<mark></mark> <mark></mark></div>", "html.parser"),
+            id="furigana inside double mark tag",
+        ),
+    ],
+)
+def test_clean_html(html: Soup, expected_html: Soup):
+    """
+    - GIVEN an html section
+    - WHEN clean_html() is run on it
+    - THEN check it is properly cleaned
+    """
+    tangorin.clean_html(html)
+    assert str(html) == str(expected_html)
+
+
+def test_extract_sentences(test_dict: FullTestDict):
+    """
+    - GIVEN an html section
+    - WHEN the subsections are extracted
+    - THEN check the array of subsections is correct for each word
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['tangorin']['expected_sections']
+    expected_output = test_dict['tangorin']['expected_output']
+
+    for word in word_list:
+        html = sections[word]['html']
+        expected_sentences = expected_output[word]["main_data"]["sentences"]
+        assert tangorin.extract_sentences(Soup(html, "html.parser")) == expected_sentences

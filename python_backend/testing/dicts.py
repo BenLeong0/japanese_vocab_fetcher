@@ -214,7 +214,48 @@ MEGANE: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "sentences": [],
+                    "sentences": [
+                        {
+                            "ja": "「めがねなくても大丈夫なの？」「あ、これ伊達めがねだから、頭よくなるかなと思って」",
+                            "en": "\"You're OK without your glasses?\" \"Ah, these are fake you see, I thought it might make me brainier...\"",
+                        },
+                        {
+                            "ja": "木下さんは昨日眼鏡を事務所に置き忘れた。",
+                            "en": "Mr Kinoshita left his glasses behind in the office yesterday.",
+                        },
+                        {
+                            "ja": "僕のメガネをどうしたの。たった今ここにあったのに。",
+                            "en": "What did you do with my glasses? They were here a minute ago.",
+                        },
+                        {
+                            "ja": "母はメガネなしでは読書できない。",
+                            "en": "My mother can't read without glasses.",
+                        },
+                        {
+                            "ja": "彼女はメガネをはずしてコンタクトをはめた。",
+                            "en": "She took off her glasses and put her contacts in.",
+                        },
+                        {
+                            "ja": "彼は眼鏡越しに私をにらみつけた。",
+                            "en": "He looked sharply at me over his spectacles.",
+                        },
+                        {
+                            "ja": "彼は眼鏡を外した。",
+                            "en": "He took off his glasses.",
+                        },
+                        {
+                            "ja": "彼は眼鏡をはずして看護婦に向かってしかめ面をした。",
+                            "en": "He took off his glasses and frowned at the nurse.",
+                        },
+                        {
+                            "ja": "彼は眼鏡ごしに彼女を見た。",
+                            "en": "He looked at her over his glasses.",
+                        },
+                        {
+                            "ja": "彼の目はめがねの奥で笑っていた。",
+                            "en": "His eyes were smiling behind his glasses.",
+                        },
+                    ],
                 },
             },
         },
@@ -368,6 +409,46 @@ MEGANE: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "sentences": [
+                        {
+                            "ja": "「めがねなくても大丈夫なの？」「あ、これ伊達めがねだから、頭よくなるかなと思って」",
+                            "en": "\"You're OK without your glasses?\" \"Ah, these are fake you see, I thought it might make me brainier...\"",
+                        },
+                        {
+                            "ja": "木下さんは昨日眼鏡を事務所に置き忘れた。",
+                            "en": "Mr Kinoshita left his glasses behind in the office yesterday.",
+                        },
+                        {
+                            "ja": "僕のメガネをどうしたの。たった今ここにあったのに。",
+                            "en": "What did you do with my glasses? They were here a minute ago.",
+                        },
+                        {
+                            "ja": "母はメガネなしでは読書できない。",
+                            "en": "My mother can't read without glasses.",
+                        },
+                        {
+                            "ja": "彼女はメガネをはずしてコンタクトをはめた。",
+                            "en": "She took off her glasses and put her contacts in.",
+                        },
+                        {
+                            "ja": "彼は眼鏡越しに私をにらみつけた。",
+                            "en": "He looked sharply at me over his spectacles.",
+                        },
+                        {
+                            "ja": "彼は眼鏡を外した。",
+                            "en": "He took off his glasses.",
+                        },
+                        {
+                            "ja": "彼は眼鏡をはずして看護婦に向かってしかめ面をした。",
+                            "en": "He took off his glasses and frowned at the nurse.",
+                        },
+                        {
+                            "ja": "彼は眼鏡ごしに彼女を見た。",
+                            "en": "He looked at her over his glasses.",
+                        },
+                        {
+                            "ja": "彼の目はめがねの奥で笑っていた。",
+                            "en": "His eyes were smiling behind his glasses.",
+                        },
                     ],
                 },
             },
@@ -921,14 +1002,104 @@ TABERU_GAKUSEI: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "sentences": [],
+                    "sentences": [
+                        {
+                            "ja": "私のチョコレートを食べることを考えさえしないで。",
+                            "en": "Don't you even think of eating my chocolate!",
+                        },
+                        {
+                            "ja": "野菜を食べたら？",
+                            "en": "Why don't you eat some vegetables?",
+                        },
+                        {
+                            "ja": "夏休みの間、私は夜中に夕食を食べていた。",
+                            "en": "During summer breaks, I ate dinner at midnight.",
+                        },
+                        {
+                            "ja": "いつご飯食べるの？お腹空いたよ。",
+                            "en": "When are we eating? I'm hungry!",
+                        },
+                        {
+                            "ja": "きょう何を昼食に食べましたか。",
+                            "en": "What did you have for lunch today?",
+                        },
+                        {
+                            "ja": "私はキャビアを食べた。",
+                            "en": "I ate caviar.",
+                        },
+                        {
+                            "ja": "いつから日本人は精白米を食べるようになったのですか？",
+                            "en": "When did the Japanese start eating polished rice?",
+                        },
+                        {
+                            "ja": "パックマンが、ある条件を満たすと追ってくるモンスターを逆襲して食べることができる。",
+                            "en": "Pac-Man, when a certain condition is reached, can counter attack and eat the monsters chasing him.",
+                        },
+                        {
+                            "ja": "私はストレスがたまると食欲がなくなるのではなく、逆に何か食べないと気が済まなくなる。",
+                            "en": "I don't lose my appetite when I get stressed, rather I can't calm down unless I eat something.",
+                        },
+                        {
+                            "ja": "ハゲタカが突っつく死んだ鹿とか、他の動物の食べ残しとか、 そういう腐った肉を死肉と書きました。",
+                            "en": "A dead deer being pecked by vultures, remains partly eaten by other animals, that sort of rotten meat is called 'carrion'.",
+                        },
+                        {
+                            "ja": "食べられることなくそのたこは、海に帰ったのであった。",
+                            "en": "That octopus returned to the sea without being eaten.",
+                        },
+                        {
+                            "ja": "私達は時々、ドライブを兼ねて大好きなラーメンを食べに行きます。",
+                            "en": "We sometimes combine going for a drive with eating the ramen we love so.",
+                        },
+                    ],
                 },
             },
             '学生': {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "sentences": [],
+                    "sentences": [
+                        {
+                            "ja": "「以前にどこかで会ったことがありませんか」とその学生はたずねた。",
+                            "en": "\"Haven't we met somewhere before?\" asked the student.",
+                        },
+                        {
+                            "ja": "学生が英文論文誌に論文を投稿して、「条件付採録」になっています。",
+                            "en": "The student submitted a paper to an English-language journal, and the result was \"conditional acceptance\".",
+                        },
+                        {
+                            "ja": "君たちは学生なんだ、こんなことをやれるのは今だけだ。",
+                            "en": "You're students - It's only now what you can do this sort of thing.",
+                        },
+                        {
+                            "ja": "目標は授業設計をするときの、学生の思考を触発するメディア教材の選択および活用方法について理解することである。",
+                            "en": "Our aim is that, when planning classes, we know how to select stimulating material for the students and how to put it into use.",
+                        },
+                        {
+                            "ja": "気になってならない俺は思わず、目の前の学生に聞いてしまった。",
+                            "en": "It was on my mind so much that I unthinkingly asked the pupil in front of me.",
+                        },
+                        {
+                            "ja": "ただし、学生の本分は学業ですから、期末テストをおろそかにしたらメッ！ですよ？",
+                            "en": "However, the duty of a student is to study. So if you neglect the end of term test, that's a \"no!\".",
+                        },
+                        {
+                            "ja": "論文は去年のより長かったが、数人の学生はなんとかし上げた。",
+                            "en": "Although the paper was much longer than last year's a few students managed to finish.",
+                        },
+                        {
+                            "ja": "利口な学生達は早くテストを終えた。",
+                            "en": "The clever student finished the test quickly.",
+                        },
+                        {
+                            "ja": "利口な学生であればそのような事はしないだろう。",
+                            "en": "A clever student would not do such a thing.",
+                        },
+                        {
+                            "ja": "要点を学生に十分理解させた。",
+                            "en": "I brought the point home to the student.",
+                        },
+                    ],
                 },
             },
         },
@@ -1210,6 +1381,54 @@ TABERU_GAKUSEI: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "sentences": [
+                        {
+                            "ja": "私のチョコレートを食べることを考えさえしないで。",
+                            "en": "Don't you even think of eating my chocolate!",
+                        },
+                        {
+                            "ja": "野菜を食べたら？",
+                            "en": "Why don't you eat some vegetables?",
+                        },
+                        {
+                            "ja": "夏休みの間、私は夜中に夕食を食べていた。",
+                            "en": "During summer breaks, I ate dinner at midnight.",
+                        },
+                        {
+                            "ja": "いつご飯食べるの？お腹空いたよ。",
+                            "en": "When are we eating? I'm hungry!",
+                        },
+                        {
+                            "ja": "きょう何を昼食に食べましたか。",
+                            "en": "What did you have for lunch today?",
+                        },
+                        {
+                            "ja": "私はキャビアを食べた。",
+                            "en": "I ate caviar.",
+                        },
+                        {
+                            "ja": "いつから日本人は精白米を食べるようになったのですか？",
+                            "en": "When did the Japanese start eating polished rice?",
+                        },
+                        {
+                            "ja": "パックマンが、ある条件を満たすと追ってくるモンスターを逆襲して食べることができる。",
+                            "en": "Pac-Man, when a certain condition is reached, can counter attack and eat the monsters chasing him.",
+                        },
+                        {
+                            "ja": "私はストレスがたまると食欲がなくなるのではなく、逆に何か食べないと気が済まなくなる。",
+                            "en": "I don't lose my appetite when I get stressed, rather I can't calm down unless I eat something.",
+                        },
+                        {
+                            "ja": "ハゲタカが突っつく死んだ鹿とか、他の動物の食べ残しとか、 そういう腐った肉を死肉と書きました。",
+                            "en": "A dead deer being pecked by vultures, remains partly eaten by other animals, that sort of rotten meat is called 'carrion'.",
+                        },
+                        {
+                            "ja": "食べられることなくそのたこは、海に帰ったのであった。",
+                            "en": "That octopus returned to the sea without being eaten.",
+                        },
+                        {
+                            "ja": "私達は時々、ドライブを兼ねて大好きなラーメンを食べに行きます。",
+                            "en": "We sometimes combine going for a drive with eating the ramen we love so.",
+                        },
                     ],
                 },
             },
@@ -1344,6 +1563,46 @@ TABERU_GAKUSEI: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "sentences": [
+                        {
+                            "ja": "「以前にどこかで会ったことがありませんか」とその学生はたずねた。",
+                            "en": "\"Haven't we met somewhere before?\" asked the student.",
+                        },
+                        {
+                            "ja": "学生が英文論文誌に論文を投稿して、「条件付採録」になっています。",
+                            "en": "The student submitted a paper to an English-language journal, and the result was \"conditional acceptance\".",
+                        },
+                        {
+                            "ja": "君たちは学生なんだ、こんなことをやれるのは今だけだ。",
+                            "en": "You're students - It's only now what you can do this sort of thing.",
+                        },
+                        {
+                            "ja": "目標は授業設計をするときの、学生の思考を触発するメディア教材の選択および活用方法について理解することである。",
+                            "en": "Our aim is that, when planning classes, we know how to select stimulating material for the students and how to put it into use.",
+                        },
+                        {
+                            "ja": "気になってならない俺は思わず、目の前の学生に聞いてしまった。",
+                            "en": "It was on my mind so much that I unthinkingly asked the pupil in front of me.",
+                        },
+                        {
+                            "ja": "ただし、学生の本分は学業ですから、期末テストをおろそかにしたらメッ！ですよ？",
+                            "en": "However, the duty of a student is to study. So if you neglect the end of term test, that's a \"no!\".",
+                        },
+                        {
+                            "ja": "論文は去年のより長かったが、数人の学生はなんとかし上げた。",
+                            "en": "Although the paper was much longer than last year's a few students managed to finish.",
+                        },
+                        {
+                            "ja": "利口な学生達は早くテストを終えた。",
+                            "en": "The clever student finished the test quickly.",
+                        },
+                        {
+                            "ja": "利口な学生であればそのような事はしないだろう。",
+                            "en": "A clever student would not do such a thing.",
+                        },
+                        {
+                            "ja": "要点を学生に十分理解させた。",
+                            "en": "I brought the point home to the student.",
+                        },
                     ],
                 },
             },
@@ -1571,7 +1830,48 @@ KOTOBA: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "sentences": [],
+                    "sentences": [
+                        {
+                            "ja": "分からない言葉がたくさんある。",
+                            "en": "There are many words that I don't understand.",
+                        },
+                        {
+                            "ja": "このような辞書には、「冷蔵庫」という言葉を使った例文が少なくとも2つは載っているはずだ。",
+                            "en": "In a dictionary like this one there should be at least two sentences with \"fridge\".",
+                        },
+                        {
+                            "ja": "あまりに馬鹿げていて言葉にできないことは歌うことで生み出される。",
+                            "en": "Everything that is too stupid to say, is sung.",
+                        },
+                        {
+                            "ja": "傍目八目という言葉があるように一度協会から離れて、日本サッカーをみて頂きたい。",
+                            "en": "Like the saying that things are seen clearest from outside I wish he'd leave the association for a time and take a look at Japanese soccer.",
+                        },
+                        {
+                            "ja": "「馬鹿」という言葉は、悪い言葉だと言われているが、私の成長してきた環境では、 それほど悪い言葉ではなかったように思う。",
+                            "en": "I'm told \"idiot\" is a bad word, but where I grew up it doesn't really feel that bad.",
+                        },
+                        {
+                            "ja": "言葉と行動は一致すべきものだが、実行は難しい。",
+                            "en": "Your words are supposed to correspond to your actions, but that is not easy to put into practice.",
+                        },
+                        {
+                            "ja": "お世話になった全ての方々にお礼の言葉を述べたいと思います。",
+                            "en": "I'd like to say a word of thanks to all those gentlemen and ladies whose care I have been in.",
+                        },
+                        {
+                            "ja": "ら抜き言葉って知っている？けっこう間違った言葉を使う生徒が多いみたい。",
+                            "en": "You know about 'ra-skipped words'? It looks like quite a lot of students are using mistaken words.",
+                        },
+                        {
+                            "ja": "倒置法は言葉の前後を入れ替えることにより文章を強調する効果があります。",
+                            "en": "Anastrophe, by switching around words, has the effect of emphasizing text.",
+                        },
+                        {
+                            "ja": "いかにも敬虔なるクリスチャンが送る、礼節重き言葉です。",
+                            "en": "So characteristic of what a pious Christian would say, this courteous phrase.",
+                        },
+                    ],
                 },
             },
         },
@@ -1749,6 +2049,46 @@ KOTOBA: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "sentences": [
+                        {
+                            "ja": "分からない言葉がたくさんある。",
+                            "en": "There are many words that I don't understand.",
+                        },
+                        {
+                            "ja": "このような辞書には、「冷蔵庫」という言葉を使った例文が少なくとも2つは載っているはずだ。",
+                            "en": "In a dictionary like this one there should be at least two sentences with \"fridge\".",
+                        },
+                        {
+                            "ja": "あまりに馬鹿げていて言葉にできないことは歌うことで生み出される。",
+                            "en": "Everything that is too stupid to say, is sung.",
+                        },
+                        {
+                            "ja": "傍目八目という言葉があるように一度協会から離れて、日本サッカーをみて頂きたい。",
+                            "en": "Like the saying that things are seen clearest from outside I wish he'd leave the association for a time and take a look at Japanese soccer.",
+                        },
+                        {
+                            "ja": "「馬鹿」という言葉は、悪い言葉だと言われているが、私の成長してきた環境では、 それほど悪い言葉ではなかったように思う。",
+                            "en": "I'm told \"idiot\" is a bad word, but where I grew up it doesn't really feel that bad.",
+                        },
+                        {
+                            "ja": "言葉と行動は一致すべきものだが、実行は難しい。",
+                            "en": "Your words are supposed to correspond to your actions, but that is not easy to put into practice.",
+                        },
+                        {
+                            "ja": "お世話になった全ての方々にお礼の言葉を述べたいと思います。",
+                            "en": "I'd like to say a word of thanks to all those gentlemen and ladies whose care I have been in.",
+                        },
+                        {
+                            "ja": "ら抜き言葉って知っている？けっこう間違った言葉を使う生徒が多いみたい。",
+                            "en": "You know about 'ra-skipped words'? It looks like quite a lot of students are using mistaken words.",
+                        },
+                        {
+                            "ja": "倒置法は言葉の前後を入れ替えることにより文章を強調する効果があります。",
+                            "en": "Anastrophe, by switching around words, has the effect of emphasizing text.",
+                        },
+                        {
+                            "ja": "いかにも敬虔なるクリスチャンが送る、礼節重き言葉です。",
+                            "en": "So characteristic of what a pious Christian would say, this courteous phrase.",
+                        },
                     ],
                 },
             },
@@ -2338,21 +2678,144 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "sentences": [],
+                    "sentences": [
+                        {
+                            "ja": "「どうかしたの？」と小さい白いウサギが聞きました。",
+                            "en": "\"What's the matter?\" asked the little white rabbit.",
+                        },
+                        {
+                            "ja": "母ウサギは、赤ん坊たちを自分のからだで暖かくしている。",
+                            "en": "A mother rabbit keeps her babies warm with her own body.",
+                        },
+                        {
+                            "ja": "彼は手品を使って帽子からウサギをとりだした。",
+                            "en": "He produced a rabbit out of his hat by magic.",
+                        },
+                        {
+                            "ja": "彼はウサギとりのわなにえさをつけた。",
+                            "en": "He baited the trap for rabbits.",
+                        },
+                        {
+                            "ja": "白いウサギと黒いウサギの二匹のウサギがおおきな森の中に住んでいました。",
+                            "en": "Two rabbits, a white rabbit and a black rabbit, lived in a large forest.",
+                        },
+                        {
+                            "ja": "突然小さな黒いウサギはすわりこんで、とても悲しそうにみえた。",
+                            "en": "Suddenly the little black rabbit sat down, and looked very sad.",
+                        },
+                        {
+                            "ja": "雪の中で、その白兎の姿は見えなかった。",
+                            "en": "Against the snow, the white rabbit was invisible.",
+                        },
+                        {
+                            "ja": "次の兎の飼育当番は彼らです。",
+                            "en": "They are the next to be on duty for taking care of the rabbits.",
+                        },
+                        {
+                            "ja": "私はウサギの世話をしなければならない。",
+                            "en": "I must look after the rabbits.",
+                        },
+                        {
+                            "ja": "私の特製うさぎシチューです。",
+                            "en": "It's my special recipe, rabbit stew.",
+                        },
+                    ],
                 },
             },
             '行く': {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "sentences": [],
+                    "sentences": [
+                        {
+                            "ja": "行くよ。",
+                            "en": "I will go.",
+                        },
+                        {
+                            "ja": "いつかフランスに行くことは避けられない、それがいつかは分からないけれど。",
+                            "en": "It is inevitable that I go to France someday, I just don't know when.",
+                        },
+                        {
+                            "ja": "私たちがそこへ行くかどうかを決めるのは君の責任だ。",
+                            "en": "It's up to you to decide whether we'll go there or not.",
+                        },
+                        {
+                            "ja": "「どうして行かないの？」「行きたくないからだよ。」",
+                            "en": "\"Why aren't you going?\" \"Because I don't want to.\"",
+                        },
+                        {
+                            "ja": "学校まで１０分で歩いて行ける。",
+                            "en": "I can walk to school in ten minutes.",
+                        },
+                        {
+                            "ja": "買い物に行かなければならない。一時間で戻るよ。",
+                            "en": "I have to go shopping. I'll be back in an hour.",
+                        },
+                        {
+                            "ja": "最後に家族でディズニーランドへに行ってからもう随分になる。",
+                            "en": "It has been so long since I last went to Disneyland with my family.",
+                        },
+                        {
+                            "ja": "今夜教会に行くよ。",
+                            "en": "I'm going to church tonight.",
+                        },
+                        {
+                            "ja": "なぜ人々は映画を見に行くのか？",
+                            "en": "Why do people go to the movies?",
+                        },
+                        {
+                            "ja": "学校へ行きたくない。",
+                            "en": "I don't want to go to school.",
+                        },
+                    ],
                 },
             },
             '籠': {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "sentences": [],
+                    "sentences": [
+                        {
+                            "ja": "籠の鳥に水とえさをまいにちやるようにしてください。",
+                            "en": "Please see that the birds in the cage get water and food every day.",
+                        },
+                        {
+                            "ja": "籠の中のリンゴの数を数えなさい。",
+                            "en": "Count the apples in the basket.",
+                        },
+                        {
+                            "ja": "籠の中で鳥が鳴いていますね。",
+                            "en": "There are birds singing in the cage, aren't there?",
+                        },
+                        {
+                            "ja": "卵をすべて一つのかごに入れるな。",
+                            "en": "Don't put all your eggs in one basket.",
+                        },
+                        {
+                            "ja": "彼女は草を編んで籠を作った。",
+                            "en": "She wove the grass into a basket.",
+                        },
+                        {
+                            "ja": "彼女は花がいっぱい入ったかごを提げていた。",
+                            "en": "She was carrying a basket full of flowers.",
+                        },
+                        {
+                            "ja": "彼女はりんごのいっぱい入った籠を持っていた。",
+                            "en": "She had a basket full of apples.",
+                        },
+                        {
+                            "ja": "彼女はリンゴでいっぱいのかごをもっていた。",
+                            "en": "She had a basket full of apples.",
+                        },
+                        {
+                            "ja": "彼女はりんごがいっぱい入ったかごを持っていた。",
+                            "en": "She had a basket full of apples.",
+                        },
+                        {
+                            "ja": "彼女はすばやく子猫を籠の中に閉じ込めた。",
+                            "en": "She quickly shut the kitten into a basket.",
+                        },
+                    ],
                 },
             },
         },
@@ -2530,6 +2993,46 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "sentences": [
+                        {
+                            "ja": "「どうかしたの？」と小さい白いウサギが聞きました。",
+                            "en": "\"What's the matter?\" asked the little white rabbit.",
+                        },
+                        {
+                            "ja": "母ウサギは、赤ん坊たちを自分のからだで暖かくしている。",
+                            "en": "A mother rabbit keeps her babies warm with her own body.",
+                        },
+                        {
+                            "ja": "彼は手品を使って帽子からウサギをとりだした。",
+                            "en": "He produced a rabbit out of his hat by magic.",
+                        },
+                        {
+                            "ja": "彼はウサギとりのわなにえさをつけた。",
+                            "en": "He baited the trap for rabbits.",
+                        },
+                        {
+                            "ja": "白いウサギと黒いウサギの二匹のウサギがおおきな森の中に住んでいました。",
+                            "en": "Two rabbits, a white rabbit and a black rabbit, lived in a large forest.",
+                        },
+                        {
+                            "ja": "突然小さな黒いウサギはすわりこんで、とても悲しそうにみえた。",
+                            "en": "Suddenly the little black rabbit sat down, and looked very sad.",
+                        },
+                        {
+                            "ja": "雪の中で、その白兎の姿は見えなかった。",
+                            "en": "Against the snow, the white rabbit was invisible.",
+                        },
+                        {
+                            "ja": "次の兎の飼育当番は彼らです。",
+                            "en": "They are the next to be on duty for taking care of the rabbits.",
+                        },
+                        {
+                            "ja": "私はウサギの世話をしなければならない。",
+                            "en": "I must look after the rabbits.",
+                        },
+                        {
+                            "ja": "私の特製うさぎシチューです。",
+                            "en": "It's my special recipe, rabbit stew.",
+                        },
                     ],
                 },
             },
@@ -2610,6 +3113,46 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "sentences": [
+                        {
+                            "ja": "行くよ。",
+                            "en": "I will go.",
+                        },
+                        {
+                            "ja": "いつかフランスに行くことは避けられない、それがいつかは分からないけれど。",
+                            "en": "It is inevitable that I go to France someday, I just don't know when.",
+                        },
+                        {
+                            "ja": "私たちがそこへ行くかどうかを決めるのは君の責任だ。",
+                            "en": "It's up to you to decide whether we'll go there or not.",
+                        },
+                        {
+                            "ja": "「どうして行かないの？」「行きたくないからだよ。」",
+                            "en": "\"Why aren't you going?\" \"Because I don't want to.\"",
+                        },
+                        {
+                            "ja": "学校まで１０分で歩いて行ける。",
+                            "en": "I can walk to school in ten minutes.",
+                        },
+                        {
+                            "ja": "買い物に行かなければならない。一時間で戻るよ。",
+                            "en": "I have to go shopping. I'll be back in an hour.",
+                        },
+                        {
+                            "ja": "最後に家族でディズニーランドへに行ってからもう随分になる。",
+                            "en": "It has been so long since I last went to Disneyland with my family.",
+                        },
+                        {
+                            "ja": "今夜教会に行くよ。",
+                            "en": "I'm going to church tonight.",
+                        },
+                        {
+                            "ja": "なぜ人々は映画を見に行くのか？",
+                            "en": "Why do people go to the movies?",
+                        },
+                        {
+                            "ja": "学校へ行きたくない。",
+                            "en": "I don't want to go to school.",
+                        },
                     ],
                 },
             },
@@ -2716,6 +3259,46 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "sentences": [
+                        {
+                            "ja": "籠の鳥に水とえさをまいにちやるようにしてください。",
+                            "en": "Please see that the birds in the cage get water and food every day.",
+                        },
+                        {
+                            "ja": "籠の中のリンゴの数を数えなさい。",
+                            "en": "Count the apples in the basket.",
+                        },
+                        {
+                            "ja": "籠の中で鳥が鳴いていますね。",
+                            "en": "There are birds singing in the cage, aren't there?",
+                        },
+                        {
+                            "ja": "卵をすべて一つのかごに入れるな。",
+                            "en": "Don't put all your eggs in one basket.",
+                        },
+                        {
+                            "ja": "彼女は草を編んで籠を作った。",
+                            "en": "She wove the grass into a basket.",
+                        },
+                        {
+                            "ja": "彼女は花がいっぱい入ったかごを提げていた。",
+                            "en": "She was carrying a basket full of flowers.",
+                        },
+                        {
+                            "ja": "彼女はりんごのいっぱい入った籠を持っていた。",
+                            "en": "She had a basket full of apples.",
+                        },
+                        {
+                            "ja": "彼女はリンゴでいっぱいのかごをもっていた。",
+                            "en": "She had a basket full of apples.",
+                        },
+                        {
+                            "ja": "彼女はりんごがいっぱい入ったかごを持っていた。",
+                            "en": "She had a basket full of apples.",
+                        },
+                        {
+                            "ja": "彼女はすばやく子猫を籠の中に閉じ込めた。",
+                            "en": "She quickly shut the kitten into a basket.",
+                        },
                     ],
                 },
             },
@@ -2909,7 +3492,48 @@ SHIZUKA: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "sentences": [],
+                    "sentences": [
+                        {
+                            "ja": "奈良は静かで、きれいな町です。",
+                            "en": "Nara is a quiet and beautiful city.",
+                        },
+                        {
+                            "ja": "シックで上品な制服と歴史ある静かな雰囲気が特徴の女子高なのだという。",
+                            "en": "It's said to be a girls' high school characterised by its quiet and traditional feel and a chic, high-class uniform.",
+                        },
+                        {
+                            "ja": "授業の終わり近くになると、教師が一言も「静かにしなさい」「座りなさい！」と言わないにもかかわらず、自然と子どもたちは自分の席に戻り静かになる。",
+                            "en": "As the lesson comes to an end, even if the teacher doesn't say a word of \"be quiet\", \"sit down!,\" the children naturally return to their seats and quieten down.",
+                        },
+                        {
+                            "ja": "今はフレッドの錯乱が治まって静かに眠っています。",
+                            "en": "Fred's agitation has now subsided, and he's sleeping peacefully.",
+                        },
+                        {
+                            "ja": "花火の弾ける音が止むと、急に辺りが静かになる。後に残った火薬の匂いが、なんだか俺をセンチメンタルな気分にさせた。",
+                            "en": "As the popping sound of the fireworks stopped, it suddenly became quiet around me. The smell of gunpowder somehow put me in a sentimental mood.",
+                        },
+                        {
+                            "ja": "流れの静かな川は水が深い。",
+                            "en": "Still waters run deep.",
+                        },
+                        {
+                            "ja": "嵐のあとは静かだった。",
+                            "en": "After the storm, it was calm.",
+                        },
+                        {
+                            "ja": "頼むから静かにしてよ。",
+                            "en": "Do be quiet, please!",
+                        },
+                        {
+                            "ja": "役に立つ面会の最も大切な条件は、医師と親がくつろいで、他人に邪魔されずに当事者だけで座ることのできる静かな部屋だ。",
+                            "en": "An essential condition for a helpful interview is a quiet room in which doctor and parents can sit comfortably and in private without being interrupted.",
+                        },
+                        {
+                            "ja": "母親は子供たちに静かにするように言った。",
+                            "en": "The mother told the children to be quiet.",
+                        },
+                    ],
                 },
             },
         },
@@ -3079,6 +3703,46 @@ SHIZUKA: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "sentences": [
+                        {
+                            "ja": "奈良は静かで、きれいな町です。",
+                            "en": "Nara is a quiet and beautiful city.",
+                        },
+                        {
+                            "ja": "シックで上品な制服と歴史ある静かな雰囲気が特徴の女子高なのだという。",
+                            "en": "It's said to be a girls' high school characterised by its quiet and traditional feel and a chic, high-class uniform.",
+                        },
+                        {
+                            "ja": "授業の終わり近くになると、教師が一言も「静かにしなさい」「座りなさい！」と言わないにもかかわらず、自然と子どもたちは自分の席に戻り静かになる。",
+                            "en": "As the lesson comes to an end, even if the teacher doesn't say a word of \"be quiet\", \"sit down!,\" the children naturally return to their seats and quieten down.",
+                        },
+                        {
+                            "ja": "今はフレッドの錯乱が治まって静かに眠っています。",
+                            "en": "Fred's agitation has now subsided, and he's sleeping peacefully.",
+                        },
+                        {
+                            "ja": "花火の弾ける音が止むと、急に辺りが静かになる。後に残った火薬の匂いが、なんだか俺をセンチメンタルな気分にさせた。",
+                            "en": "As the popping sound of the fireworks stopped, it suddenly became quiet around me. The smell of gunpowder somehow put me in a sentimental mood.",
+                        },
+                        {
+                            "ja": "流れの静かな川は水が深い。",
+                            "en": "Still waters run deep.",
+                        },
+                        {
+                            "ja": "嵐のあとは静かだった。",
+                            "en": "After the storm, it was calm.",
+                        },
+                        {
+                            "ja": "頼むから静かにしてよ。",
+                            "en": "Do be quiet, please!",
+                        },
+                        {
+                            "ja": "役に立つ面会の最も大切な条件は、医師と親がくつろいで、他人に邪魔されずに当事者だけで座ることのできる静かな部屋だ。",
+                            "en": "An essential condition for a helpful interview is a quiet room in which doctor and parents can sit comfortably and in private without being interrupted.",
+                        },
+                        {
+                            "ja": "母親は子供たちに静かにするように言った。",
+                            "en": "The mother told the children to be quiet.",
+                        },
                     ],
                 },
             },
@@ -3315,7 +3979,48 @@ NARU: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "sentences": [],
+                    "sentences": [
+                        {
+                            "ja": "のろまにはなりたくない。かっこ良くなりたい！！",
+                            "en": "I don't want to be lame; I want to be cool!!",
+                        },
+                        {
+                            "ja": "大きくなったら王様になりたい。",
+                            "en": "When I grow up, I want to be a king.",
+                        },
+                        {
+                            "ja": "これは代わりになるものをみつけたい単語だ。",
+                            "en": "It's a word I'd like to find a substitute for.",
+                        },
+                        {
+                            "ja": "それをするためには危険を冒さなければならない。",
+                            "en": "In order to do that, you have to take risks.",
+                        },
+                        {
+                            "ja": "私は寝なければなりません。",
+                            "en": "I have to go to bed.",
+                        },
+                        {
+                            "ja": "こんなことにはなって欲しくなかった。",
+                            "en": "I didn't want this to happen.",
+                        },
+                        {
+                            "ja": "ロボットなんかに私がなるわけないでしょう？ロボットは夢を見ないんだから。",
+                            "en": "How could I be a robot? Robots don't dream.",
+                        },
+                        {
+                            "ja": "私達がしなければならないことそれぞれの背後には自分たちがしたい何かがあると思うんだ。",
+                            "en": "I suppose that behind each thing we have to do, there's something we want to do...",
+                        },
+                        {
+                            "ja": "私たちは兄弟として共に生きることを知らなければならない。さもなくば、愚か者として共に滅びるであろう。",
+                            "en": "We must learn to live together as brothers, or we will perish together as fools.",
+                        },
+                        {
+                            "ja": "はぁ・・・（汗）、それでコンタクトは取れるようになったのかしら・・・？",
+                            "en": "Uh... How's that working?",
+                        },
+                    ],
                 },
             },
         },
@@ -3396,6 +4101,46 @@ NARU: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "sentences": [
+                        {
+                            "ja": "のろまにはなりたくない。かっこ良くなりたい！！",
+                            "en": "I don't want to be lame; I want to be cool!!",
+                        },
+                        {
+                            "ja": "大きくなったら王様になりたい。",
+                            "en": "When I grow up, I want to be a king.",
+                        },
+                        {
+                            "ja": "これは代わりになるものをみつけたい単語だ。",
+                            "en": "It's a word I'd like to find a substitute for.",
+                        },
+                        {
+                            "ja": "それをするためには危険を冒さなければならない。",
+                            "en": "In order to do that, you have to take risks.",
+                        },
+                        {
+                            "ja": "私は寝なければなりません。",
+                            "en": "I have to go to bed.",
+                        },
+                        {
+                            "ja": "こんなことにはなって欲しくなかった。",
+                            "en": "I didn't want this to happen.",
+                        },
+                        {
+                            "ja": "ロボットなんかに私がなるわけないでしょう？ロボットは夢を見ないんだから。",
+                            "en": "How could I be a robot? Robots don't dream.",
+                        },
+                        {
+                            "ja": "私達がしなければならないことそれぞれの背後には自分たちがしたい何かがあると思うんだ。",
+                            "en": "I suppose that behind each thing we have to do, there's something we want to do...",
+                        },
+                        {
+                            "ja": "私たちは兄弟として共に生きることを知らなければならない。さもなくば、愚か者として共に滅びるであろう。",
+                            "en": "We must learn to live together as brothers, or we will perish together as fools.",
+                        },
+                        {
+                            "ja": "はぁ・・・（汗）、それでコンタクトは取れるようになったのかしら・・・？",
+                            "en": "Uh... How's that working?",
+                        },
                     ],
                 },
             },

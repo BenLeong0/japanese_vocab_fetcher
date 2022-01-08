@@ -1,8 +1,10 @@
 import json
+import re
 from threading import Thread
 from typing import Optional
 
 from bs4 import BeautifulSoup as Soup
+from bs4.element import Tag
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL
@@ -36,6 +38,8 @@ def error_response_factory(error: TangorinAPIError) -> ResponseItemTangorin:
         },
     }
 
+TangorinSentenceSection = list[tuple[Soup, Soup]]
+
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
     sentences_dict: dict[Kaki, ResponseItemTangorin] = {}
@@ -58,12 +62,13 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
 
 def get_sentences(word: Kaki) -> ResponseItemTangorin:
     try:
-        _html = get_html(word)
+        html = get_html(word)
     except TangorinAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
         return error_response_factory(api_error)
 
-    return response_factory(None)
+    sentences = extract_sentences(html)
+    return response_factory(sentences)
 
 
 # Get HTML
@@ -84,3 +89,29 @@ def get_html(word: Kaki) -> Soup:
 
     html = HTMLString(response.text)
     return Soup(html, 'html.parser')
+
+
+# Extract sections
+
+def clean_html(html: Soup) -> None:
+    """Remove furigana, and insert whitespace"""
+    for furigana in html.find_all("rt"):
+        furigana.decompose()
+    for space in html.find_all("mark"):
+        if (
+            isinstance(space.nextSibling, Tag) and
+            space.nextSibling.name == "mark"
+        ):
+            space.insert_after(" ")
+
+
+def extract_sentences(html: Soup) -> list[ContextSentence]:
+    """Returns list of ContextSentences"""
+    clean_html(html)
+    rows: list[Soup] = list(html.find_all("div", class_="sentences"))
+    return [
+        {
+            "ja": re.sub(r'\s+', ' ', row.find('dt', class_='s-jp').text).strip(),
+            "en": re.sub(r'\s+', ' ', row.find('dd', class_='s-en').text).strip()
+        } for row in rows
+    ]
