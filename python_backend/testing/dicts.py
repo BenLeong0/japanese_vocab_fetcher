@@ -915,7 +915,7 @@ TABERU_GAKUSEI: FullTestDict = {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=食べる,学生"),
         "api_response": wanikani_api_responses.TABERU_GAKUSEI,
         "result_dict": {
-            '': {
+            '食べる': {
                 "success": True,
                 "error": None,
                 "main_data": {
