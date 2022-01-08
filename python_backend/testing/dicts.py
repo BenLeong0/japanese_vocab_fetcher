@@ -203,6 +203,15 @@ MEGANE: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_output": {
+            '眼鏡': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=眼鏡"),
@@ -530,6 +539,15 @@ COMEBACK: FullTestDict= {
         },
     },
     "tangorin": {
+        "expected_output": {
+            'カムバック': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=カムバック"),
@@ -876,12 +894,28 @@ TABERU_GAKUSEI: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_output": {
+            '食べる': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '学生': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=食べる,学生"),
         "api_response": wanikani_api_responses.TABERU_GAKUSEI,
         "result_dict": {
-            '食べる': {
+            '': {
                 "success": True,
                 "error": None,
                 "main_data": {
@@ -1504,6 +1538,15 @@ KOTOBA: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_output": {
+            '言葉': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=言葉"),
@@ -1826,6 +1869,15 @@ BADINPUT: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_output": {
+            'BADINPUT': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=BADINPUT"),
@@ -2233,6 +2285,29 @@ USAGI_IKU_KAGO: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_output": {
+            '兎': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '行く': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '籠': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=兎,行く,籠"),
@@ -2775,6 +2850,15 @@ SHIZUKA: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_output": {
+            '静か': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=静か"),
@@ -3166,6 +3250,15 @@ NARU: FullTestDict = {
         },
     },
     "tangorin": {
+        "expected_output": {
+            'なる': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
     },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=なる"),
