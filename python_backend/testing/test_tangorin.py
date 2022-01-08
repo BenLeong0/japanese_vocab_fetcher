@@ -37,7 +37,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     # html = test_dict['tangorin']['html']
     expected_output = test_dict['tangorin']['expected_output']
 
-    # monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(html))
+    # monkeypatch.setattr("requests.get", lambda x, timeout: FakeResponse(html))
     assert tangorin.main(word_list) == expected_output
 
 
