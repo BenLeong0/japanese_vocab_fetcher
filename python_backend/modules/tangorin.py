@@ -36,6 +36,8 @@ def error_response_factory(error: TangorinAPIError) -> ResponseItemTangorin:
         },
     }
 
+TangorinSentenceSection = list[tuple[Soup, Soup]]
+
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
     sentences_dict: dict[Kaki, ResponseItemTangorin] = {}
@@ -58,10 +60,12 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
 
 def get_sentences(word: Kaki) -> ResponseItemTangorin:
     try:
-        _html = get_html(word)
+        html = get_html(word)
     except TangorinAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
         return error_response_factory(api_error)
+
+    _sentence_sections = get_sections(html)
 
     return response_factory(None)
 
@@ -84,3 +88,16 @@ def get_html(word: Kaki) -> Soup:
 
     html = HTMLString(response.text)
     return Soup(html, 'html.parser')
+
+
+# Extract sections
+
+def get_sections(html: Soup) -> list[TangorinSentenceSection]:
+    """Return list of tuples of form `(sentence_ja, sentence_en])`"""
+    rows: list[Soup] = list(html.find_all("div", class_="sentences"))
+    return [
+        (
+            Soup(str(row.find('dt', class_='s-jp')), "html.parser"),
+            Soup(str(row.find('dd', class_='s-en')), "html.parser")
+        ) for row in rows
+    ]
