@@ -124,7 +124,7 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     response = json.dumps({"error": "could not connect"})
-    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(response, status_code=400))
+    monkeypatch.setattr("requests.get", lambda _url, timeout: FakeResponse(response, status_code=400))
 
     try:
         tangorin.get_html(word_list[0])
@@ -142,13 +142,9 @@ def test_extract_sentences(test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     sections = test_dict['tangorin']['expected_sections']
+    expected_output = test_dict['tangorin']['expected_output']
 
     for word in word_list:
         html = sections[word]['html']
-        expected_sentences = sections[word]["expected_sentences"]
-        assert tangorin.extract_sentences(Soup(html, "html.parser")) == [
-            {
-                "ja": sentence['japanese_sentence'],
-                "en": sentence['english_sentence']
-            } for sentence in expected_sentences
-        ]
+        expected_sentences = expected_output[word]["main_data"]["sentences"]
+        assert tangorin.extract_sentences(Soup(html, "html.parser")) == expected_sentences

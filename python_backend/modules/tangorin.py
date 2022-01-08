@@ -68,8 +68,7 @@ def get_sentences(word: Kaki) -> ResponseItemTangorin:
         return error_response_factory(api_error)
 
     sentences = extract_sentences(html)
-    response_factory(sentences)
-    return response_factory(None)
+    return response_factory(sentences)
 
 
 # Get HTML
