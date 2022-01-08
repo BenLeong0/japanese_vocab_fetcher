@@ -98,7 +98,6 @@ def clean_html(html: Soup) -> None:
     """Remove furigana, and insert whitespace"""
     for furigana in html.find_all("rt"):
         furigana.decompose()
-
     for space in html.find_all("mark"):
         if (
             isinstance(space.nextSibling, Tag) and
