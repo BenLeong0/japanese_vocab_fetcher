@@ -4,7 +4,7 @@ from typing import Any, DefaultDict, Protocol
 
 from custom_types.alternative_string_types import Kaki
 from custom_types.response_types import FullResponseItem
-from modules import forvo, jisho, ojad, suzuki, wadoku, wanikani
+from modules import forvo, jisho, ojad, suzuki, tangorin, wadoku, wanikani
 
 
 class Module(Protocol): # pylint: disable=too-few-public-methods
@@ -17,6 +17,7 @@ MODULES = (
     jisho,
     ojad,
     suzuki,
+    tangorin,
     wadoku,
     wanikani,
 )

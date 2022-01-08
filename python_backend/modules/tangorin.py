@@ -53,6 +53,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
     for thread in threads:
         thread.join()
 
+    sentences_dict = {word:response_factory(None) for word in word_list}
     return sentences_dict
 
 

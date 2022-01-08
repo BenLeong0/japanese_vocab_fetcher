@@ -202,6 +202,17 @@ MEGANE: FullTestDict = {
             },
         },
     },
+    "tangorin": {
+        "expected_output": {
+            '眼鏡': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=眼鏡"),
         "api_response": wanikani_api_responses.MEGANE,
@@ -343,6 +354,14 @@ MEGANE: FullTestDict = {
                             "url": URL("https://apifree.forvo.com/audio/3c1n2o3f3n313i2o372i1h2e3o3q2e3a292p3o1j3m2h382k3k2o27291g341f312j2f1f2g3q1b3o3o313n2m283p1l2h3m253939371h1n3q272g2a3a383c3n2i3g2b1g1k2m371f363f281o3i3638253n322e31381g1i211t1t_1o1h3j323637373d2a1h37333l2121371l3a2i1o2f2h1t1t"),
                             "username": "monekuson",
                         },
+                    ],
+                },
+            },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
                     ],
                 },
             },
@@ -519,6 +538,17 @@ COMEBACK: FullTestDict= {
             },
         },
     },
+    "tangorin": {
+        "expected_output": {
+            'カムバック': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=カムバック"),
         "api_response": wanikani_api_responses.COMEBACK,
@@ -575,6 +605,14 @@ COMEBACK: FullTestDict= {
                             "url": URL("https://apifree.forvo.com/audio/1h2d3b292b341f3i2f3m2p3e34253e2h282o3c1i1j3b1o263i2c363q3k2p351p2a1n3j2g1h1p2d291b3b3b3j2233371i333o1f2h1h291m282f381h3p1p3n3b2o3g2n273h372e263m36323m282n382p3k2a271b223d211t1t_2m3b21293b1b322a2q3m3b3b241h1p2j282d2j281n211t1t"),
                             "username": "strawberrybrown",
                         },
+                    ],
+                },
+            },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
                     ],
                 },
             },
@@ -855,6 +893,24 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     },
+    "tangorin": {
+        "expected_output": {
+            '食べる': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '学生': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=食べる,学生"),
         "api_response": wanikani_api_responses.TABERU_GAKUSEI,
@@ -1127,6 +1183,14 @@ TABERU_GAKUSEI: FullTestDict = {
                     ],
                 },
             },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                    ],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -1250,6 +1314,14 @@ TABERU_GAKUSEI: FullTestDict = {
                             "url": URL("https://apifree.forvo.com/audio/2o1f3g3c1k2i2b2o363f2p1j2d2g2e2e2n3m1j1b2p2d1k1o3q251i3l3i3q3d2g34353i1j3b292q2a1h272l25273h3f36331p1n371h2p343o363f1j2d3d2m322q_2b321o2e3m2p2q37263p1g1n1o273c3j313q2d3p242h1t1t"),
                             "username": "poyotan",
                         },
+                    ],
+                },
+            },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
                     ],
                 },
             },
@@ -1465,6 +1537,17 @@ KOTOBA: FullTestDict = {
             },
         },
     },
+    "tangorin": {
+        "expected_output": {
+            '言葉': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=言葉"),
         "api_response": wanikani_api_responses.KOTOBA,
@@ -1633,6 +1716,14 @@ KOTOBA: FullTestDict = {
                     ],
                 },
             },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                    ],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -1777,6 +1868,17 @@ BADINPUT: FullTestDict = {
             },
         },
     },
+    "tangorin": {
+        "expected_output": {
+            'BADINPUT': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=BADINPUT"),
         "api_response": wanikani_api_responses.BADINPUT,
@@ -1829,6 +1931,14 @@ BADINPUT: FullTestDict = {
                 "error": None,
                 "main_data": {
                     "audio": [],
+                },
+            },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                    ],
                 },
             },
             "wanikani": {
@@ -2174,6 +2284,31 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     },
+    "tangorin": {
+        "expected_output": {
+            '兎': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '行く': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '籠': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=兎,行く,籠"),
         "api_response": wanikani_api_responses.USAGI_IKU_KAGO,
@@ -2342,6 +2477,14 @@ USAGI_IKU_KAGO: FullTestDict = {
                     ],
                 },
             },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                    ],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -2411,6 +2554,14 @@ USAGI_IKU_KAGO: FullTestDict = {
                             "url": URL("https://apifree.forvo.com/audio/3h242h2e3c3a1j3g2c2g243832332n2n272h1m3k3l3l3i3938321g3q3i2o2j3h321i333g1l2o311h2h353q33242o1f352g2n383l3422353b3a3p2i271j332l3m2l3i1j253q252e3g3j3q1k3h3g3m2l243l36233f3m371t1t_1j213138243c3c27353k3a2m2e3m213l3p252b3e36371t1t"),
                             "username": "usako_usagiclub",
                         },
+                    ],
+                },
+            },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
                     ],
                 },
             },
@@ -2509,6 +2660,14 @@ USAGI_IKU_KAGO: FullTestDict = {
                             "url": URL("https://apifree.forvo.com/audio/2c3838233d1o2h2b1p393434271g3q1f3c223g262g1k272k34351j3a1h2934383g1g3c2e3835391k3q36273g2i242j1l2c2b3234253121343g1f253i1n3i262n2p1f2g3d1n2b27392h2321393i1i1m382931371m2b371t1t_2j1j1h2h233g342o1g1n2e29242f2n1f2k331l3839371t1t"),
                             "username": "usako_usagiclub",
                         },
+                    ],
+                },
+            },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
                     ],
                 },
             },
@@ -2690,6 +2849,17 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
+    "tangorin": {
+        "expected_output": {
+            '静か': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=静か"),
         "api_response": wanikani_api_responses.SHIZUKA,
@@ -2847,6 +3017,14 @@ SHIZUKA: FullTestDict = {
                             "url": URL("https://apifree.forvo.com/audio/362534211m1j372l1m242g243o31241n293l1p2f2a2l3l1g363428233j2a1f1l3a23352p3i2b3335263d241g36333c1k261g382l1o2e38371n1m1n23292n1g3n2p2f1f1n2d2232391l1j273j3e1i343e3j3d3i3j293n1t1t_1k233b2l332g3n2c2g2q331o2q282p3m213p3m2m3g371t1t"),
                             "username": "skent",
                         },
+                    ],
+                },
+            },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
                     ],
                 },
             },
@@ -3071,6 +3249,17 @@ NARU: FullTestDict = {
             },
         },
     },
+    "tangorin": {
+        "expected_output": {
+            'なる': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=なる"),
         "api_response": wanikani_api_responses.NARU,
@@ -3139,6 +3328,14 @@ NARU: FullTestDict = {
                             "url": URL("https://apifree.forvo.com/audio/343l2h2g3j1l1b3e2q35233f2b3j2p322n1l2m272h292q2k3b2c1o3p3a272n2m352n1g2q3p21342i392e253p2p3q3m2i1p1o1l333n2h2h3m3e3321291o3b243q1l1o252g2e1h3b282d292229341n2h3j3o2k312l2o371t1t_2o3a392g1p1l1k2o3a3d2c3e1m3l1m3q2d3b3n33293n1t1t"),
                             "username": "poyotan",
                         },
+                    ],
+                },
+            },
+            "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
                     ],
                 },
             },
