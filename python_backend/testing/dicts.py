@@ -630,7 +630,6 @@ COMEBACK: FullTestDict= {
             'カムバック': {
                 "url": URL("https://tangorin.com/sentences?search=カムバック",),
                 "html": get_file_as_string("comeback", "tangorin"),
-                "expected_sentences": [],
             },
         },
         "expected_output": {
@@ -2242,7 +2241,6 @@ BADINPUT: FullTestDict = {
             'BADINPUT': {
                 "url": URL("https://tangorin.com/sentences?search=BADINPUT",),
                 "html": get_file_as_string("badinput", "tangorin"),
-                "expected_sentences": [],
             },
         },
         "expected_output": {
