@@ -207,6 +207,68 @@ MEGANE: FullTestDict = {
             '眼鏡': {
                 "url": URL("https://tangorin.com/sentences?search=眼鏡",),
                 "html": get_file_as_string("megane", "tangorin"),
+                "expected_sentences": [
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                ],
             },
         },
         "expected_output": {
@@ -549,6 +611,7 @@ COMEBACK: FullTestDict= {
             'カムバック': {
                 "url": URL("https://tangorin.com/sentences?search=カムバック",),
                 "html": get_file_as_string("comeback", "tangorin"),
+                "expected_sentences": [],
             },
         },
         "expected_output": {
@@ -910,10 +973,146 @@ TABERU_GAKUSEI: FullTestDict = {
             '食べる': {
                 "url": URL("https://tangorin.com/sentences?search=食べる",),
                 "html": get_file_as_string("taberu", "tangorin"),
+                "expected_sentences": [
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                ],
             },
             '学生': {
                 "url": URL("https://tangorin.com/sentences?search=学生",),
                 "html": get_file_as_string("gakusei", "tangorin"),
+                "expected_sentences": [
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                ],
             },
         },
         "expected_output": {
@@ -1564,6 +1763,68 @@ KOTOBA: FullTestDict = {
             '言葉': {
                 "url": URL("https://tangorin.com/sentences?search=言葉",),
                 "html": get_file_as_string("kotoba", "tangorin"),
+                "expected_sentences": [
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                ],
             },
         },
         "expected_output": {
@@ -1901,6 +2162,7 @@ BADINPUT: FullTestDict = {
             'BADINPUT': {
                 "url": URL("https://tangorin.com/sentences?search=BADINPUT",),
                 "html": get_file_as_string("badinput", "tangorin"),
+                "expected_sentences": [],
             },
         },
         "expected_output": {
@@ -2323,14 +2585,200 @@ USAGI_IKU_KAGO: FullTestDict = {
             '兎': {
                 "url": URL("https://tangorin.com/sentences?search=兎",),
                 "html": get_file_as_string("usagi", "tangorin"),
+                "expected_sentences": [
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                ],
             },
             '行く': {
                 "url": URL("https://tangorin.com/sentences?search=行く",),
                 "html": get_file_as_string("iku", "tangorin"),
+                "expected_sentences": [
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                ],
             },
             '籠': {
                 "url": URL("https://tangorin.com/sentences?search=籠",),
                 "html": get_file_as_string("kago", "tangorin"),
+                "expected_sentences": [
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                ],
             },
         },
         "expected_output": {
@@ -2902,6 +3350,68 @@ SHIZUKA: FullTestDict = {
             '静か': {
                 "url": URL("https://tangorin.com/sentences?search=静か",),
                 "html": get_file_as_string("shizuka", "tangorin"),
+                "expected_sentences": [
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                ],
             },
         },
         "expected_output": {
@@ -3308,6 +3818,68 @@ NARU: FullTestDict = {
             'なる': {
                 "url": URL("https://tangorin.com/sentences?search=なる",),
                 "html": get_file_as_string("naru", "tangorin"),
+                "expected_sentences": [
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                    {
+                        "japanese_section": Soup("", "html.parser"),
+                        "japanese_sentence": "",
+                        "english_section": Soup("", "html.parser"),
+                        "english_sentence": "",
+                    },
+                ],
             },
         },
         "expected_output": {
