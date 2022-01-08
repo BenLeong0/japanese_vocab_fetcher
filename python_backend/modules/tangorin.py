@@ -1,8 +1,10 @@
 import json
+import re
 from threading import Thread
 from typing import Optional
 
 from bs4 import BeautifulSoup as Soup
+from bs4.element import Tag
 import requests
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL
@@ -65,8 +67,9 @@ def get_sentences(word: Kaki) -> ResponseItemTangorin:
         print("An error occurred:", api_error.error_msg)
         return error_response_factory(api_error)
 
-    _sentence_sections = get_sections(html)
-
+    clean_html(html)
+    sentences = extract_sentences(html)
+    response_factory(sentences)
     return response_factory(None)
 
 
@@ -92,12 +95,26 @@ def get_html(word: Kaki) -> Soup:
 
 # Extract sections
 
-def get_sections(html: Soup) -> list[TangorinSentenceSection]:
-    """Return list of tuples of form `(sentence_ja, sentence_en])`"""
+
+def clean_html(html: Soup) -> None:
+    """Remove furigana, and insert whitespace"""
+    for furigana in html.find_all("rt"):
+        furigana.decompose()
+
+    for space in html.find_all("mark"):
+        if (
+            isinstance(space.nextSibling, Tag) and
+            space.nextSibling.name == "mark"
+        ):
+            space.insert_after(" ")
+
+
+def extract_sentences(html: Soup) -> list[ContextSentence]:
+    """Returns list of ContextSentences"""
     rows: list[Soup] = list(html.find_all("div", class_="sentences"))
     return [
-        (
-            Soup(str(row.find('dt', class_='s-jp')), "html.parser"),
-            Soup(str(row.find('dd', class_='s-en')), "html.parser")
-        ) for row in rows
+        {
+            "ja": re.sub(r'\s+', ' ', row.find('dt', class_='s-jp').text).strip(),
+            "en": re.sub(r'\s+', ' ', row.find('dd', class_='s-en').text).strip()
+        } for row in rows
     ]
