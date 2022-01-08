@@ -75,7 +75,7 @@ def get_url(word: Kaki) -> URL:
 
 def get_html(word: Kaki) -> Soup:
     url = get_url(word)
-    response = requests.post(url, timeout=20)
+    response = requests.get(url, timeout=20)
     status_code = response.status_code
 
     if status_code != 200:
