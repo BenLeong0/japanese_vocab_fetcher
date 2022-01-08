@@ -4,7 +4,7 @@ import re
 from bs4 import BeautifulSoup as Soup
 import pytest   # type: ignore
 
-from custom_types.alternative_string_types import Yomi
+from custom_types.alternative_string_types import Kaki, URL
 from modules import tangorin
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
@@ -34,10 +34,20 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - THEN check all the tangorin info is correct and complete
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    # html = test_dict['tangorin']['html']
+    sections = test_dict['tangorin']['expected_sections']
     expected_output = test_dict['tangorin']['expected_output']
 
-    # monkeypatch.setattr("requests.get", lambda x, timeout: FakeResponse(html))
+    def get_word_from_tangorin_url(url: URL) -> Kaki:
+        match = re.search(r"\?search=(.+?)$", url)
+        assert match is not None
+        return Kaki(match.group(1))
+
+    def get_html_response(url: URL) -> str:
+        word = get_word_from_tangorin_url(url)
+        return sections[word]["html"]
+
+    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(get_html_response(url)))
+
     assert tangorin.main(word_list) == expected_output
 
 
@@ -58,13 +68,14 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     response = json.dumps({"error": "api_error"})
+    sections = test_dict["tangorin"]["expected_sections"]
     expected_output = {
         word: {
             "success": False,
             "error": {
                 "error_msg": "api_error",
                 "status_code": 400,
-                "url": test_dict["tangorin"]["url"]
+                "url": sections[word]["url"]
             },
             "main_data": {
                 "sentences": [],
@@ -116,7 +127,7 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(response, status_code=400))
 
     try:
-        tangorin.get_html(word_list)
+        tangorin.get_html(word_list[0])
         assert False
     except tangorin.TangorinAPIError as api_error:
         assert api_error.error_msg == "could not connect"
