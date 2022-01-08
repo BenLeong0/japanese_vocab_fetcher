@@ -23,15 +23,13 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
             {audioData.filter((_, rowIndex) => displayRow(rowIndex)).map(audio =>
                 <ResultAudioRow key={audio.speaker} audioData={audio}/>
             )}
-            <div className="expand-button-container">
-                <ExpandButton
-                    currentDisplay={rowsDisplay}
-                    updateDisplay={updateRowsDisplay}
-                    maxDisplay={maxDisplay}
-                    minDisplay={minDisplay}
-                    batchSize={999}
-                />
-            </div>
+            <ExpandButton
+                currentDisplay={rowsDisplay}
+                updateDisplay={updateRowsDisplay}
+                maxDisplay={maxDisplay}
+                minDisplay={minDisplay}
+                batchSize={999}
+            />
         </div>
     );
 }

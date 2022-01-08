@@ -27,7 +27,7 @@ const ExpandButton: React.FC<ExpandButtonProps> = ({
     const pressMinus = () => updateDisplay(Math.max(minDisplay, currentDisplay - batchSize));
 
     return (
-        <div className="flex-row">
+        <div className="expand-button-container flex-row">
             { displayMinus() &&
                 <div className="expand-button expand-button-decrease" onClick={pressMinus}>
                     <img src={IconMinus} alt="button to decrease the number of items displayed" />

@@ -34,15 +34,13 @@ const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
                 {allSentences.filter((_, rowIndex) => displayRow(rowIndex)).map(({ sentence, source }) =>
                     <ResultSentence key={sentence.ja} sentence={sentence} source={source} />
                 )}
-                <div className="expand-button-container">
-                    <ExpandButton
-                        currentDisplay={rowsDisplay}
-                        updateDisplay={updateRowsDisplay}
-                        maxDisplay={maxDisplay}
-                        minDisplay={minDisplay}
-                        batchSize={4}
-                    />
-                </div>
+                <ExpandButton
+                    currentDisplay={rowsDisplay}
+                    updateDisplay={updateRowsDisplay}
+                    maxDisplay={maxDisplay}
+                    minDisplay={minDisplay}
+                    batchSize={4}
+                />
             </div>
         </div> :
         <></>
