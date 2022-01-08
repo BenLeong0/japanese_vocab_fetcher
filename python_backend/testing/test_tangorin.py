@@ -27,18 +27,18 @@ class FakeResponse:
 ## TESTS  ###########
 #####################
 
-# def test_main(monkeypatch, test_dict: FullTestDict):
-#     """
-#     - GIVEN a list of words
-#     - WHEN the accent dict is generated
-#     - THEN check all the tangorin info is correct and complete
-#     """
-#     word_list = convert_list_of_str_to_kaki(test_dict['input'])
-#     html = test_dict['tangorin']['html']
-#     expected_output = test_dict['tangorin']['expected_output']
+def test_main(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the accent dict is generated
+    - THEN check all the tangorin info is correct and complete
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    # html = test_dict['tangorin']['html']
+    expected_output = test_dict['tangorin']['expected_output']
 
-#     monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(html))
-#     assert tangorin.main(word_list) == expected_output
+    # monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(html))
+    assert tangorin.main(word_list) == expected_output
 
 
 def test_empty_input():
