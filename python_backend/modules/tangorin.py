@@ -53,7 +53,6 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
     for thread in threads:
         thread.join()
 
-    sentences_dict = {word:response_factory(None) for word in word_list}
     return sentences_dict
 
 
@@ -62,7 +61,7 @@ def get_sentences(word: Kaki) -> ResponseItemTangorin:
         _html = get_html(word)
     except TangorinAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word : error_response_factory(api_error) for word in word}
+        return error_response_factory(api_error)
 
     return response_factory(None)
 
