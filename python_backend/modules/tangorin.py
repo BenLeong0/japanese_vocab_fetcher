@@ -52,31 +52,5 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
     return sentences_dict
 
 
-def get_sentences(word: Kaki) -> ResponseItemTangorin:
-    try:
-        html = get_html(word)
-    except TangorinAPIError as api_error:
-        print("An error occurred:", api_error.error_msg)
-        return error_response_factory(api_error)
-
-    sentence_sections = get_sections(html)
-    sentence_list = build_sentence_list(sentence_sections)
-    return response_factory(sentence_list)
-
-
-# Get HTML
-
-def get_html(*_):
-    return
-
-
-# Extract sections
-
-def get_sections(*_):
-    return
-
-
-# Build sentence lists
-
-def build_sentence_list(*_):
-    return
+def get_sentences(_: Kaki) -> ResponseItemTangorin:
+    return response_factory(None)
