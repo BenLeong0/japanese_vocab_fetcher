@@ -33,4 +33,6 @@ def error_response_factory(error: TangorinAPIError) -> ResponseItemTangorin:
 
 
 def main(_word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
-    return {}
+    sentences_dict: dict[Kaki, ResponseItemTangorin] = {}
+
+    return sentences_dict
