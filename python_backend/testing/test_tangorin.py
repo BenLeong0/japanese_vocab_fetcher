@@ -141,7 +141,7 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     response = json.dumps({"error": "could not connect"})
-    monkeypatch.setattr("requests.get", lambda _url, timeout: FakeResponse(response, status_code=400))
+    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(response, status_code=400))
 
     try:
         tangorin.get_html(word_list[0])
