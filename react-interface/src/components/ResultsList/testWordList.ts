@@ -201,6 +201,54 @@ const testWordList: FullResponseItem[] = [
       error: null,
       main_data: { accent: ["\u304c\u304f\u305b\u3044"] },
     },
+    tangorin: {
+      "success": true,
+      "error": null,
+      "main_data": {
+        "sentences": [
+          {
+            "ja": "\u300c\u4ee5\u524d\u306b\u3069\u3053\u304b\u3067\u4f1a\u3063\u305f\u3053\u3068\u304c\u3042\u308a\u307e\u305b\u3093\u304b\u300d\u3068\u305d\u306e\u5b66\u751f\u306f\u305f\u305a\u306d\u305f\u3002",
+            "en": "\"Haven't we met somewhere before?\" asked the student."
+          },
+          {
+            "ja": "\u5b66\u751f\u304c\u82f1\u6587\u8ad6\u6587\u8a8c\u306b\u8ad6\u6587\u3092\u6295\u7a3f\u3057\u3066\u3001\u300c\u6761\u4ef6\u4ed8\u63a1\u9332\u300d\u306b\u306a\u3063\u3066\u3044\u307e\u3059\u3002",
+            "en": "The student submitted a paper to an English-language journal, and the result was \"conditional acceptance\"."
+          },
+          {
+            "ja": "\u541b\u305f\u3061\u306f\u5b66\u751f\u306a\u3093\u3060\u3001\u3053\u3093\u306a\u3053\u3068\u3092\u3084\u308c\u308b\u306e\u306f\u4eca\u3060\u3051\u3060\u3002",
+            "en": "You're students - It's only now what you can do this sort of thing."
+          },
+          {
+            "ja": "\u76ee\u6a19\u306f\u6388\u696d\u8a2d\u8a08\u3092\u3059\u308b\u3068\u304d\u306e\u3001\u5b66\u751f\u306e\u601d\u8003\u3092\u89e6\u767a\u3059\u308b\u30e1\u30c7\u30a3\u30a2\u6559\u6750\u306e\u9078\u629e\u304a\u3088\u3073\u6d3b\u7528\u65b9\u6cd5\u306b\u3064\u3044\u3066\u7406\u89e3\u3059\u308b\u3053\u3068\u3067\u3042\u308b\u3002",
+            "en": "Our aim is that, when planning classes, we know how to select stimulating material for the students and how to put it into use."
+          },
+          {
+            "ja": "\u6c17\u306b\u306a\u3063\u3066\u306a\u3089\u306a\u3044\u4ffa\u306f\u601d\u308f\u305a\u3001\u76ee\u306e\u524d\u306e\u5b66\u751f\u306b\u805e\u3044\u3066\u3057\u307e\u3063\u305f\u3002",
+            "en": "It was on my mind so much that I unthinkingly asked the pupil in front of me."
+          },
+          {
+            "ja": "\u305f\u3060\u3057\u3001\u5b66\u751f\u306e\u672c\u5206\u306f\u5b66\u696d\u3067\u3059\u304b\u3089\u3001\u671f\u672b\u30c6\u30b9\u30c8\u3092\u304a\u308d\u305d\u304b\u306b\u3057\u305f\u3089\u30e1\u30c3\uff01\u3067\u3059\u3088\uff1f",
+            "en": "However, the duty of a student is to study. So if you neglect the end of term test, that's a \"no!\"."
+          },
+          {
+            "ja": "\u8ad6\u6587\u306f\u53bb\u5e74\u306e\u3088\u308a\u9577\u304b\u3063\u305f\u304c\u3001\u6570\u4eba\u306e\u5b66\u751f\u306f\u306a\u3093\u3068\u304b\u3057\u4e0a\u3052\u305f\u3002",
+            "en": "Although the paper was much longer than last year's a few students managed to finish."
+          },
+          {
+            "ja": "\u5229\u53e3\u306a\u5b66\u751f\u9054\u306f\u65e9\u304f\u30c6\u30b9\u30c8\u3092\u7d42\u3048\u305f\u3002",
+            "en": "The clever student finished the test quickly."
+          },
+          {
+            "ja": "\u5229\u53e3\u306a\u5b66\u751f\u3067\u3042\u308c\u3070\u305d\u306e\u3088\u3046\u306a\u4e8b\u306f\u3057\u306a\u3044\u3060\u308d\u3046\u3002",
+            "en": "A clever student would not do such a thing."
+          },
+          {
+            "ja": "\u8981\u70b9\u3092\u5b66\u751f\u306b\u5341\u5206\u7406\u89e3\u3055\u305b\u305f\u3002",
+            "en": "I brought the point home to the student."
+          },
+        ]
+      }
+    },
     wadoku: {
       success: true,
       error: null,
@@ -415,6 +463,114 @@ const testWordList: FullResponseItem[] = [
       error: null,
       main_data: { accent: ["\u3057' \u305a\u304b"] },
     },
+    tangorin: {
+      "success": true,
+      "error": null,
+      "main_data": {
+        "sentences": [
+          {
+            "ja": "\u79c1\u306e\u30c1\u30e7\u30b3\u30ec\u30fc\u30c8\u3092\u98df\u3079\u308b\u3053\u3068\u3092\u8003\u3048\u3055\u3048\u3057\u306a\u3044\u3067\u3002",
+            "en": "Don't you even think of eating my chocolate!"
+          },
+          {
+            "ja": "\u91ce\u83dc\u3092\u98df\u3079\u305f\u3089\uff1f",
+            "en": "Why don't you eat some vegetables?"
+          },
+          {
+            "ja": "\u590f\u4f11\u307f\u306e\u9593\u3001\u79c1\u306f\u591c\u4e2d\u306b\u5915\u98df\u3092\u98df\u3079\u3066\u3044\u305f\u3002",
+            "en": "During summer breaks, I ate dinner at midnight."
+          },
+          {
+            "ja": "\u3044\u3064\u3054\u98ef\u98df\u3079\u308b\u306e\uff1f\u304a\u8179\u7a7a\u3044\u305f\u3088\u3002",
+            "en": "When are we eating? I'm hungry!"
+          },
+          {
+            "ja": "\u304d\u3087\u3046\u4f55\u3092\u663c\u98df\u306b\u98df\u3079\u307e\u3057\u305f\u304b\u3002",
+            "en": "What did you have for lunch today?"
+          },
+          {
+            "ja": "\u79c1\u306f\u30ad\u30e3\u30d3\u30a2\u3092\u98df\u3079\u305f\u3002",
+            "en": "I ate caviar."
+          },
+          {
+            "ja": "\u3044\u3064\u304b\u3089\u65e5\u672c\u4eba\u306f\u7cbe\u767d\u7c73\u3092\u98df\u3079\u308b\u3088\u3046\u306b\u306a\u3063\u305f\u306e\u3067\u3059\u304b\uff1f",
+            "en": "When did the Japanese start eating polished rice?"
+          },
+          {
+            "ja": "\u30d1\u30c3\u30af\u30de\u30f3\u304c\u3001\u3042\u308b\u6761\u4ef6\u3092\u6e80\u305f\u3059\u3068\u8ffd\u3063\u3066\u304f\u308b\u30e2\u30f3\u30b9\u30bf\u30fc\u3092\u9006\u8972\u3057\u3066\u98df\u3079\u308b\u3053\u3068\u304c\u3067\u304d\u308b\u3002",
+            "en": "Pac-Man, when a certain condition is reached, can counter attack and eat the monsters chasing him."
+          },
+          {
+            "ja": "\u79c1\u306f\u30b9\u30c8\u30ec\u30b9\u304c\u305f\u307e\u308b\u3068\u98df\u6b32\u304c\u306a\u304f\u306a\u308b\u306e\u3067\u306f\u306a\u304f\u3001\u9006\u306b\u4f55\u304b\u98df\u3079\u306a\u3044\u3068\u6c17\u304c\u6e08\u307e\u306a\u304f\u306a\u308b\u3002",
+            "en": "I don't lose my appetite when I get stressed, rather I can't calm down unless I eat something."
+          },
+          {
+            "ja": "\u30cf\u30b2\u30bf\u30ab\u304c\u7a81\u3063\u3064\u304f\u6b7b\u3093\u3060\u9e7f\u3068\u304b\u3001\u4ed6\u306e\u52d5\u7269\u306e\u98df\u3079\u6b8b\u3057\u3068\u304b\u3001 \u305d\u3046\u3044\u3046\u8150\u3063\u305f\u8089\u3092\u6b7b\u8089\u3068\u66f8\u304d\u307e\u3057\u305f\u3002",
+            "en": "A dead deer being pecked by vultures, remains partly eaten by other animals, that sort of rotten meat is called 'carrion'."
+          },
+          {
+            "ja": "\u98df\u3079\u3089\u308c\u308b\u3053\u3068\u306a\u304f\u305d\u306e\u305f\u3053\u306f\u3001\u6d77\u306b\u5e30\u3063\u305f\u306e\u3067\u3042\u3063\u305f\u3002",
+            "en": "That octopus returned to the sea without being eaten."
+          },
+          {
+            "ja": "\u79c1\u9054\u306f\u6642\u3005\u3001\u30c9\u30e9\u30a4\u30d6\u3092\u517c\u306d\u3066\u5927\u597d\u304d\u306a\u30e9\u30fc\u30e1\u30f3\u3092\u98df\u3079\u306b\u884c\u304d\u307e\u3059\u3002",
+            "en": "We sometimes combine going for a drive with eating the ramen we love so."
+          },
+          {
+            "ja": "\u5f7c\u5973\u306f\u7533\u3057\u8a33\u306a\u3055\u305d\u3046\u306b\u300c\u98df\u3079\u3089\u308c\u306a\u304b\u3063\u305f\u300d\u3068\u8a00\u3063\u305f\u3002",
+            "en": "\"I couldn't eat it\", she said apologetically."
+          },
+          {
+            "ja": "\u305d\u3046\u8a00\u3048\u3070\u3001\u6a5f\u5185\u98df\u3082\u307e\u3063\u305f\u304f\u98df\u3079\u307e\u305b\u3093\u3067\u3057\u305f\u306d\u3002",
+            "en": "Oh yes, you didn't eat any in-flight meals either did you?"
+          },
+          {
+            "ja": "\u5b66\u98df\u306b\u98fd\u304d\u305f\u3068\u304d\u306f\u3001\u30d9\u30eb\u30d5\u30a1\u3067\u8cb7\u3046\u3082\u3088\u3057\u3001\u30d5\u30a1\u30df\u30ec\u30b9\u3067\u98df\u3079\u308b\u3082\u3088\u3057\u3002",
+            "en": "When you're fed up with the school cafe you can buy something at Bellfa or eat at a family restaurant."
+          },
+          {
+            "ja": "\u4e00\u7dd2\u306b\u98df\u3079\u306b\u884c\u304d\u307e\u3057\u3087\u3046\u3002",
+            "en": "Let's go to eat together."
+          },
+          {
+            "ja": "\u300c\u3044\u304f\u3089\u98df\u3079\u3066\u3082\u592a\u3089\u306a\u3044\u4f53\u8cea\u3060\u304b\u3089\u5927\u4e08\u592b\u3060\u300d\u300c\u4eca\u3053\u306e\u77ac\u9593\u4e16\u754c\u4e2d\u306e\u4eba\u3092\u6575\u306b\u56de\u3057\u305f\u3088\u300d",
+            "en": "\"My metabolism is such that no matter how much I eat I don't put on weight.\" \"Just now, this second, you've made enemies of people throughout the world.\""
+          },
+          {
+            "ja": "\u5148\u9031\u306f\u30d1\u30c1\u30f3\u30b3\u3067\u52dd\u3063\u305f\u53cb\u4eba\u306b\u713c\u304d\u8089\u3092\u3054\u3061\u305d\u3046\u306b\u306a\u308a\u307e\u3057\u305f\u3002\u98df\u3079\u653e\u984c\u3067\u305f\u3089\u3075\u304f\u98df\u3079\u307e\u3057\u305f\u3002",
+            "en": "Last week I was treated to dinner by my friend who'd won at pachinko. It was all-you-can-eat so I ate to my heart's content."
+          },
+          {
+            "ja": "\u671d\u3092\u629c\u304d\u3001\u663c\u3092\u8efd\u304f\u3057\u305f\u3089\u3001\u591c\u306f\u4f55\u3092\u98df\u3079\u3066\u3082\u3088\u308d\u3057\u3044\u3002",
+            "en": "If you skip breakfast and keep lunch light, then in the evening you can have whatever you want."
+          },
+          {
+            "ja": "\u98df\u3079\u3059\u304e\u3055\u3048\u3057\u306a\u3051\u308c\u3070\u3001\u5fc5\u305a\u75e9\u305b\u308b\u3068\u601d\u3044\u307e\u3059\u3002",
+            "en": "I think that as long as I don't overeat, I will certainly lose weight."
+          },
+          {
+            "ja": "\u308f\u305f\u3057\u304c\u98df\u3079\u3055\u305b\u307e\u3059\u304b\u3089\u30fb\u30fb\u30fb\u306f\u3044\u3001\u30a2\u30fc\u30f3\u3057\u3066\u3002",
+            "en": "I'll feed it to you so ... here, open wide."
+          },
+          {
+            "ja": "\u5148\u9032\u56fd\u3067\u306f\u866b\u6b6f\u304c\u6fc0\u6e1b\u3057\u3001\u81ea\u5206\u306e\u6b6f\u3067\u4e00\u751f\u98df\u3079\u3089\u308c\u308b\u4eba\u304c\u5897\u3048\u3066\u3044\u307e\u3059\u3002",
+            "en": "Cavities have become rarer in the developed countries and more people will be able to eat with their own teeth throughout their life."
+          },
+          {
+            "ja": "\u5b9f\u306f\u30d3\u30fc\u30c8\u3092\u98df\u3079\u308b\u3068\u3001\u5c3f\u304c\u3046\u3063\u3059\u3089\u30d4\u30f3\u30af\u8272\u3092\u3059\u308b\u3053\u3068\u304c\u3042\u308a\u307e\u3059\u3002",
+            "en": "Actually if you eat beets your urine may turn a light pink colour."
+          },
+          {
+            "ja": "\u6025\u6fc0\u306b\u304b\u308a\u304b\u308a\u3057\u305f\u9ce5\u76ae\u304c\u98df\u3079\u305f\u304f\u306a\u3063\u305f\u3002",
+            "en": "I suddenly got a craving to eat some crisp roast chicken skin."
+          },
+          {
+            "ja": "\u307b\u3046\u308c\u3093\u8349\u3092\u306e\u3053\u3055\u305a\u306b\u305f\u3079\u306a\u3055\u3044\u3002",
+            "en": "Eat up all your spinach!"
+          }
+        ]
+      }
+    },
     wadoku: {
       success: true,
       error: null,
@@ -542,6 +698,15 @@ const testWordList: FullResponseItem[] = [
       success: true,
       error: null,
       main_data: { accent: ["\u30ab\u30e0\u30d0' \u30c3\u30af"] },
+    },
+    tangorin: {
+      "success": true,
+      "error": null,
+      "main_data": {
+        "sentences": [
+
+        ]
+      }
     },
     wadoku: {
       success: true,
