@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
+import ExpandButton from '../../../shared/ExpandButtons/ExpandButton';
 import ResultAudioRow from './ResultAudioRow';
 
 import ResultAudioRowData from '../../../types/ResultAudioRowData';
-
-import IconPlus from '../../../assets/icons/icon_plus.svg'
-import IconMinus from '../../../assets/icons/icon_minus.svg'
 
 
 interface ResultAudioModuleProps {
@@ -13,16 +11,11 @@ interface ResultAudioModuleProps {
 }
 
 const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audioData}) => {
-    const [isExpanded, setIsExpanded] = useState<boolean>(false);
-    const toggleIsExpanded = () => setIsExpanded(!isExpanded);
+    const maxDisplay = audioData.length;
+    const minDisplay = audioData.length <= 3 ? audioData.length : 2;
+    const [rowsDisplay, updateRowsDisplay] = useState<number>(minDisplay);
 
-    const displayRow = (rowIndex: number): boolean => {
-        return (
-            rowIndex < 2 ||
-            (rowIndex === 2 && audioData.length === 3) ||
-            isExpanded === true
-        );
-    }
+    const displayRow = (rowIndex: number): boolean => rowIndex+1 <= rowsDisplay;
 
     return (
         <div className="result-audio-module vertical-separation-small">
@@ -30,14 +23,13 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
             {audioData.filter((_, rowIndex) => displayRow(rowIndex)).map(audio =>
                 <ResultAudioRow key={audio.speaker} audioData={audio}/>
             )}
-            {audioData.length > 3 &&
-                <div className="audio-expand-toggle" onClick={toggleIsExpanded}>
-                    <img
-                        src={isExpanded ? IconMinus : IconPlus}
-                        alt="button to toggle expanded list of audio files"
-                    />
-                </div>
-            }
+            <ExpandButton
+                currentDisplay={rowsDisplay}
+                updateDisplay={updateRowsDisplay}
+                maxDisplay={maxDisplay}
+                minDisplay={minDisplay}
+                batchSize={999}
+            />
         </div>
     );
 }

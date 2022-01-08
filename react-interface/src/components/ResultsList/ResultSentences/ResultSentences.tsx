@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ExpandButton from '../../../shared/ExpandButtons/ExpandButton';
 import ResultSentence, { ResultSentenceProps } from './ResultSentence';
 
 import FullResponseItem from '../../../types/FullResponseItem';
@@ -19,14 +20,27 @@ const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
         tangorinSentences,
     ]);
 
+    const maxDisplay = allSentences.length;
+    const minDisplay = Math.min(allSentences.length, 4);
+    const [rowsDisplay, updateRowsDisplay] = useState<number>(minDisplay);
+
+    const displayRow = (rowIndex: number): boolean => rowIndex+1 <= rowsDisplay;
+
     return (
         allSentences.length > 0 ?
         <div className="result-sentences flex-col">
             <div className="right-col-title">Context Sentences</div>
             <div className="result-sentences-container flex-col">
-                {allSentences.map(({ sentence, source }) =>
+                {allSentences.filter((_, rowIndex) => displayRow(rowIndex)).map(({ sentence, source }) =>
                     <ResultSentence key={sentence.ja} sentence={sentence} source={source} />
                 )}
+                <ExpandButton
+                    currentDisplay={rowsDisplay}
+                    updateDisplay={updateRowsDisplay}
+                    maxDisplay={maxDisplay}
+                    minDisplay={minDisplay}
+                    batchSize={4}
+                />
             </div>
         </div> :
         <></>
