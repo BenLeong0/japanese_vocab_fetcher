@@ -97,7 +97,6 @@ def get_html(word: Kaki) -> Soup:
 
 def clean_html(html: Soup) -> None:
     """Remove furigana, and insert whitespace"""
-    print("cleaning")
     for furigana in html.find_all("rt"):
         furigana.decompose()
 
