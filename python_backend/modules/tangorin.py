@@ -1,10 +1,11 @@
+import json
 from threading import Thread
 from typing import Optional
 
 from bs4 import BeautifulSoup as Soup
 import requests
 
-from custom_types.alternative_string_types import URL, Kaki
+from custom_types.alternative_string_types import HTMLString, Kaki, URL
 from custom_types.exception_types import APIError
 from custom_types.response_types import ContextSentence, ResponseItemTangorin
 
@@ -57,7 +58,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
 
 def get_sentences(word: Kaki) -> ResponseItemTangorin:
     try:
-        html = get_html(word)
+        _html = get_html(word)
     except TangorinAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
         return {word : error_response_factory(api_error) for word in word}
@@ -73,4 +74,13 @@ def get_url(word: Kaki) -> URL:
 
 
 def get_html(word: Kaki) -> Soup:
-    return
+    url = get_url(word)
+    response = requests.post(url, timeout=20)
+    status_code = response.status_code
+
+    if status_code != 200:
+        error_msg: str = json.loads(response.text)["error"]
+        raise TangorinAPIError(error_msg, status_code, url)
+
+    html = HTMLString(response.text)
+    return Soup(html, 'html.parser')
