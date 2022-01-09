@@ -20,7 +20,7 @@ export default class UtilsService {
 
     capitaliseString = (s: string): string => {
         if (!s) return s;
-        if (s[0] === "(") return "(" + this.capitaliseString(s.slice(1));
+        if (s[0] === "(") return s[0] + this.capitaliseString(s.slice(1));
         return s[0].toUpperCase() + s.slice(1);
     }
 
