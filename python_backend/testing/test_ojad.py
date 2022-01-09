@@ -67,7 +67,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         word: {
             "success": False,
             "error": {
-                "error_msg": "api_error",
+                "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
                 "url": test_dict['ojad']['url'] % 1
             },
@@ -156,7 +156,7 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
         ojad.get_html(word_list, 1)
         assert False
     except ojad.OJADAPIError as api_error:
-        assert api_error.error_msg == "could not connect"
+        assert api_error.error_msg == json.dumps({"error": "could not connect"})
         assert api_error.status_code == 400
 
 
