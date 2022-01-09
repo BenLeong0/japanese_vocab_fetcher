@@ -61,7 +61,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         word: {
             "success": False,
             "error": {
-                "error_msg": "api_error",
+                "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
                 "url": test_dict["wanikani"]["url"]
             },
@@ -158,7 +158,7 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
         wanikani.call_api(url)
         assert False            # Test fails if call_api() doesn't raise an error
     except wanikani.WanikaniAPIError as api_error:
-        assert api_error.error_msg == "could not connect"
+        assert api_error.error_msg == json.dumps({"error": "could not connect"})
         assert api_error.status_code == 400
         assert api_error.url == url
 
@@ -176,7 +176,7 @@ def test_call_api_unsuccessful(monkeypatch):
         wanikani.call_api("www.testurl.com")
         assert False            # Test fails if call_api() doesn't raise an error
     except wanikani.WanikaniAPIError as api_error:
-        assert api_error.error_msg == "call_api failed"
+        assert api_error.error_msg == '{"error": "call_api failed"}'
         assert api_error.status_code == 400
         assert api_error.url == "www.testurl.com"
 
