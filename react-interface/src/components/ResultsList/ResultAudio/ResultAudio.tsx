@@ -26,7 +26,7 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
     const japanesePodData: ResultAudioRowData[] = [{
         url: "https://audiostock-public-files.s3.ap-northeast-1.amazonaws.com/sample-files/demo_34d52dc1ec6ba4736f37c24458a2a7812e9b56f6.mp3",
         speaker: "Coming soon!",
-        subtitle: null
+        subtitle: null,
     }];
 
     const allAudio = [
