@@ -1,5 +1,4 @@
 from collections import defaultdict
-import json
 import re
 from typing import DefaultDict, Optional
 
