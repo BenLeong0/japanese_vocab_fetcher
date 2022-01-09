@@ -11,6 +11,11 @@ interface ResultAudioProps {
     data: FullResponseItem;
 }
 
+interface AudioModule {
+    module: string;
+    audioData: ResultAudioRowData[];
+}
+
 const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
 
     const wanikaniData: ResultAudioRowData[] = data.wanikani.main_data.audio.map(audio => ({
@@ -29,7 +34,7 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
         subtitle: null,
     }];
 
-    const allAudio = [
+    const allAudio: AudioModule[] = [
         {module: "Wanikani", audioData: wanikaniData},
         {module: "Forvo", audioData: forvoData},
         {module: "JapanesePod101", audioData: japanesePodData},
