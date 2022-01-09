@@ -17,27 +17,26 @@ interface AudioModule {
 }
 
 const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
-
-    const wanikaniData: ResultAudioRowData[] = data.wanikani.main_data.audio.map(audio => ({
+    const wanikaniData: ResultAudioRowData[] = data.wanikani.main_data.audio.map((audio) => ({
         url: audio.url,
         speaker: audio.metadata.voice_actor_name,
         subtitle: audio.metadata.voice_description,
     }));
-    const forvoData: ResultAudioRowData[] = data.forvo.main_data.audio.map(audio => ({
+    const forvoData: ResultAudioRowData[] = data.forvo.main_data.audio.map((audio) => ({
         url: audio.url,
         speaker: audio.username,
         subtitle: null,
     }));
     const japanesePodData: ResultAudioRowData[] = [{
-        url: "https://audiostock-public-files.s3.ap-northeast-1.amazonaws.com/sample-files/demo_34d52dc1ec6ba4736f37c24458a2a7812e9b56f6.mp3",
-        speaker: "Coming soon!",
+        url: "https://audiostock-public-files.s3.ap-northeast-1.amazonaws.com/sample-files/demo_34d52dc1ec6ba4736f37c24458a2a7812e9b56f6.mp3", // eslint-disable-line
+        speaker: 'Coming soon!',
         subtitle: null,
     }];
 
     const allAudio: AudioModule[] = [
-        {module: "Wanikani", audioData: wanikaniData},
-        {module: "Forvo", audioData: forvoData},
-        {module: "JapanesePod101", audioData: japanesePodData},
+        { module: "Wanikani", audioData: wanikaniData },
+        { module: "Forvo", audioData: forvoData },
+        { module: "JapanesePod101", audioData: japanesePodData },
     ];
 
     // TODO: Instate when JP101 is implemented
@@ -50,8 +49,7 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
         );
     }
 
-    return (
-        displayAudio() ?
+    return ( displayAudio() ?
         <div className="result-audio">
             <div className="left-col-title">
                 Audio
@@ -61,7 +59,7 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
             )}
         </div> :
         <></>
-     );
+    );
 }
 
 export default ResultAudio;
