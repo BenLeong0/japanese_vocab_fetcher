@@ -18,4 +18,8 @@ export default class UtilsService {
         return s.split(/\s+/).filter(char => char !== "");
     }
 
+    capitaliseString = (s: string): string => {
+        return s ? s[0].toUpperCase() + s.slice(1) : s;
+    }
+
 }
