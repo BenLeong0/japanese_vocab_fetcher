@@ -2,6 +2,8 @@ import React from 'react';
 
 import { JishoAPIItemSense } from '../../../types/ResponseItemJisho';
 
+import UtilsService from '../../core/UtilsService';
+
 
 interface ResultDefinitionSenseProps {
     ordinality: number;
@@ -9,8 +11,11 @@ interface ResultDefinitionSenseProps {
 }
 
 const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinality, sense }) => {
+    const utilService = new UtilsService();
 
-    const dfn: string = ordinality + '. ' + sense.english_definitions.join("; ");
+    const dfn: string =
+        ordinality + '. ' +
+        sense.english_definitions.map(utilService.capitaliseString).join("; ");
 
     const getWordType = (): string => {
         let wordType = sense.parts_of_speech.join("・");
