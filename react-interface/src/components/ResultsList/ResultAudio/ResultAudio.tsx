@@ -36,9 +36,7 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
     ];
 
     // TODO: Instate when JP101 is implemented
-    // const displayAudio = (): boolean => {
-    //     return allAudio.some(x => x.audioData.length > 0);
-    // }
+    // const displayAudio = (): boolean => allAudio.some(x => x.audioData.length > 0);
 
     const displayAudio = (): boolean => {
         return (
