@@ -1,10 +1,10 @@
 import React from 'react';
+import ResultAudioModule from './ResultAudioModule';
 
 import FullResponseItem from '../../../types/FullResponseItem';
 import ResultAudioRowData from '../../../types/ResultAudioRowData';
 
-import './ResultAudio.css'
-import ResultAudioModule from './ResultAudioModule';
+import './ResultAudio.css';
 
 
 interface ResultAudioProps {
