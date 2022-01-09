@@ -6,7 +6,7 @@ import requests
 from custom_types.alternative_string_types import Kaki, URL
 from custom_types.exception_types import APIError
 from custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
-from custom_types.response_types import ResponseItemJisho, JishoExtraItem, JishoMainData
+from custom_types.response_types import JishoExtraItem, JishoMainData, ResponseItemJisho
 
 
 NAME = "jisho"
