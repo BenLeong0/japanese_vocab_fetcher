@@ -2,7 +2,6 @@ import React from 'react';
 import ExpandButton from './ExpandButton';
 
 
-
 interface FullExpandButtonProps {
     rowsDisplay: boolean;
     updateRowsDisplay: (x: boolean) => void;
