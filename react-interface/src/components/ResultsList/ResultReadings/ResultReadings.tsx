@@ -1,9 +1,9 @@
 import React from 'react';
+import ResultReadingsRow from './ResultReadingsRow';
 
 import FullResponseItem from '../../../types/FullResponseItem';
 
 import './ResultReadings.css';
-import ResultReadingsRow from './ResultReadingsRow';
 
 
 interface ResultReadingsProps {
