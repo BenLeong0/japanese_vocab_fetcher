@@ -17,7 +17,7 @@ const InputPage: React.FC<InputPageProps> = ({ setWordList }) => {
     return (
         <div className="input-page">
             <InputBox setWordList={setWordList} setErrorOccurred={setErrorOccurred}/>
-            { errorOccurred ? <ErrorMessage>An error occurred. Please try again</ErrorMessage> : <></> }
+            { errorOccurred && <ErrorMessage>An error occurred. Please try again</ErrorMessage> }
         </div>
     );
 }
