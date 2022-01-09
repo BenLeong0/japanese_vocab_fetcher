@@ -50,7 +50,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         word: {
             "success": False,
             "error": {
-                "error_msg": "api_error",
+                "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
                 "url": 'http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index',
             },
@@ -114,7 +114,7 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
         suzuki.get_html(word_list)
         assert False
     except suzuki.SuzukiAPIError as api_error:
-        assert api_error.error_msg == "could not connect"
+        assert api_error.error_msg == json.dumps({"error": "could not connect"})
         assert api_error.status_code == 400
 
 

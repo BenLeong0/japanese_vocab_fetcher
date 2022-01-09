@@ -1,5 +1,4 @@
 from collections import defaultdict
-import json
 import re
 from typing import DefaultDict, Optional
 
@@ -82,7 +81,7 @@ def get_html(word_list: list[Kaki], page_number: int) -> Soup:
     status_code = response.status_code
 
     if status_code != 200:
-        error_msg: str = json.loads(response.text)["error"]
+        error_msg: str = response.text
         raise OJADAPIError(error_msg, status_code, url)
 
     html_string = HTMLString(response.text)
