@@ -67,7 +67,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         word: {
             "success": False,
             "error": {
-                "error_msg": "api_error",
+                "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
                 "url": test_dict["forvo"]["expected_sections"][word]["url"]
             },
@@ -161,7 +161,7 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
             forvo.call_api(word)
             assert False
         except forvo.ForvoAPIError as api_error:
-            assert api_error.error_msg == "could not connect"
+            assert api_error.error_msg == json.dumps({"error": "could not connect"})
             assert api_error.status_code == 400
 
 
