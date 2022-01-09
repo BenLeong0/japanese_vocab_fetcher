@@ -22,8 +22,8 @@ const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
         { title: "Suzuki", readings: data.suzuki.main_data.accent },
     ];
 
-    const displayReadings = (): boolean => sitesAndReadings.some(site => site.readings.length > 0);
     const readingExists = ({ readings }: ReadingSite) => readings.length > 0;
+    const displayReadings = (): boolean => sitesAndReadings.some(readingExists);
 
     return (
         displayReadings() ?
