@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ExpandButton from '../../../shared/ExpandButtons/ExpandButton';
+import FullExpandButton from '../../../shared/ExpandButtons/FullExpandButton';
 import ResultAudioRow from './ResultAudioRow';
 
 import ResultAudioRowData from '../../../types/ResultAudioRowData';
@@ -11,11 +11,16 @@ interface ResultAudioModuleProps {
 }
 
 const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audioData}) => {
-    const maxDisplay = audioData.length;
-    const minDisplay = audioData.length <= 3 ? audioData.length : 2;
-    const [rowsDisplay, updateRowsDisplay] = useState<number>(minDisplay);
+    const [isExpanded, updateIsExpanded] = useState<boolean>(false);
 
-    const displayRow = (rowIndex: number): boolean => rowIndex+1 <= rowsDisplay;
+    const displayButton = () => audioData.length > 3;
+    const displayRow = (rowIndex: number): boolean => {
+        return (
+            rowIndex < 2 ||
+            (rowIndex === 2 && audioData.length === 3) ||
+            isExpanded === true
+        );
+    }
 
     return (
         <div className="result-audio-module vertical-separation-small">
@@ -23,13 +28,12 @@ const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audi
             {audioData.filter((_, rowIndex) => displayRow(rowIndex)).map(audio =>
                 <ResultAudioRow key={audio.speaker} audioData={audio}/>
             )}
-            <ExpandButton
-                currentDisplay={rowsDisplay}
-                updateDisplay={updateRowsDisplay}
-                maxDisplay={maxDisplay}
-                minDisplay={minDisplay}
-                batchSize={999}
-            />
+            { displayButton() &&
+                <FullExpandButton
+                    rowsDisplay={isExpanded}
+                    updateRowsDisplay={updateIsExpanded}
+                />
+            }
         </div>
     );
 }

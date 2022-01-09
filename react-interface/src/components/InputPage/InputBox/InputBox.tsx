@@ -28,9 +28,7 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
         setErrorOccurred(false);
 
         const words: string[] = utilsService.extractWordsFromInput(text);
-        const queryParams: QueryParams = {
-            words: JSON.stringify(words),
-        };
+        const queryParams: QueryParams = { words: JSON.stringify(words) };
 
         try {
             const resp = await httpService.makeGetRequest("/words", queryParams);

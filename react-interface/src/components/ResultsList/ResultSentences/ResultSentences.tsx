@@ -12,8 +12,10 @@ interface ResultSentencesProps {
 }
 
 const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
-    const wanikaniSentences: ResultSentenceProps[] = data.wanikani.main_data.sentences.map(s => ({sentence: s, source: "Wanikani"}));
-    const tangorinSentences: ResultSentenceProps[] = data.tangorin.main_data.sentences.map(s => ({sentence: s, source: "Tangorin"}));
+    const wanikaniSentences: ResultSentenceProps[] =
+        data.wanikani.main_data.sentences.map(s => ({sentence: s, source: "Wanikani"}));
+    const tangorinSentences: ResultSentenceProps[] =
+        data.tangorin.main_data.sentences.map(s => ({sentence: s, source: "Tangorin"}));
 
     const allSentences = interweaveSentences([
         wanikaniSentences,
@@ -24,14 +26,14 @@ const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
     const minDisplay = Math.min(allSentences.length, 4);
     const [rowsDisplay, updateRowsDisplay] = useState<number>(minDisplay);
 
-    const displayRow = (rowIndex: number): boolean => rowIndex+1 <= rowsDisplay;
+    const displayRow = (_: any, rowIndex: number): boolean => rowIndex+1 <= rowsDisplay;
 
     return (
         allSentences.length > 0 ?
         <div className="result-sentences flex-col">
             <div className="right-col-title">Context Sentences</div>
             <div className="result-sentences-container flex-col">
-                {allSentences.filter((_, rowIndex) => displayRow(rowIndex)).map(({ sentence, source }) =>
+                {allSentences.filter(displayRow).map(({ sentence, source }) =>
                     <ResultSentence key={sentence.ja} sentence={sentence} source={source} />
                 )}
                 <ExpandButton

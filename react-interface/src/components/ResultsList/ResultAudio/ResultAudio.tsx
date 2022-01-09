@@ -1,14 +1,19 @@
 import React from 'react';
+import ResultAudioModule from './ResultAudioModule';
 
 import FullResponseItem from '../../../types/FullResponseItem';
 import ResultAudioRowData from '../../../types/ResultAudioRowData';
 
-import './ResultAudio.css'
-import ResultAudioModule from './ResultAudioModule';
+import './ResultAudio.css';
 
 
 interface ResultAudioProps {
     data: FullResponseItem;
+}
+
+interface AudioModule {
+    module: string;
+    audioData: ResultAudioRowData[];
 }
 
 const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
@@ -26,19 +31,17 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
     const japanesePodData: ResultAudioRowData[] = [{
         url: "https://audiostock-public-files.s3.ap-northeast-1.amazonaws.com/sample-files/demo_34d52dc1ec6ba4736f37c24458a2a7812e9b56f6.mp3",
         speaker: "Coming soon!",
-        subtitle: null
+        subtitle: null,
     }];
 
-    const allAudio = [
+    const allAudio: AudioModule[] = [
         {module: "Wanikani", audioData: wanikaniData},
         {module: "Forvo", audioData: forvoData},
         {module: "JapanesePod101", audioData: japanesePodData},
     ];
 
     // TODO: Instate when JP101 is implemented
-    // const displayAudio = (): boolean => {
-    //     return allAudio.some(x => x.audioData.length > 0);
-    // }
+    // const displayAudio = (): boolean => allAudio.some(x => x.audioData.length > 0);
 
     const displayAudio = (): boolean => {
         return (
