@@ -47,3 +47,20 @@ describe('doubleURIEncode works', () => {
         expect(utilsService.doubleURIEncode(s)).toEqual(expected);
     });
 });
+
+describe('capitaliseString works', () => {
+    each([
+        ["", ""],
+        ["Hello", "Hello"],
+        ["hello", "Hello"],
+        ["hello World", "Hello World"],
+        ["(hello World)", "(Hello World)"],
+        ["((hello World))", "((Hello World))"],
+        [" hello World", " Hello World"],
+        ["  hello World", "  Hello World"],
+        ["( hello World)", "( Hello World)"],
+        ["( ( hello World))", "( ( Hello World))"],
+    ]).it("with the input '%s'", (s: string, expected: string) => {
+        expect(utilsService.capitaliseString(s)).toEqual(expected);
+    });
+});
