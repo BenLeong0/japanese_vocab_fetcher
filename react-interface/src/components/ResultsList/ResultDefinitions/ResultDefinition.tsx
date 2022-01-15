@@ -20,7 +20,7 @@ const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) =
 
     return (
         <div className="result-definition flex-col">
-            <div className="result-definition-title">
+            <div className="result-definition-title mplus">
                 { buildTitleText(definitionData.japanese[0]) }
             </div>
             <div className="result-definition-senses-container flex-col">
@@ -31,7 +31,7 @@ const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) =
                     showOtherForms() &&
                     <div className="result-definition-other-forms flex-col">
                         <div className="result-other-forms-title">Other forms</div>
-                        <div className="result-other-forms-words">
+                        <div className="result-other-forms-words mplus">
                             { otherForms.map(buildTitleText).join("、") }
                         </div>
                     </div>
