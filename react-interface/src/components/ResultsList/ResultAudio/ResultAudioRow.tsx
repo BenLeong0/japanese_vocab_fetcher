@@ -36,7 +36,7 @@ const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData }) => {
             <img
                 src={ playing ? IconStopButton : IconPlayButton }
                 alt="audio player icon"
-                className="audio-player"
+                className="audio-player unselectable"
                 onClick={togglePlaying}
             />
             <div className="result-audio-speaker">{ audioData.speaker }</div>

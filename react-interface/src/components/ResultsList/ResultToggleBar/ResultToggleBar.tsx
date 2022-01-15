@@ -15,7 +15,7 @@ const ResultToggleBar: React.FC<ResultToggleBarProps> = ({ isExpanded, toggleIsE
 
     return (
         <div
-            className="result-toggle-bar"
+            className="result-toggle-bar unselectable"
             onClick={toggleIsExpanded}
         >
             <img src={imgSrc} alt="chevron to expand or collapse the result"/>
