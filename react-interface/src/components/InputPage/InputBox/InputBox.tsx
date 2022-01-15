@@ -17,7 +17,7 @@ interface InputBoxProps {
 }
 
 const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) => {
-    const searchParams = useSearchParams()[0];
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const httpService = new HttpService();
     const utilsService = new UtilsService();
@@ -30,7 +30,10 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
         setIsLoading(true);
         setErrorOccurred(false);
 
-        const words: string[] = utilsService.extractWordsFromInput(forceText || text);
+        const searchText = forceText || text;
+        setSearchParams({ words: searchText });
+
+        const words: string[] = utilsService.extractWordsFromInput(searchText);
         const queryParams: QueryParams = { words: JSON.stringify(words) };
 
         try {
@@ -59,12 +62,14 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
     }, [handleUserKeyPress]);
 
     // Check for query params and search if present
-    useEffect(() => {
+    const searchQueryParams = useRef(() => {})
+    searchQueryParams.current = () => {
         let words = searchParams.get("words");
         if (words === null || words === "") return;
         setText(words);
         sendWords.current(words);
-    }, [searchParams]);
+    }
+    useEffect(() => { searchQueryParams.current(); }, []);
 
     const textArea = (
         <TextareaAutosize
