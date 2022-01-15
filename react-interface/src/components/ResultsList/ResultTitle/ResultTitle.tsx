@@ -13,9 +13,9 @@ const ResultTitle: React.FC<ResultTitleProps> = ({ children, isExpanded, toggleI
 
     return (
         <div className="result-title">
-            <div className="result-title-text">{ children }</div>
+            <div className="result-title-text mplus">{ children }</div>
             <div
-                className="title-collapser"
+                className="title-collapser unselectable"
                 onClick={toggleIsExpanded}
             >
                 { isExpanded ? "collapse" : "expand" }

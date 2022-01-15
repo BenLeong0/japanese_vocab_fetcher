@@ -15,7 +15,7 @@ const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinalit
 
     const dfn: string =
         ordinality + '. ' +
-        sense.english_definitions.map(utilsService.capitaliseString).join("; ");
+        sense.english_definitions.map(utilsService.capitaliseString).join(" ; ");
 
     const getWordType = (): string => {
         let wordType = sense.parts_of_speech.join("・");
