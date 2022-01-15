@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
+import { useSearchParams } from "react-router-dom";
 import TextareaAutosize from 'react-textarea-autosize';
 import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
 
@@ -16,18 +17,23 @@ interface InputBoxProps {
 }
 
 const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) => {
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const httpService = new HttpService();
     const utilsService = new UtilsService();
 
     const [text, setText] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const sendWords = useRef(() => {})
-    sendWords.current = async () => {
+    const sendWords = useRef((forceText?: string) => {});
+    sendWords.current = async (forceText?: string) => {
         setIsLoading(true);
         setErrorOccurred(false);
 
-        const words: string[] = utilsService.extractWordsFromInput(text);
+        const searchText = forceText || text;
+        setSearchParams({ words: searchText });
+
+        const words: string[] = utilsService.extractWordsFromInput(searchText);
         const queryParams: QueryParams = { words: JSON.stringify(words) };
 
         try {
@@ -54,6 +60,16 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
             window.removeEventListener("keydown", handleUserKeyPress);
         };
     }, [handleUserKeyPress]);
+
+    // Check for query params and search if present
+    const searchQueryParams = useRef(() => {});
+    searchQueryParams.current = () => {
+        let words = searchParams.get("words");
+        if (words === null || words === "") return;
+        setText(words);
+        sendWords.current(words);
+    }
+    useEffect(() => { searchQueryParams.current(); }, []);
 
     const textArea = (
         <TextareaAutosize
