@@ -47,3 +47,7 @@ code {
     -ms-user-select: none;
     user-select: none;
  }
+
+ .mplus {
+     font-family: "M PLUS 1p", sans-serif;
+ }
