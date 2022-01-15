@@ -25,7 +25,7 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
     const [text, setText] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const sendWords = useRef((forceText?: string) => {})
+    const sendWords = useRef((forceText?: string) => {});
     sendWords.current = async (forceText?: string) => {
         setIsLoading(true);
         setErrorOccurred(false);
@@ -62,7 +62,7 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
     }, [handleUserKeyPress]);
 
     // Check for query params and search if present
-    const searchQueryParams = useRef(() => {})
+    const searchQueryParams = useRef(() => {});
     searchQueryParams.current = () => {
         let words = searchParams.get("words");
         if (words === null || words === "") return;
