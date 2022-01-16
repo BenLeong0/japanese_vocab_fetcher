@@ -10,7 +10,7 @@
 
 .words-display {
     display: flex;
-    width: 600px;
+    max-width: 600px;
     flex-wrap: wrap;
     justify-content: center;
 }
