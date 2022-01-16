@@ -9,6 +9,9 @@ import ResultTitle from './ResultTitle/ResultTitle';
 import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
 
 import FullResponseItem from '../../types/FullResponseItem';
+import Sentence from '../../types/Sentence';
+
+import UtilsService from '../core/UtilsService';
 
 import './ResultBlock.css';
 
@@ -18,16 +21,45 @@ interface ResultProps {
 }
 
 const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
+    const utilsService = new UtilsService();
+
     const [isExpanded, setIsExpanded] = useState<boolean>(true);
     const toggleIsExpanded = () => setIsExpanded(!isExpanded);
 
-    // const wanikaniData = data.wanikani;
+    const getFavouriteAccent = (): string => {
+        if (data.ojad.main_data.accent.length > 0) return data.ojad.main_data.accent[0];
+        if (data.wadoku.main_data.accent.length > 0) return data.wadoku.main_data.accent[0];
+        if (data.suzuki.main_data.accent.length > 0) return data.suzuki.main_data.accent[0];
+        return "";
+    }
+
+    const getFilteredDefinitions = (): string => {
+        const senses = data.jisho.main_data.results[0].senses;
+        const dfns = senses.map(sense => sense.english_definitions.slice(0, 2));
+        const formattedDfns = dfns.map(dfn => dfn.map(word => utilsService.capitaliseString(word)));
+        return formattedDfns.join("  /  ");
+    }
+
+    const getContextSentence = (): Sentence => {
+        if (data.wanikani.main_data.sentences.length > 0) return data.wanikani.main_data.sentences[0];
+        if (data.tangorin.main_data.sentences.length > 0) return data.tangorin.main_data.sentences[0];
+        return { en: '', ja: '' };
+    }
+
+    const copyString: string = [
+        data.word,
+        getFavouriteAccent(),
+        getFilteredDefinitions(),
+        getContextSentence().ja,
+        getContextSentence().en,
+    ].join("\t");
 
     return (
         <div className="result-block flex-col">
             <ResultTitle
                 isExpanded={isExpanded}
                 toggleIsExpanded={toggleIsExpanded}
+                copyString={copyString}
             >{ data.word }</ResultTitle>
             { isExpanded &&
                 <div className="flex-row">
