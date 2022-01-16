@@ -13,6 +13,10 @@
     min-height: 100vh;
 }
 
+.App {
+    padding: 0 16px;
+}
+
 .app-header {
     font-size: 60px;
     text-align: center;
@@ -49,8 +53,8 @@ button:hover {
 
 
 /* Larger than desktop */
-@media (max-width: 1250px) {
+@media (max-width: 1200px) {
     .width-container {
-        margin: 0 6%;
+        max-width: 600px;
     }
 }
