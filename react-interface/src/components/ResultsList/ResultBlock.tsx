@@ -63,19 +63,29 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                 copyString={copyString}
             >{ data.word }</ResultTitle>
             { isExpanded &&
-                <div className="flex-row">
-                    <div className="result-left-col flex-col">
+                <>
+                    <div className="flex-row hide-mobile">
+                        <div className="result-left-col flex-col">
+                            <ResultReadings data={data} />
+                            <ResultTags data={data} />
+                            <ResultAudio data={data} />
+                            <ResultRelatedWords data={data} />
+                        </div>
+                        <div className="result-col-separator" />
+                        <div className="result-right-col flex-col">
+                            <ResultDefinitions data={data} />
+                            <ResultSentences data={data} />
+                        </div>
+                    </div>
+                    <div className="flex-col show-mobile">
                         <ResultReadings data={data} />
+                        <ResultDefinitions data={data} />
                         <ResultTags data={data} />
-                        <ResultAudio data={data} />
+                        <ResultAudio data= {data} />
+                        <ResultSentences data={data} />
                         <ResultRelatedWords data={data} />
                     </div>
-                    <div className="result-col-separator" />
-                    <div className="result-right-col flex-col">
-                        <ResultDefinitions data={data} />
-                        <ResultSentences data={data} />
-                    </div>
-                </div>
+                </>
             }
             <ResultToggleBar isExpanded={isExpanded} toggleIsExpanded={toggleIsExpanded}/>
         </div>

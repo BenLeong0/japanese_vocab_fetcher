@@ -56,3 +56,15 @@ code {
  .mplus {
      font-family: "M PLUS 1p", sans-serif;
  }
+
+
+@media (min-width: 1200px) {
+    .show-mobile {
+        display: none;
+    }
+}
+@media (max-width: 1199px) {
+    .hide-mobile {
+        display: none;
+    }
+}
