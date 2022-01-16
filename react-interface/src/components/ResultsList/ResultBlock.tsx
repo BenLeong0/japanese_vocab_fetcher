@@ -79,8 +79,8 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                     </div>
                     <div className="flex-col show-mobile">
                         <ResultReadings data={data} />
-                        <ResultDefinitions data={data} />
                         <ResultTags data={data} />
+                        <ResultDefinitions data={data} />
                         <ResultAudio data= {data} />
                         <ResultSentences data={data} />
                         <ResultRelatedWords data={data} />
