@@ -19,6 +19,8 @@ code {
     --grey-light: #f7f9fa;
     --grey: #dfe6ed;
     --grey-dark: #9eadba;
+    --grey-darker: #788896;
+    --grey-darkest: #5c6a77;
 }
 
 .vertical-separation-small {

@@ -20,7 +20,7 @@
 }
 
 .result-audio-speaker {
-    color: #788896;
+    color: var(--grey-darker);
     font-size: 24px;
     line-height: 28px;
     margin: 2px 0 2px 12px;
