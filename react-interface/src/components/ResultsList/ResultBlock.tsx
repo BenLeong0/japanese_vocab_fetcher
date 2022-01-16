@@ -26,7 +26,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
     const [isExpanded, setIsExpanded] = useState<boolean>(true);
     const toggleIsExpanded = () => setIsExpanded(!isExpanded);
 
-    const getFavouriteAccent = (): string => {
+    const getMostTrustedAccent = (): string => {
         if (data.ojad.main_data.accent.length > 0) return data.ojad.main_data.accent[0];
         if (data.wadoku.main_data.accent.length > 0) return data.wadoku.main_data.accent[0];
         if (data.suzuki.main_data.accent.length > 0) return data.suzuki.main_data.accent[0];
@@ -49,7 +49,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
 
     const copyString: string = [
         data.word,
-        getFavouriteAccent(),
+        getMostTrustedAccent(),
         getFilteredDefinitions(),
         getContextSentence().ja,
         getContextSentence().en,
