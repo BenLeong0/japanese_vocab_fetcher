@@ -2,6 +2,8 @@ import React from 'react';
 
 import IconCopy from '../../../assets/icons/icon_copy.svg';
 
+import UtilsService from '../../core/UtilsService';
+
 import './ResultTitle.css';
 
 
@@ -18,8 +20,9 @@ const ResultTitle: React.FC<ResultTitleProps> = ({
     toggleIsExpanded,
     copyString,
 }) => {
-    const copyStringToClipboard = () => {
-        navigator.clipboard.writeText(copyString);
+    const utilsService = new UtilsService();
+    const copyCopyStringToClipboard = () => {
+        utilsService.copyStringToClipboard(copyString);
     }
 
     return (
@@ -30,7 +33,7 @@ const ResultTitle: React.FC<ResultTitleProps> = ({
                     className="result-title-copy unselectable"
                     src={IconCopy}
                     alt="button to copy sample row to clipboard"
-                    onClick={copyStringToClipboard}
+                    onClick={copyCopyStringToClipboard}
                 />
                 <div
                     className="result-title-collapser unselectable"

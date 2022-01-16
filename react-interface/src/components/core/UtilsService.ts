@@ -24,4 +24,8 @@ export default class UtilsService {
         return s[0].toUpperCase() + s.slice(1);
     }
 
+    copyStringToClipboard = (copyString: string) => {
+        navigator.clipboard.writeText(copyString);
+    }
+
 }
