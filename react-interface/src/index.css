@@ -39,6 +39,9 @@ code {
     display: flex;
     flex-direction: row;
 }
+.space-between {
+    justify-content: space-between;
+}
 
 .unselectable {
     -moz-user-select: -moz-none;
