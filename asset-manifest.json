@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/japanese_vocab_fetcher/static/css/main.3bf2d8c8.chunk.css",
-    "main.js": "/japanese_vocab_fetcher/static/js/main.d92c3b50.chunk.js",
-    "main.js.map": "/japanese_vocab_fetcher/static/js/main.d92c3b50.chunk.js.map",
+    "main.css": "/japanese_vocab_fetcher/static/css/main.f001c7ef.chunk.css",
+    "main.js": "/japanese_vocab_fetcher/static/js/main.546bcba2.chunk.js",
+    "main.js.map": "/japanese_vocab_fetcher/static/js/main.546bcba2.chunk.js.map",
     "runtime-main.js": "/japanese_vocab_fetcher/static/js/runtime-main.12ca7458.js",
     "runtime-main.js.map": "/japanese_vocab_fetcher/static/js/runtime-main.12ca7458.js.map",
     "static/js/2.9edb6e7c.chunk.js": "/japanese_vocab_fetcher/static/js/2.9edb6e7c.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.92cb38a8.chunk.js": "/japanese_vocab_fetcher/static/js/3.92cb38a8.chunk.js",
     "static/js/3.92cb38a8.chunk.js.map": "/japanese_vocab_fetcher/static/js/3.92cb38a8.chunk.js.map",
     "index.html": "/japanese_vocab_fetcher/index.html",
-    "static/css/main.3bf2d8c8.chunk.css.map": "/japanese_vocab_fetcher/static/css/main.3bf2d8c8.chunk.css.map",
+    "static/css/main.f001c7ef.chunk.css.map": "/japanese_vocab_fetcher/static/css/main.f001c7ef.chunk.css.map",
     "static/js/2.9edb6e7c.chunk.js.LICENSE.txt": "/japanese_vocab_fetcher/static/js/2.9edb6e7c.chunk.js.LICENSE.txt",
     "static/media/App.css": "/japanese_vocab_fetcher/static/media/din1451alt G.1f5ffc3f.woff",
     "static/media/icon_chevron_down.fee13e32.svg": "/japanese_vocab_fetcher/static/media/icon_chevron_down.fee13e32.svg",
@@ -25,7 +25,7 @@
   "entrypoints": [
     "static/js/runtime-main.12ca7458.js",
     "static/js/2.9edb6e7c.chunk.js",
-    "static/css/main.3bf2d8c8.chunk.css",
-    "static/js/main.d92c3b50.chunk.js"
+    "static/css/main.f001c7ef.chunk.css",
+    "static/js/main.546bcba2.chunk.js"
   ]
 }
