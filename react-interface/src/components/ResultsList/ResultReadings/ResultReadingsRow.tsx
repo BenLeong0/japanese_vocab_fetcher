@@ -9,7 +9,7 @@ interface ResultReadingsRowProps {
 const ResultReadingsRow: React.FC<ResultReadingsRowProps> = ({ title, readings }) => {
     return (
         <div className="readings-row">
-            <div className="readings-row-left">{ title }:</div>
+            <div className="readings-row-left unselectable">{ title }:</div>
             <div className="readings-row-right">
                 {readings.map((reading, index) =>
                     <div key={index} className="reading">{ reading }</div>
