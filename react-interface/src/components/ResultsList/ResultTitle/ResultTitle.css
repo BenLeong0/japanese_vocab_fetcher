@@ -1,5 +1,5 @@
 .result-title {
-    position: relative;
+    display: flex;
 }
 
 .result-title-text {
@@ -9,11 +9,19 @@
     margin: 6px 16px;
 }
 
-.title-collapser {
-    position: absolute;
-    right: 8px;
-    bottom: 4px;
+.result-title-buttons {
+    align-items: center;
+    width: 72px;
+}
 
+.result-title-copy {
+    width: 48px;
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+.result-title-collapser {
+    margin: 4px 8px;
     cursor: pointer;
     font-size: 16px;
     font-weight: normal;
