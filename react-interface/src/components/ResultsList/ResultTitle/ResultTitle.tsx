@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IconCopy from '../../../assets/icons/icon_copy.svg'
+import IconCopy from '../../../assets/icons/icon_copy.svg';
 
 import './ResultTitle.css';
 
