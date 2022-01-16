@@ -1,16 +1,24 @@
 import React from 'react';
 
-import './ResultTitle.css';
 import IconCopy from '../../../assets/icons/icon_copy.svg'
+
+import './ResultTitle.css';
 
 
 interface ResultTitleProps {
     children: string;
     isExpanded: boolean;
     toggleIsExpanded: () => void;
+    copyString: string;
 }
 
-const ResultTitle: React.FC<ResultTitleProps> = ({ children, isExpanded, toggleIsExpanded }) => {
+const ResultTitle: React.FC<ResultTitleProps> = ({
+    children,
+    isExpanded,
+    toggleIsExpanded,
+    copyString,
+}) => {
+    const copyStringToClipboard = () => {navigator.clipboard.writeText(copyString);}
 
     return (
         <div className="result-title flex-row space-between">
@@ -20,6 +28,7 @@ const ResultTitle: React.FC<ResultTitleProps> = ({ children, isExpanded, toggleI
                     className="result-title-copy unselectable"
                     src={IconCopy}
                     alt="button to copy sample row to clipboard"
+                    onClick={copyStringToClipboard}
                 />
                 <div
                     className="result-title-collapser unselectable"
