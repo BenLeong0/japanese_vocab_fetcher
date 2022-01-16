@@ -34,6 +34,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
     }
 
     const getFilteredDefinitions = (): string => {
+        if (data.jisho.main_data.results.length === 0) return "";
         const senses = data.jisho.main_data.results[0].senses;
         const dfns = senses.map(sense => sense.english_definitions.slice(0, 2));
         const formattedDfns = dfns.map(dfn => dfn.map(word => utilsService.capitaliseString(word)));
