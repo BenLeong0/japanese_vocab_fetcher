@@ -18,7 +18,9 @@ const ResultTitle: React.FC<ResultTitleProps> = ({
     toggleIsExpanded,
     copyString,
 }) => {
-    const copyStringToClipboard = () => {navigator.clipboard.writeText(copyString);}
+    const copyStringToClipboard = () => {
+        navigator.clipboard.writeText(copyString);
+    }
 
     return (
         <div className="result-title flex-row space-between">
