@@ -37,7 +37,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
         const senses = data.jisho.main_data.results[0].senses;
         const dfns = senses.map(sense => sense.english_definitions.slice(0, 2));
         const formattedDfns = dfns.map(dfn => dfn.map(word => utilsService.capitaliseString(word)));
-        return formattedDfns.join("  /  ");
+        return formattedDfns.map(dfn => dfn.join(" ; ")).join("  /  ");
     }
 
     const getContextSentence = (): Sentence => {
