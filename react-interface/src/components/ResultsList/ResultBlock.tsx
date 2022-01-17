@@ -64,6 +64,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
             >{ data.word }</ResultTitle>
             { isExpanded &&
                 <>
+                    {/* Desktop */}
                     <div className="flex-row hide-mobile">
                         <div className="result-left-col flex-col">
                             <ResultReadings data={data} />
@@ -78,6 +79,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
                         </div>
                     </div>
 
+                    {/* Mobile */}
                     <div className="flex-col show-mobile">
                         <ResultReadings data={data} />
                         <ResultTags data={data} />
