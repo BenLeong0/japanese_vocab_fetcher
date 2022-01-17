@@ -58,12 +58,12 @@ code {
  }
 
 
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
     .show-mobile {
         display: none;
     }
 }
-@media (max-width: 1199px) {
+@media (max-width: 1200px) {
     .hide-mobile {
         display: none;
     }
