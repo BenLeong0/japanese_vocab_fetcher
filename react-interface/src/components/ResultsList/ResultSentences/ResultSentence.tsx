@@ -19,8 +19,9 @@ const ResultSentence: React.FC<ResultSentenceProps> = ({ sentence, source }) => 
     }
 
     return (
-        <div className="result-sentence flex-col">
-            <div className="hide-mobile">
+        <>
+            {/* Desktop */}
+            <div className="result-sentence flex-col hide-mobile">
                 <div className="result-sentence-top flex-row">
                     <div className="result-sentence-ja">{ sentence.ja }</div>
                     <div className="result-sentence-extra flex-row">
@@ -33,12 +34,14 @@ const ResultSentence: React.FC<ResultSentenceProps> = ({ sentence, source }) => 
                 </div>
                 <div className="result-sentence-en">{ sentence.en }</div>
             </div>
-            <div className="flex-col show-mobile">
+
+            {/* Mobile */}
+            <div className="result-sentence flex-col show-mobile">
                 <div className="result-sentence-ja">{ sentence.ja }</div>
                 <div className="result-sentence-en">{ sentence.en }</div>
                 <div className="result-sentence-source">{ `- ${source}` }</div>
             </div>
-        </div>
+        </>
     );
 }
 
