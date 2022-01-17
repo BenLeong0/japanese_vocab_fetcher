@@ -31,3 +31,9 @@
     cursor: pointer;
     fill: var(--grey-darkest);
 }
+
+@media (max-width: 1199px) {
+    .result-sentence-source {
+        text-align: right;
+    }
+}
