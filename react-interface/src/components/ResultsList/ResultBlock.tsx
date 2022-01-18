@@ -9,6 +9,7 @@ import ResultTitle from './ResultTitle/ResultTitle';
 import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
 
 import FullResponseItem from '../../types/FullResponseItem';
+import { JishoAPIItemSense } from '../../types/ResponseItemJisho';
 import Sentence from '../../types/Sentence';
 
 import UtilsService from '../core/UtilsService';
@@ -25,6 +26,12 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(true);
     const toggleIsExpanded = () => setIsExpanded(!isExpanded);
+
+    const getCopyWord = (): string => {
+        const isSuruSense = (sense: JishoAPIItemSense) => sense.parts_of_speech.includes("Suru verb");
+        const isSuruVerb = data.jisho.main_data.results.some(x => x.senses.some(isSuruSense));
+        return isSuruVerb ? data.word : data.word + "（する）";
+    }
 
     const getMostTrustedAccent = (): string => {
         if (data.ojad.main_data.accent.length > 0) return data.ojad.main_data.accent[0];
@@ -48,7 +55,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
     }
 
     const copyString: string = [
-        data.word,
+        getCopyWord(),
         getMostTrustedAccent(),
         getFilteredDefinitions(),
         getContextSentence().ja,
