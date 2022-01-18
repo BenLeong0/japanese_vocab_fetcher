@@ -30,7 +30,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
     const getCopyWord = (): string => {
         const isSuruSense = (sense: JishoAPIItemSense) => sense.parts_of_speech.includes("Suru verb");
         const isSuruVerb = data.jisho.main_data.results.some(x => x.senses.some(isSuruSense));
-        return isSuruVerb ? data.word : data.word + "（する）";
+        return isSuruVerb ? data.word + "（する）" : data.word;
     }
 
     const getMostTrustedAccent = (): string => {
