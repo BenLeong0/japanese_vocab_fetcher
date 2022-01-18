@@ -1,4 +1,5 @@
 .loader {
+    cursor: wait;
     border: 8px solid #f3f3f3;
     border-top: 8px solid var(--green-light);
     border-radius: 50%;
