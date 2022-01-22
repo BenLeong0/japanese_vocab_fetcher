@@ -17,7 +17,9 @@ class JapanesePodAPIError(APIError):
     pass
 
 
-def response_factory(audio_list: Optional[list[JapanesePodAudio]] = None) -> ResponseItemJapanesePod:
+def response_factory(
+    audio_list: Optional[list[JapanesePodAudio]] = None
+) -> ResponseItemJapanesePod:
     return {
         "success": True,
         "error": None,
