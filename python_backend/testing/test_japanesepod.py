@@ -2,7 +2,7 @@ import json
 
 import pytest   # type: ignore
 
-from custom_types.alternative_string_types import URL, Kaki   # type: ignore
+from custom_types.alternative_string_types import URL, HTMLString, Kaki   # type: ignore
 
 from modules import japanesepod
 from testing.dict_typing import FullTestDict
@@ -85,3 +85,31 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
 
     monkeypatch.setattr("requests.get", lambda x, timeout: FakeResponse(response, status_code=400))
     assert japanesepod.main(word_list) == expected_output
+
+
+def test_get_url(test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN a url is generated
+    - THEN check the url is encoded
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['japanesepod']['expected_sections']
+
+    for word in word_list:
+        assert japanesepod.get_url(word) == sections[word]["url"]
+
+
+def test_get_html_string(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the HTML page is fetched
+    - THEN check it is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict['japanesepod']['expected_sections']
+
+    for word in word_list:
+        html = sections[word]['html']
+        monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
+        assert japanesepod.get_html_string(word) == HTMLString(html)
