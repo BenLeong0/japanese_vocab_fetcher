@@ -1,8 +1,6 @@
 from threading import Thread
 from typing import Optional
 
-# from bs4 import BeautifulSoup as Soup
-# from bs4.element import Tag
 # import requests
 
 from custom_types.alternative_string_types import Kaki
@@ -43,7 +41,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemJapanesePod]:
     audio_dict: dict[Kaki, ResponseItemJapanesePod] = {}
 
     def call_script(word: Kaki) -> None:
-        audio_dict[word] = response_factory()
+        audio_dict[word] = get_audio_urls()
 
     threads: list[Thread] = [
         Thread(target=call_script, args=[word])
