@@ -53,6 +53,12 @@ MEGANE: FullTestDict = {
     "id": "MEGANE",
     "input": ["眼鏡"],
     "japanesepod": {
+        "expected_sections": {
+            "眼鏡": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ眼鏡"),
+                "html": get_file_as_string("megane", "japanesepod"),
+            },
+        },
         "expected_output": {
             "眼鏡": {
                 "success": True,
@@ -66,7 +72,7 @@ MEGANE: FullTestDict = {
     "jisho": {
         "expected_sections": {
             '眼鏡': {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=眼鏡"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=眼鏡"),
                 "api_response": jisho_api_responses.MEGANE["眼鏡"],
                 "filtered_items": jisho_api_responses.MEGANE_FILTERED_ITEMS["眼鏡"],
                 "extra_items": jisho_api_responses.MEGANE_EXTRA_ITEMS["眼鏡"],
@@ -517,6 +523,12 @@ COMEBACK: FullTestDict= {
     "id": "COMEBACK",
     "input": ['カムバック'],
     "japanesepod": {
+        "expected_sections": {
+            "カムバック": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJカムバック"),
+                "html": get_file_as_string("comeback", "japanesepod"),
+            },
+        },
         "expected_output": {
             "カムバック": {
                 "success": True,
@@ -530,7 +542,7 @@ COMEBACK: FullTestDict= {
     "jisho": {
         "expected_sections": {
             'カムバック': {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=カムバック"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=カムバック"),
                 "api_response": jisho_api_responses.COMEBACK["カムバック"],
                 "filtered_items": jisho_api_responses.COMEBACK_FILTERED_ITEMS["カムバック"],
                 "extra_items": jisho_api_responses.COMEBACK_EXTRA_ITEMS["カムバック"],
@@ -762,6 +774,16 @@ TABERU_GAKUSEI: FullTestDict = {
     "id": "TABERU_GAKUSEI",
     "input": ['食べる', '学生'],
     "japanesepod": {
+        "expected_sections": {
+            "食べる": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ食べる"),
+                "html": get_file_as_string("taberu", "japanesepod"),
+            },
+            "学生": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ学生"),
+                "html": get_file_as_string("gakusei", "japanesepod"),
+            },
+        },
         "expected_output": {
             "食べる": {
                 "success": True,
@@ -1729,6 +1751,12 @@ KOTOBA: FullTestDict = {
     "id": "KOTOBA",
     "input": ['言葉'],
     "japanesepod": {
+        "expected_sections": {
+            "言葉": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ言葉"),
+                "html": get_file_as_string("kotoba", "japanesepod"),
+            },
+        },
         "expected_output": {
             "言葉": {
                 "success": True,
@@ -2233,6 +2261,12 @@ BADINPUT: FullTestDict = {
     "id": "BADINPUT",
     "input": ['BADINPUT'],
     "japanesepod": {
+        "expected_sections": {
+            "BADINPUT": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJBADINPUT"),
+                "html": get_file_as_string("badinput", "japanesepod"),
+            },
+        },
         "expected_output": {
             "BADINPUT": {
                 "success": True,
@@ -2436,6 +2470,20 @@ USAGI_IKU_KAGO: FullTestDict = {
     "id": "USAGI_IKU_KAGO",
     "input": ['兎', '行く', '籠'],
     "japanesepod": {
+        "expected_sections": {
+            "兎": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ兎"),
+                "html": get_file_as_string("usagi", "japanesepod"),
+            },
+            "行く": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ行く"),
+                "html": get_file_as_string("iku", "japanesepod"),
+            },
+            "籠": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ籠"),
+                "html": get_file_as_string("kago", "japanesepod"),
+            },
+        },
         "expected_output": {
             "兎": {
                 "success": True,
@@ -3469,6 +3517,12 @@ SHIZUKA: FullTestDict = {
     "id": "SHIZUKA",
     "input": ['静か'],
     "japanesepod": {
+        "expected_sections": {
+            "静か": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ静か"),
+                "html": get_file_as_string("shizuka", "japanesepod"),
+            },
+        },
         "expected_output": {
             "静か": {
                 "success": True,
@@ -3969,6 +4023,12 @@ NARU: FullTestDict = {
     "id": "NARU",
     "input": ['なる'],
     "japanesepod": {
+        "expected_sections": {
+            "なる": {
+                "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJなる"),
+                "html": get_file_as_string("naru", "japanesepod"),
+            },
+        },
         "expected_output": {
             "なる": {
                 "success": True,
