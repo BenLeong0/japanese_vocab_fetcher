@@ -27,7 +27,7 @@ class FakeResponse:
 def test_main(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
-    - WHEN the accent dict is generated
+    - WHEN the audio dict is generated
     - THEN check all the japanesepod info is correct and complete
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
@@ -51,7 +51,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
 def test_empty_input():
     """
     - GIVEN an empty input
-    - WHEN an accent dictionary is generated
+    - WHEN an audio dictionary is generated
     - THEN check it returns and empty dict
     """
     assert japanesepod.main([]) == {}
