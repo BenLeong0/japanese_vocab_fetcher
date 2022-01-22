@@ -41,7 +41,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemJapanesePod]:
     audio_dict: dict[Kaki, ResponseItemJapanesePod] = {}
 
     def call_script(word: Kaki) -> None:
-        audio_dict[word] = get_audio_urls()
+        audio_dict[word] = response_factory()
 
     threads: list[Thread] = [
         Thread(target=call_script, args=[word])
