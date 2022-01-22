@@ -1,5 +1,7 @@
 import json
-import pytest
+
+import pytest   # type: ignore
+
 from custom_types.alternative_string_types import URL, Kaki   # type: ignore
 
 from modules import japanesepod
@@ -35,7 +37,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     expected_output = test_dict['japanesepod']['expected_output']
 
     def get_word_from_wwwjdic_url(url: URL) -> Kaki:
-        return url[50:]
+        return Kaki(url[50:])
 
     def get_html_response(url: URL) -> str:
         if "wwwjdic" in url:
