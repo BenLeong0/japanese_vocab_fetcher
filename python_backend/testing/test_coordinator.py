@@ -16,6 +16,7 @@ def test_dict(request):
 
 
 MODULES = (
+    "japanesepod",
     "jisho",
     "ojad",
     "suzuki",
@@ -38,6 +39,7 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     - WHEN full results are generated
     - THEN check the output is as expected
     """
+    monkeypatch.setattr("modules.japanesepod.main", lambda x: test_dict['japanesepod']['expected_output'])
     monkeypatch.setattr("modules.jisho.main", lambda x: test_dict['jisho']['expected_output'])
     monkeypatch.setattr("modules.ojad.main", lambda x: test_dict['ojad']['expected_output'])
     monkeypatch.setattr("modules.suzuki.main", lambda x: test_dict['suzuki']['expected_output'])
@@ -58,6 +60,7 @@ def test_generate_results_dict(monkeypatch, test_dict):
     - WHEN the results dict is generated
     - THEN check the output is as expected
     """
+    monkeypatch.setattr("modules.japanesepod.main", lambda x: test_dict['japanesepod']['expected_output'])
     monkeypatch.setattr("modules.jisho.main", lambda x: test_dict['jisho']['expected_output'])
     monkeypatch.setattr("modules.ojad.main", lambda x: test_dict['ojad']['expected_output'])
     monkeypatch.setattr("modules.suzuki.main", lambda x: test_dict['suzuki']['expected_output'])
@@ -87,6 +90,7 @@ def test_generate_response(test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     result_dict: DefaultDict[str, dict[Kaki, Any]] = defaultdict(dict, {
+        "japanesepod": convert_dict_str_keys_to_kaki(test_dict["japanesepod"]['expected_output']),
         "jisho": convert_dict_str_keys_to_kaki(test_dict["jisho"]['expected_output']),
         "ojad": convert_dict_str_keys_to_kaki(test_dict["ojad"]['expected_output']),
         "suzuki": convert_dict_str_keys_to_kaki(test_dict["suzuki"]['expected_output']),
