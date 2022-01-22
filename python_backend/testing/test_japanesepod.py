@@ -113,3 +113,21 @@ def test_get_html_string(monkeypatch, test_dict: FullTestDict):
         html = sections[word]['html']
         monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
         assert japanesepod.get_html_string(word) == HTMLString(html)
+
+
+def test_get_html_string_failure(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN an unsuccessful HTTP request is made
+    - THEN check an exception is thrown
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    response = json.dumps({"error": "could not connect"})
+    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(response, status_code=400))
+
+    try:
+        japanesepod.get_html_string(word_list[0])
+        assert False
+    except japanesepod.JapanesePodAPIError as api_error:
+        assert api_error.error_msg == json.dumps({"error": "could not connect"})
+        assert api_error.status_code == 400
