@@ -7,7 +7,7 @@ from typing import Optional
 
 from custom_types.alternative_string_types import Kaki
 from custom_types.exception_types import APIError
-from custom_types.response_types import ContextSentence, ResponseItemJapanesePod
+from custom_types.response_types import JapanesePodAudio, ResponseItemJapanesePod
 
 
 NAME = "japanesepod"
@@ -17,7 +17,7 @@ class JapanesePodAPIError(APIError):
     pass
 
 
-def response_factory(audio_list: Optional[list[ContextSentence]] = None) -> ResponseItemJapanesePod:
+def response_factory(audio_list: Optional[list[JapanesePodAudio]] = None) -> ResponseItemJapanesePod:
     return {
         "success": True,
         "error": None,
