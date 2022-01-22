@@ -87,6 +87,23 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     assert japanesepod.main(word_list) == expected_output
 
 
+def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the sentences are fetched for each individual word
+    - THEN check the sentences are correct
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    sections = test_dict["japanesepod"]["expected_sections"]
+    full_expected_output = test_dict["japanesepod"]["expected_output"]
+
+    for word in word_list:
+        html = sections[word]['html']
+        monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
+        expected_output = full_expected_output[word]
+        assert japanesepod.get_audio_urls(word) == expected_output
+
+
 def test_get_url(test_dict: FullTestDict):
     """
     - GIVEN a list of words
