@@ -41,7 +41,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemJapanesePod]:
     audio_dict: dict[Kaki, ResponseItemJapanesePod] = {}
 
     def call_script(word: Kaki) -> None:
-        audio_dict[word] = get_audio_urls()
+        audio_dict[word] = get_audio_urls(word)
 
     threads: list[Thread] = [
         Thread(target=call_script, args=[word])
@@ -62,6 +62,8 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
     except JapanesePodAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
         return error_response_factory(api_error)
+
+    print(html)
 
     return response_factory()
 
