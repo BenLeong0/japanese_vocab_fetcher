@@ -1,9 +1,10 @@
+import re
 from threading import Thread
 from typing import Optional
 
 import requests
 
-from custom_types.alternative_string_types import HTMLString, Kaki, URL
+from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
 from custom_types.exception_types import APIError
 from custom_types.response_types import JapanesePodAudio, ResponseItemJapanesePod
 
@@ -63,7 +64,9 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
         print("An error occurred:", api_error.error_msg)
         return error_response_factory(api_error)
 
-    print(html)
+    results = extract_results(html)
+
+    print(results)
 
     return response_factory()
 
@@ -86,3 +89,38 @@ def get_html_string(word: Kaki) -> HTMLString:
 
     html = HTMLString(response.text)
     return html
+
+
+# Extract results
+
+def extract_rows(html: HTMLString) -> list[str]:
+    cleaning_pattern = r"<pre>(?P<results>.*)</pre>"
+    full_result = re.search(cleaning_pattern, html)['results']
+    return full_result.split("\n")
+
+
+def remove_end_brackets(input_string: str) -> str:
+    if "(" not in input_string:
+        return input_string
+    return input_string[:input_string.index("(")]
+
+
+def format_row(row: str) -> tuple[list[Kaki], Optional[list[Yomi]]]:
+    pattern = r"(?P<writings>[^\s]+) (?P<readings>\[[^\s]+\] )?"
+    match = re.compile(pattern).match(row)
+
+    writings = [Kaki(remove_end_brackets(s)) for s in match['writings'].split(";")]
+
+    readings_match: Optional[str] = match['readings'][1:-2]
+    if readings_match is None:
+        readings = None
+    else:
+        readings = [Yomi(remove_end_brackets(s)) for s in readings_match.split(";")]
+
+    return writings, readings
+
+
+def extract_results(html: HTMLString) -> list[tuple[list[Kaki], Optional[list[Yomi]]]]:
+    rows = extract_rows(html)
+    formatted_rows = list(map(format_row, rows))
+    return formatted_rows
