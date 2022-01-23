@@ -194,7 +194,7 @@ def test_get_html_string_failure(monkeypatch, test_dict: FullTestDict):
         ),
     ],
 )
-def test_extract_rows(pre_text, post_text, html_string, expected_rows):
+def test_extract_rows(pre_text: str, post_text: str, html_string: str, expected_rows: list[str]):
     full_html_string = pre_text + html_string + post_text
     assert japanesepod.extract_rows(full_html_string) == expected_rows
 
