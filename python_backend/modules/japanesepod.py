@@ -7,6 +7,7 @@ import requests
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
 from custom_types.exception_types import APIError
 from custom_types.response_types import JapanesePodAudio, ResponseItemJapanesePod
+from utils import remove_end_brackets
 
 
 NAME = "japanesepod"
@@ -128,12 +129,6 @@ def build_row_result_from_matches(
     readings = [Yomi(remove_end_brackets(x)) for x in readings_match.split(";")]
 
     return (writings, readings)
-
-
-def remove_end_brackets(input_string: str) -> str:
-    if "(" not in input_string:
-        return input_string
-    return input_string[:input_string.index("(")]
 
 
 def format_row(row: str) -> tuple[list[Kaki], list[Yomi]]:
