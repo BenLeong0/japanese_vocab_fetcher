@@ -2348,8 +2348,8 @@ BADINPUT: FullTestDict = {
                 "expected_rows": [
                     {
                         "raw_row": "ボディー(P);ボディ(P);ボデー;バディー(ik);バディ(ik) /(n) (1) body/(n) (2) (abbr) {sports} (See ボディーブロー) body blow (in boxing)/(P)/",
-                        "matches": ("ボディー(P);ボディ(P);ボデー;バディー(ik);バディ(ik)", None),
-                        "results": (["ボディー", "ボディ", "ボデー", "バディー", "バディ"], ["ボディー", "ボディ", "ボデー", "バディー", "バディ"]),
+                        "matches": ("ボディー(P);ボディ(P);ボデー", None),
+                        "results": (["ボディー", "ボディ", "ボデー"], ["ボディー", "ボディ", "ボデー"]),
                     },
                     {
                         "raw_row": "バディ;バディー /(n) buddy/",
