@@ -87,6 +87,58 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     assert japanesepod.main(word_list) == expected_output
 
 
+def test_main_parsing_html_error(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the HTML cannot be parsed
+    - THEN check the failed dict is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    expected_output = {
+        word: {
+            "success": False,
+            "error": {
+                "error_msg": "could not extract results from html",
+                "status_code": 400,
+                "url": URL("")
+            },
+            "main_data": {
+                "audio": [],
+            },
+        }
+        for word in word_list
+    }
+
+    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse("invalid html"))
+    assert japanesepod.main(word_list) == expected_output
+
+
+def test_main_parsing_row_error(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN a row cannot be parsed
+    - THEN check the failed dict is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    expected_output = {
+        word: {
+            "success": False,
+            "error": {
+                "error_msg": "could not extract results from row",
+                "status_code": 400,
+                "url": URL("")
+            },
+            "main_data": {
+                "audio": [],
+            },
+        }
+        for word in word_list
+    }
+
+    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse("<pre> invalid row</pre>"))
+    assert japanesepod.main(word_list) == expected_output
+
+
 def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
