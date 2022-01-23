@@ -200,3 +200,10 @@ def test_extract_matches_from_row_string_failure(invalid_row: str):
     except japanesepod.JapanesePodParsingError as parsing_error:
         assert parsing_error.error_msg == "could not extract results from row"
         assert parsing_error.status_code == 400
+
+
+def test_build_row_result_from_matches(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        for row in expected_rows:
+            assert japanesepod.build_row_result_from_matches(*row["matches"]) == row["results"]
