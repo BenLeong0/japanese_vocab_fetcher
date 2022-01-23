@@ -214,3 +214,10 @@ def test_format_row(test_dict: FullTestDict):
         expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
         for row in expected_rows:
             assert japanesepod.format_row(row["raw_row"]) == row["results"]
+
+
+def test_extract_results(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        html = test_dict["japanesepod"]["expected_sections"][word]["html"]
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        assert japanesepod.extract_results(html) == [row["results"] for row in expected_rows]
