@@ -5,7 +5,7 @@ import re
 from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
-from custom_types.alternative_string_types import HTMLString, URL, Yomi
+from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
 from testing import jisho_api_responses, wanikani_api_responses
 from testing.dict_typing import FullTestDict
 
@@ -78,9 +78,9 @@ MEGANE: FullTestDict = {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=めがね"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=がんきょう"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=メガネ"),
+                    (Kaki("眼鏡"), Yomi("めがね"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=めがね")),
+                    (Kaki("眼鏡"), Yomi("がんきょう"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=がんきょう")),
+                    (Kaki("眼鏡"), Yomi("メガネ"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=メガネ")),
                 ],
             },
         },
@@ -561,7 +561,7 @@ COMEBACK: FullTestDict= {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=カムバック&kana=カムバック"),
+                    (Kaki("カムバック"), Yomi("カムバック"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=カムバック&kana=カムバック")),
                 ],
             },
         },
@@ -829,8 +829,8 @@ TABERU_GAKUSEI: FullTestDict = {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=食べる&kana=たべる"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=喰べる&kana=たべる"),
+                    (Kaki("食べる"), Yomi("たべる"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=食べる&kana=たべる")),
+                    (Kaki("喰べる"), Yomi("たべる"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=喰べる&kana=たべる")),
                 ],
             },
             "学生": {
@@ -863,9 +863,9 @@ TABERU_GAKUSEI: FullTestDict = {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくしょう"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくそう"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくせい"),
+                    (Kaki("学生"), Yomi("がくしょう"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくしょう")),
+                    (Kaki("学生"), Yomi("がくそう"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくそう")),
+                    (Kaki("学生"), Yomi("がくせい"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくせい")),
                 ],
             },
         },
@@ -1867,12 +1867,12 @@ KOTOBA: FullTestDict = {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=言葉&kana=ことば"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=言葉&kana=けとば"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=詞&kana=ことば"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=詞&kana=けとば"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=辞&kana=ことば"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=辞&kana=けとば"),
+                    (Kaki("言葉"), Yomi("ことば"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=言葉&kana=ことば")),
+                    (Kaki("言葉"), Yomi("けとば"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=言葉&kana=けとば")),
+                    (Kaki("詞"), Yomi("ことば"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=詞&kana=ことば")),
+                    (Kaki("詞"), Yomi("けとば"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=詞&kana=けとば")),
+                    (Kaki("辞"), Yomi("ことば"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=辞&kana=ことば")),
+                    (Kaki("辞"), Yomi("けとば"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=辞&kana=けとば")),
                 ],
             },
         },
@@ -2635,15 +2635,15 @@ USAGI_IKU_KAGO: FullTestDict = {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=うさぎ"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=う"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=ウサギ"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=うさぎ"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=う"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=ウサギ"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=うさぎ"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=う"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=ウサギ"),
+                    (Kaki("兎"), Yomi("うさぎ"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=うさぎ")),
+                    (Kaki("兎"), Yomi("う"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=う")),
+                    (Kaki("兎"), Yomi("ウサギ"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=ウサギ")),
+                    (Kaki("兔"), Yomi("うさぎ"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=うさぎ")),
+                    (Kaki("兔"), Yomi("う"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=う")),
+                    (Kaki("兔"), Yomi("ウサギ"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=ウサギ")),
+                    (Kaki("菟"), Yomi("うさぎ"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=うさぎ")),
+                    (Kaki("菟"), Yomi("う"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=う")),
+                    (Kaki("菟"), Yomi("ウサギ"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=ウサギ")),
                 ],
             },
             "行く": {
@@ -2676,12 +2676,12 @@ USAGI_IKU_KAGO: FullTestDict = {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=行く&kana=いく"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=行く&kana=ゆく"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=逝く&kana=いく"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=逝く&kana=ゆく"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=往く&kana=いく"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=往く&kana=ゆく"),
+                    (Kaki("行く"), Yomi("いく"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=行く&kana=いく")),
+                    (Kaki("行く"), Yomi("ゆく"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=行く&kana=ゆく")),
+                    (Kaki("逝く"), Yomi("いく"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=逝く&kana=いく")),
+                    (Kaki("逝く"), Yomi("ゆく"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=逝く&kana=ゆく")),
+                    (Kaki("往く"), Yomi("いく"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=往く&kana=いく")),
+                    (Kaki("往く"), Yomi("ゆく"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=往く&kana=ゆく")),
                 ],
             },
             "籠": {
@@ -2714,13 +2714,13 @@ USAGI_IKU_KAGO: FullTestDict = {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=かご"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=カゴ"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=かご"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=カゴ"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=牢&kana=ろう"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=ろう"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=ろう"),
+                    (Kaki("籠"), Yomi("かご"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=かご")),
+                    (Kaki("籠"), Yomi("カゴ"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=カゴ")),
+                    (Kaki("篭"), Yomi("かご"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=かご")),
+                    (Kaki("篭"), Yomi("カゴ"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=カゴ")),
+                    (Kaki("牢"), Yomi("ろう"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=牢&kana=ろう")),
+                    (Kaki("籠"), Yomi("ろう"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=ろう")),
+                    (Kaki("篭"), Yomi("ろう"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=ろう")),
                 ],
             },
         },
@@ -3782,8 +3782,8 @@ SHIZUKA: FullTestDict = {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=静か&kana=しずか"),
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=閑か&kana=しずか"),
+                    (Kaki("静か"), Yomi("しずか"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=静か&kana=しずか")),
+                    (Kaki("閑か"), Yomi("しずか"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=閑か&kana=しずか")),
                 ],
             },
         },
@@ -4318,7 +4318,7 @@ NARU: FullTestDict = {
                     },
                 ],
                 "all_urls": [
-                    URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=なる&kana=なる"),
+                    (Kaki("なる"), Yomi("なる"), URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=なる&kana=なる")),
                 ],
             },
         },
