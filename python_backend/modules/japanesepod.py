@@ -170,7 +170,9 @@ def filter_results(
     return list(filter(lambda result: word in result[0], results))
 
 
-def generate_audio_urls(results: list[tuple[list[Kaki], list[Yomi]]]) -> list[(Kaki, Yomi, URL)]:
+def generate_audio_urls(
+    results: list[tuple[list[Kaki], list[Yomi]]]
+) -> list[tuple[Kaki, Yomi, URL]]:
     base_url = "https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji={}&kana={}"
     return sum([
         [(k, y, URL(base_url.format(k, y))) for k, y in product(*res)]
