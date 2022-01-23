@@ -112,10 +112,30 @@ def test_create_failed_response(payload, expected_data):
 def test_make_single_line(input_string, expected_result):
     """
     - GIVEN a string, potentially with extra spaces or newlines
-    - WHEN the extrea spaces are removed
+    - WHEN the extra spaces are removed
     - THEN check the final result is as expected
     """
     assert utils.make_single_line(input_string) == expected_result
+
+
+@pytest.mark.parametrize(
+    "input_string, expected_result",
+    [
+        ["", ""],
+        ["hello", "hello"],
+        ["hello(there)", "hello"],
+        ["hello(there)(you)", "hello"],
+        ["hello(there) you", "hello"],
+        ["hello(there ) you (yesy ou)", "hello"],
+    ]
+)
+def test_remove_end_brackets(input_string, expected_result):
+    """
+    - GIVEN a string, potentially with brackets
+    - WHEN the end brackets are removed
+    - THEN check the final result is as expected
+    """
+    assert utils.remove_end_brackets(input_string) == expected_result
 
 
 @pytest.mark.parametrize(
