@@ -275,7 +275,16 @@ def test_extract_results(test_dict: FullTestDict):
         assert japanesepod.extract_results(html) == [row["results"] for row in expected_rows]
 
 
+def test_filter_results(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        results = [row["results"] for row in expected_rows]
+        filtered_results = [row["results"] for row in expected_rows if row["relevant"] is True]
+        assert japanesepod.filter_results(results, word) == filtered_results
+
+
 def test_generate_audio_urls(test_dict: FullTestDict):
     for word in test_dict["input"]:
-        expected_results = [row["results"] for row in test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]]
-        assert japanesepod.generate_audio_urls(expected_results) == test_dict["japanesepod"]["expected_sections"][word]["all_urls"]
+        expected_section = test_dict["japanesepod"]["expected_sections"][word]
+        filtered_results = [row["results"] for row in expected_section["expected_rows"] if row["relevant"] is True]
+        assert japanesepod.generate_audio_urls(filtered_results) == expected_section["all_urls"]
