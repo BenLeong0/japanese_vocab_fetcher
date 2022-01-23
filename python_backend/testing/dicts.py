@@ -57,6 +57,17 @@ MEGANE: FullTestDict = {
             "眼鏡": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ眼鏡"),
                 "html": get_file_as_string("megane", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
         },
         "expected_output": {
@@ -527,6 +538,17 @@ COMEBACK: FullTestDict= {
             "カムバック": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJカムバック"),
                 "html": get_file_as_string("comeback", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
         },
         "expected_output": {
@@ -778,10 +800,32 @@ TABERU_GAKUSEI: FullTestDict = {
             "食べる": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ食べる"),
                 "html": get_file_as_string("taberu", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
             "学生": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ学生"),
                 "html": get_file_as_string("gakusei", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
         },
         "expected_output": {
@@ -1755,6 +1799,17 @@ KOTOBA: FullTestDict = {
             "言葉": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ言葉"),
                 "html": get_file_as_string("kotoba", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
         },
         "expected_output": {
@@ -2265,6 +2320,17 @@ BADINPUT: FullTestDict = {
             "BADINPUT": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJBADINPUT"),
                 "html": get_file_as_string("badinput", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
         },
         "expected_output": {
@@ -2474,14 +2540,47 @@ USAGI_IKU_KAGO: FullTestDict = {
             "兎": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ兎"),
                 "html": get_file_as_string("usagi", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
             "行く": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ行く"),
                 "html": get_file_as_string("iku", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
             "籠": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ籠"),
                 "html": get_file_as_string("kago", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
         },
         "expected_output": {
@@ -3521,6 +3620,17 @@ SHIZUKA: FullTestDict = {
             "静か": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ静か"),
                 "html": get_file_as_string("shizuka", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
         },
         "expected_output": {
@@ -4027,6 +4137,17 @@ NARU: FullTestDict = {
             "なる": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJなる"),
                 "html": get_file_as_string("naru", "japanesepod"),
+                "expected_rows": [
+                    {
+                        "raw_row": "",
+                        "matches": [
+                            ("", ""),
+                        ],
+                        "results": [
+                            ("", ""),
+                        ]
+                    }
+                ],
             },
         },
         "expected_output": {
