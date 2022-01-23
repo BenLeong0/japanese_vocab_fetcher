@@ -85,8 +85,8 @@ class ResponseItemForvo(ResponseItem):
 
 class JapanesePodAudio(TypedDict):
     url: URL
-    romaji: str
-    kana: str
+    writing: str
+    reading: str
 
 class JapanesePodMainData(TypedDict):
     audio: list[JapanesePodAudio]
