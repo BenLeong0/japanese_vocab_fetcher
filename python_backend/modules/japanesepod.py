@@ -79,6 +79,7 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
 
     filtered_results = filter_results(results, word)
     potential_urls = generate_audio_urls(filtered_results)
+    print(potential_urls)
 
     return response_factory()
 
