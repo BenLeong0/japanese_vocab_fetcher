@@ -121,7 +121,7 @@ def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
 def build_row_result_from_matches(
     writings_match: str,
     readings_match: Optional[str]
-) -> tuple[list[Kaki], Optional[list[Yomi]]]:
+) -> tuple[list[Kaki], list[Yomi]]:
     if readings_match is None:
         writings = [Kaki('')]
         readings = [Yomi(remove_end_brackets(x)) for x in writings_match.split(";")]
@@ -138,13 +138,13 @@ def remove_end_brackets(input_string: str) -> str:
     return input_string[:input_string.index("(")]
 
 
-def format_row(row: str) -> tuple[list[Kaki], Optional[list[Yomi]]]:
+def format_row(row: str) -> tuple[list[Kaki], list[Yomi]]:
     writings_match, readings_match = extract_matches_from_row_string(row)
     writings, readings = build_row_result_from_matches(writings_match, readings_match)
     return (writings, readings)
 
 
-def extract_results(html: HTMLString) -> list[tuple[list[Kaki], Optional[list[Yomi]]]]:
+def extract_results(html: HTMLString) -> list[tuple[list[Kaki], list[Yomi]]]:
     rows = extract_rows(html)
     formatted_rows = list(map(format_row, rows))
     return formatted_rows
