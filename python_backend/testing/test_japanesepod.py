@@ -204,7 +204,7 @@ def test_get_html_string_failure(monkeypatch, test_dict: FullTestDict):
 
 def test_extract_rows(test_dict: FullTestDict):
     for word in test_dict["input"]:
-        html = test_dict["japanesepod"]["expected_sections"][word]["html"]
+        html = HTMLString(test_dict["japanesepod"]["expected_sections"][word]["html"])
         expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
         assert japanesepod.extract_rows(html) == [row["raw_row"] for row in expected_rows]
 
@@ -270,6 +270,6 @@ def test_format_row(test_dict: FullTestDict):
 
 def test_extract_results(test_dict: FullTestDict):
     for word in test_dict["input"]:
-        html = test_dict["japanesepod"]["expected_sections"][word]["html"]
+        html = HTMLString(test_dict["japanesepod"]["expected_sections"][word]["html"])
         expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
         assert japanesepod.extract_results(html) == [row["results"] for row in expected_rows]
