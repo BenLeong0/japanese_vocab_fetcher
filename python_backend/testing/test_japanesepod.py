@@ -171,7 +171,7 @@ def test_extract_rows_failure(invalid_html):
         japanesepod.extract_rows(invalid_html)
         raise Exception("japanesepod.extract_rows() should have thrown an error")
     except japanesepod.JapanesePodParsingError as parsing_error:
-        assert parsing_error.error_msg == json.dumps({"error": "could not extract results from html"})
+        assert parsing_error.error_msg == "could not extract results from html"
         assert parsing_error.status_code == 400
 
 
@@ -183,12 +183,20 @@ def test_extract_matches_from_row_string(test_dict: FullTestDict):
 
 
 @pytest.mark.parametrize(
-    "invalid_row"
+    "invalid_row",
+    [
+        "",
+        "\n",
+        " testwriting) [test reading] test definition",
+        " testwriting) test definition",
+        " [testreading]",
+        "\n(test writing)",
+    ]
 )
 def test_extract_matches_from_row_string_failure(invalid_row: str):
     try:
         japanesepod.extract_matches_from_row_string(invalid_row)
         raise Exception("japanesepod.extract_matches_from_row() should have thrown an error")
     except japanesepod.JapanesePodParsingError as parsing_error:
-        assert parsing_error.error_msg == json.dumps({"error": "could not extract results from row"})
+        assert parsing_error.error_msg == "could not extract results from row"
         assert parsing_error.status_code == 400
