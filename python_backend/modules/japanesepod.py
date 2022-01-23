@@ -108,7 +108,7 @@ def extract_rows(html: HTMLString) -> list[str]:
 def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
     """Takes in a row string, return a tuple of the form `writings, readings`"""
     pattern = r"^(?P<writings>[^\s]+) (\[(?P<readings>[^\s]+)\] )?"
-    match = re.compile(pattern).match(row)
+    match = re.search(pattern, row)
 
     if match is None:
         raise JapanesePodAPIError(status_code=400, error_msg="could not extract results from row")
