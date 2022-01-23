@@ -214,3 +214,7 @@ def test_extract_rows_failure(invalid_html):
         raise Exception("japanesepod.extract_rows() should have thrown an error")
     except:
         return
+
+
+def test_extract_matches_from_row():
+    ...
