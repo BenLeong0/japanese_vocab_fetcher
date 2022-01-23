@@ -28,11 +28,11 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
         speaker: audio.username,
         subtitle: null,
     }));
-    const japanesePodData: ResultAudioRowData[] = [{
-        url: "https://audiostock-public-files.s3.ap-northeast-1.amazonaws.com/sample-files/demo_34d52dc1ec6ba4736f37c24458a2a7812e9b56f6.mp3",
-        speaker: "Coming soon!",
-        subtitle: null,
-    }];
+    const japanesePodData: ResultAudioRowData[] = data.japanesepod.main_data.audio.map(audio => ({
+        url: audio.url,
+        speaker: audio.writing,
+        subtitle: audio.reading,
+    }));
 
     const allAudio: AudioModule[] = [
         {module: "Wanikani", audioData: wanikaniData},
@@ -40,15 +40,7 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
         {module: "JapanesePod101", audioData: japanesePodData},
     ];
 
-    // TODO: Instate when JP101 is implemented
-    // const displayAudio = (): boolean => allAudio.some(x => x.audioData.length > 0);
-
-    const displayAudio = (): boolean => {
-        return (
-            wanikaniData.length > 0 ||
-            forvoData.length > 0
-        );
-    }
+    const displayAudio = (): boolean => allAudio.some(x => x.audioData.length > 0);
 
     return (
         displayAudio() ?
