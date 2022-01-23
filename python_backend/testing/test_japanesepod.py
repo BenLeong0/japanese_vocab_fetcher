@@ -18,9 +18,10 @@ def test_dict(request):
 
 
 class FakeResponse:
-    def __init__(self, text, status_code=200, error=""):
+    def __init__(self, text, status_code=200, headers={}, error=""):
         self.text = text
         self.status_code = status_code
+        self.headers = headers
 
 
 #####################
@@ -41,12 +42,11 @@ def test_main(monkeypatch, test_dict: FullTestDict):
         return Kaki(url[50:])
 
     def get_html_response(url: URL) -> str:
-        if "wwwjdic" in url:
-            word = get_word_from_wwwjdic_url(url)
-            return sections[word]["html"]
-        raise Exception("invalid url")
+        word = get_word_from_wwwjdic_url(url)
+        return sections[word]["html"]
 
     monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(get_html_response(url)))
+    monkeypatch.setattr("requests.head", lambda x: FakeResponse("audio", headers={"Content-length": "100"}))
 
     assert japanesepod.main(word_list) == expected_output
 
@@ -149,6 +149,7 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
     word_list = convert_list_of_str_to_kaki(test_dict['input'])
     sections = test_dict["japanesepod"]["expected_sections"]
     full_expected_output = test_dict["japanesepod"]["expected_output"]
+    monkeypatch.setattr("requests.head", lambda x: FakeResponse("audio", headers={"Content-length": "100"}))
 
     for word in word_list:
         html = sections[word]['html']
@@ -291,3 +292,9 @@ def test_generate_audio_urls(test_dict: FullTestDict):
         expected_section = test_dict["japanesepod"]["expected_sections"][word]
         filtered_results = [cast(result_type, row["results"]) for row in expected_section["expected_rows"] if row["relevant"] is True]
         assert japanesepod.generate_audio_urls(filtered_results) == expected_section["all_urls"]
+
+
+def test_check_urls(monkeypatch, test_dict: FullTestDict):
+    monkeypatch.setattr("requests.head", lambda x: FakeResponse("audio", headers={"Content-length": "100"}))
+    for word in test_dict["input"]:
+        assert japanesepod.check_urls(test_dict["japanesepod"]["expected_sections"][word]["all_urls"]) == test_dict["japanesepod"]["expected_output"][word]["main_data"]["audio"]
