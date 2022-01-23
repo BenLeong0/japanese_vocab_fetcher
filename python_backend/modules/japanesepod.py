@@ -66,6 +66,7 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
 
     results = extract_results(html)
 
+    print("yo")
     print(results)
 
     return response_factory()
@@ -95,18 +96,18 @@ def get_html_string(word: Kaki) -> HTMLString:
 
 def extract_rows(html: HTMLString) -> list[str]:
     cleaning_pattern = r"<pre>(?P<results>.*)</pre>"
-    result_search = re.search(cleaning_pattern, html)
+    result_search = re.search(cleaning_pattern, html, flags=re.DOTALL)
 
     if result_search is None:
         raise JapanesePodAPIError(status_code=400, error_msg="could not extract results from html")
 
     full_result: str = result_search['results']
-    return full_result.split("\n")
+    return [x for x in full_result.split("\n") if x]    # Filter out "empty" rows (first and last)
 
 
 def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
     """Takes in a row string, return a tuple of the form `writings, readings`"""
-    pattern = r"(?P<writings>[^\s]+) (\[(?P<readings>[^\s]+)\] )?"
+    pattern = r"^(?P<writings>[^\s]+) (\[(?P<readings>[^\s]+)\] )?"
     match = re.compile(pattern).match(row)
 
     if match is None:
