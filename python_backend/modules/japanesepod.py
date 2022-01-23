@@ -79,9 +79,9 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
 
     filtered_results = filter_results(results, word)
     potential_urls = generate_audio_urls(filtered_results)
-    print(potential_urls)
 
-    return response_factory()
+    audio_url_objects = check_urls(potential_urls)
+    return response_factory(audio_url_objects)
 
 
 # Get HTML
@@ -178,3 +178,28 @@ def generate_audio_urls(
         [(k, y, URL(base_url.format(k, y))) for k, y in product(*res)]
         for res in results
     ], [])
+
+
+def check_urls(url_data_list: list[tuple[Kaki, Yomi, URL]]) -> list[JapanesePodAudio]:
+    valid_pairings: set[tuple[Kaki, Yomi]] = set()
+
+    def call_script(url_data: tuple[Kaki, Yomi, URL]) -> None:
+        kaki, yomi, url = url_data
+        resp = requests.head(url)
+        if resp.headers['Content-length'] != "52288":
+            valid_pairings.add((kaki, yomi))
+
+    threads: list[Thread] = [
+        Thread(target=call_script, args=[url_data])
+        for url_data in url_data_list
+    ]
+
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    return [
+        {"writing": str(kaki), "reading": str(yomi), "url": url}
+        for (kaki, yomi, url) in filter(lambda x: (x[0], x[1]) in valid_pairings, url_data_list)
+    ]
