@@ -118,6 +118,7 @@ class JapanesePodExpectedSection(TypedDict):
     url: URL
     html: str
     expected_rows: list[JapanesePodExpectedRow]
+    all_urls: list[URL]
 
 
 class JapanesePodTestDict(TypedDict):
