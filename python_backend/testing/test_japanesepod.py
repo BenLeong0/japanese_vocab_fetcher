@@ -148,3 +148,69 @@ def test_get_html_string_failure(monkeypatch, test_dict: FullTestDict):
     except japanesepod.JapanesePodAPIError as api_error:
         assert api_error.error_msg == json.dumps({"error": "could not connect"})
         assert api_error.status_code == 400
+
+
+@pytest.mark.parametrize(
+    "pre_text, post_text",
+    [
+        pytest.param("", "", id="no outer text"),
+        pytest.param("pretext", "", id="pre text"),
+        pytest.param("", "posttext", id="post text"),
+        pytest.param("pretext", "posttext", id="pre and post text"),
+    ]
+)
+@pytest.mark.parametrize(
+    "html_string, expected_rows",
+    [
+        pytest.param(
+            "<pre>\n</pre>",
+            [],
+            id="no results",
+        ),
+        pytest.param(
+            "<pre>result text</pre>",
+            ["result text"],
+            id="single line",
+        ),
+        pytest.param(
+            "<pre>\nresult text\n</pre>",
+            ["result text"],
+            id="line split",
+        ),
+        pytest.param(
+            "<pre>\nresult text\n\n</pre>",
+            ["result text"],
+            id="line split with empty line at end",
+        ),
+        pytest.param(
+            "<pre>\nresult 1\nresult 2\n</pre>",
+            ["result 1", "result 2"],
+            id="two results",
+        ),
+        pytest.param(
+            "<pre>\nresult 1\n\nresult 2\n</pre>",
+            ["result 1", "result 2"],
+            id="two results with empty line",
+        ),
+    ],
+)
+def test_extract_rows(pre_text, post_text, html_string, expected_rows):
+    full_html_string = pre_text + html_string + post_text
+    assert japanesepod.extract_rows(full_html_string) == expected_rows
+
+
+@pytest.mark.parametrize(
+    "invalid_html",
+    [
+        pytest.param("", id="empty html"),
+        pytest.param("result text", id="just text"),
+        pytest.param("<pre>result text", id="only pre"),
+        pytest.param("result text</pre>", id="only post"),
+    ]
+)
+def test_extract_rows_failure(invalid_html):
+    try:
+        japanesepod.extract_rows(invalid_html)
+        raise Exception("japanesepod.extract_rows() should have thrown an error")
+    except:
+        return
