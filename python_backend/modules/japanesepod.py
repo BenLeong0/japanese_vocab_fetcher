@@ -95,8 +95,41 @@ def get_html_string(word: Kaki) -> HTMLString:
 
 def extract_rows(html: HTMLString) -> list[str]:
     cleaning_pattern = r"<pre>(?P<results>.*)</pre>"
-    full_result = re.search(cleaning_pattern, html)['results']
+    result_search = re.search(cleaning_pattern, html)
+
+    if result_search is None:
+        raise JapanesePodAPIError(status_code=400, error_msg="could not extract results from html")
+
+    full_result: str = result_search['results']
     return full_result.split("\n")
+
+
+def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
+    """Takes in a row string, return a tuple of the form `writings, readings`"""
+    pattern = r"(?P<writings>[^\s]+) (\[(?P<readings>[^\s]+)\] )?"
+    match = re.compile(pattern).match(row)
+
+    if match is None:
+        raise JapanesePodAPIError(status_code=400, error_msg="could not extract results from row")
+
+    writings_match: str = match['writings']
+    readings_match: Optional[str] = match['readings']
+
+    return (writings_match, readings_match)
+
+
+def build_row_result_from_matches(
+    writings_match: str,
+    readings_match: Optional[str]
+) -> tuple[list[Kaki], Optional[list[Yomi]]]:
+    if readings_match is None:
+        writings = [Kaki('')]
+        readings = [Yomi(remove_end_brackets(x)) for x in writings_match.split(";")]
+    else:
+        writings = [Kaki(remove_end_brackets(x)) for x in writings_match.split(";")]
+        readings = [Yomi(remove_end_brackets(x)) for x in readings_match.split(";")]
+
+    return (writings, readings)
 
 
 def remove_end_brackets(input_string: str) -> str:
@@ -106,18 +139,9 @@ def remove_end_brackets(input_string: str) -> str:
 
 
 def format_row(row: str) -> tuple[list[Kaki], Optional[list[Yomi]]]:
-    pattern = r"(?P<writings>[^\s]+) (?P<readings>\[[^\s]+\] )?"
-    match = re.compile(pattern).match(row)
-
-    writings = [Kaki(remove_end_brackets(s)) for s in match['writings'].split(";")]
-
-    readings_match: Optional[str] = match['readings'][1:-2]
-    if readings_match is None:
-        readings = None
-    else:
-        readings = [Yomi(remove_end_brackets(s)) for s in readings_match.split(";")]
-
-    return writings, readings
+    writings_match, readings_match = extract_matches_from_row_string(row)
+    writings, readings = build_row_result_from_matches(writings_match, readings_match)
+    return (writings, readings)
 
 
 def extract_results(html: HTMLString) -> list[tuple[list[Kaki], Optional[list[Yomi]]]]:
