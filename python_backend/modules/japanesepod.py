@@ -76,7 +76,7 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
         print("An error occurred:", parsing_error.error_msg)
         return error_response_factory(parsing_error)
 
-    print(results)
+    filtered_results = list(filter(lambda result: word in result[0], results))
 
     return response_factory()
 
