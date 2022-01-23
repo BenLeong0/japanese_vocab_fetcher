@@ -66,7 +66,6 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
 
     results = extract_results(html)
 
-    print("yo")
     print(results)
 
     return response_factory()
