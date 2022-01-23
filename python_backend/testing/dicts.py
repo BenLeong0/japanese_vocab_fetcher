@@ -66,7 +66,7 @@ MEGANE: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
         },
@@ -547,7 +547,7 @@ COMEBACK: FullTestDict= {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
         },
@@ -809,7 +809,7 @@ TABERU_GAKUSEI: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
             "学生": {
@@ -824,7 +824,7 @@ TABERU_GAKUSEI: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
         },
@@ -1808,7 +1808,7 @@ KOTOBA: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
         },
@@ -2329,7 +2329,7 @@ BADINPUT: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
         },
@@ -2549,7 +2549,7 @@ USAGI_IKU_KAGO: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
             "行く": {
@@ -2564,7 +2564,7 @@ USAGI_IKU_KAGO: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
             "籠": {
@@ -2579,7 +2579,7 @@ USAGI_IKU_KAGO: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
         },
@@ -3629,7 +3629,7 @@ SHIZUKA: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
         },
@@ -4146,7 +4146,7 @@ NARU: FullTestDict = {
                         "results": [
                             ("", ""),
                         ]
-                    }
+                    },
                 ],
             },
         },
