@@ -2347,7 +2347,7 @@ BADINPUT: FullTestDict = {
                 "html": get_file_as_string("badinput", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "ボディー(P);ボディ(P);ボデー;バディー(ik);バディ(ik) /(n) (1) body/(n) (2) (abbr) {sports} (See ボディーブロー) body blow (in boxing)/(P)/",
+                        "raw_row": "ボディー(P);ボディ(P);ボデー /(n) (1) body/(n) (2) (abbr) {sports} (See ボディーブロー) body blow (in boxing)/(P)/",
                         "matches": ("ボディー(P);ボディ(P);ボデー", None),
                         "results": (["ボディー", "ボディ", "ボデー"], ["ボディー", "ボディ", "ボデー"]),
                     },
