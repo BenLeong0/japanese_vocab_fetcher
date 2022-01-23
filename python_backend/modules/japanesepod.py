@@ -16,6 +16,9 @@ NAME = "japanesepod"
 class JapanesePodAPIError(APIError):
     pass
 
+class JapanesePodParsingError(APIError):
+    pass
+
 
 def response_factory(
     audio_list: Optional[list[JapanesePodAudio]] = None
@@ -99,7 +102,10 @@ def extract_rows(html: HTMLString) -> list[str]:
     result_search = re.search(cleaning_pattern, html, flags=re.DOTALL)
 
     if result_search is None:
-        raise JapanesePodAPIError(status_code=400, error_msg="could not extract results from html")
+        raise JapanesePodParsingError(
+            status_code=400,
+            error_msg="could not extract results from html"
+        )
 
     full_result: str = result_search['results']
     return [x for x in full_result.split("\n") if x]    # Filter out "empty" rows (first and last)
@@ -111,7 +117,10 @@ def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
     match = re.search(pattern, row)
 
     if match is None:
-        raise JapanesePodAPIError(status_code=400, error_msg="could not extract results from row")
+        raise JapanesePodParsingError(
+            status_code=400,
+            error_msg="could not extract results from row"
+        )
 
     writings_match: str = match['writings']
     readings_match: Optional[str] = match['readings']
