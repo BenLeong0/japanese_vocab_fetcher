@@ -110,6 +110,7 @@ class JapanesePodExpectedRow(TypedDict):
     raw_row: str
     matches: tuple[str, Optional[str]]
     results: tuple[list[str], list[str]]
+    relevant: bool
 
 
 class JapanesePodExpectedSection(TypedDict):
