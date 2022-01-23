@@ -144,59 +144,17 @@ def test_get_html_string_failure(monkeypatch, test_dict: FullTestDict):
 
     try:
         japanesepod.get_html_string(word_list[0])
-        assert False
+        raise Exception("api error should have been raised")
     except japanesepod.JapanesePodAPIError as api_error:
         assert api_error.error_msg == json.dumps({"error": "could not connect"})
         assert api_error.status_code == 400
 
 
-@pytest.mark.parametrize(
-    "pre_text, post_text",
-    [
-        pytest.param("", "", id="no outer text"),
-        pytest.param("pretext", "", id="pre text"),
-        pytest.param("", "posttext", id="post text"),
-        pytest.param("pretext", "posttext", id="pre and post text"),
-    ]
-)
-@pytest.mark.parametrize(
-    "html_string, expected_rows",
-    [
-        pytest.param(
-            "<pre>\n</pre>",
-            [],
-            id="no results",
-        ),
-        pytest.param(
-            "<pre>result text</pre>",
-            ["result text"],
-            id="single line",
-        ),
-        pytest.param(
-            "<pre>\nresult text\n</pre>",
-            ["result text"],
-            id="line split",
-        ),
-        pytest.param(
-            "<pre>\nresult text\n\n</pre>",
-            ["result text"],
-            id="line split with empty line at end",
-        ),
-        pytest.param(
-            "<pre>\nresult 1\nresult 2\n</pre>",
-            ["result 1", "result 2"],
-            id="two results",
-        ),
-        pytest.param(
-            "<pre>\nresult 1\n\nresult 2\n</pre>",
-            ["result 1", "result 2"],
-            id="two results with empty line",
-        ),
-    ],
-)
-def test_extract_rows(pre_text: str, post_text: str, html_string: str, expected_rows: list[str]):
-    full_html_string = pre_text + html_string + post_text
-    assert japanesepod.extract_rows(full_html_string) == expected_rows
+def test_extract_rows(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        html = test_dict["japanesepod"]["expected_sections"][word]["html"]
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        assert japanesepod.extract_rows(html) == [row["raw_row"] for row in expected_rows]
 
 
 @pytest.mark.parametrize(
@@ -212,9 +170,25 @@ def test_extract_rows_failure(invalid_html):
     try:
         japanesepod.extract_rows(invalid_html)
         raise Exception("japanesepod.extract_rows() should have thrown an error")
-    except:
-        return
+    except japanesepod.JapanesePodParsingError as parsing_error:
+        assert parsing_error.error_msg == json.dumps({"error": "could not extract results from html"})
+        assert parsing_error.status_code == 400
 
 
-def test_extract_matches_from_row():
-    ...
+def test_extract_matches_from_row_string(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        for row in expected_rows:
+            assert japanesepod.extract_matches_from_row_string(row["raw_row"]) == row["matches"]
+
+
+@pytest.mark.parametrize(
+    "invalid_row"
+)
+def test_extract_matches_from_row_string_failure(invalid_row: str):
+    try:
+        japanesepod.extract_matches_from_row_string(invalid_row)
+        raise Exception("japanesepod.extract_matches_from_row() should have thrown an error")
+    except japanesepod.JapanesePodParsingError as parsing_error:
+        assert parsing_error.error_msg == json.dumps({"error": "could not extract results from row"})
+        assert parsing_error.status_code == 400
