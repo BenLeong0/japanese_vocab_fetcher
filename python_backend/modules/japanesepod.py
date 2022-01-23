@@ -122,12 +122,10 @@ def build_row_result_from_matches(
     writings_match: str,
     readings_match: Optional[str]
 ) -> tuple[list[Kaki], list[Yomi]]:
-    if readings_match is None:
-        writings = [Kaki('')]
-        readings = [Yomi(remove_end_brackets(x)) for x in writings_match.split(";")]
-    else:
-        writings = [Kaki(remove_end_brackets(x)) for x in writings_match.split(";")]
-        readings = [Yomi(remove_end_brackets(x)) for x in readings_match.split(";")]
+    readings_match = writings_match if readings_match is None else readings_match
+
+    writings = [Kaki(remove_end_brackets(x)) for x in writings_match.split(";")]
+    readings = [Yomi(remove_end_brackets(x)) for x in readings_match.split(";")]
 
     return (writings, readings)
 
