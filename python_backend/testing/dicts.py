@@ -59,13 +59,19 @@ MEGANE: FullTestDict = {
                 "html": get_file_as_string("megane", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "眼鏡 [めがね(P);がんきょう;メガネ(P)] /(n) (1) (uk) glasses/eyeglasses/spectacles/(n) (2) (めがね, メガネ only) (uk) judgment/judgement/discrimination/discernment/insight/(P)/",
+                        "matches": ("眼鏡", "めがね(P);がんきょう;メガネ(P)"),
+                        "results": (["眼鏡"], ["めがね", "がんきょう", "メガネ"]),
+                    },
+                    {
+                        "raw_row": "眼鏡カイマン [めがねカイマン;メガネカイマン] /(n) (uk) spectacled caiman (Caiman sclerops)/",
+                        "matches": ("眼鏡カイマン", "めがねカイマン;メガネカイマン"),
+                        "results": (["眼鏡カイマン"], ["めがねカイマン", "メガネカイマン"]),
+                    },
+                    {
+                        "raw_row": "眼鏡にかなう;眼鏡に適う;眼鏡に叶う [めがねにかなう] /(exp,v5u) to win the favour of (favor)/to be acknowledged (e.g. by a superior)/to measure up to/",
+                        "matches": ("眼鏡にかなう;眼鏡に適う;眼鏡に叶う", "めがねにかなう"),
+                        "results": (["眼鏡にかなう", "眼鏡に適う", "眼鏡に叶う"], ["めがねにかなう"]),
                     },
                 ],
             },
@@ -540,13 +546,9 @@ COMEBACK: FullTestDict= {
                 "html": get_file_as_string("comeback", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "カムバック /(n,vs,vi) comeback/(P)/",
+                        "matches": ("カムバック", None),
+                        "results": (["カムバック"], ["カムバック"]),
                     },
                 ],
             },
@@ -802,13 +804,14 @@ TABERU_GAKUSEI: FullTestDict = {
                 "html": get_file_as_string("taberu", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "食べる(P);喰べる(iK) [たべる] /(v1,vt) (1) to eat/(v1,vt) (2) to live on (e.g. a salary)/to live off/to subsist on/(P)/",
+                        "matches": ("食べる(P);喰べる(iK)", "たべる"),
+                        "results": (["食べる", "喰べる"], ["たべる"]),
+                    },
+                    {
+                        "raw_row": "食べるラー油;食べる辣油 [たべるラーゆ] /(exp,n) {food} (See 辣油) chili oil mixed with chopped garlic, onions, etc./",
+                        "matches": ("食べるラー油;食べる辣油", "たべるラーゆ"),
+                        "results": (["食べるラー油", "食べる辣油"], ["たべるラーゆ"]),
                     },
                 ],
             },
@@ -817,13 +820,24 @@ TABERU_GAKUSEI: FullTestDict = {
                 "html": get_file_as_string("gakusei", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "学生 [がくしょう;がくそう] /(n) (1) (arch) Heian-period student of government administration/(n) (2) (arch) Buddhist scholar/researcher at a Buddhist temple/person studying Buddhism/(n) (3) (arch) learning/scholarship/",
+                        "matches": ("学生", "がくしょう;がくそう"),
+                        "results": (["学生"], ["がくしょう", "がくそう"]),
+                    },
+                    {
+                        "raw_row": "学生 [がくせい] /(n) student (esp. a university student)/(P)/",
+                        "matches": ("学生", "がくせい"),
+                        "results": (["学生"], ["がくせい"]),
+                    },
+                    {
+                        "raw_row": "学生ローン [がくせいローン] /(n) student loan/",
+                        "matches": ("学生ローン", "がくせいローン"),
+                        "results": (["学生ローン"], ["がくせいローン"]),
+                    },
+                    {
+                        "raw_row": "学生運動 [がくせいうんどう] /(n) student movement/",
+                        "matches": ("学生運動", "がくせいうんどう"),
+                        "results": (["学生運動"], ["がくせいうんどう"]),
                     },
                 ],
             },
@@ -1801,13 +1815,24 @@ KOTOBA: FullTestDict = {
                 "html": get_file_as_string("kotoba", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "言葉(P);詞;辞 [ことば(P);けとば(言葉)(ok)] /(n) (1) (See 言語) language/dialect/(n) (2) word/phrase/expression/term/(n) (3) speech/(manner of) speaking/(use of) language/(n) (4) words/remark/statement/comment/(n) (5) learning to speak/language acquisition/(P)/",
+                        "matches": ("言葉(P);詞;辞", "ことば(P);けとば(言葉)(ok)"),
+                        "results": (["言葉", "詞", "辞"], ["ことば", "けとば"]),
+                    },
+                    {
+                        "raw_row": "言葉遊び;ことば遊び;言葉あそび [ことばあそび] /(n) word game/wordplay/playing with words/",
+                        "matches": ("言葉遊び;ことば遊び;言葉あそび", "ことばあそび"),
+                        "results": (["言葉遊び", "ことば遊び", "言葉あそび"], ["ことばあそび"]),
+                    },
+                    {
+                        "raw_row": "言葉が見つからない;言葉がみつからない;言葉が見付からない [ことばがみつからない] /(exp,adj-i) at a loss for words/stumped for words/",
+                        "matches": ("言葉が見つからない;言葉がみつからない;言葉が見付からない", "ことばがみつからない"),
+                        "results": (["言葉が見つからない", "言葉がみつからない", "言葉が見付からない"], ["ことばがみつからない"]),
+                    },
+                    {
+                        "raw_row": "言葉が過ぎる [ことばがすぎる] /(exp,v1) to say too much/to go too far/",
+                        "matches": ("言葉が過ぎる", "ことばがすぎる"),
+                        "results": (["言葉が過ぎる"], ["ことばがすぎる"]),
                     },
                 ],
             },
@@ -2322,13 +2347,14 @@ BADINPUT: FullTestDict = {
                 "html": get_file_as_string("badinput", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "ボディー(P);ボディ(P);ボデー;バディー(ik);バディ(ik) /(n) (1) body/(n) (2) (abbr) {sports} (See ボディーブロー) body blow (in boxing)/(P)/",
+                        "matches": ("ボディー(P);ボディ(P);ボデー;バディー(ik);バディ(ik)", None),
+                        "results": (["ボディー", "ボディ", "ボデー", "バディー", "バディ"], ["ボディー", "ボディ", "ボデー", "バディー", "バディ"]),
+                    },
+                    {
+                        "raw_row": "バディ;バディー /(n) buddy/",
+                        "matches": ("バディ;バディー", None),
+                        "results": (["バディ", "バディー"], ["バディ", "バディー"]),
                     },
                 ],
             },
@@ -2542,13 +2568,24 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "html": get_file_as_string("usagi", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "兎(P);兔;菟(iK) [うさぎ(P);う(兎)(ok);ウサギ] /(n) (uk) rabbit/hare/coney/cony/lagomorph (esp. leporids)/(P)/",
+                        "matches": ("兎(P);兔;菟(iK)", "うさぎ(P);う(兎)(ok);ウサギ"),
+                        "results": (["兎", "兔", "菟"], ["うさぎ", "う", "ウサギ"]),
+                    },
+                    {
+                        "raw_row": "兎にも角にも [とにもかくにも] /(adv) (uk) anyhow/anyway/somehow or other/generally speaking/in any case/",
+                        "matches": ("兎にも角にも", "とにもかくにも"),
+                        "results": (["兎にも角にも"], ["とにもかくにも"]),
+                    },
+                    {
+                        "raw_row": "兎に角(ateji) [とにかく] /(adv) (uk) anyhow/at any rate/anyway/somehow or other/generally speaking/in any case/at least/(P)/",
+                        "matches": ("兎に角(ateji)", "とにかく"),
+                        "results": (["兎に角"], ["とにかく"]),
+                    },
+                    {
+                        "raw_row": "兎の毛 [うのけ] /(n) just a hair/",
+                        "matches": ("兎の毛", "うのけ"),
+                        "results": (["兎の毛"], ["うのけ"]),
                     },
                 ],
             },
@@ -2557,13 +2594,24 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "html": get_file_as_string("iku", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "行く(P);逝く;往く(oK) [いく(P);ゆく(P)] /(v5k-s,vi) (1) (See 来る・くる・1) to go/to move (in a direction or towards a specific location)/to head (towards)/to be transported (towards)/to reach/(v5k-s,vi) (2) (い sometimes omitted in auxiliary use) (See 旨く行く) to proceed/to take place/(v5k-s,vi) (3) to pass through/to come and go/(v5k-s,vi) (4) to walk/(v5k-s,vi) (5) (逝く only) to die/to pass away/(v5k-s,vi) (6) to do (in a specific way)/(v5k-s,vi) (7) to stream/to flow/(v5k-s,aux-v) (8) (uk) (after the -te form of a verb) to continue/(v5k-s,vi) (9) (uk) to have an orgasm/to come/to cum/(v5k-s,vi) (10) (uk) (sl) to trip/to get high/to have a drug-induced hallucination/(P)/",
+                        "matches": ("行く(P);逝く;往く(oK)", "いく(P);ゆく(P)"),
+                        "results": (["行く", "逝く", "往く"], ["いく", "ゆく"]),
+                    },
+                    {
+                        "raw_row": "行くあて;行く当て [いくあて] /(n) somewhere to go/place to go/",
+                        "matches": ("行くあて;行く当て", "いくあて"),
+                        "results": (["行くあて", "行く当て"], ["いくあて"]),
+                    },
+                    {
+                        "raw_row": "行方(P);行くえ;行衛(ateji) [ゆくえ] /(n) (1) (one's) whereabouts/(n) (2) destination/where one is headed/(n) (3) outcome/course (of events)/development/direction/tide/(n) (4) future/journey ahead/(P)/",
+                        "matches": ("行方(P);行くえ;行衛(ateji)", "ゆくえ"),
+                        "results": (["行方", "行くえ", "行衛"], ["ゆくえ"]),
+                    },
+                    {
+                        "raw_row": "行く手 [ゆくて] /(n) one's way/one's path/",
+                        "matches": ("行く手", "ゆくて"),
+                        "results": (["行く手"], ["ゆくて"]),
                     },
                 ],
             },
@@ -2572,13 +2620,24 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "html": get_file_as_string("kago", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "籠(P);篭(P) [かご(P);カゴ(P)] /(n) (uk) basket (shopping, etc.)/hamper/cage/(P)/",
+                        "matches": ("籠(P);篭(P)", "かご(P);カゴ(P)"),
+                        "results": (["籠", "篭"], ["かご", "カゴ"]),
+                    },
+                    {
+                        "raw_row": "牢;籠;篭 [ろう] /(n) (1) prison/jail/gaol/(adj-t) (2) (obs) (See 牢として) firm/solid/strong/",
+                        "matches": ("牢;籠;篭", "ろう"),
+                        "results": (["牢", "籠", "篭"], ["ろう"]),
+                    },
+                    {
+                        "raw_row": "籠で水を汲む [かごでみずをくむ] /(exp,v5m) (id) to bail out the ocean with a teaspoon/to scoop water with a basket/",
+                        "matches": ("籠で水を汲む", "かごでみずをくむ"),
+                        "results": (["籠で水を汲む"], ["かごでみずをくむ"]),
+                    },
+                    {
+                        "raw_row": "籠の垂れ [かごのたれ] /(n) hanging of a palanquin/",
+                        "matches": ("籠の垂れ", "かごのたれ"),
+                        "results": (["籠の垂れ"], ["かごのたれ"]),
                     },
                 ],
             },
@@ -3622,13 +3681,19 @@ SHIZUKA: FullTestDict = {
                 "html": get_file_as_string("shizuka", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "静か(P);閑か [しずか] /(adj-na) (1) quiet/silent/(adj-na) (2) slow/unhurried/(adj-na) (3) calm/peaceful/(P)/",
+                        "matches": ("静か(P);閑か", "しずか"),
+                        "results": (["静か", "閑か"], ["しずか"]),
+                    },
+                    {
+                        "raw_row": "静かに [しずかに] /(adv) (1) calmly/quietly/gently/peacefully/(exp) (2) be quiet!/",
+                        "matches": ("静かに", "しずかに"),
+                        "results": (["静かに"], ["しずかに"]),
+                    },
+                    {
+                        "raw_row": "静かに流れる川は深い [しずかにながれるかわはふかい] /(exp) (proverb) still waters run deep/",
+                        "matches": ("静かに流れる川は深い", "しずかにながれるかわはふかい"),
+                        "results": (["静かに流れる川は深い"], ["しずかにながれるかわはふかい"]),
                     },
                 ],
             },
@@ -4139,13 +4204,24 @@ NARU: FullTestDict = {
                 "html": get_file_as_string("naru", "japanesepod"),
                 "expected_rows": [
                     {
-                        "raw_row": "",
-                        "matches": [
-                            ("", ""),
-                        ],
-                        "results": [
-                            ("", ""),
-                        ]
+                        "raw_row": "成る(P);為る [なる] /(v5r,vi) (1) (uk) to become/to get/to grow/to turn/to reach/to attain/(v5r,vi) (2) (uk) to result in/to turn out/to end up/to prove (to be)/(v5r,vi) (3) (uk) (as ...からなる or ...よりなる) to consist of/to be composed of/to be made up of/(v5r,vi) (4) (uk) to be completed/to be realized/to succeed/to be attained/to be accomplished/(v5r,vi) (5) (uk) to change (into)/to turn (into)/to transform/(v5r,vi) (6) (uk) to come (to do)/to begin (to do)/to grow (to do)/(v5r,vi) (7) (uk) to come to/to amount to/to add up to/to make/(v5r,vi) (8) (uk) to play (the part of)/to act as/(v5r,vi) (9) (uk) to be used for/to be useful for/to serve as/(v5r,vi) (10) {shogi} to be promoted/(aux-v,v5r) (11) (hon) (uk) (as お + masu stem + になる, or ご + noun + になる) to do .../(P)/",
+                        "matches": ("成る(P);為る", "なる"),
+                        "results": (["成る", "為る"], ["なる"]),
+                    },
+                    {
+                        "raw_row": "生る [なる] /(v5r,vi) (uk) to bear fruit/(P)/",
+                        "matches": ("生る", "なる"),
+                        "results": (["生る"], ["なる"]),
+                    },
+                    {
+                        "raw_row": "ナル /(n,adj-na) (abbr) (sl) (See ナルシシスト) narcissistic/",
+                        "matches": ("ナル", None),
+                        "results": (["ナル"], ["ナル"]),
+                    },
+                    {
+                        "raw_row": "なる /(suf,adj-f) (1) (arch) (See 也・なり・2) that is in/(suf,adj-f) (2) who is called/that is called/(suf,adj-f) (3) that is/(int) (4) (sl) (abbr) (See なるほど) I see/",
+                        "matches": ("なる", None),
+                        "results": (["なる"], ["なる"]),
                     },
                 ],
             },
