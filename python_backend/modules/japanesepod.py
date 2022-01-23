@@ -163,5 +163,5 @@ def extract_results(html: HTMLString) -> list[tuple[list[Kaki], list[Yomi]]]:
 # Audio urls
 
 def generate_audio_urls(results: list[tuple[list[Kaki], list[Yomi]]]) -> list[URL]:
-    base_url = "https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kana={}&kanji={}"
-    return sum([[URL(base_url.format(k, y)) for k, y in result] for result in results], [])
+    base_url = "https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji={}&kana={}"
+    return sum([[URL(base_url.format(k, y)) for k, y in product(*res)] for res in results], [])
