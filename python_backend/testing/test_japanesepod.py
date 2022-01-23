@@ -298,3 +298,9 @@ def test_check_urls(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr("requests.head", lambda x: FakeResponse("audio", headers={"Content-length": "100"}))
     for word in test_dict["input"]:
         assert japanesepod.check_urls(test_dict["japanesepod"]["expected_sections"][word]["all_urls"]) == test_dict["japanesepod"]["expected_output"][word]["main_data"]["audio"]
+
+
+def test_check_urls_not_available(monkeypatch, test_dict: FullTestDict):
+    monkeypatch.setattr("requests.head", lambda x: FakeResponse("audio", headers={"Content-length": "52288"}))
+    for word in test_dict["input"]:
+        assert japanesepod.check_urls(test_dict["japanesepod"]["expected_sections"][word]["all_urls"]) == []
