@@ -68,7 +68,11 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
         print("An error occurred:", api_error.error_msg)
         return error_response_factory(api_error)
 
-    results = extract_results(html)
+    try:
+        results = extract_results(html)
+    except JapanesePodParsingError as parsing_error:
+        print("An error occurred:", parsing_error.error_msg)
+        return error_response_factory(parsing_error)
 
     print(results)
 
