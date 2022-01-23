@@ -2,7 +2,7 @@ from typing import DefaultDict, Optional, TypedDict
 
 from bs4 import BeautifulSoup as Soup
 
-from custom_types.alternative_string_types import HTMLString, URL
+from custom_types.alternative_string_types import HTMLString, Kaki, Yomi, URL
 from custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
 from custom_types.response_types import (
     JishoExtraItem,
@@ -118,7 +118,7 @@ class JapanesePodExpectedSection(TypedDict):
     url: URL
     html: str
     expected_rows: list[JapanesePodExpectedRow]
-    all_urls: list[URL]
+    all_urls: list[tuple[Kaki, Yomi, URL]]
 
 
 class JapanesePodTestDict(TypedDict):
