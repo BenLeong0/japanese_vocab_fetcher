@@ -33,7 +33,7 @@ def response_factory(
 
 
 def error_response_factory(
-    error: JapanesePodAPIError | JapanesePodParsingError
+    error: JapanesePodAPIError | JapanesePodParsingError,
 ) -> ResponseItemJapanesePod:
     return {
         "success": False,
