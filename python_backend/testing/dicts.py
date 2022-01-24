@@ -52,6 +52,17 @@ def build_suzuki_formdata(word_list_string: str) -> dict[str, str]:
 MEGANE: FullTestDict = {
     "id": "MEGANE",
     "input": ["眼鏡"],
+    "japanesepod": {
+        "expected_output": {
+            "眼鏡": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+        },
+    },
     "jisho": {
         "expected_sections": {
             '眼鏡': {
@@ -347,6 +358,13 @@ MEGANE: FullTestDict = {
     "expected_result": [
         {
             "word": "眼鏡",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -497,7 +515,18 @@ MEGANE: FullTestDict = {
 
 COMEBACK: FullTestDict= {
     "id": "COMEBACK",
-    'input': ['カムバック'],
+    "input": ['カムバック'],
+    "japanesepod": {
+        "expected_output": {
+            "カムバック": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+        },
+    },
     "jisho": {
         "expected_sections": {
             'カムバック': {
@@ -660,6 +689,13 @@ COMEBACK: FullTestDict= {
     "expected_result": [
         {
             "word": "カムバック",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -724,7 +760,25 @@ COMEBACK: FullTestDict= {
 
 TABERU_GAKUSEI: FullTestDict = {
     "id": "TABERU_GAKUSEI",
-    'input': ['食べる', '学生'],
+    "input": ['食べる', '学生'],
+    "japanesepod": {
+        "expected_output": {
+            "食べる": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+            "学生": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+        },
+    },
     "jisho": {
         "expected_sections": {
             '食べる': {
@@ -1299,6 +1353,13 @@ TABERU_GAKUSEI: FullTestDict = {
     "expected_result": [
         {
             "word": "食べる",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -1481,6 +1542,13 @@ TABERU_GAKUSEI: FullTestDict = {
         },
         {
             "word": "学生",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -1659,7 +1727,18 @@ TABERU_GAKUSEI: FullTestDict = {
 
 KOTOBA: FullTestDict = {
     "id": "KOTOBA",
-    'input': ['言葉'],
+    "input": ['言葉'],
+    "japanesepod": {
+        "expected_output": {
+            "言葉": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+        },
+    },
     "jisho": {
         "expected_sections": {
             '言葉': {
@@ -1979,6 +2058,13 @@ KOTOBA: FullTestDict = {
     "expected_result": [
         {
             "word": "言葉",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -2145,7 +2231,18 @@ KOTOBA: FullTestDict = {
 
 BADINPUT: FullTestDict = {
     "id": "BADINPUT",
-    'input': ['BADINPUT'],
+    "input": ['BADINPUT'],
+    "japanesepod": {
+        "expected_output": {
+            "BADINPUT": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+        },
+    },
     "jisho": {
         "expected_sections": {
             'BADINPUT': {
@@ -2271,6 +2368,13 @@ BADINPUT: FullTestDict = {
     "expected_result": [
         {
             "word": "BADINPUT",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -2330,7 +2434,32 @@ BADINPUT: FullTestDict = {
 
 USAGI_IKU_KAGO: FullTestDict = {
     "id": "USAGI_IKU_KAGO",
-    'input': ['兎', '行く', '籠'],
+    "input": ['兎', '行く', '籠'],
+    "japanesepod": {
+        "expected_output": {
+            "兎": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+            "行く": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+            "籠": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+        },
+    },
     "jisho": {
         "expected_sections": {
             '兎': {
@@ -2939,6 +3068,13 @@ USAGI_IKU_KAGO: FullTestDict = {
     "expected_result": [
         {
             "word": "兎",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -3047,6 +3183,13 @@ USAGI_IKU_KAGO: FullTestDict = {
         },
         {
             "word": "行く",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -3205,6 +3348,13 @@ USAGI_IKU_KAGO: FullTestDict = {
         },
         {
             "word": "籠",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -3317,7 +3467,18 @@ USAGI_IKU_KAGO: FullTestDict = {
 
 SHIZUKA: FullTestDict = {
     "id": "SHIZUKA",
-    'input': ['静か'],
+    "input": ['静か'],
+    "japanesepod": {
+        "expected_output": {
+            "静か": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+        },
+    },
     "jisho": {
         "expected_sections": {
             '静か': {
@@ -3641,6 +3802,13 @@ SHIZUKA: FullTestDict = {
     "expected_result": [
         {
             "word": "静か",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -3799,7 +3967,18 @@ SHIZUKA: FullTestDict = {
 
 NARU: FullTestDict = {
     "id": "NARU",
-    'input': ['なる'],
+    "input": ['なる'],
+    "japanesepod": {
+        "expected_output": {
+            "なる": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
+        },
+    },
     "jisho": {
         "expected_sections": {
             'なる': {
@@ -4043,6 +4222,13 @@ NARU: FullTestDict = {
     "expected_result": [
         {
             "word": "なる",
+            "japanesepod": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "audio": [],
+                },
+            },
             "jisho": {
                 "success": True,
                 "error": None,
@@ -4171,7 +4357,7 @@ TEST_DICTS = [
 
 # TEMPLATE: FullTestDict = {
 #     "id": "",
-#     'input': [''],
+#     "input": [''],
 #     "forvo": {
 #         "expected_sections": [
 #             {
