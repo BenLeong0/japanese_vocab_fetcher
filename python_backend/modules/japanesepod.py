@@ -1,3 +1,4 @@
+from itertools import product
 import re
 from threading import Thread
 from typing import Optional
@@ -76,7 +77,9 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
         print("An error occurred:", parsing_error.error_msg)
         return error_response_factory(parsing_error)
 
-    print(results)
+    filtered_results = filter_results(results, word)
+    potential_urls = generate_audio_urls(filtered_results)
+    print(potential_urls)
 
     return response_factory()
 
@@ -156,3 +159,22 @@ def extract_results(html: HTMLString) -> list[tuple[list[Kaki], list[Yomi]]]:
     rows = extract_rows(html)
     formatted_rows = list(map(format_row, rows))
     return formatted_rows
+
+
+# Audio urls
+
+def filter_results(
+    results: list[tuple[list[Kaki], list[Yomi]]],
+    word: Kaki,
+) -> list[tuple[list[Kaki], list[Yomi]]]:
+    return list(filter(lambda result: word in result[0], results))
+
+
+def generate_audio_urls(
+    results: list[tuple[list[Kaki], list[Yomi]]]
+) -> list[tuple[Kaki, Yomi, URL]]:
+    base_url = "https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji={}&kana={}"
+    return sum([
+        [(k, y, URL(base_url.format(k, y))) for k, y in product(*res)]
+        for res in results
+    ], [])
