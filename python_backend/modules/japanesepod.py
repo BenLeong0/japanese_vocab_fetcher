@@ -1,17 +1,22 @@
+import re
 from threading import Thread
 from typing import Optional
 
 import requests
 
-from custom_types.alternative_string_types import HTMLString, Kaki, URL
+from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
 from custom_types.exception_types import APIError
 from custom_types.response_types import JapanesePodAudio, ResponseItemJapanesePod
+from utils import remove_end_brackets
 
 
 NAME = "japanesepod"
 
 
 class JapanesePodAPIError(APIError):
+    pass
+
+class JapanesePodParsingError(APIError):
     pass
 
 
@@ -27,7 +32,9 @@ def response_factory(
     }
 
 
-def error_response_factory(error: JapanesePodAPIError) -> ResponseItemJapanesePod:
+def error_response_factory(
+    error: JapanesePodAPIError | JapanesePodParsingError,
+) -> ResponseItemJapanesePod:
     return {
         "success": False,
         "error": error.to_dict(),
@@ -63,7 +70,13 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
         print("An error occurred:", api_error.error_msg)
         return error_response_factory(api_error)
 
-    print(html)
+    try:
+        results = extract_results(html)
+    except JapanesePodParsingError as parsing_error:
+        print("An error occurred:", parsing_error.error_msg)
+        return error_response_factory(parsing_error)
+
+    print(results)
 
     return response_factory()
 
@@ -86,3 +99,60 @@ def get_html_string(word: Kaki) -> HTMLString:
 
     html = HTMLString(response.text)
     return html
+
+
+# Extract results
+
+def extract_rows(html: HTMLString) -> list[str]:
+    cleaning_pattern = r"<pre>(?P<results>.*)</pre>"
+    result_search = re.search(cleaning_pattern, html, flags=re.DOTALL)
+
+    if result_search is None:
+        raise JapanesePodParsingError(
+            status_code=400,
+            error_msg="could not extract results from html"
+        )
+
+    full_result: str = result_search['results']
+    return [x for x in full_result.split("\n") if x]    # Filter out "empty" rows (first and last)
+
+
+def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
+    """Takes in a row string, return a tuple of the form `writings, readings`"""
+    pattern = r"^(?P<writings>[^\s]+) (\[(?P<readings>[^\s]+)\] )?"
+    match = re.search(pattern, row)
+
+    if match is None:
+        raise JapanesePodParsingError(
+            status_code=400,
+            error_msg="could not extract results from row"
+        )
+
+    writings_match: str = match['writings']
+    readings_match: Optional[str] = match['readings']
+
+    return (writings_match, readings_match)
+
+
+def build_row_result_from_matches(
+    writings_match: str,
+    readings_match: Optional[str]
+) -> tuple[list[Kaki], list[Yomi]]:
+    readings_match = writings_match if readings_match is None else readings_match
+
+    writings = [Kaki(remove_end_brackets(x)) for x in writings_match.split(";")]
+    readings = [Yomi(remove_end_brackets(x)) for x in readings_match.split(";")]
+
+    return (writings, readings)
+
+
+def format_row(row: str) -> tuple[list[Kaki], list[Yomi]]:
+    writings_match, readings_match = extract_matches_from_row_string(row)
+    writings, readings = build_row_result_from_matches(writings_match, readings_match)
+    return (writings, readings)
+
+
+def extract_results(html: HTMLString) -> list[tuple[list[Kaki], list[Yomi]]]:
+    rows = extract_rows(html)
+    formatted_rows = list(map(format_row, rows))
+    return formatted_rows

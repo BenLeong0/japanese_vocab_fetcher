@@ -87,6 +87,58 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     assert japanesepod.main(word_list) == expected_output
 
 
+def test_main_parsing_html_error(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN the HTML cannot be parsed
+    - THEN check the failed dict is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    expected_output = {
+        word: {
+            "success": False,
+            "error": {
+                "error_msg": "could not extract results from html",
+                "status_code": 400,
+                "url": URL("")
+            },
+            "main_data": {
+                "audio": [],
+            },
+        }
+        for word in word_list
+    }
+
+    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse("invalid html"))
+    assert japanesepod.main(word_list) == expected_output
+
+
+def test_main_parsing_row_error(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words
+    - WHEN a row cannot be parsed
+    - THEN check the failed dict is returned as expected
+    """
+    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    expected_output = {
+        word: {
+            "success": False,
+            "error": {
+                "error_msg": "could not extract results from row",
+                "status_code": 400,
+                "url": URL("")
+            },
+            "main_data": {
+                "audio": [],
+            },
+        }
+        for word in word_list
+    }
+
+    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse("<pre> invalid row</pre>"))
+    assert japanesepod.main(word_list) == expected_output
+
+
 def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
@@ -144,7 +196,80 @@ def test_get_html_string_failure(monkeypatch, test_dict: FullTestDict):
 
     try:
         japanesepod.get_html_string(word_list[0])
-        assert False
+        raise Exception("api error should have been raised")
     except japanesepod.JapanesePodAPIError as api_error:
         assert api_error.error_msg == json.dumps({"error": "could not connect"})
         assert api_error.status_code == 400
+
+
+def test_extract_rows(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        html = HTMLString(test_dict["japanesepod"]["expected_sections"][word]["html"])
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        assert japanesepod.extract_rows(html) == [row["raw_row"] for row in expected_rows]
+
+
+@pytest.mark.parametrize(
+    "invalid_html",
+    [
+        pytest.param("", id="empty html"),
+        pytest.param("result text", id="just text"),
+        pytest.param("<pre>result text", id="only pre"),
+        pytest.param("result text</pre>", id="only post"),
+    ]
+)
+def test_extract_rows_failure(invalid_html):
+    try:
+        japanesepod.extract_rows(invalid_html)
+        raise Exception("japanesepod.extract_rows() should have thrown an error")
+    except japanesepod.JapanesePodParsingError as parsing_error:
+        assert parsing_error.error_msg == "could not extract results from html"
+        assert parsing_error.status_code == 400
+
+
+def test_extract_matches_from_row_string(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        for row in expected_rows:
+            assert japanesepod.extract_matches_from_row_string(row["raw_row"]) == row["matches"]
+
+
+@pytest.mark.parametrize(
+    "invalid_row",
+    [
+        "",
+        "\n",
+        " testwriting) [test reading] test definition",
+        " testwriting) test definition",
+        " [testreading]",
+        "\n(test writing)",
+    ]
+)
+def test_extract_matches_from_row_string_failure(invalid_row: str):
+    try:
+        japanesepod.extract_matches_from_row_string(invalid_row)
+        raise Exception("japanesepod.extract_matches_from_row() should have thrown an error")
+    except japanesepod.JapanesePodParsingError as parsing_error:
+        assert parsing_error.error_msg == "could not extract results from row"
+        assert parsing_error.status_code == 400
+
+
+def test_build_row_result_from_matches(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        for row in expected_rows:
+            assert japanesepod.build_row_result_from_matches(*row["matches"]) == row["results"]
+
+
+def test_format_row(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        for row in expected_rows:
+            assert japanesepod.format_row(row["raw_row"]) == row["results"]
+
+
+def test_extract_results(test_dict: FullTestDict):
+    for word in test_dict["input"]:
+        html = HTMLString(test_dict["japanesepod"]["expected_sections"][word]["html"])
+        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+        assert japanesepod.extract_results(html) == [row["results"] for row in expected_rows]
