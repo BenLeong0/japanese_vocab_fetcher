@@ -89,7 +89,23 @@ MEGANE: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "眼鏡",
+                            "reading": "めがね",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=めがね"),
+                        },
+                        {
+                            "writing": "眼鏡",
+                            "reading": "がんきょう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=がんきょう"),
+                        },
+                        {
+                            "writing": "眼鏡",
+                            "reading": "メガネ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=メガネ"),
+                        },
+                    ],
                 },
             },
         },
@@ -393,7 +409,23 @@ MEGANE: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "眼鏡",
+                            "reading": "めがね",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=めがね"),
+                        },
+                        {
+                            "writing": "眼鏡",
+                            "reading": "がんきょう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=がんきょう"),
+                        },
+                        {
+                            "writing": "眼鏡",
+                            "reading": "メガネ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=眼鏡&kana=メガネ"),
+                        },
+                    ],
                 },
             },
             "jisho": {
@@ -570,7 +602,13 @@ COMEBACK: FullTestDict= {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "カムバック",
+                            "reading": "カムバック",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=カムバック&kana=カムバック"),
+                        },
+                    ],
                 },
             },
         },
@@ -741,7 +779,13 @@ COMEBACK: FullTestDict= {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "カムバック",
+                            "reading": "カムバック",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=カムバック&kana=カムバック"),
+                        },
+                    ],
                 },
             },
             "jisho": {
@@ -874,14 +918,41 @@ TABERU_GAKUSEI: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "食べる",
+                            "reading": "たべる",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=食べる&kana=たべる"),
+                        },
+                        {
+                            "writing": "喰べる",
+                            "reading": "たべる",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=喰べる&kana=たべる"),
+                        },
+                    ],
                 },
             },
             "学生": {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "学生",
+                            "reading": "がくしょう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくしょう"),
+                        },
+                        {
+                            "writing": "学生",
+                            "reading": "がくそう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくそう"),
+                        },
+                        {
+                            "writing": "学生",
+                            "reading": "がくせい",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくせい"),
+                        },
+                    ],
                 },
             },
         },
@@ -1464,7 +1535,18 @@ TABERU_GAKUSEI: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "食べる",
+                            "reading": "たべる",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=食べる&kana=たべる"),
+                        },
+                        {
+                            "writing": "喰べる",
+                            "reading": "たべる",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=喰べる&kana=たべる"),
+                        },
+                    ],
                 },
             },
             "jisho": {
@@ -1653,7 +1735,23 @@ TABERU_GAKUSEI: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "学生",
+                            "reading": "がくしょう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくしょう"),
+                        },
+                        {
+                            "writing": "学生",
+                            "reading": "がくそう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくそう"),
+                        },
+                        {
+                            "writing": "学生",
+                            "reading": "がくせい",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=学生&kana=がくせい"),
+                        },
+                    ],
                 },
             },
             "jisho": {
@@ -1881,7 +1979,38 @@ KOTOBA: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "言葉",
+                            "reading": "ことば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=言葉&kana=ことば"),
+                        },
+                        {
+                            "writing": "言葉",
+                            "reading": "けとば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=言葉&kana=けとば"),
+                        },
+                        {
+                            "writing": "詞",
+                            "reading": "ことば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=詞&kana=ことば"),
+                        },
+                        {
+                            "writing": "詞",
+                            "reading": "けとば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=詞&kana=けとば"),
+                        },
+                        {
+                            "writing": "辞",
+                            "reading": "ことば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=辞&kana=ことば"),
+                        },
+                        {
+                            "writing": "辞",
+                            "reading": "けとば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=辞&kana=けとば"),
+                        },
+                    ],
                 },
             },
         },
@@ -2209,7 +2338,38 @@ KOTOBA: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "言葉",
+                            "reading": "ことば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=言葉&kana=ことば"),
+                        },
+                        {
+                            "writing": "言葉",
+                            "reading": "けとば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=言葉&kana=けとば"),
+                        },
+                        {
+                            "writing": "詞",
+                            "reading": "ことば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=詞&kana=ことば"),
+                        },
+                        {
+                            "writing": "詞",
+                            "reading": "けとば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=詞&kana=けとば"),
+                        },
+                        {
+                            "writing": "辞",
+                            "reading": "ことば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=辞&kana=ことば"),
+                        },
+                        {
+                            "writing": "辞",
+                            "reading": "けとば",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=辞&kana=けとば"),
+                        },
+                    ],
                 },
             },
             "jisho": {
@@ -2729,21 +2889,134 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "兎",
+                            "reading": "うさぎ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=うさぎ"),
+                        },
+                        {
+                            "writing": "兎",
+                            "reading": "う",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=う"),
+                        },
+                        {
+                            "writing": "兎",
+                            "reading": "ウサギ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=ウサギ"),
+                        },
+                        {
+                            "writing": "兔",
+                            "reading": "うさぎ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=うさぎ"),
+                        },
+                        {
+                            "writing": "兔",
+                            "reading": "う",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=う"),
+                        },
+                        {
+                            "writing": "兔",
+                            "reading": "ウサギ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=ウサギ"),
+                        },
+                        {
+                            "writing": "菟",
+                            "reading": "うさぎ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=うさぎ"),
+                        },
+                        {
+                            "writing": "菟",
+                            "reading": "う",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=う"),
+                        },
+                        {
+                            "writing": "菟",
+                            "reading": "ウサギ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=ウサギ"),
+                        },
+                    ],
                 },
             },
             "行く": {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "行く",
+                            "reading": "いく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=行く&kana=いく"),
+                        },
+                        {
+                            "writing": "行く",
+                            "reading": "ゆく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=行く&kana=ゆく"),
+                        },
+                        {
+                            "writing": "逝く",
+                            "reading": "いく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=逝く&kana=いく"),
+                        },
+                        {
+                            "writing": "逝く",
+                            "reading": "ゆく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=逝く&kana=ゆく"),
+                        },
+                        {
+                            "writing": "往く",
+                            "reading": "いく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=往く&kana=いく"),
+                        },
+                        {
+                            "writing": "往く",
+                            "reading": "ゆく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=往く&kana=ゆく"),
+                        },
+                    ],
                 },
             },
             "籠": {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "籠",
+                            "reading": "かご",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=かご"),
+                        },
+                        {
+                            "writing": "籠",
+                            "reading": "カゴ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=カゴ"),
+                        },
+                        {
+                            "writing": "篭",
+                            "reading": "かご",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=かご"),
+                        },
+                        {
+                            "writing": "篭",
+                            "reading": "カゴ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=カゴ"),
+                        },
+                        {
+                            "writing": "牢",
+                            "reading": "ろう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=牢&kana=ろう"),
+                        },
+                        {
+                            "writing": "籠",
+                            "reading": "ろう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=ろう"),
+                        },
+                        {
+                            "writing": "篭",
+                            "reading": "ろう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=ろう"),
+                        },
+                    ],
                 },
             },
         },
@@ -3360,7 +3633,53 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "兎",
+                            "reading": "うさぎ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=うさぎ"),
+                        },
+                        {
+                            "writing": "兎",
+                            "reading": "う",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=う"),
+                        },
+                        {
+                            "writing": "兎",
+                            "reading": "ウサギ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兎&kana=ウサギ"),
+                        },
+                        {
+                            "writing": "兔",
+                            "reading": "うさぎ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=うさぎ"),
+                        },
+                        {
+                            "writing": "兔",
+                            "reading": "う",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=う"),
+                        },
+                        {
+                            "writing": "兔",
+                            "reading": "ウサギ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=兔&kana=ウサギ"),
+                        },
+                        {
+                            "writing": "菟",
+                            "reading": "うさぎ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=うさぎ"),
+                        },
+                        {
+                            "writing": "菟",
+                            "reading": "う",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=う"),
+                        },
+                        {
+                            "writing": "菟",
+                            "reading": "ウサギ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=菟&kana=ウサギ"),
+                        },
+                    ],
                 },
             },
             "jisho": {
@@ -3475,7 +3794,38 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "行く",
+                            "reading": "いく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=行く&kana=いく"),
+                        },
+                        {
+                            "writing": "行く",
+                            "reading": "ゆく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=行く&kana=ゆく"),
+                        },
+                        {
+                            "writing": "逝く",
+                            "reading": "いく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=逝く&kana=いく"),
+                        },
+                        {
+                            "writing": "逝く",
+                            "reading": "ゆく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=逝く&kana=ゆく"),
+                        },
+                        {
+                            "writing": "往く",
+                            "reading": "いく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=往く&kana=いく"),
+                        },
+                        {
+                            "writing": "往く",
+                            "reading": "ゆく",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=往く&kana=ゆく"),
+                        },
+                    ],
                 },
             },
             "jisho": {
@@ -3640,7 +3990,43 @@ USAGI_IKU_KAGO: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "籠",
+                            "reading": "かご",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=かご"),
+                        },
+                        {
+                            "writing": "籠",
+                            "reading": "カゴ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=カゴ"),
+                        },
+                        {
+                            "writing": "篭",
+                            "reading": "かご",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=かご"),
+                        },
+                        {
+                            "writing": "篭",
+                            "reading": "カゴ",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=カゴ"),
+                        },
+                        {
+                            "writing": "牢",
+                            "reading": "ろう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=牢&kana=ろう"),
+                        },
+                        {
+                            "writing": "籠",
+                            "reading": "ろう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=籠&kana=ろう"),
+                        },
+                        {
+                            "writing": "篭",
+                            "reading": "ろう",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=篭&kana=ろう"),
+                        },
+                    ],
                 },
             },
             "jisho": {
@@ -3792,7 +4178,18 @@ SHIZUKA: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "静か",
+                            "reading": "しずか",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=静か&kana=しずか"),
+                        },
+                        {
+                            "writing": "閑か",
+                            "reading": "しずか",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=閑か&kana=しずか"),
+                        },
+                    ],
                 },
             },
         },
@@ -4124,7 +4521,18 @@ SHIZUKA: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "静か",
+                            "reading": "しずか",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=静か&kana=しずか"),
+                        },
+                        {
+                            "writing": "閑か",
+                            "reading": "しずか",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=閑か&kana=しずか"),
+                        },
+                    ],
                 },
             },
             "jisho": {
@@ -4327,7 +4735,13 @@ NARU: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "なる",
+                            "reading": "なる",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=なる&kana=なる"),
+                        },
+                    ],
                 },
             },
         },
@@ -4579,7 +4993,13 @@ NARU: FullTestDict = {
                 "success": True,
                 "error": None,
                 "main_data": {
-                    "audio": [],
+                    "audio": [
+                        {
+                            "writing": "なる",
+                            "reading": "なる",
+                            "url": URL("https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=なる&kana=なる"),
+                        },
+                    ],
                 },
             },
             "jisho": {
