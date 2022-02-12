@@ -43,8 +43,8 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
     const getFilteredDefinitions = (): string => {
         if (data.jisho.main_data.results.length === 0) return "";
         const senses = data.jisho.main_data.results.map(result => result.senses).flat(2);
-        if (senses.length === 1) {
-            const dfn = senses[0].english_definitions;      // Don't slice if only one row
+        if (senses.length === 1) {          // Don't slice dfns if only one sense
+            const dfn = senses[0].english_definitions;
             const formattedDfn = dfn.map(word => utilsService.capitaliseString(word));
             return formattedDfn.join(" ; ");
         }
