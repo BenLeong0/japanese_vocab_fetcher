@@ -21,7 +21,7 @@
 }
 
 .reading {
-    cursor: help;
+    cursor: url(/japanese_vocab_fetcher/copy_cursor.png), default;
     font-size: 16px;
     height: 22px;
     line-height: 22px;
