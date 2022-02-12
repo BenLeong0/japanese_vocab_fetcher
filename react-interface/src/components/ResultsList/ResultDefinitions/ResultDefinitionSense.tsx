@@ -13,9 +13,10 @@ interface ResultDefinitionSenseProps {
 const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinality, sense }) => {
     const utilsService = new UtilsService();
 
-    const dfn: string =
-        ordinality + '. ' +
-        sense.english_definitions.map(utilsService.capitaliseString).join(" ; ");
+    const dfn: string = sense.english_definitions.map(utilsService.capitaliseString).join(" ; ");
+    const copyDefinitionToClipboard = () => {
+        utilsService.copyStringToClipboard(dfn);
+    }
 
     const getWordType = (): string => {
         let wordType = sense.parts_of_speech.join("・");
@@ -28,7 +29,13 @@ const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinalit
     return (
         <div className="result-definition-sense flex-col">
             <div className="sense-part-of-speech">{ getWordType() }</div>
-            <div className="sense-english-definition">{ dfn }</div>
+            <div className="sense-english-definition">
+                <span
+                    className="unselectable copy-cursor"
+                    onClick={copyDefinitionToClipboard}
+                >{ ordinality + '. ' }</span>
+                { dfn }
+            </div>
         </div>
     );
 }
