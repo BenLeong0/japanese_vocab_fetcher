@@ -23,6 +23,9 @@ const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinalit
         if (sense.tags.length > 0) {
             wordType += " (" + sense.tags.join(", ") + ")";
         }
+        if (sense.info.length > 0) {
+            wordType += " (" + sense.info.join(", ") + ")";
+        }
         return wordType;
     }
 
