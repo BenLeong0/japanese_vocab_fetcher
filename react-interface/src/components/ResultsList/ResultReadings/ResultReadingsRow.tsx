@@ -21,7 +21,7 @@ const ResultReadingsRow: React.FC<ResultReadingsRowProps> = ({ title, readings }
                 {readings.map((reading, index) =>
                     <div
                         key={index}
-                        className="reading unselectable"
+                        className="reading unselectable copy-cursor"
                         onClick={() => {copyReadingToClipboard(reading)}}
                         title="Copy to clipboard"
                     >{ reading }</div>

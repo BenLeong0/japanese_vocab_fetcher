@@ -51,11 +51,17 @@ code {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
- }
 
- .mplus {
-     font-family: "M PLUS 1p", sans-serif;
- }
+    -webkit-user-drag: none;
+}
+
+.copy-cursor {
+    cursor: url(./assets/cursors/copycursor.png), default;
+}
+
+.mplus {
+    font-family: "M PLUS 1p", sans-serif;
+}
 
 
 @media (min-width: 1201px) {
