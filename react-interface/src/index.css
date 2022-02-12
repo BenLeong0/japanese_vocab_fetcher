@@ -54,7 +54,7 @@ code {
 }
 
 .copy-cursor {
-    cursor: url(https://raw.githubusercontent.com/BenLeong0/japanese_vocab_fetcher/main/react-interface/public/copycursor.png), default;
+    cursor: url(./assets/cursors/copycursor.png), default;
 }
 
 .mplus {
