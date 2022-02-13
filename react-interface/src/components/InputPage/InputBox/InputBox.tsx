@@ -53,8 +53,13 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
     }
 
     const handleUserKeyPress = useCallback((e: KeyboardEvent) => {
-        if (e.key === "Enter" && !e.shiftKey && textInput != null) {sendWords.current()}
-        if (e.key === "Tab" && textInput != null) {e.preventDefault(); textInput.focus()}
+        if (e.key === "Enter" && !e.shiftKey && textInput != null) {
+            sendWords.current();
+        }
+        if (e.key === "Tab" && textInput != null) {
+            e.preventDefault();
+            textInput.focus();
+        }
     }, [textInput]);
 
     useEffect(() => {
