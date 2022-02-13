@@ -79,34 +79,29 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
     }
     useEffect(() => { searchQueryParams.current(); }, []);
 
-    const textArea = (
-        <TextareaAutosize
-            name="main-input"
-            className="main-input"
-            value={text}
-            onChange={(e: any) => setText(e.target.value)}
-            ref={setTextInput}
-        />
-    );
-    const wordsDisplay = (
-        <div className="words-display vertical-separation-small">
-            {utilsService.extractWordsFromInput(text).map((word, index) =>
-                <div key={index} className="word-display">{word}</div>
-            )}
-        </div>
-    );
-    const submitButton = (
-        <button
-            className="button-primary vertical-separation-medium"
-            type="submit"
-            onClick={(_) => sendWords.current()}
-        >
-            Submit
-        </button>
-    );
-
     return (
-        isLoading ? <LoadingSpinner /> : <>{textArea}{wordsDisplay}{submitButton}</>
+        isLoading ? <LoadingSpinner /> :
+        <>
+            <TextareaAutosize
+                name="main-input"
+                className="main-input"
+                value={text}
+                onChange={(e: any) => setText(e.target.value)}
+                ref={setTextInput}
+            />
+            <div className="words-display vertical-separation-small">
+                {utilsService.extractWordsFromInput(text).map((word, index) =>
+                    <div key={index} className="word-display">{word}</div>
+                )}
+            </div>
+            <button
+                className="button-primary vertical-separation-medium"
+                type="submit"
+                onClick={(_) => sendWords.current()}
+            >
+                Submit
+            </button>
+        </>
     );
 }
 
