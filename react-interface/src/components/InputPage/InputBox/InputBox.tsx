@@ -80,7 +80,7 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
             className="main-input"
             value={text}
             onChange={(e: any) => setText(e.target.value)}
-            ref={(button) => { setTextInput(button); }}
+            ref={setTextInput}
         />
     );
     const wordsDisplay = (
