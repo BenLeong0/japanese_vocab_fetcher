@@ -25,6 +25,8 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
     const [text, setText] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
+    const [textInput, setTextInput] = useState<HTMLTextAreaElement | null>(null);
+
     const sendWords = useRef((forceText?: string) => {});
     sendWords.current = async (forceText?: string) => {
         setIsLoading(true);
@@ -50,9 +52,10 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
         }
     }
 
-    const handleUserKeyPress = useCallback(e => {
-        if (e.key === "Enter" && e.ctrlKey) {sendWords.current()}
-    }, []);
+    const handleUserKeyPress = useCallback((e: KeyboardEvent) => {
+        if (e.key === "Enter" && !e.shiftKey && textInput != null) {sendWords.current()}
+        if (e.key === "Tab" && textInput != null) {e.preventDefault(); textInput.focus()}
+    }, [textInput]);
 
     useEffect(() => {
         window.addEventListener("keydown", handleUserKeyPress);
@@ -77,6 +80,7 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
             className="main-input"
             value={text}
             onChange={(e: any) => setText(e.target.value)}
+            ref={(button) => { setTextInput(button); }}
         />
     );
     const wordsDisplay = (
