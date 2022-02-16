@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-from testing import jisho_api_responses, wanikani_api_responses
+from testing import jisho_api_responses, tatoeba_api_responses, wanikani_api_responses
 from testing.dict_typing import FullTestDict
 
 if os.path.exists(".env"):
@@ -314,6 +314,22 @@ MEGANE: FullTestDict = {
                             "en": "His eyes were smiling behind his glasses.",
                         },
                     ],
+                },
+            },
+        },
+    },
+    "tatoeba": {
+        "expected_sections": {
+            '眼鏡': {
+                "api_response": tatoeba_api_responses.MEGANE,
+            },
+        },
+        "expected_output": {
+            '眼鏡': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
         },
@@ -745,6 +761,22 @@ COMEBACK: FullTestDict= {
             'カムバック': {
                 "url": URL("https://tangorin.com/sentences?search=カムバック",),
                 "html": get_file_as_string("comeback", "tangorin"),
+            },
+        },
+        "expected_output": {
+            'カムバック': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
+    "tatoeba": {
+        "expected_sections": {
+            'カムバック': {
+                "api_response": tatoeba_api_responses.COMEBACK,
             },
         },
         "expected_output": {
@@ -1332,6 +1364,32 @@ TABERU_GAKUSEI: FullTestDict = {
                             "en": "I brought the point home to the student.",
                         },
                     ],
+                },
+            },
+        },
+    },
+    "tatoeba": {
+        "expected_sections": {
+            '食べる': {
+                "api_response": tatoeba_api_responses.TABERU,
+            },
+            '学生': {
+                "api_response": tatoeba_api_responses.GAKUSEI,
+            },
+        },
+        "expected_output": {
+            '食べる': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '学生': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
         },
@@ -2231,6 +2289,22 @@ KOTOBA: FullTestDict = {
             },
         },
     },
+    "tatoeba": {
+        "expected_sections": {
+            '言葉': {
+                "api_response": tatoeba_api_responses.KOTOBA,
+            },
+        },
+        "expected_output": {
+            '言葉': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=言葉"),
         "api_response": wanikani_api_responses.KOTOBA,
@@ -2666,6 +2740,22 @@ BADINPUT: FullTestDict = {
             'BADINPUT': {
                 "url": URL("https://tangorin.com/sentences?search=BADINPUT",),
                 "html": get_file_as_string("badinput", "tangorin"),
+            },
+        },
+        "expected_output": {
+            'BADINPUT': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
+    "tatoeba": {
+        "expected_sections": {
+            'BADINPUT': {
+                "api_response": tatoeba_api_responses.BADINPUT,
             },
         },
         "expected_output": {
@@ -3506,6 +3596,42 @@ USAGI_IKU_KAGO: FullTestDict = {
                             "en": "She quickly shut the kitten into a basket.",
                         },
                     ],
+                },
+            },
+        },
+    },
+    "tatoeba": {
+        "expected_sections": {
+            '兎': {
+                "api_response": tatoeba_api_responses.USAGI,
+            },
+            '行く': {
+                "api_response": tatoeba_api_responses.IKU,
+            },
+            '籠': {
+                "api_response": tatoeba_api_responses.KAGO,
+            },
+        },
+        "expected_output": {
+            '兎': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '行く': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '籠': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
         },
@@ -4414,6 +4540,22 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
+    "tatoeba": {
+        "expected_sections": {
+            '静か': {
+                "api_response": tatoeba_api_responses.SHIZUKA,
+            },
+        },
+        "expected_output": {
+            '静か': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    },
     "wanikani": {
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=静か"),
         "api_response": wanikani_api_responses.SHIZUKA,
@@ -4967,6 +5109,22 @@ NARU: FullTestDict = {
                             "en": "Uh... How's that working?",
                         },
                     ],
+                },
+            },
+        },
+    },
+    "tatoeba": {
+        "expected_sections": {
+            'なる': {
+                "api_response": tatoeba_api_responses.NARU,
+            },
+        },
+        "expected_output": {
+            'なる': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
         },
