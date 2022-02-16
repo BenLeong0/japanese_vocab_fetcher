@@ -54,4 +54,5 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTatoeba]:
 
 
 def get_sentences(word: Kaki) -> ResponseItemTatoeba:
+    print(word)
     return response_factory()
