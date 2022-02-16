@@ -1,7 +1,7 @@
 from typing import Optional, TypedDict
 
 
-class TatoebaAPIResultTranslation(TypedDict):
+class TatoebaAPIResultTranslation(TypedDict, total=False):
     id: int
     text: str
     lang: str
