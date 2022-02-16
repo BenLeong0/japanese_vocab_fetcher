@@ -1,5 +1,6 @@
-import pytest   # type: ignore
+import pytest  # type: ignore
 
+from custom_types.alternative_string_types import Kaki
 from modules import tatoeba
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
@@ -41,3 +42,23 @@ def test_empty_input():
     - THEN check it returns and empty dict
     """
     assert tatoeba.main([]) == {}
+
+
+@pytest.mark.parametrize(
+    "word, expected_query",
+    [
+        [Kaki(""), ""],
+        [Kaki("踵"), "踵"],
+        [Kaki("みる"), "み"],
+        [Kaki("変える"), "変え"],
+        [Kaki("したためる"), "したため"],
+        [Kaki("したためる"), "したため"],
+        [Kaki("帰る"), "帰ら|帰り|帰る|帰れ|帰ろ|帰っ"],
+        [Kaki("合う"), "合わ|合い|合う|合え|合お|合っ"],
+        [Kaki("残す"), "残さ|残し|残す|残せ|残そ"],
+        [Kaki("活殺自在"), "活殺自在"],
+        [Kaki("眼鏡"), "眼鏡"],
+    ]
+)
+def test_get_url_query(word: Kaki, expected_query: str):
+    assert tatoeba.get_url_query(word) == expected_query
