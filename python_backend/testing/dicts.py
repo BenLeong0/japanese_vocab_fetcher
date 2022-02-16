@@ -549,6 +549,13 @@ MEGANE: FullTestDict = {
                     ],
                 },
             },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -867,6 +874,13 @@ COMEBACK: FullTestDict= {
                 "main_data": {
                     "sentences": [
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -1740,6 +1754,13 @@ TABERU_GAKUSEI: FullTestDict = {
                     ],
                 },
             },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -1935,6 +1956,13 @@ TABERU_GAKUSEI: FullTestDict = {
                             "en": "I brought the point home to the student.",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -2559,6 +2587,13 @@ KOTOBA: FullTestDict = {
                     ],
                 },
             },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -2835,6 +2870,13 @@ BADINPUT: FullTestDict = {
                 "main_data": {
                     "sentences": [
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -3905,6 +3947,13 @@ USAGI_IKU_KAGO: FullTestDict = {
                     ],
                 },
             },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -4061,6 +4110,13 @@ USAGI_IKU_KAGO: FullTestDict = {
                             "en": "I don't want to go to school.",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -4250,6 +4306,13 @@ USAGI_IKU_KAGO: FullTestDict = {
                             "en": "She quickly shut the kitten into a basket.",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -4782,6 +4845,13 @@ SHIZUKA: FullTestDict = {
                     ],
                 },
             },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -5259,6 +5329,13 @@ NARU: FullTestDict = {
                             "en": "Uh... How's that working?",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
