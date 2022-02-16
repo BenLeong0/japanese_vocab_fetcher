@@ -47,17 +47,16 @@ def test_empty_input():
 @pytest.mark.parametrize(
     "word, expected_query",
     [
-        [Kaki(""), ""],
-        [Kaki("踵"), "踵"],
-        [Kaki("みる"), "み"],
-        [Kaki("変える"), "変え"],
-        [Kaki("したためる"), "したため"],
-        [Kaki("したためる"), "したため"],
-        [Kaki("帰る"), "帰ら|帰り|帰る|帰れ|帰ろ|帰っ"],
-        [Kaki("合う"), "合わ|合い|合う|合え|合お|合っ"],
-        [Kaki("残す"), "残さ|残し|残す|残せ|残そ"],
-        [Kaki("活殺自在"), "活殺自在"],
-        [Kaki("眼鏡"), "眼鏡"],
+        pytest.param(Kaki(""), "", id="Empty"),
+        pytest.param(Kaki("踵"), "踵", id="Single Char"),
+        pytest.param(Kaki("みる"), "み", id="Ichidan1"),
+        pytest.param(Kaki("変える"), "変え", id="Ichidan2"),
+        pytest.param(Kaki("したためる"), "したため", id="Ichidan3"),
+        pytest.param(Kaki("帰る"), "帰ら|帰り|帰る|帰れ|帰ろ|帰っ", id="Godan1"),
+        pytest.param(Kaki("合う"), "合わ|合い|合う|合え|合お|合っ", id="Godan2"),
+        pytest.param(Kaki("残す"), "残さ|残し|残す|残せ|残そ", id="Godan3"),
+        pytest.param(Kaki("活殺自在"), "活殺自在", id="Nonverb1"),
+        pytest.param(Kaki("眼鏡"), "眼鏡", id="Nonverb2"),
     ]
 )
 def test_get_url_query(word: Kaki, expected_query: str):
