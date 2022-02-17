@@ -49,6 +49,8 @@ def test_empty_input():
     [
         pytest.param(Kaki(""), "", id="Empty"),
         pytest.param(Kaki("踵"), "踵", id="Single Char"),
+        pytest.param(Kaki("面白い"), "面白", id="Ichidan1"),
+        pytest.param(Kaki("赤い"), "赤", id="Ichidan1"),
         pytest.param(Kaki("みる"), "み", id="Ichidan1"),
         pytest.param(Kaki("変える"), "変え", id="Ichidan2"),
         pytest.param(Kaki("したためる"), "したため", id="Ichidan3"),

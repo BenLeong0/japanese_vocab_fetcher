@@ -63,6 +63,8 @@ def get_sentences(word: Kaki) -> ResponseItemTatoeba:
 def get_url_query(word: Kaki) -> str:
     if len(word) < 2:
         return cast(str, word)
+    if word[-1] == "い":
+        return word[:-1]
     if word[-1] == "る" and word[-2] in ICHIDAN_PENULTIMATES:
         return word[:-1]
     if word[-1] in KANA_CONVERSIONS:
