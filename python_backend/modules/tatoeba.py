@@ -69,7 +69,7 @@ def get_url_query(word: Kaki) -> str:
         return word[:-1]
     if word[-1] in KANA_CONVERSIONS:
         conjugations = [word[:-1] + suf for suf in KANA_CONVERSIONS[word[-1]]]
-        return "|".join(conjugations)
+        return "%22|%22".join(conjugations)
     return cast(str, word)
 
 

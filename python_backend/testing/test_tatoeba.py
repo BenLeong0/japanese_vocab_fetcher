@@ -54,9 +54,9 @@ def test_empty_input():
         pytest.param(Kaki("みる"), "み", id="Ichidan1"),
         pytest.param(Kaki("変える"), "変え", id="Ichidan2"),
         pytest.param(Kaki("したためる"), "したため", id="Ichidan3"),
-        pytest.param(Kaki("帰る"), "帰ら|帰り|帰る|帰れ|帰ろ|帰っ", id="Godan1"),
-        pytest.param(Kaki("合う"), "合わ|合い|合う|合え|合お|合っ", id="Godan2"),
-        pytest.param(Kaki("残す"), "残さ|残し|残す|残せ|残そ", id="Godan3"),
+        pytest.param(Kaki("帰る"), "帰ら%22|%22帰り%22|%22帰る%22|%22帰れ%22|%22帰ろ%22|%22帰っ", id="Godan1"),
+        pytest.param(Kaki("合う"), "合わ%22|%22合い%22|%22合う%22|%22合え%22|%22合お%22|%22合っ", id="Godan2"),
+        pytest.param(Kaki("残す"), "残さ%22|%22残し%22|%22残す%22|%22残せ%22|%22残そ", id="Godan3"),
         pytest.param(Kaki("活殺自在"), "活殺自在", id="Nonverb1"),
         pytest.param(Kaki("眼鏡"), "眼鏡", id="Nonverb2"),
     ]
