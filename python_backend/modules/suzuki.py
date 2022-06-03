@@ -67,13 +67,14 @@ def get_formdata(word_list: list[Kaki]) -> dict[str, str]:
         "data[Phrasing][phrase_component]": "invisible",
         "data[Phrasing][param]": "invisible",
         "data[Phrasing][subscript]": "visible",
+        "data[Phrasing][jeita]": "invisible",
     }
     formdata["data[Phrasing][text]"] = "\n".join(words_with_particles)
     return formdata
 
 
 def get_html(word_list: list[Kaki]) -> Soup:
-    url = URL('http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index')
+    url = URL('https://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index')
     formdata = get_formdata(word_list)
     response = requests.post(url, formdata, timeout=20)
     status_code = response.status_code
