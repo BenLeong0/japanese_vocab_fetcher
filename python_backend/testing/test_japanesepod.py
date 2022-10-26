@@ -12,7 +12,7 @@ from utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
-@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d['id'])
+@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d.test_name)
 def fixture_test_dict(request):
     return request.param
 
@@ -34,9 +34,9 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - WHEN the audio dict is generated
     - THEN check all the japanesepod info is correct and complete
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    sections = test_dict['japanesepod']['expected_sections']
-    expected_output = test_dict['japanesepod']['expected_output']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    sections = test_dict.japanesepod['expected_sections']
+    expected_output = test_dict.japanesepod['expected_output']
 
     def get_word_from_wwwjdic_url(url: URL) -> Kaki:
         return Kaki(url[50:])
@@ -66,9 +66,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     - WHEN the API returns an unsuccessful status code
     - THEN check the failed dict is returned as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "api_error"})
-    sections = test_dict["japanesepod"]["expected_sections"]
+    sections = test_dict.japanesepod["expected_sections"]
     expected_output = {
         word: {
             "success": False,
@@ -94,7 +94,7 @@ def test_main_parsing_html_error(monkeypatch, test_dict: FullTestDict):
     - WHEN the HTML cannot be parsed
     - THEN check the failed dict is returned as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     expected_output = {
         word: {
             "success": False,
@@ -120,7 +120,7 @@ def test_main_parsing_row_error(monkeypatch, test_dict: FullTestDict):
     - WHEN a row cannot be parsed
     - THEN check the failed dict is returned as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     expected_output = {
         word: {
             "success": False,
@@ -146,9 +146,9 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
     - WHEN the sentences are fetched for each individual word
     - THEN check the sentences are correct
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    sections = test_dict["japanesepod"]["expected_sections"]
-    full_expected_output = test_dict["japanesepod"]["expected_output"]
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    sections = test_dict.japanesepod["expected_sections"]
+    full_expected_output = test_dict.japanesepod["expected_output"]
     monkeypatch.setattr("requests.head", lambda x: FakeResponse("audio", headers={"Content-length": "100"}))
 
     for word in word_list:
@@ -164,8 +164,8 @@ def test_get_url(test_dict: FullTestDict):
     - WHEN a url is generated
     - THEN check the url is encoded
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    sections = test_dict['japanesepod']['expected_sections']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    sections = test_dict.japanesepod['expected_sections']
 
     for word in word_list:
         assert japanesepod.get_url(word) == sections[word]["url"]
@@ -177,8 +177,8 @@ def test_get_html_string(monkeypatch, test_dict: FullTestDict):
     - WHEN the HTML page is fetched
     - THEN check it is returned as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    sections = test_dict['japanesepod']['expected_sections']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    sections = test_dict.japanesepod['expected_sections']
 
     for word in word_list:
         html = sections[word]['html']
@@ -192,7 +192,7 @@ def test_get_html_string_failure(monkeypatch, test_dict: FullTestDict):
     - WHEN an unsuccessful HTTP request is made
     - THEN check an exception is thrown
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "could not connect"})
     monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(response, status_code=400))
 
@@ -205,9 +205,9 @@ def test_get_html_string_failure(monkeypatch, test_dict: FullTestDict):
 
 
 def test_extract_rows(test_dict: FullTestDict):
-    for word in test_dict["input"]:
-        html = HTMLString(test_dict["japanesepod"]["expected_sections"][word]["html"])
-        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+    for word in test_dict.input:
+        html = HTMLString(test_dict.japanesepod["expected_sections"][word]["html"])
+        expected_rows = test_dict.japanesepod["expected_sections"][word]["expected_rows"]
         assert japanesepod.extract_rows(html) == [row["raw_row"] for row in expected_rows]
 
 
@@ -230,8 +230,8 @@ def test_extract_rows_failure(invalid_html):
 
 
 def test_extract_matches_from_row_string(test_dict: FullTestDict):
-    for word in test_dict["input"]:
-        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+    for word in test_dict.input:
+        expected_rows = test_dict.japanesepod["expected_sections"][word]["expected_rows"]
         for row in expected_rows:
             assert japanesepod.extract_matches_from_row_string(row["raw_row"]) == row["matches"]
 
@@ -257,30 +257,30 @@ def test_extract_matches_from_row_string_failure(invalid_row: str):
 
 
 def test_build_row_result_from_matches(test_dict: FullTestDict):
-    for word in test_dict["input"]:
-        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+    for word in test_dict.input:
+        expected_rows = test_dict.japanesepod["expected_sections"][word]["expected_rows"]
         for row in expected_rows:
             assert japanesepod.build_row_result_from_matches(*row["matches"]) == row["results"]
 
 
 def test_format_row(test_dict: FullTestDict):
-    for word in test_dict["input"]:
-        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+    for word in test_dict.input:
+        expected_rows = test_dict.japanesepod["expected_sections"][word]["expected_rows"]
         for row in expected_rows:
             assert japanesepod.format_row(row["raw_row"]) == row["results"]
 
 
 def test_extract_results(test_dict: FullTestDict):
-    for word in test_dict["input"]:
-        html = HTMLString(test_dict["japanesepod"]["expected_sections"][word]["html"])
-        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+    for word in test_dict.input:
+        html = HTMLString(test_dict.japanesepod["expected_sections"][word]["html"])
+        expected_rows = test_dict.japanesepod["expected_sections"][word]["expected_rows"]
         assert japanesepod.extract_results(html) == [row["results"] for row in expected_rows]
 
 
 def test_filter_results(test_dict: FullTestDict):
     result_type = tuple[list[Kaki], list[Yomi]]
-    for word in test_dict["input"]:
-        expected_rows = test_dict["japanesepod"]["expected_sections"][word]["expected_rows"]
+    for word in test_dict.input:
+        expected_rows = test_dict.japanesepod["expected_sections"][word]["expected_rows"]
         results = [cast(result_type, row["results"]) for row in expected_rows]
         filtered_results = [cast(result_type, row["results"]) for row in expected_rows if row["relevant"] is True]
         assert japanesepod.filter_results(results, Kaki(word)) == filtered_results
@@ -288,19 +288,19 @@ def test_filter_results(test_dict: FullTestDict):
 
 def test_generate_audio_urls(test_dict: FullTestDict):
     result_type = tuple[list[Kaki], list[Yomi]]
-    for word in test_dict["input"]:
-        expected_section = test_dict["japanesepod"]["expected_sections"][word]
+    for word in test_dict.input:
+        expected_section = test_dict.japanesepod["expected_sections"][word]
         filtered_results = [cast(result_type, row["results"]) for row in expected_section["expected_rows"] if row["relevant"] is True]
         assert japanesepod.generate_audio_urls(filtered_results) == expected_section["all_urls"]
 
 
 def test_check_urls(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr("requests.head", lambda x: FakeResponse("audio", headers={"Content-length": "100"}))
-    for word in test_dict["input"]:
-        assert japanesepod.check_urls(test_dict["japanesepod"]["expected_sections"][word]["all_urls"]) == test_dict["japanesepod"]["expected_output"][word]["main_data"]["audio"]
+    for word in test_dict.input:
+        assert japanesepod.check_urls(test_dict.japanesepod["expected_sections"][word]["all_urls"]) == test_dict.japanesepod["expected_output"][word]["main_data"]["audio"]
 
 
 def test_check_urls_not_available(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr("requests.head", lambda x: FakeResponse("audio", headers={"Content-length": "52288"}))
-    for word in test_dict["input"]:
-        assert japanesepod.check_urls(test_dict["japanesepod"]["expected_sections"][word]["all_urls"]) == []
+    for word in test_dict.input:
+        assert japanesepod.check_urls(test_dict.japanesepod["expected_sections"][word]["all_urls"]) == []

@@ -11,7 +11,7 @@ from utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
-@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d['id'])
+@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d.test_name)
 def fixture_test_dict(request):
     return request.param
 
@@ -38,9 +38,9 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - WHEN the accent dict is generated
     - THEN check all the forvo info is correct and complete
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    sections = test_dict['forvo']['expected_sections']
-    expected_output = test_dict['forvo']['expected_output']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    sections = test_dict.forvo['expected_sections']
+    expected_output = test_dict.forvo['expected_output']
 
     def get_word_from_forvo_url(url: URL) -> Kaki:
         match = re.search(r"word/(.+?)/", url)
@@ -61,7 +61,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     - WHEN the API returns an unsuccessful status code
     - THEN check the failed dict is returned as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "api_error"})
     expected_output = {
         word: {
@@ -69,7 +69,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": test_dict["forvo"]["expected_sections"][word]["url"]
+                "url": test_dict.forvo["expected_sections"][word]["url"]
             },
             "main_data": {
                 "audio": [],
@@ -97,8 +97,8 @@ def test_get_api_urls(test_dict: FullTestDict):
     - WHEN API urls are generated
     - THEN check the urls are encoded and correct
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    sections = test_dict['forvo']['expected_sections']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    sections = test_dict.forvo['expected_sections']
 
     for word in word_list:
         assert forvo.get_api_url(word) == sections[word]["url"]
@@ -110,9 +110,9 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
     - WHEN the audio url lists are generated for each word
     - THEN check the lists are as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    sections = test_dict['forvo']['expected_sections']
-    expected_output = test_dict['forvo']["expected_output"]
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    sections = test_dict.forvo['expected_sections']
+    expected_output = test_dict.forvo["expected_output"]
 
     for word in word_list:
         section = sections[word]
@@ -129,8 +129,8 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     - WHEN the API is called for each word
     - THEN check each response is returned correctly
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    sections = test_dict['forvo']['expected_sections']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    sections = test_dict.forvo['expected_sections']
 
     for word in word_list:
         section = sections[word]
@@ -152,7 +152,7 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
     - WHEN an unsuccessful HTTP request is made
     - THEN check an exception is thrown
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "could not connect"})
     monkeypatch.setattr("requests.get", lambda url: FakeResponse(response, status_code=400))
 
@@ -171,9 +171,9 @@ def test_extract_audio_list(test_dict: FullTestDict):
     - WHEN the audio urls are extracted
     - THEN check the returned lists are correct
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    sections = test_dict['forvo']['expected_sections']
-    expected_output = test_dict['forvo']["expected_output"]
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    sections = test_dict.forvo['expected_sections']
+    expected_output = test_dict.forvo["expected_output"]
 
     for word in word_list:
         api_response = json.loads(sections[word]['api_response'])

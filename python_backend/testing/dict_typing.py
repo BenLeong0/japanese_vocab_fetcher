@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import DefaultDict, Optional, TypedDict
 
 from bs4 import BeautifulSoup as Soup
@@ -163,10 +164,10 @@ class ExpectedResult(TypedDict):
 
 
 # Complete test dictionary type
-
-class FullTestDict(TypedDict):
+@dataclass
+class FullTestDict:
     """A dictionary containing all the information and expected results for any test"""
-    id: str
+    test_name: str
     input: list[str]
     japanesepod: JapanesePodTestDict
     jisho: JishoTestDict
