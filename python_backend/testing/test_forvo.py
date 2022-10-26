@@ -11,8 +11,8 @@ from utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
-@pytest.fixture(params=TEST_DICTS, ids=lambda d:d['id'])
-def test_dict(request):
+@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d:d['id'])
+def fixture_test_dict(request):
     return request.param
 
 
