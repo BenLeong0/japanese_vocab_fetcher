@@ -71,7 +71,7 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
 
     word_list = convert_list_of_str_to_kaki(test_dict.input)
 
-    expected_result_dict: DefaultDict[str, dict[Kaki, Any]] = defaultdict(dict, {
+    expected_result_dict: DefaultDict[str, dict] = defaultdict(dict, {
         "japanesepod": test_dict.japanesepod['expected_output'],
         "jisho": test_dict.jisho['expected_output'],
         "ojad": test_dict.ojad['expected_output'],
