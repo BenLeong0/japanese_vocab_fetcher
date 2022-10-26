@@ -15,15 +15,15 @@ from testing.dicts import TEST_DICTS
 API_URL = "http://127.0.0.1:5000/words"
 
 
-@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d['id'])
+@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d.test_name)
 def fixture_test_dict(request):
     return request.param
 
 
 def test_words_endpoint(test_dict: FullTestDict):
-    word_list = test_dict['input']
+    word_list = test_dict.input
     payload = {'words': word_list}
     result = requests.get(API_URL, data=json.dumps(payload))
 
     assert result.status_code == 200
-    assert result.text == json.dumps(test_dict['expected_result'])
+    assert result.text == json.dumps(test_dict.expected_result)

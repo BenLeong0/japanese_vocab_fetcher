@@ -49,10 +49,10 @@ def build_suzuki_formdata(word_list_string: str) -> dict[str, str]:
     }
 
 
-MEGANE: FullTestDict = {
-    "id": "MEGANE",
-    "input": ["眼鏡"],
-    "japanesepod": {
+MEGANE = FullTestDict(
+    test_name="MEGANE",
+    input=["眼鏡"],
+    japanesepod={
         "expected_sections": {
             "眼鏡": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ眼鏡"),
@@ -110,7 +110,7 @@ MEGANE: FullTestDict = {
             },
         },
     },
-    "jisho": {
+    jisho={
         "expected_sections": {
             '眼鏡': {
                 "url": URL("https://jisho.org/api/v1/search/words?keyword=眼鏡"),
@@ -130,7 +130,7 @@ MEGANE: FullTestDict = {
             },
         },
     },
-    "ojad": {
+    ojad={
         "htmls": get_ojad_html_files("megane"),
         "url": URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:眼鏡/page:%s"),
         "expected_sections": [
@@ -155,7 +155,7 @@ MEGANE: FullTestDict = {
             },
         },
     },
-    "suzuki": {
+    suzuki={
         "html": get_file_as_string("megane", "suzuki"),
         "formdata": build_suzuki_formdata("眼鏡は"),
         "expected_sections": [
@@ -177,7 +177,7 @@ MEGANE: FullTestDict = {
             },
         },
     },
-    "wadoku": {
+    wadoku={
         "html": get_file_as_string("megane", "wadoku"),
         "url": URL("https://www.wadoku.de/search/眼鏡"),
         "expected_sections": [
@@ -221,7 +221,7 @@ MEGANE: FullTestDict = {
             },
         },
     },
-    "forvo": {
+    forvo={
         "expected_sections": {
             '眼鏡': {
                 "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/眼鏡/language/ja/id_lang_speak/76/key/{API_KEY}"),
@@ -260,7 +260,7 @@ MEGANE: FullTestDict = {
             },
         },
     },
-    "tangorin": {
+    tangorin={
         "expected_sections": {
             '眼鏡': {
                 "url": URL("https://tangorin.com/sentences?search=眼鏡",),
@@ -318,7 +318,7 @@ MEGANE: FullTestDict = {
             },
         },
     },
-    "wanikani": {
+    wanikani={
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=眼鏡"),
         "api_response": wanikani_api_responses.MEGANE,
         "result_dict": {
@@ -402,7 +402,7 @@ MEGANE: FullTestDict = {
             },
         },
     },
-    "expected_result": [
+    expected_result=[
         {
             "word": "眼鏡",
             "japanesepod": {
@@ -573,13 +573,13 @@ MEGANE: FullTestDict = {
             },
         },
     ],
-}
+)
 
 
-COMEBACK: FullTestDict= {
-    "id": "COMEBACK",
-    "input": ['カムバック'],
-    "japanesepod": {
+COMEBACK = FullTestDict(
+    test_name="COMEBACK",
+    input=['カムバック'],
+    japanesepod={
         "expected_sections": {
             "カムバック": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJカムバック"),
@@ -613,7 +613,7 @@ COMEBACK: FullTestDict= {
             },
         },
     },
-    "jisho": {
+    jisho={
         "expected_sections": {
             'カムバック': {
                 "url": URL("https://jisho.org/api/v1/search/words?keyword=カムバック"),
@@ -633,7 +633,7 @@ COMEBACK: FullTestDict= {
             },
         },
     },
-    "ojad": {
+    ojad={
         "htmls": get_ojad_html_files("comeback"),
         "url": URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:カムバック/page:%s"),
         "expected_sections": [
@@ -661,7 +661,7 @@ COMEBACK: FullTestDict= {
             },
         },
     },
-    "suzuki": {
+    suzuki={
         "html": get_file_as_string("comeback", "suzuki"),
         "formdata": build_suzuki_formdata("カムバックは"),
         "expected_sections": [
@@ -683,7 +683,7 @@ COMEBACK: FullTestDict= {
             },
         },
     },
-    "wadoku": {
+    wadoku={
         "html": get_file_as_string("comeback", "wadoku"),
         "url": URL("https://www.wadoku.de/search/カムバック"),
         "expected_sections": [
@@ -717,7 +717,7 @@ COMEBACK: FullTestDict= {
             },
         },
     },
-    "forvo": {
+    forvo={
         "expected_sections": {
             'カムバック': {
                 "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/カムバック/language/ja/id_lang_speak/76/key/{API_KEY}"),
@@ -740,7 +740,7 @@ COMEBACK: FullTestDict= {
             },
         },
     },
-    "tangorin": {
+    tangorin={
         "expected_sections": {
             'カムバック': {
                 "url": URL("https://tangorin.com/sentences?search=カムバック",),
@@ -757,7 +757,7 @@ COMEBACK: FullTestDict= {
             },
         },
     },
-    "wanikani": {
+    wanikani={
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=カムバック"),
         "api_response": wanikani_api_responses.COMEBACK,
         "result_dict": {},
@@ -772,7 +772,7 @@ COMEBACK: FullTestDict= {
             },
         },
     },
-    "expected_result": [
+    expected_result=[
         {
             "word": "カムバック",
             "japanesepod": {
@@ -847,13 +847,13 @@ COMEBACK: FullTestDict= {
             },
         },
     ],
-}
+)
 
 
-TABERU_GAKUSEI: FullTestDict = {
-    "id": "TABERU_GAKUSEI",
-    "input": ['食べる', '学生'],
-    "japanesepod": {
+TABERU_GAKUSEI = FullTestDict(
+    test_name="TABERU_GAKUSEI",
+    input=['食べる', '学生'],
+    japanesepod={
         "expected_sections": {
             "食べる": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ食べる"),
@@ -957,7 +957,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     },
-    "jisho": {
+    jisho={
         "expected_sections": {
             '食べる': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=食べる"),
@@ -991,7 +991,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     },
-    "ojad": {
+    ojad={
         "htmls": get_ojad_html_files("taberu_gakusei"),
         "url": URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:食べる%%20学生/page:%s"),
         "expected_sections": [
@@ -1032,7 +1032,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     },
-    "suzuki": {
+    suzuki={
         "html": get_file_as_string("taberu_gakusei", "suzuki"),
         "formdata": build_suzuki_formdata("食べるは\n学生は"),
         "expected_sections": [
@@ -1068,7 +1068,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     },
-    "wadoku": {
+    wadoku={
         "html": get_file_as_string("taberu_gakusei", "wadoku"),
         "url": URL("https://www.wadoku.de/search/食べる%20学生"),
         "expected_sections": [
@@ -1106,7 +1106,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     },
-    "forvo": {
+    forvo={
         "expected_sections": {
             '食べる': {
                 "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/食べる/language/ja/id_lang_speak/76/key/{API_KEY}"),
@@ -1218,7 +1218,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     },
-    "tangorin": {
+    tangorin={
         "expected_sections": {
             '食べる': {
                 "url": URL("https://tangorin.com/sentences?search=食べる",),
@@ -1336,7 +1336,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     },
-    "wanikani": {
+    wanikani={
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=食べる,学生"),
         "api_response": wanikani_api_responses.TABERU_GAKUSEI,
         "result_dict": {
@@ -1528,7 +1528,7 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     },
-    "expected_result": [
+    expected_result=[
         {
             "word": "食べる",
             "japanesepod": {
@@ -1927,13 +1927,13 @@ TABERU_GAKUSEI: FullTestDict = {
             },
         },
     ],
-}
+)
 
 
-KOTOBA: FullTestDict = {
-    "id": "KOTOBA",
-    "input": ['言葉'],
-    "japanesepod": {
+KOTOBA = FullTestDict(
+    test_name="KOTOBA",
+    input=['言葉'],
+    japanesepod={
         "expected_sections": {
             "言葉": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ言葉"),
@@ -2015,7 +2015,7 @@ KOTOBA: FullTestDict = {
             },
         },
     },
-    "jisho": {
+    jisho={
         "expected_sections": {
             '言葉': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=言葉"),
@@ -2035,7 +2035,7 @@ KOTOBA: FullTestDict = {
             },
         },
     },
-    "ojad": {
+    ojad={
         "htmls": get_ojad_html_files("kotoba"),
         "url": URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:言葉/page:%s"),
         "expected_sections": [
@@ -2060,7 +2060,7 @@ KOTOBA: FullTestDict = {
             },
         },
     },
-    "suzuki": {
+    suzuki={
         "html": get_file_as_string("kotoba", "suzuki"),
         "formdata": build_suzuki_formdata("言葉は"),
         "expected_sections": [
@@ -2082,7 +2082,7 @@ KOTOBA: FullTestDict = {
             },
         },
     },
-    "wadoku": {
+    wadoku={
         "html": get_file_as_string("kotoba", "wadoku"),
         "url": URL("https://www.wadoku.de/search/言葉"),
         "expected_sections": [
@@ -2126,7 +2126,7 @@ KOTOBA: FullTestDict = {
             },
         },
     },
-    "forvo": {
+    forvo={
         "expected_sections": {
             '言葉': {
                 "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/言葉/language/ja/id_lang_speak/76/key/{API_KEY}"),
@@ -2173,7 +2173,7 @@ KOTOBA: FullTestDict = {
             },
         },
     },
-    "tangorin": {
+    tangorin={
         "expected_sections": {
             '言葉': {
                 "url": URL("https://tangorin.com/sentences?search=言葉",),
@@ -2231,7 +2231,7 @@ KOTOBA: FullTestDict = {
             },
         },
     },
-    "wanikani": {
+    wanikani={
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=言葉"),
         "api_response": wanikani_api_responses.KOTOBA,
         "result_dict": {
@@ -2331,7 +2331,7 @@ KOTOBA: FullTestDict = {
             },
         },
     },
-    "expected_result": [
+    expected_result=[
         {
             "word": "言葉",
             "japanesepod": {
@@ -2533,13 +2533,13 @@ KOTOBA: FullTestDict = {
             },
         },
     ],
-}
+)
 
 
-BADINPUT: FullTestDict = {
-    "id": "BADINPUT",
-    "input": ['BADINPUT'],
-    "japanesepod": {
+BADINPUT = FullTestDict(
+    test_name="BADINPUT",
+    input=['BADINPUT'],
+    japanesepod={
         "expected_sections": {
             "BADINPUT": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJBADINPUT"),
@@ -2571,7 +2571,7 @@ BADINPUT: FullTestDict = {
             },
         },
     },
-    "jisho": {
+    jisho={
         "expected_sections": {
             'BADINPUT': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=BADINPUT"),
@@ -2591,7 +2591,7 @@ BADINPUT: FullTestDict = {
             },
         },
     },
-    "ojad": {
+    ojad={
         "htmls": get_ojad_html_files("badinput"),
         "url": URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:BADINPUT/page:%s"),
         "expected_sections": [],
@@ -2606,7 +2606,7 @@ BADINPUT: FullTestDict = {
             },
         },
     },
-    "suzuki": {
+    suzuki={
         "html": get_file_as_string("badinput", "suzuki"),
         "formdata": build_suzuki_formdata("BADINPUTは"),
         "expected_sections": [
@@ -2628,7 +2628,7 @@ BADINPUT: FullTestDict = {
             },
         },
     },
-    "wadoku": {
+    wadoku={
         "html": get_file_as_string("badinput", "wadoku"),
         "url": URL("https://www.wadoku.de/search/BADINPUT"),
         "expected_sections": [],
@@ -2643,7 +2643,7 @@ BADINPUT: FullTestDict = {
             },
         },
     },
-    "forvo": {
+    forvo={
         "expected_sections": {
             'BADINPUT': {
                 "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/BADINPUT/language/ja/id_lang_speak/76/key/{API_KEY}"),
@@ -2661,7 +2661,7 @@ BADINPUT: FullTestDict = {
             },
         },
     },
-    "tangorin": {
+    tangorin={
         "expected_sections": {
             'BADINPUT': {
                 "url": URL("https://tangorin.com/sentences?search=BADINPUT",),
@@ -2678,7 +2678,7 @@ BADINPUT: FullTestDict = {
             },
         },
     },
-    "wanikani": {
+    wanikani={
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=BADINPUT"),
         "api_response": wanikani_api_responses.BADINPUT,
         "result_dict": {},
@@ -2693,7 +2693,7 @@ BADINPUT: FullTestDict = {
             },
         },
     },
-    "expected_result": [
+    expected_result=[
         {
             "word": "BADINPUT",
             "japanesepod": {
@@ -2757,13 +2757,13 @@ BADINPUT: FullTestDict = {
             },
         },
     ],
-}
+)
 
 
-USAGI_IKU_KAGO: FullTestDict = {
-    "id": "USAGI_IKU_KAGO",
-    "input": ['兎', '行く', '籠'],
-    "japanesepod": {
+USAGI_IKU_KAGO = FullTestDict(
+    test_name="USAGI_IKU_KAGO",
+    input=['兎', '行く', '籠'],
+    japanesepod={
         "expected_sections": {
             "兎": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ兎"),
@@ -3021,7 +3021,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     },
-    "jisho": {
+    jisho={
         "expected_sections": {
             '兎': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=兎"),
@@ -3069,7 +3069,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     },
-    "ojad": {
+    ojad={
         "htmls": get_ojad_html_files("usagi_iku_kago"),
         "url": URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:兎%%20行く%%20籠/page:%s"),
         "expected_sections": [
@@ -3125,7 +3125,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     },
-    "suzuki": {
+    suzuki={
         "html": get_file_as_string("usagi_iku_kago", "suzuki"),
         "formdata": build_suzuki_formdata("兎は\n行くは\n籠は"),
         "expected_sections": [
@@ -3175,7 +3175,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     },
-    "wadoku": {
+    wadoku={
         "html": get_file_as_string("usagi_iku_kago", "wadoku"),
         "url": URL("https://www.wadoku.de/search/兎%20行く%20籠"),
         "expected_sections": [
@@ -3255,7 +3255,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     },
-    "forvo": {
+    forvo={
         "expected_sections": {
             '兎': {
                 "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/兎/language/ja/id_lang_speak/76/key/{API_KEY}"),
@@ -3348,7 +3348,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     },
-    "tangorin": {
+    tangorin={
         "expected_sections": {
             '兎': {
                 "url": URL("https://tangorin.com/sentences?search=兎",),
@@ -3510,7 +3510,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     },
-    "wanikani": {
+    wanikani={
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=兎,行く,籠"),
         "api_response": wanikani_api_responses.USAGI_IKU_KAGO,
         "result_dict": {
@@ -3626,7 +3626,7 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     },
-    "expected_result": [
+    expected_result=[
         {
             "word": "兎",
             "japanesepod": {
@@ -4136,13 +4136,13 @@ USAGI_IKU_KAGO: FullTestDict = {
             },
         },
     ],
-}
+)
 
 
-SHIZUKA: FullTestDict = {
-    "id": "SHIZUKA",
-    "input": ['静か'],
-    "japanesepod": {
+SHIZUKA = FullTestDict(
+    test_name="SHIZUKA",
+    input=['静か'],
+    japanesepod={
         "expected_sections": {
             "静か": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ静か"),
@@ -4194,7 +4194,7 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
-    "jisho": {
+    jisho={
         "expected_sections": {
             '静か': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=静か"),
@@ -4214,7 +4214,7 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
-    "ojad": {
+    ojad={
         "htmls": get_ojad_html_files("shizuka"),
         "url": URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:静か/page:%s"),
         "expected_sections": [
@@ -4240,7 +4240,7 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
-    "suzuki": {
+    suzuki={
         "html": get_file_as_string("shizuka", "suzuki"),
         "formdata": build_suzuki_formdata("静かは"),
         "expected_sections": [
@@ -4262,7 +4262,7 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
-    "wadoku": {
+    wadoku={
         "html": get_file_as_string("shizuka", "wadoku"),
         "url": URL("https://www.wadoku.de/search/静か"),
         "expected_sections": [
@@ -4317,7 +4317,7 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
-    "forvo": {
+    forvo={
         "expected_sections": {
             '静か': {
                 "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/静か/language/ja/id_lang_speak/76/key/{API_KEY}"),
@@ -4356,7 +4356,7 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
-    "tangorin": {
+    tangorin={
         "expected_sections": {
             '静か': {
                 "url": URL("https://tangorin.com/sentences?search=静か",),
@@ -4414,7 +4414,7 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
-    "wanikani": {
+    wanikani={
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=静か"),
         "api_response": wanikani_api_responses.SHIZUKA,
         "result_dict": {
@@ -4514,7 +4514,7 @@ SHIZUKA: FullTestDict = {
             },
         },
     },
-    "expected_result": [
+    expected_result=[
         {
             "word": "静か",
             "japanesepod": {
@@ -4688,13 +4688,13 @@ SHIZUKA: FullTestDict = {
             },
         },
     ],
-}
+)
 
 
-NARU: FullTestDict = {
-    "id": "NARU",
-    "input": ['なる'],
-    "japanesepod": {
+NARU = FullTestDict(
+    test_name="NARU",
+    input=['なる'],
+    japanesepod={
         "expected_sections": {
             "なる": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJなる"),
@@ -4746,7 +4746,7 @@ NARU: FullTestDict = {
             },
         },
     },
-    "jisho": {
+    jisho={
         "expected_sections": {
             'なる': {
                 "url": URL(f"https://jisho.org/api/v1/search/words?keyword=なる"),
@@ -4766,7 +4766,7 @@ NARU: FullTestDict = {
             },
         },
     },
-    "ojad": {
+    ojad={
         "htmls": get_ojad_html_files("naru"),
         "url": URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:なる/page:%s"),
         "expected_sections": [
@@ -4810,7 +4810,7 @@ NARU: FullTestDict = {
             },
         },
     },
-    "suzuki": {
+    suzuki={
         "html": get_file_as_string("naru", "suzuki"),
         "formdata": build_suzuki_formdata("なるは"),
         "expected_sections": [
@@ -4832,7 +4832,7 @@ NARU: FullTestDict = {
             },
         },
     },
-    "wadoku": {
+    wadoku={
         "html": get_file_as_string("naru", "wadoku"),
         "url": URL("https://www.wadoku.de/search/なる"),
         "expected_sections": [
@@ -4878,7 +4878,7 @@ NARU: FullTestDict = {
             },
         },
     },
-    "forvo": {
+    forvo={
         "expected_sections": {
             'なる': {
                 "url": URL(f"https://apifree.forvo.com/action/word-pronunciations/format/json/word/なる/language/ja/id_lang_speak/76/key/{API_KEY}"),
@@ -4913,7 +4913,7 @@ NARU: FullTestDict = {
             },
         },
     },
-    "tangorin": {
+    tangorin={
         "expected_sections": {
             'なる': {
                 "url": URL("https://tangorin.com/sentences?search=なる",),
@@ -4971,7 +4971,7 @@ NARU: FullTestDict = {
             },
         },
     },
-    "wanikani": {
+    wanikani={
         "url": URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=なる"),
         "api_response": wanikani_api_responses.NARU,
         "result_dict": {},
@@ -4986,7 +4986,7 @@ NARU: FullTestDict = {
             },
         },
     },
-    "expected_result": [
+    expected_result=[
         {
             "word": "なる",
             "japanesepod": {
@@ -5113,7 +5113,7 @@ NARU: FullTestDict = {
             },
         },
     ],
-}
+)
 
 
 TEST_DICTS = [
@@ -5128,7 +5128,7 @@ TEST_DICTS = [
 ]
 
 
-# TEMPLATE: FullTestDict = {
+# TEMPLATE = FullTestDict(
 #     "id": "",
 #     "input": [''],
 #     "forvo": {

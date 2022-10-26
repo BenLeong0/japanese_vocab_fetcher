@@ -11,7 +11,7 @@ from utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
-@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d['id'])
+@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d.test_name)
 def fixture_test_dict(request):
     return request.param
 
@@ -40,9 +40,9 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - WHEN the accent dict is generated
     - THEN check all the wanikani info is correct and complete
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    expected_output = test_dict['wanikani']['expected_output']
-    api_response = test_dict['wanikani']['api_response']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    expected_output = test_dict.wanikani['expected_output']
+    api_response = test_dict.wanikani['api_response']
 
     monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(json.dumps(api_response)))
 
@@ -55,7 +55,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     - WHEN the API returns an unsuccessful status code
     - THEN check the failed dict is returned as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "api_error"})
     expected_output = {
         word: {
@@ -63,7 +63,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": test_dict["wanikani"]["url"]
+                "url": test_dict.wanikani["url"]
             },
             "main_data": {
                 "audio": [],
@@ -93,8 +93,8 @@ def test_get_api_response(monkeypatch, test_dict: FullTestDict):
     - WHEN the API response is returned
     - THEN check the result is as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    api_response = test_dict['wanikani']['api_response']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    api_response = test_dict.wanikani['api_response']
 
     def check_get_request(url, headers):
         auth_regex = r"Bearer " + API_KEY_REGEX
@@ -114,8 +114,8 @@ def test_get_url(test_dict: FullTestDict):
     - WHEN the API URL is generated
     - THEN check the URL is as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    expected_url = test_dict['wanikani']['url']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    expected_url = test_dict.wanikani['url']
 
     assert wanikani.get_url(word_list) == expected_url
 
@@ -126,8 +126,8 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     - WHEN the API is called
     - THEN check the response is handled correctly
     """
-    url = test_dict['wanikani']['url']
-    api_response = test_dict['wanikani']['api_response']
+    url = test_dict.wanikani['url']
+    api_response = test_dict.wanikani['api_response']
 
     def validate_get_request(url, headers):
         auth_regex = r"Bearer " + API_KEY_REGEX
@@ -150,7 +150,7 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
     - WHEN an unsuccessful HTTP request is made
     - THEN check an exception is thrown
     """
-    url = test_dict['wanikani']['url']
+    url = test_dict.wanikani['url']
     response = json.dumps({"error": "could not connect"})
     monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(response, status_code=400))
 
@@ -187,7 +187,7 @@ def test_build_result_dict(test_dict: FullTestDict):
     - WHEN the result dict is built
     - THEN check the result is as expected
     """
-    api_response = test_dict["wanikani"]["api_response"]
-    expected_result = convert_dict_str_keys_to_kaki(test_dict["wanikani"]["result_dict"])
+    api_response = test_dict.wanikani["api_response"]
+    expected_result = convert_dict_str_keys_to_kaki(test_dict.wanikani["result_dict"])
 
     assert dict(wanikani.build_result_dict(api_response)) == expected_result
