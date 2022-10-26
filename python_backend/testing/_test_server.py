@@ -15,7 +15,7 @@ from testing.dicts import TEST_DICTS
 API_URL = "http://127.0.0.1:5000/words"
 
 
-@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d:d['id'])
+@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d['id'])
 def fixture_test_dict(request):
     return request.param
 
