@@ -16,7 +16,7 @@ else:
 print(API_KEY)
 
 
-def get_file_as_string(filename: str, module: str):
+def get_file_as_string(module: str, filename: str):
     path = f"testing/html_files/{module}_{filename}.html"
     with open(path, "r", encoding="utf8") as myfile:
         return re.sub(r'>\s*<', '><', myfile.read())
@@ -56,7 +56,7 @@ MEGANE = FullTestDict(
         "expected_sections": {
             "眼鏡": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ眼鏡"),
-                "html": get_file_as_string("megane", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "megane"),
                 "expected_rows": [
                     {
                         "raw_row": "眼鏡 [めがね(P);がんきょう;メガネ(P)] /(n) (1) (uk) glasses/eyeglasses/spectacles/(n) (2) (めがね, メガネ only) (uk) judgment/judgement/discrimination/discernment/insight/(P)/",
@@ -156,7 +156,7 @@ MEGANE = FullTestDict(
         },
     },
     suzuki={
-        "html": get_file_as_string("megane", "suzuki"),
+        "html": get_file_as_string("suzuki", "megane"),
         "formdata": build_suzuki_formdata("眼鏡は"),
         "expected_sections": [
             {
@@ -178,7 +178,7 @@ MEGANE = FullTestDict(
         },
     },
     wadoku={
-        "html": get_file_as_string("megane", "wadoku"),
+        "html": get_file_as_string("wadoku", "megane"),
         "url": URL("https://www.wadoku.de/search/眼鏡"),
         "expected_sections": [
             {
@@ -264,7 +264,7 @@ MEGANE = FullTestDict(
         "expected_sections": {
             '眼鏡': {
                 "url": URL("https://tangorin.com/sentences?search=眼鏡",),
-                "html": get_file_as_string("megane", "tangorin"),
+                "html": get_file_as_string("tangorin", "megane"),
             },
         },
         "expected_output": {
@@ -583,7 +583,7 @@ COMEBACK = FullTestDict(
         "expected_sections": {
             "カムバック": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJカムバック"),
-                "html": get_file_as_string("comeback", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "comeback"),
                 "expected_rows": [
                     {
                         "raw_row": "カムバック /(n,vs,vi) comeback/(P)/",
@@ -662,7 +662,7 @@ COMEBACK = FullTestDict(
         },
     },
     suzuki={
-        "html": get_file_as_string("comeback", "suzuki"),
+        "html": get_file_as_string("suzuki", "comeback"),
         "formdata": build_suzuki_formdata("カムバックは"),
         "expected_sections": [
             {
@@ -684,7 +684,7 @@ COMEBACK = FullTestDict(
         },
     },
     wadoku={
-        "html": get_file_as_string("comeback", "wadoku"),
+        "html": get_file_as_string("wadoku", "comeback"),
         "url": URL("https://www.wadoku.de/search/カムバック"),
         "expected_sections": [
             {
@@ -744,7 +744,7 @@ COMEBACK = FullTestDict(
         "expected_sections": {
             'カムバック': {
                 "url": URL("https://tangorin.com/sentences?search=カムバック",),
-                "html": get_file_as_string("comeback", "tangorin"),
+                "html": get_file_as_string("tangorin", "comeback"),
             },
         },
         "expected_output": {
@@ -857,7 +857,7 @@ TABERU_GAKUSEI = FullTestDict(
         "expected_sections": {
             "食べる": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ食べる"),
-                "html": get_file_as_string("taberu", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "taberu"),
                 "expected_rows": [
                     {
                         "raw_row": "食べる(P);喰べる(iK) [たべる] /(v1,vt) (1) to eat/(v1,vt) (2) to live on (e.g. a salary)/to live off/to subsist on/(P)/",
@@ -879,7 +879,7 @@ TABERU_GAKUSEI = FullTestDict(
             },
             "学生": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ学生"),
-                "html": get_file_as_string("gakusei", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "gakusei"),
                 "expected_rows": [
                     {
                         "raw_row": "学生 [がくしょう;がくそう] /(n) (1) (arch) Heian-period student of government administration/(n) (2) (arch) Buddhist scholar/researcher at a Buddhist temple/person studying Buddhism/(n) (3) (arch) learning/scholarship/",
@@ -1033,7 +1033,7 @@ TABERU_GAKUSEI = FullTestDict(
         },
     },
     suzuki={
-        "html": get_file_as_string("taberu_gakusei", "suzuki"),
+        "html": get_file_as_string("suzuki", "taberu_gakusei"),
         "formdata": build_suzuki_formdata("食べるは\n学生は"),
         "expected_sections": [
             {
@@ -1069,7 +1069,7 @@ TABERU_GAKUSEI = FullTestDict(
         },
     },
     wadoku={
-        "html": get_file_as_string("taberu_gakusei", "wadoku"),
+        "html": get_file_as_string("wadoku", "taberu_gakusei"),
         "url": URL("https://www.wadoku.de/search/食べる%20学生"),
         "expected_sections": [
             {
@@ -1222,11 +1222,11 @@ TABERU_GAKUSEI = FullTestDict(
         "expected_sections": {
             '食べる': {
                 "url": URL("https://tangorin.com/sentences?search=食べる",),
-                "html": get_file_as_string("taberu", "tangorin"),
+                "html": get_file_as_string("tangorin", "taberu"),
             },
             '学生': {
                 "url": URL("https://tangorin.com/sentences?search=学生",),
-                "html": get_file_as_string("gakusei", "tangorin"),
+                "html": get_file_as_string("tangorin", "gakusei"),
             },
         },
         "expected_output": {
@@ -1937,7 +1937,7 @@ KOTOBA = FullTestDict(
         "expected_sections": {
             "言葉": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ言葉"),
-                "html": get_file_as_string("kotoba", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "kotoba"),
                 "expected_rows": [
                     {
                         "raw_row": "言葉(P);詞;辞 [ことば(P);けとば(言葉)(ok)] /(n) (1) (See 言語) language/dialect/(n) (2) word/phrase/expression/term/(n) (3) speech/(manner of) speaking/(use of) language/(n) (4) words/remark/statement/comment/(n) (5) learning to speak/language acquisition/(P)/",
@@ -2061,7 +2061,7 @@ KOTOBA = FullTestDict(
         },
     },
     suzuki={
-        "html": get_file_as_string("kotoba", "suzuki"),
+        "html": get_file_as_string("suzuki", "kotoba"),
         "formdata": build_suzuki_formdata("言葉は"),
         "expected_sections": [
             {
@@ -2083,7 +2083,7 @@ KOTOBA = FullTestDict(
         },
     },
     wadoku={
-        "html": get_file_as_string("kotoba", "wadoku"),
+        "html": get_file_as_string("wadoku", "kotoba"),
         "url": URL("https://www.wadoku.de/search/言葉"),
         "expected_sections": [
             {
@@ -2177,7 +2177,7 @@ KOTOBA = FullTestDict(
         "expected_sections": {
             '言葉': {
                 "url": URL("https://tangorin.com/sentences?search=言葉",),
-                "html": get_file_as_string("kotoba", "tangorin"),
+                "html": get_file_as_string("tangorin", "kotoba"),
             },
         },
         "expected_output": {
@@ -2543,7 +2543,7 @@ BADINPUT = FullTestDict(
         "expected_sections": {
             "BADINPUT": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJBADINPUT"),
-                "html": get_file_as_string("badinput", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "badinput"),
                 "expected_rows": [
                     {
                         "raw_row": "ボディー(P);ボディ(P);ボデー /(n) (1) body/(n) (2) (abbr) {sports} (See ボディーブロー) body blow (in boxing)/(P)/",
@@ -2607,7 +2607,7 @@ BADINPUT = FullTestDict(
         },
     },
     suzuki={
-        "html": get_file_as_string("badinput", "suzuki"),
+        "html": get_file_as_string("suzuki", "badinput"),
         "formdata": build_suzuki_formdata("BADINPUTは"),
         "expected_sections": [
             {
@@ -2629,7 +2629,7 @@ BADINPUT = FullTestDict(
         },
     },
     wadoku={
-        "html": get_file_as_string("badinput", "wadoku"),
+        "html": get_file_as_string("wadoku", "badinput"),
         "url": URL("https://www.wadoku.de/search/BADINPUT"),
         "expected_sections": [],
         "full_accent_dict" : defaultdict(list),
@@ -2665,7 +2665,7 @@ BADINPUT = FullTestDict(
         "expected_sections": {
             'BADINPUT': {
                 "url": URL("https://tangorin.com/sentences?search=BADINPUT",),
-                "html": get_file_as_string("badinput", "tangorin"),
+                "html": get_file_as_string("tangorin", "badinput"),
             },
         },
         "expected_output": {
@@ -2767,7 +2767,7 @@ USAGI_IKU_KAGO = FullTestDict(
         "expected_sections": {
             "兎": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ兎"),
-                "html": get_file_as_string("usagi", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "usagi"),
                 "expected_rows": [
                     {
                         "raw_row": "兎(P);兔;菟(iK) [うさぎ(P);う(兎)(ok);ウサギ] /(n) (uk) rabbit/hare/coney/cony/lagomorph (esp. leporids)/(P)/",
@@ -2808,7 +2808,7 @@ USAGI_IKU_KAGO = FullTestDict(
             },
             "行く": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ行く"),
-                "html": get_file_as_string("iku", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "iku"),
                 "expected_rows": [
                     {
                         "raw_row": "行く(P);逝く;往く(oK) [いく(P);ゆく(P)] /(v5k-s,vi) (1) (See 来る・くる・1) to go/to move (in a direction or towards a specific location)/to head (towards)/to be transported (towards)/to reach/(v5k-s,vi) (2) (い sometimes omitted in auxiliary use) (See 旨く行く) to proceed/to take place/(v5k-s,vi) (3) to pass through/to come and go/(v5k-s,vi) (4) to walk/(v5k-s,vi) (5) (逝く only) to die/to pass away/(v5k-s,vi) (6) to do (in a specific way)/(v5k-s,vi) (7) to stream/to flow/(v5k-s,aux-v) (8) (uk) (after the -te form of a verb) to continue/(v5k-s,vi) (9) (uk) to have an orgasm/to come/to cum/(v5k-s,vi) (10) (uk) (sl) to trip/to get high/to have a drug-induced hallucination/(P)/",
@@ -2846,7 +2846,7 @@ USAGI_IKU_KAGO = FullTestDict(
             },
             "籠": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ籠"),
-                "html": get_file_as_string("kago", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "kago"),
                 "expected_rows": [
                     {
                         "raw_row": "籠(P);篭(P) [かご(P);カゴ(P)] /(n) (uk) basket (shopping, etc.)/hamper/cage/(P)/",
@@ -3126,7 +3126,7 @@ USAGI_IKU_KAGO = FullTestDict(
         },
     },
     suzuki={
-        "html": get_file_as_string("usagi_iku_kago", "suzuki"),
+        "html": get_file_as_string("suzuki", "usagi_iku_kago"),
         "formdata": build_suzuki_formdata("兎は\n行くは\n籠は"),
         "expected_sections": [
             {
@@ -3176,7 +3176,7 @@ USAGI_IKU_KAGO = FullTestDict(
         },
     },
     wadoku={
-        "html": get_file_as_string("usagi_iku_kago", "wadoku"),
+        "html": get_file_as_string("wadoku", "usagi_iku_kago"),
         "url": URL("https://www.wadoku.de/search/兎%20行く%20籠"),
         "expected_sections": [
             {
@@ -3352,15 +3352,15 @@ USAGI_IKU_KAGO = FullTestDict(
         "expected_sections": {
             '兎': {
                 "url": URL("https://tangorin.com/sentences?search=兎",),
-                "html": get_file_as_string("usagi", "tangorin"),
+                "html": get_file_as_string("tangorin", "usagi"),
             },
             '行く': {
                 "url": URL("https://tangorin.com/sentences?search=行く",),
-                "html": get_file_as_string("iku", "tangorin"),
+                "html": get_file_as_string("tangorin", "iku"),
             },
             '籠': {
                 "url": URL("https://tangorin.com/sentences?search=籠",),
-                "html": get_file_as_string("kago", "tangorin"),
+                "html": get_file_as_string("tangorin", "kago"),
             },
         },
         "expected_output": {
@@ -4146,7 +4146,7 @@ SHIZUKA = FullTestDict(
         "expected_sections": {
             "静か": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ静か"),
-                "html": get_file_as_string("shizuka", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "shizuka"),
                 "expected_rows": [
                     {
                         "raw_row": "静か(P);閑か [しずか] /(adj-na) (1) quiet/silent/(adj-na) (2) slow/unhurried/(adj-na) (3) calm/peaceful/(P)/",
@@ -4241,7 +4241,7 @@ SHIZUKA = FullTestDict(
         },
     },
     suzuki={
-        "html": get_file_as_string("shizuka", "suzuki"),
+        "html": get_file_as_string("suzuki", "shizuka"),
         "formdata": build_suzuki_formdata("静かは"),
         "expected_sections": [
             {
@@ -4263,7 +4263,7 @@ SHIZUKA = FullTestDict(
         },
     },
     wadoku={
-        "html": get_file_as_string("shizuka", "wadoku"),
+        "html": get_file_as_string("wadoku", "shizuka"),
         "url": URL("https://www.wadoku.de/search/静か"),
         "expected_sections": [
             {
@@ -4360,7 +4360,7 @@ SHIZUKA = FullTestDict(
         "expected_sections": {
             '静か': {
                 "url": URL("https://tangorin.com/sentences?search=静か",),
-                "html": get_file_as_string("shizuka", "tangorin"),
+                "html": get_file_as_string("tangorin", "shizuka"),
             },
         },
         "expected_output": {
@@ -4698,7 +4698,7 @@ NARU = FullTestDict(
         "expected_sections": {
             "なる": {
                 "url": URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJなる"),
-                "html": get_file_as_string("naru", "japanesepod"),
+                "html": get_file_as_string("japanesepod", "naru"),
                 "expected_rows": [
                     {
                         "raw_row": "成る(P);為る [なる] /(v5r,vi) (1) (uk) to become/to get/to grow/to turn/to reach/to attain/(v5r,vi) (2) (uk) to result in/to turn out/to end up/to prove (to be)/(v5r,vi) (3) (uk) (as ...からなる or ...よりなる) to consist of/to be composed of/to be made up of/(v5r,vi) (4) (uk) to be completed/to be realized/to succeed/to be attained/to be accomplished/(v5r,vi) (5) (uk) to change (into)/to turn (into)/to transform/(v5r,vi) (6) (uk) to come (to do)/to begin (to do)/to grow (to do)/(v5r,vi) (7) (uk) to come to/to amount to/to add up to/to make/(v5r,vi) (8) (uk) to play (the part of)/to act as/(v5r,vi) (9) (uk) to be used for/to be useful for/to serve as/(v5r,vi) (10) {shogi} to be promoted/(aux-v,v5r) (11) (hon) (uk) (as お + masu stem + になる, or ご + noun + になる) to do .../(P)/",
@@ -4811,7 +4811,7 @@ NARU = FullTestDict(
         },
     },
     suzuki={
-        "html": get_file_as_string("naru", "suzuki"),
+        "html": get_file_as_string("suzuki", "naru"),
         "formdata": build_suzuki_formdata("なるは"),
         "expected_sections": [
             {
@@ -4833,7 +4833,7 @@ NARU = FullTestDict(
         },
     },
     wadoku={
-        "html": get_file_as_string("naru", "wadoku"),
+        "html": get_file_as_string("wadoku", "naru"),
         "url": URL("https://www.wadoku.de/search/なる"),
         "expected_sections": [
             {
@@ -4917,7 +4917,7 @@ NARU = FullTestDict(
         "expected_sections": {
             'なる': {
                 "url": URL("https://tangorin.com/sentences?search=なる",),
-                "html": get_file_as_string("naru", "tangorin"),
+                "html": get_file_as_string("tangorin", "naru"),
             },
         },
         "expected_output": {
@@ -5169,7 +5169,7 @@ TEST_DICTS = [
 #         },
 #     },
 #     "suzuki": {
-#         "html": get_file_as_string("", "suzuki"),
+#         "html": get_file_as_string("suzuki", ""),
 #         "formdata": build_suzuki_formdata(""),
 #         "expected_sections": [
 #             {
@@ -5185,7 +5185,7 @@ TEST_DICTS = [
 #         },
 #     },
 #     "wadoku": {
-#         "html": get_file_as_string("", "wadoku"),
+#         "html": get_file_as_string("wadoku", ""),
 #         "url": "https://www.wadoku.de/search/",
 #         "expected_sections": [
 #             {
