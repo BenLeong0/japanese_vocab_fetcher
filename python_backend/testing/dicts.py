@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
 from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-from testing import jisho_api_responses, wanikani_api_responses
+from testing import jisho_api_responses, tatoeba_api_responses, wanikani_api_responses
 from testing.dict_typing import (
     ForvoTestDict,
     FullTestDict,
@@ -15,6 +15,7 @@ from testing.dict_typing import (
     OjadTestDict,
     SuzukiTestDict,
     TangorinTestDict,
+    TatoebaTestDict,
     WadokuTestDict,
     WanikaniTestDict,
 )
@@ -328,6 +329,22 @@ MEGANE = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            '眼鏡': {
+                "api_response": tatoeba_api_responses.MEGANE,
+            },
+        },
+        expected_output={
+            '眼鏡': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=眼鏡"),
         api_response=wanikani_api_responses.MEGANE,
@@ -541,6 +558,13 @@ MEGANE = FullTestDict(
                             "en": "His eyes were smiling behind his glasses.",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -767,6 +791,22 @@ COMEBACK = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            'カムバック': {
+                "api_response": tatoeba_api_responses.COMEBACK,
+            },
+        },
+        expected_output={
+            'カムバック': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=カムバック"),
         api_response=wanikani_api_responses.COMEBACK,
@@ -845,6 +885,13 @@ COMEBACK = FullTestDict(
                 "main_data": {
                     "sentences": [
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -1346,6 +1393,32 @@ TABERU_GAKUSEI = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            '食べる': {
+                "api_response": tatoeba_api_responses.TABERU,
+            },
+            '学生': {
+                "api_response": tatoeba_api_responses.GAKUSEI,
+            },
+        },
+        expected_output={
+            '食べる': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '学生': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=食べる,学生"),
         api_response=wanikani_api_responses.TABERU_GAKUSEI,
@@ -1692,6 +1765,13 @@ TABERU_GAKUSEI = FullTestDict(
                     ],
                 },
             },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -1887,6 +1967,13 @@ TABERU_GAKUSEI = FullTestDict(
                             "en": "I brought the point home to the student.",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -2241,6 +2328,22 @@ KOTOBA = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            '言葉': {
+                "api_response": tatoeba_api_responses.KOTOBA,
+            },
+        },
+        expected_output={
+            '言葉': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=言葉"),
         api_response=wanikani_api_responses.KOTOBA,
@@ -2495,6 +2598,13 @@ KOTOBA = FullTestDict(
                     ],
                 },
             },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -2688,6 +2798,22 @@ BADINPUT = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            'BADINPUT': {
+                "api_response": tatoeba_api_responses.BADINPUT,
+            },
+        },
+        expected_output={
+            'BADINPUT': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=BADINPUT"),
         api_response=wanikani_api_responses.BADINPUT,
@@ -2755,6 +2881,13 @@ BADINPUT = FullTestDict(
                 "main_data": {
                     "sentences": [
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -3520,6 +3653,42 @@ USAGI_IKU_KAGO = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            '兎': {
+                "api_response": tatoeba_api_responses.USAGI,
+            },
+            '行く': {
+                "api_response": tatoeba_api_responses.IKU,
+            },
+            '籠': {
+                "api_response": tatoeba_api_responses.KAGO,
+            },
+        },
+        expected_output={
+            '兎': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '行く': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            '籠': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=兎,行く,籠"),
         api_response=wanikani_api_responses.USAGI_IKU_KAGO,
@@ -3789,6 +3958,13 @@ USAGI_IKU_KAGO = FullTestDict(
                     ],
                 },
             },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -3945,6 +4121,13 @@ USAGI_IKU_KAGO = FullTestDict(
                             "en": "I don't want to go to school.",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -4134,6 +4317,13 @@ USAGI_IKU_KAGO = FullTestDict(
                             "en": "She quickly shut the kitten into a basket.",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -4424,6 +4614,22 @@ SHIZUKA = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            '静か': {
+                "api_response": tatoeba_api_responses.SHIZUKA,
+            },
+        },
+        expected_output={
+            '静か': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=静か"),
         api_response=wanikani_api_responses.SHIZUKA,
@@ -4648,6 +4854,13 @@ SHIZUKA = FullTestDict(
                             "en": "The mother told the children to be quiet.",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {
@@ -4981,6 +5194,22 @@ NARU = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            'なる': {
+                "api_response": tatoeba_api_responses.NARU,
+            },
+        },
+        expected_output={
+            'なる': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=なる"),
         api_response=wanikani_api_responses.NARU,
@@ -5111,6 +5340,13 @@ NARU = FullTestDict(
                             "en": "Uh... How's that working?",
                         },
                     ],
+                },
+            },
+            'tatoeba': {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
                 },
             },
             "wanikani": {

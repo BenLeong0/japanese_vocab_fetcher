@@ -23,6 +23,7 @@ MODULES = (
     "wadoku",
     "forvo",
     "tangorin",
+    "tatoeba",
     "wanikani",
 )
 
@@ -46,6 +47,7 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr("modules.wadoku.main", lambda x: test_dict.wadoku.expected_output)
     monkeypatch.setattr("modules.forvo.main", lambda x: test_dict.forvo.expected_output)
     monkeypatch.setattr("modules.tangorin.main", lambda x: test_dict.tangorin.expected_output)
+    monkeypatch.setattr("modules.tatoeba.main", lambda x: test_dict.tatoeba.expected_output)
     monkeypatch.setattr("modules.wanikani.main", lambda x: test_dict.wanikani.expected_output)
 
     word_list = convert_list_of_str_to_kaki(test_dict.input)
@@ -67,6 +69,7 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr("modules.wadoku.main", lambda x: test_dict.wadoku.expected_output)
     monkeypatch.setattr("modules.forvo.main", lambda x: test_dict.forvo.expected_output)
     monkeypatch.setattr("modules.tangorin.main", lambda x: test_dict.tangorin.expected_output)
+    monkeypatch.setattr("modules.tatoeba.main", lambda x: test_dict.tatoeba.expected_output)
     monkeypatch.setattr("modules.wanikani.main", lambda x: test_dict.wanikani.expected_output)
 
     word_list = convert_list_of_str_to_kaki(test_dict.input)
@@ -79,8 +82,10 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
         "wadoku": test_dict.wadoku.expected_output,
         "forvo": test_dict.forvo.expected_output,
         "tangorin": test_dict.tangorin.expected_output,
+        "tatoeba": test_dict.tatoeba.expected_output,
         "wanikani": test_dict.wanikani.expected_output,
     })
+
 
     assert coordinator.generate_results_dict(word_list) == expected_result_dict
 
@@ -101,6 +106,7 @@ def test_generate_response(test_dict: FullTestDict):
         "wadoku": convert_dict_str_keys_to_kaki(test_dict.wadoku.expected_output),
         "forvo": convert_dict_str_keys_to_kaki(test_dict.forvo.expected_output),
         "tangorin": convert_dict_str_keys_to_kaki(test_dict.tangorin.expected_output),
+        "tatoeba": convert_dict_str_keys_to_kaki(test_dict.tatoeba.expected_output),
         "wanikani": convert_dict_str_keys_to_kaki(test_dict.wanikani.expected_output),
     })
 
