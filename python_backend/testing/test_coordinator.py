@@ -10,8 +10,8 @@ from testing.dicts import TEST_DICTS
 from utils import convert_list_of_str_to_kaki, convert_dict_str_keys_to_kaki
 
 
-@pytest.fixture(params=TEST_DICTS, ids=lambda d:d['id'])
-def test_dict(request):
+@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d.test_name)
+def fixture_test_dict(request):
     return request.param
 
 
@@ -40,46 +40,52 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     - WHEN full results are generated
     - THEN check the output is as expected
     """
-    monkeypatch.setattr("modules.japanesepod.main", lambda x: test_dict['japanesepod']['expected_output'])
-    monkeypatch.setattr("modules.jisho.main", lambda x: test_dict['jisho']['expected_output'])
-    monkeypatch.setattr("modules.ojad.main", lambda x: test_dict['ojad']['expected_output'])
-    monkeypatch.setattr("modules.suzuki.main", lambda x: test_dict['suzuki']['expected_output'])
-    monkeypatch.setattr("modules.wadoku.main", lambda x: test_dict['wadoku']['expected_output'])
-    monkeypatch.setattr("modules.forvo.main", lambda x: test_dict['forvo']['expected_output'])
-    monkeypatch.setattr("modules.tangorin.main", lambda x: test_dict['tangorin']['expected_output'])
-    monkeypatch.setattr("modules.tatoeba.main", lambda x: test_dict['tatoeba']['expected_output'])
-    monkeypatch.setattr("modules.wanikani.main", lambda x: test_dict['wanikani']['expected_output'])
+    monkeypatch.setattr("modules.japanesepod.main", lambda x: test_dict.japanesepod.expected_output)
+    monkeypatch.setattr("modules.jisho.main", lambda x: test_dict.jisho.expected_output)
+    monkeypatch.setattr("modules.ojad.main", lambda x: test_dict.ojad.expected_output)
+    monkeypatch.setattr("modules.suzuki.main", lambda x: test_dict.suzuki.expected_output)
+    monkeypatch.setattr("modules.wadoku.main", lambda x: test_dict.wadoku.expected_output)
+    monkeypatch.setattr("modules.forvo.main", lambda x: test_dict.forvo.expected_output)
+    monkeypatch.setattr("modules.tangorin.main", lambda x: test_dict.tangorin.expected_output)
+    monkeypatch.setattr("modules.tatoeba.main", lambda x: test_dict.tatoeba.expected_output)
+    monkeypatch.setattr("modules.wanikani.main", lambda x: test_dict.wanikani.expected_output)
 
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    expected_result = test_dict['expected_result']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    expected_result = test_dict.expected_result
 
     assert coordinator.get_info(word_list) == expected_result
 
 
-def test_generate_results_dict(monkeypatch, test_dict):
+def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
     """
     - GIVEN a list of words
     - WHEN the results dict is generated
     - THEN check the output is as expected
     """
-    monkeypatch.setattr("modules.japanesepod.main", lambda x: test_dict['japanesepod']['expected_output'])
-    monkeypatch.setattr("modules.jisho.main", lambda x: test_dict['jisho']['expected_output'])
-    monkeypatch.setattr("modules.ojad.main", lambda x: test_dict['ojad']['expected_output'])
-    monkeypatch.setattr("modules.suzuki.main", lambda x: test_dict['suzuki']['expected_output'])
-    monkeypatch.setattr("modules.wadoku.main", lambda x: test_dict['wadoku']['expected_output'])
-    monkeypatch.setattr("modules.forvo.main", lambda x: test_dict['forvo']['expected_output'])
-    monkeypatch.setattr("modules.tangorin.main", lambda x: test_dict['tangorin']['expected_output'])
-    monkeypatch.setattr("modules.tatoeba.main", lambda x: test_dict['tatoeba']['expected_output'])
-    monkeypatch.setattr("modules.wanikani.main", lambda x: test_dict['wanikani']['expected_output'])
+    monkeypatch.setattr("modules.japanesepod.main", lambda x: test_dict.japanesepod.expected_output)
+    monkeypatch.setattr("modules.jisho.main", lambda x: test_dict.jisho.expected_output)
+    monkeypatch.setattr("modules.ojad.main", lambda x: test_dict.ojad.expected_output)
+    monkeypatch.setattr("modules.suzuki.main", lambda x: test_dict.suzuki.expected_output)
+    monkeypatch.setattr("modules.wadoku.main", lambda x: test_dict.wadoku.expected_output)
+    monkeypatch.setattr("modules.forvo.main", lambda x: test_dict.forvo.expected_output)
+    monkeypatch.setattr("modules.tangorin.main", lambda x: test_dict.tangorin.expected_output)
+    monkeypatch.setattr("modules.tatoeba.main", lambda x: test_dict.tatoeba.expected_output)
+    monkeypatch.setattr("modules.wanikani.main", lambda x: test_dict.wanikani.expected_output)
 
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
 
-    expected_result_dict = defaultdict(dict,
-        {
-            module: test_dict[module]['expected_output']
-            for module in MODULES
-        }
-    )
+    expected_result_dict: DefaultDict[str, dict] = defaultdict(dict, {
+        "japanesepod": test_dict.japanesepod.expected_output,
+        "jisho": test_dict.jisho.expected_output,
+        "ojad": test_dict.ojad.expected_output,
+        "suzuki": test_dict.suzuki.expected_output,
+        "wadoku": test_dict.wadoku.expected_output,
+        "forvo": test_dict.forvo.expected_output,
+        "tangorin": test_dict.tangorin.expected_output,
+        "tatoeba": test_dict.tatoeba.expected_output,
+        "wanikani": test_dict.wanikani.expected_output,
+    })
+
 
     assert coordinator.generate_results_dict(word_list) == expected_result_dict
 
@@ -91,19 +97,19 @@ def test_generate_response(test_dict: FullTestDict):
     - WHEN full results are generated
     - THEN check the output is as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     result_dict: DefaultDict[str, dict[Kaki, Any]] = defaultdict(dict, {
-        "japanesepod": convert_dict_str_keys_to_kaki(test_dict["japanesepod"]['expected_output']),
-        "jisho": convert_dict_str_keys_to_kaki(test_dict["jisho"]['expected_output']),
-        "ojad": convert_dict_str_keys_to_kaki(test_dict["ojad"]['expected_output']),
-        "suzuki": convert_dict_str_keys_to_kaki(test_dict["suzuki"]['expected_output']),
-        "wadoku": convert_dict_str_keys_to_kaki(test_dict["wadoku"]['expected_output']),
-        "forvo": convert_dict_str_keys_to_kaki(test_dict["forvo"]['expected_output']),
-        "tangorin": convert_dict_str_keys_to_kaki(test_dict["tangorin"]['expected_output']),
-        "tatoeba": convert_dict_str_keys_to_kaki(test_dict["tatoeba"]['expected_output']),
-        "wanikani": convert_dict_str_keys_to_kaki(test_dict["wanikani"]['expected_output']),
+        "japanesepod": convert_dict_str_keys_to_kaki(test_dict.japanesepod.expected_output),
+        "jisho": convert_dict_str_keys_to_kaki(test_dict.jisho.expected_output),
+        "ojad": convert_dict_str_keys_to_kaki(test_dict.ojad.expected_output),
+        "suzuki": convert_dict_str_keys_to_kaki(test_dict.suzuki.expected_output),
+        "wadoku": convert_dict_str_keys_to_kaki(test_dict.wadoku.expected_output),
+        "forvo": convert_dict_str_keys_to_kaki(test_dict.forvo.expected_output),
+        "tangorin": convert_dict_str_keys_to_kaki(test_dict.tangorin.expected_output),
+        "tatoeba": convert_dict_str_keys_to_kaki(test_dict.tatoeba.expected_output),
+        "wanikani": convert_dict_str_keys_to_kaki(test_dict.wanikani.expected_output),
     })
 
-    expected_result = test_dict['expected_result']
+    expected_result = test_dict.expected_result
 
     assert coordinator.generate_response(result_dict, word_list) == expected_result

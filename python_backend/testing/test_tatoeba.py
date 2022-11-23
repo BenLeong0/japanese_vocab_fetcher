@@ -7,9 +7,8 @@ from testing.dicts import TEST_DICTS
 from utils import convert_list_of_str_to_kaki
 
 
-# For each test, try with every dict in TEST_DICTS
-@pytest.fixture(params=TEST_DICTS, ids=lambda d:d['id'])
-def test_dict(request):
+@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d.test_name)
+def fixture_test_dict(request):
     return request.param
 
 
@@ -29,8 +28,8 @@ def test_main(test_dict: FullTestDict):
     - WHEN the accent dict is generated
     - THEN check all the tatoeba info is correct and complete
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    expected_output = test_dict['tatoeba']['expected_output']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    expected_output = test_dict.tatoeba.expected_output
 
     assert tatoeba.main(word_list) == expected_output
 

@@ -9,8 +9,8 @@ from utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
-@pytest.fixture(params=TEST_DICTS, ids=lambda d:d['id'])
-def test_dict(request):
+@pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d.test_name)
+def fixture_test_dict(request):
     return request.param
 
 
@@ -30,9 +30,9 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - WHEN the accent dict is generated
     - THEN check all the suzuki info is correct and complete
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    html = test_dict['suzuki']['html']
-    expected_output = test_dict['suzuki']['expected_output']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    html = test_dict.suzuki.html
+    expected_output = test_dict.suzuki.expected_output
 
     monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
     assert suzuki.main(word_list) == expected_output
@@ -44,7 +44,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     - WHEN the API returns an unsuccessful status code
     - THEN check the failed dict is returned as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "api_error"})
     expected_output = {
         word: {
@@ -80,8 +80,8 @@ def test_get_formdata(test_dict: FullTestDict):
     - WHEN a url is generated
     - THEN check the url is encoded
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    expected_formdata = test_dict['suzuki']['formdata']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    expected_formdata = test_dict.suzuki.formdata
 
     assert suzuki.get_formdata(word_list) == expected_formdata
 
@@ -92,8 +92,8 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
     - WHEN the HTML page is fetched
     - THEN check it is returned as expected
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
-    html = test_dict['suzuki']['html']
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    html = test_dict.suzuki.html
 
     monkeypatch.setattr("requests.post", lambda url, formdata, timeout: FakeResponse(html))
 
@@ -106,7 +106,7 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     - WHEN an unsuccessful HTTP request is made
     - THEN check an exception is thrown
     """
-    word_list = convert_list_of_str_to_kaki(test_dict['input'])
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "could not connect"})
     monkeypatch.setattr("requests.post", lambda x, formdata, timeout: FakeResponse(response, status_code=400))
 
@@ -124,8 +124,8 @@ def test_get_sections(test_dict: FullTestDict):
     - WHEN the subsections are extracted
     - THEN check the array of subsections is correct
     """
-    html = test_dict['suzuki']['html']
-    expected_sections = test_dict['suzuki']['expected_sections']
+    html = test_dict.suzuki.html
+    expected_sections = test_dict.suzuki.expected_sections
 
     assert suzuki.get_sections(Soup(html, "html.parser")) == [
         (section['writing_section'], section['reading_section'], section['accent_section'])
@@ -139,7 +139,7 @@ def test_extract_writing(test_dict: FullTestDict):
     - WHEN the writing is extracted
     - THEN check all the correct writings are extracted
     """
-    for section in test_dict['suzuki']['expected_sections']:
+    for section in test_dict.suzuki.expected_sections:
         assert suzuki.extract_writing(section['writing_section']) == section['writing']
 
 
@@ -149,7 +149,7 @@ def test_extract_reading(test_dict: FullTestDict):
     - WHEN the writing is extracted
     - THEN check all the correct writings are extracted
     """
-    for section in test_dict['suzuki']['expected_sections']:
+    for section in test_dict.suzuki.expected_sections:
         assert suzuki.extract_reading(section['reading_section'], section['accent_section']) == section['reading']
 
 
@@ -161,12 +161,12 @@ def test_build_accent_dict(test_dict: FullTestDict):
     """
     word_sections = [
         (section['writing_section'], section['reading_section'], section['accent_section'])
-        for section in test_dict['suzuki']['expected_sections']
+        for section in test_dict.suzuki.expected_sections
     ]
 
     expected_accent_dict = {
-        word:test_dict['suzuki']['expected_output'][word]['main_data']['accent']
-        for word in test_dict['suzuki']['expected_output']
+        word:test_dict.suzuki.expected_output[word]['main_data']['accent']
+        for word in test_dict.suzuki.expected_output
     }
 
     assert suzuki.build_accent_dict(word_sections) == expected_accent_dict
