@@ -39,8 +39,8 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - THEN check all the forvo info is correct and complete
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.forvo['expected_sections']
-    expected_output = test_dict.forvo['expected_output']
+    sections = test_dict.forvo.expected_sections
+    expected_output = test_dict.forvo.expected_output
 
     def get_word_from_forvo_url(url: URL) -> Kaki:
         match = re.search(r"word/(.+?)/", url)
@@ -69,7 +69,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": test_dict.forvo["expected_sections"][word]["url"]
+                "url": test_dict.forvo.expected_sections[word]["url"]
             },
             "main_data": {
                 "audio": [],
@@ -98,7 +98,7 @@ def test_get_api_urls(test_dict: FullTestDict):
     - THEN check the urls are encoded and correct
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.forvo['expected_sections']
+    sections = test_dict.forvo.expected_sections
 
     for word in word_list:
         assert forvo.get_api_url(word) == sections[word]["url"]
@@ -111,8 +111,8 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
     - THEN check the lists are as expected
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.forvo['expected_sections']
-    expected_output = test_dict.forvo["expected_output"]
+    sections = test_dict.forvo.expected_sections
+    expected_output = test_dict.forvo.expected_output
 
     for word in word_list:
         section = sections[word]
@@ -130,7 +130,7 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     - THEN check each response is returned correctly
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.forvo['expected_sections']
+    sections = test_dict.forvo.expected_sections
 
     for word in word_list:
         section = sections[word]
@@ -172,8 +172,8 @@ def test_extract_audio_list(test_dict: FullTestDict):
     - THEN check the returned lists are correct
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.forvo['expected_sections']
-    expected_output = test_dict.forvo["expected_output"]
+    sections = test_dict.forvo.expected_sections
+    expected_output = test_dict.forvo.expected_output
 
     for word in word_list:
         api_response = json.loads(sections[word]['api_response'])

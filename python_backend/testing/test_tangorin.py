@@ -34,8 +34,8 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - THEN check all the tangorin info is correct and complete
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.tangorin['expected_sections']
-    expected_output = test_dict.tangorin['expected_output']
+    sections = test_dict.tangorin.expected_sections
+    expected_output = test_dict.tangorin.expected_output
 
     def get_word_from_tangorin_url(url: URL) -> Kaki:
         match = re.search(r"\?search=(.+?)$", url)
@@ -68,7 +68,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "api_error"})
-    sections = test_dict.tangorin["expected_sections"]
+    sections = test_dict.tangorin.expected_sections
     expected_output = {
         word: {
             "success": False,
@@ -95,8 +95,8 @@ def test_get_sentences(monkeypatch, test_dict: FullTestDict):
     - THEN check the sentences are correct
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.tangorin["expected_sections"]
-    full_expected_output = test_dict.tangorin["expected_output"]
+    sections = test_dict.tangorin.expected_sections
+    full_expected_output = test_dict.tangorin.expected_output
 
     for word in word_list:
         html = sections[word]['html']
@@ -112,7 +112,7 @@ def test_get_url(test_dict: FullTestDict):
     - THEN check the url is encoded
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.tangorin['expected_sections']
+    sections = test_dict.tangorin.expected_sections
 
     for word in word_list:
         assert tangorin.get_url(word) == sections[word]["url"]
@@ -125,7 +125,7 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
     - THEN check it is returned as expected
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.tangorin['expected_sections']
+    sections = test_dict.tangorin.expected_sections
 
     for word in word_list:
         html = sections[word]['html']
@@ -208,8 +208,8 @@ def test_extract_sentences(test_dict: FullTestDict):
     - THEN check the array of subsections is correct for each word
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    sections = test_dict.tangorin['expected_sections']
-    expected_output = test_dict.tangorin['expected_output']
+    sections = test_dict.tangorin.expected_sections
+    expected_output = test_dict.tangorin.expected_output
 
     for word in word_list:
         html = sections[word]['html']
