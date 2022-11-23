@@ -34,8 +34,8 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - THEN check all the wadoku info is correct and complete
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    html = test_dict.wadoku['html']
-    expected_output = test_dict.wadoku['expected_output']
+    html = test_dict.wadoku.html
+    expected_output = test_dict.wadoku.expected_output
 
     monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(html))
     assert wadoku.main(word_list) == expected_output
@@ -109,7 +109,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": test_dict.wadoku["url"]
+                "url": test_dict.wadoku.url
             },
             "main_data": {
                 "accent": [],
@@ -129,7 +129,7 @@ def test_get_url(test_dict: FullTestDict):
     - THEN check the url is encoded
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    expected_url = test_dict.wadoku['url']
+    expected_url = test_dict.wadoku.url
 
     assert wadoku.get_url(word_list) == expected_url
 
@@ -141,7 +141,7 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
     - THEN check it is returned as expected
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    html = test_dict.wadoku['html']
+    html = test_dict.wadoku.html
 
     monkeypatch.setattr("requests.post", lambda url, timeout: FakeResponse(html))
 
@@ -173,8 +173,8 @@ def test_get_sections(test_dict: FullTestDict):
     - WHEN the subsections are extracted
     - THEN check the array of subsections is correct
     """
-    html = test_dict.wadoku['html']
-    expected_sections = test_dict.wadoku['expected_sections']
+    html = test_dict.wadoku.html
+    expected_sections = test_dict.wadoku.expected_sections
 
     assert wadoku.get_sections(Soup(html, "html.parser")) == [
         (section['writing_section'], section['reading_sections'])
@@ -188,7 +188,7 @@ def test_extract_writings(test_dict: FullTestDict):
     - WHEN the writing is extracted
     - THEN check all the correct writings are extracted
     """
-    for section in test_dict.wadoku['expected_sections']:
+    for section in test_dict.wadoku.expected_sections:
         assert wadoku.extract_writings(section['writing_section']) == section['writings']
 
 
@@ -219,7 +219,7 @@ def test_extract_readings(test_dict: FullTestDict):
     - WHEN the writing is extracted
     - THEN check all the correct writings are extracted
     """
-    for section in test_dict.wadoku['expected_sections']:
+    for section in test_dict.wadoku.expected_sections:
         for html_section, reading in zip(section['reading_sections'], section['readings']):
             assert wadoku.extract_reading(html_section) == reading
 
@@ -232,7 +232,7 @@ def test_build_accent_dict(test_dict: FullTestDict):
     """
     word_sections = [
         (section['writing_section'], section['reading_sections'])
-        for section in test_dict.wadoku['expected_sections']
+        for section in test_dict.wadoku.expected_sections
     ]
 
-    assert wadoku.build_accent_dict(word_sections) == test_dict.wadoku['full_accent_dict']
+    assert wadoku.build_accent_dict(word_sections) == test_dict.wadoku.full_accent_dict
