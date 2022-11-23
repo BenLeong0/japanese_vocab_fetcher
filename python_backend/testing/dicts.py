@@ -330,12 +330,12 @@ MEGANE = FullTestDict(
         },
     ),
     tatoeba=TatoebaTestDict(
-        "expected_sections": {
+        expected_sections={
             '眼鏡': {
                 "api_response": tatoeba_api_responses.MEGANE,
             },
         },
-        "expected_output": {
+        expected_output={
             '眼鏡': {
                 "success": True,
                 "error": None,
@@ -792,12 +792,12 @@ COMEBACK = FullTestDict(
         },
     ),
     tatoeba=TatoebaTestDict(
-        "expected_sections": {
+        expected_sections={
             'カムバック': {
                 "api_response": tatoeba_api_responses.COMEBACK,
             },
         },
-        "expected_output": {
+        expected_output={
             'カムバック': {
                 "success": True,
                 "error": None,
@@ -1394,7 +1394,7 @@ TABERU_GAKUSEI = FullTestDict(
         },
     ),
     tatoeba=TatoebaTestDict(
-        "expected_sections": {
+        expected_sections={
             '食べる': {
                 "api_response": tatoeba_api_responses.TABERU,
             },
@@ -1402,7 +1402,7 @@ TABERU_GAKUSEI = FullTestDict(
                 "api_response": tatoeba_api_responses.GAKUSEI,
             },
         },
-        "expected_output": {
+        expected_output={
             '食べる': {
                 "success": True,
                 "error": None,
@@ -2329,12 +2329,12 @@ KOTOBA = FullTestDict(
         },
     ),
     tatoeba=TatoebaTestDict(
-        "expected_sections": {
+        expected_sections={
             '言葉': {
                 "api_response": tatoeba_api_responses.KOTOBA,
             },
         },
-        "expected_output": {
+        expected_output={
             '言葉': {
                 "success": True,
                 "error": None,
@@ -2799,12 +2799,12 @@ BADINPUT = FullTestDict(
         },
     ),
     tatoeba=TatoebaTestDict(
-        "expected_sections": {
+        expected_sections={
             'BADINPUT': {
                 "api_response": tatoeba_api_responses.BADINPUT,
             },
         },
-        "expected_output": {
+        expected_output={
             'BADINPUT': {
                 "success": True,
                 "error": None,
@@ -3654,7 +3654,7 @@ USAGI_IKU_KAGO = FullTestDict(
         },
     ),
     tatoeba=TatoebaTestDict(
-        "expected_sections": {
+        expected_sections={
             '兎': {
                 "api_response": tatoeba_api_responses.USAGI,
             },
@@ -3665,7 +3665,7 @@ USAGI_IKU_KAGO = FullTestDict(
                 "api_response": tatoeba_api_responses.KAGO,
             },
         },
-        "expected_output": {
+        expected_output={
             '兎': {
                 "success": True,
                 "error": None,
@@ -4111,7 +4111,7 @@ USAGI_IKU_KAGO = FullTestDict(
                         {
                             "ja": "今夜教会に行くよ。",
                             "en": "I'm going to church tonight.",
-                        ,},
+                        },
                         {
                             "ja": "なぜ人々は映画を見に行くのか？",
                             "en": "Why do people go to the movies?",
@@ -4615,12 +4615,12 @@ SHIZUKA = FullTestDict(
         },
     ),
     tatoeba=TatoebaTestDict(
-        "expected_sections": {
+        expected_sections={
             '静か': {
                 "api_response": tatoeba_api_responses.SHIZUKA,
             },
         },
-        "expected_output": {
+        expected_output={
             '静か': {
                 "success": True,
                 "error": None,
@@ -5195,12 +5195,12 @@ NARU = FullTestDict(
         },
     ),
     tatoeba=TatoebaTestDict(
-        "expected_sections": {
+        expected_sections={
             'なる': {
                 "api_response": tatoeba_api_responses.NARU,
             },
         },
-        "expected_output": {
+        expected_output={
             'なる': {
                 "success": True,
                 "error": None,

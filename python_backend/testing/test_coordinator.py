@@ -86,6 +86,7 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
         "wanikani": test_dict.wanikani.expected_output,
     })
 
+
     assert coordinator.generate_results_dict(word_list) == expected_result_dict
 
 
