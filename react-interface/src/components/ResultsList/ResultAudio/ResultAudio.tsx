@@ -17,13 +17,12 @@ interface AudioModule {
 }
 
 const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
-
-    const wanikaniData: ResultAudioRowData[] = data.wanikani.main_data.audio.map(audio => ({
+    const wanikaniData: ResultAudioRowData[] = data.wanikani.main_data.audio.map((audio) => ({
         url: audio.url,
         speaker: audio.metadata.voice_actor_name,
         subtitle: audio.metadata.voice_description,
     }));
-    const forvoData: ResultAudioRowData[] = data.forvo.main_data.audio.map(audio => ({
+    const forvoData: ResultAudioRowData[] = data.forvo.main_data.audio.map((audio) => ({
         url: audio.url,
         speaker: audio.username,
         subtitle: null,
@@ -35,15 +34,14 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
     }));
 
     const allAudio: AudioModule[] = [
-        {module: "Wanikani", audioData: wanikaniData},
-        {module: "Forvo", audioData: forvoData},
-        {module: "JapanesePod101", audioData: japanesePodData},
+        { module: "Wanikani", audioData: wanikaniData },
+        { module: "Forvo", audioData: forvoData },
+        { module: "JapanesePod101", audioData: japanesePodData },
     ];
 
     const displayAudio = (): boolean => allAudio.some(x => x.audioData.length > 0);
 
-    return (
-        displayAudio() ?
+    return ( displayAudio() ?
         <div className="result-audio">
             <div className="left-col-title">
                 Audio
@@ -53,7 +51,7 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
             )}
         </div> :
         <></>
-     );
+    );
 }
 
 export default ResultAudio;
