@@ -1,3 +1,4 @@
+import ResponseItemJapanesePod from "./ResponseItemJapanesePod";
 import ResponseItemJisho from "./ResponseItemJisho";
 import ResponseItemOJAD from "./ResponseItemOJAD";
 import ResponseItemSuzuki from "./ResponseItemSuzuki";
@@ -9,6 +10,7 @@ import ResponseItemWanikani from "./ResponseItemWanikani";
 
 export default interface FullResponseItem {
     word: string;
+    japanesepod: ResponseItemJapanesePod;
     jisho: ResponseItemJisho;
     ojad: ResponseItemOJAD;
     suzuki: ResponseItemSuzuki;

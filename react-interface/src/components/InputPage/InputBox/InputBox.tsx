@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
+import { useSearchParams } from "react-router-dom";
 import TextareaAutosize from 'react-textarea-autosize';
 import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
 
@@ -16,18 +17,25 @@ interface InputBoxProps {
 }
 
 const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) => {
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const httpService = new HttpService();
     const utilsService = new UtilsService();
 
     const [text, setText] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const sendWords = useRef(() => {})
-    sendWords.current = async () => {
+    const [textInput, setTextInput] = useState<HTMLTextAreaElement | null>(null);
+
+    const sendWords = useRef((forceText?: string) => {});
+    sendWords.current = async (forceText?: string) => {
         setIsLoading(true);
         setErrorOccurred(false);
 
-        const words: string[] = utilsService.extractWordsFromInput(text);
+        const searchText = forceText || text;
+        setSearchParams({ words: searchText });
+
+        const words: string[] = utilsService.extractWordsFromInput(searchText);
         const queryParams: QueryParams = { words: JSON.stringify(words) };
 
         try {
@@ -44,9 +52,15 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
         }
     }
 
-    const handleUserKeyPress = useCallback(e => {
-        if (e.key === "Enter" && e.ctrlKey) {sendWords.current()}
-    }, []);
+    const handleUserKeyPress = useCallback((e: KeyboardEvent) => {
+        if (e.key === "Enter" && !e.shiftKey && textInput != null) {
+            sendWords.current();
+        }
+        if (e.key === "Tab" && textInput != null) {
+            e.preventDefault();
+            textInput.focus();
+        }
+    }, [textInput]);
 
     useEffect(() => {
         window.addEventListener("keydown", handleUserKeyPress);
@@ -55,33 +69,39 @@ const InputBox: React.FC<InputBoxProps> = ({ setWordList, setErrorOccurred }) =>
         };
     }, [handleUserKeyPress]);
 
-    const textArea = (
-        <TextareaAutosize
-            name="main-input"
-            className="main-input"
-            value={text}
-            onChange={(e: any) => setText(e.target.value)}
-        />
-    );
-    const wordsDisplay = (
-        <div className="words-display vertical-separation-small">
-            {utilsService.extractWordsFromInput(text).map((word, index) =>
-                <div key={index} className="word-display">{word}</div>
-            )}
-        </div>
-    );
-    const submitButton = (
-        <button
-            className="button-primary vertical-separation-medium"
-            type="submit"
-            onClick={(_) => sendWords.current()}
-        >
-            Submit
-        </button>
-    );
+    // Check for query params and search if present
+    const searchQueryParams = useRef(() => {});
+    searchQueryParams.current = () => {
+        let words = searchParams.get("words");
+        if (words === null || words === "") return;
+        setText(words);
+        sendWords.current(words);
+    }
+    useEffect(() => { searchQueryParams.current(); }, []);
 
     return (
-        isLoading ? <LoadingSpinner /> : <>{textArea}{wordsDisplay}{submitButton}</>
+        isLoading ? <LoadingSpinner /> :
+        <>
+            <TextareaAutosize
+                name="main-input"
+                className="main-input"
+                value={text}
+                onChange={(e: any) => setText(e.target.value)}
+                ref={setTextInput}
+            />
+            <div className="words-display vertical-separation-small">
+                {utilsService.extractWordsFromInput(text).map((word, index) =>
+                    <div key={index} className="word-display">{word}</div>
+                )}
+            </div>
+            <button
+                className="button-primary vertical-separation-medium"
+                type="submit"
+                onClick={(_) => sendWords.current()}
+            >
+                Submit
+            </button>
+        </>
     );
 }
 

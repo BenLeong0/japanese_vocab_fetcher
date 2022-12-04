@@ -24,6 +24,7 @@ describe('extract words from input', () => {
         ["test", ["test"]],
         ["test word", ["test", "word"]],
         ["test word   ", ["test", "word"]],
+        ["   test word   ", ["test", "word"]],
         ["test   word", ["test", "word"]],
         ["test\nword", ["test", "word"]],
         ["test \n word", ["test", "word"]],

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BrowserRouter } from "react-router-dom";
 import InputPage from './components/InputPage/InputPage';
 import ResultsList from './components/ResultsList/ResultsList';
 
@@ -11,13 +12,15 @@ function App() {
     const [wordList, setWordList] = useState<FullResponseItem[]>([]);
 
     return (
-        <div className="App">
-            <div className="width-container">
-                <p className="app-header">Japanese Vocab Fetcher</p>
-                <InputPage setWordList={setWordList} />
-                <ResultsList wordList={wordList} />
+        <BrowserRouter>
+            <div className="App">
+                <div className="width-container">
+                    <p className="app-header">Japanese Vocab Fetcher</p>
+                    <InputPage setWordList={setWordList} />
+                    <ResultsList wordList={wordList} />
+                </div>
             </div>
-        </div>
+        </BrowserRouter>
     );
 }
 

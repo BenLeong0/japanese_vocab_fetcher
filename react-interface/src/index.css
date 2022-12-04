@@ -19,6 +19,8 @@ code {
     --grey-light: #f7f9fa;
     --grey: #dfe6ed;
     --grey-dark: #9eadba;
+    --grey-darker: #788896;
+    --grey-darkest: #5c6a77;
 }
 
 .vertical-separation-small {
@@ -38,4 +40,37 @@ code {
 .flex-row {
     display: flex;
     flex-direction: row;
+}
+.space-between {
+    justify-content: space-between;
+}
+
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-user-drag: none;
+}
+
+.copy-cursor {
+    cursor: url(./assets/cursors/copycursor.png), default;
+}
+
+.mplus {
+    font-family: "M PLUS 1p", sans-serif;
+}
+
+
+@media (min-width: 1201px) {
+    .show-mobile {
+        display: none;
+    }
+}
+@media (max-width: 1200px) {
+    .hide-mobile {
+        display: none;
+    }
 }

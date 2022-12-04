@@ -81,6 +81,21 @@ class ResponseItemForvo(ResponseItem):
     main_data: ForvoMainData
 
 
+# JapanesePod
+
+class JapanesePodAudio(TypedDict):
+    url: URL
+    writing: str
+    reading: str
+
+class JapanesePodMainData(TypedDict):
+    audio: list[JapanesePodAudio]
+
+class ResponseItemJapanesePod(ResponseItem):
+    """Dictionary containing the audio information from JapanesePod"""
+    main_data: JapanesePodMainData
+
+
 # Wanikani
 
 class WanikaniMainData(TypedDict):

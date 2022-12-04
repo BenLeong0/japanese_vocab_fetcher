@@ -26,6 +26,11 @@ def create_failed_response(payload: Any):
 def make_single_line(input_string: str) -> str:
     return re.sub(r'\s{2,}', '', input_string)
 
+def remove_end_brackets(input_string: str) -> str:
+    if "(" not in input_string:
+        return input_string
+    return input_string[:input_string.index("(")]
+
 
 def escape_unicode(word: Kaki) -> str:
     return word.encode("unicode-escape").decode()
