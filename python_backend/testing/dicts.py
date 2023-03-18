@@ -55,6 +55,7 @@ def build_suzuki_formdata(word_list_string: str) -> dict[str, str]:
         "data[Phrasing][phrase_component]": "invisible",
         "data[Phrasing][param]": "invisible",
         "data[Phrasing][subscript]": "visible",
+        "data[Phrasing][jeita]": "invisible",
         "data[Phrasing][text]": word_list_string,
     }
 
