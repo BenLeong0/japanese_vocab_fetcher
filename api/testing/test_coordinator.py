@@ -3,11 +3,11 @@ from typing import Any, DefaultDict
 
 import pytest  # type: ignore
 
-import coordinator
+from api import coordinator
 from api.custom_types.alternative_string_types import Kaki
+from api.utils import convert_list_of_str_to_kaki, convert_dict_str_keys_to_kaki
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from api.utils import convert_list_of_str_to_kaki, convert_dict_str_keys_to_kaki
 
 
 @pytest.fixture(name="test_dict", params=TEST_DICTS, ids=lambda d: d.test_name)
@@ -40,22 +40,28 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     - THEN check the output is as expected
     """
     monkeypatch.setattr(
-        "modules.japanesepod.main", lambda x: test_dict.japanesepod.expected_output
-    )
-    monkeypatch.setattr("modules.jisho.main", lambda x: test_dict.jisho.expected_output)
-    monkeypatch.setattr("modules.ojad.main", lambda x: test_dict.ojad.expected_output)
-    monkeypatch.setattr(
-        "modules.suzuki.main", lambda x: test_dict.suzuki.expected_output
+        "api.modules.japanesepod.main", lambda x: test_dict.japanesepod.expected_output
     )
     monkeypatch.setattr(
-        "modules.wadoku.main", lambda x: test_dict.wadoku.expected_output
-    )
-    monkeypatch.setattr("modules.forvo.main", lambda x: test_dict.forvo.expected_output)
-    monkeypatch.setattr(
-        "modules.tangorin.main", lambda x: test_dict.tangorin.expected_output
+        "api.modules.jisho.main", lambda x: test_dict.jisho.expected_output
     )
     monkeypatch.setattr(
-        "modules.wanikani.main", lambda x: test_dict.wanikani.expected_output
+        "api.modules.ojad.main", lambda x: test_dict.ojad.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.suzuki.main", lambda x: test_dict.suzuki.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.wadoku.main", lambda x: test_dict.wadoku.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.forvo.main", lambda x: test_dict.forvo.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.tangorin.main", lambda x: test_dict.tangorin.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.wanikani.main", lambda x: test_dict.wanikani.expected_output
     )
 
     word_list = convert_list_of_str_to_kaki(test_dict.input)
@@ -71,22 +77,28 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
     - THEN check the output is as expected
     """
     monkeypatch.setattr(
-        "modules.japanesepod.main", lambda x: test_dict.japanesepod.expected_output
-    )
-    monkeypatch.setattr("modules.jisho.main", lambda x: test_dict.jisho.expected_output)
-    monkeypatch.setattr("modules.ojad.main", lambda x: test_dict.ojad.expected_output)
-    monkeypatch.setattr(
-        "modules.suzuki.main", lambda x: test_dict.suzuki.expected_output
+        "api.modules.japanesepod.main", lambda x: test_dict.japanesepod.expected_output
     )
     monkeypatch.setattr(
-        "modules.wadoku.main", lambda x: test_dict.wadoku.expected_output
-    )
-    monkeypatch.setattr("modules.forvo.main", lambda x: test_dict.forvo.expected_output)
-    monkeypatch.setattr(
-        "modules.tangorin.main", lambda x: test_dict.tangorin.expected_output
+        "api.modules.jisho.main", lambda x: test_dict.jisho.expected_output
     )
     monkeypatch.setattr(
-        "modules.wanikani.main", lambda x: test_dict.wanikani.expected_output
+        "api.modules.ojad.main", lambda x: test_dict.ojad.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.suzuki.main", lambda x: test_dict.suzuki.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.wadoku.main", lambda x: test_dict.wadoku.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.forvo.main", lambda x: test_dict.forvo.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.tangorin.main", lambda x: test_dict.tangorin.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.wanikani.main", lambda x: test_dict.wanikani.expected_output
     )
 
     word_list = convert_list_of_str_to_kaki(test_dict.input)
