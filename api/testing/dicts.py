@@ -29,7 +29,7 @@ print(API_KEY)
 def get_file_as_string(module: str, filename: str):
     path = f"testing/html_files/{module}_{filename}.html"
     with open(path, encoding="utf8") as myfile:
-        return re.sub(r">\s*<", "><", myfile.read())
+        return HTMLString(re.sub(r">\s*<", "><", myfile.read()))
 
 
 def get_ojad_html_files(slug: str) -> list[HTMLString]:
