@@ -15,12 +15,12 @@ class APIError(Exception):
         self,
         error_msg: str,
         status_code: int,
-        url: URL = URL(""),
+        url: URL | None = None,
     ):
         super().__init__(error_msg)
         self.error_msg = error_msg
         self.status_code = status_code
-        self.url = url
+        self.url = url or URL("")
 
     def to_dict(self) -> APIErrorDict:
         return {

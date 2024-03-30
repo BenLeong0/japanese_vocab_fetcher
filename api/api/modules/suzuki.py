@@ -90,7 +90,9 @@ def get_html(word_list: list[Kaki]) -> Soup:
 
 
 def get_sections(html: Soup) -> list[tuple[Soup, Soup, Soup]]:
-    """Return list of tuples of form `(writing_section, reading_section, accent_section)`"""
+    """
+    Return list of tuples of form `(writing_section, reading_section, accent_section)`
+    """
     rows: list[Soup] = list(html.find_all("div", class_="phrasing_phrase_wrapper"))
     return [
         (
