@@ -12,7 +12,7 @@ VERSION="$1"
 FORVO_API_KEY="$2"
 WANIKANI_API_KEY="$3"
 
-cd python_backend
+cd api
 
 echo 'run docker build urbanjungle/springer:$BUILD_ENV-$VERSION-$PROVIDER_MODULE'
 docker build -t benleong0/japanese_vocab_fetcher:$VERSION --build-arg forvo_api_key=$FORVO_API_KEY --build-arg wanikani_api_key=$WANIKANI_API_KEY .

@@ -2,7 +2,7 @@ on: [workflow_call]
 
 defaults:
   run:
-    working-directory: ./react-interface
+    working-directory: client
 
 jobs:
   node-tests:
