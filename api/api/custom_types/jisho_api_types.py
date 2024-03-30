@@ -1,4 +1,4 @@
-from typing import Literal, TypedDict
+from typing import Literal, Required, TypedDict
 
 
 class JishoAPIItemJapanese(TypedDict, total=False):
@@ -31,11 +31,11 @@ class JishoAPIItemAttribution(TypedDict):
 
 
 class JishoAPIItem(TypedDict, total=False):
-    slug: str
+    slug: Required[str]
     is_common: bool
     tags: list[str]
     jlpt: list[str]
-    japanese: list[JishoAPIItemJapanese]
+    japanese: Required[list[JishoAPIItemJapanese]]
     senses: list[JishoAPIItemSense]
     attribution: JishoAPIItemAttribution
 
