@@ -12,8 +12,8 @@ from api.custom_types.response_types import ForvoAudio, ResponseItemForvo
 from api.utils import decode_unicode
 
 NAME = "forvo"
-API_KEY = dotenv_values()["FORVO_API_KEY"]
-if API_KEY is None:
+API_KEY = dotenv_values()["FORVO_API_KEY"] or ""
+if API_KEY == "":
     raise RuntimeError("No Forvo API key found")
 
 
