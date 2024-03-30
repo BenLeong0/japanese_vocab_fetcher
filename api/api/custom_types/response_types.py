@@ -1,8 +1,8 @@
 from typing import Optional, TypedDict
 
 from api.custom_types.alternative_string_types import (
-    Kaki,
     URL,
+    Kaki,
     Yomi,
 )
 from api.custom_types.exception_types import APIErrorDict

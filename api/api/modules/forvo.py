@@ -2,15 +2,14 @@ import json
 from threading import Thread
 from typing import Optional
 
-from dotenv import dotenv_values
 import requests
+from dotenv import dotenv_values
 
-from api.custom_types.alternative_string_types import Kaki, URL
+from api.custom_types.alternative_string_types import URL, Kaki
 from api.custom_types.exception_types import APIError
 from api.custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
 from api.custom_types.response_types import ForvoAudio, ResponseItemForvo
 from api.utils import decode_unicode
-
 
 NAME = "forvo"
 API_KEY: str = dotenv_values()["FORVO_API_KEY"]

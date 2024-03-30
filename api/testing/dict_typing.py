@@ -3,7 +3,7 @@ from typing import DefaultDict, Optional, TypedDict
 
 from bs4 import BeautifulSoup as Soup
 
-from api.custom_types.alternative_string_types import HTMLString, Kaki, Yomi, URL
+from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
 from api.custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
 from api.custom_types.response_types import (
     JishoExtraItem,
@@ -17,7 +17,6 @@ from api.custom_types.response_types import (
     ResponseItemWanikani,
 )
 from api.custom_types.wanikani_api_types import WanikaniAPIResponse
-
 
 # Jisho
 

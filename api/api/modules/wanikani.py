@@ -1,11 +1,11 @@
-from collections import defaultdict
 import json
+from collections import defaultdict
 from typing import DefaultDict, Optional
 
-from dotenv import dotenv_values
 import requests
+from dotenv import dotenv_values
 
-from api.custom_types.alternative_string_types import Kaki, URL
+from api.custom_types.alternative_string_types import URL, Kaki
 from api.custom_types.exception_types import APIError
 from api.custom_types.response_types import ResponseItemWanikani
 from api.custom_types.wanikani_api_types import (

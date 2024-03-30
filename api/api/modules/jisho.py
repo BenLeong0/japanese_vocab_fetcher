@@ -3,7 +3,7 @@ from threading import Thread
 
 import requests
 
-from api.custom_types.alternative_string_types import Kaki, URL
+from api.custom_types.alternative_string_types import URL, Kaki
 from api.custom_types.exception_types import APIError
 from api.custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
 from api.custom_types.response_types import (
@@ -11,7 +11,6 @@ from api.custom_types.response_types import (
     JishoMainData,
     ResponseItemJisho,
 )
-
 
 NAME = "jisho"
 

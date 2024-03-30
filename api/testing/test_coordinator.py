@@ -5,7 +5,7 @@ import pytest  # type: ignore
 
 from api import coordinator
 from api.custom_types.alternative_string_types import Kaki
-from api.utils import convert_list_of_str_to_kaki, convert_dict_str_keys_to_kaki
+from api.utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
 

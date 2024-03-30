@@ -5,9 +5,9 @@ import pytest  # type: ignore
 
 # from api.custom_types.alternative_string_types import Kaki, URL
 from api.modules import wanikani
+from api.utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from api.utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS

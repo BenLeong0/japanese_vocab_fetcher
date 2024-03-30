@@ -1,14 +1,13 @@
-from collections import defaultdict
 import re
+from collections import defaultdict
 from typing import DefaultDict, Optional
 
-from bs4 import BeautifulSoup as Soup
 import requests
+from bs4 import BeautifulSoup as Soup
 
-from api.custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
 from api.custom_types.exception_types import APIError
 from api.custom_types.response_types import ResponseItemOJAD
-
 
 NAME = "ojad"
 
@@ -61,10 +60,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemOJAD]:
 
 def get_url(word_list: list[Kaki], page_number: int) -> URL:
     search_parameters = "%20".join(word_list)
-    url = "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:{}/page:{}".format(
-        search_parameters,
-        page_number,
-    )
+    url = f"http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:{search_parameters}/page:{page_number}"
     return URL(url)
 
 

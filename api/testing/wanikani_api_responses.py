@@ -1,6 +1,5 @@
 from api.custom_types.wanikani_api_types import WanikaniAPIResponse
 
-
 MEGANE: WanikaniAPIResponse = {
     "object": "collection",
     "url": "https://api.wanikani.com/v2/subjects?slugs=%E7%9C%BC%E9%8F%A1",

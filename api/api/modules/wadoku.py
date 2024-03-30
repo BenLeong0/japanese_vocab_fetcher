@@ -1,14 +1,13 @@
-from collections import defaultdict
 import re
+from collections import defaultdict
 from typing import DefaultDict, Optional
 
-from bs4 import BeautifulSoup as Soup
 import requests
+from bs4 import BeautifulSoup as Soup
 
-from api.custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
 from api.custom_types.exception_types import APIError
 from api.custom_types.response_types import ResponseItemWadoku
-
 
 NAME = "wadoku"
 

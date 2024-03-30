@@ -1,14 +1,14 @@
-from functools import partial
 import json
 import re
+from functools import partial
 
-from bs4 import BeautifulSoup as Soup
 import pytest  # type: ignore
+from bs4 import BeautifulSoup as Soup
 
 from api.modules import ojad
+from api.utils import convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from api.utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS

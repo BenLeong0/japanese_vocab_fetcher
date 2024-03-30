@@ -1,7 +1,6 @@
 from api.custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
 from api.custom_types.response_types import JishoExtraItem
 
-
 MEGANE: dict[str, JishoAPIResponse] = {
     "眼鏡": {
         "meta": {"status": 200},

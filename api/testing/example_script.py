@@ -1,6 +1,6 @@
 import json
-import requests
 
+import requests
 
 API_URL = "http://3.8.95.26:5000/words"
 payload = {"words": json.dumps(["食べる", "学生"])}

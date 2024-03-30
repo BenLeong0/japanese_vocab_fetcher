@@ -2,14 +2,13 @@ import re
 from threading import Thread
 from typing import Optional
 
+import requests
 from bs4 import BeautifulSoup as Soup
 from bs4.element import Tag
-import requests
 
-from api.custom_types.alternative_string_types import HTMLString, Kaki, URL
+from api.custom_types.alternative_string_types import URL, HTMLString, Kaki
 from api.custom_types.exception_types import APIError
 from api.custom_types.response_types import ContextSentence, ResponseItemTangorin
-
 
 NAME = "tangorin"
 

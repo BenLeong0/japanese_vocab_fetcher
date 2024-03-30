@@ -1,8 +1,8 @@
 from flask import Flask, request
 from flask_cors import CORS  # type: ignore
 
-from api.coordinator import get_info
 from api import utils
+from api.coordinator import get_info
 
 app = Flask("app")
 CORS(app)

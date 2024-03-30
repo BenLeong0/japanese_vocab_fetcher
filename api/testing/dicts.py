@@ -1,11 +1,11 @@
-from collections import defaultdict
 import os
 import re
+from collections import defaultdict
 
 from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
-from api.custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
 from testing import jisho_api_responses, wanikani_api_responses
 from testing.dict_typing import (
     ForvoTestDict,
@@ -28,7 +28,7 @@ print(API_KEY)
 
 def get_file_as_string(module: str, filename: str):
     path = f"testing/html_files/{module}_{filename}.html"
-    with open(path, "r", encoding="utf8") as myfile:
+    with open(path, encoding="utf8") as myfile:
         return re.sub(r">\s*<", "><", myfile.read())
 
 
@@ -39,7 +39,7 @@ def get_ojad_html_files(slug: str) -> list[HTMLString]:
         path = f"testing/html_files/ojad_{slug}_{file_index:02d}.html"
         if not os.path.exists(path):
             break
-        with open(path, "r", encoding="utf8") as myfile:
+        with open(path, encoding="utf8") as myfile:
             htmls.append(re.sub(r">\s*<", "><", myfile.read()))
         file_index += 1
     return list(map(HTMLString, htmls))

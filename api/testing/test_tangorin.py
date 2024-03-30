@@ -1,14 +1,14 @@
 import json
 import re
 
-from bs4 import BeautifulSoup as Soup
 import pytest  # type: ignore
+from bs4 import BeautifulSoup as Soup
 
-from api.custom_types.alternative_string_types import Kaki, URL
+from api.custom_types.alternative_string_types import URL, Kaki
 from api.modules import tangorin
+from api.utils import convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from api.utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS

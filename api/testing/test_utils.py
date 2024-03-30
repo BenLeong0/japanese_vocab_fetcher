@@ -2,8 +2,8 @@ import json
 
 import pytest  # type: ignore
 
-from api.custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
 from api import utils
+from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
 
 
 class FakeRequest:

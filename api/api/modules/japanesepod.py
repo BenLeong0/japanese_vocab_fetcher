@@ -1,15 +1,14 @@
-from itertools import product
 import re
+from itertools import product
 from threading import Thread
 from typing import Optional
 
 import requests
 
-from api.custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
 from api.custom_types.exception_types import APIError
 from api.custom_types.response_types import JapanesePodAudio, ResponseItemJapanesePod
 from api.utils import remove_end_brackets
-
 
 NAME = "japanesepod"
 
