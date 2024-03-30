@@ -15,7 +15,9 @@ from api.custom_types.wanikani_api_types import (
 )
 
 NAME = "wanikani"
-API_KEY: str = dotenv_values()["WANIKANI_API_KEY"]
+API_KEY: str = dotenv_values()["WANIKANI_API_KEY"] or ""
+if API_KEY == "":
+    raise RuntimeError("no wanikani api key")
 
 
 class WanikaniAPIError(APIError):
