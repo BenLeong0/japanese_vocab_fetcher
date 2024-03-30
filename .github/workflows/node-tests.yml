@@ -2,7 +2,7 @@ on: [workflow_call]
 
 defaults:
   run:
-    working-directory: ./client
+    working-directory: client
 
 jobs:
   node-tests:

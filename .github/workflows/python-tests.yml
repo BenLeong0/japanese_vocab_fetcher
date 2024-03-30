@@ -2,7 +2,7 @@ on: [workflow_call]
 
 defaults:
   run:
-    working-directory: ./api
+    working-directory: api
 
 jobs:
   lint:
