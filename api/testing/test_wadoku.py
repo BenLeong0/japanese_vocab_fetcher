@@ -163,12 +163,10 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
         "requests.post", lambda x, timeout: FakeResponse(response, status_code=400)
     )
 
-    try:
+    with pytest.raises(wadoku.WadokuAPIError) as api_error:
         wadoku.get_html(word_list)
-        assert False
-    except wadoku.WadokuAPIError as api_error:
-        assert api_error.error_msg == json.dumps({"error": "could not connect"})
-        assert api_error.status_code == 400
+    assert api_error.value.error_msg == json.dumps({"error": "could not connect"})
+    assert api_error.value.status_code == 400
 
 
 def test_get_sections(test_dict: FullTestDict):

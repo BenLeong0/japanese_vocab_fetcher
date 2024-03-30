@@ -162,12 +162,10 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
     )
 
     for word in word_list:
-        try:
+        with pytest.raises(forvo.ForvoAPIError) as api_error:
             forvo.call_api(word)
-            assert False
-        except forvo.ForvoAPIError as api_error:
-            assert api_error.error_msg == json.dumps({"error": "could not connect"})
-            assert api_error.status_code == 400
+        assert api_error.value.error_msg == json.dumps({"error": "could not connect"})
+        assert api_error.value.status_code == 400
 
 
 def test_extract_audio_list(test_dict: FullTestDict):

@@ -163,12 +163,10 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
     )
 
     for word in word_list:
-        try:
+        with pytest.raises(jisho.JishoAPIError) as api_error:
             jisho.call_api(word)
-            assert False
-        except jisho.JishoAPIError as api_error:
-            assert api_error.error_msg == json.dumps({"error": "could not connect"})
-            assert api_error.status_code == 400
+        assert api_error.value.error_msg == json.dumps({"error": "could not connect"})
+        assert api_error.value.status_code == 400
 
 
 def test_call_api_meta_data_error(monkeypatch, test_dict: FullTestDict):
@@ -184,14 +182,13 @@ def test_call_api_meta_data_error(monkeypatch, test_dict: FullTestDict):
     )
 
     for word in word_list:
-        try:
+        with pytest.raises(jisho.JishoAPIError) as api_error:
             jisho.call_api(word)
-            assert False
-        except jisho.JishoAPIError as api_error:
-            assert api_error.error_msg == "An error occurred. Meta data: " + json.dumps(
-                {"status": 400, "error_msg": "api_error"}
-            )
-            assert api_error.status_code == 400
+        assert api_error.value.error_msg == (
+            f"An error occurred. Meta data: "
+            f"{json.dumps({'status': 400, 'error_msg': 'api_error'})}"
+        )
+        assert api_error.value.status_code == 400
 
 
 def test_segregate_items(test_dict: FullTestDict):

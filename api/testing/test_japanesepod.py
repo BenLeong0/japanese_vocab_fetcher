@@ -20,10 +20,10 @@ def fixture_test_dict(request):
 
 
 class FakeResponse:
-    def __init__(self, text, status_code=200, headers={}, error=""):
+    def __init__(self, text, status_code=200, headers=None, error=""):
         self.text = text
         self.status_code = status_code
-        self.headers = headers
+        self.headers = headers or {}
 
 
 #####################

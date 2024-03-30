@@ -41,7 +41,8 @@ select = [
     # isort
     "I",
 ]
+ignore = ["B023"]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "testing/dicts.py" = ["E501"]
 "testing/wanikani_api_responses.py" = ["E501"]

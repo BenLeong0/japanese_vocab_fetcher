@@ -4,6 +4,7 @@ import re
 import pytest  # type: ignore
 
 # from api.custom_types.alternative_string_types import Kaki, URL
+from api.custom_types.alternative_string_types import URL
 from api.modules import wanikani
 from api.utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
@@ -161,13 +162,11 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
         "requests.get", lambda url, headers: FakeResponse(response, status_code=400)
     )
 
-    try:
+    with pytest.raises(wanikani.WanikaniAPIError) as api_error:
         wanikani.call_api(url)
-        assert False  # Test fails if call_api() doesn't raise an error
-    except wanikani.WanikaniAPIError as api_error:
-        assert api_error.error_msg == json.dumps({"error": "could not connect"})
-        assert api_error.status_code == 400
-        assert api_error.url == url
+    assert api_error.value.error_msg == json.dumps({"error": "could not connect"})
+    assert api_error.value.status_code == 400
+    assert api_error.value.url == url
 
 
 def test_call_api_unsuccessful(monkeypatch):
@@ -179,13 +178,14 @@ def test_call_api_unsuccessful(monkeypatch):
     unsuccessful_response = FakeResponse('{"error": "call_api failed"}', 400)
     monkeypatch.setattr("requests.get", lambda url, headers: unsuccessful_response)
 
-    try:
-        wanikani.call_api("www.testurl.com")
-        assert False  # Test fails if call_api() doesn't raise an error
-    except wanikani.WanikaniAPIError as api_error:
-        assert api_error.error_msg == '{"error": "call_api failed"}'
-        assert api_error.status_code == 400
-        assert api_error.url == "www.testurl.com"
+    test_url = URL("www.testurl.com")
+
+    with pytest.raises(wanikani.WanikaniAPIError) as api_error:
+        wanikani.call_api(test_url)
+
+    assert api_error.value.error_msg == '{"error": "call_api failed"}'
+    assert api_error.value.status_code == 400
+    assert api_error.value.url == "www.testurl.com"
 
 
 def test_build_result_dict(test_dict: FullTestDict):
