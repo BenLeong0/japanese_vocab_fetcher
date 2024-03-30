@@ -23,8 +23,9 @@ jobs:
         python -m poetry install
     - name: Check formatting with pylint
       run: |
-        poetry run ruff check
-        poetry run ruff format --check
+        python -m pip freeze
+        python -m poetry run ruff check
+        python -m poetry run ruff format --check
 
 
   test:
