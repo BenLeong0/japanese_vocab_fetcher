@@ -2,7 +2,7 @@ on: [workflow_call]
 
 defaults:
   run:
-    working-directory: ./python_backend
+    working-directory: ./api
 
 jobs:
   lint:
@@ -24,7 +24,7 @@ jobs:
     - name: Check formatting with pylint
       run: |
         touch __init__.py
-        pylint --rcfile=./.pylintrc python_backend
+        pylint --rcfile=./.pylintrc api
 
 
   test:
