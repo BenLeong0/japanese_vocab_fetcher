@@ -12,7 +12,9 @@ from api.custom_types.response_types import ForvoAudio, ResponseItemForvo
 from api.utils import decode_unicode
 
 NAME = "forvo"
-API_KEY: str = dotenv_values()["FORVO_API_KEY"]
+API_KEY = dotenv_values()["FORVO_API_KEY"]
+if API_KEY is None:
+    raise RuntimeError("No Forvo API key found")
 
 
 class ForvoAPIError(APIError):
@@ -85,13 +87,13 @@ def call_api(word: Kaki) -> ForvoAPIResponse:
 
 def get_api_url(word: Kaki) -> URL:
     url = (
-        "https://apifree.forvo.com"
-        "/action/word-pronunciations"
-        "/format/json"
-        "/word/%s"
-        "/language/ja"
-        "/id_lang_speak/76"
-        "/key/%s" % (word, API_KEY)
+        f"https://apifree.forvo.com"
+        f"/action/word-pronunciations"
+        f"/format/json"
+        f"/word/{word}"
+        f"/language/ja"
+        f"/id_lang_speak/76"
+        f"/key/{API_KEY}"
     )
     return URL(url)
 
