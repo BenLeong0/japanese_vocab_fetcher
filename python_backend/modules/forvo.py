@@ -84,15 +84,15 @@ def call_api(word: Kaki) -> ForvoAPIResponse:
 
 
 def get_api_url(word: Kaki) -> URL:
-    url = \
-        "https://apifree.forvo.com"\
-        "/action/word-pronunciations"\
-        "/format/json"\
-        "/word/%s"\
-        "/language/ja"\
-        "/id_lang_speak/76"\
-        "/key/%s"\
-        % (word, API_KEY)
+    url = (
+        f"https://apifree.forvo.com"
+        f"/action/word-pronunciations"
+        f"/format/json"
+        f"/word/{word}"
+        f"/language/ja"
+        f"/id_lang_speak/76"
+        f"/key/{API_KEY}"
+    )
     return URL(url)
 
 
