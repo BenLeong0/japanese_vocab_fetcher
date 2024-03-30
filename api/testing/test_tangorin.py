@@ -2,13 +2,13 @@ import json
 import re
 
 from bs4 import BeautifulSoup as Soup
-import pytest   # type: ignore
+import pytest  # type: ignore
 
-from custom_types.alternative_string_types import Kaki, URL
-from modules import tangorin
+from api.custom_types.alternative_string_types import Kaki, URL
+from api.modules import tangorin
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from utils import convert_list_of_str_to_kaki
+from api.utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -26,6 +26,7 @@ class FakeResponse:
 #####################
 ## TESTS  ###########
 #####################
+
 
 def test_main(monkeypatch, test_dict: FullTestDict):
     """
@@ -46,7 +47,9 @@ def test_main(monkeypatch, test_dict: FullTestDict):
         word = get_word_from_tangorin_url(url)
         return sections[word]["html"]
 
-    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(get_html_response(url)))
+    monkeypatch.setattr(
+        "requests.get", lambda url, timeout: FakeResponse(get_html_response(url))
+    )
 
     assert tangorin.main(word_list) == expected_output
 
@@ -75,7 +78,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": sections[word]["url"]
+                "url": sections[word]["url"],
             },
             "main_data": {
                 "sentences": [],
@@ -84,7 +87,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         for word in word_list
     }
 
-    monkeypatch.setattr("requests.get", lambda x, timeout: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.get", lambda x, timeout: FakeResponse(response, status_code=400)
+    )
     assert tangorin.main(word_list) == expected_output
 
 
@@ -99,7 +104,7 @@ def test_get_sentences(monkeypatch, test_dict: FullTestDict):
     full_expected_output = test_dict.tangorin.expected_output
 
     for word in word_list:
-        html = sections[word]['html']
+        html = sections[word]["html"]
         monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
         expected_output = full_expected_output[word]
         assert tangorin.get_sentences(word) == expected_output
@@ -128,9 +133,9 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
     sections = test_dict.tangorin.expected_sections
 
     for word in word_list:
-        html = sections[word]['html']
+        html = sections[word]["html"]
         monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
-        assert tangorin.get_html(word) == Soup(html, 'html.parser')
+        assert tangorin.get_html(word) == Soup(html, "html.parser")
 
 
 def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
@@ -141,7 +146,9 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "could not connect"})
-    monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.get", lambda url, timeout: FakeResponse(response, status_code=400)
+    )
 
     try:
         tangorin.get_html(word_list[0])
@@ -180,12 +187,17 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
             id="remove multiple furigana",
         ),
         pytest.param(
-            Soup("<div>test<mark></mark><mark></mark><rt>furi</rt></div>", "html.parser"),
+            Soup(
+                "<div>test<mark></mark><mark></mark><rt>furi</rt></div>", "html.parser"
+            ),
             Soup("<div>test<mark></mark> <mark></mark></div>", "html.parser"),
             id="double mark tag and remove furigana",
         ),
         pytest.param(
-            Soup("<div>test<mark></mark><rt>furi</rt><mark></mark><rt>furi</rt></div>", "html.parser"),
+            Soup(
+                "<div>test<mark></mark><rt>furi</rt><mark></mark><rt>furi</rt></div>",
+                "html.parser",
+            ),
             Soup("<div>test<mark></mark> <mark></mark></div>", "html.parser"),
             id="furigana inside double mark tag",
         ),
@@ -212,6 +224,8 @@ def test_extract_sentences(test_dict: FullTestDict):
     expected_output = test_dict.tangorin.expected_output
 
     for word in word_list:
-        html = sections[word]['html']
+        html = sections[word]["html"]
         expected_sentences = expected_output[word]["main_data"]["sentences"]
-        assert tangorin.extract_sentences(Soup(html, "html.parser")) == expected_sentences
+        assert (
+            tangorin.extract_sentences(Soup(html, "html.parser")) == expected_sentences
+        )

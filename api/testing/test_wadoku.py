@@ -2,13 +2,13 @@ import json
 import re
 
 from bs4 import BeautifulSoup as Soup
-import pytest   # type: ignore
+import pytest  # type: ignore
 
-from custom_types.alternative_string_types import Yomi
-from modules import wadoku
+from api.custom_types.alternative_string_types import Yomi
+from api.modules import wadoku
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from utils import convert_list_of_str_to_kaki
+from api.utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -26,6 +26,7 @@ class FakeResponse:
 #####################
 ## TESTS  ###########
 #####################
+
 
 def test_main(monkeypatch, test_dict: FullTestDict):
     """
@@ -51,32 +52,32 @@ def test_main_recursion(monkeypatch):
 
     def html_response(url, timeout):
         if "BADINPUT" in url:
-           resp_path = "testing/html_files/wadoku_badinput_taberu_gakusei.html"
+            resp_path = "testing/html_files/wadoku_badinput_taberu_gakusei.html"
         else:
-           resp_path = "testing/html_files/wadoku_taberu_gakusei.html"
+            resp_path = "testing/html_files/wadoku_taberu_gakusei.html"
 
         with open(resp_path, encoding="utf8") as f:
-            mock_response = FakeResponse(re.sub(r'>\s*<', '><', f.read()))
+            mock_response = FakeResponse(re.sub(r">\s*<", "><", f.read()))
         return mock_response
 
     monkeypatch.setattr("requests.post", html_response)
 
     assert wadoku.main(word_list) == {
-        'BADINPUT': {
+        "BADINPUT": {
             "success": True,
             "error": None,
             "main_data": {
                 "accent": [],
             },
         },
-        '食べる':  {
+        "食べる": {
             "success": True,
             "error": None,
             "main_data": {
                 "accent": [Yomi("たべ' る")],
             },
         },
-        '学生':  {
+        "学生": {
             "success": True,
             "error": None,
             "main_data": {
@@ -109,7 +110,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": test_dict.wadoku.url
+                "url": test_dict.wadoku.url,
             },
             "main_data": {
                 "accent": [],
@@ -118,7 +119,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         for word in word_list
     }
 
-    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.post", lambda x, timeout: FakeResponse(response, status_code=400)
+    )
     assert wadoku.main(word_list) == expected_output
 
 
@@ -145,7 +148,7 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
 
     monkeypatch.setattr("requests.post", lambda url, timeout: FakeResponse(html))
 
-    assert wadoku.get_html(word_list) == Soup(html, 'html.parser')
+    assert wadoku.get_html(word_list) == Soup(html, "html.parser")
 
 
 def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
@@ -156,7 +159,9 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "could not connect"})
-    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.post", lambda x, timeout: FakeResponse(response, status_code=400)
+    )
 
     try:
         wadoku.get_html(word_list)
@@ -164,7 +169,6 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     except wadoku.WadokuAPIError as api_error:
         assert api_error.error_msg == json.dumps({"error": "could not connect"})
         assert api_error.status_code == 400
-
 
 
 def test_get_sections(test_dict: FullTestDict):
@@ -177,7 +181,7 @@ def test_get_sections(test_dict: FullTestDict):
     expected_sections = test_dict.wadoku.expected_sections
 
     assert wadoku.get_sections(Soup(html, "html.parser")) == [
-        (section['writing_section'], section['reading_sections'])
+        (section["writing_section"], section["reading_sections"])
         for section in expected_sections
     ]
 
@@ -189,7 +193,9 @@ def test_extract_writings(test_dict: FullTestDict):
     - THEN check all the correct writings are extracted
     """
     for section in test_dict.wadoku.expected_sections:
-        assert wadoku.extract_writings(section['writing_section']) == section['writings']
+        assert (
+            wadoku.extract_writings(section["writing_section"]) == section["writings"]
+        )
 
 
 @pytest.mark.parametrize(
@@ -202,7 +208,7 @@ def test_extract_writings(test_dict: FullTestDict):
         ["remove~tilda", "removetilda"],
         ["remove~~tildas", "removetildas"],
         ["remove\n￨･~all", "removeall"],
-    ]
+    ],
 )
 def test_remove_punct(input_string, expected_output):
     """
@@ -220,7 +226,9 @@ def test_extract_readings(test_dict: FullTestDict):
     - THEN check all the correct writings are extracted
     """
     for section in test_dict.wadoku.expected_sections:
-        for html_section, reading in zip(section['reading_sections'], section['readings']):
+        for html_section, reading in zip(
+            section["reading_sections"], section["readings"]
+        ):
             assert wadoku.extract_reading(html_section) == reading
 
 
@@ -231,7 +239,7 @@ def test_build_accent_dict(test_dict: FullTestDict):
     - THEN check all the values are as expected
     """
     word_sections = [
-        (section['writing_section'], section['reading_sections'])
+        (section["writing_section"], section["reading_sections"])
         for section in test_dict.wadoku.expected_sections
     ]
 

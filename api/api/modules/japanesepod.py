@@ -5,10 +5,10 @@ from typing import Optional
 
 import requests
 
-from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-from custom_types.exception_types import APIError
-from custom_types.response_types import JapanesePodAudio, ResponseItemJapanesePod
-from utils import remove_end_brackets
+from api.custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from api.custom_types.exception_types import APIError
+from api.custom_types.response_types import JapanesePodAudio, ResponseItemJapanesePod
+from api.utils import remove_end_brackets
 
 
 NAME = "japanesepod"
@@ -16,6 +16,7 @@ NAME = "japanesepod"
 
 class JapanesePodAPIError(APIError):
     pass
+
 
 class JapanesePodParsingError(APIError):
     pass
@@ -52,8 +53,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemJapanesePod]:
         audio_dict[word] = get_audio_urls(word)
 
     threads: list[Thread] = [
-        Thread(target=call_script, args=[word])
-        for word in word_list
+        Thread(target=call_script, args=[word]) for word in word_list
     ]
 
     for thread in threads:
@@ -86,6 +86,7 @@ def get_audio_urls(word: Kaki) -> ResponseItemJapanesePod:
 
 # Get HTML
 
+
 def get_url(word: Kaki) -> URL:
     url = f"https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1ZUJ{word}"
     return URL(url)
@@ -106,18 +107,20 @@ def get_html_string(word: Kaki) -> HTMLString:
 
 # Extract results
 
+
 def extract_rows(html: HTMLString) -> list[str]:
     cleaning_pattern = r"<pre>(?P<results>.*)</pre>"
     result_search = re.search(cleaning_pattern, html, flags=re.DOTALL)
 
     if result_search is None:
         raise JapanesePodParsingError(
-            status_code=400,
-            error_msg="could not extract results from html"
+            status_code=400, error_msg="could not extract results from html"
         )
 
-    full_result: str = result_search['results']
-    return [x for x in full_result.split("\n") if x]    # Filter out "empty" rows (first and last)
+    full_result: str = result_search["results"]
+    return [
+        x for x in full_result.split("\n") if x
+    ]  # Filter out "empty" rows (first and last)
 
 
 def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
@@ -127,19 +130,17 @@ def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
 
     if match is None:
         raise JapanesePodParsingError(
-            status_code=400,
-            error_msg="could not extract results from row"
+            status_code=400, error_msg="could not extract results from row"
         )
 
-    writings_match: str = match['writings']
-    readings_match: Optional[str] = match['readings']
+    writings_match: str = match["writings"]
+    readings_match: Optional[str] = match["readings"]
 
     return (writings_match, readings_match)
 
 
 def build_row_result_from_matches(
-    writings_match: str,
-    readings_match: Optional[str]
+    writings_match: str, readings_match: Optional[str]
 ) -> tuple[list[Kaki], list[Yomi]]:
     readings_match = writings_match if readings_match is None else readings_match
 
@@ -163,6 +164,7 @@ def extract_results(html: HTMLString) -> list[tuple[list[Kaki], list[Yomi]]]:
 
 # Audio urls
 
+
 def filter_results(
     results: list[tuple[list[Kaki], list[Yomi]]],
     word: Kaki,
@@ -171,13 +173,16 @@ def filter_results(
 
 
 def generate_audio_urls(
-    results: list[tuple[list[Kaki], list[Yomi]]]
+    results: list[tuple[list[Kaki], list[Yomi]]],
 ) -> list[tuple[Kaki, Yomi, URL]]:
     base_url = "https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji={}&kana={}"
-    return sum([
-        [(k, y, URL(base_url.format(k, y))) for k, y in product(*res)]
-        for res in results
-    ], [])
+    return sum(
+        [
+            [(k, y, URL(base_url.format(k, y))) for k, y in product(*res)]
+            for res in results
+        ],
+        [],
+    )
 
 
 def check_urls(url_data_list: list[tuple[Kaki, Yomi, URL]]) -> list[JapanesePodAudio]:
@@ -186,12 +191,11 @@ def check_urls(url_data_list: list[tuple[Kaki, Yomi, URL]]) -> list[JapanesePodA
     def call_script(url_data: tuple[Kaki, Yomi, URL]) -> None:
         kaki, yomi, url = url_data
         resp = requests.head(url)
-        if resp.headers['Content-length'] != "52288":
+        if resp.headers["Content-length"] != "52288":
             valid_pairings.add((kaki, yomi))
 
     threads: list[Thread] = [
-        Thread(target=call_script, args=[url_data])
-        for url_data in url_data_list
+        Thread(target=call_script, args=[url_data]) for url_data in url_data_list
     ]
 
     for thread in threads:
@@ -201,5 +205,7 @@ def check_urls(url_data_list: list[tuple[Kaki, Yomi, URL]]) -> list[JapanesePodA
 
     return [
         {"writing": str(kaki), "reading": str(yomi), "url": url}
-        for (kaki, yomi, url) in filter(lambda x: (x[0], x[1]) in valid_pairings, url_data_list)
+        for (kaki, yomi, url) in filter(
+            lambda x: (x[0], x[1]) in valid_pairings, url_data_list
+        )
     ]

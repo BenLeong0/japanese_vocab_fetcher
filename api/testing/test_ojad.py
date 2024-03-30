@@ -3,12 +3,12 @@ import json
 import re
 
 from bs4 import BeautifulSoup as Soup
-import pytest   # type: ignore
+import pytest  # type: ignore
 
-from modules import ojad
+from api.modules import ojad
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from utils import convert_list_of_str_to_kaki
+from api.utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -23,7 +23,9 @@ class FakeResponse:
         self.status_code = status_code
 
 
-def _get_ojad_html_string(url: str, htmls: list[Soup], timeout: int = 20) -> FakeResponse:
+def _get_ojad_html_string(
+    url: str, htmls: list[Soup], timeout: int = 20
+) -> FakeResponse:
     """Given a url return the corresponding (test) html, or a blank page if out of range"""
     page_number_match = re.search(r"page:\d+", url)
 
@@ -40,6 +42,7 @@ def _get_ojad_html_string(url: str, htmls: list[Soup], timeout: int = 20) -> Fak
 #####################
 ## TESTS  ###########
 #####################
+
 
 def test_main(monkeypatch, test_dict: FullTestDict):
     """
@@ -69,7 +72,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": test_dict.ojad.url % 1
+                "url": test_dict.ojad.url % 1,
             },
             "main_data": {
                 "accent": [],
@@ -78,7 +81,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         for word in word_list
     }
 
-    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.post", lambda x, timeout: FakeResponse(response, status_code=400)
+    )
     assert ojad.main(word_list) == expected_output
 
 
@@ -91,7 +96,7 @@ def test_empty_input():
     assert ojad.main([]) == {}
 
 
-@pytest.mark.parametrize("page_number", [1,2,3,10,100])
+@pytest.mark.parametrize("page_number", [1, 2, 3, 10, 100])
 def test_get_url(test_dict: FullTestDict, page_number: int):
     """
     - GIVEN a list of words and a page number
@@ -123,7 +128,7 @@ def test_has_words_false():
     - THEN return false when it should
     """
     with open("testing/html_files/ojad_BLANK.html", encoding="utf8") as file:
-        html = Soup(file, 'html.parser')
+        html = Soup(file, "html.parser")
 
     assert ojad.has_words(html) == False
 
@@ -139,7 +144,9 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
 
     for page_number, html in enumerate(htmls):
-        assert ojad.get_html(word_list, page_number=page_number+1) == Soup(html, 'html.parser')
+        assert ojad.get_html(word_list, page_number=page_number + 1) == Soup(
+            html, "html.parser"
+        )
 
 
 def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
@@ -150,7 +157,9 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "could not connect"})
-    monkeypatch.setattr("requests.post", lambda x, timeout: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.post", lambda x, timeout: FakeResponse(response, status_code=400)
+    )
 
     try:
         ojad.get_html(word_list, 1)
@@ -184,7 +193,7 @@ def test_get_sections(test_dict: FullTestDict):
     expected_sections = test_dict.ojad.expected_sections
 
     assert ojad.get_sections(parsed_htmls) == [
-        (section['writing_section'], section['reading_sections'])
+        (section["writing_section"], section["reading_sections"])
         for section in expected_sections
     ]
 
@@ -196,7 +205,7 @@ def test_extract_writings(test_dict: FullTestDict):
     - THEN check all the correct writings are extracted
     """
     for section in test_dict.ojad.expected_sections:
-        assert ojad.extract_writings(section['writing_section']) == section['writings']
+        assert ojad.extract_writings(section["writing_section"]) == section["writings"]
 
 
 def test_extract_reading(test_dict: FullTestDict):
@@ -206,7 +215,9 @@ def test_extract_reading(test_dict: FullTestDict):
     - THEN check all the correct readings are extracted
     """
     for section in test_dict.ojad.expected_sections:
-        for html_section, reading in zip(section['reading_sections'], section['readings']):
+        for html_section, reading in zip(
+            section["reading_sections"], section["readings"]
+        ):
             na_adj = "na_adj" in section and section["na_adj"] is True
             assert ojad.extract_reading(html_section, na_adj) == reading
 
@@ -218,7 +229,7 @@ def test_build_accent_dict(test_dict: FullTestDict):
     - THEN check all the values are as expected
     """
     word_sections = [
-        (section['writing_section'], section['reading_sections'])
+        (section["writing_section"], section["reading_sections"])
         for section in test_dict.ojad.expected_sections
     ]
 

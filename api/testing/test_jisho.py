@@ -1,13 +1,13 @@
 import json
 import re
 
-import pytest   # type: ignore
+import pytest  # type: ignore
 
-from custom_types.alternative_string_types import Kaki, URL
-from modules import jisho
+from api.custom_types.alternative_string_types import Kaki, URL
+from api.modules import jisho
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from utils import convert_list_of_str_to_kaki
+from api.utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -25,6 +25,7 @@ class FakeResponse:
 #####################
 ## TESTS  ###########
 #####################
+
 
 def test_main(monkeypatch, test_dict: FullTestDict):
     """
@@ -63,7 +64,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": test_dict.jisho.expected_sections[word]["url"]
+                "url": test_dict.jisho.expected_sections[word]["url"],
             },
             "main_data": {
                 "results": [],
@@ -73,7 +74,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         for word in word_list
     }
 
-    monkeypatch.setattr("requests.get", lambda x: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.get", lambda x: FakeResponse(response, status_code=400)
+    )
     assert jisho.main(word_list) == expected_output
 
 
@@ -89,9 +92,10 @@ def test_main_meta_data_error(monkeypatch, test_dict: FullTestDict):
         word: {
             "success": False,
             "error": {
-                "error_msg": "An error occurred. Meta data: " + json.dumps({"status": 400, "error_msg": "api_error"}),
+                "error_msg": "An error occurred. Meta data: "
+                + json.dumps({"status": 400, "error_msg": "api_error"}),
                 "status_code": 400,
-                "url": test_dict.jisho.expected_sections[word]["url"]
+                "url": test_dict.jisho.expected_sections[word]["url"],
             },
             "main_data": {
                 "results": [],
@@ -101,7 +105,9 @@ def test_main_meta_data_error(monkeypatch, test_dict: FullTestDict):
         for word in word_list
     }
 
-    monkeypatch.setattr("requests.get", lambda x: FakeResponse(response, status_code=200))
+    monkeypatch.setattr(
+        "requests.get", lambda x: FakeResponse(response, status_code=200)
+    )
     assert jisho.main(word_list) == expected_output
 
 
@@ -136,8 +142,10 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     word_list = convert_list_of_str_to_kaki(test_dict.input)
 
     for word in word_list:
-        api_response = test_dict.jisho.expected_sections[word]['api_response']
-        monkeypatch.setattr("requests.get", lambda url: FakeResponse(json.dumps(api_response)))
+        api_response = test_dict.jisho.expected_sections[word]["api_response"]
+        monkeypatch.setattr(
+            "requests.get", lambda url: FakeResponse(json.dumps(api_response))
+        )
 
         assert jisho.call_api(word) == api_response
 
@@ -150,7 +158,9 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "could not connect"})
-    monkeypatch.setattr("requests.get", lambda url: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.get", lambda url: FakeResponse(response, status_code=400)
+    )
 
     for word in word_list:
         try:
@@ -169,14 +179,18 @@ def test_call_api_meta_data_error(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"meta": {"status": 400, "error_msg": "api_error"}})
-    monkeypatch.setattr("requests.get", lambda url: FakeResponse(response, status_code=200))
+    monkeypatch.setattr(
+        "requests.get", lambda url: FakeResponse(response, status_code=200)
+    )
 
     for word in word_list:
         try:
             jisho.call_api(word)
             assert False
         except jisho.JishoAPIError as api_error:
-            assert api_error.error_msg == "An error occurred. Meta data: " + json.dumps({"status": 400, "error_msg": "api_error"})
+            assert api_error.error_msg == "An error occurred. Meta data: " + json.dumps(
+                {"status": 400, "error_msg": "api_error"}
+            )
             assert api_error.status_code == 400
 
 
@@ -189,12 +203,17 @@ def test_segregate_items(test_dict: FullTestDict):
     word_list = convert_list_of_str_to_kaki(test_dict.input)
 
     for word in word_list:
-        api_response = test_dict.jisho.expected_sections[word]['api_response']
-        items = api_response['data']
-        expected_filtered_items = test_dict.jisho.expected_sections[word]['filtered_items']
-        expected_extra_items = test_dict.jisho.expected_sections[word]['extra_items']
+        api_response = test_dict.jisho.expected_sections[word]["api_response"]
+        items = api_response["data"]
+        expected_filtered_items = test_dict.jisho.expected_sections[word][
+            "filtered_items"
+        ]
+        expected_extra_items = test_dict.jisho.expected_sections[word]["extra_items"]
 
-        assert jisho.segregate_items(items, word) == (expected_filtered_items, expected_extra_items)
+        assert jisho.segregate_items(items, word) == (
+            expected_filtered_items,
+            expected_extra_items,
+        )
 
 
 def test_extract_jisho_data(test_dict: FullTestDict):
@@ -206,10 +225,10 @@ def test_extract_jisho_data(test_dict: FullTestDict):
     word_list = convert_list_of_str_to_kaki(test_dict.input)
 
     for word in word_list:
-        api_response = test_dict.jisho.expected_sections[word]['api_response']
+        api_response = test_dict.jisho.expected_sections[word]["api_response"]
         expected_output = {
-            "results": test_dict.jisho.expected_sections[word]['filtered_items'],
-            "extra": test_dict.jisho.expected_sections[word]['extra_items'],
+            "results": test_dict.jisho.expected_sections[word]["filtered_items"],
+            "extra": test_dict.jisho.expected_sections[word]["extra_items"],
         }
 
         assert jisho.extract_jisho_data(api_response, word) == expected_output

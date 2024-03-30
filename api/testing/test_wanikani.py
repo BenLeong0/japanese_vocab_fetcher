@@ -1,13 +1,13 @@
 import json
 import re
 
-import pytest   # type: ignore
+import pytest  # type: ignore
 
-# from custom_types.alternative_string_types import Kaki, URL
-from modules import wanikani
+# from api.custom_types.alternative_string_types import Kaki, URL
+from api.modules import wanikani
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
+from api.utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -29,6 +29,7 @@ API_KEY_REGEX = r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
 ## TESTS  ###########
 #####################
 
+
 def test_api_key_import():
     """Check the API_KEY is successfully imported"""
     assert re.match(API_KEY_REGEX, wanikani.API_KEY) is not None
@@ -44,7 +45,9 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     expected_output = test_dict.wanikani.expected_output
     api_response = test_dict.wanikani.api_response
 
-    monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(json.dumps(api_response)))
+    monkeypatch.setattr(
+        "requests.get", lambda url, headers: FakeResponse(json.dumps(api_response))
+    )
 
     assert wanikani.main(word_list) == expected_output
 
@@ -63,7 +66,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": test_dict.wanikani.url
+                "url": test_dict.wanikani.url,
             },
             "main_data": {
                 "audio": [],
@@ -73,7 +76,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         for word in word_list
     }
 
-    monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.get", lambda url, headers: FakeResponse(response, status_code=400)
+    )
 
     assert wanikani.main(word_list) == expected_output
 
@@ -152,11 +157,13 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
     """
     url = test_dict.wanikani.url
     response = json.dumps({"error": "could not connect"})
-    monkeypatch.setattr("requests.get", lambda url, headers: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.get", lambda url, headers: FakeResponse(response, status_code=400)
+    )
 
     try:
         wanikani.call_api(url)
-        assert False            # Test fails if call_api() doesn't raise an error
+        assert False  # Test fails if call_api() doesn't raise an error
     except wanikani.WanikaniAPIError as api_error:
         assert api_error.error_msg == json.dumps({"error": "could not connect"})
         assert api_error.status_code == 400
@@ -174,7 +181,7 @@ def test_call_api_unsuccessful(monkeypatch):
 
     try:
         wanikani.call_api("www.testurl.com")
-        assert False            # Test fails if call_api() doesn't raise an error
+        assert False  # Test fails if call_api() doesn't raise an error
     except wanikani.WanikaniAPIError as api_error:
         assert api_error.error_msg == '{"error": "call_api failed"}'
         assert api_error.status_code == 400

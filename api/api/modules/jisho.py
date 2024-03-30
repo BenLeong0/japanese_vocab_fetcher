@@ -3,10 +3,14 @@ from threading import Thread
 
 import requests
 
-from custom_types.alternative_string_types import Kaki, URL
-from custom_types.exception_types import APIError
-from custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
-from custom_types.response_types import JishoExtraItem, JishoMainData, ResponseItemJisho
+from api.custom_types.alternative_string_types import Kaki, URL
+from api.custom_types.exception_types import APIError
+from api.custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
+from api.custom_types.response_types import (
+    JishoExtraItem,
+    JishoMainData,
+    ResponseItemJisho,
+)
 
 
 NAME = "jisho"
@@ -42,8 +46,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemJisho]:
         results_dict[word] = get_jisho_data(word)
 
     threads: list[Thread] = [
-        Thread(target=call_script, args=[word])
-        for word in word_list
+        Thread(target=call_script, args=[word]) for word in word_list
     ]
 
     for thread in threads:
@@ -84,31 +87,30 @@ def call_api(word: Kaki) -> JishoAPIResponse:
     meta_data_status_code = meta_data["status"]
 
     if meta_data_status_code != 200:
-        internal_error_msg: str = "An error occurred. Meta data: " + json.dumps(meta_data)
+        internal_error_msg: str = "An error occurred. Meta data: " + json.dumps(
+            meta_data
+        )
         raise JishoAPIError(internal_error_msg, meta_data_status_code, url)
 
     return response_data
 
 
 def convert_to_extra_item(item: JishoAPIItem) -> JishoExtraItem:
-    return {
-        "slug": item["slug"],
-        "japanese": item["japanese"]
-    }
+    return {"slug": item["slug"], "japanese": item["japanese"]}
 
 
 def segregate_items(
-    items: list[JishoAPIItem],
-    word: Kaki
+    items: list[JishoAPIItem], word: Kaki
 ) -> tuple[list[JishoAPIItem], list[JishoExtraItem]]:
     matching_items: list[JishoAPIItem] = []
     extra_items: list[JishoExtraItem] = []
 
     def item_is_matching(item: JishoAPIItem, word: Kaki) -> bool:
         for japanese in item["japanese"]:
-            if (
-                ("word" in japanese and word == japanese["word"]) or
-                ("word" not in japanese and "reading" in japanese and word == japanese["reading"])
+            if ("word" in japanese and word == japanese["word"]) or (
+                "word" not in japanese
+                and "reading" in japanese
+                and word == japanese["reading"]
             ):
                 return True
         return False

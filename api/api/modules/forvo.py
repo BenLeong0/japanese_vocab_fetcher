@@ -5,22 +5,24 @@ from typing import Optional
 from dotenv import dotenv_values
 import requests
 
-from custom_types.alternative_string_types import Kaki, URL
-from custom_types.exception_types import APIError
-from custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
-from custom_types.response_types import ForvoAudio, ResponseItemForvo
-from utils import decode_unicode
+from api.custom_types.alternative_string_types import Kaki, URL
+from api.custom_types.exception_types import APIError
+from api.custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
+from api.custom_types.response_types import ForvoAudio, ResponseItemForvo
+from api.utils import decode_unicode
 
 
 NAME = "forvo"
-API_KEY: str = dotenv_values()['FORVO_API_KEY']
+API_KEY: str = dotenv_values()["FORVO_API_KEY"]
 
 
 class ForvoAPIError(APIError):
     pass
 
 
-def response_factory(audio_list: Optional[list[ForvoAudio]] = None) -> ResponseItemForvo:
+def response_factory(
+    audio_list: Optional[list[ForvoAudio]] = None,
+) -> ResponseItemForvo:
     return {
         "success": True,
         "error": None,
@@ -47,8 +49,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemForvo]:
         audio_urls_dict[word] = get_audio_urls(word)
 
     threads: list[Thread] = [
-        Thread(target=call_script, args=[word])
-        for word in word_list
+        Thread(target=call_script, args=[word]) for word in word_list
     ]
 
     for thread in threads:
@@ -84,15 +85,15 @@ def call_api(word: Kaki) -> ForvoAPIResponse:
 
 
 def get_api_url(word: Kaki) -> URL:
-    url = \
-        "https://apifree.forvo.com"\
-        "/action/word-pronunciations"\
-        "/format/json"\
-        "/word/%s"\
-        "/language/ja"\
-        "/id_lang_speak/76"\
-        "/key/%s"\
-        % (word, API_KEY)
+    url = (
+        "https://apifree.forvo.com"
+        "/action/word-pronunciations"
+        "/format/json"
+        "/word/%s"
+        "/language/ja"
+        "/id_lang_speak/76"
+        "/key/%s" % (word, API_KEY)
+    )
     return URL(url)
 
 
@@ -112,7 +113,4 @@ def extract_data(item: ForvoAPIItem) -> ForvoAudio:
 
 
 def correct_word(item: ForvoAPIItem, word: Kaki) -> bool:
-    return (
-        word == item["word"] or
-        word == decode_unicode(item["word"])
-    )
+    return word == item["word"] or word == decode_unicode(item["word"])

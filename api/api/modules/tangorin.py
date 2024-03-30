@@ -6,9 +6,9 @@ from bs4 import BeautifulSoup as Soup
 from bs4.element import Tag
 import requests
 
-from custom_types.alternative_string_types import HTMLString, Kaki, URL
-from custom_types.exception_types import APIError
-from custom_types.response_types import ContextSentence, ResponseItemTangorin
+from api.custom_types.alternative_string_types import HTMLString, Kaki, URL
+from api.custom_types.exception_types import APIError
+from api.custom_types.response_types import ContextSentence, ResponseItemTangorin
 
 
 NAME = "tangorin"
@@ -18,7 +18,9 @@ class TangorinAPIError(APIError):
     pass
 
 
-def response_factory(sentence_list: Optional[list[ContextSentence]] = None) -> ResponseItemTangorin:
+def response_factory(
+    sentence_list: Optional[list[ContextSentence]] = None,
+) -> ResponseItemTangorin:
     return {
         "success": True,
         "error": None,
@@ -37,6 +39,7 @@ def error_response_factory(error: TangorinAPIError) -> ResponseItemTangorin:
         },
     }
 
+
 TangorinSentenceSection = list[tuple[Soup, Soup]]
 
 
@@ -47,8 +50,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemTangorin]:
         sentences_dict[word] = get_sentences(word)
 
     threads: list[Thread] = [
-        Thread(target=call_script, args=[word])
-        for word in word_list
+        Thread(target=call_script, args=[word]) for word in word_list
     ]
 
     for thread in threads:
@@ -72,6 +74,7 @@ def get_sentences(word: Kaki) -> ResponseItemTangorin:
 
 # Get HTML
 
+
 def get_url(word: Kaki) -> URL:
     url = f"https://tangorin.com/sentences?search={word}"
     return URL(url)
@@ -87,20 +90,18 @@ def get_html(word: Kaki) -> Soup:
         raise TangorinAPIError(error_msg, status_code, url)
 
     html = HTMLString(response.text)
-    return Soup(html, 'html.parser')
+    return Soup(html, "html.parser")
 
 
 # Extract sections
+
 
 def clean_html(html: Soup) -> None:
     """Remove furigana, and insert whitespace"""
     for furigana in html.find_all("rt"):
         furigana.decompose()
     for space in html.find_all("mark"):
-        if (
-            isinstance(space.nextSibling, Tag) and
-            space.nextSibling.name == "mark"
-        ):
+        if isinstance(space.nextSibling, Tag) and space.nextSibling.name == "mark":
             space.insert_after(" ")
 
 
@@ -110,7 +111,8 @@ def extract_sentences(html: Soup) -> list[ContextSentence]:
     rows: list[Soup] = list(html.find_all("div", class_="sentences"))
     return [
         {
-            "ja": re.sub(r'\s+', ' ', row.find('dt', class_='s-jp').text).strip(),
-            "en": re.sub(r'\s+', ' ', row.find('dd', class_='s-en').text).strip()
-        } for row in rows
+            "ja": re.sub(r"\s+", " ", row.find("dt", class_="s-jp").text).strip(),
+            "en": re.sub(r"\s+", " ", row.find("dd", class_="s-en").text).strip(),
+        }
+        for row in rows
     ]

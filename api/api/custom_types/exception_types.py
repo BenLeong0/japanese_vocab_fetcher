@@ -1,7 +1,7 @@
 import json
 from typing import TypedDict
 
-from custom_types.alternative_string_types import URL
+from api.custom_types.alternative_string_types import URL
 
 
 class APIErrorDict(TypedDict):
@@ -22,14 +22,12 @@ class APIError(Exception):
         self.status_code = status_code
         self.url = url
 
-
     def to_dict(self) -> APIErrorDict:
         return {
             "status_code": self.status_code,
             "error_msg": self.error_msg,
             "url": self.url,
         }
-
 
     def __str__(self):
         return json.dumps(self.to_dict())

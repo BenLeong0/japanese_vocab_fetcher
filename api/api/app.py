@@ -1,14 +1,14 @@
 from flask import Flask, request
-from flask_cors import CORS     # type: ignore
+from flask_cors import CORS  # type: ignore
 
-from coordinator import get_info
-import utils
+from api.coordinator import get_info
+from api import utils
 
 app = Flask("app")
 CORS(app)
 
 
-@app.route('/words', methods=['GET'])
+@app.route("/words", methods=["GET"])
 def homepage():
     word_list = utils.get_words_from_request(request)
     resp = get_info(word_list)
@@ -17,4 +17,4 @@ def homepage():
 
 if __name__ == "__main__":
     # app.run(host='0.0.0.0', debug=True, port=5000, ssl_context=('cert.pem', 'key.pem'))
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port=5000)

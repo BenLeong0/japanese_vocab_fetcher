@@ -5,9 +5,9 @@ from typing import DefaultDict, Optional
 from bs4 import BeautifulSoup as Soup
 import requests
 
-from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-from custom_types.exception_types import APIError
-from custom_types.response_types import ResponseItemOJAD
+from api.custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from api.custom_types.exception_types import APIError
+from api.custom_types.response_types import ResponseItemOJAD
 
 
 NAME = "ojad"
@@ -48,18 +48,19 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemOJAD]:
         htmls = get_htmls(word_list)
     except OJADAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word : error_response_factory(api_error) for word in word_list}
+        return {word: error_response_factory(api_error) for word in word_list}
 
     word_sections = get_sections(htmls)
     accent_dict = build_accent_dict(word_sections)
 
-    return {word : response_factory(accent_dict[word]) for word in word_list}
+    return {word: response_factory(accent_dict[word]) for word in word_list}
 
 
 # Get HTML
 
+
 def get_url(word_list: list[Kaki], page_number: int) -> URL:
-    search_parameters = '%20'.join(word_list)
+    search_parameters = "%20".join(word_list)
     url = "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:{}/page:{}".format(
         search_parameters,
         page_number,
@@ -85,7 +86,7 @@ def get_html(word_list: list[Kaki], page_number: int) -> Soup:
         raise OJADAPIError(error_msg, status_code, url)
 
     html_string = HTMLString(response.text)
-    html = Soup(html_string, 'html.parser')
+    html = Soup(html_string, "html.parser")
     return html
 
 
@@ -102,25 +103,29 @@ def get_htmls(word_list: list[Kaki]) -> list[Soup]:
 
 # Extract sections
 
+
 def get_sections(htmls: list[Soup]) -> OJADWordSectionsType:
     """Return list of tuples of form `(writing_section, reading_section)`"""
     rows: list[Soup] = sum(map(get_rows, htmls), [])
     return [
         (
-            Soup(str(row.find('td', class_='midashi')), "html.parser"),
+            Soup(str(row.find("td", class_="midashi")), "html.parser"),
             [
-                Soup(str(proc), "html.parser") for proc in
-                row.find('td', class_='katsuyo_jisho_js').find_all('div', class_="katsuyo_proc")
-            ]
-        ) for row in rows
+                Soup(str(proc), "html.parser")
+                for proc in row.find("td", class_="katsuyo_jisho_js").find_all(
+                    "div", class_="katsuyo_proc"
+                )
+            ],
+        )
+        for row in rows
     ]
 
 
 def extract_writings(writing_html: Soup) -> list[Kaki]:
-    midashi: str = writing_html.find('p', class_='midashi_word').text
-    writings = midashi.split('・')
+    midashi: str = writing_html.find("p", class_="midashi_word").text
+    writings = midashi.split("・")
     # eg 綺麗[な] -> 綺麗
-    filtered_writings = [writing.replace('[な]', '') for writing in writings]
+    filtered_writings = [writing.replace("[な]", "") for writing in writings]
     return list(map(Kaki, filtered_writings))
 
 
@@ -128,12 +133,12 @@ def extract_reading(reading_html: Soup, na_adj: bool) -> Yomi:
     # 拗音 get their own span already!
     contents: Soup = reading_html.find("span", class_="accented_word")
     chars: list[str] = [span.text for span in contents]
-    classes: list[list[str]] = [span['class'] for span in contents]
+    classes: list[list[str]] = [span["class"] for span in contents]
 
-    reading = ''
-    for (char, class_list) in zip(chars, classes):
+    reading = ""
+    for char, class_list in zip(chars, classes):
         reading += char
-        if 'accent_top' in class_list:
+        if "accent_top" in class_list:
             reading += "' "
 
     if na_adj and reading[-1] == "な":
@@ -143,13 +148,18 @@ def extract_reading(reading_html: Soup, na_adj: bool) -> Yomi:
     return Yomi(reading)
 
 
-def build_accent_dict(word_sections: OJADWordSectionsType) -> DefaultDict[Kaki, list[Yomi]]:
+def build_accent_dict(
+    word_sections: OJADWordSectionsType,
+) -> DefaultDict[Kaki, list[Yomi]]:
     accent_dict: DefaultDict[Kaki, list[Yomi]] = defaultdict(list)
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)
-        na_adj = '[な]' in writing_html.text
-        readings = [extract_reading(reading_html, na_adj=na_adj) for reading_html in reading_htmls]
+        na_adj = "[な]" in writing_html.text
+        readings = [
+            extract_reading(reading_html, na_adj=na_adj)
+            for reading_html in reading_htmls
+        ]
         for writing in writings:
             accent_dict[writing] += readings
 

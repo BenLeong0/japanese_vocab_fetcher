@@ -5,17 +5,17 @@ from typing import DefaultDict, Optional
 from dotenv import dotenv_values
 import requests
 
-from custom_types.alternative_string_types import Kaki, URL
-from custom_types.exception_types import APIError
-from custom_types.response_types import ResponseItemWanikani
-from custom_types.wanikani_api_types import (
+from api.custom_types.alternative_string_types import Kaki, URL
+from api.custom_types.exception_types import APIError
+from api.custom_types.response_types import ResponseItemWanikani
+from api.custom_types.wanikani_api_types import (
     WanikaniAPIResponse,
     WanikaniContextSentence,
     WanikaniPronunciationAudio,
 )
 
 NAME = "wanikani"
-API_KEY: str = dotenv_values()['WANIKANI_API_KEY']
+API_KEY: str = dotenv_values()["WANIKANI_API_KEY"]
 
 
 class WanikaniAPIError(APIError):
@@ -55,11 +55,11 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemWanikani]:
         api_response = get_api_response(word_list)  # pylint: disable=unused-variable
     except WanikaniAPIError as api_error:
         print("An error occurred:", api_error.error_msg)
-        return {word : error_response_factory(api_error) for word in word_list}
+        return {word: error_response_factory(api_error) for word in word_list}
 
     result_dict = build_result_dict(api_response)
 
-    return {word : result_dict[word] for word in word_list}
+    return {word: result_dict[word] for word in word_list}
 
 
 def get_api_response(word_list: list[Kaki]) -> WanikaniAPIResponse:
@@ -69,7 +69,7 @@ def get_api_response(word_list: list[Kaki]) -> WanikaniAPIResponse:
 
 
 def get_url(word_list: list[Kaki]) -> URL:
-    slugs = ','.join(word_list)
+    slugs = ",".join(word_list)
     url = f"https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs={slugs}"
     return URL(url)
 
@@ -87,22 +87,27 @@ def call_api(url: URL) -> WanikaniAPIResponse:
     return response_data
 
 
-def build_result_dict(response: WanikaniAPIResponse) -> DefaultDict[Kaki, ResponseItemWanikani]:
+def build_result_dict(
+    response: WanikaniAPIResponse,
+) -> DefaultDict[Kaki, ResponseItemWanikani]:
     result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(response_factory)
 
     for resource in response["data"]:
         writing = Kaki(resource["data"]["characters"])
 
         pronunciation_audios = [
-            audio for audio in resource["data"]["pronunciation_audios"]
+            audio
+            for audio in resource["data"]["pronunciation_audios"]
             if audio["content_type"] == "audio/mpeg"
         ]
         for audio in pronunciation_audios:
             audio["url"] = URL(audio["url"])
 
-        context_sentences: list[WanikaniContextSentence] = resource["data"]["context_sentences"]
+        context_sentences: list[WanikaniContextSentence] = resource["data"][
+            "context_sentences"
+        ]
 
-        result_dict[writing]['main_data']["audio"] += pronunciation_audios
-        result_dict[writing]['main_data']["sentences"] += context_sentences
+        result_dict[writing]["main_data"]["audio"] += pronunciation_audios
+        result_dict[writing]["main_data"]["sentences"] += context_sentences
 
     return result_dict

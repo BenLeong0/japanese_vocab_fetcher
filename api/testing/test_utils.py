@@ -1,9 +1,9 @@
 import json
 
-import pytest   # type: ignore
+import pytest  # type: ignore
 
-from custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
-import utils
+from api.custom_types.alternative_string_types import HTMLString, Kaki, URL, Yomi
+from api import utils
 
 
 class FakeRequest:
@@ -15,13 +15,14 @@ class FakeRequest:
 ## TESTS  ###########
 #####################
 
+
 @pytest.mark.parametrize(
     "fake_request, expected_result",
     [
         [FakeRequest([]), []],
         [FakeRequest(["食べる"]), ["食べる"]],
         [FakeRequest(["食べる", "学生"]), ["食べる", "学生"]],
-    ]
+    ],
 )
 def test_get_words_from_request(fake_request, expected_result):
     """
@@ -35,23 +36,24 @@ def test_get_words_from_request(fake_request, expected_result):
 @pytest.mark.parametrize(
     "payload, expected_data",
     [
-        [[], '[]'],
+        [[], "[]"],
         [[{"word": "食べる"}], '[{"word": "食べる"}]'],
-        [[{"word": "食べる"}, {"word": "学生"}], '[{"word": "食べる"}, {"word": "学生"}]'],
+        [
+            [{"word": "食べる"}, {"word": "学生"}],
+            '[{"word": "食べる"}, {"word": "学生"}]',
+        ],
         [
             [
                 {
                     "word": "食べる",
-                    "accent": {
-                        "wanikani": ["url1", "url2"]
-                    },
+                    "accent": {"wanikani": ["url1", "url2"]},
                 }
             ],
-            r'[{"word": "食べる", "accent": {"wanikani": ["url1", "url2"]}}]'
+            r'[{"word": "食べる", "accent": {"wanikani": ["url1", "url2"]}}]',
         ],
         ["test_string", '"test_string"'],
         [{"test": "dictionary"}, '{"test": "dictionary"}'],
-    ]
+    ],
 )
 def test_create_successful_response(payload, expected_data):
     """
@@ -68,23 +70,24 @@ def test_create_successful_response(payload, expected_data):
 @pytest.mark.parametrize(
     "payload, expected_data",
     [
-        [[], '[]'],
+        [[], "[]"],
         [[{"word": "食べる"}], '[{"word": "食べる"}]'],
-        [[{"word": "食べる"}, {"word": "学生"}], '[{"word": "食べる"}, {"word": "学生"}]'],
+        [
+            [{"word": "食べる"}, {"word": "学生"}],
+            '[{"word": "食べる"}, {"word": "学生"}]',
+        ],
         [
             [
                 {
                     "word": "食べる",
-                    "accent": {
-                        "wanikani": ["url1", "url2"]
-                    },
+                    "accent": {"wanikani": ["url1", "url2"]},
                 }
             ],
-            r'[{"word": "食べる", "accent": {"wanikani": ["url1", "url2"]}}]'
+            r'[{"word": "食べる", "accent": {"wanikani": ["url1", "url2"]}}]',
         ],
         ["test_string", '"test_string"'],
         [{"test": "dictionary"}, '{"test": "dictionary"}'],
-    ]
+    ],
 )
 def test_create_failed_response(payload, expected_data):
     """
@@ -107,7 +110,7 @@ def test_create_failed_response(payload, expected_data):
         ["remove\n\ndouble\n\nnewline", "removedoublenewline"],
         ["remove\n newline\n and\n space", "removenewlineandspace"],
         ["    <div>\n        content\n    </div>", "<div>content</div>"],
-    ]
+    ],
 )
 def test_make_single_line(input_string, expected_result):
     """
@@ -127,7 +130,7 @@ def test_make_single_line(input_string, expected_result):
         ["hello(there)(you)", "hello"],
         ["hello(there) you", "hello"],
         ["hello(there ) you (yesy ou)", "hello"],
-    ]
+    ],
 )
 def test_remove_end_brackets(input_string, expected_result):
     """
@@ -144,7 +147,7 @@ def test_remove_end_brackets(input_string, expected_result):
         ["hello", "hello"],
         ["食べる", "\\u98df\\u3079\\u308b"],
         ["学生", "\\u5b66\\u751f"],
-    ]
+    ],
 )
 def test_escape_unicode(input_string, expected_result):
     """
@@ -161,7 +164,7 @@ def test_escape_unicode(input_string, expected_result):
         ["hello", "hello"],
         ["\\u98df\\u3079\\u308b", "食べる"],
         ["\\u5b66\\u751f", "学生"],
-    ]
+    ],
 )
 def test_decode_unicode(input_string, expected_result):
     """
@@ -178,7 +181,7 @@ def test_decode_unicode(input_string, expected_result):
         [[], []],
         [["食べる"], [Kaki("食べる")]],
         [["食べる", "学生"], [Kaki("食べる"), Kaki("学生")]],
-    ]
+    ],
 )
 def test_convert_list_of_str_to_kaki(string_list, expected_output):
     """
@@ -195,7 +198,7 @@ def test_convert_list_of_str_to_kaki(string_list, expected_output):
         [[], []],
         [["たべる"], [Yomi("たべる")]],
         [["たべる", "がくせい"], [Yomi("たべる"), Yomi("がくせい")]],
-    ]
+    ],
 )
 def test_convert_list_of_str_to_yomi(string_list, expected_output):
     """
@@ -211,8 +214,11 @@ def test_convert_list_of_str_to_yomi(string_list, expected_output):
     [
         [[], []],
         [["www.test.com"], [URL("www.test.com")]],
-        [["www.test.com", "www.test.co.uk"], [URL("www.test.com"), URL("www.test.co.uk")]],
-    ]
+        [
+            ["www.test.com", "www.test.co.uk"],
+            [URL("www.test.com"), URL("www.test.co.uk")],
+        ],
+    ],
 )
 def test_convert_list_of_str_to_url(string_list, expected_output):
     """
@@ -228,8 +234,11 @@ def test_convert_list_of_str_to_url(string_list, expected_output):
     [
         [[], []],
         [["<div>hi</div>"], [HTMLString("<div>hi</div>")]],
-        [["<div>hi</div>", "<span>a span</span>"], [HTMLString("<div>hi</div>"), HTMLString("<span>a span</span>")]],
-    ]
+        [
+            ["<div>hi</div>", "<span>a span</span>"],
+            [HTMLString("<div>hi</div>"), HTMLString("<span>a span</span>")],
+        ],
+    ],
 )
 def test_convert_list_of_str_to_htmlstring(string_list, expected_output):
     """
@@ -244,19 +253,10 @@ def test_convert_list_of_str_to_htmlstring(string_list, expected_output):
     "input_dict, expected_output",
     [
         [{}, {}],
-        [
-            {"食べる": {}},
-            {Kaki("食べる"): {}}
-        ],
-        [
-            {"食べる": "たべる"},
-            {Kaki("食べる"): "たべる"}
-        ],
-        [
-            {"食べる": {}, "学生": {}},
-            {Kaki("食べる"): {}, Kaki("学生"): {}}
-        ],
-    ]
+        [{"食べる": {}}, {Kaki("食べる"): {}}],
+        [{"食べる": "たべる"}, {Kaki("食べる"): "たべる"}],
+        [{"食べる": {}, "学生": {}}, {Kaki("食べる"): {}, Kaki("学生"): {}}],
+    ],
 )
 def test_convert_dict_str_keys_to_kaki(input_dict, expected_output):
     """

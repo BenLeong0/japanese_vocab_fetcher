@@ -1,13 +1,13 @@
 import json
 import re
 
-import pytest   # type: ignore
+import pytest  # type: ignore
 
-from custom_types.alternative_string_types import Kaki, URL
-from modules import forvo
+from api.custom_types.alternative_string_types import Kaki, URL
+from api.modules import forvo
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
-from utils import convert_list_of_str_to_kaki
+from api.utils import convert_list_of_str_to_kaki
 
 
 # For each test, try with every dict in TEST_DICTS
@@ -25,6 +25,7 @@ class FakeResponse:
 #####################
 ## TESTS  ###########
 #####################
+
 
 def test_api_key_import():
     """Check the API_KEY is successfully imported"""
@@ -69,7 +70,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": test_dict.forvo.expected_sections[word]["url"]
+                "url": test_dict.forvo.expected_sections[word]["url"],
             },
             "main_data": {
                 "audio": [],
@@ -78,7 +79,9 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
         for word in word_list
     }
 
-    monkeypatch.setattr("requests.get", lambda x: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.get", lambda x: FakeResponse(response, status_code=400)
+    )
     assert forvo.main(word_list) == expected_output
 
 
@@ -117,7 +120,7 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
     for word in word_list:
         section = sections[word]
 
-        fake_response = section['api_response']
+        fake_response = section["api_response"]
         monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
 
         assert forvo.get_audio_urls(word) == expected_output[word]
@@ -135,15 +138,15 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     for word in word_list:
         section = sections[word]
 
-        fake_response = section['api_response']
+        fake_response = section["api_response"]
         monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
 
         resp = forvo.call_api(word)
 
         assert "attributes" in resp
         assert "items" in resp
-        assert resp['attributes']['total'] == section['total_items']
-        assert len(resp['items']) == section['total_items']
+        assert resp["attributes"]["total"] == section["total_items"]
+        assert len(resp["items"]) == section["total_items"]
 
 
 def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
@@ -154,7 +157,9 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "could not connect"})
-    monkeypatch.setattr("requests.get", lambda url: FakeResponse(response, status_code=400))
+    monkeypatch.setattr(
+        "requests.get", lambda url: FakeResponse(response, status_code=400)
+    )
 
     for word in word_list:
         try:
@@ -176,8 +181,11 @@ def test_extract_audio_list(test_dict: FullTestDict):
     expected_output = test_dict.forvo.expected_output
 
     for word in word_list:
-        api_response = json.loads(sections[word]['api_response'])
-        assert forvo.extract_audio_list(api_response, word) == expected_output[word]["main_data"]["audio"]
+        api_response = json.loads(sections[word]["api_response"])
+        assert (
+            forvo.extract_audio_list(api_response, word)
+            == expected_output[word]["main_data"]["audio"]
+        )
 
 
 def test_extract_data():
@@ -205,7 +213,7 @@ def test_extract_data():
         ({"word": "not 静か"}, "静か", False),
         ({"word": "静か"}, "not 静か", False),
         ({"word": ""}, None, False),
-    ]
+    ],
 )
 def test_correct_word(item, word, expected_result):
     """
