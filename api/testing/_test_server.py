@@ -5,7 +5,7 @@ ie `coverage run -m pytest testing/_test_server.py -vv`
 
 import json
 
-import pytest   # type: ignore
+import pytest  # type: ignore
 import requests
 
 from testing.dict_typing import FullTestDict
@@ -22,7 +22,7 @@ def fixture_test_dict(request):
 
 def test_words_endpoint(test_dict: FullTestDict):
     word_list = test_dict.input
-    payload = {'words': word_list}
+    payload = {"words": word_list}
     result = requests.get(API_URL, data=json.dumps(payload))
 
     assert result.status_code == 200

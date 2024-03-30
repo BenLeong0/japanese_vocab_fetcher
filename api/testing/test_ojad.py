@@ -118,7 +118,7 @@ def test_has_words_true(test_dict: FullTestDict):
     htmls = test_dict.ojad.htmls
     for html in htmls:
         parsed_html = Soup(html, "html.parser")
-        assert ojad.has_words(parsed_html) == True
+        assert ojad.has_words(parsed_html) is True
 
 
 def test_has_words_false():
@@ -130,7 +130,7 @@ def test_has_words_false():
     with open("testing/html_files/ojad_BLANK.html", encoding="utf8") as file:
         html = Soup(file, "html.parser")
 
-    assert ojad.has_words(html) == False
+    assert ojad.has_words(html) is False
 
 
 def test_get_html(monkeypatch, test_dict: FullTestDict):

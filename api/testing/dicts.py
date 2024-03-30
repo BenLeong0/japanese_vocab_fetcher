@@ -1207,7 +1207,7 @@ TABERU_GAKUSEI = FullTestDict(
     jisho=JishoTestDict(
         expected_sections={
             "食べる": {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=食べる"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=食べる"),
                 "api_response": jisho_api_responses.TABERU_GAKUSEI["食べる"],
                 "filtered_items": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS[
                     "食べる"
@@ -1215,7 +1215,7 @@ TABERU_GAKUSEI = FullTestDict(
                 "extra_items": jisho_api_responses.TABERU_GAKUSEI_EXTRA_ITEMS["食べる"],
             },
             "学生": {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=学生"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=学生"),
                 "api_response": jisho_api_responses.TABERU_GAKUSEI["学生"],
                 "filtered_items": jisho_api_responses.TABERU_GAKUSEI_FILTERED_ITEMS[
                     "学生"
@@ -2520,7 +2520,7 @@ KOTOBA = FullTestDict(
     jisho=JishoTestDict(
         expected_sections={
             "言葉": {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=言葉"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=言葉"),
                 "api_response": jisho_api_responses.KOTOBA["言葉"],
                 "filtered_items": jisho_api_responses.KOTOBA_FILTERED_ITEMS["言葉"],
                 "extra_items": jisho_api_responses.KOTOBA_EXTRA_ITEMS["言葉"],
@@ -3187,7 +3187,7 @@ BADINPUT = FullTestDict(
     jisho=JishoTestDict(
         expected_sections={
             "BADINPUT": {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=BADINPUT"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=BADINPUT"),
                 "api_response": jisho_api_responses.BADINPUT["BADINPUT"],
                 "filtered_items": jisho_api_responses.BADINPUT_FILTERED_ITEMS[
                     "BADINPUT"
@@ -3831,7 +3831,7 @@ USAGI_IKU_KAGO = FullTestDict(
     jisho=JishoTestDict(
         expected_sections={
             "兎": {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=兎"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=兎"),
                 "api_response": jisho_api_responses.USAGI_IKU_KAGO["兎"],
                 "filtered_items": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS[
                     "兎"
@@ -3839,7 +3839,7 @@ USAGI_IKU_KAGO = FullTestDict(
                 "extra_items": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["兎"],
             },
             "行く": {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=行く"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=行く"),
                 "api_response": jisho_api_responses.USAGI_IKU_KAGO["行く"],
                 "filtered_items": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS[
                     "行く"
@@ -3847,7 +3847,7 @@ USAGI_IKU_KAGO = FullTestDict(
                 "extra_items": jisho_api_responses.USAGI_IKU_KAGO_EXTRA_ITEMS["行く"],
             },
             "籠": {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=籠"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=籠"),
                 "api_response": jisho_api_responses.USAGI_IKU_KAGO["籠"],
                 "filtered_items": jisho_api_responses.USAGI_IKU_KAGO_FILTERED_ITEMS[
                     "籠"
@@ -5269,7 +5269,7 @@ SHIZUKA = FullTestDict(
     jisho=JishoTestDict(
         expected_sections={
             "静か": {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=静か"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=静か"),
                 "api_response": jisho_api_responses.SHIZUKA["静か"],
                 "filtered_items": jisho_api_responses.SHIZUKA_FILTERED_ITEMS["静か"],
                 "extra_items": jisho_api_responses.SHIZUKA_EXTRA_ITEMS["静か"],
@@ -5920,7 +5920,7 @@ NARU = FullTestDict(
     jisho=JishoTestDict(
         expected_sections={
             "なる": {
-                "url": URL(f"https://jisho.org/api/v1/search/words?keyword=なる"),
+                "url": URL("https://jisho.org/api/v1/search/words?keyword=なる"),
                 "api_response": jisho_api_responses.NARU["なる"],
                 "filtered_items": jisho_api_responses.NARU_FILTERED_ITEMS["なる"],
                 "extra_items": jisho_api_responses.NARU_EXTRA_ITEMS["なる"],
