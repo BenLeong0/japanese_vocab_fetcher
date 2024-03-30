@@ -44,8 +44,7 @@ select = [
 ]
 ignore = ["B023"]
 
-[tool.ruff.lint.per-file-ignores]
-"testing/dicts.py" = ["E501"]
-"testing/example_script.py" = ["E501"]
-"testing/jisho_api_responses.py" = ["E501"]
-"testing/wanikani_api_responses.py" = ["E501"]
+per-file-ignores."testing/dicts.py" = ["E501"]
+per-file-ignores."testing/example_script.py" = ["E501"]
+per-file-ignores."testing/jisho_api_responses.py" = ["E501"]
+per-file-ignores."testing/wanikani_api_responses.py" = ["E501"]
