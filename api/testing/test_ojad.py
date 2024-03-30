@@ -26,7 +26,9 @@ class FakeResponse:
 def _get_ojad_html_string(
     url: str, htmls: list[Soup], timeout: int = 20
 ) -> FakeResponse:
-    """Given a url return the corresponding (test) html, or a blank page if out of range"""
+    """
+    Given a url return the corresponding (test) html, or a blank page if out of range
+    """
     page_number_match = re.search(r"page:\d+", url)
 
     if not page_number_match:
@@ -51,7 +53,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     - THEN check all the ojad info is correct and complete
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    htmls = test_dict.ojad.htmls
+    htmls = [Soup(html, "html.parser") for html in test_dict.ojad.htmls]
     expected_output = test_dict.ojad.expected_output
 
     monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
@@ -140,13 +142,11 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
     - THEN check it is returned as expected
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    htmls = test_dict.ojad.htmls
+    htmls = [Soup(x, "html.parser") for x in test_dict.ojad.htmls]
     monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
 
-    for page_number, html in enumerate(htmls):
-        assert ojad.get_html(word_list, page_number=page_number + 1) == Soup(
-            html, "html.parser"
-        )
+    for page_number, html in enumerate(htmls, start=1):
+        assert ojad.get_html(word_list, page_number=page_number) == html
 
 
 def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
@@ -161,12 +161,10 @@ def test_get_html_failure(monkeypatch, test_dict: FullTestDict):
         "requests.post", lambda x, timeout: FakeResponse(response, status_code=400)
     )
 
-    try:
+    with pytest.raises(ojad.OJADAPIError) as api_error:
         ojad.get_html(word_list, 1)
-        assert False
-    except ojad.OJADAPIError as api_error:
-        assert api_error.error_msg == json.dumps({"error": "could not connect"})
-        assert api_error.status_code == 400
+    assert api_error.value.error_msg == json.dumps({"error": "could not connect"})
+    assert api_error.value.status_code == 400
 
 
 def test_get_htmls(monkeypatch, test_dict: FullTestDict):
@@ -176,10 +174,10 @@ def test_get_htmls(monkeypatch, test_dict: FullTestDict):
     - THEN check they are all collected, and that the loop terminates
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    htmls = test_dict.ojad.htmls
+    htmls = [Soup(html, "html.parser") for html in test_dict.ojad.htmls]
     monkeypatch.setattr("requests.post", partial(_get_ojad_html_string, htmls=htmls))
 
-    assert ojad.get_htmls(word_list) == [Soup(html, "html.parser") for html in htmls]
+    assert ojad.get_htmls(word_list) == htmls
 
 
 def test_get_sections(test_dict: FullTestDict):

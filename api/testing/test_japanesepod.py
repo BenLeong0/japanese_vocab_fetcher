@@ -1,5 +1,4 @@
 import json
-from typing import cast
 
 import pytest  # type: ignore
 
@@ -7,7 +6,6 @@ from api.custom_types.alternative_string_types import (  # type: ignore
     URL,
     HTMLString,
     Kaki,
-    Yomi,
 )
 from api.modules import japanesepod
 from api.utils import convert_list_of_str_to_kaki
@@ -311,24 +309,20 @@ def test_extract_results(test_dict: FullTestDict):
 
 
 def test_filter_results(test_dict: FullTestDict):
-    result_type = tuple[list[Kaki], list[Yomi]]
     for word in test_dict.input:
         expected_rows = test_dict.japanesepod.expected_sections[word]["expected_rows"]
-        results = [cast(result_type, row["results"]) for row in expected_rows]
+        results = [row["results"] for row in expected_rows]
         filtered_results = [
-            cast(result_type, row["results"])
-            for row in expected_rows
-            if row["relevant"] is True
+            row["results"] for row in expected_rows if row["relevant"] is True
         ]
         assert japanesepod.filter_results(results, Kaki(word)) == filtered_results
 
 
 def test_generate_audio_urls(test_dict: FullTestDict):
-    result_type = tuple[list[Kaki], list[Yomi]]
     for word in test_dict.input:
         expected_section = test_dict.japanesepod.expected_sections[word]
         filtered_results = [
-            cast(result_type, row["results"])
+            row["results"]
             for row in expected_section["expected_rows"]
             if row["relevant"] is True
         ]
