@@ -1,13 +1,13 @@
 import json
-from typing import TypedDict
 
-from api.custom_types.alternative_string_types import URL
+from api.custom_types.alternative_string_types import URL, URLField
+from api.custom_types.helpers import MyBaseModel
 
 
-class APIErrorDict(TypedDict):
+class APIErrorDict(MyBaseModel):
     error_msg: str
     status_code: int
-    url: URL
+    url: URLField
 
 
 class APIError(Exception):
@@ -15,7 +15,7 @@ class APIError(Exception):
         self,
         error_msg: str,
         status_code: int,
-        url: URL | None = None,
+        url: str | None = None,
     ):
         super().__init__(error_msg)
         self.error_msg = error_msg
@@ -23,11 +23,11 @@ class APIError(Exception):
         self.url = url or URL("")
 
     def to_dict(self) -> APIErrorDict:
-        return {
-            "status_code": self.status_code,
-            "error_msg": self.error_msg,
-            "url": self.url,
-        }
+        return APIErrorDict(
+            status_code=self.status_code,
+            error_msg=self.error_msg,
+            url=self.url,
+        )
 
     def __str__(self):
         return json.dumps(self.to_dict())

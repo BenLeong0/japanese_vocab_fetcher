@@ -20,10 +20,11 @@ from testing.dict_typing import (
 )
 
 if os.path.exists(".env"):
-    API_KEY: str = dotenv_values()["FORVO_API_KEY"]
+    API_KEY: str = dotenv_values()["FORVO_API_KEY"] or ""
+    if API_KEY == "":
+        raise RuntimeError("no forvo api key")
 else:
     API_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-print(API_KEY)
 
 
 def get_file_as_string(module: str, filename: str):

@@ -5,6 +5,8 @@ from functools import partial
 import pytest  # type: ignore
 from bs4 import BeautifulSoup as Soup
 
+from api.custom_types.alternative_string_types import URL
+from api.custom_types.exception_types import APIErrorDict
 from api.modules import ojad
 from api.utils import convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
@@ -71,11 +73,11 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     expected_output = {
         word: {
             "success": False,
-            "error": {
-                "error_msg": json.dumps({"error": "api_error"}),
-                "status_code": 400,
-                "url": test_dict.ojad.url % 1,
-            },
+            "error": APIErrorDict(
+                error_msg=json.dumps({"error": "api_error"}),
+                status_code=400,
+                url=URL(test_dict.ojad.url % 1),
+            ),
             "main_data": {
                 "accent": [],
             },

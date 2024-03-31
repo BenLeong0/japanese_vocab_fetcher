@@ -1,4 +1,3 @@
-import json
 from threading import Thread
 from typing import Optional
 
@@ -81,7 +80,7 @@ def call_api(word: Kaki) -> ForvoAPIResponse:
         error_msg: str = response.text
         raise ForvoAPIError(error_msg, status_code, url)
 
-    response_data: ForvoAPIResponse = json.loads(response.text)
+    response_data = ForvoAPIResponse.model_validate_json(response.text)
     return response_data
 
 
@@ -99,14 +98,14 @@ def get_api_url(word: Kaki) -> URL:
 
 
 def extract_audio_list(response: ForvoAPIResponse, word: Kaki) -> list[ForvoAudio]:
-    items = response["items"]
+    items = response.items
     filtered_items = [item for item in items if correct_word(item, word)]
     return [extract_data(item) for item in filtered_items]
 
 
 def extract_data(item: ForvoAPIItem) -> ForvoAudio:
-    url = item["pathmp3"]
-    username = item["username"]
+    url = item.pathmp3
+    username = item.username
     return {
         "url": URL(url),
         "username": username,
@@ -114,4 +113,4 @@ def extract_data(item: ForvoAPIItem) -> ForvoAudio:
 
 
 def correct_word(item: ForvoAPIItem, word: Kaki) -> bool:
-    return word == item["word"] or word == decode_unicode(item["word"])
+    return word == item.word or word == decode_unicode(item.word)

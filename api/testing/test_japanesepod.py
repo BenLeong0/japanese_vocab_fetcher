@@ -7,6 +7,7 @@ from api.custom_types.alternative_string_types import (  # type: ignore
     HTMLString,
     Kaki,
 )
+from api.custom_types.exception_types import APIErrorDict
 from api.modules import japanesepod
 from api.utils import convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
@@ -80,11 +81,11 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     expected_output = {
         word: {
             "success": False,
-            "error": {
-                "error_msg": json.dumps({"error": "api_error"}),
-                "status_code": 400,
-                "url": sections[word]["url"],
-            },
+            "error": APIErrorDict(
+                error_msg=json.dumps({"error": "api_error"}),
+                status_code=400,
+                url=sections[word]["url"],
+            ),
             "main_data": {
                 "audio": [],
             },
@@ -108,11 +109,11 @@ def test_main_parsing_html_error(monkeypatch, test_dict: FullTestDict):
     expected_output = {
         word: {
             "success": False,
-            "error": {
-                "error_msg": "could not extract results from html",
-                "status_code": 400,
-                "url": URL(""),
-            },
+            "error": APIErrorDict(
+                error_msg="could not extract results from html",
+                status_code=400,
+                url=URL(""),
+            ),
             "main_data": {
                 "audio": [],
             },
@@ -136,11 +137,11 @@ def test_main_parsing_row_error(monkeypatch, test_dict: FullTestDict):
     expected_output = {
         word: {
             "success": False,
-            "error": {
-                "error_msg": "could not extract results from row",
-                "status_code": 400,
-                "url": URL(""),
-            },
+            "error": APIErrorDict(
+                error_msg="could not extract results from row",
+                status_code=400,
+                url=URL(""),
+            ),
             "main_data": {
                 "audio": [],
             },
