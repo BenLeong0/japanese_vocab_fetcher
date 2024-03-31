@@ -20,7 +20,7 @@ class APIError(Exception):
         super().__init__(error_msg)
         self.error_msg = error_msg
         self.status_code = status_code
-        self.url = url or URL("")
+        self.url = URL(url or "")
 
     def to_dict(self) -> APIErrorDict:
         return APIErrorDict(
