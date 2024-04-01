@@ -5,6 +5,7 @@ import pytest  # type: ignore
 
 # from api.custom_types.alternative_string_types import Kaki, URL
 from api.custom_types.alternative_string_types import URL
+from api.custom_types.exception_types import APIErrorDict
 from api.modules import wanikani
 from api.utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
@@ -64,11 +65,11 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     expected_output = {
         word: {
             "success": False,
-            "error": {
-                "error_msg": json.dumps({"error": "api_error"}),
-                "status_code": 400,
-                "url": test_dict.wanikani.url,
-            },
+            "error": APIErrorDict(
+                error_msg=json.dumps({"error": "api_error"}),
+                status_code=400,
+                url=test_dict.wanikani.url,
+            ),
             "main_data": {
                 "audio": [],
                 "sentences": [],

@@ -8,7 +8,11 @@ from bs4.element import Tag
 
 from api.custom_types.alternative_string_types import URL, HTMLString, Kaki
 from api.custom_types.exception_types import APIError
-from api.custom_types.response_types import ContextSentence, ResponseItemTangorin
+from api.custom_types.response_types import (
+    ContextSentence,
+    ResponseItemTangorin,
+    TangorinMainData,
+)
 
 NAME = "tangorin"
 
@@ -20,23 +24,17 @@ class TangorinAPIError(APIError):
 def response_factory(
     sentence_list: Optional[list[ContextSentence]] = None,
 ) -> ResponseItemTangorin:
-    return {
-        "success": True,
-        "error": None,
-        "main_data": {
-            "sentences": [] if sentence_list is None else sentence_list,
-        },
-    }
+    return ResponseItemTangorin(
+        success=True,
+        error=None,
+        main_data=TangorinMainData(sentences=sentence_list or []),
+    )
 
 
 def error_response_factory(error: TangorinAPIError) -> ResponseItemTangorin:
-    return {
-        "success": False,
-        "error": error.to_dict(),
-        "main_data": {
-            "sentences": [],
-        },
-    }
+    return ResponseItemTangorin(
+        success=False, error=error.to_dict(), main_data=TangorinMainData(sentences=[])
+    )
 
 
 TangorinSentenceSection = list[tuple[Soup, Soup]]
@@ -108,10 +106,16 @@ def extract_sentences(html: Soup) -> list[ContextSentence]:
     """Returns list of ContextSentences"""
     clean_html(html)
     rows: list[Soup] = list(html.find_all("div", class_="sentences"))
-    return [
-        {
-            "ja": re.sub(r"\s+", " ", row.find("dt", class_="s-jp").text).strip(),
-            "en": re.sub(r"\s+", " ", row.find("dd", class_="s-en").text).strip(),
-        }
-        for row in rows
+
+    raw_sentences = [
+        (row.find("dt", class_="s-jp"), row.find("dd", class_="s-en")) for row in rows
     ]
+    filtered_sentences = [
+        (ja, en) for (ja, en) in raw_sentences if ja is not None and en is not None
+    ]
+    formatted_sentences = [
+        (re.sub(r"\s+", " ", ja.text).strip(), re.sub(r"\s+", " ", en.text).strip())
+        for (ja, en) in filtered_sentences
+    ]
+
+    return [ContextSentence(ja=ja, en=en) for (ja, en) in formatted_sentences]

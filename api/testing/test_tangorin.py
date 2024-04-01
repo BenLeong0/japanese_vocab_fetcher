@@ -5,6 +5,7 @@ import pytest  # type: ignore
 from bs4 import BeautifulSoup as Soup
 
 from api.custom_types.alternative_string_types import URL, Kaki
+from api.custom_types.exception_types import APIErrorDict
 from api.modules import tangorin
 from api.utils import convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
@@ -45,7 +46,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
 
     def get_html_response(url: URL) -> str:
         word = get_word_from_tangorin_url(url)
-        return sections[word]["html"]
+        return sections[word].html
 
     monkeypatch.setattr(
         "requests.get", lambda url, timeout: FakeResponse(get_html_response(url))
@@ -75,11 +76,11 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     expected_output = {
         word: {
             "success": False,
-            "error": {
-                "error_msg": json.dumps({"error": "api_error"}),
-                "status_code": 400,
-                "url": sections[word]["url"],
-            },
+            "error": APIErrorDict(
+                error_msg=json.dumps({"error": "api_error"}),
+                status_code=400,
+                url=sections[word].url,
+            ),
             "main_data": {
                 "sentences": [],
             },
@@ -104,7 +105,7 @@ def test_get_sentences(monkeypatch, test_dict: FullTestDict):
     full_expected_output = test_dict.tangorin.expected_output
 
     for word in word_list:
-        html = sections[word]["html"]
+        html = sections[word].html
         monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
         expected_output = full_expected_output[word]
         assert tangorin.get_sentences(word) == expected_output
@@ -120,7 +121,7 @@ def test_get_url(test_dict: FullTestDict):
     sections = test_dict.tangorin.expected_sections
 
     for word in word_list:
-        assert tangorin.get_url(word) == sections[word]["url"]
+        assert tangorin.get_url(word) == sections[word].url
 
 
 def test_get_html(monkeypatch, test_dict: FullTestDict):
@@ -133,7 +134,7 @@ def test_get_html(monkeypatch, test_dict: FullTestDict):
     sections = test_dict.tangorin.expected_sections
 
     for word in word_list:
-        html = sections[word]["html"]
+        html = sections[word].html
         monkeypatch.setattr("requests.get", lambda url, timeout: FakeResponse(html))
         assert tangorin.get_html(word) == Soup(html, "html.parser")
 
@@ -222,8 +223,8 @@ def test_extract_sentences(test_dict: FullTestDict):
     expected_output = test_dict.tangorin.expected_output
 
     for word in word_list:
-        html = sections[word]["html"]
-        expected_sentences = expected_output[word]["main_data"]["sentences"]
+        html = sections[word].html
+        expected_sentences = expected_output[word].main_data.sentences
         assert (
             tangorin.extract_sentences(Soup(html, "html.parser")) == expected_sentences
         )

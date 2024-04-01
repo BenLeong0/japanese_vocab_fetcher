@@ -3,6 +3,8 @@ import json
 import pytest  # type: ignore
 from bs4 import BeautifulSoup as Soup
 
+from api.custom_types.alternative_string_types import URL
+from api.custom_types.exception_types import APIErrorDict
 from api.modules import suzuki
 from api.utils import convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
@@ -53,11 +55,11 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     expected_output = {
         word: {
             "success": False,
-            "error": {
-                "error_msg": json.dumps({"error": "api_error"}),
-                "status_code": 400,
-                "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
-            },
+            "error": APIErrorDict(
+                error_msg=json.dumps({"error": "api_error"}),
+                status_code=400,
+                url=URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index"),
+            ),
             "main_data": {
                 "accent": [],
             },
@@ -139,9 +141,9 @@ def test_get_sections(test_dict: FullTestDict):
 
     assert suzuki.get_sections(Soup(html, "html.parser")) == [
         (
-            section["writing_section"],
-            section["reading_section"],
-            section["accent_section"],
+            section.writing_section,
+            section.reading_section,
+            section.accent_section,
         )
         for section in expected_sections
     ]
@@ -154,7 +156,7 @@ def test_extract_writing(test_dict: FullTestDict):
     - THEN check all the correct writings are extracted
     """
     for section in test_dict.suzuki.expected_sections:
-        assert suzuki.extract_writing(section["writing_section"]) == section["writing"]
+        assert suzuki.extract_writing(section.writing_section) == section.writing
 
 
 def test_extract_reading(test_dict: FullTestDict):
@@ -165,10 +167,8 @@ def test_extract_reading(test_dict: FullTestDict):
     """
     for section in test_dict.suzuki.expected_sections:
         assert (
-            suzuki.extract_reading(
-                section["reading_section"], section["accent_section"]
-            )
-            == section["reading"]
+            suzuki.extract_reading(section.reading_section, section.accent_section)
+            == section.reading
         )
 
 
@@ -180,15 +180,15 @@ def test_build_accent_dict(test_dict: FullTestDict):
     """
     word_sections = [
         (
-            section["writing_section"],
-            section["reading_section"],
-            section["accent_section"],
+            section.writing_section,
+            section.reading_section,
+            section.accent_section,
         )
         for section in test_dict.suzuki.expected_sections
     ]
 
     expected_accent_dict = {
-        word: test_dict.suzuki.expected_output[word]["main_data"]["accent"]
+        word: test_dict.suzuki.expected_output[word].main_data.accent
         for word in test_dict.suzuki.expected_output
     }
 

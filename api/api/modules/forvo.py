@@ -1,4 +1,3 @@
-import json
 from threading import Thread
 from typing import Optional
 
@@ -8,12 +7,12 @@ from dotenv import dotenv_values
 from api.custom_types.alternative_string_types import URL, Kaki
 from api.custom_types.exception_types import APIError
 from api.custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
-from api.custom_types.response_types import ForvoAudio, ResponseItemForvo
+from api.custom_types.response_types import ForvoAudio, ForvoMainData, ResponseItemForvo
 from api.utils import decode_unicode
 
 NAME = "forvo"
-API_KEY = dotenv_values()["FORVO_API_KEY"]
-if API_KEY is None:
+API_KEY = dotenv_values()["FORVO_API_KEY"] or ""
+if API_KEY == "":
     raise RuntimeError("No Forvo API key found")
 
 
@@ -24,23 +23,23 @@ class ForvoAPIError(APIError):
 def response_factory(
     audio_list: Optional[list[ForvoAudio]] = None,
 ) -> ResponseItemForvo:
-    return {
-        "success": True,
-        "error": None,
-        "main_data": {
-            "audio": [] if audio_list is None else audio_list,
-        },
-    }
+    return ResponseItemForvo(
+        success=True,
+        error=None,
+        main_data=ForvoMainData(
+            audio=audio_list or [],
+        ),
+    )
 
 
 def error_response_factory(error: ForvoAPIError) -> ResponseItemForvo:
-    return {
-        "success": False,
-        "error": error.to_dict(),
-        "main_data": {
-            "audio": [],
-        },
-    }
+    return ResponseItemForvo(
+        success=False,
+        error=error.to_dict(),
+        main_data=ForvoMainData(
+            audio=[],
+        ),
+    )
 
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemForvo]:
@@ -81,7 +80,7 @@ def call_api(word: Kaki) -> ForvoAPIResponse:
         error_msg: str = response.text
         raise ForvoAPIError(error_msg, status_code, url)
 
-    response_data: ForvoAPIResponse = json.loads(response.text)
+    response_data = ForvoAPIResponse.model_validate_json(response.text)
     return response_data
 
 
@@ -99,19 +98,19 @@ def get_api_url(word: Kaki) -> URL:
 
 
 def extract_audio_list(response: ForvoAPIResponse, word: Kaki) -> list[ForvoAudio]:
-    items = response["items"]
+    items = response.items
     filtered_items = [item for item in items if correct_word(item, word)]
     return [extract_data(item) for item in filtered_items]
 
 
 def extract_data(item: ForvoAPIItem) -> ForvoAudio:
-    url = item["pathmp3"]
-    username = item["username"]
-    return {
-        "url": URL(url),
-        "username": username,
-    }
+    url = item.pathmp3
+    username = item.username
+    return ForvoAudio(
+        url=URL(url),
+        username=username,
+    )
 
 
 def correct_word(item: ForvoAPIItem, word: Kaki) -> bool:
-    return word == item["word"] or word == decode_unicode(item["word"])
+    return word == item.word or word == decode_unicode(item.word)

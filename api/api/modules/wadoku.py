@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup as Soup
 
 from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
 from api.custom_types.exception_types import APIError
-from api.custom_types.response_types import ResponseItemWadoku
+from api.custom_types.response_types import ResponseItemWadoku, WadokuMainData
 
 NAME = "wadoku"
 
@@ -17,23 +17,15 @@ class WadokuAPIError(APIError):
 
 
 def response_factory(accent_list: Optional[list[Yomi]] = None) -> ResponseItemWadoku:
-    return {
-        "success": True,
-        "error": None,
-        "main_data": {
-            "accent": [] if accent_list is None else accent_list,
-        },
-    }
+    return ResponseItemWadoku(
+        success=True, error=None, main_data=WadokuMainData(accent=accent_list or [])
+    )
 
 
 def error_response_factory(error: WadokuAPIError) -> ResponseItemWadoku:
-    return {
-        "success": False,
-        "error": error.to_dict(),
-        "main_data": {
-            "accent": [],
-        },
-    }
+    return ResponseItemWadoku(
+        success=False, error=error.to_dict(), main_data=WadokuMainData(accent=[])
+    )
 
 
 WadokuWordSectionsType = list[tuple[Soup, list[Soup]]]
@@ -116,7 +108,7 @@ def remove_punct(input_string: str) -> str:
 def extract_reading(reading_html: Soup) -> Yomi:
     spans: list[Soup] = [
         span
-        for span in reading_html.findChild().findChildren()
+        for span in reading_html.findChild().findChildren()  #  type: ignore
         if remove_punct(span.text) not in ["", "…"]
     ]
 
