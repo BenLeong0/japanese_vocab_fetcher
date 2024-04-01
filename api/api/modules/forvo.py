@@ -7,7 +7,7 @@ from dotenv import dotenv_values
 from api.custom_types.alternative_string_types import URL, Kaki
 from api.custom_types.exception_types import APIError
 from api.custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
-from api.custom_types.response_types import ForvoAudio, ResponseItemForvo
+from api.custom_types.response_types import ForvoAudio, ForvoMainData, ResponseItemForvo
 from api.utils import decode_unicode
 
 NAME = "forvo"
@@ -23,23 +23,23 @@ class ForvoAPIError(APIError):
 def response_factory(
     audio_list: Optional[list[ForvoAudio]] = None,
 ) -> ResponseItemForvo:
-    return {
-        "success": True,
-        "error": None,
-        "main_data": {
-            "audio": [] if audio_list is None else audio_list,
-        },
-    }
+    return ResponseItemForvo(
+        success=True,
+        error=None,
+        main_data=ForvoMainData(
+            audio=audio_list or [],
+        ),
+    )
 
 
 def error_response_factory(error: ForvoAPIError) -> ResponseItemForvo:
-    return {
-        "success": False,
-        "error": error.to_dict(),
-        "main_data": {
-            "audio": [],
-        },
-    }
+    return ResponseItemForvo(
+        success=False,
+        error=error.to_dict(),
+        main_data=ForvoMainData(
+            audio=[],
+        ),
+    )
 
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemForvo]:
@@ -106,10 +106,10 @@ def extract_audio_list(response: ForvoAPIResponse, word: Kaki) -> list[ForvoAudi
 def extract_data(item: ForvoAPIItem) -> ForvoAudio:
     url = item.pathmp3
     username = item.username
-    return {
-        "url": URL(url),
-        "username": username,
-    }
+    return ForvoAudio(
+        url=URL(url),
+        username=username,
+    )
 
 
 def correct_word(item: ForvoAPIItem, word: Kaki) -> bool:

@@ -7,10 +7,13 @@ from dotenv import dotenv_values
 
 from api.custom_types.alternative_string_types import URL, Kaki
 from api.custom_types.exception_types import APIError
-from api.custom_types.response_types import ResponseItemWanikani
+from api.custom_types.response_types import (
+    ContextSentence,
+    ResponseItemWanikani,
+    WanikaniMainData,
+)
 from api.custom_types.wanikani_api_types import (
     WanikaniAPIResponse,
-    WanikaniContextSentence,
     WanikaniPronunciationAudio,
 )
 
@@ -26,27 +29,24 @@ class WanikaniAPIError(APIError):
 
 def response_factory(
     audio_list: Optional[list[WanikaniPronunciationAudio]] = None,
-    sentence_list: Optional[list[WanikaniContextSentence]] = None,
+    sentence_list: Optional[list[ContextSentence]] = None,
 ) -> ResponseItemWanikani:
-    return {
-        "success": True,
-        "error": None,
-        "main_data": {
-            "audio": [] if audio_list is None else audio_list,
-            "sentences": [] if sentence_list is None else sentence_list,
-        },
-    }
+    return ResponseItemWanikani(
+        success=True,
+        error=None,
+        main_data=WanikaniMainData(
+            audio=audio_list or [],
+            sentences=sentence_list or [],
+        ),
+    )
 
 
 def error_response_factory(error: WanikaniAPIError) -> ResponseItemWanikani:
-    return {
-        "success": False,
-        "error": error.to_dict(),
-        "main_data": {
-            "audio": [],
-            "sentences": [],
-        },
-    }
+    return ResponseItemWanikani(
+        success=False,
+        error=error.to_dict(),
+        main_data=WanikaniMainData(audio=[], sentences=[]),
+    )
 
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemWanikani]:
@@ -94,22 +94,21 @@ def build_result_dict(
 ) -> DefaultDict[Kaki, ResponseItemWanikani]:
     result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(response_factory)
 
-    for resource in response["data"]:
-        writing = Kaki(resource["data"]["characters"])
+    for resource in response.data:
+        writing = Kaki(resource.data.characters)
 
         pronunciation_audios = [
             audio
-            for audio in resource["data"]["pronunciation_audios"]
-            if audio["content_type"] == "audio/mpeg"
-        ]
-        for audio in pronunciation_audios:
-            audio["url"] = URL(audio["url"])
-
-        context_sentences: list[WanikaniContextSentence] = resource["data"][
-            "context_sentences"
+            for audio in resource.data.pronunciation_audios
+            if audio.content_type == "audio/mpeg"
         ]
 
-        result_dict[writing]["main_data"]["audio"] += pronunciation_audios
-        result_dict[writing]["main_data"]["sentences"] += context_sentences
+        context_sentences = [
+            ContextSentence(en=sentence.en, ja=sentence.ja)
+            for sentence in resource.data.context_sentences
+        ]
+
+        result_dict[writing].main_data.audio += pronunciation_audios
+        result_dict[writing].main_data.sentences += context_sentences
 
     return result_dict

@@ -1,7 +1,9 @@
-from typing import Literal, Optional, TypedDict
+from typing import Literal, Optional
+
+from api.custom_types.helpers import MyBaseModel
 
 
-class WanikaniMeaning(TypedDict):
+class WanikaniMeaning(MyBaseModel):
     """Dictionary containing information about subject's meaning"""
 
     meaning: str
@@ -9,14 +11,14 @@ class WanikaniMeaning(TypedDict):
     accepted_answer: bool
 
 
-class WanikaniAuxilliaryMeaning(TypedDict):
+class WanikaniAuxilliaryMeaning(MyBaseModel):
     """Dictionary containing information about a subject's auxilliary meaning"""
 
     meaning: str
     type: Literal["whitelist", "blacklist"]
 
 
-class WanikaniReading(TypedDict):
+class WanikaniReading(MyBaseModel):
     """Dictionary containing information about a reading for a vocab subject"""
 
     accepted_answer: bool
@@ -24,14 +26,14 @@ class WanikaniReading(TypedDict):
     reading: str
 
 
-class WanikaniContextSentence(TypedDict):
+class WanikaniContextSentence(MyBaseModel):
     """Dictionary containing information about a context sentence for a vocab subject"""
 
     en: str
     ja: str
 
 
-class WanikaniPronunciationAudioMetadata(TypedDict):
+class WanikaniPronunciationAudioMetadata(MyBaseModel):
     """Dictionary containing metadata about a pronunciation for a vocab subject"""
 
     gender: str
@@ -42,7 +44,7 @@ class WanikaniPronunciationAudioMetadata(TypedDict):
     voice_description: str
 
 
-class WanikaniPronunciationAudio(TypedDict):
+class WanikaniPronunciationAudio(MyBaseModel):
     """Dictionary containing information about a pronunciation for a vocab subject"""
 
     url: str
@@ -50,7 +52,7 @@ class WanikaniPronunciationAudio(TypedDict):
     metadata: WanikaniPronunciationAudioMetadata
 
 
-class WanikaniAPISubject(TypedDict):
+class WanikaniAPISubject(MyBaseModel):
     """Dictionary containing information about one subject"""
 
     created_at: str
@@ -77,7 +79,7 @@ class WanikaniAPIVocabularySubject(WanikaniAPISubject):
     pronunciation_audios: list[WanikaniPronunciationAudio]
 
 
-class WanikaniAPIResource(TypedDict):
+class WanikaniAPIResource(MyBaseModel):
     """Wanikani API resource object"""
 
     id: int
@@ -87,7 +89,7 @@ class WanikaniAPIResource(TypedDict):
     data: WanikaniAPIVocabularySubject
 
 
-class WanikaniAPIResponse(TypedDict):
+class WanikaniAPIResponse(MyBaseModel):
     """Expected format returned from the Wanikani API"""
 
     object: str

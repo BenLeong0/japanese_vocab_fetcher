@@ -1,23 +1,20 @@
-from typing import Optional, TypedDict
+from typing import Optional
 
-from api.custom_types.alternative_string_types import (
-    URL,
-    Kaki,
-    Yomi,
-)
+from api.custom_types.alternative_string_types import KakiField, URLField, YomiField
 from api.custom_types.exception_types import APIErrorDict
+from api.custom_types.helpers import MyBaseModel
 from api.custom_types.jisho_api_types import JishoAPIItem, JishoAPIItemJapanese
 from api.custom_types.wanikani_api_types import WanikaniPronunciationAudio
 
 
-class ResponseItem(TypedDict):
+class ResponseItem(MyBaseModel):
     """Dictionary containing the information from one of the modules"""
 
     success: bool
     error: Optional[APIErrorDict]
 
 
-class ContextSentence(TypedDict):
+class ContextSentence(MyBaseModel):
     """Dictionary containing information about a context sentence for a vocab subject"""
 
     en: str
@@ -27,12 +24,12 @@ class ContextSentence(TypedDict):
 # Jisho
 
 
-class JishoExtraItem(TypedDict):
+class JishoExtraItem(MyBaseModel):
     slug: str
     japanese: list[JishoAPIItemJapanese]
 
 
-class JishoMainData(TypedDict):
+class JishoMainData(MyBaseModel):
     results: list[JishoAPIItem]
     extra: list[JishoExtraItem]
 
@@ -46,8 +43,8 @@ class ResponseItemJisho(ResponseItem):
 # OJAD
 
 
-class OJADMainData(TypedDict):
-    accent: list[Yomi]
+class OJADMainData(MyBaseModel):
+    accent: list[YomiField]
 
 
 class ResponseItemOJAD(ResponseItem):
@@ -59,8 +56,8 @@ class ResponseItemOJAD(ResponseItem):
 # Suzuki
 
 
-class SuzukiMainData(TypedDict):
-    accent: list[Yomi]
+class SuzukiMainData(MyBaseModel):
+    accent: list[YomiField]
 
 
 class ResponseItemSuzuki(ResponseItem):
@@ -72,8 +69,8 @@ class ResponseItemSuzuki(ResponseItem):
 # Wadoku
 
 
-class WadokuMainData(TypedDict):
-    accent: list[Yomi]
+class WadokuMainData(MyBaseModel):
+    accent: list[YomiField]
 
 
 class ResponseItemWadoku(ResponseItem):
@@ -85,12 +82,12 @@ class ResponseItemWadoku(ResponseItem):
 # Forvo
 
 
-class ForvoAudio(TypedDict):
-    url: URL
+class ForvoAudio(MyBaseModel):
+    url: URLField
     username: str
 
 
-class ForvoMainData(TypedDict):
+class ForvoMainData(MyBaseModel):
     audio: list[ForvoAudio]
 
 
@@ -103,13 +100,13 @@ class ResponseItemForvo(ResponseItem):
 # JapanesePod
 
 
-class JapanesePodAudio(TypedDict):
-    url: URL
+class JapanesePodAudio(MyBaseModel):
+    url: URLField
     writing: str
     reading: str
 
 
-class JapanesePodMainData(TypedDict):
+class JapanesePodMainData(MyBaseModel):
     audio: list[JapanesePodAudio]
 
 
@@ -122,7 +119,7 @@ class ResponseItemJapanesePod(ResponseItem):
 # Wanikani
 
 
-class WanikaniMainData(TypedDict):
+class WanikaniMainData(MyBaseModel):
     audio: list[WanikaniPronunciationAudio]
     sentences: list[ContextSentence]
 
@@ -136,7 +133,7 @@ class ResponseItemWanikani(ResponseItem):
 # Tangorin
 
 
-class TangorinMainData(TypedDict):
+class TangorinMainData(MyBaseModel):
     sentences: list[ContextSentence]
 
 
@@ -149,13 +146,15 @@ class ResponseItemTangorin(ResponseItem):
 # Full response
 
 
-class FullResponseItem(TypedDict):
+class FullResponseItem(MyBaseModel):
     """Result dict for a word in an API request"""
 
-    word: Kaki
+    word: KakiField
+    japanesepod: ResponseItemJapanesePod
     jisho: ResponseItemJisho
     ojad: ResponseItemOJAD
     suzuki: ResponseItemSuzuki
     wadoku: ResponseItemWadoku
     forvo: ResponseItemForvo
+    tangorin: ResponseItemTangorin
     wanikani: ResponseItemWanikani

@@ -180,7 +180,7 @@ def test_get_sections(test_dict: FullTestDict):
     expected_sections = test_dict.wadoku.expected_sections
 
     assert wadoku.get_sections(Soup(html, "html.parser")) == [
-        (section["writing_section"], section["reading_sections"])
+        (section.writing_section, section.reading_sections)
         for section in expected_sections
     ]
 
@@ -192,9 +192,7 @@ def test_extract_writings(test_dict: FullTestDict):
     - THEN check all the correct writings are extracted
     """
     for section in test_dict.wadoku.expected_sections:
-        assert (
-            wadoku.extract_writings(section["writing_section"]) == section["writings"]
-        )
+        assert wadoku.extract_writings(section.writing_section) == section.writings
 
 
 @pytest.mark.parametrize(
@@ -225,9 +223,7 @@ def test_extract_readings(test_dict: FullTestDict):
     - THEN check all the correct writings are extracted
     """
     for section in test_dict.wadoku.expected_sections:
-        for html_section, reading in zip(
-            section["reading_sections"], section["readings"]
-        ):
+        for html_section, reading in zip(section.reading_sections, section.readings):
             assert wadoku.extract_reading(html_section) == reading
 
 
@@ -238,7 +234,7 @@ def test_build_accent_dict(test_dict: FullTestDict):
     - THEN check all the values are as expected
     """
     word_sections = [
-        (section["writing_section"], section["reading_sections"])
+        (section.writing_section, section.reading_sections)
         for section in test_dict.wadoku.expected_sections
     ]
 
