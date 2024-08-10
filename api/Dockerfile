@@ -8,10 +8,8 @@ EXPOSE 5000/tcp
 WORKDIR /app
 
 # Copy the dependencies file to the working directory
-COPY deployment/requirements.txt .
-
-# Install any dependencies
-RUN pip install -r requirements.txt
+RUN pip install poetry
+RUN poetry install
 
 # Get API keys
 ARG forvo_api_key
@@ -31,4 +29,4 @@ RUN echo "WANIKANI_API_KEY=$WANIKANI_API_KEY" >> ./.env
 COPY ./ .
 
 # Specify the command to run on container start
-CMD [ "python", "/app/app.py" ]
+CMD [ "poetry", "run", "python", "./api/app.py" ]
