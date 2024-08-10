@@ -7,6 +7,9 @@ EXPOSE 5000/tcp
 # Set the working directory in the container
 WORKDIR /app
 
+# Copy the content of the local src directory to the working directory
+COPY ./ .
+
 # Copy the dependencies file to the working directory
 RUN pip install poetry
 RUN poetry install
@@ -24,9 +27,6 @@ RUN echo "WANIKANI_API_KEY=$WANIKANI_API_KEY" >> ./.env
 
 # Generate certificates for HTTPS
 # RUN openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365 -batch
-
-# Copy the content of the local src directory to the working directory
-COPY ./ .
 
 # Specify the command to run on container start
 CMD [ "poetry", "run", "python", "./api/app.py" ]
