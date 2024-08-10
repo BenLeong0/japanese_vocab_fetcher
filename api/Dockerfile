@@ -31,4 +31,4 @@ RUN echo "WANIKANI_API_KEY=$WANIKANI_API_KEY" >> ./.env
 COPY ./ .
 
 # Specify the command to run on container start
-CMD [ "python", "./app.py" ]
+CMD [ "python", "/app/app.py" ]
