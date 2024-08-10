@@ -189,7 +189,7 @@ def check_urls(url_data_list: list[tuple[Kaki, Yomi, URL]]) -> list[JapanesePodA
 
     def call_script(url_data: tuple[Kaki, Yomi, URL]) -> None:
         kaki, yomi, url = url_data
-        resp = requests.head(url)
+        resp = requests.head(url, allow_redirects=True)
         if resp.headers["Content-length"] != "52288":
             valid_pairings.add((kaki, yomi))
 
