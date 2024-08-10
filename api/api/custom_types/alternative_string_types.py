@@ -1,28 +1,7 @@
-from typing import Annotated
+from typing import NewType
 
-from pydantic import BeforeValidator
+Kaki = NewType("Kaki", str)
+Yomi = NewType("Yomi", str)
 
-
-class Kaki(str):
-    """Kanji writing of a word"""
-
-
-KakiField = Annotated[Kaki, BeforeValidator(Kaki)]
-
-
-class Yomi(str):
-    """Accented reading of a word"""
-
-
-YomiField = Annotated[Yomi, BeforeValidator(Yomi)]
-
-
-class URL(str):
-    """String representing a URL"""
-
-
-URLField = Annotated[URL, BeforeValidator(URL)]
-
-
-class HTMLString(str):
-    """An HTML file stored as a string"""
+URL = NewType("URL", str)
+HTMLString = NewType("HTMLString", str)

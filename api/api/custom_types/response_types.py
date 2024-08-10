@@ -1,6 +1,6 @@
 from typing import Optional
 
-from api.custom_types.alternative_string_types import KakiField, URLField, YomiField
+from api.custom_types.alternative_string_types import Kaki, URL, Yomi
 from api.custom_types.exception_types import APIErrorDict
 from api.custom_types.helpers import MyBaseModel
 from api.custom_types.jisho_api_types import JishoAPIItem, JishoAPIItemJapanese
@@ -44,7 +44,7 @@ class ResponseItemJisho(ResponseItem):
 
 
 class OJADMainData(MyBaseModel):
-    accent: list[YomiField]
+    accent: list[Yomi]
 
 
 class ResponseItemOJAD(ResponseItem):
@@ -57,7 +57,7 @@ class ResponseItemOJAD(ResponseItem):
 
 
 class SuzukiMainData(MyBaseModel):
-    accent: list[YomiField]
+    accent: list[Yomi]
 
 
 class ResponseItemSuzuki(ResponseItem):
@@ -70,7 +70,7 @@ class ResponseItemSuzuki(ResponseItem):
 
 
 class WadokuMainData(MyBaseModel):
-    accent: list[YomiField]
+    accent: list[Yomi]
 
 
 class ResponseItemWadoku(ResponseItem):
@@ -83,7 +83,7 @@ class ResponseItemWadoku(ResponseItem):
 
 
 class ForvoAudio(MyBaseModel):
-    url: URLField
+    url: URL
     username: str
 
 
@@ -101,7 +101,7 @@ class ResponseItemForvo(ResponseItem):
 
 
 class JapanesePodAudio(MyBaseModel):
-    url: URLField
+    url: URL
     writing: str
     reading: str
 
@@ -149,7 +149,7 @@ class ResponseItemTangorin(ResponseItem):
 class FullResponseItem(MyBaseModel):
     """Result dict for a word in an API request"""
 
-    word: KakiField
+    word: Kaki
     japanesepod: ResponseItemJapanesePod
     jisho: ResponseItemJisho
     ojad: ResponseItemOJAD

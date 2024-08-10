@@ -6,9 +6,9 @@ from api.custom_types.alternative_string_types import (
     URL,
     HTMLString,
     Kaki,
-    KakiField,
+    Kaki,
     Yomi,
-    YomiField,
+    Yomi,
 )
 from api.custom_types.helpers import MyBaseModel
 from api.custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
@@ -134,7 +134,7 @@ class JapanesePodExpectedRow(MyBaseModel):
 
     raw_row: str
     matches: tuple[str, Optional[str]]
-    results: tuple[list[KakiField], list[YomiField]]
+    results: tuple[list[Kaki], list[Yomi]]
     relevant: bool
 
 
@@ -183,7 +183,7 @@ class WanikaniTestDict(MyBaseModel):
 class ExpectedResult(MyBaseModel):
     """Expected output for the main get_info() function"""
 
-    word: KakiField
+    word: Kaki
     japanesepod: ResponseItemJapanesePod
     jisho: ResponseItemJisho
     ojad: ResponseItemOJAD

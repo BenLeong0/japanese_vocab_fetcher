@@ -1,13 +1,13 @@
 import json
 
-from api.custom_types.alternative_string_types import URL, URLField
+from api.custom_types.alternative_string_types import URL, URL
 from api.custom_types.helpers import MyBaseModel
 
 
 class APIErrorDict(MyBaseModel):
     error_msg: str
     status_code: int
-    url: URLField
+    url: URL
 
 
 class APIError(Exception):

@@ -1,12 +1,12 @@
 from typing import Literal, Optional
 
-from api.custom_types.alternative_string_types import KakiField, YomiField
+from api.custom_types.alternative_string_types import Kaki, Yomi
 from api.custom_types.helpers import MyBaseModel, partial_model
 
 
 class JishoAPIItemJapanese(MyBaseModel):
-    word: Optional[KakiField] = None
-    reading: Optional[YomiField] = None
+    word: Optional[Kaki] = None
+    reading: Optional[Yomi] = None
 
 
 class JishoAPIItemLink(MyBaseModel):
