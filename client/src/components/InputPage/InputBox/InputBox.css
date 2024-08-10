@@ -1,24 +1,33 @@
+.input-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .main-input {
-    width: 80%;
-    max-width: 600px;
-    resize: vertical;
+  font-size: xx-large;
+  padding: 12px;
+  width: 80%;
+  max-width: 600px;
+  font-weight: 900;
 }
 
 .input-page button {
-    width: 100px;
+  width: 100px;
 }
 
 .words-display {
-    display: flex;
-    max-width: 600px;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  max-width: 600px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .word-display {
-    color: white;
-    background-color: var(--green-light);
-    padding: 1px 7px;
-    border-radius: 10px;
-    margin: 8px 3px;
+  color: white;
+  background-color: var(--green-light);
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin: 8px 3px;
 }
