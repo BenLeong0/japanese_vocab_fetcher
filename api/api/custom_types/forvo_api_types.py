@@ -1,24 +1,26 @@
-from typing import Literal, TypedDict
+from typing import Literal, Optional
+
+from api.custom_types.helpers import MyBaseModel
 
 
-class ForvoAPIItem(TypedDict):
+class ForvoAPIItem(MyBaseModel):
     id: int
     word: str
-    original: str
-    addtime: str
-    hits: int
-    username: str
-    sex: str
-    country: str
-    code: str
-    langname: str
     pathmp3: str
-    pathogg: str
-    rate: int
-    num_votes: int
-    num_positive_votes: int
+    username: str
+    original: Optional[str] = None
+    addtime: Optional[str] = None
+    hits: Optional[int] = None
+    sex: Optional[str] = None
+    country: Optional[str] = None
+    code: Optional[str] = None
+    langname: Optional[str] = None
+    pathogg: Optional[str] = None
+    rate: Optional[int] = None
+    num_votes: Optional[int] = None
+    num_positive_votes: Optional[int] = None
 
 
-class ForvoAPIResponse(TypedDict):
+class ForvoAPIResponse(MyBaseModel):
     attributes: dict[Literal["total"], int]
     items: list[ForvoAPIItem]

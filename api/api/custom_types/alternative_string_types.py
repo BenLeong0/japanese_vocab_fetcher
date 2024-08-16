@@ -1,14 +1,7 @@
-class Kaki(str):
-    """Kanji writing of a word"""
+from typing import NewType
 
+Kaki = NewType("Kaki", str)
+Yomi = NewType("Yomi", str)
 
-class Yomi(str):
-    """Accented reading of a word"""
-
-
-class URL(str):
-    """String representing a URL"""
-
-
-class HTMLString(str):
-    """An HTML file stored as a string"""
+URL = NewType("URL", str)
+HTMLString = NewType("HTMLString", str)

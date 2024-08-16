@@ -4,6 +4,9 @@ import re
 import pytest  # type: ignore
 
 from api.custom_types.alternative_string_types import URL, Kaki
+from api.custom_types.exception_types import APIErrorDict
+from api.custom_types.forvo_api_types import ForvoAPIItem, ForvoAPIResponse
+from api.custom_types.response_types import ForvoAudio, ForvoMainData, ResponseItemForvo
 from api.modules import forvo
 from api.utils import convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
@@ -50,7 +53,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
 
     def get_api_response(url: URL) -> str:
         word = get_word_from_forvo_url(url)
-        return sections[word]["api_response"]
+        return sections[word].api_response
 
     monkeypatch.setattr(
         "requests.get", lambda url, **_: FakeResponse(get_api_response(url))
@@ -67,17 +70,17 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "api_error"})
     expected_output = {
-        word: {
-            "success": False,
-            "error": {
-                "error_msg": json.dumps({"error": "api_error"}),
-                "status_code": 400,
-                "url": test_dict.forvo.expected_sections[word]["url"],
-            },
-            "main_data": {
-                "audio": [],
-            },
-        }
+        word: ResponseItemForvo(
+            success=False,
+            error=APIErrorDict(
+                error_msg=json.dumps({"error": "api_error"}),
+                status_code=400,
+                url=test_dict.forvo.expected_sections[word].url,
+            ),
+            main_data=ForvoMainData(
+                audio=[],
+            ),
+        )
         for word in word_list
     }
 
@@ -106,7 +109,7 @@ def test_get_api_urls(test_dict: FullTestDict):
     sections = test_dict.forvo.expected_sections
 
     for word in word_list:
-        assert forvo.get_api_url(word) == sections[word]["url"]
+        assert forvo.get_api_url(word) == sections[word].url
 
 
 def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
@@ -122,7 +125,7 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
     for word in word_list:
         section = sections[word]
 
-        fake_response = section["api_response"]
+        fake_response = section.api_response
         monkeypatch.setattr(
             "requests.get", lambda url, **_: FakeResponse(fake_response)
         )
@@ -142,17 +145,15 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
     for word in word_list:
         section = sections[word]
 
-        fake_response = section["api_response"]
+        fake_response = section.api_response
         monkeypatch.setattr(
             "requests.get", lambda url, **_: FakeResponse(fake_response)
         )
 
         resp = forvo.call_api(word)
 
-        assert "attributes" in resp
-        assert "items" in resp
-        assert resp["attributes"]["total"] == section["total_items"]
-        assert len(resp["items"]) == section["total_items"]
+        assert resp.attributes["total"] == section.total_items
+        assert len(resp.items) == section.total_items
 
 
 def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
@@ -185,10 +186,10 @@ def test_extract_audio_list(test_dict: FullTestDict):
     expected_output = test_dict.forvo.expected_output
 
     for word in word_list:
-        api_response = json.loads(sections[word]["api_response"])
+        api_response = ForvoAPIResponse.model_validate_json(sections[word].api_response)
         assert (
             forvo.extract_audio_list(api_response, word)
-            == expected_output[word]["main_data"]["audio"]
+            == expected_output[word].main_data.audio
         )
 
 
@@ -198,14 +199,16 @@ def test_extract_data():
     - WHEN the response's url is extracted
     - THEN check the url is correct
     """
-    test_item = {
-        "pathmp3": "http://www.test.com/audio.mp3",
-        "username": "test_username",
-    }
-    assert forvo.extract_data(test_item) == {
-        "url": "http://www.test.com/audio.mp3",
-        "username": "test_username",
-    }
+    test_item = ForvoAPIItem(
+        id=1,
+        word="test_word",
+        pathmp3="http://www.test.com/audio.mp3",
+        username="test_username",
+    )
+    assert forvo.extract_data(test_item) == ForvoAudio(
+        url=URL("http://www.test.com/audio.mp3"),
+        username="test_username",
+    )
 
 
 @pytest.mark.parametrize(
@@ -225,4 +228,7 @@ def test_correct_word(item, word, expected_result):
     - WHEN the response's word is checked
     - THEN check `correct_word` returns the correct boolean
     """
-    assert forvo.correct_word(item, word) == expected_result
+    loaded_item = ForvoAPIItem.model_validate(
+        {**item, "id": "1", "pathmp3": "", "username": ""}
+    )
+    assert forvo.correct_word(loaded_item, word) == expected_result

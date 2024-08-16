@@ -65,9 +65,11 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     )
 
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    expected_result = test_dict.expected_result
+    expected_results = test_dict.expected_result
 
-    assert coordinator.get_info(word_list) == expected_result
+    assert coordinator.get_info(word_list) == expected_results
+    # for res, expected_res in zip(coordinator.get_info(word_list), expected_results):
+    #     assert res.model_dump() == expected_res.model_dump()
 
 
 def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):

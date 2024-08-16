@@ -7,7 +7,11 @@ import requests
 
 from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
 from api.custom_types.exception_types import APIError
-from api.custom_types.response_types import JapanesePodAudio, ResponseItemJapanesePod
+from api.custom_types.response_types import (
+    JapanesePodAudio,
+    JapanesePodMainData,
+    ResponseItemJapanesePod,
+)
 from api.utils import remove_end_brackets
 
 NAME = "japanesepod"
@@ -24,25 +28,17 @@ class JapanesePodParsingError(APIError):
 def response_factory(
     audio_list: Optional[list[JapanesePodAudio]] = None,
 ) -> ResponseItemJapanesePod:
-    return {
-        "success": True,
-        "error": None,
-        "main_data": {
-            "audio": [] if audio_list is None else audio_list,
-        },
-    }
+    return ResponseItemJapanesePod(
+        success=True, error=None, main_data=JapanesePodMainData(audio=audio_list or [])
+    )
 
 
 def error_response_factory(
     error: JapanesePodAPIError | JapanesePodParsingError,
 ) -> ResponseItemJapanesePod:
-    return {
-        "success": False,
-        "error": error.to_dict(),
-        "main_data": {
-            "audio": [],
-        },
-    }
+    return ResponseItemJapanesePod(
+        success=False, error=error.to_dict(), main_data=JapanesePodMainData(audio=[])
+    )
 
 
 def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemJapanesePod]:
@@ -203,8 +199,7 @@ def check_urls(url_data_list: list[tuple[Kaki, Yomi, URL]]) -> list[JapanesePodA
         thread.join()
 
     return [
-        {"writing": str(kaki), "reading": str(yomi), "url": url}
-        for (kaki, yomi, url) in filter(
-            lambda x: (x[0], x[1]) in valid_pairings, url_data_list
-        )
+        JapanesePodAudio(url=url, writing=kaki, reading=yomi)
+        for (kaki, yomi, url) in url_data_list
+        if (kaki, yomi) in valid_pairings
     ]

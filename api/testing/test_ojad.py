@@ -5,6 +5,8 @@ from functools import partial
 import pytest  # type: ignore
 from bs4 import BeautifulSoup as Soup
 
+from api.custom_types.alternative_string_types import URL
+from api.custom_types.exception_types import APIErrorDict
 from api.modules import ojad
 from api.utils import convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
@@ -71,11 +73,11 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     expected_output = {
         word: {
             "success": False,
-            "error": {
-                "error_msg": json.dumps({"error": "api_error"}),
-                "status_code": 400,
-                "url": test_dict.ojad.url % 1,
-            },
+            "error": APIErrorDict(
+                error_msg=json.dumps({"error": "api_error"}),
+                status_code=400,
+                url=URL(test_dict.ojad.url % 1),
+            ),
             "main_data": {
                 "accent": [],
             },
@@ -191,7 +193,7 @@ def test_get_sections(test_dict: FullTestDict):
     expected_sections = test_dict.ojad.expected_sections
 
     assert ojad.get_sections(parsed_htmls) == [
-        (section["writing_section"], section["reading_sections"])
+        (section.writing_section, section.reading_sections)
         for section in expected_sections
     ]
 
@@ -203,7 +205,7 @@ def test_extract_writings(test_dict: FullTestDict):
     - THEN check all the correct writings are extracted
     """
     for section in test_dict.ojad.expected_sections:
-        assert ojad.extract_writings(section["writing_section"]) == section["writings"]
+        assert ojad.extract_writings(section.writing_section) == section.writings
 
 
 def test_extract_reading(test_dict: FullTestDict):
@@ -213,10 +215,8 @@ def test_extract_reading(test_dict: FullTestDict):
     - THEN check all the correct readings are extracted
     """
     for section in test_dict.ojad.expected_sections:
-        for html_section, reading in zip(
-            section["reading_sections"], section["readings"]
-        ):
-            na_adj = "na_adj" in section and section["na_adj"] is True
+        for html_section, reading in zip(section.reading_sections, section.readings):
+            na_adj = section.na_adj is True
             assert ojad.extract_reading(html_section, na_adj) == reading
 
 
@@ -227,7 +227,7 @@ def test_build_accent_dict(test_dict: FullTestDict):
     - THEN check all the values are as expected
     """
     word_sections = [
-        (section["writing_section"], section["reading_sections"])
+        (section.writing_section, section.reading_sections)
         for section in test_dict.ojad.expected_sections
     ]
 

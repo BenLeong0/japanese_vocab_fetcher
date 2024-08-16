@@ -1,17 +1,21 @@
-from typing import Literal, TypedDict
+from typing import Literal, Optional
+
+from api.custom_types.alternative_string_types import Kaki, Yomi
+from api.custom_types.helpers import MyBaseModel, partial_model
 
 
-class JishoAPIItemJapanese(TypedDict, total=False):
-    word: str
-    reading: str
+class JishoAPIItemJapanese(MyBaseModel):
+    word: Optional[Kaki] = None
+    reading: Optional[Yomi] = None
 
 
-class JishoAPIItemLink(TypedDict):
+class JishoAPIItemLink(MyBaseModel):
     text: str
     url: str
 
 
-class JishoAPIItemSense(TypedDict, total=False):
+@partial_model
+class JishoAPIItemSense(MyBaseModel):
     english_definitions: list[str]
     parts_of_speech: list[str]
     links: list[JishoAPIItemLink]
@@ -24,26 +28,26 @@ class JishoAPIItemSense(TypedDict, total=False):
     sentences: list
 
 
-class JishoAPIItemAttribution(TypedDict):
+class JishoAPIItemAttribution(MyBaseModel):
     jmdict: bool
     jmnedict: bool
     dbpedia: str | Literal[False]
 
 
-class JishoAPIItem(TypedDict, total=False):
+class JishoAPIItem(MyBaseModel):
     slug: str
-    is_common: bool
-    tags: list[str]
-    jlpt: list[str]
     japanese: list[JishoAPIItemJapanese]
-    senses: list[JishoAPIItemSense]
-    attribution: JishoAPIItemAttribution
+    is_common: Optional[bool] = None
+    tags: Optional[list[str]] = None
+    jlpt: Optional[list[str]] = None
+    senses: Optional[list[JishoAPIItemSense]] = None
+    attribution: Optional[JishoAPIItemAttribution] = None
 
 
-class JishoAPIMeta(TypedDict):
+class JishoAPIMeta(MyBaseModel):
     status: int
 
 
-class JishoAPIResponse(TypedDict):
+class JishoAPIResponse(MyBaseModel):
     meta: JishoAPIMeta
     data: list[JishoAPIItem]

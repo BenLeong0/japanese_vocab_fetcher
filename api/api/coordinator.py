@@ -62,9 +62,18 @@ def generate_response(
     results_dict: DefaultDict[str, dict[Kaki, Any]],
     word_list: list[Kaki],
 ) -> list[FullResponseItem]:
-    resp: list[FullResponseItem] = [
-        {"word": word}  # type: ignore
-        | {module.NAME: results_dict[module.NAME][word] for module in MODULES}  # type: ignore
+    resp = [
+        FullResponseItem(
+            word=word,
+            japanesepod=results_dict["japanesepod"][word],
+            jisho=results_dict["jisho"][word],
+            ojad=results_dict["ojad"][word],
+            suzuki=results_dict["suzuki"][word],
+            wadoku=results_dict["wadoku"][word],
+            forvo=results_dict["forvo"][word],
+            wanikani=results_dict["wanikani"][word],
+            tangorin=results_dict["tangorin"][word],
+        )
         for word in word_list
     ]
     return resp

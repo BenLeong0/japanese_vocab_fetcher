@@ -2,9 +2,453 @@ from api.custom_types.jisho_api_types import JishoAPIItem, JishoAPIResponse
 from api.custom_types.response_types import JishoExtraItem
 
 MEGANE: dict[str, JishoAPIResponse] = {
-    "眼鏡": {
-        "meta": {"status": 200},
-        "data": [
+    "眼鏡": JishoAPIResponse.model_validate(
+        {
+            "meta": {"status": 200},
+            "data": [
+                {
+                    "slug": "眼鏡",
+                    "is_common": True,
+                    "tags": ["wanikani34"],
+                    "jlpt": ["jlpt-n1", "jlpt-n5"],
+                    "japanese": [
+                        {"word": "眼鏡", "reading": "めがね"},
+                        {"word": "眼鏡", "reading": "がんきょう"},
+                        {"reading": "メガネ"},
+                    ],
+                    "senses": [
+                        {
+                            "english_definitions": [
+                                "glasses",
+                                "eyeglasses",
+                                "spectacles",
+                            ],
+                            "parts_of_speech": ["Noun"],
+                            "links": [],
+                            "tags": ["Usually written using kana alone"],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        },
+                        {
+                            "english_definitions": [
+                                "judgment",
+                                "judgement",
+                                "discrimination",
+                                "discernment",
+                                "insight",
+                            ],
+                            "parts_of_speech": ["Noun"],
+                            "links": [],
+                            "tags": ["Usually written using kana alone"],
+                            "restrictions": ["めがね", "メガネ"],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        },
+                        {
+                            "english_definitions": ["Megane"],
+                            "parts_of_speech": ["Place"],
+                            "links": [],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        },
+                        {
+                            "english_definitions": ["Glasses"],
+                            "parts_of_speech": ["Wikipedia definition"],
+                            "links": [
+                                {
+                                    "text": "Read “Glasses” on English Wikipedia",
+                                    "url": "http://en.wikipedia.org/wiki/Glasses?oldid=494388060",
+                                },
+                                {
+                                    "text": "Read “眼鏡” on Japanese Wikipedia",
+                                    "url": "http://ja.wikipedia.org/wiki/眼鏡?oldid=42599911",
+                                },
+                            ],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                            "sentences": [],
+                        },
+                    ],
+                    "attribution": {
+                        "jmdict": True,
+                        "jmnedict": True,
+                        "dbpedia": "http://dbpedia.org/resource/Glasses",
+                    },
+                },
+                {
+                    "slug": "眼鏡橋",
+                    "is_common": False,
+                    "tags": [],
+                    "jlpt": [],
+                    "japanese": [{"word": "眼鏡橋", "reading": "めがねばし"}],
+                    "senses": [
+                        {
+                            "english_definitions": ["arched bridge"],
+                            "parts_of_speech": ["Noun"],
+                            "links": [],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        },
+                        {
+                            "english_definitions": ["Meganebashi"],
+                            "parts_of_speech": ["Place"],
+                            "links": [],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        },
+                    ],
+                    "attribution": {"jmdict": True, "jmnedict": True, "dbpedia": False},
+                },
+                {
+                    "slug": "眼鏡を掛ける",
+                    "is_common": False,
+                    "tags": [],
+                    "jlpt": [],
+                    "japanese": [
+                        {"word": "メガネを掛ける", "reading": "メガネをかける"},
+                        {"word": "眼鏡をかける", "reading": "めがねをかける"},
+                        {"word": "眼鏡を掛ける", "reading": "めがねをかける"},
+                        {"word": "めがねを掛ける", "reading": "めがねをかける"},
+                    ],
+                    "senses": [
+                        {
+                            "english_definitions": [
+                                "to wear glasses",
+                                "to put on glasses",
+                            ],
+                            "parts_of_speech": [
+                                "Expressions (phrases, clauses, etc.)",
+                                "Ichidan verb",
+                            ],
+                            "links": [],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        }
+                    ],
+                    "attribution": {
+                        "jmdict": True,
+                        "jmnedict": False,
+                        "dbpedia": False,
+                    },
+                },
+                {
+                    "slug": "眼鏡にかなう",
+                    "is_common": False,
+                    "tags": [],
+                    "jlpt": [],
+                    "japanese": [
+                        {"word": "眼鏡にかなう", "reading": "めがねにかなう"},
+                        {"word": "眼鏡に適う", "reading": "めがねにかなう"},
+                        {"word": "眼鏡に叶う", "reading": "めがねにかなう"},
+                    ],
+                    "senses": [
+                        {
+                            "english_definitions": [
+                                "to win the favour of (favor)",
+                                "to be acknowledged (e.g. by a superior)",
+                                "to measure up to",
+                            ],
+                            "parts_of_speech": [
+                                "Expressions (phrases, clauses, etc.)",
+                                "Godan verb with u ending",
+                            ],
+                            "links": [],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        }
+                    ],
+                    "attribution": {
+                        "jmdict": True,
+                        "jmnedict": False,
+                        "dbpedia": False,
+                    },
+                },
+                {
+                    "slug": "眼鏡猿",
+                    "is_common": False,
+                    "tags": [],
+                    "jlpt": [],
+                    "japanese": [
+                        {"word": "眼鏡猿", "reading": "めがねざる"},
+                        {"reading": "メガネザル"},
+                    ],
+                    "senses": [
+                        {
+                            "english_definitions": [
+                                "tarsier (Tarsius syrichta)",
+                                "specter lemur",
+                                "spectre lemur",
+                            ],
+                            "parts_of_speech": ["Noun"],
+                            "links": [],
+                            "tags": ["Usually written using kana alone"],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        },
+                        {
+                            "english_definitions": ["Tarsier"],
+                            "parts_of_speech": ["Wikipedia definition"],
+                            "links": [
+                                {
+                                    "text": "Read “Tarsier” on English Wikipedia",
+                                    "url": "http://en.wikipedia.org/wiki/Tarsier?oldid=493289405",
+                                },
+                                {
+                                    "text": "Read “メガネザル” on Japanese Wikipedia",
+                                    "url": "http://ja.wikipedia.org/wiki/メガネザル?oldid=42564577",
+                                },
+                            ],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                            "sentences": [],
+                        },
+                    ],
+                    "attribution": {
+                        "jmdict": True,
+                        "jmnedict": False,
+                        "dbpedia": "http://dbpedia.org/resource/Tarsier",
+                    },
+                },
+                {
+                    "slug": "眼鏡黐之魚",
+                    "is_common": False,
+                    "tags": [],
+                    "jlpt": [],
+                    "japanese": [
+                        {"word": "眼鏡黐之魚", "reading": "めがねもちのうお"},
+                        {"reading": "メガネモチノウオ"},
+                    ],
+                    "senses": [
+                        {
+                            "english_definitions": [
+                                "humphead wrasse (Cheilinus undulatus)",
+                                "Napoleon wrasse",
+                                "Napoleonfish",
+                                "Maori wrasse",
+                            ],
+                            "parts_of_speech": ["Noun"],
+                            "links": [],
+                            "tags": ["Usually written using kana alone"],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        },
+                        {
+                            "english_definitions": ["Humphead wrasse"],
+                            "parts_of_speech": ["Wikipedia definition"],
+                            "links": [
+                                {
+                                    "text": "Read “Humphead wrasse” on English Wikipedia",
+                                    "url": "http://en.wikipedia.org/wiki/Humphead_wrasse?oldid=492695124",
+                                },
+                                {
+                                    "text": "Read “メガネモチノウオ” on Japanese Wikipedia",
+                                    "url": "http://ja.wikipedia.org/wiki/メガネモチノウオ?oldid=40496900",
+                                },
+                            ],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                            "sentences": [],
+                        },
+                    ],
+                    "attribution": {
+                        "jmdict": True,
+                        "jmnedict": False,
+                        "dbpedia": "http://dbpedia.org/resource/Humphead_wrasse",
+                    },
+                },
+                {
+                    "slug": "眼鏡熊",
+                    "is_common": False,
+                    "tags": [],
+                    "jlpt": [],
+                    "japanese": [
+                        {"word": "眼鏡熊", "reading": "めがねぐま"},
+                        {"reading": "メガネグマ"},
+                    ],
+                    "senses": [
+                        {
+                            "english_definitions": [
+                                "spectacled bear (Tremarctos ornatus)"
+                            ],
+                            "parts_of_speech": ["Noun"],
+                            "links": [],
+                            "tags": ["Usually written using kana alone"],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        },
+                        {
+                            "english_definitions": ["Spectacled bear"],
+                            "parts_of_speech": ["Wikipedia definition"],
+                            "links": [
+                                {
+                                    "text": "Read “Spectacled bear” on English Wikipedia",
+                                    "url": "http://en.wikipedia.org/wiki/Spectacled_bear?oldid=493872138",
+                                },
+                                {
+                                    "text": "Read “メガネグマ” on Japanese Wikipedia",
+                                    "url": "http://ja.wikipedia.org/wiki/メガネグマ?oldid=42463862",
+                                },
+                            ],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                            "sentences": [],
+                        },
+                    ],
+                    "attribution": {
+                        "jmdict": True,
+                        "jmnedict": False,
+                        "dbpedia": "http://dbpedia.org/resource/Spectacled_bear",
+                    },
+                },
+                {
+                    "slug": "眼鏡屋",
+                    "is_common": False,
+                    "tags": [],
+                    "jlpt": [],
+                    "japanese": [{"word": "眼鏡屋", "reading": "めがねや"}],
+                    "senses": [
+                        {
+                            "english_definitions": ["optician"],
+                            "parts_of_speech": ["Noun"],
+                            "links": [],
+                            "tags": [],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        }
+                    ],
+                    "attribution": {
+                        "jmdict": True,
+                        "jmnedict": False,
+                        "dbpedia": False,
+                    },
+                },
+                {
+                    "slug": "眼鏡っ娘",
+                    "is_common": False,
+                    "tags": [],
+                    "jlpt": [],
+                    "japanese": [
+                        {"word": "眼鏡っ娘", "reading": "めがねっこ"},
+                        {"word": "眼鏡っ子", "reading": "めがねっこ"},
+                        {"word": "めがねっ娘", "reading": "めがねっこ"},
+                        {"word": "眼鏡娘", "reading": "めがねっこ"},
+                        {"word": "メガネっ娘", "reading": "メガネっこ"},
+                        {"word": "メガネっ子", "reading": "メガネっこ"},
+                    ],
+                    "senses": [
+                        {
+                            "english_definitions": [
+                                "girl (usu. attractive) with glasses",
+                                "glasses-wearing girl",
+                            ],
+                            "parts_of_speech": ["Noun"],
+                            "links": [],
+                            "tags": ["Manga slang"],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        }
+                    ],
+                    "attribution": {
+                        "jmdict": True,
+                        "jmnedict": False,
+                        "dbpedia": False,
+                    },
+                },
+                {
+                    "slug": "眼鏡海豚",
+                    "is_common": False,
+                    "tags": [],
+                    "jlpt": [],
+                    "japanese": [
+                        {"word": "眼鏡海豚", "reading": "めがねいるか"},
+                        {"reading": "メガネイルカ"},
+                    ],
+                    "senses": [
+                        {
+                            "english_definitions": [
+                                "spectacled porpoise (Phocoena dioptrica)"
+                            ],
+                            "parts_of_speech": ["Noun"],
+                            "links": [],
+                            "tags": ["Usually written using kana alone"],
+                            "restrictions": [],
+                            "see_also": [],
+                            "antonyms": [],
+                            "source": [],
+                            "info": [],
+                        }
+                    ],
+                    "attribution": {
+                        "jmdict": True,
+                        "jmnedict": False,
+                        "dbpedia": False,
+                    },
+                },
+            ],
+        },
+    )
+}
+
+
+MEGANE_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
+    "眼鏡": [
+        JishoAPIItem.model_validate(
             {
                 "slug": "眼鏡",
                 "is_common": True,
@@ -82,282 +526,74 @@ MEGANE: dict[str, JishoAPIResponse] = {
                     "jmnedict": True,
                     "dbpedia": "http://dbpedia.org/resource/Glasses",
                 },
-            },
+            }
+        ),
+    ],
+}
+
+
+MEGANE_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
+    "眼鏡": [
+        JishoExtraItem.model_validate(
             {
                 "slug": "眼鏡橋",
-                "is_common": False,
-                "tags": [],
-                "jlpt": [],
                 "japanese": [{"word": "眼鏡橋", "reading": "めがねばし"}],
-                "senses": [
-                    {
-                        "english_definitions": ["arched bridge"],
-                        "parts_of_speech": ["Noun"],
-                        "links": [],
-                        "tags": [],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    },
-                    {
-                        "english_definitions": ["Meganebashi"],
-                        "parts_of_speech": ["Place"],
-                        "links": [],
-                        "tags": [],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    },
-                ],
-                "attribution": {"jmdict": True, "jmnedict": True, "dbpedia": False},
-            },
+            }
+        ),
+        JishoExtraItem.model_validate(
             {
                 "slug": "眼鏡を掛ける",
-                "is_common": False,
-                "tags": [],
-                "jlpt": [],
                 "japanese": [
                     {"word": "メガネを掛ける", "reading": "メガネをかける"},
                     {"word": "眼鏡をかける", "reading": "めがねをかける"},
                     {"word": "眼鏡を掛ける", "reading": "めがねをかける"},
                     {"word": "めがねを掛ける", "reading": "めがねをかける"},
                 ],
-                "senses": [
-                    {
-                        "english_definitions": ["to wear glasses", "to put on glasses"],
-                        "parts_of_speech": [
-                            "Expressions (phrases, clauses, etc.)",
-                            "Ichidan verb",
-                        ],
-                        "links": [],
-                        "tags": [],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    }
-                ],
-                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-            },
+            }
+        ),
+        JishoExtraItem.model_validate(
             {
                 "slug": "眼鏡にかなう",
-                "is_common": False,
-                "tags": [],
-                "jlpt": [],
                 "japanese": [
                     {"word": "眼鏡にかなう", "reading": "めがねにかなう"},
                     {"word": "眼鏡に適う", "reading": "めがねにかなう"},
                     {"word": "眼鏡に叶う", "reading": "めがねにかなう"},
                 ],
-                "senses": [
-                    {
-                        "english_definitions": [
-                            "to win the favour of (favor)",
-                            "to be acknowledged (e.g. by a superior)",
-                            "to measure up to",
-                        ],
-                        "parts_of_speech": [
-                            "Expressions (phrases, clauses, etc.)",
-                            "Godan verb with u ending",
-                        ],
-                        "links": [],
-                        "tags": [],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    }
-                ],
-                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-            },
+            }
+        ),
+        JishoExtraItem.model_validate(
             {
                 "slug": "眼鏡猿",
-                "is_common": False,
-                "tags": [],
-                "jlpt": [],
                 "japanese": [
                     {"word": "眼鏡猿", "reading": "めがねざる"},
                     {"reading": "メガネザル"},
                 ],
-                "senses": [
-                    {
-                        "english_definitions": [
-                            "tarsier (Tarsius syrichta)",
-                            "specter lemur",
-                            "spectre lemur",
-                        ],
-                        "parts_of_speech": ["Noun"],
-                        "links": [],
-                        "tags": ["Usually written using kana alone"],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    },
-                    {
-                        "english_definitions": ["Tarsier"],
-                        "parts_of_speech": ["Wikipedia definition"],
-                        "links": [
-                            {
-                                "text": "Read “Tarsier” on English Wikipedia",
-                                "url": "http://en.wikipedia.org/wiki/Tarsier?oldid=493289405",
-                            },
-                            {
-                                "text": "Read “メガネザル” on Japanese Wikipedia",
-                                "url": "http://ja.wikipedia.org/wiki/メガネザル?oldid=42564577",
-                            },
-                        ],
-                        "tags": [],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                        "sentences": [],
-                    },
-                ],
-                "attribution": {
-                    "jmdict": True,
-                    "jmnedict": False,
-                    "dbpedia": "http://dbpedia.org/resource/Tarsier",
-                },
-            },
+            }
+        ),
+        JishoExtraItem.model_validate(
             {
                 "slug": "眼鏡黐之魚",
-                "is_common": False,
-                "tags": [],
-                "jlpt": [],
                 "japanese": [
                     {"word": "眼鏡黐之魚", "reading": "めがねもちのうお"},
                     {"reading": "メガネモチノウオ"},
                 ],
-                "senses": [
-                    {
-                        "english_definitions": [
-                            "humphead wrasse (Cheilinus undulatus)",
-                            "Napoleon wrasse",
-                            "Napoleonfish",
-                            "Maori wrasse",
-                        ],
-                        "parts_of_speech": ["Noun"],
-                        "links": [],
-                        "tags": ["Usually written using kana alone"],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    },
-                    {
-                        "english_definitions": ["Humphead wrasse"],
-                        "parts_of_speech": ["Wikipedia definition"],
-                        "links": [
-                            {
-                                "text": "Read “Humphead wrasse” on English Wikipedia",
-                                "url": "http://en.wikipedia.org/wiki/Humphead_wrasse?oldid=492695124",
-                            },
-                            {
-                                "text": "Read “メガネモチノウオ” on Japanese Wikipedia",
-                                "url": "http://ja.wikipedia.org/wiki/メガネモチノウオ?oldid=40496900",
-                            },
-                        ],
-                        "tags": [],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                        "sentences": [],
-                    },
-                ],
-                "attribution": {
-                    "jmdict": True,
-                    "jmnedict": False,
-                    "dbpedia": "http://dbpedia.org/resource/Humphead_wrasse",
-                },
-            },
+            }
+        ),
+        JishoExtraItem.model_validate(
             {
                 "slug": "眼鏡熊",
-                "is_common": False,
-                "tags": [],
-                "jlpt": [],
                 "japanese": [
                     {"word": "眼鏡熊", "reading": "めがねぐま"},
                     {"reading": "メガネグマ"},
                 ],
-                "senses": [
-                    {
-                        "english_definitions": ["spectacled bear (Tremarctos ornatus)"],
-                        "parts_of_speech": ["Noun"],
-                        "links": [],
-                        "tags": ["Usually written using kana alone"],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    },
-                    {
-                        "english_definitions": ["Spectacled bear"],
-                        "parts_of_speech": ["Wikipedia definition"],
-                        "links": [
-                            {
-                                "text": "Read “Spectacled bear” on English Wikipedia",
-                                "url": "http://en.wikipedia.org/wiki/Spectacled_bear?oldid=493872138",
-                            },
-                            {
-                                "text": "Read “メガネグマ” on Japanese Wikipedia",
-                                "url": "http://ja.wikipedia.org/wiki/メガネグマ?oldid=42463862",
-                            },
-                        ],
-                        "tags": [],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                        "sentences": [],
-                    },
-                ],
-                "attribution": {
-                    "jmdict": True,
-                    "jmnedict": False,
-                    "dbpedia": "http://dbpedia.org/resource/Spectacled_bear",
-                },
-            },
-            {
-                "slug": "眼鏡屋",
-                "is_common": False,
-                "tags": [],
-                "jlpt": [],
-                "japanese": [{"word": "眼鏡屋", "reading": "めがねや"}],
-                "senses": [
-                    {
-                        "english_definitions": ["optician"],
-                        "parts_of_speech": ["Noun"],
-                        "links": [],
-                        "tags": [],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    }
-                ],
-                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-            },
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "眼鏡屋", "japanese": [{"word": "眼鏡屋", "reading": "めがねや"}]}
+        ),
+        JishoExtraItem.model_validate(
             {
                 "slug": "眼鏡っ娘",
-                "is_common": False,
-                "tags": [],
-                "jlpt": [],
                 "japanese": [
                     {"word": "眼鏡っ娘", "reading": "めがねっこ"},
                     {"word": "眼鏡っ子", "reading": "めがねっこ"},
@@ -366,207 +602,22 @@ MEGANE: dict[str, JishoAPIResponse] = {
                     {"word": "メガネっ娘", "reading": "メガネっこ"},
                     {"word": "メガネっ子", "reading": "メガネっこ"},
                 ],
-                "senses": [
-                    {
-                        "english_definitions": [
-                            "girl (usu. attractive) with glasses",
-                            "glasses-wearing girl",
-                        ],
-                        "parts_of_speech": ["Noun"],
-                        "links": [],
-                        "tags": ["Manga slang"],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    }
-                ],
-                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-            },
+            }
+        ),
+        JishoExtraItem.model_validate(
             {
                 "slug": "眼鏡海豚",
-                "is_common": False,
-                "tags": [],
-                "jlpt": [],
                 "japanese": [
                     {"word": "眼鏡海豚", "reading": "めがねいるか"},
                     {"reading": "メガネイルカ"},
                 ],
-                "senses": [
-                    {
-                        "english_definitions": [
-                            "spectacled porpoise (Phocoena dioptrica)"
-                        ],
-                        "parts_of_speech": ["Noun"],
-                        "links": [],
-                        "tags": ["Usually written using kana alone"],
-                        "restrictions": [],
-                        "see_also": [],
-                        "antonyms": [],
-                        "source": [],
-                        "info": [],
-                    }
-                ],
-                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-            },
-        ],
-    },
-}
-
-
-MEGANE_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
-    "眼鏡": [
-        {
-            "slug": "眼鏡",
-            "is_common": True,
-            "tags": ["wanikani34"],
-            "jlpt": ["jlpt-n1", "jlpt-n5"],
-            "japanese": [
-                {"word": "眼鏡", "reading": "めがね"},
-                {"word": "眼鏡", "reading": "がんきょう"},
-                {"reading": "メガネ"},
-            ],
-            "senses": [
-                {
-                    "english_definitions": ["glasses", "eyeglasses", "spectacles"],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": ["Usually written using kana alone"],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": [
-                        "judgment",
-                        "judgement",
-                        "discrimination",
-                        "discernment",
-                        "insight",
-                    ],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": ["Usually written using kana alone"],
-                    "restrictions": ["めがね", "メガネ"],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["Megane"],
-                    "parts_of_speech": ["Place"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["Glasses"],
-                    "parts_of_speech": ["Wikipedia definition"],
-                    "links": [
-                        {
-                            "text": "Read “Glasses” on English Wikipedia",
-                            "url": "http://en.wikipedia.org/wiki/Glasses?oldid=494388060",
-                        },
-                        {
-                            "text": "Read “眼鏡” on Japanese Wikipedia",
-                            "url": "http://ja.wikipedia.org/wiki/眼鏡?oldid=42599911",
-                        },
-                    ],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                    "sentences": [],
-                },
-            ],
-            "attribution": {
-                "jmdict": True,
-                "jmnedict": True,
-                "dbpedia": "http://dbpedia.org/resource/Glasses",
-            },
-        },
-    ],
-}
-
-
-MEGANE_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
-    "眼鏡": [
-        {
-            "slug": "眼鏡橋",
-            "japanese": [{"word": "眼鏡橋", "reading": "めがねばし"}],
-        },
-        {
-            "slug": "眼鏡を掛ける",
-            "japanese": [
-                {"word": "メガネを掛ける", "reading": "メガネをかける"},
-                {"word": "眼鏡をかける", "reading": "めがねをかける"},
-                {"word": "眼鏡を掛ける", "reading": "めがねをかける"},
-                {"word": "めがねを掛ける", "reading": "めがねをかける"},
-            ],
-        },
-        {
-            "slug": "眼鏡にかなう",
-            "japanese": [
-                {"word": "眼鏡にかなう", "reading": "めがねにかなう"},
-                {"word": "眼鏡に適う", "reading": "めがねにかなう"},
-                {"word": "眼鏡に叶う", "reading": "めがねにかなう"},
-            ],
-        },
-        {
-            "slug": "眼鏡猿",
-            "japanese": [
-                {"word": "眼鏡猿", "reading": "めがねざる"},
-                {"reading": "メガネザル"},
-            ],
-        },
-        {
-            "slug": "眼鏡黐之魚",
-            "japanese": [
-                {"word": "眼鏡黐之魚", "reading": "めがねもちのうお"},
-                {"reading": "メガネモチノウオ"},
-            ],
-        },
-        {
-            "slug": "眼鏡熊",
-            "japanese": [
-                {"word": "眼鏡熊", "reading": "めがねぐま"},
-                {"reading": "メガネグマ"},
-            ],
-        },
-        {"slug": "眼鏡屋", "japanese": [{"word": "眼鏡屋", "reading": "めがねや"}]},
-        {
-            "slug": "眼鏡っ娘",
-            "japanese": [
-                {"word": "眼鏡っ娘", "reading": "めがねっこ"},
-                {"word": "眼鏡っ子", "reading": "めがねっこ"},
-                {"word": "めがねっ娘", "reading": "めがねっこ"},
-                {"word": "眼鏡娘", "reading": "めがねっこ"},
-                {"word": "メガネっ娘", "reading": "メガネっこ"},
-                {"word": "メガネっ子", "reading": "メガネっこ"},
-            ],
-        },
-        {
-            "slug": "眼鏡海豚",
-            "japanese": [
-                {"word": "眼鏡海豚", "reading": "めがねいるか"},
-                {"reading": "メガネイルカ"},
-            ],
-        },
+            }
+        ),
     ]
 }
 
 
-COMEBACK: dict[str, JishoAPIResponse] = {
+COMEBACK: dict[str, dict] = {
     "カムバック": {
         "meta": {"status": 200},
         "data": [
@@ -706,50 +757,57 @@ COMEBACK: dict[str, JishoAPIResponse] = {
 
 COMEBACK_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
     "カムバック": [
-        {
-            "slug": "カムバック",
-            "is_common": True,
-            "tags": [],
-            "jlpt": ["jlpt-n1"],
-            "japanese": [{"reading": "カムバック"}],
-            "senses": [
-                {
-                    "english_definitions": ["comeback"],
-                    "parts_of_speech": ["Noun", "Suru verb"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                }
-            ],
-            "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-        },
+        JishoAPIItem.model_validate(
+            {
+                "slug": "カムバック",
+                "is_common": True,
+                "tags": [],
+                "jlpt": ["jlpt-n1"],
+                "japanese": [{"reading": "カムバック"}],
+                "senses": [
+                    {
+                        "english_definitions": ["comeback"],
+                        "parts_of_speech": ["Noun", "Suru verb"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    }
+                ],
+                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
+            }
+        ),
     ],
 }
 
 
 COMEBACK_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "カムバック": [
-        {
-            "slug": "51869cf2d5dda7b2c6074156",
-            "japanese": [{"word": "カムバック賞 (NFL)"}],
-        },
-        {
-            "slug": "5186a020d5dda7b2c608c40c",
-            "japanese": [{"word": "カムバック賞 (日本プロ野球)"}],
-        },
-        {
-            "slug": "51869dc2d5dda7b2c607a433",
-            "japanese": [{"word": "カムバック賞 (MLB)"}],
-        },
+        JishoExtraItem.model_validate(
+            {
+                "slug": "51869cf2d5dda7b2c6074156",
+                "japanese": [{"word": "カムバック賞 (NFL)"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "5186a020d5dda7b2c608c40c",
+                "japanese": [{"word": "カムバック賞 (日本プロ野球)"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "51869dc2d5dda7b2c607a433",
+                "japanese": [{"word": "カムバック賞 (MLB)"}],
+            }
+        ),
     ],
 }
 
-
-TABERU_GAKUSEI: dict[str, JishoAPIResponse] = {
+TABERU_GAKUSEI: dict[str, dict] = {
     "食べる": {
         "meta": {"status": 200},
         "data": [
@@ -1106,173 +1164,202 @@ TABERU_GAKUSEI: dict[str, JishoAPIResponse] = {
     },
 }
 
-
 TABERU_GAKUSEI_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
     "食べる": [
-        {
-            "slug": "食べる",
-            "is_common": True,
-            "tags": ["wanikani6"],
-            "jlpt": ["jlpt-n5"],
-            "japanese": [
-                {"word": "食べる", "reading": "たべる"},
-                {"word": "喰べる", "reading": "たべる"},
-            ],
-            "senses": [
-                {
-                    "english_definitions": ["to eat"],
-                    "parts_of_speech": ["Ichidan verb", "Transitive verb"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": [
-                        "to live on (e.g. a salary)",
-                        "to live off",
-                        "to subsist on",
-                    ],
-                    "parts_of_speech": ["Ichidan verb", "Transitive verb"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-            ],
-            "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-        },
+        JishoAPIItem.model_validate(
+            {
+                "slug": "食べる",
+                "is_common": True,
+                "tags": ["wanikani6"],
+                "jlpt": ["jlpt-n5"],
+                "japanese": [
+                    {"word": "食べる", "reading": "たべる"},
+                    {"word": "喰べる", "reading": "たべる"},
+                ],
+                "senses": [
+                    {
+                        "english_definitions": ["to eat"],
+                        "parts_of_speech": ["Ichidan verb", "Transitive verb"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": [
+                            "to live on (e.g. a salary)",
+                            "to live off",
+                            "to subsist on",
+                        ],
+                        "parts_of_speech": ["Ichidan verb", "Transitive verb"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                ],
+                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
+            }
+        ),
     ],
     "学生": [
-        {
-            "slug": "学生",
-            "is_common": True,
-            "tags": ["wanikani5"],
-            "jlpt": ["jlpt-n5"],
-            "japanese": [{"word": "学生", "reading": "がくせい"}],
-            "senses": [
-                {
-                    "english_definitions": ["student (esp. a university student)"],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                }
-            ],
-            "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-        },
-        {
-            "slug": "学生-1",
-            "is_common": False,
-            "tags": [],
-            "jlpt": [],
-            "japanese": [
-                {"word": "学生", "reading": "がくしょう"},
-                {"word": "学生", "reading": "がくそう"},
-            ],
-            "senses": [
-                {
-                    "english_definitions": [
-                        "Heian-period student of government administration"
-                    ],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": ["Archaism"],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": [
-                        "Buddhist scholar",
-                        "researcher at a Buddhist temple",
-                        "person studying Buddhism",
-                    ],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": ["Archaism"],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["learning", "scholarship"],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": ["Archaism"],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-            ],
-            "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-        },
+        JishoAPIItem.model_validate(
+            {
+                "slug": "学生",
+                "is_common": True,
+                "tags": ["wanikani5"],
+                "jlpt": ["jlpt-n5"],
+                "japanese": [{"word": "学生", "reading": "がくせい"}],
+                "senses": [
+                    {
+                        "english_definitions": ["student (esp. a university student)"],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    }
+                ],
+                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
+            }
+        ),
+        JishoAPIItem.model_validate(
+            {
+                "slug": "学生-1",
+                "is_common": False,
+                "tags": [],
+                "jlpt": [],
+                "japanese": [
+                    {"word": "学生", "reading": "がくしょう"},
+                    {"word": "学生", "reading": "がくそう"},
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "Heian-period student of government administration"
+                        ],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": ["Archaism"],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": [
+                            "Buddhist scholar",
+                            "researcher at a Buddhist temple",
+                            "person studying Buddhism",
+                        ],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": ["Archaism"],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["learning", "scholarship"],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": ["Archaism"],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                ],
+                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
+            }
+        ),
     ],
 }
 
 
 TABERU_GAKUSEI_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "食べる": [
-        {
-            "slug": "食べるラー油",
-            "japanese": [
-                {"word": "食べるラー油", "reading": "たべるラーゆ"},
-                {"word": "食べる辣油", "reading": "たべるラーゆ"},
-            ],
-        },
+        JishoExtraItem.model_validate(
+            {
+                "slug": "食べるラー油",
+                "japanese": [
+                    {"word": "食べるラー油", "reading": "たべるラーゆ"},
+                    {"word": "食べる辣油", "reading": "たべるラーゆ"},
+                ],
+            }
+        ),
     ],
     "学生": [
-        {
-            "slug": "学生時代",
-            "japanese": [{"word": "学生時代", "reading": "がくせいじだい"}],
-        },
-        {
-            "slug": "学生運動",
-            "japanese": [{"word": "学生運動", "reading": "がくせいうんどう"}],
-        },
-        {
-            "slug": "学生生活",
-            "japanese": [{"word": "学生生活", "reading": "がくせいせいかつ"}],
-        },
-        {"slug": "学生会", "japanese": [{"word": "学生会", "reading": "がくせいかい"}]},
-        {"slug": "学生服", "japanese": [{"word": "学生服", "reading": "がくせいふく"}]},
-        {
-            "slug": "学生証",
-            "japanese": [{"word": "学生証", "reading": "がくせいしょう"}],
-        },
-        {
-            "slug": "学生会館",
-            "japanese": [{"word": "学生会館", "reading": "がくせいかいかん"}],
-        },
-        {
-            "slug": "学生割引",
-            "japanese": [
-                {"word": "学生割引", "reading": "がくせいわりびき"},
-                {"word": "学生割引き", "reading": "がくせいわりびき"},
-                {"word": "学生割り引き", "reading": "がくせいわりびき"},
-            ],
-        },
+        JishoExtraItem.model_validate(
+            {
+                "slug": "学生時代",
+                "japanese": [{"word": "学生時代", "reading": "がくせいじだい"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "学生運動",
+                "japanese": [{"word": "学生運動", "reading": "がくせいうんどう"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "学生生活",
+                "japanese": [{"word": "学生生活", "reading": "がくせいせいかつ"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "学生会",
+                "japanese": [{"word": "学生会", "reading": "がくせいかい"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "学生服",
+                "japanese": [{"word": "学生服", "reading": "がくせいふく"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "学生証",
+                "japanese": [{"word": "学生証", "reading": "がくせいしょう"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "学生会館",
+                "japanese": [{"word": "学生会館", "reading": "がくせいかいかん"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "学生割引",
+                "japanese": [
+                    {"word": "学生割引", "reading": "がくせいわりびき"},
+                    {"word": "学生割引き", "reading": "がくせいわりびき"},
+                    {"word": "学生割り引き", "reading": "がくせいわりびき"},
+                ],
+            }
+        ),
     ],
 }
 
 
-KOTOBA: dict[str, JishoAPIResponse] = {
+KOTOBA: dict[str, dict] = {
     "言葉": {
         "meta": {"status": 200},
         "data": [
@@ -1651,171 +1738,199 @@ KOTOBA: dict[str, JishoAPIResponse] = {
 
 KOTOBA_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
     "言葉": [
-        {
-            "slug": "言葉",
-            "is_common": True,
-            "tags": ["wanikani12"],
-            "jlpt": ["jlpt-n5"],
-            "japanese": [
-                {"word": "言葉", "reading": "ことば"},
-                {"word": "詞", "reading": "ことば"},
-                {"word": "辞", "reading": "ことば"},
-                {"word": "言葉", "reading": "けとば"},
-            ],
-            "senses": [
-                {
-                    "english_definitions": ["language", "dialect"],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": ["言語"],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
+        JishoAPIItem.model_validate(
+            {
+                "slug": "言葉",
+                "is_common": True,
+                "tags": ["wanikani12"],
+                "jlpt": ["jlpt-n5"],
+                "japanese": [
+                    {"word": "言葉", "reading": "ことば"},
+                    {"word": "詞", "reading": "ことば"},
+                    {"word": "辞", "reading": "ことば"},
+                    {"word": "言葉", "reading": "けとば"},
+                ],
+                "senses": [
+                    {
+                        "english_definitions": ["language", "dialect"],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": ["言語"],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["word", "phrase", "expression", "term"],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": [
+                            "speech",
+                            "(manner of) speaking",
+                            "(use of) language",
+                        ],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": [
+                            "words",
+                            "remark",
+                            "statement",
+                            "comment",
+                        ],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": [
+                            "learning to speak",
+                            "language acquisition",
+                        ],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["Ci (poetry)"],
+                        "parts_of_speech": ["Wikipedia definition"],
+                        "links": [
+                            {
+                                "text": "Read “Ci (poetry)” on English Wikipedia",
+                                "url": "http://en.wikipedia.org/wiki/Ci_(poetry)?oldid=492971177",
+                            },
+                            {
+                                "text": "Read “詞” on Japanese Wikipedia",
+                                "url": "http://ja.wikipedia.org/wiki/詞?oldid=42783998",
+                            },
+                        ],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                        "sentences": [],
+                    },
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": "http://dbpedia.org/resource/Ci_(poetry)",
                 },
-                {
-                    "english_definitions": ["word", "phrase", "expression", "term"],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": [
-                        "speech",
-                        "(manner of) speaking",
-                        "(use of) language",
-                    ],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["words", "remark", "statement", "comment"],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": [
-                        "learning to speak",
-                        "language acquisition",
-                    ],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["Ci (poetry)"],
-                    "parts_of_speech": ["Wikipedia definition"],
-                    "links": [
-                        {
-                            "text": "Read “Ci (poetry)” on English Wikipedia",
-                            "url": "http://en.wikipedia.org/wiki/Ci_(poetry)?oldid=492971177",
-                        },
-                        {
-                            "text": "Read “詞” on Japanese Wikipedia",
-                            "url": "http://ja.wikipedia.org/wiki/詞?oldid=42783998",
-                        },
-                    ],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                    "sentences": [],
-                },
-            ],
-            "attribution": {
-                "jmdict": True,
-                "jmnedict": False,
-                "dbpedia": "http://dbpedia.org/resource/Ci_(poetry)",
-            },
-        },
+            }
+        ),
     ],
 }
 
 
 KOTOBA_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "言葉": [
-        {
-            "slug": "辞典",
-            "japanese": [
-                {"word": "辞典", "reading": "じてん"},
-                {"word": "辭典", "reading": "じてん"},
-                {"word": "辞典", "reading": "ことばてん"},
-                {"word": "辭典", "reading": "ことばてん"},
-                {"word": "ことば典", "reading": "ことばてん"},
-                {"word": "言葉典", "reading": "ことばてん"},
-            ],
-        },
-        {
-            "slug": "言葉遣い",
-            "japanese": [
-                {"word": "言葉遣い", "reading": "ことばづかい"},
-                {"word": "言葉使い", "reading": "ことばづかい"},
-                {"word": "言葉づかい", "reading": "ことばづかい"},
-            ],
-        },
-        {
-            "slug": "言葉のあや",
-            "japanese": [
-                {"word": "言葉のあや", "reading": "ことばのあや"},
-                {"word": "言葉の綾", "reading": "ことばのあや"},
-            ],
-        },
-        {"slug": "言葉数", "japanese": [{"word": "言葉数", "reading": "ことばかず"}]},
-        {
-            "slug": "言葉通り",
-            "japanese": [
-                {"word": "言葉通り", "reading": "ことばどおり"},
-                {"word": "言葉どおり", "reading": "ことばどおり"},
-            ],
-        },
-        {
-            "slug": "言葉に表せない",
-            "japanese": [{"word": "言葉に表せない", "reading": "ことばにあらわせない"}],
-        },
-        {
-            "slug": "言葉に詰まる",
-            "japanese": [{"word": "言葉に詰まる", "reading": "ことばにつまる"}],
-        },
-        {
-            "slug": "言葉に窮する",
-            "japanese": [{"word": "言葉に窮する", "reading": "ことばにきゅうする"}],
-        },
-        {
-            "slug": "言葉を交わす",
-            "japanese": [{"word": "言葉を交わす", "reading": "ことばをかわす"}],
-        },
+        JishoExtraItem.model_validate(
+            {
+                "slug": "辞典",
+                "japanese": [
+                    {"word": "辞典", "reading": "じてん"},
+                    {"word": "辭典", "reading": "じてん"},
+                    {"word": "辞典", "reading": "ことばてん"},
+                    {"word": "辭典", "reading": "ことばてん"},
+                    {"word": "ことば典", "reading": "ことばてん"},
+                    {"word": "言葉典", "reading": "ことばてん"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "言葉遣い",
+                "japanese": [
+                    {"word": "言葉遣い", "reading": "ことばづかい"},
+                    {"word": "言葉使い", "reading": "ことばづかい"},
+                    {"word": "言葉づかい", "reading": "ことばづかい"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "言葉のあや",
+                "japanese": [
+                    {"word": "言葉のあや", "reading": "ことばのあや"},
+                    {"word": "言葉の綾", "reading": "ことばのあや"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "言葉数",
+                "japanese": [{"word": "言葉数", "reading": "ことばかず"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "言葉通り",
+                "japanese": [
+                    {"word": "言葉通り", "reading": "ことばどおり"},
+                    {"word": "言葉どおり", "reading": "ことばどおり"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "言葉に表せない",
+                "japanese": [
+                    {"word": "言葉に表せない", "reading": "ことばにあらわせない"}
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "言葉に詰まる",
+                "japanese": [{"word": "言葉に詰まる", "reading": "ことばにつまる"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "言葉に窮する",
+                "japanese": [{"word": "言葉に窮する", "reading": "ことばにきゅうする"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "言葉を交わす",
+                "japanese": [{"word": "言葉を交わす", "reading": "ことばをかわす"}],
+            }
+        ),
     ],
 }
 
 
-BADINPUT: dict[str, JishoAPIResponse] = {
-    "BADINPUT": {"meta": {"status": 200}, "data": []}
-}
+BADINPUT: dict[str, dict] = {"BADINPUT": {"meta": {"status": 200}, "data": []}}
 
 
 BADINPUT_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
@@ -1828,7 +1943,7 @@ BADINPUT_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
 }
 
 
-USAGI_IKU_KAGO: dict[str, JishoAPIResponse] = {
+USAGI_IKU_KAGO: dict[str, dict] = {
     "兎": {
         "meta": {"status": 200},
         "data": [
@@ -3266,472 +3381,539 @@ USAGI_IKU_KAGO: dict[str, JishoAPIResponse] = {
 
 USAGI_IKU_KAGO_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
     "兎": [
-        {
-            "slug": "兎",
-            "is_common": True,
-            "tags": [],
-            "jlpt": ["jlpt-n3"],
-            "japanese": [
-                {"word": "兎", "reading": "うさぎ"},
-                {"word": "兔", "reading": "うさぎ"},
-                {"word": "菟", "reading": "うさぎ"},
-                {"word": "兎", "reading": "う"},
-                {"reading": "ウサギ"},
-            ],
-            "senses": [
-                {
-                    "english_definitions": [
-                        "rabbit",
-                        "hare",
-                        "coney",
-                        "cony",
-                        "lagomorph (esp. leporids)",
-                    ],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": ["Usually written using kana alone"],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
+        JishoAPIItem.model_validate(
+            {
+                "slug": "兎",
+                "is_common": True,
+                "tags": [],
+                "jlpt": ["jlpt-n3"],
+                "japanese": [
+                    {"word": "兎", "reading": "うさぎ"},
+                    {"word": "兔", "reading": "うさぎ"},
+                    {"word": "菟", "reading": "うさぎ"},
+                    {"word": "兎", "reading": "う"},
+                    {"reading": "ウサギ"},
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "rabbit",
+                            "hare",
+                            "coney",
+                            "cony",
+                            "lagomorph (esp. leporids)",
+                        ],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": ["Usually written using kana alone"],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["Rabbit"],
+                        "parts_of_speech": ["Wikipedia definition"],
+                        "links": [
+                            {
+                                "text": "Read “Rabbit” on English Wikipedia",
+                                "url": "http://en.wikipedia.org/wiki/Rabbit?oldid=495524916",
+                            },
+                            {
+                                "text": "Read “ウサギ” on Japanese Wikipedia",
+                                "url": "http://ja.wikipedia.org/wiki/ウサギ?oldid=42544671",
+                            },
+                        ],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                        "sentences": [],
+                    },
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": "http://dbpedia.org/resource/Rabbit",
                 },
-                {
-                    "english_definitions": ["Rabbit"],
-                    "parts_of_speech": ["Wikipedia definition"],
-                    "links": [
-                        {
-                            "text": "Read “Rabbit” on English Wikipedia",
-                            "url": "http://en.wikipedia.org/wiki/Rabbit?oldid=495524916",
-                        },
-                        {
-                            "text": "Read “ウサギ” on Japanese Wikipedia",
-                            "url": "http://ja.wikipedia.org/wiki/ウサギ?oldid=42544671",
-                        },
-                    ],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                    "sentences": [],
-                },
-            ],
-            "attribution": {
-                "jmdict": True,
-                "jmnedict": False,
-                "dbpedia": "http://dbpedia.org/resource/Rabbit",
-            },
-        },
+            }
+        ),
     ],
     "行く": [
-        {
-            "slug": "行く",
-            "is_common": True,
-            "tags": ["wanikani5"],
-            "jlpt": ["jlpt-n1", "jlpt-n5"],
-            "japanese": [
-                {"word": "行く", "reading": "いく"},
-                {"word": "行く", "reading": "ゆく"},
-                {"word": "逝く", "reading": "いく"},
-                {"word": "逝く", "reading": "ゆく"},
-                {"word": "往く", "reading": "いく"},
-                {"word": "往く", "reading": "ゆく"},
-            ],
-            "senses": [
-                {
-                    "english_definitions": [
-                        "to go",
-                        "to move (in a direction or towards a specific location)",
-                        "to head (towards)",
-                        "to be transported (towards)",
-                        "to reach",
-                    ],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Intransitive verb",
-                    ],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": ["来る くる"],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["to proceed", "to take place"],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Intransitive verb",
-                    ],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": ["旨く行く"],
-                    "antonyms": [],
-                    "source": [],
-                    "info": ["い sometimes omitted in auxiliary use"],
-                },
-                {
-                    "english_definitions": ["to pass through", "to come and go"],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Intransitive verb",
-                    ],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["to walk"],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Intransitive verb",
-                    ],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["to die", "to pass away"],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Intransitive verb",
-                    ],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": ["逝く"],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["to do (in a specific way)"],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Intransitive verb",
-                    ],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["to stream", "to flow"],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Intransitive verb",
-                    ],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["to continue"],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Auxiliary verb",
-                    ],
-                    "links": [],
-                    "tags": ["Usually written using kana alone"],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": ["after the -te form of a verb"],
-                },
-                {
-                    "english_definitions": ["to have an orgasm", "to come", "to cum"],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Intransitive verb",
-                    ],
-                    "links": [],
-                    "tags": ["Usually written using kana alone"],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": [
-                        "to trip",
-                        "to get high",
-                        "to have a drug-induced hallucination",
-                    ],
-                    "parts_of_speech": [
-                        "Godan verb - Iku/Yuku special class",
-                        "Intransitive verb",
-                    ],
-                    "links": [],
-                    "tags": ["Usually written using kana alone", "Slang"],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-            ],
-            "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-        },
+        JishoAPIItem.model_validate(
+            {
+                "slug": "行く",
+                "is_common": True,
+                "tags": ["wanikani5"],
+                "jlpt": ["jlpt-n1", "jlpt-n5"],
+                "japanese": [
+                    {"word": "行く", "reading": "いく"},
+                    {"word": "行く", "reading": "ゆく"},
+                    {"word": "逝く", "reading": "いく"},
+                    {"word": "逝く", "reading": "ゆく"},
+                    {"word": "往く", "reading": "いく"},
+                    {"word": "往く", "reading": "ゆく"},
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "to go",
+                            "to move (in a direction or towards a specific location)",
+                            "to head (towards)",
+                            "to be transported (towards)",
+                            "to reach",
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Intransitive verb",
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": ["来る くる"],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["to proceed", "to take place"],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Intransitive verb",
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": ["旨く行く"],
+                        "antonyms": [],
+                        "source": [],
+                        "info": ["い sometimes omitted in auxiliary use"],
+                    },
+                    {
+                        "english_definitions": ["to pass through", "to come and go"],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Intransitive verb",
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["to walk"],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Intransitive verb",
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["to die", "to pass away"],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Intransitive verb",
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": ["逝く"],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["to do (in a specific way)"],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Intransitive verb",
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["to stream", "to flow"],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Intransitive verb",
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["to continue"],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Auxiliary verb",
+                        ],
+                        "links": [],
+                        "tags": ["Usually written using kana alone"],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": ["after the -te form of a verb"],
+                    },
+                    {
+                        "english_definitions": [
+                            "to have an orgasm",
+                            "to come",
+                            "to cum",
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Intransitive verb",
+                        ],
+                        "links": [],
+                        "tags": ["Usually written using kana alone"],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": [
+                            "to trip",
+                            "to get high",
+                            "to have a drug-induced hallucination",
+                        ],
+                        "parts_of_speech": [
+                            "Godan verb - Iku/Yuku special class",
+                            "Intransitive verb",
+                        ],
+                        "links": [],
+                        "tags": ["Usually written using kana alone", "Slang"],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                ],
+                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
+            }
+        ),
     ],
     "籠": [
-        {
-            "slug": "籠",
-            "is_common": True,
-            "tags": [],
-            "jlpt": ["jlpt-n3"],
-            "japanese": [
-                {"word": "籠", "reading": "かご"},
-                {"word": "篭", "reading": "かご"},
-                {"reading": "カゴ"},
-            ],
-            "senses": [
-                {
-                    "english_definitions": [
-                        "basket (shopping, etc.)",
-                        "hamper",
-                        "cage",
-                    ],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": ["Usually written using kana alone"],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
+        JishoAPIItem.model_validate(
+            {
+                "slug": "籠",
+                "is_common": True,
+                "tags": [],
+                "jlpt": ["jlpt-n3"],
+                "japanese": [
+                    {"word": "籠", "reading": "かご"},
+                    {"word": "篭", "reading": "かご"},
+                    {"reading": "カゴ"},
+                ],
+                "senses": [
+                    {
+                        "english_definitions": [
+                            "basket (shopping, etc.)",
+                            "hamper",
+                            "cage",
+                        ],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": ["Usually written using kana alone"],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["Basket"],
+                        "parts_of_speech": ["Wikipedia definition"],
+                        "links": [
+                            {
+                                "text": "Read “Basket” on English Wikipedia",
+                                "url": "http://en.wikipedia.org/wiki/Basket?oldid=493462729",
+                            },
+                            {
+                                "text": "Read “籠” on Japanese Wikipedia",
+                                "url": "http://ja.wikipedia.org/wiki/籠?oldid=42584108",
+                            },
+                        ],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                        "sentences": [],
+                    },
+                ],
+                "attribution": {
+                    "jmdict": True,
+                    "jmnedict": False,
+                    "dbpedia": "http://dbpedia.org/resource/Basket",
                 },
-                {
-                    "english_definitions": ["Basket"],
-                    "parts_of_speech": ["Wikipedia definition"],
-                    "links": [
-                        {
-                            "text": "Read “Basket” on English Wikipedia",
-                            "url": "http://en.wikipedia.org/wiki/Basket?oldid=493462729",
-                        },
-                        {
-                            "text": "Read “籠” on Japanese Wikipedia",
-                            "url": "http://ja.wikipedia.org/wiki/籠?oldid=42584108",
-                        },
-                    ],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                    "sentences": [],
-                },
-            ],
-            "attribution": {
-                "jmdict": True,
-                "jmnedict": False,
-                "dbpedia": "http://dbpedia.org/resource/Basket",
-            },
-        },
-        {
-            "slug": "牢",
-            "is_common": False,
-            "tags": [],
-            "jlpt": [],
-            "japanese": [
-                {"word": "牢", "reading": "ろう"},
-                {"word": "籠", "reading": "ろう"},
-                {"word": "篭", "reading": "ろう"},
-            ],
-            "senses": [
-                {
-                    "english_definitions": ["prison", "jail", "gaol"],
-                    "parts_of_speech": ["Noun"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["firm", "solid", "strong"],
-                    "parts_of_speech": ["'taru' adjective"],
-                    "links": [],
-                    "tags": ["Obsolete term"],
-                    "restrictions": [],
-                    "see_also": ["牢として"],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-            ],
-            "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-        },
+            }
+        ),
+        JishoAPIItem.model_validate(
+            {
+                "slug": "牢",
+                "is_common": False,
+                "tags": [],
+                "jlpt": [],
+                "japanese": [
+                    {"word": "牢", "reading": "ろう"},
+                    {"word": "籠", "reading": "ろう"},
+                    {"word": "篭", "reading": "ろう"},
+                ],
+                "senses": [
+                    {
+                        "english_definitions": ["prison", "jail", "gaol"],
+                        "parts_of_speech": ["Noun"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["firm", "solid", "strong"],
+                        "parts_of_speech": ["'taru' adjective"],
+                        "links": [],
+                        "tags": ["Obsolete term"],
+                        "restrictions": [],
+                        "see_also": ["牢として"],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                ],
+                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
+            }
+        ),
     ],
 }
 
 
 USAGI_IKU_KAGO_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "兎": [
-        {"slug": "兎に角", "japanese": [{"word": "兎に角", "reading": "とにかく"}]},
-        {"slug": "兎も角", "japanese": [{"word": "兎も角", "reading": "ともかく"}]},
-        {
-            "slug": "兎角",
-            "japanese": [
-                {"word": "兎角", "reading": "とかく"},
-                {"word": "左右", "reading": "とかく"},
-            ],
-        },
-        {
-            "slug": "兎もあれ",
-            "japanese": [
-                {"word": "兎もあれ", "reading": "ともあれ"},
-                {"word": "とも有れ", "reading": "ともあれ"},
-                {"word": "兎も有れ", "reading": "ともあれ"},
-            ],
-        },
-        {"slug": "兎や角", "japanese": [{"word": "兎や角", "reading": "とやかく"}]},
-        {
-            "slug": "うさぎ小屋",
-            "japanese": [
-                {"word": "うさぎ小屋", "reading": "うさぎごや"},
-                {"word": "兎小屋", "reading": "うさぎごや"},
-            ],
-        },
-        {
-            "slug": "兎にも角にも",
-            "japanese": [{"word": "兎にも角にも", "reading": "とにもかくにも"}],
-        },
-        {
-            "slug": "とやかく言う",
-            "japanese": [
-                {"word": "とやかく言う", "reading": "とやかくいう"},
-                {"word": "兎や角言う", "reading": "とやかくいう"},
-            ],
-        },
-        {
-            "slug": "兎座",
-            "japanese": [
-                {"word": "兎座", "reading": "うさぎざ"},
-                {"word": "うさぎ座", "reading": "うさぎざ"},
-            ],
-        },
+        JishoExtraItem.model_validate(
+            {"slug": "兎に角", "japanese": [{"word": "兎に角", "reading": "とにかく"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "兎も角", "japanese": [{"word": "兎も角", "reading": "ともかく"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "兎角",
+                "japanese": [
+                    {"word": "兎角", "reading": "とかく"},
+                    {"word": "左右", "reading": "とかく"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "兎もあれ",
+                "japanese": [
+                    {"word": "兎もあれ", "reading": "ともあれ"},
+                    {"word": "とも有れ", "reading": "ともあれ"},
+                    {"word": "兎も有れ", "reading": "ともあれ"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "兎や角", "japanese": [{"word": "兎や角", "reading": "とやかく"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "うさぎ小屋",
+                "japanese": [
+                    {"word": "うさぎ小屋", "reading": "うさぎごや"},
+                    {"word": "兎小屋", "reading": "うさぎごや"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "兎にも角にも",
+                "japanese": [{"word": "兎にも角にも", "reading": "とにもかくにも"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "とやかく言う",
+                "japanese": [
+                    {"word": "とやかく言う", "reading": "とやかくいう"},
+                    {"word": "兎や角言う", "reading": "とやかくいう"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "兎座",
+                "japanese": [
+                    {"word": "兎座", "reading": "うさぎざ"},
+                    {"word": "うさぎ座", "reading": "うさぎざ"},
+                ],
+            }
+        ),
     ],
     "行く": [
-        {
-            "slug": "行方",
-            "japanese": [
-                {"word": "行方", "reading": "ゆくえ"},
-                {"word": "行くえ", "reading": "ゆくえ"},
-                {"word": "行衛", "reading": "ゆくえ"},
-            ],
-        },
-        {"slug": "行く手", "japanese": [{"word": "行く手", "reading": "ゆくて"}]},
-        {
-            "slug": "行末",
-            "japanese": [
-                {"word": "行く末", "reading": "ゆくすえ"},
-                {"word": "行末", "reading": "ゆくすえ"},
-            ],
-        },
-        {
-            "slug": "行く先",
-            "japanese": [
-                {"word": "行く先", "reading": "ゆくさき"},
-                {"word": "行く先", "reading": "いくさき"},
-            ],
-        },
-        {
-            "slug": "行くあて",
-            "japanese": [
-                {"word": "行くあて", "reading": "いくあて"},
-                {"word": "行く当て", "reading": "いくあて"},
-            ],
-        },
-        {"slug": "行く春", "japanese": [{"word": "行く春", "reading": "ゆくはる"}]},
-        {"slug": "行く行く", "japanese": [{"word": "行く行く", "reading": "ゆくゆく"}]},
-        {
-            "slug": "行く先先",
-            "japanese": [
-                {"word": "行く先々", "reading": "ゆくさきざき"},
-                {"word": "行く先々", "reading": "いくさきざき"},
-                {"word": "行く先先", "reading": "ゆくさきざき"},
-                {"word": "行く先先", "reading": "いくさきざき"},
-            ],
-        },
-        {
-            "slug": "行く年",
-            "japanese": [
-                {"word": "行く年", "reading": "ゆくとし"},
-                {"word": "行く年", "reading": "いくとし"},
-            ],
-        },
+        JishoExtraItem.model_validate(
+            {
+                "slug": "行方",
+                "japanese": [
+                    {"word": "行方", "reading": "ゆくえ"},
+                    {"word": "行くえ", "reading": "ゆくえ"},
+                    {"word": "行衛", "reading": "ゆくえ"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "行く手", "japanese": [{"word": "行く手", "reading": "ゆくて"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "行末",
+                "japanese": [
+                    {"word": "行く末", "reading": "ゆくすえ"},
+                    {"word": "行末", "reading": "ゆくすえ"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "行く先",
+                "japanese": [
+                    {"word": "行く先", "reading": "ゆくさき"},
+                    {"word": "行く先", "reading": "いくさき"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "行くあて",
+                "japanese": [
+                    {"word": "行くあて", "reading": "いくあて"},
+                    {"word": "行く当て", "reading": "いくあて"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "行く春", "japanese": [{"word": "行く春", "reading": "ゆくはる"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "行く行く",
+                "japanese": [{"word": "行く行く", "reading": "ゆくゆく"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "行く先先",
+                "japanese": [
+                    {"word": "行く先々", "reading": "ゆくさきざき"},
+                    {"word": "行く先々", "reading": "いくさきざき"},
+                    {"word": "行く先先", "reading": "ゆくさきざき"},
+                    {"word": "行く先先", "reading": "いくさきざき"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "行く年",
+                "japanese": [
+                    {"word": "行く年", "reading": "ゆくとし"},
+                    {"word": "行く年", "reading": "いくとし"},
+                ],
+            }
+        ),
     ],
     "籠": [
-        {"slug": "込む", "japanese": [{"word": "込む", "reading": "こむ"}]},
-        {
-            "slug": "込める",
-            "japanese": [
-                {"word": "込める", "reading": "こめる"},
-                {"word": "籠める", "reading": "こめる"},
-                {"word": "篭める", "reading": "こめる"},
-                {"word": "罩める", "reading": "こめる"},
-            ],
-        },
-        {
-            "slug": "籠もる",
-            "japanese": [
-                {"word": "篭る", "reading": "こもる"},
-                {"word": "籠もる", "reading": "こもる"},
-                {"word": "篭もる", "reading": "こもる"},
-                {"word": "籠る", "reading": "こもる"},
-                {"word": "隠る", "reading": "こもる"},
-            ],
-        },
-        {
-            "slug": "籠手",
-            "japanese": [
-                {"word": "籠手", "reading": "こて"},
-                {"word": "篭手", "reading": "こて"},
-                {"word": "小手", "reading": "こて"},
-            ],
-        },
-        {"slug": "籠目", "japanese": [{"word": "籠目", "reading": "かごめ"}]},
-        {"slug": "籠屋", "japanese": [{"word": "籠屋", "reading": "かごや"}]},
-        {
-            "slug": "籠の垂れ",
-            "japanese": [{"word": "籠の垂れ", "reading": "かごのたれ"}],
-        },
-        {
-            "slug": "籠もった声",
-            "japanese": [
-                {"word": "こもった声", "reading": "こもったこえ"},
-                {"word": "籠もった声", "reading": "こもったこえ"},
-            ],
-        },
+        JishoExtraItem.model_validate(
+            {"slug": "込む", "japanese": [{"word": "込む", "reading": "こむ"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "込める",
+                "japanese": [
+                    {"word": "込める", "reading": "こめる"},
+                    {"word": "籠める", "reading": "こめる"},
+                    {"word": "篭める", "reading": "こめる"},
+                    {"word": "罩める", "reading": "こめる"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "籠もる",
+                "japanese": [
+                    {"word": "篭る", "reading": "こもる"},
+                    {"word": "籠もる", "reading": "こもる"},
+                    {"word": "篭もる", "reading": "こもる"},
+                    {"word": "籠る", "reading": "こもる"},
+                    {"word": "隠る", "reading": "こもる"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "籠手",
+                "japanese": [
+                    {"word": "籠手", "reading": "こて"},
+                    {"word": "篭手", "reading": "こて"},
+                    {"word": "小手", "reading": "こて"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "籠目", "japanese": [{"word": "籠目", "reading": "かごめ"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "籠屋", "japanese": [{"word": "籠屋", "reading": "かごや"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "籠の垂れ",
+                "japanese": [{"word": "籠の垂れ", "reading": "かごのたれ"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "籠もった声",
+                "japanese": [
+                    {"word": "こもった声", "reading": "こもったこえ"},
+                    {"word": "籠もった声", "reading": "こもったこえ"},
+                ],
+            }
+        ),
     ],
 }
 
 
-SHIZUKA: dict[str, JishoAPIResponse] = {
+SHIZUKA: dict[str, dict] = {
     "静か": {
         "meta": {"status": 200},
         "data": [
@@ -4111,95 +4293,115 @@ SHIZUKA: dict[str, JishoAPIResponse] = {
 
 SHIZUKA_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
     "静か": [
-        {
-            "slug": "静か",
-            "is_common": True,
-            "tags": ["wanikani18"],
-            "jlpt": ["jlpt-n5"],
-            "japanese": [
-                {"word": "静か", "reading": "しずか"},
-                {"word": "閑か", "reading": "しずか"},
-            ],
-            "senses": [
-                {
-                    "english_definitions": ["quiet", "silent"],
-                    "parts_of_speech": ["Na-adjective (keiyodoshi)"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["slow", "unhurried"],
-                    "parts_of_speech": ["Na-adjective (keiyodoshi)"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["calm", "peaceful"],
-                    "parts_of_speech": ["Na-adjective (keiyodoshi)"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-            ],
-            "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-        },
+        JishoAPIItem.model_validate(
+            {
+                "slug": "静か",
+                "is_common": True,
+                "tags": ["wanikani18"],
+                "jlpt": ["jlpt-n5"],
+                "japanese": [
+                    {"word": "静か", "reading": "しずか"},
+                    {"word": "閑か", "reading": "しずか"},
+                ],
+                "senses": [
+                    {
+                        "english_definitions": ["quiet", "silent"],
+                        "parts_of_speech": ["Na-adjective (keiyodoshi)"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["slow", "unhurried"],
+                        "parts_of_speech": ["Na-adjective (keiyodoshi)"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["calm", "peaceful"],
+                        "parts_of_speech": ["Na-adjective (keiyodoshi)"],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                ],
+                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
+            },
+        )
     ],
 }
 
 
 SHIZUKA_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "静か": [
-        {"slug": "静かに", "japanese": [{"word": "静かに", "reading": "しずかに"}]},
-        {
-            "slug": "静かの海",
-            "japanese": [{"word": "静かの海", "reading": "しずかのうみ"}],
-        },
-        {
-            "slug": "静かに流れる川は深い",
-            "japanese": [
-                {
-                    "word": "静かに流れる川は深い",
-                    "reading": "しずかにながれるかわはふかい",
-                }
-            ],
-        },
-        {"slug": "51869194d5dda7b2c601eed0", "japanese": [{"word": "静かなるドン"}]},
-        {
-            "slug": "518698ead5dda7b2c60558f8",
-            "japanese": [{"word": "静かな海と楽しい航海 (ベートーヴェン)"}],
-        },
-        {
-            "slug": "51869907d5dda7b2c60566de",
-            "japanese": [{"word": "静かな海と楽しい航海"}],
-        },
-        {"slug": "51869460d5dda7b2c6033553", "japanese": [{"word": "静かなる決闘"}]},
-        {
-            "slug": "51869908d5dda7b2c60566e2",
-            "japanese": [{"word": "静かな海と楽しい航海 (メンデルスゾーン)"}],
-        },
-        {
-            "slug": "51869d05d5dda7b2c6074a12",
-            "japanese": [{"word": "静かなアメリカ人"}],
-        },
+        JishoExtraItem.model_validate(
+            {"slug": "静かに", "japanese": [{"word": "静かに", "reading": "しずかに"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "静かの海",
+                "japanese": [{"word": "静かの海", "reading": "しずかのうみ"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "静かに流れる川は深い",
+                "japanese": [
+                    {
+                        "word": "静かに流れる川は深い",
+                        "reading": "しずかにながれるかわはふかい",
+                    }
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "51869194d5dda7b2c601eed0", "japanese": [{"word": "静かなるドン"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "518698ead5dda7b2c60558f8",
+                "japanese": [{"word": "静かな海と楽しい航海 (ベートーヴェン)"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "51869907d5dda7b2c60566de",
+                "japanese": [{"word": "静かな海と楽しい航海"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "51869460d5dda7b2c6033553", "japanese": [{"word": "静かなる決闘"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "51869908d5dda7b2c60566e2",
+                "japanese": [{"word": "静かな海と楽しい航海 (メンデルスゾーン)"}],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "51869d05d5dda7b2c6074a12",
+                "japanese": [{"word": "静かなアメリカ人"}],
+            }
+        ),
     ],
 }
 
 
-NARU: dict[str, JishoAPIResponse] = {
+NARU: dict[str, dict] = {
     "なる": {
         "meta": {"status": 200},
         "data": [
@@ -4791,108 +4993,137 @@ NARU: dict[str, JishoAPIResponse] = {
 
 NARU_FILTERED_ITEMS: dict[str, list[JishoAPIItem]] = {
     "なる": [
-        {
-            "slug": "なる",
-            "is_common": False,
-            "tags": [],
-            "jlpt": [],
-            "japanese": [{"reading": "なる"}],
-            "senses": [
-                {
-                    "english_definitions": ["that is in"],
-                    "parts_of_speech": ["Suffix", "Noun or verb acting prenominally"],
-                    "links": [],
-                    "tags": ["Archaism"],
-                    "restrictions": [],
-                    "see_also": ["也 なり"],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["who is called", "that is called"],
-                    "parts_of_speech": ["Suffix", "Noun or verb acting prenominally"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["that is"],
-                    "parts_of_speech": ["Suffix", "Noun or verb acting prenominally"],
-                    "links": [],
-                    "tags": [],
-                    "restrictions": [],
-                    "see_also": [],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-                {
-                    "english_definitions": ["I see"],
-                    "parts_of_speech": [],
-                    "links": [],
-                    "tags": ["Slang", "Abbreviation"],
-                    "restrictions": [],
-                    "see_also": ["なるほど"],
-                    "antonyms": [],
-                    "source": [],
-                    "info": [],
-                },
-            ],
-            "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
-        },
+        JishoAPIItem.model_validate(
+            {
+                "slug": "なる",
+                "is_common": False,
+                "tags": [],
+                "jlpt": [],
+                "japanese": [{"reading": "なる"}],
+                "senses": [
+                    {
+                        "english_definitions": ["that is in"],
+                        "parts_of_speech": [
+                            "Suffix",
+                            "Noun or verb acting prenominally",
+                        ],
+                        "links": [],
+                        "tags": ["Archaism"],
+                        "restrictions": [],
+                        "see_also": ["也 なり"],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["who is called", "that is called"],
+                        "parts_of_speech": [
+                            "Suffix",
+                            "Noun or verb acting prenominally",
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["that is"],
+                        "parts_of_speech": [
+                            "Suffix",
+                            "Noun or verb acting prenominally",
+                        ],
+                        "links": [],
+                        "tags": [],
+                        "restrictions": [],
+                        "see_also": [],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                    {
+                        "english_definitions": ["I see"],
+                        "parts_of_speech": [],
+                        "links": [],
+                        "tags": ["Slang", "Abbreviation"],
+                        "restrictions": [],
+                        "see_also": ["なるほど"],
+                        "antonyms": [],
+                        "source": [],
+                        "info": [],
+                    },
+                ],
+                "attribution": {"jmdict": True, "jmnedict": False, "dbpedia": False},
+            },
+        )
     ]
 }
 
 
 NARU_EXTRA_ITEMS: dict[str, list[JishoExtraItem]] = {
     "なる": [
-        {
-            "slug": "成る",
-            "japanese": [
-                {"word": "成る", "reading": "なる"},
-                {"word": "為る", "reading": "なる"},
-            ],
-        },
-        {"slug": "鳴る", "japanese": [{"word": "鳴る", "reading": "なる"}]},
-        {"slug": "生る", "japanese": [{"word": "生る", "reading": "なる"}]},
-        {"slug": "ナル", "japanese": [{"reading": "ナル"}]},
-        {
-            "slug": "成程",
-            "japanese": [
-                {"word": "なる程", "reading": "なるほど"},
-                {"word": "成る程", "reading": "なるほど"},
-                {"word": "成程", "reading": "なるほど"},
-                {"word": "成るほど", "reading": "なるほど"},
-                {"reading": "ナルホド"},
-            ],
-        },
-        {
-            "slug": "成るべく",
-            "japanese": [
-                {"word": "成るべく", "reading": "なるべく"},
-                {"word": "成る可く", "reading": "なるべく"},
-            ],
-        },
-        {
-            "slug": "鳴門",
-            "japanese": [
-                {"word": "鳴門", "reading": "なると"},
-                {"word": "鳴戸", "reading": "なると"},
-            ],
-        },
-        {
-            "slug": "成る丈",
-            "japanese": [
-                {"word": "成る丈", "reading": "なるたけ"},
-                {"word": "成るたけ", "reading": "なるたけ"},
-                {"word": "成る丈", "reading": "なるだけ"},
-            ],
-        },
-        {"slug": "鳴子", "japanese": [{"word": "鳴子", "reading": "なるこ"}]},
+        JishoExtraItem.model_validate(
+            {
+                "slug": "成る",
+                "japanese": [
+                    {"word": "成る", "reading": "なる"},
+                    {"word": "為る", "reading": "なる"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "鳴る", "japanese": [{"word": "鳴る", "reading": "なる"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "生る", "japanese": [{"word": "生る", "reading": "なる"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "ナル", "japanese": [{"reading": "ナル"}]}
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "成程",
+                "japanese": [
+                    {"word": "なる程", "reading": "なるほど"},
+                    {"word": "成る程", "reading": "なるほど"},
+                    {"word": "成程", "reading": "なるほど"},
+                    {"word": "成るほど", "reading": "なるほど"},
+                    {"reading": "ナルホド"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "成るべく",
+                "japanese": [
+                    {"word": "成るべく", "reading": "なるべく"},
+                    {"word": "成る可く", "reading": "なるべく"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "鳴門",
+                "japanese": [
+                    {"word": "鳴門", "reading": "なると"},
+                    {"word": "鳴戸", "reading": "なると"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {
+                "slug": "成る丈",
+                "japanese": [
+                    {"word": "成る丈", "reading": "なるたけ"},
+                    {"word": "成るたけ", "reading": "なるたけ"},
+                    {"word": "成る丈", "reading": "なるだけ"},
+                ],
+            }
+        ),
+        JishoExtraItem.model_validate(
+            {"slug": "鳴子", "japanese": [{"word": "鳴子", "reading": "なるこ"}]}
+        ),
     ]
 }
