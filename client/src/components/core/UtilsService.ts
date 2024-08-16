@@ -11,7 +11,7 @@ export default class UtilsService {
         let queryString = Object.entries(queryParams)
             .map(x => x.join("="))
             .join("&");
-        return url + "?" + this.doubleURIEncode(queryString);
+        return url + "?" + encodeURI(queryString);
     }
 
     extractWordsFromInput = (s: string): string[] => {
