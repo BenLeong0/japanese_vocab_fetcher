@@ -76,7 +76,10 @@ def get_url(word_list: list[Kaki]) -> URL:
 
 def call_api(url: URL) -> WanikaniAPIResponse:
     headers = {"Authorization": f"Bearer {API_KEY}"}
-    response = requests.get(url, headers=headers)
+    try:
+        response = requests.get(url, headers=headers)
+    except Exception:
+        raise WanikaniAPIError("request failed", 500, url)
     status_code = response.status_code
 
     if status_code != 200:

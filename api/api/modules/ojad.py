@@ -74,7 +74,10 @@ def are_more_pages(html_page: Soup) -> bool:
 
 def get_html(word_list: list[Kaki], page_number: int) -> Soup:
     url = get_url(word_list, page_number)
-    response = requests.post(url, timeout=20)
+    try:
+        response = requests.post(url, timeout=20)
+    except Exception:
+        raise OJADAPIError("request failed", 500, url)
     status_code = response.status_code
 
     if status_code != 200:

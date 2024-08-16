@@ -74,7 +74,10 @@ def get_audio_urls(word: Kaki) -> ResponseItemForvo:
 
 def call_api(word: Kaki) -> ForvoAPIResponse:
     url = get_api_url(word)
-    response = requests.get(url, verify=False)
+    try:
+        response = requests.get(url, verify=False)
+    except Exception:
+        raise ForvoAPIError("request failed", 500, url)
     status_code = response.status_code
 
     if status_code != 200:
