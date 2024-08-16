@@ -68,7 +68,7 @@ def get_rows(html_page: Soup) -> list[Soup]:
     return list(html_page.find_all("tr", id=re.compile(r"word_\d+")))
 
 
-def more_pages(html_page: Soup) -> bool:
+def are_more_pages(html_page: Soup) -> bool:
     return html_page.find("a", {"rel": "next"}) is not None
 
 
@@ -91,7 +91,7 @@ def get_htmls(word_list: list[Kaki]) -> list[Soup]:
     curr_page_number = 1
     html = get_html(word_list, curr_page_number)
     pages.append(html)
-    while more_pages(html):
+    while are_more_pages(html):
         curr_page_number += 1
         html = get_html(word_list, curr_page_number)
         pages.append(html)

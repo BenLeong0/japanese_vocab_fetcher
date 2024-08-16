@@ -55,7 +55,7 @@ def test_main(monkeypatch, test_dict: FullTestDict):
     )
     monkeypatch.setattr(
         "requests.head",
-        lambda x: FakeResponse("audio", headers={"Content-length": "100"}),
+        lambda _, **__: FakeResponse("audio", headers={"Content-length": "100"}),
     )
 
     assert japanesepod.main(word_list) == expected_output
@@ -169,7 +169,7 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
     full_expected_output = test_dict.japanesepod.expected_output
     monkeypatch.setattr(
         "requests.head",
-        lambda x: FakeResponse("audio", headers={"Content-length": "100"}),
+        lambda _, **__: FakeResponse("audio", headers={"Content-length": "100"}),
     )
 
     for word in word_list:
@@ -335,7 +335,7 @@ def test_generate_audio_urls(test_dict: FullTestDict):
 def test_check_urls(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr(
         "requests.head",
-        lambda x: FakeResponse("audio", headers={"Content-length": "100"}),
+        lambda _, **__: FakeResponse("audio", headers={"Content-length": "100"}),
     )
     for word in test_dict.input:
         assert (
@@ -349,7 +349,7 @@ def test_check_urls(monkeypatch, test_dict: FullTestDict):
 def test_check_urls_not_available(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr(
         "requests.head",
-        lambda x: FakeResponse("audio", headers={"Content-length": "52288"}),
+        lambda _, **__: FakeResponse("audio", headers={"Content-length": "52288"}),
     )
     for word in test_dict.input:
         assert (

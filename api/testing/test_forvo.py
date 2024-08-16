@@ -55,7 +55,9 @@ def test_main(monkeypatch, test_dict: FullTestDict):
         word = get_word_from_forvo_url(url)
         return sections[word].api_response
 
-    monkeypatch.setattr("requests.get", lambda url: FakeResponse(get_api_response(url)))
+    monkeypatch.setattr(
+        "requests.get", lambda url, **_: FakeResponse(get_api_response(url))
+    )
     assert forvo.main(word_list) == expected_output
 
 
@@ -83,7 +85,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
     }
 
     monkeypatch.setattr(
-        "requests.get", lambda x: FakeResponse(response, status_code=400)
+        "requests.get", lambda url, **__: FakeResponse(response, status_code=400)
     )
     assert forvo.main(word_list) == expected_output
 
@@ -124,7 +126,9 @@ def test_get_audio_urls(monkeypatch, test_dict: FullTestDict):
         section = sections[word]
 
         fake_response = section.api_response
-        monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
+        monkeypatch.setattr(
+            "requests.get", lambda url, **_: FakeResponse(fake_response)
+        )
 
         assert forvo.get_audio_urls(word) == expected_output[word]
 
@@ -142,7 +146,9 @@ def test_call_api(monkeypatch, test_dict: FullTestDict):
         section = sections[word]
 
         fake_response = section.api_response
-        monkeypatch.setattr("requests.get", lambda url: FakeResponse(fake_response))
+        monkeypatch.setattr(
+            "requests.get", lambda url, **_: FakeResponse(fake_response)
+        )
 
         resp = forvo.call_api(word)
 
@@ -159,7 +165,7 @@ def test_call_api_failure(monkeypatch, test_dict: FullTestDict):
     word_list = convert_list_of_str_to_kaki(test_dict.input)
     response = json.dumps({"error": "could not connect"})
     monkeypatch.setattr(
-        "requests.get", lambda url: FakeResponse(response, status_code=400)
+        "requests.get", lambda url, **_: FakeResponse(response, status_code=400)
     )
 
     for word in word_list:
