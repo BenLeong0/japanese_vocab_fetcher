@@ -78,7 +78,10 @@ def get_formdata(word_list: list[Kaki]) -> dict[str, str]:
 def get_html(word_list: list[Kaki]) -> Soup:
     url = URL("https://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index")
     formdata = get_formdata(word_list)
-    response = requests.post(url, formdata, timeout=20)
+    try:
+        response = requests.post(url, formdata, timeout=20)
+    except Exception:
+        raise SuzukiAPIError("request failed", 500, url) from None
     status_code = response.status_code
 
     if status_code != 200:

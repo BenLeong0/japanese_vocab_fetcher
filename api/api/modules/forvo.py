@@ -77,7 +77,7 @@ def call_api(word: Kaki) -> ForvoAPIResponse:
     try:
         response = requests.get(url, verify=False)
     except Exception:
-        raise ForvoAPIError("request failed", 500, url)
+        raise ForvoAPIError("request failed", 500, url) from None
     status_code = response.status_code
 
     if status_code != 200:

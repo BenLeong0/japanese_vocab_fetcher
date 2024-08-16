@@ -79,7 +79,7 @@ def call_api(url: URL) -> WanikaniAPIResponse:
     try:
         response = requests.get(url, headers=headers)
     except Exception:
-        raise WanikaniAPIError("request failed", 500, url)
+        raise WanikaniAPIError("request failed", 500, url) from None
     status_code = response.status_code
 
     if status_code != 200:

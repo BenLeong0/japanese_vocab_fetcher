@@ -77,7 +77,7 @@ def get_html(word_list: list[Kaki], page_number: int) -> Soup:
     try:
         response = requests.post(url, timeout=20)
     except Exception:
-        raise OJADAPIError("request failed", 500, url)
+        raise OJADAPIError("request failed", 500, url) from None
     status_code = response.status_code
 
     if status_code != 200:
