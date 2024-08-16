@@ -1,6 +1,6 @@
 from typing import Optional
 
-from api.custom_types.alternative_string_types import Kaki, URL, Yomi
+from api.custom_types.alternative_string_types import URL, Kaki, Yomi
 from api.custom_types.exception_types import APIErrorDict
 from api.custom_types.helpers import MyBaseModel
 from api.custom_types.jisho_api_types import JishoAPIItem, JishoAPIItemJapanese

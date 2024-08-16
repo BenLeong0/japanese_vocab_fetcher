@@ -1,13 +1,13 @@
 import re
 from collections import defaultdict
-from typing import DefaultDict, Optional
+from typing import DefaultDict, Optional, cast
 
 import requests
 from bs4 import BeautifulSoup as Soup
 
 from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
 from api.custom_types.exception_types import APIError
-from api.custom_types.response_types import ResponseItemOJAD
+from api.custom_types.response_types import OJADMainData, ResponseItemOJAD
 
 NAME = "ojad"
 
@@ -17,23 +17,23 @@ class OJADAPIError(APIError):
 
 
 def response_factory(accent_list: Optional[list[Yomi]] = None) -> ResponseItemOJAD:
-    return {
-        "success": True,
-        "error": None,
-        "main_data": {
-            "accent": [] if accent_list is None else accent_list,
-        },
-    }
+    return ResponseItemOJAD(
+        success=True,
+        error=None,
+        main_data=OJADMainData(
+            accent=[] if accent_list is None else accent_list,
+        ),
+    )
 
 
 def error_response_factory(error: OJADAPIError) -> ResponseItemOJAD:
-    return {
-        "success": False,
-        "error": error.to_dict(),
-        "main_data": {
-            "accent": [],
-        },
-    }
+    return ResponseItemOJAD(
+        success=False,
+        error=error.to_dict(),
+        main_data=OJADMainData(
+            accent=[],
+        ),
+    )
 
 
 OJADWordSectionsType = list[tuple[Soup, list[Soup]]]
@@ -68,8 +68,8 @@ def get_rows(html_page: Soup) -> list[Soup]:
     return list(html_page.find_all("tr", id=re.compile(r"word_\d+")))
 
 
-def has_words(html_page: Soup) -> bool:
-    return len(get_rows(html_page)) > 0
+def more_pages(html_page: Soup) -> bool:
+    return html_page.find("a", {"rel": "next"}) is not None
 
 
 def get_html(word_list: list[Kaki], page_number: int) -> Soup:
@@ -90,10 +90,11 @@ def get_htmls(word_list: list[Kaki]) -> list[Soup]:
     pages: list[Soup] = []
     curr_page_number = 1
     html = get_html(word_list, curr_page_number)
-    while has_words(html):
-        pages.append(html)
+    pages.append(html)
+    while more_pages(html):
         curr_page_number += 1
         html = get_html(word_list, curr_page_number)
+        pages.append(html)
     return pages
 
 
@@ -108,9 +109,9 @@ def get_sections(htmls: list[Soup]) -> OJADWordSectionsType:
             Soup(str(row.find("td", class_="midashi")), "html.parser"),
             [
                 Soup(str(proc), "html.parser")
-                for proc in row.find("td", class_="katsuyo_jisho_js").find_all(
-                    "div", class_="katsuyo_proc"
-                )
+                for proc in cast(
+                    Soup, row.find("td", class_="katsuyo_jisho_js")
+                ).find_all("div", class_="katsuyo_proc")
             ],
         )
         for row in rows
@@ -127,7 +128,7 @@ def extract_writings(writing_html: Soup) -> list[Kaki]:
 
 def extract_reading(reading_html: Soup, na_adj: bool) -> Yomi:
     # 拗音 get their own span already!
-    contents: Soup = reading_html.find("span", class_="accented_word")
+    contents = reading_html.find("span", class_="accented_word")
     chars: list[str] = [span.text for span in contents]
     classes: list[list[str]] = [span["class"] for span in contents]
 
