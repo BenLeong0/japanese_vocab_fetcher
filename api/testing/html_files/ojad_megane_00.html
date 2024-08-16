@@ -2,7 +2,7 @@
   <head></head>
   <body id="layout_function">
     <script type="text/javascript">
-      baseuri = 'http://www.gavo.t.u-tokyo.ac.jp/ojad/';
+      baseuri = "https://www.gavo.t.u-tokyo.ac.jp/ojad/";
     </script>
     <table id="container">
       <tbody>
@@ -11,47 +11,170 @@
           <td></td>
         </tr>
         <tr id="main">
-          <td>
-          </td>
+          <td></td>
           <td>
             <div class="flags clearfix"></div>
-            <div id="content" class="search ">
+            <div id="content" class="search">
               <div id="search_wrapper">
-                <h1 style="display:none;" class="ojad_title_oval">Word Search</h1>
+                <h1 style="display: none" class="ojad_title_oval">
+                  Word Search
+                </h1>
                 <div id="search_conditions_wrapper" class="ds_t">
-                  <h2 class="ds_t_1">
-                    Search and Display Options
-                  </h2>
+                  <h2 class="ds_t_1">Search and Display Options</h2>
                   <div id="search_conditions">
-                    <form action="" method="post" onsubmit="ojad_search($(this));return false;"></form>
+                    <form
+                      action=""
+                      method="post"
+                      onsubmit="ojad_search($(this));return false;"
+                    ></form>
                     <script type="text/javascript"></script>
                   </div>
                 </div>
-                <div id="search_visibility" class="ojad_dropshadow_standalone clearfix">
+                <div
+                  id="search_visibility"
+                  class="ojad_dropshadow_standalone clearfix"
+                >
                   <div>
                     <form action="" method="post" onsubmit="return false;">
                       <ul id="search_visibility_ul">
-                        <li><label>dictionary form<input type="checkbox" name="visibility_jisho" id="visibility_jisho" onclick="visibility_change('jisho');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_masu" id="visibility_masu" onclick="visibility_change('masu');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_te" id="visibility_te" onclick="visibility_change('te');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_ta" id="visibility_ta" onclick="visibility_change('ta');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_nai" id="visibility_nai" onclick="visibility_change('nai');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_nakatta" id="visibility_nakatta" onclick="visibility_change('nakatta');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_ba" id="visibility_ba" onclick="visibility_change('ba');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_shieki" id="visibility_shieki" onclick="visibility_change('shieki');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_ukemi" id="visibility_ukemi" onclick="visibility_change('ukemi');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_meirei" id="visibility_meirei" onclick="visibility_change('meirei');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_kano" id="visibility_kano" onclick="visibility_change('kano');" checked="checked"></label></li>
-                        <li style="display:none;"><label><input type="checkbox" name="visibility_ishi" id="visibility_ishi" onclick="visibility_change('ishi');" checked="checked"></label></li>
+                        <li>
+                          <label
+                            >dictionary form<input
+                              type="checkbox"
+                              name="visibility_jisho"
+                              id="visibility_jisho"
+                              onclick="visibility_change('jisho');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_masu"
+                              id="visibility_masu"
+                              onclick="visibility_change('masu');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_te"
+                              id="visibility_te"
+                              onclick="visibility_change('te');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_ta"
+                              id="visibility_ta"
+                              onclick="visibility_change('ta');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_nai"
+                              id="visibility_nai"
+                              onclick="visibility_change('nai');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_nakatta"
+                              id="visibility_nakatta"
+                              onclick="visibility_change('nakatta');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_ba"
+                              id="visibility_ba"
+                              onclick="visibility_change('ba');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_shieki"
+                              id="visibility_shieki"
+                              onclick="visibility_change('shieki');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_ukemi"
+                              id="visibility_ukemi"
+                              onclick="visibility_change('ukemi');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_meirei"
+                              id="visibility_meirei"
+                              onclick="visibility_change('meirei');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_kano"
+                              id="visibility_kano"
+                              onclick="visibility_change('kano');"
+                              checked="checked"
+                          /></label>
+                        </li>
+                        <li style="display: none">
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="visibility_ishi"
+                              id="visibility_ishi"
+                              onclick="visibility_change('ishi');"
+                              checked="checked"
+                          /></label>
+                        </li>
                       </ul>
                     </form>
                   </div>
                   <div id="visibility_changeall">
-                    <a href="#" onclick="visibility_changeall(1);return false;">Show All</a> /
-                    <a href="#" onclick="visibility_changeall(0);return false;">Hide All</a>
+                    <a href="#" onclick="visibility_changeall(1);return false;"
+                      >Show All</a
+                    >
+                    /
+                    <a href="#" onclick="visibility_changeall(0);return false;"
+                      >Hide All</a
+                    >
                   </div>
                   <div id="search_print">
-                    <a href="/ojad/search/index/display:print/sortprefix:accent/narabi1:kata_asc/narabi2:accent_asc/narabi3:mola_asc/yure:visible/curve:invisible/details:invisible/limit:20/word:%E7%9C%BC%E9%8F%A1" target="_blank">Show Print-view</a>
+                    <a
+                      href="/ojad/search/index/display:print/sortprefix:accent/narabi1:kata_asc/narabi2:accent_asc/narabi3:mola_asc/yure:visible/curve:invisible/details:invisible/limit:20/word:%E7%9C%BC%E9%8F%A1"
+                      target="_blank"
+                      >Show Print-view</a
+                    >
                   </div>
                 </div>
                 <script type="text/javascript"></script>
@@ -60,7 +183,12 @@
                     <thead>
                       <tr>
                         <th class="visible">
-                          <p><a href="#" onclick="$(this).parents('#word_table > thead > tr').find('p').hide();$(this).parents('#word_table > thead > tr').find('th').css('padding','0');$(this).parents('#word_table > thead > tr').find('.proc_batch_button_katsuyo').css('bottom','2px');$(this).parents('#word_table > thead > tr').find('.proc_batch_button_katsuyo').css('right','-3px');return false;"></a></p>
+                          <p>
+                            <a
+                              href="#"
+                              onclick="$(this).parents('#word_table > thead > tr').find('p').hide();$(this).parents('#word_table > thead > tr').find('th').css('padding','0');$(this).parents('#word_table > thead > tr').find('.proc_batch_button_katsuyo').css('bottom','2px');$(this).parents('#word_table > thead > tr').find('.proc_batch_button_katsuyo').css('right','-3px');return false;"
+                            ></a>
+                          </p>
                         </th>
                         <th class="midashi">
                           <p>Noun</p>
@@ -68,8 +196,18 @@
                         <th class="jisho katsuyo_jisho_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','0,jisho','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','0,jisho','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','0,jisho','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','0,jisho','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p>dictionary form</p>
@@ -77,8 +215,18 @@
                         <th class="masu katsuyo_masu_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','1,masu','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','1,masu','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','1,masu','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','1,masu','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -86,8 +234,18 @@
                         <th class="te katsuyo_te_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','2,te','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','2,te','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','2,te','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','2,te','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -95,8 +253,18 @@
                         <th class="ta katsuyo_ta_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','3,ta','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','3,ta','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','3,ta','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','3,ta','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -104,8 +272,18 @@
                         <th class="nai katsuyo_nai_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','4,nai','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','4,nai','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','4,nai','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','4,nai','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -113,8 +291,18 @@
                         <th class="nakatta katsuyo_nakatta_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','5,nakatta','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','5,nakatta','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','5,nakatta','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','5,nakatta','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -122,8 +310,18 @@
                         <th class="ba katsuyo_ba_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','6,ba','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','6,ba','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','6,ba','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','6,ba','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -131,8 +329,18 @@
                         <th class="shieki katsuyo_shieki_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','7,shieki','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','7,shieki','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','7,shieki','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','7,shieki','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -140,8 +348,18 @@
                         <th class="ukemi katsuyo_ukemi_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','8,ukemi','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','8,ukemi','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','8,ukemi','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','8,ukemi','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -149,8 +367,18 @@
                         <th class="meirei katsuyo_meirei_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','9,meirei','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','9,meirei','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','9,meirei','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','9,meirei','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -158,8 +386,18 @@
                         <th class="kano katsuyo_kano_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','10,kano','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','10,kano','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','10,kano','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','10,kano','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -167,8 +405,18 @@
                         <th class="ishi katsuyo_ishi_js">
                           <div class="proc_batch_button_katsuyo_wrapper">
                             <div class="proc_batch_button_katsuyo">
-                              <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('katsuyo','11,ishi','female');return false;" style="display:none;"></a>
-                              <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('katsuyo','11,ishi','male');return false;" style="display:none;"></a>
+                              <a
+                                class="katsuyo_proc_female_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','11,ishi','female');return false;"
+                                style="display: none"
+                              ></a>
+                              <a
+                                class="katsuyo_proc_male_button"
+                                href="#"
+                                onclick="pronounce_play_batch('katsuyo','11,ishi','male');return false;"
+                                style="display: none"
+                              ></a>
                             </div>
                           </div>
                           <p></p>
@@ -179,45 +427,58 @@
                       <tr>
                         <td></td>
                         <td>
-                          <p style="font-weight: bold;float:left;">Play all</p>
-                          <div class="katsuyo_proc_button" style="margin-top:2px;">
-                            <a class="katsuyo_proc_female_button" href="#" onclick="pronounce_play_batch('all','','female');return false;"></a>
-                            <a class="katsuyo_proc_male_button" href="#" onclick="pronounce_play_batch('all','','male');return false;"></a>
+                          <p style="font-weight: bold; float: left">Play all</p>
+                          <div
+                            class="katsuyo_proc_button"
+                            style="margin-top: 2px"
+                          >
+                            <a
+                              class="katsuyo_proc_female_button"
+                              href="#"
+                              onclick="pronounce_play_batch('all','','female');return false;"
+                            ></a>
+                            <a
+                              class="katsuyo_proc_male_button"
+                              href="#"
+                              onclick="pronounce_play_batch('all','','male');return false;"
+                            ></a>
                           </div>
                         </td>
-                        <td class="jisho katsuyo_jisho_js">
-                        </td>
-                        <td class="masu katsuyo_masu_js">
-                        </td>
-                        <td class="te katsuyo_te_js">
-                        </td>
-                        <td class="ta katsuyo_ta_js">
-                        </td>
-                        <td class="nai katsuyo_nai_js">
-                        </td>
-                        <td class="nakatta katsuyo_nakatta_js">
-                        </td>
-                        <td class="ba katsuyo_ba_js">
-                        </td>
-                        <td class="shieki katsuyo_shieki_js">
-                        </td>
-                        <td class="ukemi katsuyo_ukemi_js">
-                        </td>
-                        <td class="meirei katsuyo_meirei_js">
-                        </td>
-                        <td class="kano katsuyo_kano_js">
-                        </td>
-                        <td class="ishi katsuyo_ishi_js">
-                        </td>
+                        <td class="jisho katsuyo_jisho_js"></td>
+                        <td class="masu katsuyo_masu_js"></td>
+                        <td class="te katsuyo_te_js"></td>
+                        <td class="ta katsuyo_ta_js"></td>
+                        <td class="nai katsuyo_nai_js"></td>
+                        <td class="nakatta katsuyo_nakatta_js"></td>
+                        <td class="ba katsuyo_ba_js"></td>
+                        <td class="shieki katsuyo_shieki_js"></td>
+                        <td class="ukemi katsuyo_ukemi_js"></td>
+                        <td class="meirei katsuyo_meirei_js"></td>
+                        <td class="kano katsuyo_kano_js"></td>
+                        <td class="ishi katsuyo_ishi_js"></td>
                       </tr>
                     </tfoot>
                     <tbody class="ui-sortable">
                       <tr id="word_11209">
-                        <td class="visible"><a href="#" onclick="$(this).parents('#word_table > tbody > tr').hide();return false;">×</a></td>
+                        <td class="visible">
+                          <a
+                            href="#"
+                            onclick="$(this).parents('#word_table > tbody > tr').hide();return false;"
+                            >×</a
+                          >
+                        </td>
                         <td class="midashi">
                           <div class="proc_batch_button_word">
-                            <a class="katsuyo_proc_batch_word_female_button" href="#" onclick="pronounce_play_batch('word','11209','female');return false;"></a>
-                            <a class="katsuyo_proc_batch_word_male_button" href="#" onclick="pronounce_play_batch('word','11209','male');return false;"></a>
+                            <a
+                              class="katsuyo_proc_batch_word_female_button"
+                              href="#"
+                              onclick="pronounce_play_batch('word','11209','female');return false;"
+                            ></a>
+                            <a
+                              class="katsuyo_proc_batch_word_male_button"
+                              href="#"
+                              onclick="pronounce_play_batch('word','11209','male');return false;"
+                            ></a>
                           </div>
                           <div class="midashi_wrapper">
                             <p class="midashi_word">眼鏡</p>
@@ -226,10 +487,25 @@
                         <td class="katsuyo katsuyo_jisho_js">
                           <div class="katsuyo_proc">
                             <p>
-                              <span class="katsuyo_accent"><span class="accented_word"><span class=" accent_top mola_-3"><span class="inner"><span class="char">め</span></span></span><span class="mola_-2"><span class="inner"><span class="char">が</span></span></span><span class="mola_-1"><span class="inner"><span class="char">ね</span></span></span></span></span>
+                              <span class="katsuyo_accent"
+                                ><span class="accented_word"
+                                  ><span class="accent_top mola_-3"
+                                    ><span class="inner"
+                                      ><span class="char">め</span></span
+                                    ></span
+                                  ><span class="mola_-2"
+                                    ><span class="inner"
+                                      ><span class="char">が</span></span
+                                    ></span
+                                  ><span class="mola_-1"
+                                    ><span class="inner"
+                                      ><span class="char">ね</span></span
+                                    ></span
+                                  ></span
+                                ></span
+                              >
                             </p>
-                            <div class="katsuyo_proc_button clearfix">
-                            </div>
+                            <div class="katsuyo_proc_button clearfix"></div>
                           </div>
                         </td>
                         <td class="katsuyo katsuyo_masu_js"></td>
@@ -247,60 +523,107 @@
                     </tbody>
                   </table>
                   <div id="paginator">
-                    <span class="prev">Previous</span>  <span class="next">Next</span>
+                    <span class="prev">Previous</span>
+                    <span class="next">Next</span>
                   </div>
                 </div>
               </div>
               <script type="text/javascript">
-                $(function(){
-                    $('#word_table tbody').sortable();
-                    $('#word_table tbody').disableSelection();
-                    $("#word_table > thead > tr > th").each(function(){
-                        var katsuyo_class = $(this).attr("class").match(/katsuyo_[^_]*_js/);
-                        if(katsuyo_class){
-                            if(0 < $("." + katsuyo_class + " .js_proc_female_button" ).size()){
-                                $("th."+ katsuyo_class).find(".proc_batch_button_katsuyo .katsuyo_proc_female_button").show();
-                            }
-                            if(0 < $("." + katsuyo_class + " .js_proc_male_button" ).size()){
-                                $("th."+ katsuyo_class).find(".proc_batch_button_katsuyo .katsuyo_proc_male_button").show();
-                            }
-                        }
-                    });
+                $(function () {
+                  $("#word_table tbody").sortable();
+                  $("#word_table tbody").disableSelection();
+                  $("#word_table > thead > tr > th").each(function () {
+                    var katsuyo_class = $(this)
+                      .attr("class")
+                      .match(/katsuyo_[^_]*_js/);
+                    if (katsuyo_class) {
+                      if (
+                        0 <
+                        $(
+                          "." + katsuyo_class + " .js_proc_female_button"
+                        ).size()
+                      ) {
+                        $("th." + katsuyo_class)
+                          .find(
+                            ".proc_batch_button_katsuyo .katsuyo_proc_female_button"
+                          )
+                          .show();
+                      }
+                      if (
+                        0 <
+                        $("." + katsuyo_class + " .js_proc_male_button").size()
+                      ) {
+                        $("th." + katsuyo_class)
+                          .find(
+                            ".proc_batch_button_katsuyo .katsuyo_proc_male_button"
+                          )
+                          .show();
+                      }
+                    }
+                  });
                 });
 
-
-                function pronounce_play_batch(type,param,gender){
-                    var soundfile_list = new Array();
-                    switch(type){
-                        case "word":
-                            $.each($("#word_"+param).find(".js_proc_"+gender+"_button"),function(){
-                                if($(this).parents(".katsuyo").css("display") != "none" && $(this).parents("tr").css("display") != "none" ){
-                                    soundfile_list.push($(this).attr('id'));
-                                }
-                            });
-                            break;
-                        case "katsuyo":
-                            var params = param.split(",");
-                            $.each($.find(".katsuyo_"+params[1] +"_js"),function(){
-                                $.each($(this).find(".js_proc_"+gender+"_button"),function(){
-                                    if($(this).parents(".katsuyo").css("display") != "none" && $(this).parents("tr").css("display") != "none" ){
-                                        soundfile_list.push($(this).attr('id'));
-                                    }
-                                });
-                            });
-                            param = params[0];
-                            break;
-                        case "all":
-                            $.each($.find(".js_proc_"+gender+"_button"),function(){
-                                if($(this).parents(".katsuyo").css("display") != "none" && $(this).parents("tr").css("display") != "none" ){
-                                    soundfile_list.push($(this).attr('id'));
-                                }
-                            });
-                            param = "page";
-                            break;
-                    }
-                    pronounce_list_play(soundfile_list,type + "_" + param + "_" + gender);
-                    return false;
+                function pronounce_play_batch(type, param, gender) {
+                  var soundfile_list = new Array();
+                  switch (type) {
+                    case "word":
+                      $.each(
+                        $("#word_" + param).find(
+                          ".js_proc_" + gender + "_button"
+                        ),
+                        function () {
+                          if (
+                            $(this).parents(".katsuyo").css("display") !=
+                              "none" &&
+                            $(this).parents("tr").css("display") != "none"
+                          ) {
+                            soundfile_list.push($(this).attr("id"));
+                          }
+                        }
+                      );
+                      break;
+                    case "katsuyo":
+                      var params = param.split(",");
+                      $.each(
+                        $.find(".katsuyo_" + params[1] + "_js"),
+                        function () {
+                          $.each(
+                            $(this).find(".js_proc_" + gender + "_button"),
+                            function () {
+                              if (
+                                $(this).parents(".katsuyo").css("display") !=
+                                  "none" &&
+                                $(this).parents("tr").css("display") != "none"
+                              ) {
+                                soundfile_list.push($(this).attr("id"));
+                              }
+                            }
+                          );
+                        }
+                      );
+                      param = params[0];
+                      break;
+                    case "all":
+                      $.each(
+                        $.find(".js_proc_" + gender + "_button"),
+                        function () {
+                          if (
+                            $(this).parents(".katsuyo").css("display") !=
+                              "none" &&
+                            $(this).parents("tr").css("display") != "none"
+                          ) {
+                            soundfile_list.push($(this).attr("id"));
+                          }
+                        }
+                      );
+                      param = "page";
+                      break;
+                  }
+                  pronounce_list_play(
+                    soundfile_list,
+                    type + "_" + param + "_" + gender
+                  );
+                  return false;
                 }
               </script>
             </div>
@@ -313,13 +636,17 @@
           <td></td>
           <td>
             <div class="ds">
-              <p>Minematsu Laboratory, Grad. School of Eng., The University of Tokyo<br>Hirose Laboratory, Grad. School of Info. Sci. and Tech., The University of Tokyo</p>
+              <p>
+                Minematsu Laboratory, Grad. School of Eng., The University of
+                Tokyo<br />Hirose Laboratory, Grad. School of Info. Sci. and
+                Tech., The University of Tokyo
+              </p>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <div id="functions" style="display:none">
+    <div id="functions" style="display: none">
       <div id="audio_replace_div"></div>
     </div>
   </body>

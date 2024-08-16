@@ -111,28 +111,17 @@ def test_get_url(test_dict: FullTestDict, page_number: int):
     assert ojad.get_url(word_list, page_number) == expected_url
 
 
-def test_has_words_true(test_dict: FullTestDict):
+def test_are_more_pages_true(test_dict: FullTestDict):
     """
     - GIVEN an html file
     - WHEN it is tested whether it contains words
     - THEN return true when it should
     """
     htmls = test_dict.ojad.htmls
-    for html in htmls:
+    for i, html in enumerate(htmls):
+        is_last_page = i == len(htmls) - 1
         parsed_html = Soup(html, "html.parser")
-        assert ojad.has_words(parsed_html) is True
-
-
-def test_has_words_false():
-    """
-    - GIVEN an empty html file
-    - WHEN it is tested whether it contains words
-    - THEN return false when it should
-    """
-    with open("testing/html_files/ojad_BLANK.html", encoding="utf8") as file:
-        html = Soup(file, "html.parser")
-
-    assert ojad.has_words(html) is False
+        assert ojad.are_more_pages(parsed_html) != is_last_page
 
 
 def test_get_html(monkeypatch, test_dict: FullTestDict):

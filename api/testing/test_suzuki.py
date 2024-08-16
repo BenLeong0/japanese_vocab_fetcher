@@ -56,7 +56,7 @@ def test_main_api_error(monkeypatch, test_dict: FullTestDict):
             "error": {
                 "error_msg": json.dumps({"error": "api_error"}),
                 "status_code": 400,
-                "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
+                "url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index",
             },
             "main_data": {
                 "accent": [],
