@@ -6,8 +6,8 @@ A web app to quickly fetch translations and pitch accent information for lists o
 vocabulary. Consists of a UI built in React, and a backend Python Flask server (hosted on AWS).
 
 Fetches information from [jisho.org](jisho.org), [Wadoku](wadoku.de) and Tokyo
-University's OJAD ([Suzuki-kun](http://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index) and
-[Word Search](http://www.gavo.t.u-tokyo.ac.jp/ojad/search)), and audio files from
+University's OJAD ([Suzuki-kun](https://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index) and
+[Word Search](https://www.gavo.t.u-tokyo.ac.jp/ojad/search)), and audio files from
 [Forvo](forvo.com) and [Wanikani](wanikani.com).
 
 Potential project extensions:

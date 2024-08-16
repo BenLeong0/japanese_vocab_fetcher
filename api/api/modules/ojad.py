@@ -60,7 +60,7 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemOJAD]:
 
 def get_url(word_list: list[Kaki], page_number: int) -> URL:
     search_parameters = "%20".join(word_list)
-    url = f"http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:{search_parameters}/page:{page_number}"
+    url = f"https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:{search_parameters}/page:{page_number}"
     return URL(url)
 
 
@@ -74,7 +74,10 @@ def are_more_pages(html_page: Soup) -> bool:
 
 def get_html(word_list: list[Kaki], page_number: int) -> Soup:
     url = get_url(word_list, page_number)
-    response = requests.post(url, timeout=20)
+    try:
+        response = requests.post(url, timeout=20)
+    except Exception:
+        raise OJADAPIError("request failed", 500, url) from None
     status_code = response.status_code
 
     if status_code != 200:
@@ -89,12 +92,10 @@ def get_html(word_list: list[Kaki], page_number: int) -> Soup:
 def get_htmls(word_list: list[Kaki]) -> list[Soup]:
     pages: list[Soup] = []
     curr_page_number = 1
-    html = get_html(word_list, curr_page_number)
-    pages.append(html)
-    while are_more_pages(html):
-        curr_page_number += 1
+    while len(pages) == 0 or are_more_pages(pages[-1]):
         html = get_html(word_list, curr_page_number)
         pages.append(html)
+        curr_page_number += 1
     return pages
 
 

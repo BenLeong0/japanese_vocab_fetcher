@@ -47,6 +47,8 @@ def get_ojad_html_files(slug: str) -> list[HTMLString]:
 
 def build_suzuki_formdata(word_list_string: str) -> dict[str, str]:
     return {
+        "_method": "POST",
+        "data[Phrasing][text]": word_list_string,
         "data[Phrasing][curve]": "advanced",
         "data[Phrasing][accent]": "advanced",
         "data[Phrasing][accent_mark]": "all",
@@ -55,7 +57,7 @@ def build_suzuki_formdata(word_list_string: str) -> dict[str, str]:
         "data[Phrasing][phrase_component]": "invisible",
         "data[Phrasing][param]": "invisible",
         "data[Phrasing][subscript]": "visible",
-        "data[Phrasing][text]": word_list_string,
+        "data[Phrasing][jeita]": "invisible",
     }
 
 
@@ -176,7 +178,7 @@ MEGANE = FullTestDict(
     ojad=OjadTestDict(
         htmls=get_ojad_html_files("megane"),
         url=URL(
-            "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:眼鏡/page:%s"
+            "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:眼鏡/page:%s"
         ),
         expected_sections=[
             {
@@ -226,7 +228,7 @@ MEGANE = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    "<script type=\"text/javascript\">$(function () { set_accent_curve_phrase('#phrase_0_0',4,[1,0,0,0],1,0,0);});</script>",
+                    '<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_0_0",4,[1,0,0,0],1,0,0);});</script>',
                     "html.parser",
                 ),
                 "reading": "め' がね",
@@ -787,7 +789,7 @@ COMEBACK = FullTestDict(
     ojad=OjadTestDict(
         htmls=get_ojad_html_files("comeback"),
         url=URL(
-            "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:カムバック/page:%s"
+            "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:カムバック/page:%s"
         ),
         expected_sections=[
             {
@@ -841,7 +843,7 @@ COMEBACK = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    "<script type=\"text/javascript\">$(function () { set_accent_curve_phrase('#phrase_0_0',6,[0,1,1,0,0,0],1,0,0);});</script>",
+                    '<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_0_0",6,[0,1,1,0,0,0],1,0,0);});</script>',
                     "html.parser",
                 ),
                 "reading": "カムバ' ック",
@@ -1249,7 +1251,7 @@ TABERU_GAKUSEI = FullTestDict(
     ojad=OjadTestDict(
         htmls=get_ojad_html_files("taberu_gakusei"),
         url=URL(
-            "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:食べる%%20学生/page:%s"
+            "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:食べる%%20学生/page:%s"
         ),
         expected_sections=[
             {
@@ -1323,7 +1325,7 @@ TABERU_GAKUSEI = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    "<script type=\"text/javascript\">$(function () { set_accent_curve_phrase('#phrase_0_0',4,[0,1,0,0],1,0,0);});</script>",
+                    '<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_0_0",4,[0,1,0,0],1,0,0);});</script>',
                     "html.parser",
                 ),
                 "reading": "たべ' る",
@@ -1339,7 +1341,7 @@ TABERU_GAKUSEI = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    "<script type=\"text/javascript\">$(function () { set_accent_curve_phrase('#phrase_1_0',5,[0,1,1,1,1],1,0,0);});</script>",
+                    '<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_1_0",5,[0,1,1,1,1],1,0,0);});</script>',
                     "html.parser",
                 ),
                 "reading": "がくせい",
@@ -2540,7 +2542,7 @@ KOTOBA = FullTestDict(
     ojad=OjadTestDict(
         htmls=get_ojad_html_files("kotoba"),
         url=URL(
-            "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:言葉/page:%s"
+            "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:言葉/page:%s"
         ),
         expected_sections=[
             {
@@ -2590,7 +2592,7 @@ KOTOBA = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    "<script type=\"text/javascript\">$(function () { set_accent_curve_phrase('#phrase_0_0',4,[0,1,1,0],1,0,0);});</script>",
+                    '<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_0_0",4,[0,1,1,0],1,0,0);});</script>',
                     "html.parser",
                 ),
                 "reading": "ことば'",
@@ -3209,7 +3211,7 @@ BADINPUT = FullTestDict(
     ojad=OjadTestDict(
         htmls=get_ojad_html_files("badinput"),
         url=URL(
-            "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:BADINPUT/page:%s"
+            "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:BADINPUT/page:%s"
         ),
         expected_sections=[],
         full_accent_dict=defaultdict(list),
@@ -3238,7 +3240,7 @@ BADINPUT = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    "<script type=\"text/javascript\">$(function () { set_accent_curve_phrase('#phrase_0_0',1,[0],1,0,0);});</script>",
+                    '<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_0_0",1,[0],1,0,0);});</script>',
                     "html.parser",
                 ),
                 "reading": "",
@@ -3887,7 +3889,7 @@ USAGI_IKU_KAGO = FullTestDict(
     ojad=OjadTestDict(
         htmls=get_ojad_html_files("usagi_iku_kago"),
         url=URL(
-            "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:兎%%20行く%%20籠/page:%s"
+            "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:兎%%20行く%%20籠/page:%s"
         ),
         expected_sections=[
             {
@@ -3984,7 +3986,7 @@ USAGI_IKU_KAGO = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    "<script type=\"text/javascript\">$(function () { set_accent_curve_phrase('#phrase_0_0',4,[0,1,1,1],1,0,0);});</script>",
+                    '<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_0_0",4,[0,1,1,1],1,0,0);});</script>',
                     "html.parser",
                 ),
                 "reading": "うさぎ",
@@ -4000,7 +4002,7 @@ USAGI_IKU_KAGO = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    "<script type=\"text/javascript\">$(function () { set_accent_curve_phrase('#phrase_1_0',3,[0,1,1],1,0,0);});</script>",
+                    '<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_1_0",3,[0,1,1],1,0,0);});</script>',
                     "html.parser",
                 ),
                 "reading": "いく",
@@ -4016,7 +4018,7 @@ USAGI_IKU_KAGO = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    "<script type=\"text/javascript\">$(function () { set_accent_curve_phrase('#phrase_2_0',3,[0,1,1],1,0,0);});</script>",
+                    '<script type="text/javascript">$(function () {set_accent_curve_phrase("#phrase_2_0",3,[0,1,1],1,0,0);});</script>',
                     "html.parser",
                 ),
                 "reading": "かご",
@@ -5289,7 +5291,7 @@ SHIZUKA = FullTestDict(
     ojad=OjadTestDict(
         htmls=get_ojad_html_files("shizuka"),
         url=URL(
-            "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:静か/page:%s"
+            "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:静か/page:%s"
         ),
         expected_sections=[
             {
@@ -5340,7 +5342,7 @@ SHIZUKA = FullTestDict(
                     "html.parser",
                 ),
                 "accent_section": Soup(
-                    """<script type="text/javascript">$(function () { set_accent_curve_phrase('#phrase_0_0',4,[1,0,0,0],1,0,0);});</script>""",
+                    """<script type="text/javascript">$(function () {set_accent_curve_phrase(\"#phrase_0_0\",4,[1,0,0,0],1,0,0);});</script>""",
                     "html.parser",
                 ),
                 "reading": "し' ずか",
@@ -5940,7 +5942,7 @@ NARU = FullTestDict(
     ojad=OjadTestDict(
         htmls=get_ojad_html_files("naru"),
         url=URL(
-            "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:なる/page:%s"
+            "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:なる/page:%s"
         ),
         expected_sections=[
             {
@@ -6417,7 +6419,7 @@ TEST_DICTS = [
 #             },
 #     "ojad": {
 #         "htmls": get_ojad_html_files(""),
-#         "url": "http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:/page:%s",
+#         "url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/limit:100/word:/page:%s",
 #         "expected_sections": [
 #             {
 #                 'na_adj': False,

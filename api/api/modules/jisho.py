@@ -74,7 +74,10 @@ def get_api_url(word: Kaki) -> URL:
 
 def call_api(word: Kaki) -> JishoAPIResponse:
     url = get_api_url(word)
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+    except Exception:
+        raise JishoAPIError("request failed", 500, url) from None
     status_code = response.status_code
 
     if status_code != 200:

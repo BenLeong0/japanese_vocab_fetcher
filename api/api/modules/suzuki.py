@@ -58,7 +58,10 @@ def main(word_list: list[Kaki]) -> dict[Kaki, ResponseItemSuzuki]:
 
 def get_formdata(word_list: list[Kaki]) -> dict[str, str]:
     words_with_particles = [word + "は" for word in word_list]
+    text = "\n".join(words_with_particles)
     formdata = {
+        "_method": "POST",
+        "data[Phrasing][text]": text,
         "data[Phrasing][curve]": "advanced",
         "data[Phrasing][accent]": "advanced",
         "data[Phrasing][accent_mark]": "all",
@@ -67,15 +70,18 @@ def get_formdata(word_list: list[Kaki]) -> dict[str, str]:
         "data[Phrasing][phrase_component]": "invisible",
         "data[Phrasing][param]": "invisible",
         "data[Phrasing][subscript]": "visible",
+        "data[Phrasing][jeita]": "invisible",
     }
-    formdata["data[Phrasing][text]"] = "\n".join(words_with_particles)
     return formdata
 
 
 def get_html(word_list: list[Kaki]) -> Soup:
-    url = URL("http://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index")
+    url = URL("https://www.gavo.t.u-tokyo.ac.jp/ojad/phrasing/index")
     formdata = get_formdata(word_list)
-    response = requests.post(url, formdata, timeout=20)
+    try:
+        response = requests.post(url, formdata, timeout=20)
+    except Exception:
+        raise SuzukiAPIError("request failed", 500, url) from None
     status_code = response.status_code
 
     if status_code != 200:
