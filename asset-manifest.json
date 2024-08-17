@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/japanese_vocab_fetcher/static/css/main.63c4190d.chunk.css",
-    "main.js": "/japanese_vocab_fetcher/static/js/main.4453a5be.chunk.js",
-    "main.js.map": "/japanese_vocab_fetcher/static/js/main.4453a5be.chunk.js.map",
+    "main.js": "/japanese_vocab_fetcher/static/js/main.4bd335c3.chunk.js",
+    "main.js.map": "/japanese_vocab_fetcher/static/js/main.4bd335c3.chunk.js.map",
     "runtime-main.js": "/japanese_vocab_fetcher/static/js/runtime-main.419f9d8e.js",
     "runtime-main.js.map": "/japanese_vocab_fetcher/static/js/runtime-main.419f9d8e.js.map",
     "static/js/2.1e740be1.chunk.js": "/japanese_vocab_fetcher/static/js/2.1e740be1.chunk.js",
@@ -26,6 +26,6 @@
     "static/js/runtime-main.419f9d8e.js",
     "static/js/2.1e740be1.chunk.js",
     "static/css/main.63c4190d.chunk.css",
-    "static/js/main.4453a5be.chunk.js"
+    "static/js/main.4bd335c3.chunk.js"
   ]
 }
