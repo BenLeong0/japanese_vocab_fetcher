@@ -15,6 +15,12 @@ def homepage():
     return utils.create_successful_response(resp)
 
 
+def lambda_handler(event, context):
+    word_list = utils.get_words_from_lambda(event)
+    resp = get_info(word_list)
+    return resp
+
+
 if __name__ == "__main__":
     # app.run(
     #     host='0.0.0.0', debug=True, port=5000, ssl_context=('cert.pem', 'key.pem')

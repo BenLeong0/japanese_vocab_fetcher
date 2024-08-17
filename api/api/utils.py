@@ -13,6 +13,13 @@ def get_words_from_request(request: Request) -> list[Kaki]:
     return word_list
 
 
+def get_words_from_lambda(event: dict[str, dict[str, str]]) -> list[Kaki]:
+    query_params = event["queryStringParameters"]
+    dumped_word_list = query_params.get("words", "[]")
+    word_list: list[Kaki] = json.loads(dumped_word_list)
+    return word_list
+
+
 def create_successful_response(payload: Any):
     resp = json.dumps(payload)
     return Response(resp, status=200)
