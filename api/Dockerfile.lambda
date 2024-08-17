@@ -7,7 +7,6 @@ EXPOSE 5000/tcp
 # Install poetry
 ENV POETRY_VERSION=1.8.3
 RUN pip install "poetry==$POETRY_VERSION"
-RUN pip install "poetry==$POETRY_VERSION"
 
 # Copy only requirements to cache them in docker layer
 WORKDIR ${LAMBDA_TASK_ROOT}
@@ -17,7 +16,7 @@ COPY poetry.lock pyproject.toml ${LAMBDA_TASK_ROOT}/
 RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi --no-root
 
 # Copy the content of the local src directory to the working directory
-COPY api/ ${LAMBDA_TASK_ROOT}/
+COPY api ${LAMBDA_TASK_ROOT}/api/
 
 # Get API keys
 ARG forvo_api_key
@@ -34,4 +33,4 @@ RUN echo "WANIKANI_API_KEY=$WANIKANI_API_KEY" >> ./.env
 # RUN openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365 -batch
 
 # Specify the command to run on container start
-CMD [ "app.lambda_handler" ]
+CMD [ "api.main.lambda_handler" ]
