@@ -39,7 +39,8 @@ const InputBox: React.FC<InputBoxProps> = ({
     const queryParams: QueryParams = { words: JSON.stringify(words) };
 
     try {
-      const resp = await httpService.makeGetRequest("/words", queryParams);
+    //   const resp = await httpService.makeGetRequest("/words", queryParams);
+      const resp = await httpService.makeGetRequest("", queryParams);
       setWordList(resp);
       console.log(resp);
     } catch (error) {
