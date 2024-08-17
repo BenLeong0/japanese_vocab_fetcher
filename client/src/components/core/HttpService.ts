@@ -7,7 +7,7 @@ export default class HttpService {
     // API_URL: string = "http://localhost:9090"
     // API_URL: string = "http://3.8.95.26:5000";
     // API_URL: string = "https://7z39hjjfg1.execute-api.eu-west-2.amazonaws.com/dev";
-    API_URL: string = "https://u36f77yj2mm3q5tk43d7vbmxeu0rccvk.lambda-url.eu-west-2.on.aws/"
+    API_URL: string = "https://u36f77yj2mm3q5tk43d7vbmxeu0rccvk.lambda-url.eu-west-2.on.aws"
     utilsService: UtilsService
 
 
