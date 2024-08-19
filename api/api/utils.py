@@ -2,15 +2,7 @@ import json
 import re
 from typing import Any
 
-from flask.wrappers import Request, Response
-
 from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
-
-
-def get_words_from_request(request: Request) -> list[Kaki]:
-    dumped_word_list: str = request.args.get("words", "[]")
-    word_list: list[Kaki] = json.loads(dumped_word_list)
-    return word_list
 
 
 def get_words_from_lambda(event: dict[str, dict[str, str]]) -> list[Kaki]:
@@ -18,16 +10,6 @@ def get_words_from_lambda(event: dict[str, dict[str, str]]) -> list[Kaki]:
     dumped_word_list = query_params.get("words", "[]")
     word_list: list[Kaki] = json.loads(dumped_word_list)
     return word_list
-
-
-def create_successful_response(payload: Any):
-    resp = json.dumps(payload)
-    return Response(resp, status=200)
-
-
-def create_failed_response(payload: Any):
-    resp = json.dumps(payload)
-    return Response(resp, status=400)
 
 
 def make_single_line(input_string: str) -> str:
