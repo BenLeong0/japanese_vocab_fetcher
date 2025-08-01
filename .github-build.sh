@@ -14,7 +14,7 @@ WANIKANI_API_KEY="$3"
 
 cd api
 
-echo 'run docker -f Dockerfile.lambda build urbanjungle/springer:$BUILD_ENV-$VERSION-$PROVIDER_MODULE'
+echo 'run docker -f Dockerfile.lambda build benleong0/japanese_vocab_fetcher:$VERSION'
 docker build -f Dockerfile.lambda -t benleong0/japanese_vocab_fetcher:$VERSION --build-arg forvo_api_key=$FORVO_API_KEY --build-arg wanikani_api_key=$WANIKANI_API_KEY .
 echo 'DOCKER BUILD COMPLETE'
 docker push benleong0/japanese_vocab_fetcher:$VERSION
