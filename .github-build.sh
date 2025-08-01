@@ -15,7 +15,7 @@ WANIKANI_API_KEY="$3"
 cd api
 
 echo 'run docker -f Dockerfile.lambda build benleong0/japanese_vocab_fetcher:$VERSION'
-docker build \
+docker buildx build \
   -t benleong0/japanese_vocab_fetcher:$VERSION \
   -f Dockerfile.lambda \
   --platform linux/arm64 \
