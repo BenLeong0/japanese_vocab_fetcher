@@ -18,7 +18,7 @@ echo 'run docker -f Dockerfile.lambda build benleong0/japanese_vocab_fetcher:$VE
 docker build \
   -t benleong0/japanese_vocab_fetcher:$VERSION \
   -f Dockerfile.lambda \
-  --platform linux/arm64 \
+  --platform linux/amd64 \
   --build-arg forvo_api_key=$FORVO_API_KEY \
   --build-arg wanikani_api_key=$WANIKANI_API_KEY \
   .
