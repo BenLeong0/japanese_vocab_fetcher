@@ -1,7 +1,6 @@
 import re
 from itertools import product
 from threading import Thread
-from typing import Optional
 
 import requests
 
@@ -22,7 +21,7 @@ class JapanesePodParsingError(APIError):
 
 
 def response_factory(
-    audio_list: Optional[list[JapanesePodAudio]] = None,
+    audio_list: list[JapanesePodAudio] | None = None,
 ) -> ResponseItemJapanesePod:
     return {
         "success": True,
@@ -125,7 +124,7 @@ def extract_rows(html: HTMLString) -> list[str]:
     ]  # Filter out "empty" rows (first and last)
 
 
-def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
+def extract_matches_from_row_string(row: str) -> tuple[str, str | None]:
     """Takes in a row string, return a tuple of the form `writings, readings`"""
     pattern = r"^(?P<writings>[^\s]+) (\[(?P<readings>[^\s]+)\] )?"
     match = re.search(pattern, row)
@@ -136,13 +135,13 @@ def extract_matches_from_row_string(row: str) -> tuple[str, Optional[str]]:
         )
 
     writings_match: str = match["writings"]
-    readings_match: Optional[str] = match["readings"]
+    readings_match: str | None = match["readings"]
 
     return (writings_match, readings_match)
 
 
 def build_row_result_from_matches(
-    writings_match: str, readings_match: Optional[str]
+    writings_match: str, readings_match: str | None
 ) -> tuple[list[Kaki], list[Yomi]]:
     readings_match = writings_match if readings_match is None else readings_match
 

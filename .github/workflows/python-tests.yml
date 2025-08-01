@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Get python version
       run: |
-        python_version=$(cat deployment/.python-version)
+        python_version=$(cat .python-version)
         echo "PYTHON_VERSION=${python_version}" >> $GITHUB_ENV
     - name: Set up Python ${{ env.PYTHON_VERSION }}
       uses: actions/setup-python@v5
@@ -19,13 +19,13 @@ jobs:
         python-version: ${{ env.PYTHON_VERSION }}
     - name: Install dependencies
       run: |
-        python -m pip install poetry
-        python -m poetry install
+        python -m pip install uv --extra server
+        uv sync
     - name: Check formatting with pylint
       run: |
-        python -m pip freeze
-        python -m poetry run ruff check
-        python -m poetry run ruff format --check
+        uv pip freeze
+        uv run ruff check
+        uv run ruff format --check
 
 
   test:
@@ -42,13 +42,13 @@ jobs:
         python-version: ${{ env.PYTHON_VERSION }}
     - name: Install dependencies
       run: |
-        python -m pip install poetry
-        python -m poetry install
+        python -m pip install uv
+        uv sync --extra server
     - name: Test with pytest
       run: |
         echo FORVO_API_KEY = 00000000000000000000000000000000 >> .env
         echo WANIKANI_API_KEY = 00000000-0000-0000-0000-000000000000 >> .env
-        poetry run pytest
+        uv run pytest
 
 
   type-tests:
@@ -65,9 +65,9 @@ jobs:
         python-version: ${{ env.PYTHON_VERSION }}
     - name: Install dependencies
       run: |
-        python -m pip install poetry
-        python -m poetry install
+        python -m pip install uv
+        uv sync --extra server
     - name: Test typing with mypy
       run: |
         exit 0
-        poetry run pyright
+        uv run pyright

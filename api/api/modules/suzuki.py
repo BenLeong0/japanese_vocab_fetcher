@@ -1,6 +1,5 @@
 import re
 from ast import literal_eval
-from typing import Optional
 
 import requests
 from bs4 import BeautifulSoup as Soup
@@ -17,7 +16,7 @@ class SuzukiAPIError(APIError):
     pass
 
 
-def response_factory(accent_list: Optional[list[Yomi]] = None) -> ResponseItemSuzuki:
+def response_factory(accent_list: list[Yomi] | None = None) -> ResponseItemSuzuki:
     return {
         "success": True,
         "error": None,

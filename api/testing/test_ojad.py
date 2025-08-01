@@ -203,7 +203,7 @@ def test_extract_reading(test_dict: FullTestDict):
     """
     for section in test_dict.ojad.expected_sections:
         for html_section, reading in zip(
-            section["reading_sections"], section["readings"]
+            section["reading_sections"], section["readings"], strict=False
         ):
             na_adj = "na_adj" in section and section["na_adj"] is True
             assert ojad.extract_reading(html_section, na_adj) == reading

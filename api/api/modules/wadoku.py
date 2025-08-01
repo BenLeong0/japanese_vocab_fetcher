@@ -1,6 +1,5 @@
 import re
 from collections import defaultdict
-from typing import DefaultDict, Optional
 
 import requests
 from bs4 import BeautifulSoup as Soup
@@ -16,7 +15,7 @@ class WadokuAPIError(APIError):
     pass
 
 
-def response_factory(accent_list: Optional[list[Yomi]] = None) -> ResponseItemWadoku:
+def response_factory(accent_list: list[Yomi] | None = None) -> ResponseItemWadoku:
     return {
         "success": True,
         "error": None,
@@ -151,8 +150,8 @@ def extract_reading(reading_html: Soup) -> Yomi:
 
 def build_accent_dict(
     word_sections: WadokuWordSectionsType,
-) -> DefaultDict[Kaki, list[Yomi]]:
-    accent_dict: DefaultDict[Kaki, list[Yomi]] = defaultdict(list)
+) -> defaultdict[Kaki, list[Yomi]]:
+    accent_dict: defaultdict[Kaki, list[Yomi]] = defaultdict(list)
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)
