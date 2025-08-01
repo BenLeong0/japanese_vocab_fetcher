@@ -1,6 +1,5 @@
 import re
 from collections import defaultdict
-from typing import DefaultDict, Optional
 
 import requests
 from bs4 import BeautifulSoup as Soup
@@ -16,7 +15,7 @@ class OJADAPIError(APIError):
     pass
 
 
-def response_factory(accent_list: Optional[list[Yomi]] = None) -> ResponseItemOJAD:
+def response_factory(accent_list: list[Yomi] | None = None) -> ResponseItemOJAD:
     return {
         "success": True,
         "error": None,
@@ -134,7 +133,7 @@ def extract_reading(reading_html: Soup, na_adj: bool) -> Yomi:
     classes: list[list[str]] = [span["class"] for span in contents]
 
     reading = ""
-    for char, class_list in zip(chars, classes):
+    for char, class_list in zip(chars, classes, strict=False):
         reading += char
         if "accent_top" in class_list:
             reading += "' "
@@ -148,8 +147,8 @@ def extract_reading(reading_html: Soup, na_adj: bool) -> Yomi:
 
 def build_accent_dict(
     word_sections: OJADWordSectionsType,
-) -> DefaultDict[Kaki, list[Yomi]]:
-    accent_dict: DefaultDict[Kaki, list[Yomi]] = defaultdict(list)
+) -> defaultdict[Kaki, list[Yomi]]:
+    accent_dict: defaultdict[Kaki, list[Yomi]] = defaultdict(list)
 
     for writing_html, reading_htmls in word_sections:
         writings = extract_writings(writing_html)

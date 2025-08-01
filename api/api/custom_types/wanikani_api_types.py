@@ -1,4 +1,4 @@
-from typing import Literal, Optional, TypedDict
+from typing import Literal, TypedDict
 
 
 class WanikaniMeaning(TypedDict):
@@ -56,7 +56,7 @@ class WanikaniAPISubject(TypedDict):
     created_at: str
     level: int
     slug: str
-    hidden_at: Optional[str]
+    hidden_at: str | None
     document_url: str
     characters: str
     meanings: list[WanikaniMeaning]
@@ -83,7 +83,7 @@ class WanikaniAPIResource(TypedDict):
     id: int
     object: str
     url: str
-    data_updated_at: Optional[str]
+    data_updated_at: str | None
     data: WanikaniAPIVocabularySubject
 
 
@@ -94,5 +94,5 @@ class WanikaniAPIResponse(TypedDict):
     url: str
     pages: dict
     total_count: int
-    data_updated_at: Optional[str]
+    data_updated_at: str | None
     data: list[WanikaniAPIResource]

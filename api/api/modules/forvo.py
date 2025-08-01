@@ -1,6 +1,5 @@
 import json
 from threading import Thread
-from typing import Optional
 
 import requests
 from dotenv import dotenv_values
@@ -22,7 +21,7 @@ class ForvoAPIError(APIError):
 
 
 def response_factory(
-    audio_list: Optional[list[ForvoAudio]] = None,
+    audio_list: list[ForvoAudio] | None = None,
 ) -> ResponseItemForvo:
     return {
         "success": True,
