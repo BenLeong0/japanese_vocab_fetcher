@@ -16,11 +16,11 @@ cd api
 
 echo 'run docker -f Dockerfile.lambda build benleong0/japanese_vocab_fetcher:$VERSION'
 docker buildx build \
+  --platform linux/arm64 \
   -f Dockerfile.lambda \
   -t benleong0/japanese_vocab_fetcher:$VERSION \
   --build-arg forvo_api_key=$FORVO_API_KEY \
   --build-arg wanikani_api_key=$WANIKANI_API_KEY \
-  --platform linux/arm64 \
   .
 echo 'DOCKER BUILD COMPLETE'
 docker push benleong0/japanese_vocab_fetcher:$VERSION
