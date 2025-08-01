@@ -5,7 +5,7 @@ FROM public.ecr.aws/lambda/python:3.12-arm64
 EXPOSE 5000/tcp
 
 # Install uv
-RUN python -m pip install uv
+RUN pip install uv
 
 # Copy only requirements to cache them in docker layer
 WORKDIR ${LAMBDA_TASK_ROOT}
