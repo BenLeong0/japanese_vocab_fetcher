@@ -19,7 +19,7 @@ jobs:
         python-version: ${{ env.PYTHON_VERSION }}
     - name: Install dependencies
       run: |
-        python -m pip install uv --extra server
+        python -m pip install uv --all-extras
         uv sync
     - name: Check formatting with pylint
       run: |
@@ -43,7 +43,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install uv
-        uv sync --extra server
+        uv sync --all-extras
     - name: Test with pytest
       run: |
         echo FORVO_API_KEY = 00000000000000000000000000000000 >> .env
@@ -66,7 +66,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install uv
-        uv sync --extra server
+        uv sync --all-extras
     - name: Test typing with mypy
       run: |
         exit 0
