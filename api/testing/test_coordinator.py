@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Any, DefaultDict
+from typing import Any
 
 import pytest  # type: ignore
 
@@ -103,7 +103,7 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
 
     word_list = convert_list_of_str_to_kaki(test_dict.input)
 
-    expected_result_dict: DefaultDict[str, dict] = defaultdict(
+    expected_result_dict: defaultdict[str, dict] = defaultdict(
         dict,
         {
             "japanesepod": test_dict.japanesepod.expected_output,
@@ -127,7 +127,7 @@ def test_generate_response(test_dict: FullTestDict):
     - THEN check the output is as expected
     """
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    result_dict: DefaultDict[str, dict[Kaki, Any]] = defaultdict(
+    result_dict: defaultdict[str, dict[Kaki, Any]] = defaultdict(
         dict,
         {
             "japanesepod": convert_dict_str_keys_to_kaki(

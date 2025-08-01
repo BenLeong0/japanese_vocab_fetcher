@@ -1,5 +1,6 @@
+from collections import defaultdict
 from dataclasses import dataclass
-from typing import DefaultDict, Optional, TypedDict
+from typing import TypedDict
 
 from bs4 import BeautifulSoup as Soup
 
@@ -61,7 +62,7 @@ class OjadTestDict:
     htmls: list[HTMLString]
     url: URL
     expected_sections: list[OjadExpectedSection]
-    full_accent_dict: DefaultDict[str, list[str]]
+    full_accent_dict: defaultdict[str, list[str]]
     expected_output: dict[str, ResponseItemOJAD]
 
 
@@ -103,7 +104,7 @@ class WadokuTestDict:
     html: HTMLString
     url: URL
     expected_sections: list[WadokuExpectedSection]
-    full_accent_dict: DefaultDict[str, list[str]]
+    full_accent_dict: defaultdict[str, list[str]]
     expected_output: dict[str, ResponseItemWadoku]
 
 
@@ -130,7 +131,7 @@ class JapanesePodExpectedRow(TypedDict):
     """
 
     raw_row: str
-    matches: tuple[str, Optional[str]]
+    matches: tuple[str, str | None]
     results: tuple[list[str], list[str]]
     relevant: bool
 

@@ -1,5 +1,5 @@
 # Set base image (host OS)
-FROM python:3.12.2
+FROM python:3.12.9
 
 # By default, listen on port 5000
 EXPOSE 5000/tcp
@@ -11,8 +11,8 @@ WORKDIR /app
 COPY ./ .
 
 # Copy the dependencies file to the working directory
-RUN pip install poetry
-RUN poetry install
+RUN pip install uv
+RUN uv sync
 
 # Get API keys
 ARG forvo_api_key
@@ -29,4 +29,4 @@ RUN echo "WANIKANI_API_KEY=$WANIKANI_API_KEY" >> ./.env
 # RUN openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365 -batch
 
 # Specify the command to run on container start
-CMD [ "poetry", "run", "python", "./api/app.py" ]
+CMD [ "uv", "run", "./api/app.py" ]

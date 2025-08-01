@@ -225,7 +225,7 @@ def test_extract_readings(test_dict: FullTestDict):
     """
     for section in test_dict.wadoku.expected_sections:
         for html_section, reading in zip(
-            section["reading_sections"], section["readings"]
+            section["reading_sections"], section["readings"], strict=False
         ):
             assert wadoku.extract_reading(html_section) == reading
 

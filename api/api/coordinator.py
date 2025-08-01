@@ -1,6 +1,6 @@
 from collections import defaultdict
 from threading import Thread
-from typing import Any, DefaultDict, Protocol
+from typing import Any, Protocol
 
 from api.custom_types.alternative_string_types import Kaki
 from api.custom_types.response_types import FullResponseItem
@@ -40,8 +40,8 @@ def get_info(word_list: list[Kaki]) -> list[FullResponseItem]:
     return response
 
 
-def generate_results_dict(word_list: list[Kaki]) -> DefaultDict[str, dict[Kaki, Any]]:
-    results_dict: DefaultDict[str, dict[Kaki, Any]] = defaultdict(dict)
+def generate_results_dict(word_list: list[Kaki]) -> defaultdict[str, dict[Kaki, Any]]:
+    results_dict: defaultdict[str, dict[Kaki, Any]] = defaultdict(dict)
 
     def call_script(module: Module, word_list: list[Kaki]) -> None:
         results_dict[module.NAME] = module.main(word_list)
@@ -59,7 +59,7 @@ def generate_results_dict(word_list: list[Kaki]) -> DefaultDict[str, dict[Kaki, 
 
 
 def generate_response(
-    results_dict: DefaultDict[str, dict[Kaki, Any]],
+    results_dict: defaultdict[str, dict[Kaki, Any]],
     word_list: list[Kaki],
 ) -> list[FullResponseItem]:
     resp: list[FullResponseItem] = [

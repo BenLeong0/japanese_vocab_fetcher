@@ -4,16 +4,15 @@ FROM public.ecr.aws/lambda/python:3.12-arm64
 # By default, listen on port 5000
 EXPOSE 5000/tcp
 
-# Install poetry
-ENV POETRY_VERSION=1.8.3
-RUN pip install "poetry==$POETRY_VERSION"
+# Install uv
+RUN pip install uv
 
 # Copy only requirements to cache them in docker layer
 WORKDIR ${LAMBDA_TASK_ROOT}
-COPY poetry.lock pyproject.toml ${LAMBDA_TASK_ROOT}/
+COPY uv.lock pyproject.toml ${LAMBDA_TASK_ROOT}/
 
 # Project initialization:
-RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi --no-root
+RUN uv sync
 
 # Copy the content of the local src directory to the working directory
 COPY api ${LAMBDA_TASK_ROOT}/api/

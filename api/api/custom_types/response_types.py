@@ -1,4 +1,4 @@
-from typing import Optional, TypedDict
+from typing import TypedDict
 
 from api.custom_types.alternative_string_types import (
     URL,
@@ -14,7 +14,7 @@ class ResponseItem(TypedDict):
     """Dictionary containing the information from one of the modules"""
 
     success: bool
-    error: Optional[APIErrorDict]
+    error: APIErrorDict | None
 
 
 class ContextSentence(TypedDict):

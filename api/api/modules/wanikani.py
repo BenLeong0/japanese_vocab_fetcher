@@ -1,6 +1,5 @@
 import json
 from collections import defaultdict
-from typing import DefaultDict, Optional
 
 import requests
 from dotenv import dotenv_values
@@ -23,8 +22,8 @@ class WanikaniAPIError(APIError):
 
 
 def response_factory(
-    audio_list: Optional[list[WanikaniPronunciationAudio]] = None,
-    sentence_list: Optional[list[WanikaniContextSentence]] = None,
+    audio_list: list[WanikaniPronunciationAudio] | None = None,
+    sentence_list: list[WanikaniContextSentence] | None = None,
 ) -> ResponseItemWanikani:
     return {
         "success": True,
@@ -92,8 +91,8 @@ def call_api(url: URL) -> WanikaniAPIResponse:
 
 def build_result_dict(
     response: WanikaniAPIResponse,
-) -> DefaultDict[Kaki, ResponseItemWanikani]:
-    result_dict: DefaultDict[Kaki, ResponseItemWanikani] = defaultdict(response_factory)
+) -> defaultdict[Kaki, ResponseItemWanikani]:
+    result_dict: defaultdict[Kaki, ResponseItemWanikani] = defaultdict(response_factory)
 
     for resource in response["data"]:
         writing = Kaki(resource["data"]["characters"])

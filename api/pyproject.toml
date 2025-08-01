@@ -1,29 +1,28 @@
-[tool.poetry]
+[project]
 name = "api"
 version = "0.1.0"
 description = ""
-authors = ["benleong0 <benleong0@gmail.com>"]
+authors = [{ name = "benleong0", email = "benleong0@gmail.com" }]
+requires-python = "~=3.12"
 readme = "README.md"
+dependencies = [
+    "beautifulsoup4>=4.12.3,<5",
+    "requests>=2.31.0,<3",
+    "python-dotenv>=1.0.1,<2",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-Flask = { version = "^3.0.2", optional = true }
-flask-cors = { version = "^4.0.0", optional = true }
-beautifulsoup4 = "^4.12.3"
-requests = "^2.31.0"
-python-dotenv = "^1.0.1"
+[project.optional-dependencies]
+server = ["Flask>=3.0.2,<4", "flask-cors>=4.0.0,<5"]
 
-[tool.poetry.group.dev.dependencies]
-pyright = "^1.1.356"
-ruff = "^0.3.4"
-pytest = "^8.1.1"
-
-[tool.poetry.extras]
-server = ["Flask", "flask-cors"]
+[dependency-groups]
+dev = ["pyright>=1.1.356,<2", "ruff>=0.3.4,<0.4", "pytest>=8.1.1,<9"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["api"]
 
 [tool.isort]
 line_length = 100

@@ -1,6 +1,5 @@
 import re
 from threading import Thread
-from typing import Optional
 
 import requests
 from bs4 import BeautifulSoup as Soup
@@ -18,7 +17,7 @@ class TangorinAPIError(APIError):
 
 
 def response_factory(
-    sentence_list: Optional[list[ContextSentence]] = None,
+    sentence_list: list[ContextSentence] | None = None,
 ) -> ResponseItemTangorin:
     return {
         "success": True,

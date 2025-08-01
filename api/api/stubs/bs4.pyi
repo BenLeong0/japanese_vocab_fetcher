@@ -1,4 +1,5 @@
-from typing import Iterator, Pattern
+from collections.abc import Iterator
+from re import Pattern
 
 from bs4.element import Tag
 
