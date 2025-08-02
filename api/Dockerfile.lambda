@@ -9,7 +9,7 @@ RUN python3 -m pip install uv
 
 # Copy only requirements to cache them in docker layer
 WORKDIR ${LAMBDA_TASK_ROOT}
-COPY uv.lock pyproject.toml ${LAMBDA_TASK_ROOT}/
+COPY uv.lock pyproject.toml README.md ${LAMBDA_TASK_ROOT}/
 
 # Project initialization:
 RUN uv sync
