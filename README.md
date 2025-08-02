@@ -3,7 +3,7 @@
 ## Overview
 
 A web app to quickly fetch translations and pitch accent information for lists of Japanese
-vocabulary. Consists of a UI built in React, and a backend Python Flask server (hosted on AWS).
+vocabulary. Consists of a UI built in React, and a backend Python FastAPI server (hosted on AWS).
 
 Fetches information from [jisho.org](jisho.org), [Wadoku](wadoku.de) and Tokyo
 University's OJAD ([Suzuki-kun](https://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index) and
@@ -11,9 +11,9 @@ University's OJAD ([Suzuki-kun](https://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasi
 [Forvo](forvo.com) and [Wanikani](wanikani.com).
 
 Potential project extensions:
+
 - Caching service
 - Database to save searches
-
 
 ## Data flow
 
@@ -113,6 +113,7 @@ will be of the following form, JSON encoded:
 ```
 
 In the case of an error in a module, `success` will be set to `false`, and `error` will be an object containing information about the error. `main_data` will maintain its structure, but will be empty. For example:
+
 ```
 [
   {

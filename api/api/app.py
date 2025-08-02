@@ -1,18 +1,25 @@
-from flask import Flask, request
-from flask_cors import CORS  # type: ignore
+import json
+
+import uvicorn
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from api import utils
 from api.coordinator import get_info
 
-app = Flask("app")
-CORS(app)
+app = FastAPI(title="app", openapi_url="/openapi.json")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
-@app.route("/words", methods=["GET"])
-def homepage():
-    word_list = utils.get_words_from_request(request)
-    resp = get_info(word_list)
-    return utils.create_successful_response(resp)
+@app.get("/words")
+async def homepage(words: str):
+    return get_info(json.loads(words))
 
 
 def lambda_handler(event, context):
@@ -22,7 +29,9 @@ def lambda_handler(event, context):
 
 
 if __name__ == "__main__":
-    # app.run(
-    #     host='0.0.0.0', debug=True, port=5000, ssl_context=('cert.pem', 'key.pem')
-    # )
-    app.run(host="0.0.0.0", port=5000)
+    uvicorn.run(
+        "api.app:app",
+        host="0.0.0.0",
+        port=9090,
+        reload=True,
+    )
