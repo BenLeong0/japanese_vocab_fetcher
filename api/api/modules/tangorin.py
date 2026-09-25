@@ -81,7 +81,7 @@ def get_url(word: Kaki) -> URL:
 def get_html(word: Kaki) -> Soup:
     url = get_url(word)
     try:
-        response = requests.get(url, timeout=20)
+        response = requests.get(url, timeout=5)
     except Exception:
         raise TangorinAPIError("request failed", 500, url) from None
 
