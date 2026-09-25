@@ -15,9 +15,6 @@ export default class HttpService {
   async makeGetRequest(slug: string, queryParams?: QueryParams): Promise<any> {
     let url: string = this.API_URL + slug;
     let requestOptions = {
-      headers: {
-        "Content-Type": "application/json",
-      },
       method: "GET",
     };
 
