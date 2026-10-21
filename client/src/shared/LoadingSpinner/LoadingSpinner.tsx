@@ -4,7 +4,7 @@ import './LoadingSpinner.css';
 
 
 const LoadingSpinner: React.FC = () => {
-    return <div className="loader vertical-separation-large" />;
+    return <span className="spinner" role="status" aria-label="Loading" />;
 }
 
 export default LoadingSpinner;

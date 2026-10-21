@@ -1,10 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
+import { IconPlay, IconStop } from '../../../shared/Icons/Icons';
 
 import ResultAudioRowData from '../../../types/ResultAudioRowData';
-
-import IconPlayButton from '../../../assets/icons/icon_play_button.svg'
-import IconStopButton from '../../../assets/icons/icon_stop_button.svg'
 
 
 interface ResultAudioRowProps {
@@ -12,35 +9,39 @@ interface ResultAudioRowProps {
 }
 
 const ResultAudioRow: React.FC<ResultAudioRowProps> = ({ audioData }) => {
-    const [audio] = useState(new Audio(audioData.url));
+    const [audio] = useState(() => new Audio(audioData.url));
     const [playing, setPlaying] = useState(false);
 
-    const togglePlaying = () => setPlaying(!playing);
+    useEffect(() => {
+        audio.currentTime = 0;
+        if (playing) {
+            audio.play().catch(() => setPlaying(false));
+        } else {
+            audio.pause();
+        }
+    }, [audio, playing]);
 
     useEffect(() => {
-            audio.currentTime = 0;
-            playing ? audio.play() : audio.pause();
-        },
-        [playing]
-    );
-
-    useEffect(() => {
-        audio.addEventListener('ended', () => setPlaying(false));
+        const stop = () => setPlaying(false);
+        audio.addEventListener('ended', stop);
         return () => {
-            audio.removeEventListener('ended', () => setPlaying(false));
+            audio.removeEventListener('ended', stop);
+            audio.pause();
         };
-    }, []);
+    }, [audio]);
 
     return (
-        <div className="result-audio-row flex-row">
-            <img
-                src={ playing ? IconStopButton : IconPlayButton }
-                alt="audio player icon"
-                className="audio-player unselectable"
-                onClick={togglePlaying}
-            />
-            <div className="result-audio-speaker">{ audioData.speaker }</div>
-            <div className="result-audio-subtitle">{ audioData.subtitle || "" }</div>
+        <div className="audio-row">
+            <button
+                type="button"
+                className="icon-button audio-play"
+                aria-label={playing ? "Stop" : "Play"}
+                onClick={() => setPlaying(!playing)}
+            >
+                { playing ? <IconStop /> : <IconPlay /> }
+            </button>
+            <span className="audio-speaker">{ audioData.speaker }</span>
+            { audioData.subtitle && <span className="audio-subtitle">{ audioData.subtitle }</span> }
         </div>
      );
 }

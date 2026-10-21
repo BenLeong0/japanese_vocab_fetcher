@@ -1,9 +1,8 @@
 import React from 'react';
 import ResultTag from './ResultTag';
+import Section from '../../../shared/Section/Section';
 
 import FullResponseItem from '../../../types/FullResponseItem';
-
-import './ResultTags.css'
 
 
 interface ResultTagProps {
@@ -12,17 +11,16 @@ interface ResultTagProps {
 
 const ResultTags: React.FC<ResultTagProps> = ({ data }) => {
     const tags = extractTags(data);
-
-    const displayTags = tags.length > 0;
+    if (tags.length === 0) return null;
 
     return (
-        displayTags ?
-        <div className="result-tags-container flex-row">
-            {tags.map(tag =>
-                <ResultTag key={tag} tag={tag} />
-            )}
-        </div> :
-        <></>
+        <Section title="Tags" className="section-tags">
+            <div className="chip-list">
+                {tags.map(tag =>
+                    <ResultTag key={tag} tag={tag} />
+                )}
+            </div>
+        </Section>
     );
 }
 
@@ -32,7 +30,7 @@ const extractTags = (data: FullResponseItem): string[] => {
     if (data.jisho.main_data.results.some(result => result.is_common)) {
         tags.push("common word");
     }
-    return tags;
+    return Array.from(new Set(tags));
 }
 
 export default ResultTags;

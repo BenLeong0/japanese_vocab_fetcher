@@ -8,35 +8,33 @@ interface ResultDefinitionProps {
     definitionData: JishoAPIItem;
 }
 
-const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) => {
-    const buildTitleText = (word: JishoAPIItemJapanese): string => {
-        const main = word.word || word.reading || "";
-        const subtext = (word.word && word.reading) ? `【${word.reading}】` : "";
-        return main + subtext;
-    }
+const buildTitleText = (word: JishoAPIItemJapanese): string => {
+    const main = word.word || word.reading || "";
+    const subtext = (word.word && word.reading) ? `【${word.reading}】` : "";
+    return main + subtext;
+}
 
-    const otherForms = definitionData.japanese.slice(1);
-    const showOtherForms = (): boolean => (otherForms.length > 0);
+const ResultDefinition: React.FC<ResultDefinitionProps> = ({ definitionData }) => {
+    const [mainForm, ...otherForms] = definitionData.japanese;
 
     return (
-        <div className="result-definition flex-col">
-            <div className="result-definition-title mplus">
-                { buildTitleText(definitionData.japanese[0]) }
-            </div>
-            <div className="result-definition-senses-container flex-col">
+        <div className="definition">
+            <h4 className="definition-title ja">
+                { mainForm.word || mainForm.reading }
+                { mainForm.word && mainForm.reading &&
+                    <span className="definition-reading">{ mainForm.reading }</span>
+                }
+            </h4>
+            <div className="senses">
                 { definitionData.senses.map((sense, index) =>
                     <ResultDefinitionSense key={index} ordinality={index+1} sense={sense} />
                 )}
-                {
-                    showOtherForms() &&
-                    <div className="result-definition-other-forms flex-col">
-                        <div className="result-other-forms-title">Other forms</div>
-                        <div className="result-other-forms-words mplus">
-                            { otherForms.map(buildTitleText).join("、") }
-                        </div>
-                    </div>
-                }
             </div>
+            { otherForms.length > 0 &&
+                <p className="other-forms">
+                    Other forms: <span className="ja">{ otherForms.map(buildTitleText).join("、") }</span>
+                </p>
+            }
         </div>
     );
 }

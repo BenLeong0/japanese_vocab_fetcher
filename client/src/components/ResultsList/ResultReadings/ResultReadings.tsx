@@ -1,9 +1,8 @@
 import React from 'react';
 import ResultReadingsRow from './ResultReadingsRow';
+import Section from '../../../shared/Section/Section';
 
 import FullResponseItem from '../../../types/FullResponseItem';
-
-import './ResultReadings.css';
 
 
 interface ResultReadingsProps {
@@ -23,19 +22,14 @@ const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
     ];
 
     const readingExists = ({ readings }: ReadingSite) => readings.length > 0;
-    const displayReadings = (): boolean => sitesAndReadings.some(readingExists);
+    if (!sitesAndReadings.some(readingExists)) return null;
 
     return (
-        displayReadings() ?
-        <div className="result-readings">
-            <div className="left-col-title">
-                Readings
-            </div>
+        <Section title="Readings" className="section-readings">
             {sitesAndReadings.filter(readingExists).map(({ title, readings }) =>
                 <ResultReadingsRow key={title} title={title} readings={readings} />
             )}
-        </div> :
-        <></>
+        </Section>
      );
 }
 

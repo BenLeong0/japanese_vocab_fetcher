@@ -13,12 +13,15 @@ function App() {
 
     return (
         <BrowserRouter>
-            <div className="App">
-                <div className="width-container">
-                    <p className="app-header">Japanese Vocab Fetcher</p>
+            <div className="app">
+                <header className="app-header">
+                    <span className="app-mark" aria-hidden="true" />
+                    <h1 className="app-title">Japanese Vocab Fetcher</h1>
+                </header>
+                <main>
                     <InputPage setWordList={setWordList} />
                     <ResultsList wordList={wordList} />
-                </div>
+                </main>
             </div>
         </BrowserRouter>
     );

@@ -1,76 +1,158 @@
+:root {
+    --red: #b5343a;
+    --red-dark: #93272d;
+    --red-tint: #f8ecec;
+    --paper: #faf8f5;
+    --surface: #ffffff;
+    --ink: #221f1c;
+    --ink-soft: #5f5955;
+    --ink-mute: #938c86;
+    --line: #e8e2db;
+    --line-strong: #d4ccc3;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-ja: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     margin: 0;
-    font-family: "Alte DIN 1451 Mittelschrift gepraegt", sans-serif;
+    font-family: var(--font-ui);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+    background-color: var(--paper);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #82ed5b;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+h1, h2, h3, h4, p {
+    margin: 0;
 }
 
-:root {
-    --green-light: #aedb1e;
-    --green-dark: #99bf1f;
-    --white: #fff;
-    --off-black: #555;
-    --grey-light: #f7f9fa;
-    --grey: #dfe6ed;
-    --grey-dark: #9eadba;
-    --grey-darker: #788896;
-    --grey-darkest: #5c6a77;
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
 }
 
-.vertical-separation-small {
-    margin: 0 0 10px;
-}
-.vertical-separation-medium {
-    margin: 0 0 20px;
-}
-.vertical-separation-large {
-    margin: 0 0 40px;
+button:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 2px;
 }
 
-.flex-col {
-    display: flex;
-    flex-direction: column;
+a {
+    color: var(--red-dark);
 }
-.flex-row {
-    display: flex;
-    flex-direction: row;
-}
-.space-between {
-    justify-content: space-between;
+
+.ja {
+    font-family: var(--font-ja);
 }
 
 .unselectable {
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
     user-select: none;
-
+    -webkit-user-select: none;
     -webkit-user-drag: none;
 }
 
-.copy-cursor {
-    cursor: url(./assets/cursors/copycursor.png), default;
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 22px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--red);
+    transition: background-color 120ms ease;
 }
 
-.mplus {
-    font-family: "M PLUS 1p", sans-serif;
+.button:hover {
+    background-color: var(--red-dark);
 }
 
-
-@media (min-width: 1201px) {
-    .show-mobile {
-        display: none;
-    }
+.button:disabled {
+    cursor: default;
+    opacity: 0.7;
 }
-@media (max-width: 1200px) {
-    .hide-mobile {
-        display: none;
-    }
+
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    color: var(--ink-mute);
+    transition: color 120ms ease, background-color 120ms ease;
+}
+
+.icon-button:hover {
+    color: var(--ink);
+    background-color: var(--red-tint);
+}
+
+.icon-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+.text-button {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--red-dark);
+    padding: 4px 0;
+}
+
+.text-button:hover {
+    text-decoration: underline;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--ink-soft);
+    background-color: var(--surface);
+    border: 1px solid var(--line-strong);
+}
+
+.chip-accent {
+    color: var(--red-dark);
+    background-color: var(--red-tint);
+    border-color: transparent;
+}
+
+.chip-copy {
+    cursor: copy;
+}
+
+.chip-copy:hover {
+    border-color: var(--red);
+}
+
+.expand-buttons {
+    display: flex;
+    gap: 16px;
 }

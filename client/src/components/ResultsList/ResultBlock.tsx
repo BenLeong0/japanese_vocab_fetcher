@@ -6,7 +6,6 @@ import ResultRelatedWords from './ResultRelatedWords/ResultRelatedWords';
 import ResultSentences from './ResultSentences/ResultSentences';
 import ResultTags from './ResultTags/ResultTags';
 import ResultTitle from './ResultTitle/ResultTitle';
-import ResultToggleBar from './ResultToggleBar/ResultToggleBar';
 
 import FullResponseItem from '../../types/FullResponseItem';
 import { JishoAPIItemSense } from '../../types/ResponseItemJisho';
@@ -43,7 +42,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
     const getFilteredDefinitions = (): string => {
         if (data.jisho.main_data.results.length === 0) return "";
         const senses = data.jisho.main_data.results.map(result => result.senses).flat(2);
-        if (senses.length === 1) {          // Don't slice dfns if only one sense
+        if (senses.length === 1) {
             const dfn = senses[0].english_definitions;
             const formattedDfn = dfn.map(word => utilsService.capitaliseString(word));
             return formattedDfn.join(" ; ");
@@ -70,42 +69,27 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
     ].join("\t");
 
     return (
-        <div className="result-block flex-col">
+        <article className="result">
             <ResultTitle
                 isExpanded={isExpanded}
                 toggleIsExpanded={toggleIsExpanded}
                 copyString={copyString}
             >{ data.word }</ResultTitle>
             { isExpanded &&
-                <>
-                    {/* Desktop */}
-                    <div className="flex-row hide-mobile">
-                        <div className="result-left-col flex-col">
-                            <ResultReadings data={data} />
-                            <ResultTags data={data} />
-                            <ResultAudio data={data} />
-                            <ResultRelatedWords data={data} />
-                        </div>
-                        <div className="result-col-separator" />
-                        <div className="result-right-col flex-col">
-                            <ResultDefinitions data={data} />
-                            <ResultSentences data={data} />
-                        </div>
-                    </div>
-
-                    {/* Mobile */}
-                    <div className="flex-col show-mobile">
+                <div className="result-body">
+                    <div className="result-aside">
                         <ResultReadings data={data} />
                         <ResultTags data={data} />
-                        <ResultDefinitions data={data} />
-                        <ResultAudio data= {data} />
-                        <ResultSentences data={data} />
+                        <ResultAudio data={data} />
                         <ResultRelatedWords data={data} />
                     </div>
-                </>
+                    <div className="result-main">
+                        <ResultDefinitions data={data} />
+                        <ResultSentences data={data} />
+                    </div>
+                </div>
             }
-            <ResultToggleBar isExpanded={isExpanded} toggleIsExpanded={toggleIsExpanded}/>
-        </div>
+        </article>
     );
 }
 

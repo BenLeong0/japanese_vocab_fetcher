@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import ExpandButton from '../../../shared/ExpandButtons/ExpandButton';
 import ResultSentence, { ResultSentenceProps } from './ResultSentence';
+import Section from '../../../shared/Section/Section';
 
 import FullResponseItem from '../../../types/FullResponseItem';
-
-import './ResultSentences.css';
 
 
 interface ResultSentencesProps {
@@ -13,7 +12,7 @@ interface ResultSentencesProps {
 
 const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
     const wanikaniSentences: ResultSentenceProps[] =
-        data.wanikani.main_data.sentences.map(s => ({sentence: s, source: "Wanikani"}));
+        data.wanikani.main_data.sentences.map(s => ({sentence: s, source: "WaniKani"}));
     const tangorinSentences: ResultSentenceProps[] =
         data.tangorin.main_data.sentences.map(s => ({sentence: s, source: "Tangorin"}));
 
@@ -26,26 +25,23 @@ const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
     const minDisplay = Math.min(allSentences.length, 4);
     const [rowsDisplay, updateRowsDisplay] = useState<number>(minDisplay);
 
-    const displayRow = (_: any, rowIndex: number): boolean => rowIndex+1 <= rowsDisplay;
+    if (allSentences.length === 0) return null;
 
     return (
-        allSentences.length > 0 ?
-        <div className="result-sentences flex-col">
-            <div className="right-col-title">Context Sentences</div>
-            <div className="result-sentences-container flex-col">
-                {allSentences.filter(displayRow).map(({ sentence, source }) =>
+        <Section title="Context sentences" className="section-sentences">
+            <div className="sentences">
+                {allSentences.slice(0, rowsDisplay).map(({ sentence, source }) =>
                     <ResultSentence key={sentence.ja} sentence={sentence} source={source} />
                 )}
-                <ExpandButton
-                    currentDisplay={rowsDisplay}
-                    updateDisplay={updateRowsDisplay}
-                    maxDisplay={maxDisplay}
-                    minDisplay={minDisplay}
-                    batchSize={4}
-                />
             </div>
-        </div> :
-        <></>
+            <ExpandButton
+                currentDisplay={rowsDisplay}
+                updateDisplay={updateRowsDisplay}
+                maxDisplay={maxDisplay}
+                minDisplay={minDisplay}
+                batchSize={4}
+            />
+        </Section>
     );
 }
 

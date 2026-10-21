@@ -1,10 +1,9 @@
 import React from 'react';
 import ResultAudioModule from './ResultAudioModule';
+import Section from '../../../shared/Section/Section';
 
 import FullResponseItem from '../../../types/FullResponseItem';
 import ResultAudioRowData from '../../../types/ResultAudioRowData';
-
-import './ResultAudio.css';
 
 
 interface ResultAudioProps {
@@ -17,7 +16,6 @@ interface AudioModule {
 }
 
 const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
-
     const wanikaniData: ResultAudioRowData[] = data.wanikani.main_data.audio.map(audio => ({
         url: audio.url,
         speaker: audio.metadata.voice_actor_name,
@@ -35,24 +33,19 @@ const ResultAudio: React.FC<ResultAudioProps> = ({ data }) => {
     }));
 
     const allAudio: AudioModule[] = [
-        {module: "Wanikani", audioData: wanikaniData},
+        {module: "WaniKani", audioData: wanikaniData},
         {module: "Forvo", audioData: forvoData},
         {module: "JapanesePod101", audioData: japanesePodData},
-    ];
+    ].filter(({ audioData }) => audioData.length > 0);
 
-    const displayAudio = (): boolean => allAudio.some(x => x.audioData.length > 0);
+    if (allAudio.length === 0) return null;
 
     return (
-        displayAudio() ?
-        <div className="result-audio">
-            <div className="left-col-title">
-                Audio
-            </div>
-            {allAudio.filter(({ audioData }) => audioData.length > 0).map(({ module, audioData }) =>
+        <Section title="Audio" className="section-audio">
+            {allAudio.map(({ module, audioData }) =>
                 <ResultAudioModule key={module} moduleTitle={module} audioData={audioData} />
             )}
-        </div> :
-        <></>
+        </Section>
      );
 }
 

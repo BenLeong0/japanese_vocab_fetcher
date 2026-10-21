@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import FullExpandButton from '../../../shared/ExpandButtons/FullExpandButton';
 import ResultAudioRow from './ResultAudioRow';
 
 import ResultAudioRowData from '../../../types/ResultAudioRowData';
@@ -10,29 +9,28 @@ interface ResultAudioModuleProps {
     audioData: ResultAudioRowData[];
 }
 
-const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audioData}) => {
-    const [isExpanded, updateIsExpanded] = useState<boolean>(false);
+const PREVIEW_ROWS = 3;
 
-    const displayButton = () => audioData.length > 3;
-    const displayRow = (rowIndex: number): boolean => {
-        return (
-            rowIndex < 2 ||
-            (rowIndex === 2 && audioData.length === 3) ||
-            isExpanded === true
-        );
-    }
+const ResultAudioModule: React.FC<ResultAudioModuleProps> = ({ moduleTitle, audioData}) => {
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+    const canExpand = audioData.length > PREVIEW_ROWS;
+    const visibleRows = isExpanded ? audioData : audioData.slice(0, PREVIEW_ROWS);
 
     return (
-        <div className="result-audio-module vertical-separation-small">
-            <div className="audio-module-title">{ moduleTitle }</div>
-            {audioData.filter((_, rowIndex) => displayRow(rowIndex)).map(audio =>
-                <ResultAudioRow key={audio.speaker} audioData={audio}/>
+        <div className="audio-module">
+            <span className="source-label">{ moduleTitle }</span>
+            {visibleRows.map((audio, index) =>
+                <ResultAudioRow key={`${audio.speaker}-${index}`} audioData={audio}/>
             )}
-            { displayButton() &&
-                <FullExpandButton
-                    rowsDisplay={isExpanded}
-                    updateRowsDisplay={updateIsExpanded}
-                />
+            { canExpand &&
+                <button
+                    type="button"
+                    className="text-button"
+                    onClick={() => setIsExpanded(!isExpanded)}
+                >
+                    {isExpanded ? "Show less" : `Show ${audioData.length - PREVIEW_ROWS} more`}
+                </button>
             }
         </div>
     );

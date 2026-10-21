@@ -9,16 +9,17 @@ interface ResultRelatedWordProps {
 
 const ResultRelatedWord: React.FC<ResultRelatedWordProps> = ({ relatedWord }) => {
     const { slug, japanese } = relatedWord;
-
     const url = `https://jisho.org/word/${slug}`;
 
     return (
-        <div
-            className="related-word"
-            onClick={()=> window.open(url, "_blank")}
+        <a
+            className="chip chip-link ja"
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
         >
             { japanese[0].word || japanese[0].reading }
-        </div>
+        </a>
     );
 }
 
