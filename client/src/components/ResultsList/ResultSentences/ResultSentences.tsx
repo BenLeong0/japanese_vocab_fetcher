@@ -16,10 +16,13 @@ const ResultSentences: React.FC<ResultSentencesProps> = ({ data }) => {
         data.wanikani.main_data.sentences.map(s => ({sentence: s, source: "Wanikani"}));
     const tangorinSentences: ResultSentenceProps[] =
         data.tangorin.main_data.sentences.map(s => ({sentence: s, source: "Tangorin"}));
+    const tatoebaSentences: ResultSentenceProps[] =
+        data.tatoeba.main_data.sentences.map(s => ({sentence: s, source: "Tatoeba"}));
 
     const allSentences = interweaveSentences([
         wanikaniSentences,
         tangorinSentences,
+        tatoebaSentences,
     ]);
 
     const maxDisplay = allSentences.length;

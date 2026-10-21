@@ -5,6 +5,7 @@ import ResponseItemSuzuki from "./ResponseItemSuzuki";
 import ResponseItemWadoku from "./ResponseItemWadoku";
 import ResponseItemForvo from "./ResponseItemForvo";
 import ResponseItemTangorin from "./ResponseItemTangorin";
+import ResponseItemTatoeba from "./ResponseItemTatoeba";
 import ResponseItemWanikani from "./ResponseItemWanikani";
 
 
@@ -17,5 +18,6 @@ export default interface FullResponseItem {
     wadoku: ResponseItemWadoku;
     forvo: ResponseItemForvo;
     tangorin: ResponseItemTangorin;
+    tatoeba: ResponseItemTatoeba;
     wanikani: ResponseItemWanikani;
 }

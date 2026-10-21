@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
 from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
-from testing import jisho_api_responses, wanikani_api_responses
+from testing import jisho_api_responses, tatoeba_api_responses, wanikani_api_responses
 from testing.dict_typing import (
     ForvoTestDict,
     FullTestDict,
@@ -15,6 +15,7 @@ from testing.dict_typing import (
     OjadTestDict,
     SuzukiTestDict,
     TangorinTestDict,
+    TatoebaTestDict,
     WadokuTestDict,
     WanikaniTestDict,
 )
@@ -429,6 +430,42 @@ MEGANE = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            "眼鏡": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22眼鏡%22"
+                ),
+                "api_response": tatoeba_api_responses.MEGANE,
+            },
+        },
+        expected_output={
+            "眼鏡": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "私の眼鏡はどこ？",
+                            "en": "Where are my glasses?",
+                        },
+                        {
+                            "ja": "彼は眼鏡を外した。",
+                            "en": "He took off his glasses.",
+                        },
+                        {
+                            "ja": "これが探している眼鏡かい？",
+                            "en": "Are these the glasses you're looking for?",
+                        },
+                        {
+                            "ja": "トムは眼鏡をかけている。",
+                            "en": "Tom wears glasses.",
+                        },
+                    ],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=眼鏡"),
         api_response=wanikani_api_responses.MEGANE,
@@ -664,6 +701,30 @@ MEGANE = FullTestDict(
                         {
                             "ja": "彼の目はめがねの奥で笑っていた。",
                             "en": "His eyes were smiling behind his glasses.",
+                        },
+                    ],
+                },
+            },
+            "tatoeba": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "私の眼鏡はどこ？",
+                            "en": "Where are my glasses?",
+                        },
+                        {
+                            "ja": "彼は眼鏡を外した。",
+                            "en": "He took off his glasses.",
+                        },
+                        {
+                            "ja": "これが探している眼鏡かい？",
+                            "en": "Are these the glasses you're looking for?",
+                        },
+                        {
+                            "ja": "トムは眼鏡をかけている。",
+                            "en": "Tom wears glasses.",
                         },
                     ],
                 },
@@ -959,6 +1020,25 @@ COMEBACK = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            "カムバック": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22カムバック%22"
+                ),
+                "api_response": tatoeba_api_responses.COMEBACK,
+            },
+        },
+        expected_output={
+            "カムバック": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL(
             "https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=カムバック"
@@ -1040,6 +1120,13 @@ COMEBACK = FullTestDict(
                 },
             },
             "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            "tatoeba": {
                 "success": True,
                 "error": None,
                 "main_data": {
@@ -1699,6 +1786,60 @@ TABERU_GAKUSEI = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            "食べる": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22食べ%22"
+                ),
+                "api_response": tatoeba_api_responses.TABERU,
+            },
+            "学生": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22学生%22"
+                ),
+                "api_response": tatoeba_api_responses.GAKUSEI,
+            },
+        },
+        expected_output={
+            "食べる": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "教室で食べるの？",
+                            "en": "Do you eat it in the classroom?",
+                        },
+                        {
+                            "ja": "手で食べるよ。",
+                            "en": "I eat with my hands.",
+                        },
+                        {
+                            "ja": "今日は何食べる？",
+                            "en": "What are you going to eat today?",
+                        },
+                    ],
+                },
+            },
+            "学生": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "トムって大学生？",
+                            "en": "Is Tom a university student?",
+                        },
+                        {
+                            "ja": "学生服を着ろ。",
+                            "en": "Put on your school uniform.",
+                        },
+                    ],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL(
             "https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=食べる,学生"
@@ -2089,6 +2230,26 @@ TABERU_GAKUSEI = FullTestDict(
                     ],
                 },
             },
+            "tatoeba": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "教室で食べるの？",
+                            "en": "Do you eat it in the classroom?",
+                        },
+                        {
+                            "ja": "手で食べるよ。",
+                            "en": "I eat with my hands.",
+                        },
+                        {
+                            "ja": "今日は何食べる？",
+                            "en": "What are you going to eat today?",
+                        },
+                    ],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -2314,6 +2475,22 @@ TABERU_GAKUSEI = FullTestDict(
                         {
                             "ja": "要点を学生に十分理解させた。",
                             "en": "I brought the point home to the student.",
+                        },
+                    ],
+                },
+            },
+            "tatoeba": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "トムって大学生？",
+                            "en": "Is Tom a university student?",
+                        },
+                        {
+                            "ja": "学生服を着ろ。",
+                            "en": "Put on your school uniform.",
                         },
                     ],
                 },
@@ -2803,6 +2980,38 @@ KOTOBA = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            "言葉": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22言葉%22"
+                ),
+                "api_response": tatoeba_api_responses.KOTOBA,
+            },
+        },
+        expected_output={
+            "言葉": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "合言葉?",
+                            "en": "Password?",
+                        },
+                        {
+                            "ja": "言葉を失った。",
+                            "en": "I was at a loss for words.",
+                        },
+                        {
+                            "ja": "私は言葉を失った。",
+                            "en": "I'm at a loss for words.",
+                        },
+                    ],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=言葉"),
         api_response=wanikani_api_responses.KOTOBA,
@@ -3091,6 +3300,26 @@ KOTOBA = FullTestDict(
                     ],
                 },
             },
+            "tatoeba": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "合言葉?",
+                            "en": "Password?",
+                        },
+                        {
+                            "ja": "言葉を失った。",
+                            "en": "I was at a loss for words.",
+                        },
+                        {
+                            "ja": "私は言葉を失った。",
+                            "en": "I'm at a loss for words.",
+                        },
+                    ],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -3310,6 +3539,25 @@ BADINPUT = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            "BADINPUT": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22BADINPUT%22"
+                ),
+                "api_response": tatoeba_api_responses.BADINPUT,
+            },
+        },
+        expected_output={
+            "BADINPUT": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL(
             "https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=BADINPUT"
@@ -3374,6 +3622,13 @@ BADINPUT = FullTestDict(
                 },
             },
             "tangorin": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [],
+                },
+            },
+            "tatoeba": {
                 "success": True,
                 "error": None,
                 "main_data": {
@@ -4478,6 +4733,82 @@ USAGI_IKU_KAGO = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            "兎": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22兎%22"
+                ),
+                "api_response": tatoeba_api_responses.USAGI,
+            },
+            "行く": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22行か%22|%22行き%22|%22行く%22|%22行け%22|%22行こ%22|%22行い%22"
+                ),
+                "api_response": tatoeba_api_responses.IKU,
+            },
+            "籠": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22籠%22"
+                ),
+                "api_response": tatoeba_api_responses.KAGO,
+            },
+        },
+        expected_output={
+            "兎": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "兎は耳が良いんだ。",
+                            "en": "Rabbits' have a good sense of hearing.",
+                        },
+                        {
+                            "ja": "僕は兎。君のスピリットアニマルは？",
+                            "en": "My spirit animal is a rabbit. What's yours?",
+                        },
+                    ],
+                },
+            },
+            "行く": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "行くの？",
+                            "en": "Are you going?",
+                        },
+                        {
+                            "ja": "今、行くわ。",
+                            "en": "I'm coming.",
+                        },
+                        {
+                            "ja": "映画に行くの？",
+                            "en": "You're going to a movie?",
+                        },
+                    ],
+                },
+            },
+            "籠": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "籠の中には何が入ってるの？",
+                            "en": "What's in the basket?",
+                        },
+                        {
+                            "ja": "彼と付き合ってると、籠の鳥のような気分になるのよね。だから、別れたの。",
+                            "en": "When I was with him, I felt like a bird trapped in a cage, so I split up with him.",
+                        },
+                    ],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL(
             "https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=兎,行く,籠"
@@ -4781,6 +5112,22 @@ USAGI_IKU_KAGO = FullTestDict(
                     ],
                 },
             },
+            "tatoeba": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "兎は耳が良いんだ。",
+                            "en": "Rabbits' have a good sense of hearing.",
+                        },
+                        {
+                            "ja": "僕は兎。君のスピリットアニマルは？",
+                            "en": "My spirit animal is a rabbit. What's yours?",
+                        },
+                    ],
+                },
+            },
             "wanikani": {
                 "success": True,
                 "error": None,
@@ -4961,6 +5308,26 @@ USAGI_IKU_KAGO = FullTestDict(
                         {
                             "ja": "学校へ行きたくない。",
                             "en": "I don't want to go to school.",
+                        },
+                    ],
+                },
+            },
+            "tatoeba": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "行くの？",
+                            "en": "Are you going?",
+                        },
+                        {
+                            "ja": "今、行くわ。",
+                            "en": "I'm coming.",
+                        },
+                        {
+                            "ja": "映画に行くの？",
+                            "en": "You're going to a movie?",
                         },
                     ],
                 },
@@ -5174,6 +5541,22 @@ USAGI_IKU_KAGO = FullTestDict(
                         {
                             "ja": "彼女はすばやく子猫を籠の中に閉じ込めた。",
                             "en": "She quickly shut the kitten into a basket.",
+                        },
+                    ],
+                },
+            },
+            "tatoeba": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "籠の中には何が入ってるの？",
+                            "en": "What's in the basket?",
+                        },
+                        {
+                            "ja": "彼と付き合ってると、籠の鳥のような気分になるのよね。だから、別れたの。",
+                            "en": "When I was with him, I felt like a bird trapped in a cage, so I split up with him.",
                         },
                     ],
                 },
@@ -5553,6 +5936,38 @@ SHIZUKA = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            "静か": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22静か%22"
+                ),
+                "api_response": tatoeba_api_responses.SHIZUKA,
+            },
+        },
+        expected_output={
+            "静か": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "静かに！",
+                            "en": "Be quiet!",
+                        },
+                        {
+                            "ja": "静かに。",
+                            "en": "Be quiet!",
+                        },
+                        {
+                            "ja": "物静かな人だな。",
+                            "en": "She is quiet.",
+                        },
+                    ],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=静か"),
         api_response=wanikani_api_responses.SHIZUKA,
@@ -5797,6 +6212,26 @@ SHIZUKA = FullTestDict(
                         {
                             "ja": "母親は子供たちに静かにするように言った。",
                             "en": "The mother told the children to be quiet.",
+                        },
+                    ],
+                },
+            },
+            "tatoeba": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "静かに！",
+                            "en": "Be quiet!",
+                        },
+                        {
+                            "ja": "静かに。",
+                            "en": "Be quiet!",
+                        },
+                        {
+                            "ja": "物静かな人だな。",
+                            "en": "She is quiet.",
                         },
                     ],
                 },
@@ -6229,6 +6664,38 @@ NARU = FullTestDict(
             },
         },
     ),
+    tatoeba=TatoebaTestDict(
+        expected_sections={
+            "なる": {
+                "url": URL(
+                    "https://tatoeba.org/en/api_v0/search?from=jpn&to=eng&query=%3D%22なら%22|%22なり%22|%22なる%22|%22なれ%22|%22なろ%22|%22なっ%22"
+                ),
+                "api_response": tatoeba_api_responses.NARU,
+            },
+        },
+        expected_output={
+            "なる": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "なるほど。",
+                            "en": "I understand.",
+                        },
+                        {
+                            "ja": "成せば成る。",
+                            "en": "Where there's a will, there's a way.",
+                        },
+                        {
+                            "ja": "何とかなるよね？",
+                            "en": "It's going to be all right, isn't it?",
+                        },
+                    ],
+                },
+            },
+        },
+    ),
     wanikani=WanikaniTestDict(
         url=URL("https://api.wanikani.com/v2/subjects/?types=vocabulary&slugs=なる"),
         api_response=wanikani_api_responses.NARU,
@@ -6367,6 +6834,26 @@ NARU = FullTestDict(
                         {
                             "ja": "はぁ・・・（汗）、それでコンタクトは取れるようになったのかしら・・・？",
                             "en": "Uh... How's that working?",
+                        },
+                    ],
+                },
+            },
+            "tatoeba": {
+                "success": True,
+                "error": None,
+                "main_data": {
+                    "sentences": [
+                        {
+                            "ja": "なるほど。",
+                            "en": "I understand.",
+                        },
+                        {
+                            "ja": "成せば成る。",
+                            "en": "Where there's a will, there's a way.",
+                        },
+                        {
+                            "ja": "何とかなるよね？",
+                            "en": "It's going to be all right, isn't it?",
                         },
                     ],
                 },

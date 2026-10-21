@@ -146,6 +146,19 @@ class ResponseItemTangorin(ResponseItem):
     main_data: TangorinMainData
 
 
+# Tatoeba
+
+
+class TatoebaMainData(TypedDict):
+    sentences: list[ContextSentence]
+
+
+class ResponseItemTatoeba(ResponseItem):
+    """Dictionary containing the sentence information from Tatoeba"""
+
+    main_data: TatoebaMainData
+
+
 # Full response
 
 
@@ -158,4 +171,5 @@ class FullResponseItem(TypedDict):
     suzuki: ResponseItemSuzuki
     wadoku: ResponseItemWadoku
     forvo: ResponseItemForvo
+    tatoeba: ResponseItemTatoeba
     wanikani: ResponseItemWanikani

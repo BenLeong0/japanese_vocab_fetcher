@@ -11,6 +11,7 @@ from api.modules import (
     ojad,
     suzuki,
     tangorin,
+    tatoeba,
     wadoku,
     wanikani,
 )
@@ -29,6 +30,7 @@ MODULES = (
     ojad,
     suzuki,
     tangorin,
+    tatoeba,
     wadoku,
     wanikani,
 )

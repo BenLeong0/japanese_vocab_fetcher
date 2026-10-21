@@ -8,7 +8,8 @@ vocabulary. Consists of a UI built in React, and a backend Python FastAPI server
 Fetches information from [jisho.org](jisho.org), [Wadoku](wadoku.de) and Tokyo
 University's OJAD ([Suzuki-kun](https://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index) and
 [Word Search](https://www.gavo.t.u-tokyo.ac.jp/ojad/search)), and audio files from
-[Forvo](forvo.com) and [Wanikani](wanikani.com).
+[Forvo](forvo.com) and [Wanikani](wanikani.com), and context sentences from
+[Tatoeba](tatoeba.org).
 
 Potential project extensions:
 
