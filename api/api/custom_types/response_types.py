@@ -133,19 +133,6 @@ class ResponseItemWanikani(ResponseItem):
     main_data: WanikaniMainData
 
 
-# Tangorin
-
-
-class TangorinMainData(TypedDict):
-    sentences: list[ContextSentence]
-
-
-class ResponseItemTangorin(ResponseItem):
-    """Dictionary containing the accent information from Tangorin"""
-
-    main_data: TangorinMainData
-
-
 # Tatoeba
 
 
