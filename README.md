@@ -135,3 +135,21 @@ In the case of an error in a module, `success` will be set to `false`, and `erro
   ...
 ]
 ```
+
+## Endpoints
+
+- `GET /words?words=<JSON-encoded list>` — used by the UI; queries every source.
+- `POST /words` with a JSON body `{"words": ["食べる", ...], "sources": ["jisho", "ojad"]}` —
+  `sources` is optional (defaults to all of `forvo`, `japanesepod`, `jisho`, `ojad`, `suzuki`,
+  `tangorin`, `wadoku`, `wanikani`), and only the requested sources are queried and returned.
+  Invalid bodies or unknown sources return a 400.
+
+## Claude skill
+
+`.claude/skills/japanese-vocab` is a [Claude Code skill](https://docs.claude.com/en/docs/claude-code/skills)
+that calls the API for a list of words and condenses the results (readings, meanings, JLPT level,
+pitch accent, audio). The script can also be run directly:
+
+```
+python3 .claude/skills/japanese-vocab/scripts/fetch_vocab.py 食べる 猫 静か
+```

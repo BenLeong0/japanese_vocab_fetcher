@@ -12,6 +12,25 @@ def get_words_from_lambda(event: dict[str, dict[str, str]]) -> list[Kaki]:
     return word_list
 
 
+def parse_words_body(body: Any) -> tuple[list[Kaki], list[str] | None]:
+    """
+    Validate a POST /words body of the form {"words": [...], "sources": [...]}
+    and return the word list and (optional) list of sources
+    """
+    if not isinstance(body, dict):
+        raise ValueError("Body must be a JSON object")
+    words = body.get("words")
+    if not isinstance(words, list) or not all(isinstance(w, str) for w in words):
+        raise ValueError("'words' must be a list of strings")
+    sources = body.get("sources")
+    if sources is not None and (
+        not isinstance(sources, list) or not all(isinstance(s, str) for s in sources)
+    ):
+        raise ValueError("'sources' must be a list of strings")
+    word_list = [Kaki(w.strip()) for w in words if w.strip()]
+    return word_list, sources
+
+
 def make_single_line(input_string: str) -> str:
     return re.sub(r"\s{2,}", "", input_string)
 
