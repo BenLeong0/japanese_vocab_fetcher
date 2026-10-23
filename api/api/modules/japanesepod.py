@@ -93,7 +93,7 @@ def get_url(word: Kaki) -> URL:
 def get_html_string(word: Kaki) -> HTMLString:
     url = get_url(word)
     try:
-        response = requests.get(url, timeout=20)
+        response = requests.get(url, timeout=5)
     except Exception:
         raise JapanesePodAPIError("request failed", 500, url) from None
     status_code = response.status_code

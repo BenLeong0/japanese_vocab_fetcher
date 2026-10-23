@@ -19,3 +19,5 @@ docker tag japanese-vocab-fetcher:latest 078653112331.dkr.ecr.eu-west-2.amazonaw
 
 # push
 docker push 078653112331.dkr.ecr.eu-west-2.amazonaws.com/japanese-vocab-fetcher:latest
+
+aws lambda update-function-code --function-name japanese-vocab-fetcher --image-uri 078653112331.dkr.ecr.eu-west-2.amazonaws.com/japanese-vocab-fetcher:latest --profile personal --region eu-west-2
