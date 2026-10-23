@@ -11,8 +11,9 @@ RUN python3 -m pip install uv
 WORKDIR ${LAMBDA_TASK_ROOT}
 COPY uv.lock pyproject.toml README.md ${LAMBDA_TASK_ROOT}/
 
-# Project initialization:
-RUN uv sync
+# Install dependencies into the system Python (the Lambda runtime doesn't use a .venv)
+RUN uv export --frozen --no-dev --no-emit-project -o requirements.txt \
+    && uv pip install --system -r requirements.txt
 
 # Copy the content of the local src directory to the working directory
 COPY api ${LAMBDA_TASK_ROOT}/api/

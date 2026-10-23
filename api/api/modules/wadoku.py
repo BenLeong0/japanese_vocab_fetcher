@@ -73,7 +73,7 @@ def get_url(word_list: list[Kaki]) -> URL:
 def get_html(word_list: list[Kaki]) -> Soup:
     url = get_url(word_list)
     try:
-        response = requests.post(url, timeout=20)
+        response = requests.post(url, timeout=5)
     except Exception:
         raise WadokuAPIError("request failed", 500, url) from None
     status_code = response.status_code

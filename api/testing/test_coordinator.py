@@ -159,3 +159,56 @@ def test_generate_response(test_dict: FullTestDict):
     expected_result = test_dict.expected_result
 
     assert coordinator.generate_response(result_dict, word_list) == expected_result
+
+
+def test_get_modules_all():
+    """
+    - GIVEN no sources
+    - WHEN modules are selected
+    - THEN check all modules are returned
+    """
+    assert coordinator.get_modules(None) == coordinator.MODULES
+
+
+def test_get_modules_subset():
+    """
+    - GIVEN a subset of sources
+    - WHEN modules are selected
+    - THEN check only those modules are returned
+    """
+    modules = coordinator.get_modules(["ojad", "jisho"])
+    assert [module.NAME for module in modules] == ["jisho", "ojad"]
+
+
+def test_get_modules_unknown():
+    """
+    - GIVEN an unknown source
+    - WHEN modules are selected
+    - THEN check a ValueError is raised
+    """
+    with pytest.raises(ValueError, match="notasource"):
+        coordinator.get_modules(["jisho", "notasource"])
+
+
+def test_get_info_with_sources(monkeypatch, test_dict: FullTestDict):
+    """
+    - GIVEN a list of words and a subset of sources
+    - WHEN results are generated
+    - THEN check only the requested sources are called and returned
+    """
+    monkeypatch.setattr(
+        "api.modules.jisho.main", lambda x: test_dict.jisho.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.ojad.main", lambda x: test_dict.ojad.expected_output
+    )
+    for name in set(MODULES) - {"jisho", "ojad"}:
+        monkeypatch.setattr(f"api.modules.{name}.main", pytest.fail)
+
+    word_list = convert_list_of_str_to_kaki(test_dict.input)
+    expected_result = [
+        {"word": item["word"], "jisho": item["jisho"], "ojad": item["ojad"]}
+        for item in test_dict.expected_result
+    ]
+
+    assert coordinator.get_info(word_list, ["ojad", "jisho"]) == expected_result
