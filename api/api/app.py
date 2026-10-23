@@ -1,7 +1,8 @@
 import json
+from typing import Any
 
 import uvicorn
-from fastapi import FastAPI
+from fastapi import Body, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from api import utils
@@ -20,6 +21,19 @@ app.add_middleware(
 @app.get("/words")
 async def homepage(words: str):
     return get_info(json.loads(words))
+
+
+@app.post("/words")
+async def post_words(body: Any = Body(...)):  # noqa: B008
+    """
+    Fetch information for a list of words, optionally restricted to some sources.
+    Body: {"words": ["食べる", ...], "sources": ["jisho", "ojad"]}
+    """
+    try:
+        word_list, sources = utils.parse_words_body(body)
+        return get_info(word_list, sources)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e)) from e
 
 
 def lambda_handler(event, context):
