@@ -30,7 +30,15 @@ ALL_SOURCES = (
     "wadoku",
     "wanikani",
 )
-DEFAULT_SOURCES = ("jisho", "ojad", "suzuki", "wadoku", "japanesepod")
+DEFAULT_SOURCES = (
+    "jisho",
+    "ojad",
+    "suzuki",
+    "wadoku",
+    "japanesepod",
+    "tatoeba",
+    "wanikani",
+)
 ACCENT_SOURCES = ("ojad", "wadoku", "suzuki")
 BATCH_SIZE = 20
 TIMEOUT = 60
