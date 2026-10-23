@@ -137,7 +137,8 @@ def extract_rows(html: HTMLString) -> list[str]:
 
 
 ROW_PATTERN = r"^(?P<writings>\S+) (\[(?P<readings>\S+)\] )?/(?P<glosses>.*)/$"
-MARKER_PATTERN = r"^\((?P<marker>[^()]*)\) "
+# A marker is `(tag)` or a `{field}` (e.g. `{food}`, `{shogi}`) at the start of a gloss
+MARKER_PATTERN = r"^(\((?P<tag>[^()]*)\)|\{(?P<field>[^{}]*)\}) "
 SENSE_NUMBER_PATTERN = r"^\d+$"
 # Bracketed text at the start of a gloss is only a tag if it looks like one
 # (`(uk)`, `(exp,v5u)`, `(See 言語)`, `(めがね, メガネ only)`, `(as ...からなる)`),
@@ -159,10 +160,11 @@ def parse_gloss(gloss: str) -> tuple[list[str], str]:
     `(n) (1) (uk) glasses` -> `(["n", "1", "uk"], "glasses")`
     """
     markers: list[str] = []
-    while (match := re.search(MARKER_PATTERN, gloss)) is not None and re.match(
-        TAG_PATTERN, match["marker"]
-    ):
-        markers.append(match["marker"])
+    while (match := re.search(MARKER_PATTERN, gloss)) is not None:
+        marker: str = match["field"] if match["tag"] is None else match["tag"]
+        if match["field"] is None and not re.match(TAG_PATTERN, marker):
+            break
+        markers.append(marker)
         gloss = gloss[match.end() :]
     return markers, gloss
 
@@ -216,8 +218,11 @@ def format_row(row: str) -> JDictEntry:
     readings_match: str | None = match["readings"]
     glosses: list[str] = match["glosses"].split("/")
 
-    # Trailing `(P)` marks a common entry, `EntL...` is the entry id
-    is_common = "(P)" in writings_match or "(P)" in (readings_match or "")
+    # `(P)` (on a form, or as a trailing gloss) marks a common entry,
+    # `EntL...` is the entry id
+    is_common = (
+        "(P)" in writings_match or "(P)" in (readings_match or "") or "(P)" in glosses
+    )
     glosses = [
         gloss
         for gloss in glosses

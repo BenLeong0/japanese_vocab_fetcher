@@ -131,8 +131,10 @@ def summarise(item: dict, max_senses: int) -> dict:
     if jdict_results and not jisho_results:
         # Fall back to JMdict (via WWWJDIC) when jisho has no exact match
         top = jdict_results[0]
+        summary["jisho_match"] = None
         summary["readings"] = top.get("readings", [])
         summary["common"] = top.get("is_common", False)
+        summary["jlpt"] = []
         summary["meanings"] = [
             {"pos": sense.get("parts_of_speech", []), "en": sense.get("definitions", [])}
             for sense in top.get("senses", [])[:max_senses]
@@ -190,7 +192,9 @@ def as_markdown(summaries: list[dict]) -> str:
         lines.append(f"## {s['word']}")
         if "readings" in s:
             extra = []
-            if s["jisho_match"] != s["word"]:
+            if s["jisho_match"] is None:
+                extra.append("no jisho match; from JMdict")
+            elif s["jisho_match"] != s["word"]:
                 extra.append(f"jisho match: {s['jisho_match']}")
             if s["jlpt"]:
                 extra.append("/".join(s["jlpt"]))

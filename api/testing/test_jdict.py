@@ -402,6 +402,38 @@ def test_format_row_failure(invalid_row: str):
             },
             id="part of speech changes between senses",
         ),
+        pytest.param(
+            "学生 [がくせい] /(n) student (esp. a university student)/(P)/",
+            {
+                "writings": ["学生"],
+                "readings": ["がくせい"],
+                "is_common": True,
+                "senses": [
+                    {
+                        "parts_of_speech": ["n"],
+                        "tags": [],
+                        "definitions": ["student (esp. a university student)"],
+                    },
+                ],
+            },
+            id="trailing (P) marks entry as common",
+        ),
+        pytest.param(
+            "食べるラー油 [たべるラーゆ] /(exp,n) {food} (See 辣油) chili oil/",
+            {
+                "writings": ["食べるラー油"],
+                "readings": ["たべるラーゆ"],
+                "is_common": False,
+                "senses": [
+                    {
+                        "parts_of_speech": ["exp", "n"],
+                        "tags": ["food", "See 辣油"],
+                        "definitions": ["chili oil"],
+                    },
+                ],
+            },
+            id="{field} tags are extracted",
+        ),
     ],
 )
 def test_format_row_examples(row: str, expected):

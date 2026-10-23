@@ -68,7 +68,7 @@ ENTRIES: dict[str, list[JDictEntry]] = {
         {
             "writings": [],
             "readings": ["カムバック"],
-            "is_common": False,
+            "is_common": True,
             "senses": [
                 {
                     "parts_of_speech": ["n", "vs", "vi"],
@@ -107,10 +107,9 @@ ENTRIES: dict[str, list[JDictEntry]] = {
             "senses": [
                 {
                     "parts_of_speech": ["exp", "n"],
-                    "tags": [],
+                    "tags": ["food", "See 辣油"],
                     "definitions": [
-                        "{food} (See 辣油) chili oil mixed with chopped garlic, "
-                        "onions, etc."
+                        "chili oil mixed with chopped garlic, onions, etc."
                     ],
                 }
             ],
@@ -148,7 +147,7 @@ ENTRIES: dict[str, list[JDictEntry]] = {
         {
             "writings": ["学生"],
             "readings": ["がくせい"],
-            "is_common": False,
+            "is_common": True,
             "senses": [
                 {
                     "parts_of_speech": ["n"],
@@ -265,10 +264,8 @@ ENTRIES: dict[str, list[JDictEntry]] = {
                 {"parts_of_speech": ["n"], "tags": [], "definitions": ["body"]},
                 {
                     "parts_of_speech": ["n"],
-                    "tags": ["abbr"],
-                    "definitions": [
-                        "{sports} (See ボディーブロー) body blow (in boxing)"
-                    ],
+                    "tags": ["abbr", "sports", "See ボディーブロー"],
+                    "definitions": ["body blow (in boxing)"],
                 },
             ],
         },
@@ -321,7 +318,7 @@ ENTRIES: dict[str, list[JDictEntry]] = {
         {
             "writings": ["兎に角"],
             "readings": ["とにかく"],
-            "is_common": False,
+            "is_common": True,
             "senses": [
                 {
                     "parts_of_speech": ["adv"],
@@ -676,8 +673,8 @@ ENTRIES: dict[str, list[JDictEntry]] = {
                 },
                 {
                     "parts_of_speech": ["v5r", "vi"],
-                    "tags": [],
-                    "definitions": ["{shogi} to be promoted"],
+                    "tags": ["shogi"],
+                    "definitions": ["to be promoted"],
                 },
                 {
                     "parts_of_speech": ["aux-v", "v5r"],
@@ -693,7 +690,7 @@ ENTRIES: dict[str, list[JDictEntry]] = {
         {
             "writings": ["生る"],
             "readings": ["なる"],
-            "is_common": False,
+            "is_common": True,
             "senses": [
                 {
                     "parts_of_speech": ["v5r", "vi"],
