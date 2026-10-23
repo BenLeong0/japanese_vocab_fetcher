@@ -14,9 +14,6 @@ const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinalit
     const utilsService = new UtilsService();
 
     const dfn: string = sense.english_definitions.map(utilsService.capitaliseString).join(" ; ");
-    const copyDefinitionToClipboard = () => {
-        utilsService.copyStringToClipboard(dfn);
-    }
 
     const getWordType = (): string => {
         let wordType = sense.parts_of_speech.join("・");
@@ -30,13 +27,14 @@ const ResultDefinitionSense: React.FC<ResultDefinitionSenseProps> = ({ ordinalit
     }
 
     return (
-        <div className="result-definition-sense flex-col">
-            <div className="sense-part-of-speech">{ getWordType() }</div>
-            <div className="sense-english-definition">
+        <div className="sense">
+            { getWordType() && <div className="sense-pos">{ getWordType() }</div> }
+            <div className="sense-text">
                 <span
-                    className="unselectable copy-cursor"
-                    onClick={copyDefinitionToClipboard}
-                >{ ordinality + '. ' }</span>
+                    className="sense-ordinal unselectable"
+                    title="Copy definition"
+                    onClick={() => utilsService.copyStringToClipboard(dfn)}
+                >{ ordinality }.</span>
                 { dfn }
             </div>
         </div>

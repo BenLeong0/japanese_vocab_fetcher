@@ -1,33 +1,65 @@
-.input-form {
-  width: 100%;
+.input-page {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .main-input {
-  font-size: xx-large;
-  padding: 12px;
-  width: 80%;
-  max-width: 600px;
-  font-weight: 900;
+  width: 100%;
+  resize: none;
+  padding: 16px 18px;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--ink);
+  background-color: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
 }
 
-.input-page button {
-  width: 100px;
+.main-input::placeholder {
+  color: var(--ink-mute);
+  font-family: var(--font-ui);
+  font-size: 17px;
 }
 
-.words-display {
+.main-input:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px var(--red-tint);
+}
+
+.main-input:disabled {
+  color: var(--ink-soft);
+}
+
+.input-footer {
   display: flex;
-  max-width: 600px;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.word-display {
-  color: white;
-  background-color: var(--green-light);
-  padding: 1px 7px;
-  border-radius: 4px;
-  margin: 8px 3px;
+.word-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 28px;
+}
+
+.input-footer .button {
+  flex: none;
+  min-width: 96px;
+}
+
+.input-hint {
+  font-size: 13px;
+  color: var(--ink-mute);
 }

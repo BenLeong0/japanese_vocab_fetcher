@@ -4,8 +4,6 @@ import InputBox from './InputBox/InputBox';
 
 import FullResponseItem from '../../types/FullResponseItem';
 
-import './InputPage.css';
-
 
 export interface InputPageProps {
     setWordList: (s: FullResponseItem[]) => void;
@@ -17,7 +15,7 @@ const InputPage: React.FC<InputPageProps> = ({ setWordList }) => {
     return (
         <div className="input-page">
             <InputBox setWordList={setWordList} setErrorOccurred={setErrorOccurred}/>
-            { errorOccurred && <ErrorMessage>An error occurred. Please try again</ErrorMessage> }
+            { errorOccurred && <ErrorMessage>Something went wrong. Please try again.</ErrorMessage> }
         </div>
     );
 }

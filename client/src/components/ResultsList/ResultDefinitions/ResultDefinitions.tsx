@@ -1,9 +1,8 @@
 import React from 'react';
 import ResultDefinition from './ResultDefinition';
+import Section from '../../../shared/Section/Section';
 
 import FullResponseItem from '../../../types/FullResponseItem';
-
-import './ResultDefinitions.css';
 
 
 interface ResultDefinitionsProps {
@@ -11,12 +10,16 @@ interface ResultDefinitionsProps {
 }
 
 const ResultDefinitions: React.FC<ResultDefinitionsProps> = ({ data }) => {
+    if (data.jisho.main_data.results.length === 0) return null;
+
     return (
-        <div className="result-definitions-container flex-col">
-            { data.jisho.main_data.results.map(result =>
-                <ResultDefinition key={result.slug} definitionData={result} />
-            )}
-        </div>
+        <Section title="Definitions" className="section-definitions">
+            <div className="definitions">
+                { data.jisho.main_data.results.map(result =>
+                    <ResultDefinition key={result.slug} definitionData={result} />
+                )}
+            </div>
+        </Section>
     );
 }
 

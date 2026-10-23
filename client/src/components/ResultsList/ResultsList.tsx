@@ -3,8 +3,6 @@ import ResultBlock from './ResultBlock';
 
 import FullResponseItem from '../../types/FullResponseItem';
 
-import './ResultsList.css';
-
 
 interface ResultsListProps {
     wordList: FullResponseItem[];

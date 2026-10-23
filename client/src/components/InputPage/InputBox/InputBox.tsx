@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
+import TextareaAutosize from "react-textarea-autosize";
 import LoadingSpinner from "../../../shared/LoadingSpinner/LoadingSpinner";
 
 import FullResponseItem from "../../../types/FullResponseItem";
@@ -27,30 +28,30 @@ const InputBox: React.FC<InputBoxProps> = ({
   const [text, setText] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const words = utilsService.extractWordsFromInput(text);
+
   const sendWords = useRef((forceText?: string) => {});
   sendWords.current = async (forceText?: string) => {
+    const searchText = forceText || text;
+    if (utilsService.extractWordsFromInput(searchText).length === 0) return;
+
     setIsLoading(true);
     setErrorOccurred(false);
-
-    const searchText = forceText || text;
     setSearchParams({ words: searchText });
 
-    const words: string[] = utilsService.extractWordsFromInput(searchText);
-    const queryParams: QueryParams = { words: JSON.stringify(words) };
+    const wordsToSend: string[] = utilsService.extractWordsFromInput(searchText);
+    const queryParams: QueryParams = { words: JSON.stringify(wordsToSend) };
 
     try {
       const resp = await httpService.makeGetRequest("/words", queryParams);
       setWordList(resp);
-      console.log(resp);
     } catch (error) {
       setErrorOccurred(true);
-      console.log(error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Check for query params and search if present
   const searchQueryParams = useRef(() => {});
   searchQueryParams.current = () => {
     let words = searchParams.get("words");
@@ -62,31 +63,47 @@ const InputBox: React.FC<InputBoxProps> = ({
     searchQueryParams.current();
   }, []);
 
-  return isLoading ? (
-    <LoadingSpinner />
-  ) : (
-    <form className="input-form">
-      <input
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    sendWords.current();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendWords.current();
+    }
+  };
+
+  return (
+    <form className="input-form" onSubmit={handleSubmit}>
+      <TextareaAutosize
         name="main-input"
-        className="main-input mplus"
+        className="main-input ja"
         value={text}
-        onChange={(e: any) => setText(e.target.value)}
-        onSubmit={(_) => sendWords.current()}
+        minRows={2}
+        placeholder="Type or paste Japanese words, separated by spaces or line breaks"
+        onChange={(e) => setText(e.target.value)}
+        onKeyDown={handleKeyDown}
+        disabled={isLoading}
       />
-      <div className="words-display vertical-separation-small">
-        {utilsService.extractWordsFromInput(text).map((word, index) => (
-          <div key={index} className="word-display">
-            {word}
-          </div>
-        ))}
+      <div className="input-footer">
+        <div className="word-chips">
+          {words.map((word, index) => (
+            <span key={index} className="chip ja">
+              {word}
+            </span>
+          ))}
+        </div>
+        <button
+          className="button"
+          type="submit"
+          disabled={isLoading || words.length === 0}
+        >
+          {isLoading ? <LoadingSpinner /> : "Fetch"}
+        </button>
       </div>
-      <button
-        className="button-primary vertical-separation-medium"
-        type="submit"
-        onClick={(_) => sendWords.current()}
-      >
-        Submit
-      </button>
+      <p className="input-hint">Press Enter to fetch, Shift + Enter for a new line.</p>
     </form>
   );
 };

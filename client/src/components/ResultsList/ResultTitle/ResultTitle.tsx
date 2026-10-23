@@ -1,10 +1,6 @@
 import React from 'react';
-
-import IconCopy from '../../../assets/icons/icon_copy.svg';
-
-import UtilsService from '../../core/UtilsService';
-
-import './ResultTitle.css';
+import CopyButton from '../../../shared/CopyButton/CopyButton';
+import { IconChevron } from '../../../shared/Icons/Icons';
 
 
 interface ResultTitleProps {
@@ -20,29 +16,23 @@ const ResultTitle: React.FC<ResultTitleProps> = ({
     toggleIsExpanded,
     copyString,
 }) => {
-    const utilsService = new UtilsService();
-    const copyCopyStringToClipboard = () => {
-        utilsService.copyStringToClipboard(copyString);
-    }
-
     return (
-        <div className="result-title flex-row space-between">
-            <div className="result-title-text mplus">{ children }</div>
-            <div className="result-title-buttons flex-col space-between">
-                <img
-                    className="result-title-copy unselectable"
-                    src={IconCopy}
-                    alt="button to copy sample row to clipboard"
-                    onClick={copyCopyStringToClipboard}
-                />
-                <div
-                    className="result-title-collapser unselectable"
+        <header className="result-header">
+            <h2 className="result-word ja">{ children }</h2>
+            <div className="result-actions">
+                <CopyButton text={copyString} label="Copy row to clipboard" />
+                <button
+                    type="button"
+                    className="icon-button"
+                    title={isExpanded ? "Collapse" : "Expand"}
+                    aria-label={isExpanded ? "Collapse" : "Expand"}
+                    aria-expanded={isExpanded}
                     onClick={toggleIsExpanded}
                 >
-                    { isExpanded ? "collapse" : "expand" }
-                </div>
+                    <IconChevron up={isExpanded} />
+                </button>
             </div>
-        </div>
+        </header>
     );
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
+import { IconAlert } from '../Icons/Icons';
 
-import ErrorIcon from "../../assets/icons/icon_error.svg";
 import './ErrorMessage.css';
 
 
@@ -10,10 +10,9 @@ interface ErrorMessageProps {
 
 const ErrorMessage: React.FunctionComponent<ErrorMessageProps> = ({ children }) => {
     return (
-        <div className="error-message vertical-separation-large">
-            <img src={ErrorIcon} alt="error icon" />
+        <div className="error-message" role="alert">
+            <IconAlert className="error-message-icon" />
             { children }
-            <img src={ErrorIcon} alt="error icon" />
         </div>
     );
 }

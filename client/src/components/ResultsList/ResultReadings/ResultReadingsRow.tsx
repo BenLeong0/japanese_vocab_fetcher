@@ -10,21 +10,19 @@ interface ResultReadingsRowProps {
 
 const ResultReadingsRow: React.FC<ResultReadingsRowProps> = ({ title, readings }) => {
     const utilsService = new UtilsService();
-    const copyReadingToClipboard = (reading: string) => {
-        utilsService.copyStringToClipboard(reading);
-    }
 
     return (
         <div className="readings-row">
-            <div className="readings-row-left">{ title }:</div>
-            <div className="readings-row-right">
+            <span className="source-label">{ title }</span>
+            <div className="readings-list">
                 {readings.map((reading, index) =>
-                    <div
+                    <button
                         key={index}
-                        className="reading unselectable copy-cursor"
-                        onClick={() => {copyReadingToClipboard(reading)}}
+                        type="button"
+                        className="chip chip-copy ja"
+                        onClick={() => utilsService.copyStringToClipboard(reading)}
                         title="Copy to clipboard"
-                    >{ reading }</div>
+                    >{ reading }</button>
                 )}
             </div>
         </div>

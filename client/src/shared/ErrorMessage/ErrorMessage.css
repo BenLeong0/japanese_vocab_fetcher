@@ -1,10 +1,16 @@
 .error-message {
-    font-size: 24px;
-    line-height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    color: var(--red-dark);
+    background-color: var(--red-tint);
 }
 
-.error-message img {
-    color: red;
+.error-message-icon {
+    flex: none;
+    width: 18px;
     height: 18px;
-    margin: 0 8px;
 }
