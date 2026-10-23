@@ -1,12 +1,12 @@
 import APIErrorDict from "./ResponseError";
 import Sentence from "./Sentence";
 
-export interface TangorinMainData {
+export interface TatoebaMainData {
     sentences: Sentence[];
 }
 
-export default interface ResponseItemTangorin {
+export default interface ResponseItemTatoeba {
     success: boolean;
     error: APIErrorDict | null;
-    main_data: TangorinMainData;
+    main_data: TatoebaMainData;
 }

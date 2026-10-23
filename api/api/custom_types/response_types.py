@@ -133,17 +133,17 @@ class ResponseItemWanikani(ResponseItem):
     main_data: WanikaniMainData
 
 
-# Tangorin
+# Tatoeba
 
 
-class TangorinMainData(TypedDict):
+class TatoebaMainData(TypedDict):
     sentences: list[ContextSentence]
 
 
-class ResponseItemTangorin(ResponseItem):
-    """Dictionary containing the accent information from Tangorin"""
+class ResponseItemTatoeba(ResponseItem):
+    """Dictionary containing the sentence information from Tatoeba"""
 
-    main_data: TangorinMainData
+    main_data: TatoebaMainData
 
 
 # Full response
@@ -158,4 +158,5 @@ class FullResponseItem(TypedDict):
     suzuki: ResponseItemSuzuki
     wadoku: ResponseItemWadoku
     forvo: ResponseItemForvo
+    tatoeba: ResponseItemTatoeba
     wanikani: ResponseItemWanikani

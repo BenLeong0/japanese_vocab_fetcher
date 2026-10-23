@@ -8,7 +8,8 @@ vocabulary. Consists of a UI built in React, and a backend Python FastAPI server
 Fetches information from [jisho.org](jisho.org), [Wadoku](wadoku.de) and Tokyo
 University's OJAD ([Suzuki-kun](https://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index) and
 [Word Search](https://www.gavo.t.u-tokyo.ac.jp/ojad/search)), and audio files from
-[Forvo](forvo.com) and [Wanikani](wanikani.com).
+[Forvo](forvo.com) and [Wanikani](wanikani.com), and context sentences from
+[Tatoeba](tatoeba.org).
 
 Potential project extensions:
 
@@ -141,7 +142,7 @@ In the case of an error in a module, `success` will be set to `false`, and `erro
 - `GET /words?words=<JSON-encoded list>` — used by the UI; queries every source.
 - `POST /words` with a JSON body `{"words": ["食べる", ...], "sources": ["jisho", "ojad"]}` —
   `sources` is optional (defaults to all of `forvo`, `japanesepod`, `jisho`, `ojad`, `suzuki`,
-  `tangorin`, `wadoku`, `wanikani`), and only the requested sources are queried and returned.
+  `tatoeba`, `wadoku`, `wanikani`), and only the requested sources are queried and returned.
   Invalid bodies or unknown sources return a 400.
 
 ## Claude skill

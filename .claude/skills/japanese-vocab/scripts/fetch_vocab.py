@@ -26,7 +26,7 @@ ALL_SOURCES = (
     "jisho",
     "ojad",
     "suzuki",
-    "tangorin",
+    "tatoeba",
     "wadoku",
     "wanikani",
 )
@@ -135,7 +135,7 @@ def summarise(item: dict, max_senses: int) -> dict:
         summary["audio"] = audio[:3]
 
     sentences = []
-    for source in ("wanikani", "tangorin"):
+    for source in ("wanikani", "tatoeba"):
         sentences.extend(main_data(item, source).get("sentences") or [])
     if sentences:
         summary["sentences"] = sentences[:2]

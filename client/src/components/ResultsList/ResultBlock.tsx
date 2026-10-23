@@ -57,7 +57,7 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
 
     const getContextSentence = (): Sentence => {
         if (data.wanikani.main_data.sentences.length > 0) return data.wanikani.main_data.sentences[0];
-        if (data.tangorin.main_data.sentences.length > 0) return data.tangorin.main_data.sentences[0];
+        if (data.tatoeba.main_data.sentences.length > 0) return data.tatoeba.main_data.sentences[0];
         return { en: '', ja: '' };
     }
 

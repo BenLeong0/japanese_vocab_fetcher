@@ -1,6 +1,6 @@
 ---
 name: japanese-vocab
-description: Look up readings, English meanings, JLPT level, pitch accent and audio for a list of Japanese words using the Japanese Vocab Fetcher API (jisho, OJAD, Wadoku, Suzuki-kun, JapanesePod, Forvo, WaniKani, Tangorin). Use when the user gives one or more Japanese words and wants translations, readings, pitch accent, example sentences, audio, or flashcard/vocab-list data.
+description: Look up readings, English meanings, JLPT level, pitch accent and audio for a list of Japanese words using the Japanese Vocab Fetcher API (jisho, OJAD, Wadoku, Suzuki-kun, JapanesePod, Forvo, WaniKani, Tatoeba). Use when the user gives one or more Japanese words and wants translations, readings, pitch accent, example sentences, audio, or flashcard/vocab-list data.
 ---
 
 # Japanese vocab lookup
@@ -28,7 +28,7 @@ Options:
 
 | Flag | Purpose |
 | --- | --- |
-| `--sources jisho,ojad` | Only query these sources. Default `jisho,ojad,suzuki,wadoku,japanesepod`; `all` adds `forvo,tangorin,wanikani` (slower). |
+| `--sources jisho,ojad` | Only query these sources. Default `jisho,ojad,suzuki,wadoku,japanesepod`; `all` adds `forvo,tatoeba,wanikani` (slower). |
 | `--format json` | Condensed JSON instead of Markdown — use when you will post-process (e.g. building a CSV/Anki deck). |
 | `--raw` | Full, unprocessed API response. |
 | `--max-senses N` | Number of jisho senses to keep (default 3). |
@@ -43,7 +43,7 @@ parallel and typically takes 5–15 seconds, so pick only the sources you need.
 - Pitch accent → `ojad`, `wadoku` (dictionary entries), `suzuki` (Suzuki-kun, which
   predicts accent for any text, including conjugated forms and phrases)
 - Audio URLs → `japanesepod` (fast), `forvo`, `wanikani`
-- Example sentences → `tangorin`, `wanikani`
+- Example sentences → `tatoeba`, `wanikani`
 
 ## Reading the output
 

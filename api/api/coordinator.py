@@ -10,7 +10,7 @@ from api.modules import (
     jisho,
     ojad,
     suzuki,
-    tangorin,
+    tatoeba,
     wadoku,
     wanikani,
 )
@@ -28,7 +28,7 @@ MODULES = (
     jisho,
     ojad,
     suzuki,
-    tangorin,
+    tatoeba,
     wadoku,
     wanikani,
 )
