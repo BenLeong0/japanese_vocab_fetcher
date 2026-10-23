@@ -135,6 +135,19 @@
     gap: 24px;
 }
 
+.definitions + .definitions {
+    margin-top: 28px;
+}
+
+.definitions-source {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: -8px;
+}
+
 .definition {
     display: flex;
     flex-direction: column;

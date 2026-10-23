@@ -27,7 +27,8 @@ const ResultTags: React.FC<ResultTagProps> = ({ data }) => {
 
 const extractTags = (data: FullResponseItem): string[] => {
     let tags = data.jisho.main_data.results.map(result => [result.jlpt, result.tags]).flat(2);
-    if (data.jisho.main_data.results.some(result => result.is_common)) {
+    if (data.jisho.main_data.results.some(result => result.is_common)
+        || data.jdict.main_data.results.some(result => result.is_common)) {
         tags.push("common word");
     }
     return Array.from(new Set(tags));

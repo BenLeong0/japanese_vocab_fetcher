@@ -27,7 +27,7 @@ import urllib.request
 
 DEFAULT_API_URL = "https://api.benleong.uk/jp"
 DEFAULT_SOURCES = ("jisho", "ojad", "tatoeba")
-ALL_SOURCES = ("jisho", "ojad", "wadoku", "suzuki", "tatoeba", "wanikani", "japanesepod", "forvo")
+ALL_SOURCES = ("jisho", "jdict", "ojad", "wadoku", "suzuki", "tatoeba", "wanikani", "japanesepod", "forvo")
 TIMEOUT = 60
 RETRIES = 2
 

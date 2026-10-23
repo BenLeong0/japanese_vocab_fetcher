@@ -23,6 +23,7 @@ DEFAULT_API_URL = "https://api.benleong.uk/jp"
 ALL_SOURCES = (
     "forvo",
     "japanesepod",
+    "jdict",
     "jisho",
     "ojad",
     "suzuki",
@@ -32,6 +33,7 @@ ALL_SOURCES = (
 )
 DEFAULT_SOURCES = (
     "jisho",
+    "jdict",
     "ojad",
     "suzuki",
     "wadoku",
@@ -125,6 +127,29 @@ def summarise(item: dict, max_senses: int) -> dict:
             for sense in top.get("senses", [])[:max_senses]
         ]
 
+    jdict_results = main_data(item, "jdict").get("results") or []
+    if jdict_results and not jisho_results:
+        # Fall back to JMdict (via WWWJDIC) when jisho has no exact match
+        top = jdict_results[0]
+        summary["readings"] = top.get("readings", [])
+        summary["common"] = top.get("is_common", False)
+        summary["meanings"] = [
+            {"pos": sense.get("parts_of_speech", []), "en": sense.get("definitions", [])}
+            for sense in top.get("senses", [])[:max_senses]
+        ]
+    if jdict_results:
+        summary["jdict"] = [
+            {
+                "writings": entry.get("writings", []),
+                "readings": entry.get("readings", []),
+                "meanings": [
+                    {"pos": sense.get("parts_of_speech", []), "en": sense.get("definitions", [])}
+                    for sense in entry.get("senses", [])[:max_senses]
+                ],
+            }
+            for entry in jdict_results
+        ]
+
     accents = {
         source: main_data(item, source).get("accent")
         for source in ACCENT_SOURCES
@@ -178,6 +203,14 @@ def as_markdown(summaries: list[dict]) -> str:
                 lines.append(f"- {i}. {pos}{'; '.join(m['en'])}")
         elif s["jisho_requested"]:
             lines.append("- No dictionary entry found")
+        for entry in s.get("jdict", []):
+            forms = "、".join(entry["writings"] or entry["readings"])
+            readings = f" [{'、'.join(entry['readings'])}]" if entry["writings"] else ""
+            meanings = " / ".join(
+                f"[{', '.join(m['pos'])}] " * bool(m["pos"]) + "; ".join(m["en"])
+                for m in entry["meanings"]
+            )
+            lines.append(f"- JMdict: {forms}{readings} — {meanings}")
         for source, accent in s.get("accent", {}).items():
             lines.append(f"- Accent ({source}): {' / '.join(accent)}")
         for sentence in s.get("sentences", []):
