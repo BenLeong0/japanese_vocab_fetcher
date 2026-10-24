@@ -17,6 +17,7 @@ def fixture_test_dict(request):
 
 MODULES = (
     "japanesepod",
+    "jdict",
     "jisho",
     "ojad",
     "suzuki",
@@ -41,6 +42,9 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     """
     monkeypatch.setattr(
         "api.modules.japanesepod.main", lambda x: test_dict.japanesepod.expected_output
+    )
+    monkeypatch.setattr(
+        "api.modules.jdict.main", lambda x: test_dict.jdict.expected_output
     )
     monkeypatch.setattr(
         "api.modules.jisho.main", lambda x: test_dict.jisho.expected_output
@@ -80,6 +84,9 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
         "api.modules.japanesepod.main", lambda x: test_dict.japanesepod.expected_output
     )
     monkeypatch.setattr(
+        "api.modules.jdict.main", lambda x: test_dict.jdict.expected_output
+    )
+    monkeypatch.setattr(
         "api.modules.jisho.main", lambda x: test_dict.jisho.expected_output
     )
     monkeypatch.setattr(
@@ -107,6 +114,7 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
         dict,
         {
             "japanesepod": test_dict.japanesepod.expected_output,
+            "jdict": test_dict.jdict.expected_output,
             "jisho": test_dict.jisho.expected_output,
             "ojad": test_dict.ojad.expected_output,
             "suzuki": test_dict.suzuki.expected_output,
@@ -133,6 +141,7 @@ def test_generate_response(test_dict: FullTestDict):
             "japanesepod": convert_dict_str_keys_to_kaki(
                 test_dict.japanesepod.expected_output
             ),
+            "jdict": convert_dict_str_keys_to_kaki(test_dict.jdict.expected_output),
             "jisho": convert_dict_str_keys_to_kaki(test_dict.jisho.expected_output),
             "ojad": convert_dict_str_keys_to_kaki(test_dict.ojad.expected_output),
             "suzuki": convert_dict_str_keys_to_kaki(test_dict.suzuki.expected_output),

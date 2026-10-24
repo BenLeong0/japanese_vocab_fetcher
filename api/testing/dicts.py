@@ -6,7 +6,12 @@ from bs4 import BeautifulSoup as Soup
 from dotenv import dotenv_values
 
 from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yomi
-from testing import jisho_api_responses, tatoeba_api_responses, wanikani_api_responses
+from testing import (
+    jdict_expected,
+    jisho_api_responses,
+    tatoeba_api_responses,
+    wanikani_api_responses,
+)
 from testing.dict_typing import (
     ForvoTestDict,
     FullTestDict,
@@ -64,6 +69,7 @@ def build_suzuki_formdata(word_list_string: str) -> dict[str, str]:
 MEGANE = FullTestDict(
     test_name="MEGANE",
     input=["眼鏡"],
+    jdict=jdict_expected.build_test_dict(["眼鏡"]),
     japanesepod=JapanesePodTestDict(
         expected_sections={
             "眼鏡": {
@@ -500,6 +506,7 @@ MEGANE = FullTestDict(
     expected_result=[
         {
             "word": "眼鏡",
+            "jdict": jdict_expected.OUTPUTS["眼鏡"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -670,6 +677,7 @@ MEGANE = FullTestDict(
 COMEBACK = FullTestDict(
     test_name="COMEBACK",
     input=["カムバック"],
+    jdict=jdict_expected.build_test_dict(["カムバック"]),
     japanesepod=JapanesePodTestDict(
         expected_sections={
             "カムバック": {
@@ -931,6 +939,7 @@ COMEBACK = FullTestDict(
     expected_result=[
         {
             "word": "カムバック",
+            "jdict": jdict_expected.OUTPUTS["カムバック"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -1014,6 +1023,7 @@ COMEBACK = FullTestDict(
 TABERU_GAKUSEI = FullTestDict(
     test_name="TABERU_GAKUSEI",
     input=["食べる", "学生"],
+    jdict=jdict_expected.build_test_dict(["食べる", "学生"]),
     japanesepod=JapanesePodTestDict(
         expected_sections={
             "食べる": {
@@ -1796,6 +1806,7 @@ TABERU_GAKUSEI = FullTestDict(
     expected_result=[
         {
             "word": "食べる",
+            "jdict": jdict_expected.OUTPUTS["食べる"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -1990,6 +2001,7 @@ TABERU_GAKUSEI = FullTestDict(
         },
         {
             "word": "学生",
+            "jdict": jdict_expected.OUTPUTS["学生"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -2192,6 +2204,7 @@ TABERU_GAKUSEI = FullTestDict(
 KOTOBA = FullTestDict(
     test_name="KOTOBA",
     input=["言葉"],
+    jdict=jdict_expected.build_test_dict(["言葉"]),
     japanesepod=JapanesePodTestDict(
         expected_sections={
             "言葉": {
@@ -2702,6 +2715,7 @@ KOTOBA = FullTestDict(
     expected_result=[
         {
             "word": "言葉",
+            "jdict": jdict_expected.OUTPUTS["言葉"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -2909,6 +2923,7 @@ KOTOBA = FullTestDict(
 BADINPUT = FullTestDict(
     test_name="BADINPUT",
     input=["BADINPUT"],
+    jdict=jdict_expected.build_test_dict(["BADINPUT"]),
     japanesepod=JapanesePodTestDict(
         expected_sections={
             "BADINPUT": {
@@ -3090,6 +3105,7 @@ BADINPUT = FullTestDict(
     expected_result=[
         {
             "word": "BADINPUT",
+            "jdict": jdict_expected.OUTPUTS["BADINPUT"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -3156,6 +3172,7 @@ BADINPUT = FullTestDict(
 USAGI_IKU_KAGO = FullTestDict(
     test_name="USAGI_IKU_KAGO",
     input=["兎", "行く", "籠"],
+    jdict=jdict_expected.build_test_dict(["兎", "行く", "籠"]),
     japanesepod=JapanesePodTestDict(
         expected_sections={
             "兎": {
@@ -4275,6 +4292,7 @@ USAGI_IKU_KAGO = FullTestDict(
     expected_result=[
         {
             "word": "兎",
+            "jdict": jdict_expected.OUTPUTS["兎"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -4428,6 +4446,7 @@ USAGI_IKU_KAGO = FullTestDict(
         },
         {
             "word": "行く",
+            "jdict": jdict_expected.OUTPUTS["行く"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -4626,6 +4645,7 @@ USAGI_IKU_KAGO = FullTestDict(
         },
         {
             "word": "籠",
+            "jdict": jdict_expected.OUTPUTS["籠"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -4770,6 +4790,7 @@ USAGI_IKU_KAGO = FullTestDict(
 SHIZUKA = FullTestDict(
     test_name="SHIZUKA",
     input=["静か"],
+    jdict=jdict_expected.build_test_dict(["静か"]),
     japanesepod=JapanesePodTestDict(
         expected_sections={
             "静か": {
@@ -5212,6 +5233,7 @@ SHIZUKA = FullTestDict(
     expected_result=[
         {
             "word": "静か",
+            "jdict": jdict_expected.OUTPUTS["静か"],
             "japanesepod": {
                 "success": True,
                 "error": None,
@@ -5379,6 +5401,7 @@ SHIZUKA = FullTestDict(
 NARU = FullTestDict(
     test_name="NARU",
     input=["なる"],
+    jdict=jdict_expected.build_test_dict(["なる"]),
     japanesepod=JapanesePodTestDict(
         expected_sections={
             "なる": {
@@ -5739,6 +5762,7 @@ NARU = FullTestDict(
     expected_result=[
         {
             "word": "なる",
+            "jdict": jdict_expected.OUTPUTS["なる"],
             "japanesepod": {
                 "success": True,
                 "error": None,
