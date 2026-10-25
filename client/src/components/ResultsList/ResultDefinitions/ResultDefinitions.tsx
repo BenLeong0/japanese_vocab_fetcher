@@ -15,24 +15,19 @@ const ResultDefinitions: React.FC<ResultDefinitionsProps> = ({ data }) => {
     const jdictResults = data.jdict.main_data.results;
     if (jishoResults.length === 0 && jdictResults.length === 0) return null;
 
+    // JMdict (via WWWJDIC) is only used as a fallback when jisho has no match
     return (
         <Section title="Definitions" className="section-definitions">
-            { jishoResults.length > 0 &&
-                <div className="definitions">
-                    { jdictResults.length > 0 && <div className="definitions-source">Jisho</div> }
-                    { jishoResults.map(result =>
+            <div className="definitions">
+                { jishoResults.length > 0
+                    ? jishoResults.map(result =>
                         <ResultDefinition key={result.slug} definitionData={result} />
-                    )}
-                </div>
-            }
-            { jdictResults.length > 0 &&
-                <div className="definitions">
-                    <div className="definitions-source">JMdict (WWWJDIC)</div>
-                    { jdictResults.map((entry, index) =>
+                    )
+                    : jdictResults.map((entry, index) =>
                         <ResultJDictDefinition key={index} entry={entry} />
-                    )}
-                </div>
-            }
+                    )
+                }
+            </div>
         </Section>
     );
 }
