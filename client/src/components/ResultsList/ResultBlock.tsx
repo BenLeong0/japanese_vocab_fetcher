@@ -40,15 +40,17 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
     }
 
     const getFilteredDefinitions = (): string => {
-        if (data.jisho.main_data.results.length === 0) return "";
-        const senses = data.jisho.main_data.results.map(result => result.senses).flat(2);
-        if (senses.length === 1) {
-            const dfn = senses[0].english_definitions;
-            const formattedDfn = dfn.map(word => utilsService.capitaliseString(word));
+        // Prefer jisho; fall back to JMdict (via WWWJDIC) when jisho has no match
+        const senseDefinitions: string[][] = data.jisho.main_data.results.length > 0
+            ? data.jisho.main_data.results.flatMap(result => result.senses.map(sense => sense.english_definitions))
+            : data.jdict.main_data.results.flatMap(entry => entry.senses.map(sense => sense.definitions));
+        if (senseDefinitions.length === 0) return "";
+        if (senseDefinitions.length === 1) {
+            const formattedDfn = senseDefinitions[0].map(word => utilsService.capitaliseString(word));
             return formattedDfn.join(" ; ");
         }
         else {
-            const dfns = senses.map(sense => sense.english_definitions.slice(0, 2));
+            const dfns = senseDefinitions.map(dfn => dfn.slice(0, 2));
             const formattedDfns = dfns.map(dfn => dfn.map(word => utilsService.capitaliseString(word)));
             return formattedDfns.map(dfn => dfn.join(" ; ")).join("  /  ");
         }

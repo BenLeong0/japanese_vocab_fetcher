@@ -1,6 +1,6 @@
 ---
 name: japanese-vocab
-description: Look up readings, English meanings, JLPT level, pitch accent and audio for a list of Japanese words using the Japanese Vocab Fetcher API (jisho, OJAD, Wadoku, Suzuki-kun, JapanesePod, Forvo, WaniKani, Tatoeba). Use when the user gives one or more Japanese words and wants translations, readings, pitch accent, example sentences, audio, or flashcard/vocab-list data.
+description: Look up readings, English meanings, JLPT level, pitch accent and audio for a list of Japanese words using the Japanese Vocab Fetcher API (jisho, JMdict/WWWJDIC, OJAD, Wadoku, Suzuki-kun, JapanesePod, Forvo, WaniKani, Tatoeba). Use when the user gives one or more Japanese words and wants translations, readings, pitch accent, example sentences, audio, or flashcard/vocab-list data.
 ---
 
 # Japanese vocab lookup
@@ -28,10 +28,10 @@ Options:
 
 | Flag | Purpose |
 | --- | --- |
-| `--sources jisho,ojad` | Only query these sources. Default `jisho,ojad,suzuki,wadoku,japanesepod`; `all` adds `forvo,tatoeba,wanikani` (slower). |
+| `--sources jisho,ojad` | Only query these sources. Default `jisho,jdict,ojad,suzuki,wadoku,japanesepod`; `all` adds `forvo,tatoeba,wanikani` (slower). |
 | `--format json` | Condensed JSON instead of Markdown — use when you will post-process (e.g. building a CSV/Anki deck). |
 | `--raw` | Full, unprocessed API response. |
-| `--max-senses N` | Number of jisho senses to keep (default 3). |
+| `--max-senses N` | Number of jisho/jdict senses to keep (default 3). |
 | `--api-url URL` | Override the API (or set `VOCAB_API_URL`), e.g. `http://localhost:9090` for a local server started with `cd api && uv run python -m api.app`. |
 
 The script sends words in batches of 20. Each request queries every source in
@@ -39,7 +39,8 @@ parallel and typically takes 5–15 seconds, so pick only the sources you need.
 
 ## Choosing sources
 
-- Meanings / readings / JLPT → `jisho`
+- Meanings / readings / JLPT → `jisho`; `jdict` (Jim Breen's JMdict via WWWJDIC) gives a
+  second opinion on meanings/readings and is used as the fallback when jisho has no exact match
 - Pitch accent → `ojad`, `wadoku` (dictionary entries), `suzuki` (Suzuki-kun, which
   predicts accent for any text, including conjugated forms and phrases)
 - Audio URLs → `japanesepod` (fast), `forvo`, `wanikani`

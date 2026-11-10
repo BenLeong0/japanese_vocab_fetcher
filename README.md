@@ -5,7 +5,8 @@
 A web app to quickly fetch translations and pitch accent information for lists of Japanese
 vocabulary. Consists of a UI built in React, and a backend Python FastAPI server (hosted on AWS).
 
-Fetches information from [jisho.org](jisho.org), [Wadoku](wadoku.de) and Tokyo
+Fetches information from [jisho.org](jisho.org), Jim Breen's
+[JMdict/WWWJDIC](https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1C), [Wadoku](wadoku.de) and Tokyo
 University's OJAD ([Suzuki-kun](https://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index) and
 [Word Search](https://www.gavo.t.u-tokyo.ac.jp/ojad/search)), and audio files from
 [Forvo](forvo.com) and [Wanikani](wanikani.com), and context sentences from
@@ -72,6 +73,28 @@ will be of the following form, JSON encoded:
           ...
         ]
     }
+    "jdict": {
+      "success": true,
+      "error": null,
+      "main_data": {
+        "results": [
+          {
+            "writings": ["食べる", "喰べる"],
+            "readings": ["たべる"],
+            "is_common": true,
+            "senses": [
+              {"parts_of_speech": ["v1", "vt"], "tags": [], "definitions": ["to eat"]},
+              ...
+            ]
+          },
+          ...
+        ],
+        "extra": [
+          {"writings": ["食べるラー油", "食べる辣油"], "readings": ["たべるラーゆ"]},
+          ...
+        ]
+      }
+    },
     "ojad": {
       "success": true,
       "error": null,
@@ -141,7 +164,7 @@ In the case of an error in a module, `success` will be set to `false`, and `erro
 
 - `GET /words?words=<JSON-encoded list>` — used by the UI; queries every source.
 - `POST /words` with a JSON body `{"words": ["食べる", ...], "sources": ["jisho", "ojad"]}` —
-  `sources` is optional (defaults to all of `forvo`, `japanesepod`, `jisho`, `ojad`, `suzuki`,
+  `sources` is optional (defaults to all of `forvo`, `japanesepod`, `jdict`, `jisho`, `ojad`, `suzuki`,
   `tatoeba`, `wadoku`, `wanikani`), and only the requested sources are queried and returned.
   Invalid bodies or unknown sources return a 400.
 

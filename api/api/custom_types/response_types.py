@@ -43,6 +43,38 @@ class ResponseItemJisho(ResponseItem):
     main_data: JishoMainData
 
 
+# JDict (JMdict/EDICT via WWWJDIC)
+
+
+class JDictSense(TypedDict):
+    parts_of_speech: list[str]
+    tags: list[str]
+    definitions: list[str]
+
+
+class JDictEntry(TypedDict):
+    writings: list[Kaki]
+    readings: list[Yomi]
+    is_common: bool
+    senses: list[JDictSense]
+
+
+class JDictExtraItem(TypedDict):
+    writings: list[Kaki]
+    readings: list[Yomi]
+
+
+class JDictMainData(TypedDict):
+    results: list[JDictEntry]
+    extra: list[JDictExtraItem]
+
+
+class ResponseItemJDict(ResponseItem):
+    """Dictionary containing the information from JDict"""
+
+    main_data: JDictMainData
+
+
 # OJAD
 
 
@@ -153,6 +185,7 @@ class FullResponseItem(TypedDict):
     """Result dict for a word in an API request"""
 
     word: Kaki
+    jdict: ResponseItemJDict
     jisho: ResponseItemJisho
     ojad: ResponseItemOJAD
     suzuki: ResponseItemSuzuki

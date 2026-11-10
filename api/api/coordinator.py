@@ -7,6 +7,7 @@ from api.custom_types.response_types import FullResponseItem
 from api.modules import (
     forvo,
     japanesepod,
+    jdict,
     jisho,
     ojad,
     suzuki,
@@ -25,6 +26,7 @@ class Module(Protocol):  # pylint: disable=too-few-public-methods
 MODULES = (
     forvo,
     japanesepod,
+    jdict,
     jisho,
     ojad,
     suzuki,
