@@ -14,11 +14,6 @@ interface ReadingSite {
     readings: string[];
 }
 
-const getJDictReadings = (data: FullResponseItem): string[] => {
-    const readings = data.jdict.main_data.results.flatMap(entry => entry.readings);
-    return Array.from(new Set(readings));
-}
-
 const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
     const sitesAndReadings: ReadingSite[] = [
         { title: "OJAD", readings: data.ojad.main_data.accent },
@@ -27,10 +22,6 @@ const ResultReadings: React.FC<ResultReadingsProps> = ({ data }) => {
     ];
 
     const readingExists = ({ readings }: ReadingSite) => readings.length > 0;
-    if (!sitesAndReadings.some(readingExists)) {
-        // No pitch accent from any source: fall back to JMdict's plain (unaccented) readings
-        sitesAndReadings.push({ title: "JMdict", readings: getJDictReadings(data) });
-    }
     if (!sitesAndReadings.some(readingExists)) return null;
 
     return (
