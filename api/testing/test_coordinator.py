@@ -23,6 +23,7 @@ MODULES = (
     "ojad",
     "suzuki",
     "wadoku",
+    "kanjium",
     "forvo",
     "tatoeba",
     "wanikani",
@@ -76,6 +77,9 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
         "api.modules.wadoku.main", lambda x: test_dict.wadoku.expected_output
     )
     monkeypatch.setattr(
+        "api.modules.kanjium.main", lambda x: test_dict.kanjium.expected_output
+    )
+    monkeypatch.setattr(
         "api.modules.forvo.main", lambda x: test_dict.forvo.expected_output
     )
     monkeypatch.setattr(
@@ -117,6 +121,9 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
         "api.modules.wadoku.main", lambda x: test_dict.wadoku.expected_output
     )
     monkeypatch.setattr(
+        "api.modules.kanjium.main", lambda x: test_dict.kanjium.expected_output
+    )
+    monkeypatch.setattr(
         "api.modules.forvo.main", lambda x: test_dict.forvo.expected_output
     )
     monkeypatch.setattr(
@@ -138,6 +145,7 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
             "ojad": test_dict.ojad.expected_output,
             "suzuki": test_dict.suzuki.expected_output,
             "wadoku": test_dict.wadoku.expected_output,
+            "kanjium": test_dict.kanjium.expected_output,
             "forvo": test_dict.forvo.expected_output,
             "tatoeba": test_dict.tatoeba.expected_output,
             "wanikani": test_dict.wanikani.expected_output,
@@ -166,6 +174,7 @@ def test_generate_response(test_dict: FullTestDict):
             "ojad": convert_dict_str_keys_to_kaki(test_dict.ojad.expected_output),
             "suzuki": convert_dict_str_keys_to_kaki(test_dict.suzuki.expected_output),
             "wadoku": convert_dict_str_keys_to_kaki(test_dict.wadoku.expected_output),
+            "kanjium": convert_dict_str_keys_to_kaki(test_dict.kanjium.expected_output),
             "forvo": convert_dict_str_keys_to_kaki(test_dict.forvo.expected_output),
             "tatoeba": convert_dict_str_keys_to_kaki(test_dict.tatoeba.expected_output),
             "wanikani": convert_dict_str_keys_to_kaki(

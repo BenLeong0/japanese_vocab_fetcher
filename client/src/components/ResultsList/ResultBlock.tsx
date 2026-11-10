@@ -34,8 +34,9 @@ const Result: React.FunctionComponent<ResultProps> = ({ data }) => {
 
     const getMostTrustedAccent = (): string => {
         if (data.ojad.main_data.accent.length > 0) return data.ojad.main_data.accent[0];
-        if (data.nhk.main_data.accent.length > 0) return data.nhk.main_data.accent[0];
+        if (data.nhk?.main_data.accent.length > 0) return data.nhk.main_data.accent[0];
         if (data.wadoku.main_data.accent.length > 0) return data.wadoku.main_data.accent[0];
+        if (data.kanjium?.main_data.accent.length > 0) return data.kanjium.main_data.accent[0];
         if (data.suzuki.main_data.accent.length > 0) return data.suzuki.main_data.accent[0];
         return "";
     }
