@@ -1,6 +1,6 @@
 ---
 name: japanese-vocab
-description: Look up readings, English meanings, JLPT level, pitch accent and audio for a list of Japanese words using the Japanese Vocab Fetcher API (jisho, JMdict/WWWJDIC, OJAD, Wadoku, Suzuki-kun, JapanesePod, Forvo, WaniKani, Tatoeba). Use when the user gives one or more Japanese words and wants translations, readings, pitch accent, example sentences, audio, or flashcard/vocab-list data.
+description: Look up readings, English meanings, JLPT level, pitch accent and audio for a list of Japanese words using the Japanese Vocab Fetcher API (jisho, JMdict/WWWJDIC, OJAD, Wadoku, Kanjium, Suzuki-kun, JapanesePod, Forvo, WaniKani, Tatoeba). Use when the user gives one or more Japanese words and wants translations, readings, pitch accent, example sentences, audio, or flashcard/vocab-list data.
 ---
 
 # Japanese vocab lookup
@@ -41,7 +41,8 @@ parallel and typically takes 5–15 seconds, so pick only the sources you need.
 
 - Meanings / readings / JLPT → `jisho`; `jdict` (Jim Breen's JMdict via WWWJDIC) gives a
   second opinion on meanings/readings and is used as the fallback when jisho has no exact match
-- Pitch accent → `ojad`, `wadoku` (dictionary entries), `suzuki` (Suzuki-kun, which
+- Pitch accent → `ojad`, `wadoku`, `kanjium` (dictionary entries; `kanjium` is not in the
+  default set, request it with `--sources`), `suzuki` (Suzuki-kun, which
   predicts accent for any text, including conjugated forms and phrases)
 - Audio URLs → `japanesepod` (fast), `forvo`, `wanikani`
 - Example sentences → `tatoeba`, `wanikani`
@@ -51,7 +52,7 @@ parallel and typically takes 5–15 seconds, so pick only the sources you need.
 - **Pitch accent** uses `'` to mark the downstep: `たべ' る` means the pitch falls
   after `べ` (nakadaka); `ね' こ` falls after the first mora (atamadaka); `いぬ'` falls
   after the last mora (odaka). No `'` means heiban (no fall). When sources disagree,
-  show all of them; OJAD and Wadoku are dictionary data, Suzuki-kun is a prediction.
+  show all of them; OJAD, Wadoku and Kanjium are dictionary data, Suzuki-kun is a prediction.
 - **jisho match** is shown when jisho's top result differs from the input word (e.g.
   for conjugated forms or typos) — mention this to the user.
 - **⚠ source failed** lines mean that upstream source errored; the other sources are

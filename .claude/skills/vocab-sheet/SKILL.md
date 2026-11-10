@@ -66,7 +66,7 @@ This calls the API one word at a time (multi-word requests return 500 on the
 deployed API), with retries, and prints compact JSON: readings, senses with
 parts of speech, `suru_verb` and `usually_kana` flags, OJAD accent and up to
 five Tatoeba sentences. Default sources are `jisho,ojad,tatoeba`; add `wadoku`
-for a second accent opinion. Expect ~10–20 s per word, so run lists of more
+or `kanjium` for a second accent opinion. Expect ~10–20 s per word, so run lists of more
 than a handful in the background (`run_in_background`) and keep working.
 A source listed under `errors` just failed upstream — don't retry it more than
 once; report the gap instead.
@@ -92,7 +92,7 @@ Match the existing rows exactly; open a few recent ones if in doubt.
 
 **Pronunciation (D / J)**
 - Hiragana (katakana for loanword parts: てっきんコンクリート).
-- Pitch accent only from OJAD/Wadoku; mark the downstep with `'` followed by a
+- Pitch accent only from OJAD/Wadoku/Kanjium; mark the downstep with `'` followed by a
   space after the mora it falls on: `たべ' る`, `さ' る`, `きりはな' す`. Odaka
   (fall after the last mora) is a trailing `'` with no space: `つぼみ'`. Heiban
   has no mark. If the API returned no accent, leave the reading bare — never

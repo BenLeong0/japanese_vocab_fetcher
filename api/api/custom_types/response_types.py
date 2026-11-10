@@ -114,6 +114,19 @@ class ResponseItemWadoku(ResponseItem):
     main_data: WadokuMainData
 
 
+# Kanjium
+
+
+class KanjiumMainData(TypedDict):
+    accent: list[Yomi]
+
+
+class ResponseItemKanjium(ResponseItem):
+    """Dictionary containing the accent information from Kanjium"""
+
+    main_data: KanjiumMainData
+
+
 # Forvo
 
 
@@ -187,6 +200,7 @@ class FullResponseItem(TypedDict):
     word: Kaki
     jdict: ResponseItemJDict
     jisho: ResponseItemJisho
+    kanjium: ResponseItemKanjium
     ojad: ResponseItemOJAD
     suzuki: ResponseItemSuzuki
     wadoku: ResponseItemWadoku

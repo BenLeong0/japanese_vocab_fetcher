@@ -9,6 +9,7 @@ from api.custom_types.alternative_string_types import URL, HTMLString, Kaki, Yom
 from testing import (
     jdict_expected,
     jisho_api_responses,
+    kanjium_expected,
     tatoeba_api_responses,
     wanikani_api_responses,
 )
@@ -324,6 +325,7 @@ MEGANE = FullTestDict(
             },
         },
     ),
+    kanjium=kanjium_expected.build_test_dict(["眼鏡"]),
     forvo=ForvoTestDict(
         expected_sections={
             "眼鏡": {
@@ -558,6 +560,7 @@ MEGANE = FullTestDict(
                     "accent": [Yomi("め' がね")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["眼鏡"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -873,6 +876,7 @@ COMEBACK = FullTestDict(
             },
         },
     ),
+    kanjium=kanjium_expected.build_test_dict(["カムバック"]),
     forvo=ForvoTestDict(
         expected_sections={
             "カムバック": {
@@ -979,6 +983,7 @@ COMEBACK = FullTestDict(
                     "accent": [Yomi("カムバ' ック")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["カムバック"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -1383,6 +1388,7 @@ TABERU_GAKUSEI = FullTestDict(
             },
         },
     ),
+    kanjium=kanjium_expected.build_test_dict(["食べる", "学生"]),
     forvo=ForvoTestDict(
         expected_sections={
             "食べる": {
@@ -1853,6 +1859,7 @@ TABERU_GAKUSEI = FullTestDict(
                     "accent": [Yomi("たべ' る")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["食べる"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -2055,6 +2062,7 @@ TABERU_GAKUSEI = FullTestDict(
                     "accent": [Yomi("がくせい")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["学生"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -2509,6 +2517,7 @@ KOTOBA = FullTestDict(
             },
         },
     ),
+    kanjium=kanjium_expected.build_test_dict(["言葉"]),
     forvo=ForvoTestDict(
         expected_sections={
             "言葉": {
@@ -2788,6 +2797,7 @@ KOTOBA = FullTestDict(
                     "accent": [Yomi("ことば'")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["言葉"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -3046,6 +3056,7 @@ BADINPUT = FullTestDict(
             },
         },
     ),
+    kanjium=kanjium_expected.build_test_dict(["BADINPUT"]),
     forvo=ForvoTestDict(
         expected_sections={
             "BADINPUT": {
@@ -3135,6 +3146,7 @@ BADINPUT = FullTestDict(
                     "accent": [],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["BADINPUT"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -3964,6 +3976,7 @@ USAGI_IKU_KAGO = FullTestDict(
             },
         },
     ),
+    kanjium=kanjium_expected.build_test_dict(["兎", "行く", "籠"]),
     forvo=ForvoTestDict(
         expected_sections={
             "兎": {
@@ -4386,6 +4399,7 @@ USAGI_IKU_KAGO = FullTestDict(
                     "accent": [Yomi("うさぎ")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["兎"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -4521,6 +4535,7 @@ USAGI_IKU_KAGO = FullTestDict(
                     "accent": [Yomi("いく")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["行く"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -4725,6 +4740,7 @@ USAGI_IKU_KAGO = FullTestDict(
                     "accent": [Yomi("かご")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["籠"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -5039,6 +5055,7 @@ SHIZUKA = FullTestDict(
             },
         },
     ),
+    kanjium=kanjium_expected.build_test_dict(["静か"]),
     forvo=ForvoTestDict(
         expected_sections={
             "静か": {
@@ -5278,6 +5295,7 @@ SHIZUKA = FullTestDict(
                     "accent": [Yomi("し' ずか")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["静か"],
             "wadoku": {
                 "success": True,
                 "error": None,
@@ -5667,6 +5685,7 @@ NARU = FullTestDict(
             },
         },
     ),
+    kanjium=kanjium_expected.build_test_dict(["なる"]),
     forvo=ForvoTestDict(
         expected_sections={
             "なる": {
@@ -5800,6 +5819,7 @@ NARU = FullTestDict(
                     "accent": [Yomi("な' る")],
                 },
             },
+            "kanjium": kanjium_expected.OUTPUTS["なる"],
             "wadoku": {
                 "success": True,
                 "error": None,
