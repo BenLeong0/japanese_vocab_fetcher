@@ -127,6 +127,19 @@ class ResponseItemKanjium(ResponseItem):
     main_data: KanjiumMainData
 
 
+# NHK
+
+
+class NHKMainData(TypedDict):
+    accent: list[Yomi]
+
+
+class ResponseItemNHK(ResponseItem):
+    """Dictionary containing the accent information from the NHK accent dictionary"""
+
+    main_data: NHKMainData
+
+
 # Forvo
 
 
@@ -201,6 +214,8 @@ class FullResponseItem(TypedDict):
     jdict: ResponseItemJDict
     jisho: ResponseItemJisho
     kanjium: ResponseItemKanjium
+
+    nhk: ResponseItemNHK
     ojad: ResponseItemOJAD
     suzuki: ResponseItemSuzuki
     wadoku: ResponseItemWadoku
