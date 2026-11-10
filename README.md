@@ -8,7 +8,9 @@ vocabulary. Consists of a UI built in React, and a backend Python FastAPI server
 Fetches information from [jisho.org](jisho.org), Jim Breen's
 [JMdict/WWWJDIC](https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1C), [Wadoku](wadoku.de) and Tokyo
 University's OJAD ([Suzuki-kun](https://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index) and
-[Word Search](https://www.gavo.t.u-tokyo.ac.jp/ojad/search)), and audio files from
+[Word Search](https://www.gavo.t.u-tokyo.ac.jp/ojad/search)), pitch accent from the NHK accent
+dictionary (bundled, via [nhk-pronunciation](https://github.com/javdejong/nhk-pronunciation)),
+and audio files from
 [Forvo](forvo.com) and [Wanikani](wanikani.com), and context sentences from
 [Tatoeba](tatoeba.org).
 
@@ -102,6 +104,13 @@ will be of the following form, JSON encoded:
         "accent": ["たべ' る"],
       },
     },
+    "nhk": {
+      "success": true,
+      "error": null,
+      "main_data": {
+        "accent": ["たべ' る"],
+      },
+    },
     "suzuki": {
       "success": true,
       "error": null,
@@ -164,9 +173,20 @@ In the case of an error in a module, `success` will be set to `false`, and `erro
 
 - `GET /words?words=<JSON-encoded list>` — used by the UI; queries every source.
 - `POST /words` with a JSON body `{"words": ["食べる", ...], "sources": ["jisho", "ojad"]}` —
-  `sources` is optional (defaults to all of `forvo`, `japanesepod`, `jdict`, `jisho`, `ojad`, `suzuki`,
-  `tatoeba`, `wadoku`, `wanikani`), and only the requested sources are queried and returned.
+  `sources` is optional (defaults to all of `forvo`, `japanesepod`, `jdict`, `jisho`, `nhk`, `ojad`,
+  `suzuki`, `tatoeba`, `wadoku`, `wanikani`), and only the requested sources are queried and returned.
   Invalid bodies or unknown sources return a 400.
+
+## NHK accent data
+
+The `nhk` source reads `api/api/data/nhk_accent.tsv.gz`, a compact lookup table derived from the
+NHK accent dictionary CSV in [nhk-pronunciation](https://github.com/javdejong/nhk-pronunciation)
+(no network requests). Words are matched by headword or kanji spelling, and kana input also
+matches by reading (e.g. `はし` returns the accents of 箸, 橋 and 端). To regenerate it:
+
+```bash
+cd api && uv run python scripts/build_nhk_accent.py
+```
 
 ## Claude skill
 

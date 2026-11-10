@@ -4,7 +4,7 @@ from typing import Any
 import pytest  # type: ignore
 
 from api import coordinator
-from api.custom_types.alternative_string_types import Kaki
+from api.custom_types.alternative_string_types import Kaki, Yomi
 from api.utils import convert_dict_str_keys_to_kaki, convert_list_of_str_to_kaki
 from testing.dict_typing import FullTestDict
 from testing.dicts import TEST_DICTS
@@ -19,6 +19,7 @@ MODULES = (
     "japanesepod",
     "jdict",
     "jisho",
+    "nhk",
     "ojad",
     "suzuki",
     "wadoku",
@@ -26,6 +27,21 @@ MODULES = (
     "tatoeba",
     "wanikani",
 )
+
+
+NHK_OUTPUT = {
+    "success": True,
+    "error": None,
+    "main_data": {"accent": [Yomi("あ' くせんと")]},
+}
+
+
+def nhk_main(word_list: list[Kaki]) -> dict:
+    return {word: NHK_OUTPUT for word in word_list}
+
+
+def with_nhk(expected_result: list) -> list:
+    return [item | {"nhk": NHK_OUTPUT} for item in expected_result]
 
 
 # Ensure no actual requests are being made
@@ -49,6 +65,7 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr(
         "api.modules.jisho.main", lambda x: test_dict.jisho.expected_output
     )
+    monkeypatch.setattr("api.modules.nhk.main", nhk_main)
     monkeypatch.setattr(
         "api.modules.ojad.main", lambda x: test_dict.ojad.expected_output
     )
@@ -69,7 +86,7 @@ def test_get_info(monkeypatch, test_dict: FullTestDict):
     )
 
     word_list = convert_list_of_str_to_kaki(test_dict.input)
-    expected_result = test_dict.expected_result
+    expected_result = with_nhk(test_dict.expected_result)
 
     assert coordinator.get_info(word_list) == expected_result
 
@@ -89,6 +106,7 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
     monkeypatch.setattr(
         "api.modules.jisho.main", lambda x: test_dict.jisho.expected_output
     )
+    monkeypatch.setattr("api.modules.nhk.main", nhk_main)
     monkeypatch.setattr(
         "api.modules.ojad.main", lambda x: test_dict.ojad.expected_output
     )
@@ -116,6 +134,7 @@ def test_generate_results_dict(monkeypatch, test_dict: FullTestDict):
             "japanesepod": test_dict.japanesepod.expected_output,
             "jdict": test_dict.jdict.expected_output,
             "jisho": test_dict.jisho.expected_output,
+            "nhk": nhk_main(word_list),
             "ojad": test_dict.ojad.expected_output,
             "suzuki": test_dict.suzuki.expected_output,
             "wadoku": test_dict.wadoku.expected_output,
@@ -143,6 +162,7 @@ def test_generate_response(test_dict: FullTestDict):
             ),
             "jdict": convert_dict_str_keys_to_kaki(test_dict.jdict.expected_output),
             "jisho": convert_dict_str_keys_to_kaki(test_dict.jisho.expected_output),
+            "nhk": nhk_main(word_list),
             "ojad": convert_dict_str_keys_to_kaki(test_dict.ojad.expected_output),
             "suzuki": convert_dict_str_keys_to_kaki(test_dict.suzuki.expected_output),
             "wadoku": convert_dict_str_keys_to_kaki(test_dict.wadoku.expected_output),
@@ -154,7 +174,7 @@ def test_generate_response(test_dict: FullTestDict):
         },
     )
 
-    expected_result = test_dict.expected_result
+    expected_result = with_nhk(test_dict.expected_result)
 
     assert coordinator.generate_response(result_dict, word_list) == expected_result
 

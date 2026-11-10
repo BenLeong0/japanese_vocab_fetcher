@@ -114,6 +114,19 @@ class ResponseItemWadoku(ResponseItem):
     main_data: WadokuMainData
 
 
+# NHK
+
+
+class NHKMainData(TypedDict):
+    accent: list[Yomi]
+
+
+class ResponseItemNHK(ResponseItem):
+    """Dictionary containing the accent information from the NHK accent dictionary"""
+
+    main_data: NHKMainData
+
+
 # Forvo
 
 
@@ -187,6 +200,7 @@ class FullResponseItem(TypedDict):
     word: Kaki
     jdict: ResponseItemJDict
     jisho: ResponseItemJisho
+    nhk: ResponseItemNHK
     ojad: ResponseItemOJAD
     suzuki: ResponseItemSuzuki
     wadoku: ResponseItemWadoku

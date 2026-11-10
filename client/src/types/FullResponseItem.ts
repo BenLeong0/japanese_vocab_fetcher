@@ -1,6 +1,7 @@
 import ResponseItemJapanesePod from "./ResponseItemJapanesePod";
 import ResponseItemJDict from "./ResponseItemJDict";
 import ResponseItemJisho from "./ResponseItemJisho";
+import ResponseItemNHK from "./ResponseItemNHK";
 import ResponseItemOJAD from "./ResponseItemOJAD";
 import ResponseItemSuzuki from "./ResponseItemSuzuki";
 import ResponseItemWadoku from "./ResponseItemWadoku";
@@ -14,6 +15,7 @@ export default interface FullResponseItem {
     japanesepod: ResponseItemJapanesePod;
     jdict: ResponseItemJDict;
     jisho: ResponseItemJisho;
+    nhk: ResponseItemNHK;
     ojad: ResponseItemOJAD;
     suzuki: ResponseItemSuzuki;
     wadoku: ResponseItemWadoku;
