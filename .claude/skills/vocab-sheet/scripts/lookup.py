@@ -27,7 +27,7 @@ import urllib.request
 
 DEFAULT_API_URL = "https://api.benleong.uk/jp"
 DEFAULT_SOURCES = ("jisho", "ojad", "tatoeba")
-ALL_SOURCES = ("jisho", "jdict", "ojad", "wadoku", "suzuki", "tatoeba", "wanikani", "japanesepod", "forvo")
+ALL_SOURCES = ("jisho", "jdict", "ojad", "wadoku", "kanjium", "suzuki", "tatoeba", "wanikani", "japanesepod", "forvo")
 TIMEOUT = 60
 RETRIES = 2
 
@@ -139,7 +139,7 @@ def summarise(word: str, items: dict[str, dict]) -> dict:
         out["jisho_match"] = None
 
     accents = {}
-    for src in ("ojad", "wadoku", "suzuki"):
+    for src in ("ojad", "wadoku", "kanjium", "suzuki"):
         acc = main_data(items.get(src, {}), src).get("accent")
         if acc:
             accents[src] = acc

@@ -25,6 +25,7 @@ ALL_SOURCES = (
     "japanesepod",
     "jdict",
     "jisho",
+    "kanjium",
     "ojad",
     "suzuki",
     "tatoeba",
@@ -41,7 +42,7 @@ DEFAULT_SOURCES = (
     "tatoeba",
     "wanikani",
 )
-ACCENT_SOURCES = ("ojad", "wadoku", "suzuki")
+ACCENT_SOURCES = ("ojad", "wadoku", "kanjium", "suzuki")
 BATCH_SIZE = 20
 TIMEOUT = 60
 
